@@ -46,12 +46,7 @@ export const pageQuery = graphql`
           title
           slug
           publishDate(formatString: "MMMM Do, YYYY")
-          tags
-          heroImage {
-            fixed(width: 125, height: 125) {
-              ...GatsbyImageSharpFixed
-            }
-          }
+          tags   
           description {
             childMarkdownRemark {
               html
