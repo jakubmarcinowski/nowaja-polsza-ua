@@ -20,13 +20,11 @@ if (!spaceId || !accessToken) {
   )
 }
 
+// todo modify production domain
 const siteUrl =
   process.env.GATSBY_ENV === 'production'
     ? 'https://novpol.org/'
     : 'https://vibrant-golick-e7ab63.netlify.com/'
-
-console.log('process.env.GATSBY_ENV')
-console.log(process.env.GATSBY_ENV)
 
 module.exports = {
   siteMetadata: {
