@@ -1,3 +1,7 @@
+# environment variables
+
+GATSBY_ENV = development|production - This variable controls proper searchbot crawling options setup in hostname/robots.txt
+
 # gatsby-contentful-starter
 
 Gatsby [Contentful](https://www.contentful.com) starter for creating a blog
