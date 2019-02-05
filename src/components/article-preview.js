@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import ImgValidator from '../components/ImgValidator';
 
 import styles from './article-preview.module.css';
 
-export default ({ article }) => (
-  <div className={styles.preview}>
-    {/*<Img alt="" fluid={article.heroImage.fluid} />*/}
-    <h3 className={styles.previewTitle}>
-      <Link to={`/blog/${article.slug}`}>{article.title}</Link>
-    </h3>
-    <small>{article.publishDate}</small>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: article.description.childMarkdownRemark.html
-      }}
-    />
-  </div>
-);
+export default ({ article }) => {
+  return (
+    <div className={styles.preview}>
+      <ImgValidator img={article.heroImage} />
+      <h3 className={styles.previewTitle}>
+        <Link to={`/blog/${article.slug}`}>{article.title}</Link>
+      </h3>
+      <small>{article.publishDate}</small>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: article.description.childMarkdownRemark.html
+        }}
+      />
+    </div>
+  );
+};
