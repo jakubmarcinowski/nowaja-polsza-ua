@@ -1,17 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import ImgValidator from '../components/ImgValidator';
 
 import styles from './article-preview.module.css';
 
 export default ({ article }) => {
   return (
     <div className={styles.preview}>
-      {typeof article.heroImage === 'undefined' || article.heroImage === null ? (
-        <div>no image</div>
-      ) : (
-        <Img alt="" fluid={article.heroImage.fluid} />
-      )}
+      <ImgValidator img={article.heroImage} />
       <h3 className={styles.previewTitle}>
         <Link to={`/blog/${article.slug}`}>{article.title}</Link>
       </h3>
