@@ -2,10 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
-// import ImgValidator from '../components/ImgValidator'  // remove at all if not needed
 import Img from 'gatsby-image'
-import Layout from '../components/layout'
 
+import Layout from '../components/layout'
+import ImgValidator from '../components/ImgValidator'
 import heroStyles from '../components/hero.module.css'
 
 class BlogPostTemplate extends React.Component {
@@ -18,7 +18,7 @@ class BlogPostTemplate extends React.Component {
         <div style={{ background: '#fff' }}>
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <div className={heroStyles.hero}>
-            <Img fluid={post.heroImage} />
+            <ImgValidator img={post.heroImage} />
           </div>
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>

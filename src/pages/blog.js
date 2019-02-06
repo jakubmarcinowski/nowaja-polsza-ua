@@ -46,7 +46,7 @@ export const pageQuery = graphql`
           title
           slug
           publishDate(formatString: "MMMM Do, YYYY")
-          tags   
+          tags
           description {
             childMarkdownRemark {
               html
