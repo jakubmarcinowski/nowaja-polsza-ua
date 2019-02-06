@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import Img from 'gatsby-image'
+import React from 'react'
+import { Link } from 'gatsby'
+import ImgValidator from '../components/ImgValidator'
+import PropTypes from 'prop-types'
 
-import ImgValidator from '../components/ImgValidator';
-import styles from './article-preview.module.css';
+import styles from './article-preview.module.css'
 
-export default ({ article }) => {
+const ArticlePreview = ({ article }) => {
   return (
     <div className={styles.preview}>
       <ImgValidator img={article.heroImage} />
@@ -15,9 +15,25 @@ export default ({ article }) => {
       <small>{article.publishDate}</small>
       <div
         dangerouslySetInnerHTML={{
-          __html: article.description.childMarkdownRemark.html
+          __html: article.description.childMarkdownRemark.html,
         }}
       />
     </div>
-  );
-};
+  )
+}
+
+ArticlePreview.propTypes = {
+  article: PropTypes.shape({
+    description: PropTypes.shape({
+      childMarkdownRemark: PropTypes.shape({
+        html: PropTypes.string,
+      }),
+    }),
+    publishDate: PropTypes.string,
+    slug: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string,
+  }),
+}
+
+export default ArticlePreview
