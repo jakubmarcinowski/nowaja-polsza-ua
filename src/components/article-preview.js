@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import ImgValidator from '../components/ImgValidator';
+import React from 'react'
+import { Link } from 'gatsby'
+import ImgValidator from '../components/ImgValidator'
 
-import styles from './article-preview.module.css';
+import styles from './article-preview.module.css'
 
 export default ({ article }) => {
   return (
@@ -14,9 +14,9 @@ export default ({ article }) => {
       <small>{article.publishDate}</small>
       <div
         dangerouslySetInnerHTML={{
-          __html: article.description.childMarkdownRemark.html
+          __html: article.description.childMarkdownRemark.html,
         }}
       />
     </div>
-  );
-};
+  )
+}
