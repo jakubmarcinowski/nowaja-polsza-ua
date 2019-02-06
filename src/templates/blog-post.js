@@ -4,7 +4,6 @@ import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import ImgValidator from '../components/ImgValidator'
 import Layout from '../components/layout'
-
 import heroStyles from '../components/hero.module.css'
 
 class BlogPostTemplate extends React.Component {
@@ -49,7 +48,7 @@ export const pageQuery = graphql`
       publishDate(formatString: "MMMM Do, YYYY")
       heroImage {
         fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid
         }
       }
       body {
