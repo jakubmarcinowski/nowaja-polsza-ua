@@ -1,3 +1,4 @@
+/* eslint-disable */
 let contentfulConfig
 
 try {

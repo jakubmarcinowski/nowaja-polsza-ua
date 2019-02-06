@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import ImgValidator from '../components/ImgValidator'
+import PropTypes from 'prop-types'
 
 import styles from './article-preview.module.css'
 
-export default ({ article }) => {
+const ArticlePreview = ({ article }) => {
   return (
     <div className={styles.preview}>
       <ImgValidator img={article.heroImage} />
@@ -20,3 +21,19 @@ export default ({ article }) => {
     </div>
   )
 }
+
+ArticlePreview.propTypes = {
+  article: PropTypes.shape({
+    description: PropTypes.shape({
+      childMarkdownRemark: PropTypes.shape({
+        html: PropTypes.string,
+      }),
+    }),
+    publishDate: PropTypes.string,
+    slug: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string,
+  }),
+}
+
+export default ArticlePreview
