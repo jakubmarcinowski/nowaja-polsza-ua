@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import ImgValidator from '../components/ImgValidator';
+import Img from 'gatsby-image'
 
+import ImgValidator from '../components/ImgValidator';
 import styles from './article-preview.module.css';
 
 export default ({ article }) => {
