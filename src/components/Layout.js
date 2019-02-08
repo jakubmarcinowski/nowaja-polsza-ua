@@ -81,7 +81,6 @@ const StyledLayout = styled.div`
 class Layout extends React.Component {
   render() {
     const { children } = this.props
-    let header
 
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
