@@ -1,4 +1,13 @@
 {
   "prettier.useTabs": false,
-  "prettier.tabWidth": 2
+  "prettier.tabWidth": 2,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#666666",
+    "panel.background": "#555555",
+    "sideBar.background": "#444444",
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#0000cc",
+    "titleBar.activeBackground": "#ffc600",
+    "titleBar.inactiveBackground": "#ffc600"
+  }
 }
