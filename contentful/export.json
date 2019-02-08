@@ -12,7 +12,7 @@
         "id": "person",
         "type": "ContentType",
         "createdAt": "2019-01-31T12:26:47.842Z",
-        "updatedAt": "2019-02-08T10:41:16.337Z",
+        "updatedAt": "2019-02-08T11:13:08.252Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -34,8 +34,8 @@
             "id": "3sBqltoRjbATeYhOFeVgZX"
           }
         },
-        "publishedCounter": 19,
-        "version": 38,
+        "publishedCounter": 21,
+        "version": 42,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -43,9 +43,9 @@
             "id": "3sBqltoRjbATeYhOFeVgZX"
           }
         },
-        "publishedVersion": 37,
+        "publishedVersion": 41,
         "firstPublishedAt": "2019-01-31T12:26:48.438Z",
-        "publishedAt": "2019-02-08T10:41:16.337Z"
+        "publishedAt": "2019-02-08T11:13:08.252Z"
       },
       "displayField": "name",
       "name": "Person",
@@ -172,17 +172,6 @@
           ],
           "disabled": false,
           "omitted": false
-        },
-        {
-          "id": "test",
-          "name": "test",
-          "type": "Symbol",
-          "localized": false,
-          "required": false,
-          "validations": [
-          ],
-          "disabled": false,
-          "omitted": false
         }
       ]
     },
@@ -198,7 +187,7 @@
         "id": "blogPost",
         "type": "ContentType",
         "createdAt": "2019-01-31T12:26:47.937Z",
-        "updatedAt": "2019-02-06T12:34:55.277Z",
+        "updatedAt": "2019-02-08T11:16:24.621Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -217,21 +206,21 @@
           "sys": {
             "type": "Link",
             "linkType": "User",
-            "id": "3DF0sVcI9eva3rGWxUf6OH"
+            "id": "3sBqltoRjbATeYhOFeVgZX"
           }
         },
-        "publishedCounter": 15,
-        "version": 30,
+        "publishedCounter": 16,
+        "version": 32,
         "publishedBy": {
           "sys": {
             "type": "Link",
             "linkType": "User",
-            "id": "3DF0sVcI9eva3rGWxUf6OH"
+            "id": "3sBqltoRjbATeYhOFeVgZX"
           }
         },
-        "publishedVersion": 29,
+        "publishedVersion": 31,
         "firstPublishedAt": "2019-01-31T12:26:48.405Z",
-        "publishedAt": "2019-02-06T12:34:55.277Z"
+        "publishedAt": "2019-02-08T11:16:24.621Z"
       },
       "displayField": "title",
       "name": "Blog Post",
@@ -273,7 +262,7 @@
         },
         {
           "id": "description",
-          "name": "Description",
+          "name": "Lead",
           "type": "Text",
           "localized": false,
           "required": true,
@@ -576,7 +565,7 @@
             "linkType": "Space"
           }
         },
-        "version": 37,
+        "version": 41,
         "createdAt": "2019-01-31T12:26:48.733Z",
         "createdBy": {
           "sys": {
@@ -585,7 +574,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2019-02-08T10:41:17.295Z",
+        "updatedAt": "2019-02-08T11:13:08.957Z",
         "updatedBy": {
           "sys": {
             "id": "3sBqltoRjbATeYhOFeVgZX",
@@ -663,11 +652,6 @@
           "fieldId": "phone",
           "widgetId": "singleLine",
           "widgetNamespace": "builtin"
-        },
-        {
-          "fieldId": "test",
-          "widgetId": "singleLine",
-          "widgetNamespace": "builtin"
         }
       ]
     },
@@ -682,7 +666,7 @@
             "linkType": "Space"
           }
         },
-        "version": 29,
+        "version": 31,
         "createdAt": "2019-01-31T12:26:48.634Z",
         "createdBy": {
           "sys": {
@@ -691,10 +675,10 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2019-02-06T12:34:55.976Z",
+        "updatedAt": "2019-02-08T11:16:25.356Z",
         "updatedBy": {
           "sys": {
-            "id": "3DF0sVcI9eva3rGWxUf6OH",
+            "id": "3sBqltoRjbATeYhOFeVgZX",
             "type": "Link",
             "linkType": "User"
           }
@@ -1296,7 +1280,7 @@
         "id": "7MuEuCTztO3iDR2dGmjPLQ",
         "type": "Entry",
         "createdAt": "2019-02-01T15:22:27.538Z",
-        "updatedAt": "2019-02-05T12:21:59.522Z",
+        "updatedAt": "2019-02-08T11:32:57.816Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1319,7 +1303,7 @@
           }
         },
         "publishedCounter": 4,
-        "version": 35,
+        "version": 38,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1358,7 +1342,7 @@
           "ru-RU": "gadfgsdf"
         },
         "body": {
-          "ru-RU": "gfdsgf"
+          "ru-RU": "gfdsgf gfdf"
         },
         "author": {
           "ru-RU": {
@@ -1411,7 +1395,7 @@
         "id": "6iM0iV8CBzIASmG9h3anpK",
         "type": "Entry",
         "createdAt": "2019-02-01T15:35:51.578Z",
-        "updatedAt": "2019-02-05T12:17:34.471Z",
+        "updatedAt": "2019-02-08T11:32:29.022Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1434,7 +1418,7 @@
           }
         },
         "publishedCounter": 3,
-        "version": 63,
+        "version": 72,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1473,7 +1457,7 @@
           "ru-RU": "fadsfgfs"
         },
         "body": {
-          "ru-RU": "My photo gallery:\n![Woman with black hat](//images.ctfassets.net/8uskgiwtlhdi/6Od9v3wzLOysiMum0Wkmme/4c464be8397839acf05bd8976b919d91/cameron-kirby-88711.jpg) ![test-image](//images.ctfassets.net/8uskgiwtlhdi/7kBYqF7djejLYZZSTdjxOc/2a127f1989812b2829364483d2498b21/helena-lopes-1338815-unsplash.jpg)"
+          "ru-RU": "My photo gallery lala xd:\n![Woman with black hat](//images.ctfassets.net/8uskgiwtlhdi/6Od9v3wzLOysiMum0Wkmme/4c464be8397839acf05bd8976b919d91/cameron-kirby-88711.jpg)"
         },
         "author": {
           "ru-RU": {
