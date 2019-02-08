@@ -1,7 +1,7 @@
 # Installation instruction
 
 1. Install Yarn
-2. Run `yarn run setup`. You will be asked for contentful space ID, and access tokens for the Contentful Management and Delivery API. Instead of specifying them here you can use environmental vars.
+2. Run `yarn run setup`. You will be asked for contentful space ID, and access tokens for the Contentful Management and Delivery API. You can find them in contentful Settings/API keys/content delivery preview tokens and content management tokens.
 3. Setup env vars.
 4. Configure webhook.
 5. Setup preview environment.
@@ -29,7 +29,7 @@ In order to have the ability to preview the content that you put in contentful, 
 Keep in mind that in preview env you don't set CONTENTFUL_DELIVERY_TOKEN instead you set CONTENTFUL_PREVIEW_TOKEN. Use contentful [docs](https://www.contentful.com/developers/docs/references/content-preview-api/#/introduction/preview-api-authentication) for reference 
 
 ## webhooks 
-Webhooks are needed for the gatsby based front app to know that it needs to rebuild the static files that it serves to the users, when the changes to the content are made (through contentful). You need to set up a webhook that after being hit with POST request by contentful will trigger a rebuild of the front app - `yarn run build` command. Webhook needs to be configured in contentful as well. 
+Webhooks are needed for the gatsby based front app to know that it needs to rebuild the static files that it serves to the users, when the changes to the content are made (through contentful). You need to set up a webhook that after being hit with POST request by contentful will trigger a rebuild of the front app, by calling `yarn run build` command. Webhook needs to be configured in contentful as well. 
 
 # Gatsby contentful starter
 This product is based on [gatsby-contentful-starter](gatsby-contentful-starter-Readme.md)
