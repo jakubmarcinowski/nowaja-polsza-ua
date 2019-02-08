@@ -21,20 +21,30 @@ const StyledPreview = styled.div`
   }
 `
 
-const ArticlePreview = ({ article }) => (
-  <StyledPreview>
-    <ImgValidator img={article.heroImage} />
-    <h3 className="previewTitle">
-      <Link to={`/blog/${article.slug}`}>{article.title}</Link>
-    </h3>
-    <small>{article.publishDate}</small>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: article.description.childMarkdownRemark.html,
-      }}
-    />
-  </StyledPreview>
-)
+const ArticlePreview = ({ article }) => {
+  return (
+    <StyledPreview>
+      <ImgValidator img={article.heroImage} />
+      <h3 className="previewTitle">
+        <Link to={`/blog/${article.slug}`}>{article.title}</Link>
+      </h3>
+      <small>{article.publishDate}</small>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: article.description.childMarkdownRemark.html,
+        }}
+      />
+      <Link to={`/author/${article.author.slug}`}>{article.author.name}</Link>
+      <ul>
+        {article.categories.map(category => (
+          <li key={category.slug}>
+            <Link to={`/category/${category.slug}`}>{category.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </StyledPreview>
+  )
+}
 
 ArticlePreview.propTypes = {
   article: PropTypes.shape({
