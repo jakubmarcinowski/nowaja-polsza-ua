@@ -58,6 +58,8 @@
     "postinstall": "node ./bin/hello.js",
     "setup": "node ./bin/setup.js",
     "heroku-postbuild": "gatsby build",
-    "cleanup-repository": "rimraf bin contentful && yarn remove contentful-import chalk inquirer rimraf "
+    "cleanup-repository": "rimraf bin contentful && yarn remove contentful-import chalk inquirer rimraf",
+    "remove-cache": "rm -rf .cache",
+    "contentful-refresh": "yarn run remove-cache && contentful space export --export-dir contentful --content-file export.json"
   }
 }
