@@ -3,8 +3,19 @@ import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import ImgValidator from '../components/ImgValidator'
-import Layout from '../components/layout'
-import heroStyles from '../components/hero.module.css'
+import Layout from '../components/Layout'
+import styled from 'styled-components'
+
+const StyledHeroImage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 12.5em;
+  background: #e1e1e1;
+  margin: -1em -2.5em 1em;
+  font-size: 2em;
+`
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -15,9 +26,9 @@ class BlogPostTemplate extends React.Component {
       <Layout>
         <div style={{ background: '#fff' }}>
           <Helmet title={`${post.title} | ${siteTitle}`} />
-          <div className={heroStyles.hero}>
+          <StyledHeroImage>
             <ImgValidator img={post.heroImage} />
-          </div>
+          </StyledHeroImage>
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>
             <p

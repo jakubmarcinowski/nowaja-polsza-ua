@@ -1,9 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-const Container = ({ children }) => {
-  return <div style={{ maxWidth: 1180, margin: '0 auto' }}>{children}</div>
-}
+const StyledContainer = styled.div`
+  max-width: 1180;
+  margin: 0 auto;
+`
+
+const Container = ({ children }) => (
+  <StyledContainer>{children}</StyledContainer>
+)
 
 Container.propTypes = {
   children: PropTypes.oneOfType([
