@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
+
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
 import ArticlesList from '../components/ArticlesList'

@@ -21,30 +21,38 @@ const StyledPreview = styled.div`
   }
 `
 
-const ArticleItem = ({ article }) => {
-  return (
-    <StyledPreview>
-      <ImgValidator img={article.heroImage} />
-      <h3 className="previewTitle">
-        <Link to={`/blog/${article.slug}`}>{article.title}</Link>
-      </h3>
-      <small>{article.publishDate}</small>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: article.description.childMarkdownRemark.html,
-        }}
-      />
-      <Link to={`/author/${article.author.slug}`}>{article.author.name}</Link>
-      <ul>
-        {article.categories.map(category => (
-          <li key={category.slug}>
-            <Link to={`/category/${category.slug}`}>{category.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </StyledPreview>
-  )
-}
+const ArticleItem = ({
+  article: {
+    title,
+    description,
+    slug,
+    author,
+    categories,
+    heroImage,
+    publishDate,
+  },
+}) => (
+  <StyledPreview>
+    <ImgValidator img={heroImage} />
+    <h3 className="previewTitle">
+      <Link to={`/blog/${slug}`}>{title}</Link>
+    </h3>
+    <small>{publishDate}</small>
+    <div
+      dangerouslySetInnerHTML={{
+        __html: description.childMarkdownRemark.html,
+      }}
+    />
+    <Link to={`/author/${author.slug}`}>{author.name}</Link>
+    <ul>
+      {categories.map(category => (
+        <li key={category.slug}>
+          <Link to={`/category/${category.slug}`}>{category.title}</Link>
+        </li>
+      ))}
+    </ul>
+  </StyledPreview>
+)
 
 ArticleItem.propTypes = {
   article: PropTypes.shape({

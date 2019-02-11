@@ -1,23 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ArticleItem from '../components/ArticleItem'
 
-class ArticlesList extends Component {
-  render() {
-    const { posts } = this.props
-    return (
-      <ul className="article-list">
-        {posts.map(({ node }) => {
-          return (
-            <li key={node.slug}>
-              <ArticleItem article={node} />
-            </li>
-          )
-        })}
-      </ul>
-    )
-  }
-}
+const ArticlesList = ({ posts }) => (
+  <ul className="article-list">
+    {posts.map(({ node }) => {
+      return (
+        <li key={node.slug}>
+          <ArticleItem article={node} />
+        </li>
+      )
+    })}
+  </ul>
+)
 
 ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(
