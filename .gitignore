@@ -68,3 +68,6 @@ public
 
 #vsc config
 .vscode
+
+#intelij config
+.idea
