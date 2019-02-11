@@ -21,7 +21,7 @@ const StyledPreview = styled.div`
   }
 `
 
-const ArticlePreview = ({ article }) => {
+const ArticleItem = ({ article }) => {
   return (
     <StyledPreview>
       <ImgValidator img={article.heroImage} />
@@ -46,7 +46,7 @@ const ArticlePreview = ({ article }) => {
   )
 }
 
-ArticlePreview.propTypes = {
+ArticleItem.propTypes = {
   article: PropTypes.shape({
     description: PropTypes.shape({
       childMarkdownRemark: PropTypes.shape({
@@ -60,4 +60,4 @@ ArticlePreview.propTypes = {
   }),
 }
 
-export default ArticlePreview
+export default ArticleItem
