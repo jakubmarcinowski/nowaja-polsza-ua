@@ -3166,6 +3166,69 @@
           "ru-RU": "phone"
         }
       }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8uskgiwtlhdi"
+          }
+        },
+        "id": "3MTgpp2Dlx5eao4sF4FKQx",
+        "type": "Entry",
+        "createdAt": "2019-02-08T15:56:23.670Z",
+        "updatedAt": "2019-02-08T15:56:33.312Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3DF0sVcI9eva3rGWxUf6OH"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3DF0sVcI9eva3rGWxUf6OH"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 4,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3DF0sVcI9eva3rGWxUf6OH"
+          }
+        },
+        "publishedVersion": 3,
+        "firstPublishedAt": "2019-02-08T15:56:33.312Z",
+        "publishedAt": "2019-02-08T15:56:33.312Z",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "person"
+          }
+        }
+      },
+      "fields": {
+        "name": {
+          "ru-RU": "Michał"
+        },
+        "slug": {
+          "ru-RU": "michal"
+        }
+      }
     }
   ],
   "assets": [
@@ -3774,6 +3837,7 @@
       "httpBasicUsername": null,
       "topics": [
         "ContentType.*",
+        "*.create",
         "*.save",
         "*.archive",
         "*.unarchive",
@@ -3797,7 +3861,7 @@
       "sys": {
         "type": "WebhookDefinition",
         "id": "6kaSNSMsuZfi1g0ZzxU6oF",
-        "version": 5,
+        "version": 8,
         "space": {
           "sys": {
             "type": "Link",
@@ -3817,10 +3881,10 @@
           "sys": {
             "type": "Link",
             "linkType": "User",
-            "id": "3HwLya04sTv11PLegdeppT"
+            "id": "3DF0sVcI9eva3rGWxUf6OH"
           }
         },
-        "updatedAt": "2019-02-05T14:12:17Z"
+        "updatedAt": "2019-02-11T11:59:47Z"
       },
       "headers": [
       ]
@@ -3877,6 +3941,46 @@
           }
         },
         "updatedAt": "2019-02-05T12:10:55Z"
+      },
+      "headers": [
+      ]
+    },
+    {
+      "name": "Content Preview API",
+      "url": "https://api.netlify.com/build_hooks/5c6163a67af8020189fd141e",
+      "httpBasicUsername": null,
+      "topics": [
+        "*.*"
+      ],
+      "filters": null,
+      "transformation": null,
+      "sys": {
+        "type": "WebhookDefinition",
+        "id": "42Se9qh8GKUwvbHQU88VEC",
+        "version": 0,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8uskgiwtlhdi"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3DF0sVcI9eva3rGWxUf6OH"
+          }
+        },
+        "createdAt": "2019-02-11T12:00:16Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3DF0sVcI9eva3rGWxUf6OH"
+          }
+        },
+        "updatedAt": "2019-02-11T12:00:16Z"
       },
       "headers": [
       ]
