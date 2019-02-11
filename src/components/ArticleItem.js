@@ -21,22 +21,40 @@ const StyledPreview = styled.div`
   }
 `
 
-const ArticlePreview = ({ article }) => (
+const ArticleItem = ({
+  article: {
+    title,
+    description,
+    slug,
+    author,
+    categories,
+    heroImage,
+    publishDate,
+  },
+}) => (
   <StyledPreview>
-    <ImgValidator img={article.heroImage} />
+    <ImgValidator img={heroImage} />
     <h3 className="previewTitle">
-      <Link to={`/blog/${article.slug}`}>{article.title}</Link>
+      <Link to={`/blog/${slug}`}>{title}</Link>
     </h3>
-    <small>{article.publishDate}</small>
+    <small>{publishDate}</small>
     <div
       dangerouslySetInnerHTML={{
-        __html: article.description.childMarkdownRemark.html,
+        __html: description.childMarkdownRemark.html,
       }}
     />
+    <Link to={`/author/${author.slug}`}>{author.name}</Link>
+    <ul>
+      {categories.map(category => (
+        <li key={category.slug}>
+          <Link to={`/category/${category.slug}`}>{category.title}</Link>
+        </li>
+      ))}
+    </ul>
   </StyledPreview>
 )
 
-ArticlePreview.propTypes = {
+ArticleItem.propTypes = {
   article: PropTypes.shape({
     description: PropTypes.shape({
       childMarkdownRemark: PropTypes.shape({
@@ -50,4 +68,4 @@ ArticlePreview.propTypes = {
   }),
 }
 
-export default ArticlePreview
+export default ArticleItem

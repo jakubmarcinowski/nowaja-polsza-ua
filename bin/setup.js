@@ -10,24 +10,18 @@ const argv = require('yargs-parser')(process.argv.slice(2))
 console.log(`
   To set up this project you need to provide your Space ID
   and the belonging API access tokens.
-
   You can find all the needed information in your Contentful space under:
-
   ${chalk.yellow(
     `app.contentful.com ${chalk.red('->')} Space Settings ${chalk.red(
       '->'
     )} API keys`
   )}
-
   The ${chalk.green('Content Management API Token')}
     will be used to import and write data to your space.
-
   The ${chalk.green('Content Delivery API Token')}
     will be used to ship published production-ready content in your Gatsby app.
-
   The ${chalk.green('Content Preview API Token')}
     will be used to show not published data in your development environment.
-
   Ready? Let's do it! 🎉
 `)
 

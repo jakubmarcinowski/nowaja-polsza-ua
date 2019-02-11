@@ -71,3 +71,6 @@ public
 
 #intelij config
 .idea
+
+#contentful export
+contentful/

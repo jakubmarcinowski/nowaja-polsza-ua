@@ -2,9 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
+
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
-import ArticlePreview from '../components/ArticlePreview'
+import ArticlesList from '../components/ArticlesList'
 
 class RootIndex extends React.Component {
   render() {
@@ -19,15 +20,7 @@ class RootIndex extends React.Component {
           <Hero data={author.node} />
           <div className="wrapper">
             <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
-                )
-              })}
-            </ul>
+            <ArticlesList posts={posts} />
           </div>
         </div>
       </Layout>
@@ -45,6 +38,14 @@ export const pageQuery = graphql`
           title
           slug
           publishDate(formatString: "MMMM Do, YYYY")
+          author {
+            name
+            slug
+          }
+          categories {
+            title
+            slug
+          }
           tags
           heroImage {
             fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {

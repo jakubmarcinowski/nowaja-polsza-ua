@@ -31,9 +31,6 @@ const Navigation = () => (
       <li className="navigationItem">
         <Link to="/">Home</Link>
       </li>
-      <li className="navigationItem">
-        <Link to="/blog/">Blog</Link>
-      </li>
     </ul>
   </StyledNavigation>
 )
