@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Todo h1, h2, ect. depend on props
 const Brand = () => (
   <div>
     <div>Logo</div>

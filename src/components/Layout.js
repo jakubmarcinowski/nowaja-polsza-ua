@@ -5,6 +5,7 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import Container from './Container'
 import Navigation from './Navigation'
 import PageHeader from './PageHeader'
+import Footer from './Footer'
 
 const theme = {
   black: '#111D22',
@@ -92,11 +93,10 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          <Container>
-            <PageHeader />
-            <Navigation />
-            {children}
-          </Container>
+          <PageHeader />
+          <Navigation />
+          <Container>{children}</Container>
+          <Footer />
           <GlobalStyle />
         </>
       </ThemeProvider>

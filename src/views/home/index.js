@@ -8,7 +8,6 @@ const HomePage = ({ posts, highlightedPost }) => (
   <>
     <HighlightedArticle post={highlightedPost} />
     <div className="wrapper">
-      <h2 className="section-headline">Recent articles</h2>
       <ArticlesList posts={posts} />
     </div>
   </>
