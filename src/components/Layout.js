@@ -1,8 +1,10 @@
 /* eslint-disable */
 import React from 'react'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+
 import Container from './Container'
 import Navigation from './Navigation'
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+import PageHeader from './PageHeader'
 
 const theme = {
   black: '#111D22',
@@ -91,6 +93,7 @@ class Layout extends React.Component {
       <ThemeProvider theme={theme}>
         <>
           <Container>
+            <PageHeader />
             <Navigation />
             {children}
           </Container>
