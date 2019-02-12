@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 const StyledNavigation = styled.nav`
@@ -26,13 +26,33 @@ const StyledNavigation = styled.nav`
 `
 
 const Navigation = () => (
-  <StyledNavigation role="navigation">
-    <ul className="navigation">
-      <li className="navigationItem">
-        <Link to="/">Home</Link>
-      </li>
-    </ul>
-  </StyledNavigation>
+  <StaticQuery
+    query={graphql`
+      query NavigationQuery {
+        allContentfulMenuItem(sort: { fields: [order], order: ASC }) {
+          edges {
+            node {
+              name
+              slug
+            }
+          }
+        }
+      }
+    `}
+    render={({ allContentfulMenuItem }) => (
+      <StyledNavigation role="navigation">
+        <ul className="navigation">
+          {allContentfulMenuItem.edges.map(({ node }) => {
+            return (
+              <li key={node.slug} className="navigationItem">
+                <Link to={node.slug}>{node.name}</Link>
+              </li>
+            )
+          })}
+        </ul>
+      </StyledNavigation>
+    )}
+  />
 )
 
 export default Navigation
