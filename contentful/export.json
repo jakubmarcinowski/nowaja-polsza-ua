@@ -763,6 +763,87 @@
           "omitted": false
         }
       ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8uskgiwtlhdi"
+          }
+        },
+        "id": "highlightedPost",
+        "type": "ContentType",
+        "createdAt": "2019-02-11T15:45:47.766Z",
+        "updatedAt": "2019-02-11T15:48:39.480Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3HwLya04sTv11PLegdeppT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3HwLya04sTv11PLegdeppT"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 4,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3HwLya04sTv11PLegdeppT"
+          }
+        },
+        "publishedVersion": 3,
+        "firstPublishedAt": "2019-02-11T15:45:48.382Z",
+        "publishedAt": "2019-02-11T15:48:39.480Z"
+      },
+      "displayField": "title",
+      "name": "Highlighted Post",
+      "description": "User can choose one post to be highlighted on the main page",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "post",
+          "name": "Post",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "linkContentType": [
+                "blogPost"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
+        }
+      ]
     }
   ],
   "editorInterfaces": [
@@ -1236,6 +1317,62 @@
         {
           "fieldId": "slug",
           "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "8uskgiwtlhdi",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 4,
+        "createdAt": "2019-02-11T15:45:48.522Z",
+        "createdBy": {
+          "sys": {
+            "id": "3HwLya04sTv11PLegdeppT",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2019-02-11T15:48:40.154Z",
+        "updatedBy": {
+          "sys": {
+            "id": "3HwLya04sTv11PLegdeppT",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "highlightedPost",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "post",
+          "widgetId": "entryLinkEditor",
           "widgetNamespace": "builtin"
         }
       ]
@@ -2305,7 +2442,7 @@
         "id": "3eJBWlP1gpbliIGja21EUW",
         "type": "Entry",
         "createdAt": "2019-02-05T13:52:16.157Z",
-        "updatedAt": "2019-02-08T13:43:12.158Z",
+        "updatedAt": "2019-02-11T14:51:26.992Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2327,8 +2464,8 @@
             "id": "3HwLya04sTv11PLegdeppT"
           }
         },
-        "publishedCounter": 2,
-        "version": 11,
+        "publishedCounter": 3,
+        "version": 13,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2336,9 +2473,9 @@
             "id": "3HwLya04sTv11PLegdeppT"
           }
         },
-        "publishedVersion": 10,
+        "publishedVersion": 12,
         "firstPublishedAt": "2019-02-05T13:52:37.597Z",
-        "publishedAt": "2019-02-08T13:43:12.158Z",
+        "publishedAt": "2019-02-11T14:51:26.992Z",
         "contentType": {
           "sys": {
             "type": "Link",
@@ -2352,7 +2489,7 @@
           "ru-RU": "Żaneta"
         },
         "slug": {
-          "ru-RU": "zaneta"
+          "ru-RU": "zanetas"
         }
       }
     },
@@ -3227,6 +3364,75 @@
         },
         "slug": {
           "ru-RU": "michal"
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8uskgiwtlhdi"
+          }
+        },
+        "id": "2VSW3IPzR1rnSsWsbHUFC",
+        "type": "Entry",
+        "createdAt": "2019-02-11T15:46:12.966Z",
+        "updatedAt": "2019-02-11T15:48:56.470Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3HwLya04sTv11PLegdeppT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3HwLya04sTv11PLegdeppT"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 17,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3HwLya04sTv11PLegdeppT"
+          }
+        },
+        "publishedVersion": 16,
+        "firstPublishedAt": "2019-02-11T15:46:26.796Z",
+        "publishedAt": "2019-02-11T15:48:56.470Z",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "highlightedPost"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "ru-RU": "Promowany post o pierogach"
+        },
+        "post": {
+          "ru-RU": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "4rGw7lHX3zHFk72MdSfgbL"
+            }
+          }
         }
       }
     }
