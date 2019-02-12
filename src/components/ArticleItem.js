@@ -1,23 +1,24 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import ImgValidator from './ImgValidator'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { articleType } from '../types/article'
+import ImgWrapper from './ImgWrapper'
+
 const StyledPreview = styled.div`
-  .previewTitle {
+  .title {
     font-size: 1.5em;
   }
 
-  .tag {
-    color: #a0a0a0;
-    text-decoration: none;
-    display: inline-block;
-    padding: 0.33333rem 0.5rem;
-    line-height: 1;
-    border-radius: 2px;
-    border: 1px solid #a0a0a0;
-    margin-right: 0.5em;
+  .subtitle {
+    font-weight: 800;
+    margin: 0;
+    font-size: 1em;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
   }
 `
 
@@ -33,8 +34,8 @@ const ArticleItem = ({
   },
 }) => (
   <StyledPreview>
-    <ImgValidator img={heroImage} />
-    <h3 className="previewTitle">
+    <ImgWrapper img={heroImage} />
+    <h3 className="title">
       <Link to={`/blog/${slug}`}>{title}</Link>
     </h3>
     <small>{publishDate}</small>
@@ -43,44 +44,25 @@ const ArticleItem = ({
         __html: description.childMarkdownRemark.html,
       }}
     />
-    <Link to={`/author/${author.slug}`}>{author.name}</Link>
-    <ul>
-      {categories.map(category => (
-        <li key={category.slug}>
-          <Link to={`/category/${category.slug}`}>{category.title}</Link>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <h6 className="subtitle">Autor:</h6>
+      <Link to={`/author/${author.slug}`}>{author.name}</Link>
+    </div>
+    <div>
+      <h6 className="subtitle">Kategorie:</h6>
+      <ul>
+        {categories.map(category => (
+          <li key={category.slug}>
+            <Link to={`/category/${category.slug}`}>{category.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   </StyledPreview>
 )
 
 ArticleItem.propTypes = {
-  article: PropTypes.shape({
-    author: PropTypes.shape({
-      name: PropTypes.string,
-      slug: PropTypes.string,
-    }),
-    categories: PropTypes.arrayOf(
-      PropTypes.shape({ title: PropTypes.string, slug: PropTypes.string })
-    ),
-    description: PropTypes.shape({
-      childMarkdownRemark: PropTypes.shape({
-        html: PropTypes.string,
-      }),
-    }),
-    heroImage: PropTypes.shape({
-      fluid: PropTypes.shape({
-        aspectRatio: PropTypes.number,
-        base64: PropTypes.string,
-        sizes: PropTypes.string,
-        src: PropTypes.string,
-        srcSet: PropTypes.string,
-      }),
-    }),
-    publishDate: PropTypes.string,
-    slug: PropTypes.string,
-    title: PropTypes.string,
-  }),
+  article: articleType,
 }
 
 export default ArticleItem
