@@ -20,7 +20,7 @@ class RootIndex extends React.Component {
           <Hero data={author.node} />
           <div className="wrapper">
             <h2 className="section-headline">Recent articles</h2>
-            <ArticlesList posts={posts} />
+            <ArticlesList posts={posts} limit={2}/>
           </div>
         </div>
       </Layout>
