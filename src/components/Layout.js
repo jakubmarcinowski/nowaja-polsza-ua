@@ -1,8 +1,11 @@
 /* eslint-disable */
 import React from 'react'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+
 import Container from './Container'
 import Navigation from './Navigation'
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+import PageHeader from './PageHeader'
+import Footer from './Footer'
 
 const theme = {
   black: '#111D22',
@@ -39,37 +42,6 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: ${theme.black};
   }
-
-  .wrapper {
-    width: calc(100% - 10vmin);
-    margin: 0 auto;
-    padding: 5vmin 0;
-  }
-
-  .article-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 5vmin;
-  }
-
-  .section-headline {
-    padding: 0 0 0.4em 0;
-    margin: 0 0 5vmin 0;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .list-inline {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .list-inline li {
-    display: inline-block;
-  }
 `
 
 // Example of usage
@@ -90,10 +62,10 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          <Container>
-            <Navigation />
-            {children}
-          </Container>
+          <PageHeader />
+          <Navigation />
+          <Container>{children}</Container>
+          <Footer />
           <GlobalStyle />
         </>
       </ThemeProvider>
