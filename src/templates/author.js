@@ -26,9 +26,6 @@ class AuthorTemplate extends React.Component {
     const authorPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
 
-    console.log('author')
-    console.log(author)
-
     return (
       <Layout>
         {author && (
