@@ -6,6 +6,8 @@ import Container from './Container'
 import Navigation from './Navigation'
 import PageHeader from './PageHeader'
 import Footer from './Footer'
+import Modal from './Modal'
+import Rodo from './Rodo'
 
 const theme = {
   black: '#111D22',
@@ -66,6 +68,7 @@ class Layout extends React.Component {
           <Navigation />
           <Container>{children}</Container>
           <Footer />
+          <Rodo />
           <GlobalStyle />
         </>
       </ThemeProvider>
