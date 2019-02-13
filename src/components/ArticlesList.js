@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import ArticleItem from '../components/ArticleItem'
@@ -23,7 +22,6 @@ class ArticlesList extends React.Component {
   componentDidMount() {
     const urlParams = new URLSearchParams(window.location.search)
     const postsLimit = parseInt(urlParams.get('postsLimit'))
-    const { postsNumber } = this.state
 
     postsLimit && this.setState({ postsNumber: postsLimit })
   }
@@ -38,7 +36,7 @@ class ArticlesList extends React.Component {
   }
 
   render() {
-    const { posts, location } = this.props
+    const { posts } = this.props
     const { postsNumber } = this.state
     const slicedPosts = posts.slice(0, postsNumber)
 
@@ -65,6 +63,7 @@ class ArticlesList extends React.Component {
 
 ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(articleType),
+  limit: PropTypes.number,
 }
 
 export default ArticlesList
