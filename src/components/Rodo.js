@@ -4,8 +4,9 @@ import cookie from 'react-cookies'
 import Modal from './Modal'
 
 class Rodo extends Component {
-  /*eslint eqeqeq:0*/
-  state = { isRodoAccepted: cookie.load('rodo-accepted') }
+  state = {
+    isRodoAccepted: cookie.load('rodo-accepted'),
+  }
 
   acceptCookies = () => {
     this.setState({ isRodoAccepted: true })
