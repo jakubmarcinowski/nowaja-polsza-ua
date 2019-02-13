@@ -29,7 +29,7 @@ class AuthorTemplate extends React.Component {
     return (
       <Layout>
         {author && (
-          <div>
+          <>
             <Helmet title={`${author.name} | ${siteTitle}`} />
             <Wrapper>
               <AuthorContainerStyled>
@@ -47,7 +47,7 @@ class AuthorTemplate extends React.Component {
               </AuthorContainerStyled>
               {authorPosts && <ArticlesList posts={authorPosts} limit={2} />}
             </Wrapper>
-          </div>
+          </>
         )}
       </Layout>
     )
