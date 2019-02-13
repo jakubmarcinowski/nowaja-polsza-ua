@@ -65,3 +65,12 @@ public
 
 # contentful config file
 .contentful.json
+
+#vsc config
+.vscode
+
+#intelij config
+.idea
+
+#contentful export
+contentful
