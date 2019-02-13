@@ -46,16 +46,17 @@ const ArticleItem = ({
     />
     <div>
       <h6 className="subtitle">Autor:</h6>
-      <Link to={`/author/${author.slug}`}>{author.name}</Link>
+      {author && <Link to={`/author/${author.slug}`}>{author.name}</Link>}
     </div>
     <div>
       <h6 className="subtitle">Kategorie:</h6>
       <ul>
-        {categories.map(category => (
-          <li key={category.slug}>
-            <Link to={`/category/${category.slug}`}>{category.title}</Link>
-          </li>
-        ))}
+        {categories &&
+          categories.map(category => (
+            <li key={category.slug}>
+              <Link to={`/category/${category.slug}`}>{category.title}</Link>
+            </li>
+          ))}
       </ul>
     </div>
   </StyledPreview>
