@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import ArticleItem from '../../../components/ArticleItem'
+import ImgWrapper from '../../../components/ImgWrapper'
 import { articleType } from '../../../types/article'
 
 const HighlightedArticleStyled = styled.div`
@@ -11,11 +11,22 @@ const HighlightedArticleStyled = styled.div`
   margin: auto;
 `
 
-const HighlightedArticle = ({ post }) => (
-  <HighlightedArticleStyled>
-    <ArticleItem article={post} />
-  </HighlightedArticleStyled>
-)
+const HighlightedArticle = ({
+  post: { title, slug, description, heroImage },
+}) => {
+  return (
+    <HighlightedArticleStyled>
+      <ImgWrapper img={heroImage} />
+      <h2>{title}</h2>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: description.childMarkdownRemark.html,
+        }}
+      />
+      <button>{slug}</button>
+    </HighlightedArticleStyled>
+  )
+}
 
 HighlightedArticle.propTypes = {
   post: articleType,
