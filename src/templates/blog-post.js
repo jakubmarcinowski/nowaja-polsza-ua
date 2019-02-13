@@ -2,9 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
-import ImgValidator from '../components/ImgValidator'
-import Layout from '../components/Layout'
 import styled from 'styled-components'
+
+import ImgWrapper from '../components/ImgWrapper'
+import Layout from '../components/Layout'
+import Wrapper from '../components/Wrapper'
 
 const StyledHeroImage = styled.div`
   display: flex;
@@ -24,12 +26,12 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout>
-        <div style={{ background: '#fff' }}>
+        <div>
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <StyledHeroImage>
-            <ImgValidator img={post.heroImage} />
+            <ImgWrapper img={post.heroImage} />
           </StyledHeroImage>
-          <div className="wrapper">
+          <Wrapper>
             <h1 className="section-headline">{post.title}</h1>
             <p
               style={{
@@ -43,7 +45,7 @@ class BlogPostTemplate extends React.Component {
                 __html: post.body.childMarkdownRemark.html,
               }}
             />
-          </div>
+          </Wrapper>
         </div>
       </Layout>
     )

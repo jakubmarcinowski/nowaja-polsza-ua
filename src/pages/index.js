@@ -3,26 +3,24 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
-import Hero from '../components/Hero'
 import Layout from '../components/Layout'
-import ArticlesList from '../components/ArticlesList'
+import HomePage from '../views/home'
 
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const [author] = get(this, 'props.data.allContentfulPerson.edges')
+    const highlightedPost = get(
+      this,
+      'props.data.contentfulHighlightedPost.post'
+    )
 
     return (
       <Layout>
-        <div style={{ background: '#fff' }}>
+        <>
           <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ArticlesList posts={posts} limit={2}/>
-          </div>
-        </div>
+          <HomePage posts={posts} highlightedPost={highlightedPost} />
+        </>
       </Layout>
     )
   }
@@ -46,7 +44,6 @@ export const pageQuery = graphql`
             title
             slug
           }
-          tags
           heroImage {
             fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
@@ -60,27 +57,30 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
-    ) {
-      edges {
-        node {
+    contentfulHighlightedPost {
+      title
+      post {
+        slug
+        publishDate(formatString: "MMMM Do, YYYY")
+        author {
           name
-          shortBio {
-            shortBio
-          }
+          slug
+        }
+        categories {
           title
-          heroImage: image {
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid
-            }
+          slug
+        }
+        description {
+          childMarkdownRemark {
+            html
           }
         }
+        heroImage {
+          fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+            ...GatsbyContentfulFluid
+          }
+        }
+        title
       }
     }
   }

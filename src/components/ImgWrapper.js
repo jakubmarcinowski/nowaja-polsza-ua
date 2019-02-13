@@ -2,7 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 
-const ImgValidator = ({ img }) => {
+const ImgWrapper = ({ img }) => {
   return img === undefined || img === null ? (
     <div>No image</div>
   ) : (
@@ -10,7 +10,7 @@ const ImgValidator = ({ img }) => {
   )
 }
 
-ImgValidator.propTypes = {
+ImgWrapper.propTypes = {
   img: PropTypes.shape({
     fluid: PropTypes.shape({
       aspectRatio: PropTypes.number,
@@ -21,4 +21,4 @@ ImgValidator.propTypes = {
   }),
 }
 
-export default ImgValidator
+export default ImgWrapper

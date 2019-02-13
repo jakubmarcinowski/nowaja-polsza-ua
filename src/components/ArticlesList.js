@@ -1,8 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
 
 import ArticleItem from '../components/ArticleItem'
+import { articleType } from '../types/article'
+
+const StyledList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  grid-gap: 5vmin;
+`
 
 class ArticlesList extends React.Component {
   state = {
@@ -33,13 +44,16 @@ class ArticlesList extends React.Component {
 
     return (
       <>
-        <ul className="article-list">
-          {slicedPosts.map(({ node }) => (
-            <li key={node.slug}>
-              <ArticleItem article={node} />
-            </li>
-          ))}
-        </ul>
+        <StyledList>
+          <ul className="article-list">
+            {posts &&
+              slicedPosts.map(({ node }) => (
+                <li key={node.slug}>
+                  <ArticleItem article={node} />
+                </li>
+              ))}
+          </ul>
+        </StyledList>
 
         {postsNumber < posts.length && (
           <button onClick={this.increasePostsNumber}>LOAD MORE</button>
@@ -50,19 +64,7 @@ class ArticlesList extends React.Component {
 }
 
 ArticlesList.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      description: PropTypes.shape({
-        childMarkdownRemark: PropTypes.shape({
-          html: PropTypes.string,
-        }),
-      }),
-      publishDate: PropTypes.string,
-      slug: PropTypes.string,
-      tags: PropTypes.arrayOf(PropTypes.string),
-      title: PropTypes.string,
-    })
-  ),
+  posts: PropTypes.arrayOf(articleType),
 }
 
 export default ArticlesList
