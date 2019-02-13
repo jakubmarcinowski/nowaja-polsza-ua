@@ -46,7 +46,7 @@ const ArticleItem = ({
     />
     <div>
       <h6 className="subtitle">Autor:</h6>
-      <Link to={`/author/${author.slug}`}>{author.name}</Link>
+      {author && <Link to={`/author/${author.slug}`}>{author.name}</Link>}
     </div>
     <div>
       <h6 className="subtitle">Kategorie:</h6>
