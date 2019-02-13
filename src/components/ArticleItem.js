@@ -51,11 +51,12 @@ const ArticleItem = ({
     <div>
       <h6 className="subtitle">Kategorie:</h6>
       <ul>
-        {categories.map(category => (
-          <li key={category.slug}>
-            <Link to={`/category/${category.slug}`}>{category.title}</Link>
-          </li>
-        ))}
+        {categories &&
+          categories.map(category => (
+            <li key={category.slug}>
+              <Link to={`/category/${category.slug}`}>{category.title}</Link>
+            </li>
+          ))}
       </ul>
     </div>
   </StyledPreview>

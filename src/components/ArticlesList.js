@@ -16,13 +16,14 @@ const StyledList = styled.ul`
 
 const ArticlesList = ({ posts }) => (
   <StyledList>
-    {posts.map(({ node }) => {
-      return (
-        <li key={node.slug}>
-          <ArticleItem article={node} />
-        </li>
-      )
-    })}
+    {posts &&
+      posts.map(({ node }) => {
+        return (
+          <li key={node.slug}>
+            <ArticleItem article={node} />
+          </li>
+        )
+      })}
   </StyledList>
 )
 

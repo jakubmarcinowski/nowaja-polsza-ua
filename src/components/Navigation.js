@@ -42,11 +42,13 @@ const Navigation = () => (
     render={({ allContentfulMenuItem }) => (
       <StyledNavigation role="navigation">
         <ul className="navigation">
-          {allContentfulMenuItem.edges.map(({ node }) => (
-            <li key={node.slug} className="navigationItem">
-              <Link to={node.slug}>{node.name}</Link>
-            </li>
-          ))}
+          {allContentfulMenuItem &&
+            allContentfulMenuItem.edges &&
+            allContentfulMenuItem.edges.map(({ node }) => (
+              <li key={node.slug} className="navigationItem">
+                <Link to={node.slug}>{node.name}</Link>
+              </li>
+            ))}
         </ul>
       </StyledNavigation>
     )}
