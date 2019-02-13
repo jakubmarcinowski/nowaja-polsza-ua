@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import { childrenType } from '../types/children'
 
 const StyledWrapper = styled.div`
   width: calc(100% - 10vmin);
@@ -13,10 +13,7 @@ const Wrapper = ({ children }) => {
 }
 
 Wrapper.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: childrenType,
 }
 
 export default Wrapper

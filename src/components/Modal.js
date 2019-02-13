@@ -1,40 +1,38 @@
-// This code comes from https://www.gatsbyjs.org/packages/gatsby-plugin-portal/?=modal
+import React from 'react'
+import styled from 'styled-components'
 
-import { Component } from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+import Portal from './Portal'
+import { childrenType } from '../types/children'
 
-const portalRoot =
-  typeof document !== `undefined` ? document.getElementById('portal') : null
+const StyledModal = styled.div`
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-export default class Portal extends Component {
-  constructor() {
-    super()
-    this.el =
-      typeof document !== `undefined` ? document.createElement('div') : null
+  .modal-body {
+    background: #fff;
+    padding: 2rem;
+    position: relative;
   }
+`
 
-  componentDidMount() {
-    portalRoot.appendChild(this.el)
-  }
+const Modal = ({ children }) => (
+  <Portal>
+    <StyledModal className="modal">
+      <div className="modal-body">{children}</div>
+    </StyledModal>
+  </Portal>
+)
 
-  componentWillUnmount() {
-    portalRoot.removeChild(this.el)
-  }
-
-  render() {
-    const { children } = this.props
-    if (this.el) {
-      return ReactDOM.createPortal(children, this.el)
-    } else {
-      return null
-    }
-  }
+Modal.propTypes = {
+  children: childrenType,
 }
 
-Portal.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-}
+export default Modal

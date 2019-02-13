@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import cookie from 'react-cookies'
 
+import Modal from './Modal'
+
 class Rodo extends Component {
-  state = {
-    isRodoAccepted: cookie.load('rodo-accepted'),
-  }
+  /*eslint eqeqeq:0*/
+  state = { isRodoAccepted: cookie.load('rodo-accepted') }
 
   acceptCookies = () => {
     this.setState({ isRodoAccepted: true })
@@ -15,8 +16,8 @@ class Rodo extends Component {
     const { isRodoAccepted } = this.state
 
     return isRodoAccepted ? null : (
-      <div>
-        <div>
+      <Modal>
+        <div className="rodo">
           <p>
             Od dnia 25 maja 2018 r. na terytorium Rzeczypospolitej Polskiej
             stosuje się rozporządzenie Parlamentu Europejskiego i Rady (UE) nr
@@ -90,7 +91,7 @@ class Rodo extends Component {
           </p>
         </div>
         <button onClick={this.acceptCookies}>Akceptuję</button>
-      </div>
+      </Modal>
     )
   }
 }
