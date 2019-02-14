@@ -6,9 +6,9 @@ import get from 'lodash/get'
 import Layout from '../components/Layout'
 import ArticlePage from '../views/article.js'
 
-const ArticleTemplate = () => {
-  const post = get(this.props, 'data.contentfulBlogPost')
-  const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+const ArticleTemplate = props => {
+  const post = get(props, 'data.contentfulBlogPost')
+  const siteTitle = get(props, 'data.site.siteMetadata.title')
   return (
     <Layout>
       {post && (
