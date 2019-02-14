@@ -6,22 +6,19 @@ import get from 'lodash/get'
 import Layout from '../components/Layout'
 import ArticlePage from '../views/article.js'
 
-class ArticleTemplate extends React.Component {
-  render() {
-    const post = get(this.props, 'data.contentfulBlogPost')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-
-    return (
-      <Layout>
-        {post && (
-          <>
-            <Helmet title={`${post.title} | ${siteTitle}`} />
-            <ArticlePage article={post} />
-          </>
-        )}
-      </Layout>
-    )
-  }
+const ArticleTemplate = () => {
+  const post = get(this.props, 'data.contentfulBlogPost')
+  const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+  return (
+    <Layout>
+      {post && (
+        <>
+          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <ArticlePage article={post} />
+        </>
+      )}
+    </Layout>
+  )
 }
 
 export default ArticleTemplate

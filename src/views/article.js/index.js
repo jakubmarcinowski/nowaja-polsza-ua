@@ -10,26 +10,24 @@ const StyledHeroImage = styled.div`
   margin: auto;
 `
 
-const ArticlePage = ({ article: { title, heroImage, publishDate, body } }) => {
-  return (
-    <article>
-      <StyledHeroImage>
-        <ImgWrapper img={heroImage} />
-      </StyledHeroImage>
-      <Wrapper>
-        <h1 className="section-headline">{title}</h1>
-        <p>{publishDate}</p>
-        {body && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: body.childMarkdownRemark.html,
-            }}
-          />
-        )}
-      </Wrapper>
-    </article>
-  )
-}
+const ArticlePage = ({ article: { title, heroImage, publishDate, body } }) => (
+  <article>
+    <StyledHeroImage>
+      <ImgWrapper img={heroImage} />
+    </StyledHeroImage>
+    <Wrapper>
+      <h1 className="section-headline">{title}</h1>
+      <p>{publishDate}</p>
+      {body && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: body.childMarkdownRemark.html,
+          }}
+        />
+      )}
+    </Wrapper>
+  </article>
+)
 
 ArticlePage.propTypes = {
   article: articleType,
