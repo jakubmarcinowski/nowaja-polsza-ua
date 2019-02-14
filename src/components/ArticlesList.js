@@ -28,7 +28,7 @@ class ArticlesList extends React.Component {
     const postsLimit = parseInt(urlParams.get('postsLimit'))
     const { fixedNumber } = this.props
 
-    postsLimit && !fixedNumber && this.setState({ postsNumber: postsLimit })
+    !fixedNumber && postsLimit && this.setState({ postsNumber: postsLimit })
   }
 
   increasePostsNumber = () => {

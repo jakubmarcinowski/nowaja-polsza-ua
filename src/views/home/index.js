@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 
+import HighlightedArticle from './subcomponents/HighlightedArticle'
 import ArticlesList from '../../components/ArticlesList'
 import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
-import HighlightedArticle from './subcomponents/HighlightedArticle'
 
 const HomePage = ({ posts, highlightedPost }) => (
   <>
