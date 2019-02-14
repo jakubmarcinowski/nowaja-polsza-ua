@@ -35,10 +35,12 @@ const ArticleItem = ({
 }) => (
   <StyledPreview>
     <ImgWrapper img={heroImage} />
-    <h3 className="title">
-      <Link to={`/blog/${slug}`}>{title}</Link>
-    </h3>
-    <small>{publishDate}</small>
+    {slug && (
+      <h3 className="title">
+        <Link to={`/blog/${slug}`}>{title}</Link>
+      </h3>
+    )}
+    {publishDate && <small>{publishDate}</small>}
     {description && (
       <div
         dangerouslySetInnerHTML={{
@@ -46,10 +48,12 @@ const ArticleItem = ({
         }}
       />
     )}
-    <div>
-      <h6 className="subtitle">Autor:</h6>
-      <Link to={`/author/${author.slug}`}>{author.name}</Link>
-    </div>
+    {author && (
+      <div>
+        <h6 className="subtitle">Autor:</h6>
+        <Link to={`/author/${author.slug}`}>{author.name}</Link>
+      </div>
+    )}
     <div>
       <h6 className="subtitle">Kategorie:</h6>
       <ul>
