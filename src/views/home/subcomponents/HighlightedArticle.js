@@ -18,11 +18,13 @@ const HighlightedArticle = ({
     <HighlightedArticleStyled>
       <ImgWrapper img={heroImage} />
       <h2>{title}</h2>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: description.childMarkdownRemark.html,
-        }}
-      />
+      {description && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: description.childMarkdownRemark.html,
+          }}
+        />
+      )}
       <button>{slug}</button>
     </HighlightedArticleStyled>
   )
