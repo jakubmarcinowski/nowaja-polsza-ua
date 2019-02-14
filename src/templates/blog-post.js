@@ -26,27 +26,31 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout>
-        <div>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
-          <StyledHeroImage>
-            <ImgWrapper img={post.heroImage} />
-          </StyledHeroImage>
-          <Wrapper>
-            <h1 className="section-headline">{post.title}</h1>
-            <p
-              style={{
-                display: 'block',
-              }}
-            >
-              {post.publishDate}
-            </p>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.body.childMarkdownRemark.html,
-              }}
-            />
-          </Wrapper>
-        </div>
+        {post && (
+          <div>
+            <Helmet title={`${post.title} | ${siteTitle}`} />
+            <StyledHeroImage>
+              <ImgWrapper img={post.heroImage} />
+            </StyledHeroImage>
+            <Wrapper>
+              <h1 className="section-headline">{post.title}</h1>
+              <p
+                style={{
+                  display: 'block',
+                }}
+              >
+                {post.publishDate}
+              </p>
+              {post.body && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.body.childMarkdownRemark.html,
+                  }}
+                />
+              )}
+            </Wrapper>
+          </div>
+        )}
       </Layout>
     )
   }
