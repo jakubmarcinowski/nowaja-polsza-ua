@@ -9,9 +9,13 @@ const StyledList = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  grid-gap: 5vmin;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    flex: 0 0 50%;
+    padding: 24px;
+  }
 `
 
 class ArticlesList extends React.Component {
@@ -43,14 +47,12 @@ class ArticlesList extends React.Component {
     return (
       <>
         <StyledList>
-          <ul className="article-list">
-            {posts &&
-              slicedPosts.map(({ node }) => (
-                <li key={node.slug}>
-                  <ArticleItem article={node} />
-                </li>
-              ))}
-          </ul>
+          {posts &&
+            slicedPosts.map(({ node }) => (
+              <li key={node.slug}>
+                <ArticleItem article={node} />
+              </li>
+            ))}
         </StyledList>
 
         {postsNumber < posts.length && (

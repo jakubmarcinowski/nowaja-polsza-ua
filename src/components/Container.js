@@ -1,6 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
+import { childrenType } from '../types/children'
 
 const StyledContainer = styled.div`
   max-width: 1180;
@@ -12,10 +13,7 @@ const Container = ({ children }) => (
 )
 
 Container.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: childrenType,
 }
 
 export default Container

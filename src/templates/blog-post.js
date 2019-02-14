@@ -26,27 +26,31 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout>
-        <div>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
-          <StyledHeroImage>
-            <ImgWrapper img={post.heroImage} />
-          </StyledHeroImage>
-          <Wrapper>
-            <h1 className="section-headline">{post.title}</h1>
-            <p
-              style={{
-                display: 'block',
-              }}
-            >
-              {post.publishDate}
-            </p>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.body.childMarkdownRemark.html,
-              }}
-            />
-          </Wrapper>
-        </div>
+        {post && (
+          <div>
+            <Helmet title={`${post.title} | ${siteTitle}`} />
+            <StyledHeroImage>
+              <ImgWrapper img={post.heroImage} />
+            </StyledHeroImage>
+            <Wrapper>
+              <h1 className="section-headline">{post.title}</h1>
+              <p
+                style={{
+                  display: 'block',
+                }}
+              >
+                {post.publishDate}
+              </p>
+              {post.body && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.body.childMarkdownRemark.html,
+                  }}
+                />
+              )}
+            </Wrapper>
+          </div>
+        )}
       </Layout>
     )
   }
@@ -60,7 +64,7 @@ export const pageQuery = graphql`
       title
       publishDate(formatString: "MMMM Do, YYYY")
       heroImage {
-        fluid(maxWidth: 1180, background: "rgb:000000") {
+        fluid(maxWidth: 1920, background: "rgb:000000") {
           ...GatsbyContentfulFluid
         }
       }
