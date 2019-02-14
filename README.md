@@ -10,7 +10,7 @@
 
 ### Production
 
-1. GATSBY_ENV = 'production' - This variable controls proper searchbot crawling options setup in hostname/robots.txt
+1. GATSBY_ENV = This variable should ve set to 'development' at first to prevent searchbots from crawling the production website at first when it's not ready, and then changed to 'production' when we want the searchbots to index the site for search engines - This variable controls proper searchbot crawling options setup in hostname/robots.txt
 2. CONTENTFUL_ENV = 'master'
 3. CONTENTFUL_SPACE_ID - found in contentful Settings/API keys/content delivery preview tokens
 4. CONTENTFUL_DELIVERY_TOKEN - found in contentful Settings/API keys/content delivery preview tokens
@@ -30,6 +30,8 @@ Keep in mind that in preview env you don't set CONTENTFUL_DELIVERY_TOKEN instead
 
 ## webhooks 
 Webhooks are needed for the gatsby based front app to know that it needs to rebuild the static files that it serves to the users, when the changes to the content are made (through contentful). You need to set up a webhook that after being hit with POST request by contentful will trigger a rebuild of the front app, by calling `yarn run build` command. Webhook needs to be configured in contentful as well. 
+
+If the build command returns a non-zero exit code it's recommended to run `contentful-refresh` command and then `yarn run build` again. That should be automated in the deploy script. 
 
 # Gatsby contentful starter
 This product is based on [gatsby-contentful-starter](gatsby-contentful-starter-Readme.md)
