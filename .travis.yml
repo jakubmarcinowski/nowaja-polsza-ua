@@ -5,8 +5,6 @@ os:
   - osx
 
 node_js:
-  - "node"
-  - "lts/*"
   - "8"
 
 script:
