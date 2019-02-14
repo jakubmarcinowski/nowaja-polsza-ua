@@ -39,11 +39,13 @@ const ArticleItem = ({
       <Link to={`/blog/${slug}`}>{title}</Link>
     </h3>
     <small>{publishDate}</small>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: description.childMarkdownRemark.html,
-      }}
-    />
+    {description && (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: description.childMarkdownRemark.html,
+        }}
+      />
+    )}
     <div>
       <h6 className="subtitle">Autor:</h6>
       <Link to={`/author/${author.slug}`}>{author.name}</Link>
