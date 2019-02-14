@@ -10,7 +10,7 @@ const HomePage = ({ posts, highlightedPost }) => (
   <>
     <HighlightedArticle post={highlightedPost} />
     <Wrapper>
-      <ArticlesList posts={posts} limit={2} />
+      <ArticlesList posts={posts} limit={1} initialLimit={2} />
     </Wrapper>
   </>
 )

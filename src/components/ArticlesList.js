@@ -20,7 +20,7 @@ const StyledList = styled.ul`
 
 class ArticlesList extends React.Component {
   state = {
-    postsNumber: this.props.limit,
+    postsNumber: this.props.initialLimit,
   }
 
   componentDidMount() {
@@ -66,6 +66,7 @@ class ArticlesList extends React.Component {
 ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(articleType),
   limit: PropTypes.number,
+  initialLimit: PropTypes.number,
 }
 
 export default ArticlesList
