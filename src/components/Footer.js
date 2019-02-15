@@ -3,10 +3,14 @@ import styled from 'styled-components'
 
 import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
+import { mediaQueries } from './Layout'
+
+// @media ${mediaQueries.phone} {
+//   background: red;
+// }
 
 const StyledFooter = styled.footer`
   padding: 70px 0;
-  background: white;
 `
 
 const Container = styled.div`
@@ -28,14 +32,14 @@ const Publisher = styled.p`
 `
 
 const Footer = () => (
-  <StyledFooter>
+  <StyledFooter mediaQueries={mediaQueries}>
     {/* <FooterNavigation /> */}
     <Container>
       <Brand />
       <Info>
         <SocialMediaList />
         <Publisher>
-          издатель сайта{' '}
+          издатель сайта
           <a
             href="https://google.com"
             target="_blank"

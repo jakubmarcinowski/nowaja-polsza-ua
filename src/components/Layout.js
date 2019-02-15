@@ -26,7 +26,7 @@ const breakpoints = {
 }
 const { phoneLandscape, tablet, desktop, large } = breakpoints
 
-const mediaQueries = {
+export const mediaQueries = {
   phone: `@media only screen and (max-width: ${phoneLandscape - 1}px)`,
   phoneLandscape: `@media only screen and (max-width: ${tablet - 1}px)`,
   tablet: `@media only screen and (max-width: ${desktop - 1}px)`,
@@ -123,6 +123,7 @@ class Layout extends React.Component {
       <ThemeProvider theme={theme}>
         <Wrapper>
           <PageHeader />
+          <Line />
           <Navigation />
           <Container>{children}</Container>
           <Line />
