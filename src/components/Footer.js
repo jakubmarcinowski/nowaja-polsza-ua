@@ -56,7 +56,7 @@ const Footer = () => (
         <Publisher>
           <Paragraph>
             издатель сайта{' '}
-            <ExternalLink url="https://www.github.com/maisonm">
+            <ExternalLink url="http://cprdip.pl/">
               <u>CPiDPR</u>
             </ExternalLink>
           </Paragraph>

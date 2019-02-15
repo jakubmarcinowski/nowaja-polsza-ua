@@ -6,7 +6,6 @@ const StyledNavigation = styled.ul`
   display: flex;
   justify-content: center;
   list-style: none;
-  font-size: 1.25em;
 `
 
 const Item = styled.li`
@@ -16,16 +15,6 @@ const Item = styled.li`
     margin-right: 0;
   }
 `
-
-// .navigationItem {
-//   display: inline-flex;
-//   align-items: center;
-//   margin: 0 1em;
-// }
-
-// .navigationItem a {
-//   color: currentColor;
-// }
 
 const FooterNavigation = () => (
   <StyledNavigation>

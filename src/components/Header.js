@@ -12,7 +12,7 @@ const Header = ({ children, type, color, size, weight }) => (
 
 Header.defaultProps = {
   size: 'Medium',
-  color: '',
+  color: 'Primary',
   type: 1,
   weight: 'Normal',
 }
