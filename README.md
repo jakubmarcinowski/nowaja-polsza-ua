@@ -6,6 +6,17 @@
 4. Configure webhook.
 5. Setup preview environment.
 
+# Contentful content update
+
+1. Install contentful-cli
+   yarn global add contentful-cli
+2. Login to contentful
+   contentful login
+3. Choose space of contentful
+   contentful space use
+4. Refresh contentful content (this will remove .cache, and create content to export.json in contentful folder)
+   yarn contentful-refresh
+
 ## Environment variables
 
 ### Production
@@ -26,12 +37,14 @@ In order to have the ability to preview the content that you put in contentful, 
 4. CONTENTFUL_PREVIEW_TOKEN - found in contentful Settings/API keys/content delivery preview tokens.
 5. CONTENTFUL_API = 'preview' - This variable controls the contentful API that we use Delivery or Preview.
 
-Keep in mind that in preview env you don't set CONTENTFUL_DELIVERY_TOKEN instead you set CONTENTFUL_PREVIEW_TOKEN. Use contentful [docs](https://www.contentful.com/developers/docs/references/content-preview-api/#/introduction/preview-api-authentication) for reference 
+Keep in mind that in preview env you don't set CONTENTFUL_DELIVERY_TOKEN instead you set CONTENTFUL_PREVIEW_TOKEN. Use contentful [docs](https://www.contentful.com/developers/docs/references/content-preview-api/#/introduction/preview-api-authentication) for reference
 
-## webhooks 
-Webhooks are needed for the gatsby based front app to know that it needs to rebuild the static files that it serves to the users, when the changes to the content are made (through contentful). You need to set up a webhook that after being hit with POST request by contentful will trigger a rebuild of the front app, by calling `yarn run build` command. Webhook needs to be configured in contentful as well. 
+## webhooks
 
-If the build command returns a non-zero exit code it's recommended to run `contentful-refresh` command and then `yarn run build` again. That should be automated in the deploy script. 
+Webhooks are needed for the gatsby based front app to know that it needs to rebuild the static files that it serves to the users, when the changes to the content are made (through contentful). You need to set up a webhook that after being hit with POST request by contentful will trigger a rebuild of the front app, by calling `yarn run build` command. Webhook needs to be configured in contentful as well.
+
+If the build command returns a non-zero exit code it's recommended to run `contentful-refresh` command and then `yarn run build` again. That should be automated in the deploy script.
 
 # Gatsby contentful starter
+
 This product is based on [gatsby-contentful-starter](gatsby-contentful-starter-Readme.md)
