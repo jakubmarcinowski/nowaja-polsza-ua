@@ -45,7 +45,9 @@ class AuthorTemplate extends React.Component {
                   />
                 )}
               </AuthorContainerStyled>
-              {authorPosts && <ArticlesList posts={authorPosts} limit={2} />}
+              {authorPosts && (
+                <ArticlesList posts={authorPosts} limit={2} initialLimit={2} />
+              )}
             </Wrapper>
           </>
         )}

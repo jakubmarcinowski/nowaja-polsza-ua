@@ -20,14 +20,15 @@ const StyledList = styled.ul`
 
 class ArticlesList extends React.Component {
   state = {
-    postsNumber: this.props.limit,
+    postsNumber: this.props.initialLimit,
   }
 
   componentDidMount() {
     const urlParams = new URLSearchParams(window.location.search)
     const postsLimit = parseInt(urlParams.get('postsLimit'))
+    const { limit } = this.props
 
-    postsLimit && this.setState({ postsNumber: postsLimit })
+    limit && postsLimit && this.setState({ postsNumber: postsLimit })
   }
 
   increasePostsNumber = () => {
@@ -40,9 +41,9 @@ class ArticlesList extends React.Component {
   }
 
   render() {
-    const { posts } = this.props
+    const { posts, limit } = this.props
     const { postsNumber } = this.state
-    const slicedPosts = posts.slice(0, postsNumber)
+    const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
 
     return (
       <>
@@ -55,7 +56,7 @@ class ArticlesList extends React.Component {
             ))}
         </StyledList>
 
-        {postsNumber < posts.length && (
+        {limit && postsNumber < posts.length && (
           <button onClick={this.increasePostsNumber}>LOAD MORE</button>
         )}
       </>
@@ -64,8 +65,9 @@ class ArticlesList extends React.Component {
 }
 
 ArticlesList.propTypes = {
-  posts: PropTypes.arrayOf(articleType),
+  posts: PropTypes.arrayOf(articleType).isRequired,
   limit: PropTypes.number,
+  initialLimit: PropTypes.number,
 }
 
 export default ArticlesList
