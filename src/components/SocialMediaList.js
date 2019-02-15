@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import ExternalLink from './ExternalLink'
 import facebook from '../../static/spongebob.png'
 
 const List = styled.ul``
@@ -23,31 +24,19 @@ const SocialMediaList = () => (
   <List>
     <Item>
       {/* TODO change a to Link componenent when ready */}
-      <a
-        href="https://www.github.com/maisonm"
-        target="_blank"
-        rel="noopener norefferer"
-      >
+      <ExternalLink url="https://www.github.com/maisonm">
         <Logo src={facebook} alt="Facebook Nowaja Polsza" />
-      </a>
+      </ExternalLink>
     </Item>
     <Item>
-      <a
-        href="https://www.github.com/maisonm"
-        target="_blank"
-        rel="noopener norefferer"
-      >
+      <ExternalLink url="https://www.github.com/maisonm" sameCard>
         <Logo src={facebook} alt="Facebook Nowaja Polsza" />
-      </a>
+      </ExternalLink>
     </Item>
     <Item>
-      <a
-        href="https://www.github.com/maisonm"
-        target="_blank"
-        rel="noopener norefferer"
-      >
+      <ExternalLink url="https://www.github.com/maisonm">
         <Logo src={facebook} alt="Facebook Nowaja Polsza" />
-      </a>
+      </ExternalLink>
     </Item>
   </List>
 )

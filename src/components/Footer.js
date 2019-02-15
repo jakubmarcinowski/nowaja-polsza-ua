@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import ExternalLink from './ExternalLink'
 import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
 import { mediaQueries } from '../utils/mediaQueries'
@@ -48,14 +49,10 @@ const Footer = () => (
       <Info>
         <SocialMediaList />
         <Publisher>
-          издатель сайта
-          <a
-            href="https://google.com"
-            target="_blank"
-            rel="noopener norefferer"
-          >
-            CPiDPR
-          </a>
+          издатель сайта{' '}
+          <ExternalLink url="https://www.github.com/maisonm">
+            <u>CPiDPR</u>
+          </ExternalLink>
         </Publisher>
       </Info>
     </Container>
