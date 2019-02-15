@@ -20,12 +20,3 @@ export const mediaQueries = {
   phoneOnly: `(max-width: ${tablet - 1}px)`,
   tabletOnly: `(min-width: ${tablet}px) and  max-width: ${desktop - 1}px)`,
 }
-
-// how to use? 
-// const StyledElement = styled.div`
-//   background: green;
-
-//   @media ${mediaQueries.desktop} {
-//     background: red;
-//   }
-// `
