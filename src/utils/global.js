@@ -61,8 +61,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
-    padding: 0;
-    margin: 0;
     font-size: 1.6rem;
   }
   a {

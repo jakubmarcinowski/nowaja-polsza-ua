@@ -14,7 +14,7 @@ const CategoryLink = styled(Link)`
   top: 7px;
   left: -3px;
   display: block;
-  transition: opacity ${props => props.theme.animations.durration} ease;
+  transition: opacity ${props => props.theme.animations.duration} ease;
   background: ${props => props.theme.colors.rouge};
   color: ${props => props.theme.colors.white};
   padding: 0.5rem;
@@ -34,7 +34,7 @@ const InfoBox = styled.div`
 `
 const AuthorLink = styled(Link)`
   display: block;
-  transition: opacity ${props => props.theme.animations.durration} ease;
+  transition: opacity ${props => props.theme.animations.duration} ease;
   margin-bottom: 0.5rem;
   color: ${props => props.theme.colors.plum};
   font-weight: bold;
@@ -44,7 +44,7 @@ const AuthorLink = styled(Link)`
   }
 `
 const Title = styled.h3`
-  transition: opacity ${props => props.theme.animations.durration} ease;
+  transition: opacity ${props => props.theme.animations.duration} ease;
   margin: 1rem 0;
   font-size: 2.6rem;
 

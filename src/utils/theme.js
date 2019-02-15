@@ -12,6 +12,6 @@ export const theme = {
     plum: '#711423',
   },
   animations: {
-    durration: '.3s',
+    duration: '.3s',
   },
 }
