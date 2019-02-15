@@ -45,7 +45,7 @@ export const pageQuery = graphql`
             slug
           }
           heroImage {
-            fluid(maxWidth: 1920, resizingBehavior: SCALE) {
+            fluid(maxWidth: 380, maxHeight: 216, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
             }
           }

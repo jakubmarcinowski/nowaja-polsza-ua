@@ -5,67 +5,80 @@ import styled from 'styled-components'
 import { articleType } from '../types/article'
 import ImgWrapper from './ImgWrapper'
 
-const StyledPreview = styled.div`
-  .title {
-    font-size: 1.5em;
-  }
+const ImgBox = styled.div`
+  position: relative;
+  margin-bottom: 3.6rem;
+`
+const CategoryLink = styled(Link)`
+  position: absolute;
+  top: 7px;
+  left: -3px;
+  display: block;
+  transition: opacity ${props => props.theme.animations.duration} ease;
+  background: ${props => props.theme.colors.rouge};
+  color: ${props => props.theme.colors.white};
+  padding: 0.5rem;
 
-  .subtitle {
-    font-weight: 800;
-    margin: 0;
-    font-size: 1em;
+  &:hover {
+    opacity: 0.9;
   }
+`
+const Date = styled.div`
+  margin: 0 2.4rem 0.5rem 0;
+  color: ${props => props.theme.colors.darkGreyBlue};
+`
+const InfoBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`
+const AuthorLink = styled(Link)`
+  display: block;
+  transition: opacity ${props => props.theme.animations.duration} ease;
+  margin-bottom: 0.5rem;
+  color: ${props => props.theme.colors.plum};
+  font-weight: bold;
 
-  ul {
-    margin: 0;
-    padding: 0;
+  &:hover {
+    opacity: 0.9;
+  }
+`
+const Title = styled.h3`
+  transition: opacity ${props => props.theme.animations.duration} ease;
+  margin: 1rem 0;
+  font-size: 2.6rem;
+
+  &:hover {
+    opacity: 0.9;
   }
 `
 
 const ArticleItem = ({
-  article: {
-    title,
-    description,
-    slug,
-    author,
-    categories,
-    heroImage,
-    publishDate,
-  },
+  article: { title, slug, author, categories, heroImage, publishDate },
 }) => (
-  <StyledPreview>
-    <ImgWrapper img={heroImage} />
+  <>
+    <ImgBox>
+      <Link to={`/blog/${slug}`}>
+        <ImgWrapper img={heroImage} />
+      </Link>
+      {categories && (
+        <CategoryLink to={`/category/${categories[0].slug}`}>
+          {categories[0].title}
+        </CategoryLink>
+      )}
+    </ImgBox>
+    <InfoBox>
+      {publishDate && <Date>{publishDate}</Date>}
+      {author && (
+        <AuthorLink to={`/author/${author.slug}`}>{author.name}</AuthorLink>
+      )}
+    </InfoBox>
     {slug && (
-      <h3 className="title">
+      <Title>
         <Link to={`/blog/${slug}`}>{title}</Link>
-      </h3>
+      </Title>
     )}
-    {publishDate && <small>{publishDate}</small>}
-    {description && (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: description.childMarkdownRemark.html,
-        }}
-      />
-    )}
-    {author && (
-      <div>
-        <h6 className="subtitle">Autor:</h6>
-        <Link to={`/author/${author.slug}`}>{author.name}</Link>
-      </div>
-    )}
-    <div>
-      <h6 className="subtitle">Kategorie:</h6>
-      <ul>
-        {categories &&
-          categories.map(category => (
-            <li key={category.slug}>
-              <Link to={`/category/${category.slug}`}>{category.title}</Link>
-            </li>
-          ))}
-      </ul>
-    </div>
-  </StyledPreview>
+  </>
 )
 
 ArticleItem.propTypes = {

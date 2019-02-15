@@ -45,7 +45,9 @@ class AuthorTemplate extends React.Component {
                   />
                 )}
               </AuthorContainerStyled>
-              {authorPosts && <ArticlesList posts={authorPosts} limit={2} />}
+              {authorPosts && (
+                <ArticlesList posts={authorPosts} limit={2} initialLimit={2} />
+              )}
             </Wrapper>
           </>
         )}
@@ -57,7 +59,7 @@ class AuthorTemplate extends React.Component {
 export default AuthorTemplate
 
 export const pageQuery = graphql`
-  query AuthorBySlug($slug: String!) {
+  query AuthorBySlug($slug: String) {
     contentfulPerson(slug: { eq: $slug }) {
       name
       image {
