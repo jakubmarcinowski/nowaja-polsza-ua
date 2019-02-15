@@ -5,67 +5,85 @@ import styled from 'styled-components'
 import { articleType } from '../types/article'
 import ImgWrapper from './ImgWrapper'
 
-const StyledPreview = styled.div`
+const StyledArticleItem = styled.div`
+  .img-box {
+    position: relative;
+    margin-bottom: 3.6rem;
+  }
+  .category {
+    a {
+      position: absolute;
+      top: 7px;
+      left: -3px;
+      color: #fff;
+      background: ${props => props.theme.rouge};
+      padding: 0.5rem;
+      transition: opacity 0.3s ease;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+  .date {
+    margin: 0 2.4rem 0.5rem 0;
+  }
+  .info-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .author {
+    color: ${props => props.theme.plum};
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    transition: opacity 0.3s ease;
+    a {
+      color: currentColor;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
   .title {
-    font-size: 1.5em;
-  }
-
-  .subtitle {
-    font-weight: 800;
-    margin: 0;
-    font-size: 1em;
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
+    font-size: 2.6rem;
+    margin: 1rem 0;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 0.9;
+    }
   }
 `
 
 const ArticleItem = ({
-  article: {
-    title,
-    description,
-    slug,
-    author,
-    categories,
-    heroImage,
-    publishDate,
-  },
+  article: { title, slug, author, categories, heroImage, publishDate },
 }) => (
-  <StyledPreview>
-    <ImgWrapper img={heroImage} />
+  <StyledArticleItem>
+    <div className="img-box">
+      <Link to={`/blog/${slug}`}>
+        <ImgWrapper img={heroImage} />
+      </Link>
+      {categories && (
+        <div className="category">
+          <Link to={`/category/${categories[0].slug}`}>
+            {categories[0].title}
+          </Link>
+        </div>
+      )}
+    </div>
+    <div className="info-box">
+      {publishDate && <div className="date">{publishDate}</div>}
+      {author && (
+        <div className="author">
+          <Link to={`/author/${author.slug}`}>{author.name}</Link>
+        </div>
+      )}
+    </div>
     {slug && (
       <h3 className="title">
         <Link to={`/blog/${slug}`}>{title}</Link>
       </h3>
     )}
-    {publishDate && <small>{publishDate}</small>}
-    {description && (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: description.childMarkdownRemark.html,
-        }}
-      />
-    )}
-    {author && (
-      <div>
-        <h6 className="subtitle">Autor:</h6>
-        <Link to={`/author/${author.slug}`}>{author.name}</Link>
-      </div>
-    )}
-    <div>
-      <h6 className="subtitle">Kategorie:</h6>
-      <ul>
-        {categories &&
-          categories.map(category => (
-            <li key={category.slug}>
-              <Link to={`/category/${category.slug}`}>{category.title}</Link>
-            </li>
-          ))}
-      </ul>
-    </div>
-  </StyledPreview>
+  </StyledArticleItem>
 )
 
 ArticleItem.propTypes = {

@@ -13,8 +13,8 @@ const StyledList = styled.ul`
   flex-wrap: wrap;
 
   li {
-    flex: 0 0 50%;
-    padding: 24px;
+    flex: 0 0 33.333%;
+    padding: 3.5rem;
   }
 `
 
@@ -50,7 +50,7 @@ class ArticlesList extends React.Component {
           {posts &&
             slicedPosts.map(({ node }) => (
               <li key={node.slug}>
-                <ArticleItem article={node} />
+                <ArticleItem article={node} key={node.slug} />
               </li>
             ))}
         </StyledList>

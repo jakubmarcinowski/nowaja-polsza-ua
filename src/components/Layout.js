@@ -9,13 +9,15 @@ import Footer from './Footer'
 import Rodo from './Rodo'
 
 const theme = {
-  black: '#111D22',
+  dark: '#111d22',
+  darkGreyBlue: '#263e48',
   primary: '#253e48',
   secondary: '#820204',
-  highlight1: '#ca5438',
-  highlight2: '#dba144',
-  highlight3: '#bd632e',
-  highlight4: '#588b8b',
+  rouge: '#a01c32',
+  terraCotta: '#c8553d',
+  dullOrange: '#d7973c',
+  greyTeal: '#588b8b',
+  plum: '#711423',
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -26,9 +28,10 @@ const GlobalStyle = createGlobalStyle`
     src: url("/avenir-400.woff2") format("woff2");
     font-display: swap;
   }
+
   html {
     box-sizing: border-box;
-    font-size: 10px;
+    font-size: 62.5%;
   }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -37,18 +40,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   a {
     text-decoration: none;
-    color: ${theme.black};
+    color: ${theme.dark};
   }
-`
-
-// Example of usage
-const StyledLayout = styled.div`
-  background: white;
-  color: ${props => props.theme.black};
 `
 
 class Layout extends React.Component {
