@@ -1,11 +1,25 @@
 import React from 'react'
+import logo from '../../static/spongebob.png'
+import styled from 'styled-components'
 
-// Todo h1, h2, ect. depend on props
+const StyledBrand = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Logo = styled.img`
+  max-height: 50px;
+  margin-right: 15px;
+`
+
 const Brand = () => (
-  <div>
-    <div>Logo</div>
-    <h1>Nowaja Polsha</h1>
-    <h2>Subtitle with motto or something like that</h2>
-  </div>
+  <StyledBrand>
+    <Logo src={logo} alt="Nowaja Polsza logo"/>
+    <div>
+      <h1>НОВАЯ ПОЛЬША</h1>
+      <h2>Наша миссия - Истина</h2>
+    </div>
+  </StyledBrand>
 )
 export default Brand
