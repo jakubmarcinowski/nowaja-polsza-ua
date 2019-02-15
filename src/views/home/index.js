@@ -6,23 +6,25 @@ import ArticlesList from '../../components/ArticlesList'
 import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
 
-const HomePage = ({ posts, highlightedPost }) => (
-  <>
-    <HighlightedArticle post={highlightedPost} />
-    Highlighted articles (only three newest):
-    <Wrapper>
-      <ArticlesList posts={posts.slice(0, 3)} initialLimit={3} fixedNumber />
-    </Wrapper>
-    List of articles (rest of articles):
-    <Wrapper>
-      <ArticlesList
-        posts={posts.slice(3, posts.length)}
-        limit={1}
-        initialLimit={1}
-      />
-    </Wrapper>
-  </>
-)
+const HomePage = ({ posts, highlightedPost }) => {
+  const promotedPostsNumber = 3
+  const promotedPosts = posts.slice(0, promotedPostsNumber)
+  const commonPosts = posts.slice(promotedPostsNumber, posts.length)
+
+  return (
+    <>
+      <HighlightedArticle post={highlightedPost} />
+      Highlighted articles (only three newest):
+      <Wrapper>
+        <ArticlesList posts={promotedPosts} />
+      </Wrapper>
+      List of articles (rest of articles):
+      <Wrapper>
+        <ArticlesList posts={commonPosts} limit={1} initialLimit={1} />
+      </Wrapper>
+    </>
+  )
+}
 
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(articleType),
