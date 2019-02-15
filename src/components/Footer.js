@@ -43,7 +43,6 @@ const Publisher = styled.p`
 
 const Footer = () => (
   <StyledFooter>
-    {/* <FooterNavigation /> */}
     <Container>
       <Brand />
       <Info>
