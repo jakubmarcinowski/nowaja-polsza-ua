@@ -17,29 +17,6 @@ const theme = {
   },
 }
 
-const breakpoints = {
-  phone: 320,
-  phoneLandscape: 480,
-  tablet: 768,
-  desktop: 1024,
-  large: 1280,
-}
-const { phoneLandscape, tablet, desktop, large } = breakpoints
-
-export const mediaQueries = {
-  phone: `@media only screen and (max-width: ${phoneLandscape - 1}px)`,
-  phoneLandscape: `@media only screen and (max-width: ${tablet - 1}px)`,
-  tablet: `@media only screen and (max-width: ${desktop - 1}px)`,
-  desktop: `@media only screen and (max-width: ${large - 1}px)`,
-  large: `@media only screen and (min-width: ${large}px)`,
-  phoneLandscapeOnly: `@media only screen and (min-width: ${phoneLandscape}px) and (max-width: ${tablet -
-    1}px)`,
-  tabletOnly: `@media only screen and (min-width: ${tablet}px) and (max-width: ${desktop -
-    1}px)`,
-  desktopOnly: `@media only screen and (min-width: ${desktop}px) and (max-width: ${large -
-    1}px)`,
-}
-
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,

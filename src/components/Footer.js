@@ -3,25 +3,35 @@ import styled from 'styled-components'
 
 import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
-import { mediaQueries } from './Layout'
-
-// @media ${mediaQueries.phone} {
-//   background: red;
-// }
+import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledFooter = styled.footer`
-  padding: 70px 0;
+  padding: 30px 0;
+
+  @media ${mediaQueries.desktop} {
+    padding: 70px 0;
+  }
 `
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+
+  @media ${mediaQueries.tablet} {
+    flex-direction: row;
+  }
 `
 
 const Info = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  margin-top: 20px;
+
+  @media ${mediaQueries.tablet} {
+    align-items: flex-end;
+    margin-top: 0;
+  }
 `
 
 {
@@ -32,7 +42,7 @@ const Publisher = styled.p`
 `
 
 const Footer = () => (
-  <StyledFooter mediaQueries={mediaQueries}>
+  <StyledFooter>
     {/* <FooterNavigation /> */}
     <Container>
       <Brand />

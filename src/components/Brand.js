@@ -1,11 +1,17 @@
 import React from 'react'
-import logo from '../../static/spongebob.png'
 import styled from 'styled-components'
+
+import logo from '../../static/spongebob.png'
+import { mediaQueries } from '../utils/mediaQueries'
+
 
 const StyledBrand = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+
+  @media ${mediaQueries.tablet} {
+    justify-content: center;
+  }
 `
 
 const Logo = styled.img`
