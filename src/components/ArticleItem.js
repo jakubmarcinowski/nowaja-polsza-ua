@@ -14,9 +14,9 @@ const CategoryLink = styled(Link)`
   top: 7px;
   left: -3px;
   display: block;
-  transition: opacity 0.3s ease;
-  background: ${props => props.theme.rouge};
-  color: ${props => props.theme.white};
+  transition: opacity ${props => props.theme.animations.durration} ease;
+  background: ${props => props.theme.colors.rouge};
+  color: ${props => props.theme.colors.white};
   padding: 0.5rem;
 
   &:hover {
@@ -25,28 +25,26 @@ const CategoryLink = styled(Link)`
 `
 const Date = styled.div`
   margin: 0 2.4rem 0.5rem 0;
-  color: ${props => props.theme.darkGreyBlue};
+  color: ${props => props.theme.colors.darkGreyBlue};
 `
 const InfoBox = styled.div`
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
-  display: flex;
 `
 const AuthorLink = styled(Link)`
   display: block;
-  transition: opacity 0.3s ease;
+  transition: opacity ${props => props.theme.animations.durration} ease;
   margin-bottom: 0.5rem;
-  color: ${props => props.theme.plum};
+  color: ${props => props.theme.colors.plum};
   font-weight: bold;
 
-  a {
-    &:hover {
-      opacity: 0.9;
-    }
+  &:hover {
+    opacity: 0.9;
   }
 `
 const Title = styled.h3`
-  transition: opacity 0.3s ease;
+  transition: opacity ${props => props.theme.animations.durration} ease;
   margin: 1rem 0;
   font-size: 2.6rem;
 
