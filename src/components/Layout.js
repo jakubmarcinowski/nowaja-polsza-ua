@@ -1,24 +1,13 @@
 /* eslint-disable */
 import React from 'react'
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
+import { theme } from '../utils/theme'
 import Container from './Container'
 import Navigation from './Navigation'
 import PageHeader from './PageHeader'
 import Footer from './Footer'
 import Rodo from './Rodo'
-
-const theme = {
-  dark: '#111d22',
-  darkGreyBlue: '#263e48',
-  primary: '#253e48',
-  secondary: '#820204',
-  rouge: '#a01c32',
-  terraCotta: '#c8553d',
-  dullOrange: '#d7973c',
-  greyTeal: '#588b8b',
-  plum: '#711423',
-}
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -44,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: ${theme.dark};
+    color: currentColor;
   }
 `
 

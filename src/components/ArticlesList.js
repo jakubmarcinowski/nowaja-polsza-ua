@@ -13,7 +13,7 @@ const StyledList = styled.ul`
   flex-wrap: wrap;
 
   li {
-    flex: 0 0 33.333%;
+    flex: 0 0 calc(100% / 3);
     padding: 3.5rem;
   }
 `
