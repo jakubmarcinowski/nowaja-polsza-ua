@@ -59,7 +59,7 @@ class AuthorTemplate extends React.Component {
 export default AuthorTemplate
 
 export const pageQuery = graphql`
-  query AuthorBySlug($slug: String!) {
+  query AuthorBySlug($slug: String) {
     contentfulPerson(slug: { eq: $slug }) {
       name
       image {
