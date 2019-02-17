@@ -45,13 +45,14 @@ export const pageQuery = graphql`
             slug
           }
           heroImage {
-            fluid(maxWidth: 380, maxHeight: 216, resizingBehavior: SCALE) {
+            fluid(maxWidth: 768, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
             }
           }
           description {
             childMarkdownRemark {
               html
+              excerpt(pruneLength: 200)
             }
           }
         }
@@ -73,10 +74,11 @@ export const pageQuery = graphql`
         description {
           childMarkdownRemark {
             html
+            excerpt(pruneLength: 200)
           }
         }
         heroImage {
-          fluid(maxWidth: 1920, resizingBehavior: SCALE) {
+          fluid(maxWidth: 1440, resizingBehavior: SCALE) {
             ...GatsbyContentfulFluid
           }
         }

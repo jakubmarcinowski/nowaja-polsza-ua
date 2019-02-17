@@ -93,7 +93,7 @@ const ArticleItem = ({
         <Link to={`/blog/${slug}`}>
           <Lead
             dangerouslySetInnerHTML={{
-              __html: description.childMarkdownRemark.html,
+              __html: description.childMarkdownRemark.excerpt,
             }}
           />
         </Link>
