@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledList = styled.ul`
   margin: 0;
@@ -11,10 +12,19 @@ const StyledList = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   li {
-    flex: 0 0 calc(100% / 3);
-    padding: 3.5rem;
+    flex: 0 0 100%;
+    padding-bottom: 9.5rem;
+
+    @media ${mediaQueries.tablet} {
+      flex: 0 0 calc(89% / 2);
+    }
+
+    @media ${mediaQueries.large} {
+      flex: 0 0 calc(89% / 3);
+    }
   }
 `
 

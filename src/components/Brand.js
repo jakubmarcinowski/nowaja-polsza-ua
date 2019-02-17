@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import logo from '../../static/spongebob.png'
 import { mediaQueries } from '../utils/mediaQueries'
 
-
 const StyledBrand = styled.div`
   display: flex;
   align-items: center;
@@ -21,7 +20,7 @@ const Logo = styled.img`
 
 const Brand = () => (
   <StyledBrand>
-    <Logo src={logo} alt="Nowaja Polsza logo"/>
+    <Logo src={logo} alt="Nowaja Polsza logo" />
     <div>
       <h1>НОВАЯ ПОЛЬША</h1>
       <h2>Наша миссия - Истина</h2>
