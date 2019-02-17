@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { childrenType } from '../types/children'
 
 const StyledWrapper = styled.div`
-  width: 100%;  
-  margin: 0 auto;  
+  width: 100%;
+  margin: 0 auto;
   padding: 5vmin 0;
 `
 
