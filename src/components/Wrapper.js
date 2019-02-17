@@ -5,7 +5,7 @@ import { childrenType } from '../types/children'
 const StyledWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
-  padding: 5vmin 0;  
+  padding: 5vmin 0;    
 `
 
 const Wrapper = ({ children }) => {
