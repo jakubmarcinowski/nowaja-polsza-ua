@@ -20,8 +20,19 @@ const Wrapper = styled.div`
 `
 
 class Layout extends React.Component {
+  state = {
+    isMobileView: false,
+  }
+
+  componentDidMount() {
+    if (window.innerWidth <= 480) {
+      this.setState({ isMobileView: true })
+    }
+  }
+
   render() {
     const { children } = this.props
+    const { isMobileView } = this.state
 
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
@@ -31,11 +42,10 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          <MobileMenu />
+          {isMobileView ? <MobileMenu /> : <Navigation />}
           <Wrapper>
             <PageHeader />
             <Line />
-            <Navigation />
             <Container>{children}</Container>
             <Line />
             <Footer />

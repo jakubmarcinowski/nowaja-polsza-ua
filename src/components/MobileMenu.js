@@ -1,74 +1,28 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import MenuButton from './ManuButton'
+
 const StyledMenu = styled.div`
   position: fixed;
+  z-index: 999;
   width: 100vw;
 `
-
 const MenuHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: pink;
+  padding: 1rem;
+  background: ${props => props.theme.colors.greyTeal};
 `
-
-const MenuIcon = styled.div`
-  width: 20px;
-  height: 19px;
-  position: relative;
-  /* position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 10; */
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 3px;
-    background-color: #000;
-    transform-origin: 0 0;
-    transition: transform 0.3s ease-out;
-    ${props => props.isMenuOpen && 'transform: rotate(45deg) scaleX(1.25)'};
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 20px;
-    height: 3px;
-    background-color: #000;
-    transform-origin: 0 100%;
-    transition: transform 0.3s ease-out;
-    ${props =>
-      props.isMenuOpen &&
-      'transform: rotate(-45deg) scaleX(1.25) translateY(1px);'}
-  }
-`
-const MenuIconMiddle = styled.div`
-  position: absolute;
-  top: 8px;
-  left: 0;
-  width: 20px;
-  height: 3px;
-  background-color: #000;
-  transform-origin: 0 50%;
-  transition: all 0.3s ease-out;
-  ${props => props.isMenuOpen && 'opacity: 0; transform: scaleX(0);'}
-`
-
 const MenuContent = styled.div`
-  opacity: 0;
+  position: relative;
+  z-index: -10;
   transform: scale(1.2);
   transition: all 0.3s ease-out;
-  z-index: -10;
-  position: relative;
-  background: pink;
+  padding: 1rem;
+  opacity: 0;
+  background: ${props => props.theme.colors.greyTeal};
   text-align: center;
   ${props =>
     props.isMenuOpen && ' opacity: 1; z-index: 1; transform: scale(1);'}
@@ -90,9 +44,7 @@ class MobileMenu extends Component {
       <StyledMenu>
         <MenuHeader>
           <div>Logo</div>
-          <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
-            <MenuIconMiddle isMenuOpen={isMenuOpen} />
-          </MenuIcon>
+          <MenuButton isMenuOpen onBtnClick={this.toggleMenu} />
         </MenuHeader>
         <MenuContent isMenuOpen={isMenuOpen}>
           <nav>
