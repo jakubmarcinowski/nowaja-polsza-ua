@@ -37,6 +37,7 @@ const siteUrl =
 module.exports = {
   siteMetadata: {
     siteUrl,
+    title: 'НОВАЯ ПОЛЬША',
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [

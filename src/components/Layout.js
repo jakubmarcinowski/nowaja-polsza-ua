@@ -38,16 +38,18 @@ class Layout extends React.Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <Wrapper>
+        <>
           <PageHeader />
-          <Line />
-          <Navigation />
-          <Container>{children}</Container>
-          <Line />
-          <Footer />
-          <Rodo />
-          <GlobalStyle />
-        </Wrapper>
+          <Wrapper>
+            <Line />
+            <Navigation />
+            <Container>{children}</Container>
+            <Line />
+            <Footer />
+            <Rodo />
+            <GlobalStyle />
+          </Wrapper>
+        </>
       </ThemeProvider>
     )
   }
