@@ -46,11 +46,11 @@ const fontWeightMap = {
 }
 
 const fontSizeMap = {
-  [Header.sizes.Big]: 25,
-  [Header.sizes.Medium]: 16,
-  [Header.sizes.MediumSmall]: 14,
-  [Header.sizes.Small]: 12,
-  [Header.sizes.ExtraSmall]: 10,
+  [Header.sizes.Big]: 2.5,
+  [Header.sizes.Medium]: 1.6,
+  [Header.sizes.MediumSmall]: 1.4,
+  [Header.sizes.Small]: 1.2,
+  [Header.sizes.ExtraSmall]: 1.0,
 }
 
 const colorMap = () => ({
@@ -60,7 +60,7 @@ const colorMap = () => ({
 const HeaderStyled = styled.h1`
   line-height: 1.2;
   color: ${({ color }) => colorMap(theme)[color] || theme.text.colors[0]};
-  font-size: ${({ size }) => fontSizeMap[size]}px;
+  font-size: ${({ size }) => fontSizeMap[size]}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
 `
 

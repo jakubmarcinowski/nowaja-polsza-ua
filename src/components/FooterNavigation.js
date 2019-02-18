@@ -9,7 +9,7 @@ const StyledNavigation = styled.ul`
 `
 
 const Item = styled.li`
-  margin-right: 30px;
+  margin-right: 3rem;
 
   &:last-child {
     margin-right: 0;

@@ -42,10 +42,10 @@ const fontWeightMap = {
 }
 
 const fontSizeMap = {
-  [Paragraph.sizes.Big]: 16,
-  [Paragraph.sizes.Medium]: 14,
-  [Paragraph.sizes.MediumSmall]: 12,
-  [Paragraph.sizes.Small]: 10,
+  [Paragraph.sizes.Big]: 1.6,
+  [Paragraph.sizes.Medium]: 1.4,
+  [Paragraph.sizes.MediumSmall]: 1.2,
+  [Paragraph.sizes.Small]: 1.0,
 }
 
 const colorMap = () => ({
@@ -55,7 +55,7 @@ const colorMap = () => ({
 const ParagraphWrap = styled.p`
   line-height: 1.2;
   color: ${({ color }) => colorMap(theme)[color] || theme.text.colors[0]};
-  font-size: ${({ size }) => fontSizeMap[size]}px;
+  font-size: ${({ size }) => fontSizeMap[size]}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
   ${({ margin }) => margin && `margin: ${margin};`};
 `
