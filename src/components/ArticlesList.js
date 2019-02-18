@@ -7,19 +7,19 @@ import { articleType } from '../types/article'
 import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledList = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
   li {
     flex: 0 0 100%;
     padding-bottom: 9.5rem;
 
     @media ${mediaQueries.tablet} {
-      flex: 0 0 calc(89% / 2);
+      flex: 0 0 calc(95% / 2);
     }
 
     @media ${mediaQueries.large} {
