@@ -1,12 +1,47 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import MenuButton from './ManuButton'
-
 const StyledMenu = styled.div`
   position: fixed;
   z-index: 999;
   width: 100vw;
+`
+const MenuIcon = styled.div`
+  width: 20px;
+  height: 19px;
+  position: relative;
+
+  &::before,
+  &::after,
+  .middle {
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 3px;
+    transition: transform 0.3s ease-out;
+    background-color: #000;
+  }
+
+  &::before {
+    content: '';
+    top: 0;
+    transform-origin: 0 0;
+    ${props => props.isMenuOpen && 'transform: rotate(45deg) scaleX(1.25)'};
+  }
+
+  &::after {
+    content: '';
+    bottom: 0;
+    transform-origin: 0 100%;
+    ${props =>
+      props.isMenuOpen &&
+      'transform: rotate(-45deg) scaleX(1.25) translateY(1px);'}
+  }
+  .middle {
+    top: 8px;
+    transform-origin: 0 50%;
+    ${props => props.isMenuOpen && 'opacity: 0; transform: scaleX(0);'}
+  }
 `
 const MenuHeader = styled.div`
   display: flex;
@@ -30,12 +65,10 @@ const MenuContent = styled.div`
 
 class MobileMenu extends Component {
   state = {
-    isMenuOpen: true,
+    isMenuOpen: false,
   }
   toggleMenu = () => {
-    this.setState(state => {
-      return { isMenuOpen: !state.isMenuOpen }
-    })
+    this.setState(({ isMenuOpen }) => ({ isMenuOpen: !isMenuOpen }))
   }
 
   render() {
@@ -44,7 +77,9 @@ class MobileMenu extends Component {
       <StyledMenu>
         <MenuHeader>
           <div>Logo</div>
-          <MenuButton isMenuOpen onBtnClick={this.toggleMenu} />
+          <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
+            <div className="middle" />
+          </MenuIcon>
         </MenuHeader>
         <MenuContent isMenuOpen={isMenuOpen}>
           <nav>
