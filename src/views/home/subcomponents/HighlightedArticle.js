@@ -16,7 +16,7 @@ const HighlightedArticle = ({
 }) => {
   return (
     <HighlightedArticleStyled>
-      <ImgWrapper img={heroImage} />
+      <ImgWrapper img={heroImage} aspectRatio={1.6} />
       <h2>{title}</h2>
       {description && (
         <div

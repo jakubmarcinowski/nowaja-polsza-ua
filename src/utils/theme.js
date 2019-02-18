@@ -11,6 +11,7 @@ export const theme = {
     dullOrange: '#d7973c',
     greyTeal: '#588b8b',
     plum: '#711423',
+    greyLight: '#e5e5e5',
   },
   animations: {
     duration: '.3s',

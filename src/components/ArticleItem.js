@@ -45,7 +45,7 @@ const AuthorLink = styled(Link)`
 `
 const Title = styled.h3`
   transition: opacity ${props => props.theme.animations.duration} ease;
-  margin: 1rem 0;
+  margin: 1rem 0 2rem;
   font-size: 2.6rem;
 
   &:hover {
@@ -53,13 +53,25 @@ const Title = styled.h3`
   }
 `
 
+const Lead = styled.p`
+  font-size: 1.6rem;
+`
+
 const ArticleItem = ({
-  article: { title, slug, author, categories, heroImage, publishDate },
+  article: {
+    title,
+    slug,
+    author,
+    categories,
+    heroImage,
+    publishDate,
+    description,
+  },
 }) => (
   <>
     <ImgBox>
       <Link to={`/blog/${slug}`}>
-        <ImgWrapper img={heroImage} />
+        <ImgWrapper img={heroImage} aspectRatio={1.76} />
       </Link>
       {categories && (
         <CategoryLink to={`/category/${categories[0].slug}`}>
@@ -74,9 +86,20 @@ const ArticleItem = ({
       )}
     </InfoBox>
     {slug && (
-      <Title>
-        <Link to={`/blog/${slug}`}>{title}</Link>
-      </Title>
+      <>
+        <Title>
+          <Link to={`/blog/${slug}`}>{title}</Link>
+        </Title>
+        {description && (
+          <Link to={`/blog/${slug}`}>
+            <Lead
+              dangerouslySetInnerHTML={{
+                __html: description.childMarkdownRemark.excerpt,
+              }}
+            />
+          </Link>
+        )}
+      </>
     )}
   </>
 )
