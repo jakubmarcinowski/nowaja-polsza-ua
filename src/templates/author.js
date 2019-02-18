@@ -60,6 +60,11 @@ export default AuthorTemplate
 
 export const pageQuery = graphql`
   query AuthorBySlug($slug: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     contentfulPerson(slug: { eq: $slug }) {
       name
       image {
