@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { childrenType } from '../types/children'
 
 const StyledContainer = styled.div`
-  max-width: 1180;
   margin: 0 auto;
 `
 
