@@ -2,42 +2,31 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-const StyledNavigation = styled.nav`
-  .navigation {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 20vh;
-    max-height: 100px;
-    font-size: 1.25em;
-  }
+const StyledNavigation = styled.ul`
+  display: flex;
+  justify-content: center;
+  list-style: none;
+`
 
-  .navigationItem {
-    display: inline-flex;
-    align-items: center;
-    margin: 0 1em;
-  }
+const Item = styled.li`
+  margin-right: 3rem;
 
-  .navigationItem a {
-    color: currentColor;
+  &:last-child {
+    margin-right: 0;
   }
 `
 
 const FooterNavigation = () => (
-  <StyledNavigation role="navigation">
-    <ul className="navigation">
-      <li className="navigationItem">
-        <Link to="/">Home</Link>
-      </li>
-      <li className="navigationItem">
-        <Link to="/">About NP</Link>
-      </li>
-      <li className="navigationItem">
-        <Link to="/">Privacy Policy</Link>
-      </li>
-    </ul>
+  <StyledNavigation>
+    <Item>
+      <Link to="/">О Новой Польше Контакты</Link>
+    </Item>
+    <Item>
+      <Link to="/">Политика</Link>
+    </Item>
+    <Item>
+      <Link to="/">конфиденциальности</Link>
+    </Item>
   </StyledNavigation>
 )
 

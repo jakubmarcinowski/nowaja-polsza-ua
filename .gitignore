@@ -66,11 +66,14 @@ public
 # contentful config file
 .contentful.json
 
-#vsc config
+# vsc config
 .vscode
 
-#intelij config
+# intelij config
 .idea
 
-#contentful export
+# contentful export
 contentful
+
+# osx files
+.DS_store
