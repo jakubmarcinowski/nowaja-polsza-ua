@@ -11,6 +11,7 @@ import PageHeader from './PageHeader'
 import Footer from './Footer'
 import Rodo from './Rodo'
 import Line from './Line'
+import MobileMenu from './MobileMenu'
 
 const Wrapper = styled.div`
   max-width: 1280px;
@@ -29,16 +30,19 @@ class Layout extends React.Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <Wrapper>
-          <PageHeader />
-          <Line />
-          <Navigation />
-          <Container>{children}</Container>
-          <Line />
-          <Footer />
-          <Rodo />
-          <GlobalStyle />
-        </Wrapper>
+        <>
+          <MobileMenu />
+          <Wrapper>
+            <PageHeader />
+            <Line />
+            <Navigation />
+            <Container>{children}</Container>
+            <Line />
+            <Footer />
+            <Rodo />
+            <GlobalStyle />
+          </Wrapper>
+        </>
       </ThemeProvider>
     )
   }
