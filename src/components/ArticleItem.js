@@ -71,7 +71,7 @@ const ArticleItem = ({
   <>
     <ImgBox>
       <Link to={`/blog/${slug}`}>
-        <ImgWrapper img={heroImage} />
+        <ImgWrapper img={heroImage} aspectRatio={1.76} />
       </Link>
       {categories && (
         <CategoryLink to={`/category/${categories[0].slug}`}>
