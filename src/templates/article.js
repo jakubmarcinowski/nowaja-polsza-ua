@@ -25,6 +25,11 @@ export default ArticleTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       publishDate(formatString: "MMMM Do, YYYY")

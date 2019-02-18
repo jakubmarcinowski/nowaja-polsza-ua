@@ -11,16 +11,38 @@ import PageHeader from './PageHeader'
 import Footer from './Footer'
 import Rodo from './Rodo'
 import Line from './Line'
+import MobileMenu from './MobileMenu'
+import { breakpoints } from '../utils/mediaQueries'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const Wrapper = styled.div`
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 80px;
+  padding: 0 20px;
+
+  @media ${mediaQueries.tablet} {
+    padding: 0 40px;
+  }
+
+  @media ${mediaQueries.large} {
+    padding: 0 80px;
+  }
 `
 
 class Layout extends React.Component {
+  state = {
+    isMobileView: false,
+  }
+
+  componentDidMount() {
+    if (window.innerWidth < breakpoints.tablet) {
+      this.setState({ isMobileView: true })
+    }
+  }
+
   render() {
     const { children } = this.props
+    const { isMobileView } = this.state
 
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
@@ -29,16 +51,18 @@ class Layout extends React.Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <Wrapper>
-          <PageHeader />
-          <Line />
-          <Navigation />
-          <Container>{children}</Container>
-          <Line />
-          <Footer />
-          <Rodo />
-          <GlobalStyle />
-        </Wrapper>
+        <>
+          {isMobileView ? <MobileMenu /> : <Navigation />}
+          <Wrapper>
+            <PageHeader />
+            <Line />
+            <Container>{children}</Container>
+            <Line />
+            <Footer />
+            <Rodo />
+            <GlobalStyle />
+          </Wrapper>
+        </>
       </ThemeProvider>
     )
   }

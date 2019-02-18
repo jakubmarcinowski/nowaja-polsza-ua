@@ -4,17 +4,28 @@ import styled from 'styled-components'
 
 import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
+import { mediaQueries } from '../utils/mediaQueries'
+import Button from '../components/Button'
 
 const StyledList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
 
   li {
-    flex: 0 0 calc(100% / 3);
-    padding: 3.5rem;
+    flex: 0 0 100%;
+    padding-bottom: 9.5rem;
+
+    @media ${mediaQueries.tablet} {
+      flex: 0 0 calc(95% / 2);
+    }
+
+    @media ${mediaQueries.large} {
+      flex: 0 0 calc(89% / 3);
+    }
   }
 `
 
@@ -57,7 +68,9 @@ class ArticlesList extends React.Component {
         </StyledList>
 
         {limit && postsNumber < posts.length && (
-          <button onClick={this.increasePostsNumber}>LOAD MORE</button>
+          <Button onBtnClick={this.increasePostsNumber} size="large">
+            Load more
+          </Button>
         )}
       </>
     )

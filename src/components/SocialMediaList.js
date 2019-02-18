@@ -2,9 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 import ExternalLink from './ExternalLink'
-import facebook from '../../static/spongebob.png'
+import facebook from '../../static/social-fb.svg'
+import twitter from '../../static/social-twitter.svg'
+import youtube from '../../static/social-yt.svg'
+import telegram from '../../static/social-telegram.svg'
+import vk from '../../static/social-vk.svg'
 
-const List = styled.ul``
+const List = styled.ul`
+  display: flex;
+  align-items: center;
+`
 
 const Item = styled.li`
   display: inline;
@@ -23,19 +30,28 @@ const Logo = styled.img`
 const SocialMediaList = () => (
   <List>
     <Item>
-      {/* TODO change a to Link componenent when ready */}
-      <ExternalLink url="https://www.github.com/maisonm">
+      <ExternalLink url="https://www.boldare.com">
         <Logo src={facebook} alt="Facebook Nowaja Polsza" />
       </ExternalLink>
     </Item>
     <Item>
-      <ExternalLink url="https://www.github.com/maisonm" sameCard>
-        <Logo src={facebook} alt="Facebook Nowaja Polsza" />
+      <ExternalLink url="https://www.boldare.com">
+        <Logo src={twitter} alt="Twitter Nowaja Polsza" />
       </ExternalLink>
     </Item>
     <Item>
-      <ExternalLink url="https://www.github.com/maisonm">
-        <Logo src={facebook} alt="Facebook Nowaja Polsza" />
+      <ExternalLink url="https://www.boldare.com">
+        <Logo src={telegram} alt="Telegram Nowaja Polsza" />
+      </ExternalLink>
+    </Item>
+    <Item>
+      <ExternalLink url="https://www.boldare.com">
+        <Logo src={youtube} alt="YouTube Nowaja Polsza" />
+      </ExternalLink>
+    </Item>
+    <Item>
+      <ExternalLink url="https://www.boldare.com">
+        <Logo src={vk} alt="VK Nowaja Polsza" />
       </ExternalLink>
     </Item>
   </List>
