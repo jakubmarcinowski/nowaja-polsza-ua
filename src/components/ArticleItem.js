@@ -90,13 +90,15 @@ const ArticleItem = ({
         <Title>
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Title>
-        <Link to={`/blog/${slug}`}>
-          <Lead
-            dangerouslySetInnerHTML={{
-              __html: description.childMarkdownRemark.excerpt,
-            }}
-          />
-        </Link>
+        {description && (
+          <Link to={`/blog/${slug}`}>
+            <Lead
+              dangerouslySetInnerHTML={{
+                __html: description.childMarkdownRemark.excerpt,
+              }}
+            />
+          </Link>
+        )}
       </>
     )}
   </>
