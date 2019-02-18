@@ -19,7 +19,7 @@ const MenuIcon = styled.div`
     width: 20px;
     height: 3px;
     transition: transform 0.3s ease-out;
-    background-color: #000;
+    background-color: ${props => props.theme.colors.black};
   }
 
   &::before {

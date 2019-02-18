@@ -35,7 +35,7 @@ class Layout extends React.Component {
   }
 
   componentDidMount() {
-    if (window.innerWidth < breakpoints.phoneLandscape) {
+    if (window.innerWidth < breakpoints.tablet) {
       this.setState({ isMobileView: true })
     }
   }
