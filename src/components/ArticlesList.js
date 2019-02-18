@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
 import { mediaQueries } from '../utils/mediaQueries'
+import Button from '../components/Button'
 
 const StyledList = styled.ul`
   display: flex;
@@ -67,7 +68,9 @@ class ArticlesList extends React.Component {
         </StyledList>
 
         {limit && postsNumber < posts.length && (
-          <button onClick={this.increasePostsNumber}>LOAD MORE</button>
+          <Button onBtnClick={this.increasePostsNumber} size="large">
+            Load more
+          </Button>
         )}
       </>
     )
