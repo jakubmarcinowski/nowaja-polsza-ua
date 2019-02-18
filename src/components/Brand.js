@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import logo from '../../static/spongebob.png'
+import Header from './Header'
+import logo from '../../static/logo.svg'
 import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledBrand = styled.div`
@@ -22,8 +23,12 @@ const Brand = () => (
   <StyledBrand>
     <Logo src={logo} alt="Nowaja Polsza logo" />
     <div>
-      <h1>НОВАЯ ПОЛЬША</h1>
-      <h2>Наша миссия - Истина</h2>
+      <Header size="Big" color="Primary">
+        НОВАЯ ПОЛЬША
+      </Header>
+      <Header type={2} size="Medium" color="Primary">
+        Наша миссия - Истина
+      </Header>
     </div>
   </StyledBrand>
 )

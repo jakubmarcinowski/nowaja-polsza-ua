@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import FooterNavigation from './FooterNavigation'
+import Paragraph from './Paragraph'
 import ExternalLink from './ExternalLink'
 import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
@@ -10,7 +12,7 @@ const StyledFooter = styled.footer`
   padding: 30px 0;
 
   @media ${mediaQueries.desktop} {
-    padding: 70px 0;
+    padding: 24px 0 70px;
   }
 `
 
@@ -18,8 +20,10 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  margin-top: 20px;
 
   @media ${mediaQueries.tablet} {
+    margin-top: 45px;
     flex-direction: row;
   }
 `
@@ -44,15 +48,18 @@ const Publisher = styled.p`
 
 const Footer = () => (
   <StyledFooter>
+    <FooterNavigation />
     <Container>
       <Brand />
       <Info>
         <SocialMediaList />
         <Publisher>
-          издатель сайта{' '}
-          <ExternalLink url="https://www.github.com/maisonm">
-            <u>CPiDPR</u>
-          </ExternalLink>
+          <Paragraph>
+            издатель сайта{' '}
+            <ExternalLink url="http://cprdip.pl/">
+              <u>CPiDPR</u>
+            </ExternalLink>
+          </Paragraph>
         </Publisher>
       </Info>
     </Container>
