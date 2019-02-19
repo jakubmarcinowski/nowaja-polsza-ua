@@ -74,12 +74,18 @@ const PublisherText = styled(Paragraph)`
   }
 `
 
+const BrandContainer = styled.span`
+  margin-top: 3rem;
+`
+
 const Footer = () => (
   <StyledFooter>
     <FooterNavigation />
     <Container>
       <SocialMediaListMobile />
-      <Brand />
+      <BrandContainer>
+        <Brand />
+      </BrandContainer>
       <Info>
         <SocialMediaListDesktop />
         <Publisher>

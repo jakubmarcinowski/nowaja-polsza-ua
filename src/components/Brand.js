@@ -9,7 +9,6 @@ import { theme } from '../utils/theme'
 const StyledBrand = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 3rem;
 
   @media ${mediaQueries.tablet} {
     margin-top: 0;
