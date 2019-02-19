@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { articleType } from '../types/article'
 import ImgWrapper from './ImgWrapper'
+import Paragraph from './Paragraph'
 
 const ImgBox = styled.div`
   position: relative;
@@ -53,10 +54,6 @@ const Title = styled.h3`
   }
 `
 
-const Lead = styled.p`
-  font-size: 1.6rem;
-`
-
 const ArticleItem = ({
   article: {
     title,
@@ -74,7 +71,10 @@ const ArticleItem = ({
         <ImgWrapper img={heroImage} aspectRatio={1.76} />
       </Link>
       {categories && (
-        <CategoryLink to={`/category/${categories[0].slug}`}>
+        <CategoryLink
+          color={categories[0].color}
+          to={`/category/${categories[0].slug}`}
+        >
           {categories[0].title}
         </CategoryLink>
       )}
@@ -92,11 +92,13 @@ const ArticleItem = ({
         </Title>
         {description && (
           <Link to={`/blog/${slug}`}>
-            <Lead
-              dangerouslySetInnerHTML={{
-                __html: description.childMarkdownRemark.excerpt,
-              }}
-            />
+            <Paragraph size={'Big'}>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: description.childMarkdownRemark.excerpt,
+                }}
+              />
+            </Paragraph>
           </Link>
         )}
       </>
