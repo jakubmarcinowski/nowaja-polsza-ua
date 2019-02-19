@@ -8,9 +8,13 @@ import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledPageHeader = styled.header`
   background: ${theme.colors.primary};
-  background: url('./header-background.jpg'),
-    linear-gradient(to bottom, rgba(17, 29, 34, 0.85), rgba(17, 29, 34, 0.85)),
-    linear-gradient(to bottom, rgba(54, 54, 54, 0), rgba(17, 29, 34, 0.56));
+  background: linear-gradient(
+      to bottom,
+      rgba(17, 29, 34, 0.85),
+      rgba(17, 29, 34, 0.85)
+    ),
+    linear-gradient(to bottom, rgba(54, 54, 54, 0), rgba(17, 29, 34, 0.56)),
+    url('./header-background.jpg');
   background-position: 50% 50%;
   padding: 1rem 8rem 2rem;
   text-align: center;

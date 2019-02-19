@@ -58,9 +58,13 @@ const MenuHeader = styled.div`
   justify-content: space-between;
   padding: 1rem;
   background: ${props => props.theme.colors.primary};
-  background-image: url('./header-background.jpg'),
-    linear-gradient(to bottom, rgba(17, 29, 34, 0.85), rgba(17, 29, 34, 0.85)),
-    linear-gradient(to bottom, rgba(54, 54, 54, 0), rgba(17, 29, 34, 0.56));
+  background: linear-gradient(
+      to bottom,
+      rgba(17, 29, 34, 0.85),
+      rgba(17, 29, 34, 0.85)
+    ),
+    linear-gradient(to bottom, rgba(54, 54, 54, 0), rgba(17, 29, 34, 0.56)),
+    url('./header-background.jpg');
   background-position: 50% 50%;
 `
 const MenuContent = styled.div`
