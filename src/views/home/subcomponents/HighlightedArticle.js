@@ -6,6 +6,7 @@ import { articleType } from '../../../types/article'
 import { Link } from 'gatsby'
 import { mediaQueries } from '../../../utils/mediaQueries'
 import Header from '../../../components/Header'
+import Paragraph from '../../../components/Paragraph'
 
 const HighlightedArticleStyled = styled.div`
   position: relative;
@@ -34,11 +35,6 @@ const ArticleContent = styled.div`
     props.isActive ? 'translateY(-30rem)' : 'translateY(-10rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
   text-align: center;
-`
-
-const Lead = styled.p`
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.white};
 `
 
 class HighlightedArticle extends Component {
@@ -80,11 +76,9 @@ class HighlightedArticle extends Component {
           </Header>
           {isActive && description && (
             <Link to={`/blog/${slug}`}>
-              <Lead
-                dangerouslySetInnerHTML={{
-                  __html: description.childMarkdownRemark.excerpt,
-                }}
-              />
+              <Paragraph color="white">
+                {description.childMarkdownRemark.excerpt}
+              </Paragraph>
             </Link>
           )}
         </ArticleContent>
