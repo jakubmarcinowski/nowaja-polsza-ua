@@ -6,7 +6,7 @@ import { childrenType } from '../types/children'
 
 const StyledButton = styled.button`
   padding: ${props => (props.size === 'large' ? '1.4rem' : '1.2rem')};
-  transition: background-color ${props => props.theme.animations.duration} ease;
+  transition: background-color ${props => props.theme.animations.default};
   border: 1px solid ${props => props.theme.colors.black};
   background-color: ${props => props.theme.colors.white};
   cursor: pointer;

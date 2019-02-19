@@ -14,7 +14,7 @@ export const theme = {
     greyLight: '#e5e5e5',
   },
   animations: {
-    duration: '.3s',
+    default: '.3s ease',
   },
   gradients: {
     default: `

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import ImgWrapper from '../../../components/ImgWrapper'
@@ -27,25 +27,71 @@ const HighlightedArticleStyled = styled.div`
 const ArticleContent = styled.div`
   position: absolute;
   z-index: 1;
-  bottom: 3rem;
   left: 0;
   right: 0;
+  transform-origin: bottom;
+  transform: ${props =>
+    props.isActive ? 'translateY(-30rem)' : 'translateY(-10rem)'};
+  transition: transform ${({ theme }) => theme.animations.default};
   text-align: center;
 `
 
-const HighlightedArticle = ({ post: { title, slug, heroImage, author } }) => (
-  <HighlightedArticleStyled>
-    <ImgWrapper img={heroImage} />
-    <ArticleContent>
-      <Header size="Big" color="white" type={2} margin="0 0 1rem" weight="Bold">
-        <Link to={`/blog/${slug}`}>{title}</Link>
-      </Header>
-      <Header size="Medium" color="white" type={5} weight="Bold">
-        <Link to={`/author/${author.slug}`}>{author.name}</Link>
-      </Header>
-    </ArticleContent>
-  </HighlightedArticleStyled>
-)
+const Lead = styled.p`
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.colors.white};
+`
+
+class HighlightedArticle extends Component {
+  state = {
+    isActive: false,
+  }
+
+  handleMouseEnter = () => this.setState({ isActive: true })
+  handleMouseLeave = () => this.setState({ isActive: false })
+
+  render() {
+    const { title, slug, heroImage, author, description } = this.props.post
+    const { isActive } = this.state
+
+    return (
+      <HighlightedArticleStyled
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
+        <ImgWrapper img={heroImage} />
+        <ArticleContent isActive={isActive}>
+          <Header
+            size="Big"
+            color="white"
+            type={2}
+            margin="0 0 1.8rem"
+            weight="Bold"
+          >
+            <Link to={`/blog/${slug}`}>{title}</Link>
+          </Header>
+          <Header
+            size="Medium"
+            color="white"
+            type={5}
+            margin="0 0 1.8rem"
+            weight="Bold"
+          >
+            <Link to={`/author/${author.slug}`}>{author.name}</Link>
+          </Header>
+          {isActive && description && (
+            <Link to={`/blog/${slug}`}>
+              <Lead
+                dangerouslySetInnerHTML={{
+                  __html: description.childMarkdownRemark.excerpt,
+                }}
+              />
+            </Link>
+          )}
+        </ArticleContent>
+      </HighlightedArticleStyled>
+    )
+  }
+}
 
 HighlightedArticle.propTypes = {
   post: articleType,
