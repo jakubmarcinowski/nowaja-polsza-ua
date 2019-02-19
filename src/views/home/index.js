@@ -5,6 +5,8 @@ import HighlightedArticle from './subcomponents/HighlightedArticle'
 import ArticlesList from '../../components/ArticlesList'
 import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
+import TheNewestList from './subcomponents/TheNewestList'
+import Hero from './subcomponents/Hero'
 
 const HomePage = ({ posts, highlightedPost, isMobileView }) => {
   const promotedPostsNumber = isMobileView ? 0 : 2
@@ -14,8 +16,10 @@ const HomePage = ({ posts, highlightedPost, isMobileView }) => {
   return (
     <>
       <Wrapper>
-        <HighlightedArticle post={highlightedPost} />
-        <ArticlesList posts={promotedPosts} />
+        <Hero>
+          <HighlightedArticle post={highlightedPost} />
+          {!isMobileView && <TheNewestList posts={promotedPosts} />}
+        </Hero>
         <ArticlesList posts={commonPosts} limit={6} initialLimit={9} />
       </Wrapper>
     </>

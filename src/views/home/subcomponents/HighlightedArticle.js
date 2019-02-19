@@ -9,9 +9,11 @@ import Header from '../../../components/Header'
 
 const HighlightedArticleStyled = styled.div`
   position: relative;
+  margin: 0 0 2.5rem;
 
   @media ${mediaQueries.large} {
-    width: calc(100% * 7 / 12);
+    flex: 0 0 calc(100% * 7 / 12);
+    margin: 0 2.5rem 0 0;
   }
 
   &::after {
@@ -58,7 +60,7 @@ class HighlightedArticle extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <ImgWrapper img={heroImage} />
+        <ImgWrapper img={heroImage} aspectRatio={2.05} />
         <ArticleContent isActive={isActive}>
           <Header
             size="Big"
