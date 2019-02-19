@@ -15,7 +15,7 @@ const CategoryLink = styled(Link)`
   left: -3px;
   display: block;
   transition: opacity ${props => props.theme.animations.duration} ease;
-  background: ${props => props.theme.colors.rouge};
+  background: ${props => props.theme.colors[props.color]};
   color: ${props => props.theme.colors.white};
   padding: 0.5rem;
 
@@ -74,7 +74,10 @@ const ArticleItem = ({
         <ImgWrapper img={heroImage} aspectRatio={1.76} />
       </Link>
       {categories && (
-        <CategoryLink to={`/category/${categories[0].slug}`}>
+        <CategoryLink
+          color={categories[0].color}
+          to={`/category/${categories[0].slug}`}
+        >
           {categories[0].title}
         </CategoryLink>
       )}
