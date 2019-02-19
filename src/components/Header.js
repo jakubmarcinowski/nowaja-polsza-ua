@@ -5,12 +5,13 @@ import styled from 'styled-components'
 import { theme } from '../utils/theme'
 import { childrenType } from '../types/children'
 
-const Header = ({ children, type, color, size, weight, margin }) => (
+const Header = ({ className, children, type, color, size, weight, margin }) => (
   <HeaderStyled
     as={`h${type}`}
     color={color}
     size={size}
     weight={weight}
+    className={className}
     margin={margin}
   >
     {children}
@@ -34,6 +35,7 @@ Header.weights = {
 
 Header.colors = {
   Primary: 'Primary',
+  Dark: 'Dark',
 }
 
 Header.sizes = {
@@ -62,6 +64,7 @@ const fontSizeMap = {
 
 const colorMap = () => ({
   [Header.colors.Primary]: theme.colors.primary,
+  [Header.colors.Dark]: theme.colors.dark,
 })
 
 const HeaderStyled = styled.h1`
@@ -79,6 +82,7 @@ Header.propTypes = {
   weight: PropTypes.string,
   children: childrenType,
   margin: PropTypes.string,
+  className: PropTypes.any,
 }
 
 export default Header

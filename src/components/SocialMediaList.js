@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import ExternalLink from './ExternalLink'
@@ -27,8 +28,8 @@ const Logo = styled.img`
   max-width: 30px;
 `
 
-const SocialMediaList = () => (
-  <List>
+const SocialMediaList = ({ className }) => (
+  <List className={className}>
     <Item>
       <ExternalLink url="https://www.boldare.com">
         <Logo src={facebook} alt="Facebook Nowaja Polsza" />
@@ -56,5 +57,9 @@ const SocialMediaList = () => (
     </Item>
   </List>
 )
+
+SocialMediaList.propTypes = {
+  className: PropTypes.any,
+}
 
 export default SocialMediaList
