@@ -28,6 +28,10 @@ const StyledList = styled.ul`
     }
   }
 `
+const ButtonWrapper = styled.div`
+  text-align: center;
+  margin-bottom: 4rem;
+`
 
 class ArticlesList extends React.Component {
   state = {
@@ -68,9 +72,11 @@ class ArticlesList extends React.Component {
         </StyledList>
 
         {limit && postsNumber < posts.length && (
-          <Button onBtnClick={this.increasePostsNumber} size="large">
-            Load more
-          </Button>
+          <ButtonWrapper>
+            <Button onBtnClick={this.increasePostsNumber} size="large">
+              Load more
+            </Button>
+          </ButtonWrapper>
         )}
       </>
     )
