@@ -6,10 +6,10 @@ import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
 
-const RootIndex = () => {
-  const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-  const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-  const highlightedPost = get(this, 'props.data.contentfulHighlightedPost.post')
+const RootIndex = props => {
+  const siteTitle = get(props, 'data.site.siteMetadata.title')
+  const posts = get(props, 'data.allContentfulBlogPost.edges')
+  const highlightedPost = get(props, 'data.contentfulHighlightedPost.post')
 
   return (
     <Layout>
