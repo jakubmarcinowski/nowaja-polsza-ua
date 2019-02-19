@@ -18,7 +18,16 @@ class RootIndex extends React.Component {
     return (
       <Layout>
         <>
-          <Helmet title={siteTitle} />
+          <Helmet title={siteTitle}>
+            <link
+              href="https://fonts.googleapis.com/css?family=Open+Sans&amp;subset=cyrillic,cyrillic-ext"
+              rel="stylesheet"
+            />
+            <link
+              href="https://fonts.googleapis.com/css?family=Merriweather&amp;subset=cyrillic,cyrillic-ext"
+              rel="stylesheet"
+            />
+          </Helmet>
           <HomePage posts={posts} highlightedPost={highlightedPost} />
         </>
       </Layout>

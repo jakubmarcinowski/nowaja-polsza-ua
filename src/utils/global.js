@@ -60,7 +60,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
   body {
-    font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.6rem;
   }
   a {
