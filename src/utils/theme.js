@@ -17,6 +17,16 @@ export const theme = {
     },
   },
   animations: {
-    duration: '.3s',
+    default: '.3s ease',
+  },
+  gradients: {
+    default: `
+    linear-gradient(
+      to bottom,
+      rgba(17, 29, 34, 0),
+      rgba(17, 29, 34, 0.2) 40%,
+      rgba(17, 29, 34, 0.85)
+    )
+    `,
   },
 }
