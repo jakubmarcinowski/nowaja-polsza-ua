@@ -29,4 +29,8 @@ export const theme = {
     )
     `,
   },
+  fonts: {
+    primary: `'Open Sans', sans-serif`,
+    secondary: `'Merriweather', serif`,
+  },
 }

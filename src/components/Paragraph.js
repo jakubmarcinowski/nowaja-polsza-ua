@@ -55,7 +55,7 @@ const colorMap = () => ({
 
 const ParagraphWrap = styled.p`
   line-height: 1.2;
-  color: ${({ color }) => colorMap(theme)[color] || theme.text.colors[0]};
+  color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
   font-size: ${({ size }) => fontSizeMap[size]}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
   ${({ margin }) => margin && `margin: ${margin};`};
