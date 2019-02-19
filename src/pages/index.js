@@ -5,9 +5,21 @@ import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
+import { breakpoints } from '../utils/mediaQueries'
 
 class RootIndex extends React.Component {
+  state = {
+    isMobileView: false,
+  }
+
+  componentDidMount() {
+    if (window.innerWidth < breakpoints.tablet) {
+      this.setState({ isMobileView: true })
+    }
+  }
+
   render() {
+    const { isMobileView } = this.state
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const highlightedPost = get(
@@ -17,10 +29,14 @@ class RootIndex extends React.Component {
 
     return (
       <Layout>
-        <>
+        <div>
           <Helmet title={siteTitle} />
-          <HomePage posts={posts} highlightedPost={highlightedPost} />
-        </>
+          <HomePage
+            posts={posts}
+            highlightedPost={highlightedPost}
+            isMobileView={isMobileView}
+          />
+        </div>
       </Layout>
     )
   }

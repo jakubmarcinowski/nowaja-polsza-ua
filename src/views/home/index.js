@@ -6,20 +6,16 @@ import ArticlesList from '../../components/ArticlesList'
 import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
 
-const HomePage = ({ posts, highlightedPost }) => {
-  const promotedPostsNumber = 3
+const HomePage = ({ posts, highlightedPost, isMobileView }) => {
+  const promotedPostsNumber = isMobileView ? 0 : 2
   const promotedPosts = posts.slice(0, promotedPostsNumber)
   const commonPosts = posts.slice(promotedPostsNumber, posts.length)
 
   return (
     <>
-      <HighlightedArticle post={highlightedPost} />
-      Highlighted articles (only three newest):
       <Wrapper>
+        <HighlightedArticle post={highlightedPost} />
         <ArticlesList posts={promotedPosts} />
-      </Wrapper>
-      List of articles (rest of articles):
-      <Wrapper>
         <ArticlesList posts={commonPosts} limit={6} initialLimit={9} />
       </Wrapper>
     </>
@@ -29,6 +25,7 @@ const HomePage = ({ posts, highlightedPost }) => {
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(articleType),
   highlightedPost: articleType,
+  isMobileView: PropTypes.bool,
 }
 
 export default HomePage
