@@ -30,7 +30,7 @@ export const theme = {
     `,
   },
   fonts: {
-    primary: `'Open Sans', sans-serif`,
-    secondary: `'Merriweather', serif`,
+    primary: `'Merriweather', serif`,
+    secondary: `'Open Sans', sans-serif`,
   },
 }

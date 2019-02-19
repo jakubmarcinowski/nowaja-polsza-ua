@@ -35,6 +35,7 @@ Header.weights = {
 
 Header.colors = {
   Primary: 'Primary',
+  Dark: 'Dark',
 }
 
 Header.sizes = {
@@ -63,6 +64,7 @@ const fontSizeMap = {
 
 const colorMap = () => ({
   [Header.colors.Primary]: theme.colors.primary,
+  [Header.colors.Dark]: theme.colors.dark,
 })
 
 const HeaderStyled = styled.h1`

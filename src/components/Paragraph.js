@@ -5,8 +5,14 @@ import styled from 'styled-components'
 import { childrenType } from '../types/children'
 import { theme } from '../utils/theme'
 
-const Paragraph = ({ color, children, size, weight, margin }) => (
-  <ParagraphWrap margin={margin} color={color} size={size} weight={weight}>
+const Paragraph = ({ className, color, children, size, weight, margin }) => (
+  <ParagraphWrap
+    margin={margin}
+    color={color}
+    size={size}
+    weight={weight}
+    className={className}
+  >
     {children}
   </ParagraphWrap>
 )
@@ -27,6 +33,7 @@ Paragraph.weights = {
 
 Paragraph.colors = {
   Primary: 'Primary',
+  Dark: 'Dark',
 }
 
 Paragraph.defaultProps = {
@@ -51,6 +58,7 @@ const fontSizeMap = {
 
 const colorMap = () => ({
   [Paragraph.colors.Primary]: theme.colors.primary,
+  [Paragraph.colors.Dark]: theme.colors.dark,
 })
 
 const ParagraphWrap = styled.p`
@@ -67,6 +75,7 @@ Paragraph.propTypes = {
   weight: PropTypes.string,
   children: childrenType,
   margin: PropTypes.number,
+  className: PropTypes.any,
 }
 
 export default Paragraph

@@ -7,13 +7,14 @@ import ExternalLink from './ExternalLink'
 import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
 import { mediaQueries } from '../utils/mediaQueries'
+import { theme } from '../utils/theme'
 
 const StyledFooter = styled.footer`
-  padding: 30px 0;
+  padding: 3rem 0 4rem;
   overflow: hidden;
 
   @media ${mediaQueries.desktop} {
-    padding: 24px 0 70px;
+    padding: 2.4rem 0 7rem;
   }
 `
 
@@ -22,7 +23,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 3rem;
 
   @media ${mediaQueries.tablet} {
     margin-top: 45px;
@@ -33,7 +34,7 @@ const Container = styled.div`
 const Info = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 3rem;
 
   @media ${mediaQueries.tablet} {
     align-items: flex-end;
@@ -42,11 +43,12 @@ const Info = styled.div`
 `
 
 const Publisher = styled.div`
-  margin: 10px auto 0;
+  margin: 0 auto;
 
   @media ${mediaQueries.tablet} {
     align-items: flex-end;
     margin-right: 0;
+    margin: 1rem 0 0;
   }
 `
 
@@ -62,6 +64,16 @@ const SocialMediaListDesktop = styled(SocialMediaList)`
   }
 `
 
+const PublisherText = styled(Paragraph)`
+  letter-spacing: 0.4px;
+  font-size: 1.6rem;
+  font-family: ${theme.fonts.secondary};
+
+  @media ${mediaQueries.tablet} {
+    font-size: 1.8rem;
+  }
+`
+
 const Footer = () => (
   <StyledFooter>
     <FooterNavigation />
@@ -71,12 +83,12 @@ const Footer = () => (
       <Info>
         <SocialMediaListDesktop />
         <Publisher>
-          <Paragraph>
+          <PublisherText color="Dark">
             издатель сайта{' '}
             <ExternalLink url="http://cprdip.pl/">
               <u>CPiDPR</u>
             </ExternalLink>
-          </Paragraph>
+          </PublisherText>
         </Publisher>
       </Info>
     </Container>
