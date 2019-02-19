@@ -39,10 +39,7 @@ const Info = styled.div`
   }
 `
 
-{
-  /* TODO change p to a component */
-}
-const Publisher = styled.p`
+const Publisher = styled.div`
   margin-top: 10px;
 `
 
