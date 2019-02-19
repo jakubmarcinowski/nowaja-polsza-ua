@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { theme } from '../utils/theme'
 import { childrenType } from '../types/children'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const Header = ({ children, type, color, size, weight, margin }) => (
   <HeaderStyled
@@ -68,8 +69,12 @@ const HeaderStyled = styled.h1`
   margin: ${({ margin }) => margin};
   line-height: 1.2;
   color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
-  font-size: ${({ size }) => fontSizeMap[size]}rem;
+  font-size: ${({ size }) => fontSizeMap[size] * 0.7}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
+
+  @media ${mediaQueries.tablet} {
+    font-size: ${({ size }) => fontSizeMap[size]}rem;
+  }
 `
 
 Header.propTypes = {

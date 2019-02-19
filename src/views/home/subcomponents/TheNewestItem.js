@@ -13,25 +13,24 @@ const Wrapper = styled.div`
 `
 
 const ImgBox = styled.div`
+  position: relative;
   flex: 0 0 calc(100% * 1 / 3);
   margin-right: 2.5rem;
-  position: relative;
 `
 const CategoryLink = styled(Link)`
   position: absolute;
   top: 7px;
   left: -3px;
   display: block;
+  padding: 0.5rem;
   transition: opacity ${props => props.theme.animations.default};
   background: ${props => props.theme.colors.rouge};
   color: ${props => props.theme.colors.white};
-  padding: 0.5rem;
 
   &:hover {
     opacity: 0.9;
   }
 `
-const ContentBox = styled.div``
 const Date = styled.div`
   margin: 0 2.4rem 0.5rem 0;
   color: ${props => props.theme.colors.darkGreyBlue};
@@ -85,7 +84,7 @@ const TheNewestItem = ({
         </CategoryLink>
       )}
     </ImgBox>
-    <ContentBox>
+    <div>
       {slug && (
         <Header
           weight="Bold"
@@ -116,7 +115,7 @@ const TheNewestItem = ({
           </Link>
         </ParagraphWrapper>
       )}
-    </ContentBox>
+    </div>
   </Wrapper>
 )
 
