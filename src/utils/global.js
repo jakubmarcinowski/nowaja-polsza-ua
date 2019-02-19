@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { theme } from './theme'
 
 export const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -10,8 +11,8 @@ export const GlobalStyle = createGlobalStyle`
   dl, dt, dd, ol, ul, li,
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed, 
-  figure, figcaption, footer, header, hgroup, 
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
     margin: 0;
@@ -22,7 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
   }
   /* HTML5 display-role reset for older browsers */
-  article, aside, details, figcaption, figure, 
+  article, aside, details, figcaption, figure,
   footer, header, hgroup, menu, nav, section {
     display: block;
   }
@@ -45,10 +46,18 @@ export const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
   @font-face {
-    font-family: "Avenir";
+    font-family: "Open Sans";
     font-weight: 400;
     font-style: normal;
-    src: url("/avenir-400.woff2") format("woff2");
+    src: url("/open-sans-v15-cyrillic_cyrillic-ext_latin-regular.woff2") format("woff2");
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Merriweather";
+    font-weight: 400;
+    font-style: normal;
+    src: url("/merriweather-v19-cyrillic_cyrillic-ext_latin-regular.woff2") format("woff2");
     font-display: swap;
   }
 
@@ -60,7 +69,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
   body {
-    font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
+    font-family: ${theme.fonts.primary};
     font-size: 1.6rem;
   }
   a {

@@ -6,24 +6,19 @@ import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
 
-class RootIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const highlightedPost = get(
-      this,
-      'props.data.contentfulHighlightedPost.post'
-    )
+const RootIndex = props => {
+  const siteTitle = get(props, 'data.site.siteMetadata.title')
+  const posts = get(props, 'data.allContentfulBlogPost.edges')
+  const highlightedPost = get(props, 'data.contentfulHighlightedPost.post')
 
-    return (
-      <Layout>
-        <>
-          <Helmet title={siteTitle} />
-          <HomePage posts={posts} highlightedPost={highlightedPost} />
-        </>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <>
+        <Helmet title={siteTitle} />
+        <HomePage posts={posts} highlightedPost={highlightedPost} />
+      </>
+    </Layout>
+  )
 }
 
 export default RootIndex
@@ -48,6 +43,7 @@ export const pageQuery = graphql`
           categories {
             title
             slug
+            color
           }
           heroImage {
             fluid(maxWidth: 768, resizingBehavior: SCALE) {
@@ -75,6 +71,7 @@ export const pageQuery = graphql`
         categories {
           title
           slug
+          color
         }
         description {
           childMarkdownRemark {

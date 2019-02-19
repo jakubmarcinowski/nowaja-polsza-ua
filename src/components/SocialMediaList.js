@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import ExternalLink from './ExternalLink'
@@ -56,5 +57,9 @@ const SocialMediaList = ({ className }) => (
     </Item>
   </List>
 )
+
+SocialMediaList.propTypes = {
+  className: PropTypes.any,
+}
 
 export default SocialMediaList

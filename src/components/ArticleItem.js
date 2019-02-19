@@ -15,7 +15,7 @@ const CategoryLink = styled(Link)`
   top: 7px;
   left: -3px;
   display: block;
-  transition: opacity ${props => props.theme.animations.duration} ease;
+  transition: opacity ${props => props.theme.animations.default};
   background: ${props => props.theme.colors.rouge};
   color: ${props => props.theme.colors.white};
   padding: 0.5rem;
@@ -35,7 +35,7 @@ const InfoBox = styled.div`
 `
 const AuthorLink = styled(Link)`
   display: block;
-  transition: opacity ${props => props.theme.animations.duration} ease;
+  transition: opacity ${props => props.theme.animations.default};
   margin-bottom: 0.5rem;
   color: ${props => props.theme.colors.plum};
   font-weight: bold;
@@ -45,7 +45,7 @@ const AuthorLink = styled(Link)`
   }
 `
 const Title = styled.h3`
-  transition: opacity ${props => props.theme.animations.duration} ease;
+  transition: opacity ${props => props.theme.animations.default};
   margin: 1rem 0 2rem;
   font-size: 2.6rem;
 
@@ -71,7 +71,10 @@ const ArticleItem = ({
         <ImgWrapper img={heroImage} aspectRatio={1.76} />
       </Link>
       {categories && (
-        <CategoryLink to={`/category/${categories[0].slug}`}>
+        <CategoryLink
+          color={categories[0].color}
+          to={`/category/${categories[0].slug}`}
+        >
           {categories[0].title}
         </CategoryLink>
       )}

@@ -3,14 +3,16 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { theme } from '../utils/theme'
+import { childrenType } from '../types/children'
 
-const Header = ({ className, children, type, color, size, weight }) => (
+const Header = ({ className, children, type, color, size, weight, margin }) => (
   <HeaderStyled
     as={`h${type}`}
     color={color}
     size={size}
     weight={weight}
     className={className}
+    margin={margin}
   >
     {children}
   </HeaderStyled>
@@ -64,8 +66,9 @@ const colorMap = () => ({
 })
 
 const HeaderStyled = styled.h1`
+  margin: ${({ margin }) => margin};
   line-height: 1.2;
-  color: ${({ color }) => colorMap(theme)[color] || theme.text.colors[0]};
+  color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
   font-size: ${({ size }) => fontSizeMap[size]}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
 `
@@ -75,7 +78,9 @@ Header.propTypes = {
   color: PropTypes.string,
   size: PropTypes.string,
   weight: PropTypes.string,
-  children: PropTypes.string,
+  children: childrenType,
+  margin: PropTypes.string,
+  className: PropTypes.any,
 }
 
 export default Header
