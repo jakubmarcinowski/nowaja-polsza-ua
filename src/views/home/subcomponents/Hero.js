@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { childrenType } from '../../../types/children'
 import { mediaQueries } from '../../../utils/mediaQueries'
 
 const StyledHero = styled.div`
@@ -12,5 +13,9 @@ const StyledHero = styled.div`
 `
 
 const Hero = ({ children }) => <StyledHero>{children}</StyledHero>
+
+Hero.propTypes = {
+  children: childrenType.isRequired,
+}
 
 export default Hero
