@@ -48,6 +48,7 @@ export const pageQuery = graphql`
           categories {
             title
             slug
+            color
           }
           heroImage {
             fluid(maxWidth: 768, resizingBehavior: SCALE) {
@@ -75,6 +76,7 @@ export const pageQuery = graphql`
         categories {
           title
           slug
+          color
         }
         description {
           childMarkdownRemark {
