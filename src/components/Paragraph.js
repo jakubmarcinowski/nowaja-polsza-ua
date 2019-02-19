@@ -64,7 +64,7 @@ Paragraph.propTypes = {
   color: PropTypes.string,
   size: PropTypes.string,
   weight: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.any,
   margin: PropTypes.number,
 }
 
