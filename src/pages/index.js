@@ -6,33 +6,28 @@ import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
 
-class RootIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const highlightedPost = get(
-      this,
-      'props.data.contentfulHighlightedPost.post'
-    )
+const RootIndex = () => {
+  const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+  const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+  const highlightedPost = get(this, 'props.data.contentfulHighlightedPost.post')
 
-    return (
-      <Layout>
-        <>
-          <Helmet title={siteTitle}>
-            <link
-              href="https://fonts.googleapis.com/css?family=Open+Sans&amp;subset=cyrillic,cyrillic-ext"
-              rel="stylesheet"
-            />
-            <link
-              href="https://fonts.googleapis.com/css?family=Merriweather&amp;subset=cyrillic,cyrillic-ext"
-              rel="stylesheet"
-            />
-          </Helmet>
-          <HomePage posts={posts} highlightedPost={highlightedPost} />
-        </>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <>
+        <Helmet title={siteTitle}>
+          <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans&amp;subset=cyrillic,cyrillic-ext"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Merriweather&amp;subset=cyrillic,cyrillic-ext"
+            rel="stylesheet"
+          />
+        </Helmet>
+        <HomePage posts={posts} highlightedPost={highlightedPost} />
+      </>
+    </Layout>
+  )
 }
 
 export default RootIndex
