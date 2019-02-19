@@ -16,7 +16,7 @@ const CategoryLink = styled(Link)`
   left: -3px;
   display: block;
   transition: opacity ${props => props.theme.animations.default};
-  background: ${props => props.theme.colors.rouge};
+  background: ${({ theme, color }) => theme.colors.highlighted[color]};
   color: ${props => props.theme.colors.white};
   padding: 0.5rem;
 
