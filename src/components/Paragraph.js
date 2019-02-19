@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { childrenType } from '../types/children'
 import { theme } from '../utils/theme'
 
 const Paragraph = ({ color, children, size, weight, margin }) => (
@@ -64,7 +65,7 @@ Paragraph.propTypes = {
   color: PropTypes.string,
   size: PropTypes.string,
   weight: PropTypes.string,
-  children: PropTypes.any,
+  children: childrenType,
   margin: PropTypes.number,
 }
 
