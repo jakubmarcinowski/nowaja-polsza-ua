@@ -10,6 +10,7 @@ import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledFooter = styled.footer`
   padding: 30px 0;
+  overflow: hidden;
 
   @media ${mediaQueries.desktop} {
     padding: 24px 0 70px;
@@ -18,6 +19,7 @@ const StyledFooter = styled.footer`
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-direction: column;
   margin-top: 20px;
@@ -40,16 +42,34 @@ const Info = styled.div`
 `
 
 const Publisher = styled.div`
-  margin-top: 10px;
+  margin: 10px auto 0;
+
+  @media ${mediaQueries.tablet} {
+    align-items: flex-end;
+    margin-right: 0;
+  }
+`
+
+const SocialMediaListMobile = styled(SocialMediaList)`
+  @media ${mediaQueries.tablet} {
+    display: none;
+  }
+`
+
+const SocialMediaListDesktop = styled(SocialMediaList)`
+  @media ${mediaQueries.phoneOnly} {
+    display: none;
+  }
 `
 
 const Footer = () => (
   <StyledFooter>
     <FooterNavigation />
     <Container>
+      <SocialMediaListMobile />
       <Brand />
       <Info>
-        <SocialMediaList />
+        <SocialMediaListDesktop />
         <Publisher>
           <Paragraph>
             издатель сайта{' '}

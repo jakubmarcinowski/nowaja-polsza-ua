@@ -5,15 +5,13 @@ import styled from 'styled-components'
 const StyledNavigation = styled.ul`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   list-style: none;
+  margin-right: -3rem;
 `
 
 const Item = styled.li`
   margin-right: 3rem;
-
-  &:last-child {
-    margin-right: 0;
-  }
 `
 
 const FooterNavigation = () => (

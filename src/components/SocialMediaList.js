@@ -27,8 +27,8 @@ const Logo = styled.img`
   max-width: 30px;
 `
 
-const SocialMediaList = () => (
-  <List>
+const SocialMediaList = ({ className }) => (
+  <List className={className}>
     <Item>
       <ExternalLink url="https://www.boldare.com">
         <Logo src={facebook} alt="Facebook Nowaja Polsza" />

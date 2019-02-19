@@ -4,8 +4,14 @@ import styled from 'styled-components'
 
 import { theme } from '../utils/theme'
 
-const Header = ({ children, type, color, size, weight }) => (
-  <HeaderStyled as={`h${type}`} color={color} size={size} weight={weight}>
+const Header = ({ className, children, type, color, size, weight }) => (
+  <HeaderStyled
+    as={`h${type}`}
+    color={color}
+    size={size}
+    weight={weight}
+    className={className}
+  >
     {children}
   </HeaderStyled>
 )

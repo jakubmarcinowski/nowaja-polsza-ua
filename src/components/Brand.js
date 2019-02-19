@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Header from './Header'
 import logo from '../../static/logo.svg'
 import { mediaQueries } from '../utils/mediaQueries'
+import Header from './Header'
 
 const StyledBrand = styled.div`
   display: flex;
@@ -19,16 +19,31 @@ const Logo = styled.img`
   margin-right: 15px;
 `
 
+const Subtitle = styled(Header)`
+  @media ${mediaQueries.phoneOnly} {
+    display: none;
+  }
+`
+
+const BreakLine = styled.br`
+  display: none;
+
+  @media ${mediaQueries.phoneOnly} {
+    display: block;
+  }
+`
+
 const Brand = () => (
   <StyledBrand>
     <Logo src={logo} alt="Nowaja Polsza logo" />
     <div>
       <Header size="Big" color="Primary">
-        НОВАЯ ПОЛЬША
+        НОВАЯ <BreakLine />
+        ПОЛЬША
       </Header>
-      <Header type={2} size="Medium" color="Primary">
+      <Subtitle type={2} size="Medium" color="Primary">
         Наша миссия - Истина
-      </Header>
+      </Subtitle>
     </div>
   </StyledBrand>
 )
