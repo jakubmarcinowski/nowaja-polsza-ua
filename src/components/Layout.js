@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import { GlobalStyle } from '../utils/global'
 import { theme } from '../utils/theme'
 import Container from './Container'
-import Navigation from './Navigation'
 import PageHeader from './PageHeader'
 import Footer from './Footer'
 import Rodo from './Rodo'
@@ -49,12 +48,14 @@ class Layout extends React.Component {
       rootPath = __PATH_PREFIX__ + `/`
     }
 
+    //@todo add social media for desktop and categories
+
     return (
       <ThemeProvider theme={theme}>
         <>
-          {isMobileView ? <MobileMenu /> : <Navigation />}
+          <MobileMenu />
+          <PageHeader />
           <Wrapper>
-            <PageHeader />
             <Line />
             <Container>{children}</Container>
             <Line />
