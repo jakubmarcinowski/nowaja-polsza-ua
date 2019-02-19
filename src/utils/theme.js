@@ -19,4 +19,8 @@ export const theme = {
   animations: {
     duration: '.3s',
   },
+  fonts: {
+    primary: `'Open Sans', sans-serif`,
+    secondary: `'Merriweather', serif`,
+  },
 }
