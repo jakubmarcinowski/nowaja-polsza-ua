@@ -79,7 +79,6 @@ const MenuContent = styled.div`
   color: ${props => props.theme.colors.white};
   text-align: center;
   z-index: -10;
-
   ${props => props.isMenuOpen && 'opacity: 1; z-index: 1; transform: scale(1);'}
 `
 

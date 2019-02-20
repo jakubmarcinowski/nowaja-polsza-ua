@@ -35,8 +35,8 @@ const Logo = styled.img`
   max-width: 30px;
 `
 
-const SocialMediaList = ({ className, header }) => (
-  <List className={className} header={header}>
+const SocialMediaList = ({ header }) => (
+  <List header={header}>
     <Item>
       <ExternalLink url="https://www.boldare.com">
         <Logo
@@ -78,7 +78,6 @@ const SocialMediaList = ({ className, header }) => (
 )
 
 SocialMediaList.propTypes = {
-  className: PropTypes.any,
   header: PropTypes.bool,
 }
 
