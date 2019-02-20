@@ -3,13 +3,19 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
+import { mediaQueries } from '../utils/mediaQueries'
+
 const InfoBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   margin: 0 0 1rem;
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-size: ${({ size }) => (size === 'Small' ? '1.4rem' : '1.6rem')};
+  font-size: 1.4rem;
+
+  @media ${mediaQueries.tablet} {
+    font-size: ${({ size }) => (size === 'Small' ? '1.4rem' : '1.6rem')};
+  }
 `
 const Date = styled.div`
   margin: 0 2.4rem 0.5rem 0;

@@ -34,12 +34,16 @@ const ArticleContent = styled.div`
   right: 0;
   transform-origin: bottom;
   transform: ${props =>
-    props.isActive ? 'translateY(-30rem)' : 'translateY(-10rem)'};
+    props.isActive ? 'translateY(-30rem)' : 'translateY(-13rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
   width: 70%;
   margin: auto;
   min-width: 280px;
   text-align: center;
+`
+const Lead = styled.div`
+  opacity: ${props => (props.isActive ? 1 : 0)};
+  transition: opacity ${({ theme }) => theme.animations.default};
 `
 
 class HighlightedArticle extends Component {
@@ -67,7 +71,7 @@ class HighlightedArticle extends Component {
             type={2}
             margin="0 0 1.8rem"
             weight="Bold"
-            lineHeight="Large"
+            lineHeight="Big"
           >
             <Link to={`/blog/${slug}`}>{title}</Link>
           </Header>
@@ -80,10 +84,12 @@ class HighlightedArticle extends Component {
           >
             <Link to={`/author/${author.slug}`}>{author.name}</Link>
           </Header>
-          {isActive && lead && (
-            <Link to={`/blog/${slug}`}>
-              <Paragraph color="white">{lead}</Paragraph>
-            </Link>
+          {lead && (
+            <Lead isActive={isActive}>
+              <Link to={`/blog/${slug}`}>
+                <Paragraph color="white">{lead}</Paragraph>
+              </Link>
+            </Lead>
           )}
         </ArticleContent>
       </HighlightedArticleStyled>
