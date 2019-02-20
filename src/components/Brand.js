@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import Header from './Header'
 import logo from '../../static/logo.svg'
@@ -18,20 +19,33 @@ const StyledBrand = styled.div`
 
 const LogoWrapper = styled.div`
   position: relative;
+  z-index: 0;
 
   @media ${mediaQueries.phoneOnly} {
     &:after {
       content: '';
       position: absolute;
+      z-index: -1;
       top: -8px;
       left: -8px;
       right: -8px;
       bottom: -8px;
       border: 1px solid black;
       border-radius: 50%;
+      background-color: ${({ backgroundColor }) =>
+        colorMap(theme)[backgroundColor] || theme.colors[backgroundColor]};
+      opacity: ${props => props.backgroundOpacity};
     }
   }
 `
+
+LogoWrapper.colors = {
+  White: 'White',
+}
+
+const colorMap = () => ({
+  [LogoWrapper.colors.White]: theme.colors.white,
+})
 
 const Logo = styled.img`
   display: block;
@@ -76,13 +90,16 @@ const BreakLine = styled.br`
   }
 `
 
-const Brand = () => (
+const Brand = ({ isDarkVersion }) => (
   <StyledBrand>
-    <LogoWrapper>
+    <LogoWrapper
+      backgroundColor="White"
+      backgroundOpacity={isDarkVersion ? '1' : '0.9'}
+    >
       <Logo src={logo} alt="Nowaja Polsza logo" />
     </LogoWrapper>
     <TitleWrapper>
-      <Title color="Dark" weight="Bold">
+      <Title color={isDarkVersion ? 'Dark' : 'White'} weight="Bold">
         НОВАЯ <BreakLine />
         ПОЛЬША
       </Title>
@@ -92,4 +109,12 @@ const Brand = () => (
     </TitleWrapper>
   </StyledBrand>
 )
+Brand.defaultProps = {
+  isDarkVersion: true,
+}
+
+Brand.propTypes = {
+  isDarkVersion: PropTypes.bool,
+}
+
 export default Brand

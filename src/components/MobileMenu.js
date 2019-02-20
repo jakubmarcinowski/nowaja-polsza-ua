@@ -97,7 +97,7 @@ class MobileMenu extends Component {
     return (
       <StyledMenu>
         <MenuHeader>
-          <Brand />
+          <Brand isDarkVersion={false} />
           <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
             <div className="middle" />
           </MenuIcon>

@@ -14,7 +14,7 @@ import MobileMenu from './MobileMenu'
 import { breakpoints } from '../utils/mediaQueries'
 import { mediaQueries } from '../utils/mediaQueries'
 
-const Wrapper = styled.div`
+export const LayoutWrapper = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
@@ -53,16 +53,15 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          <MobileMenu />
-          <PageHeader />
-          <Wrapper>
+          {isMobileView ? <MobileMenu /> : <PageHeader />}
+          <LayoutWrapper>
             <Line />
             <Container>{children}</Container>
             <Line />
             <Footer />
             <Rodo />
             <GlobalStyle />
-          </Wrapper>
+          </LayoutWrapper>
         </>
       </ThemeProvider>
     )

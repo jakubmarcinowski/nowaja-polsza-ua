@@ -48,5 +48,3 @@ If the build command returns a non-zero exit code it's recommended to run `conte
 # Gatsby contentful starter
 
 This product is based on [gatsby-contentful-starter](gatsby-contentful-starter-Readme.md)
-
-
