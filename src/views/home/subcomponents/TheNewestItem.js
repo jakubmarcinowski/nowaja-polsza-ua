@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { articleType } from 'src/types/article'
+import { articleType } from '../../../types/article'
 import ImgWrapper from '../../../components/ImgWrapper'
 import Paragraph from '../../../components/Paragraph'
 import Header from '../../../components/Header'
