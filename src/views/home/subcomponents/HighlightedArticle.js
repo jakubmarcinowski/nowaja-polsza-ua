@@ -78,9 +78,7 @@ class HighlightedArticle extends Component {
           </Header>
           {isActive && lead && (
             <Link to={`/blog/${slug}`}>
-              <Paragraph color="white">
-                {lead.childMarkdownRemark.excerpt}
-              </Paragraph>
+              <Paragraph color="white">{lead}</Paragraph>
             </Link>
           )}
         </ArticleContent>
