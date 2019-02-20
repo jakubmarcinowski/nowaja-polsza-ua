@@ -54,7 +54,6 @@ class Layout extends React.Component {
         <>
           {isMobileView ? <MobileMenu /> : <PageHeader />}
           <LayoutWrapper>
-            <Line />
             <Container>{children}</Container>
             <Footer />
             {/* Todo later when will be RWD for Rodo */}
