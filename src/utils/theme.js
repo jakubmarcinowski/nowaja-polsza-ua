@@ -6,6 +6,7 @@ export const theme = {
     primary: '#253e48',
     secondary: '#820204',
     white: '#fff',
+    menuBackground: 'rgba(17, 29, 34, 0.98)',
 
     highlighted: {
       darkGreyBlue: '#263e48',

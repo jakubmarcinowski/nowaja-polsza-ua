@@ -17,6 +17,10 @@ const StyledBrand = styled.div`
     margin-top: 0;
     justify-content: center;
   }
+
+  @media ${mediaQueries.phoneOnly} {
+    margin-left: ${props => !props.isFullVersion && '0.8rem'};
+  }
 `
 
 const LogoContainer = styled.div`

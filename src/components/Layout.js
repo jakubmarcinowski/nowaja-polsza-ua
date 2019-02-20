@@ -55,7 +55,6 @@ class Layout extends React.Component {
         <>
           {isMobileView ? <MobileMenu /> : <PageHeader />}
           <LayoutWrapper>
-            <Line />
             <Container>{children}</Container>
             <Line />
             <Footer />

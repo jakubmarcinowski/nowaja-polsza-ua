@@ -61,6 +61,7 @@ const SocialMediaListMobile = styled(SocialMediaList)`
 const SocialMediaListDesktop = styled(SocialMediaList)`
   @media ${mediaQueries.phoneOnly} {
     display: none;
+    background: red;
   }
 `
 
@@ -76,6 +77,10 @@ const PublisherText = styled(Paragraph)`
 
 const BrandContainer = styled.span`
   margin-top: 3rem;
+
+  @media ${mediaQueries.tablet} {
+    margin-top: 0;
+  }
 `
 
 const Footer = () => (

@@ -5,6 +5,7 @@ import Brand from './Brand'
 import { theme } from '../utils/theme'
 import Navigation from './Navigation'
 import Categories from './Categories'
+import SocialMediaList from './SocialMediaList'
 import { mediaQueries } from '../utils/mediaQueries'
 import { LayoutWrapper } from './Layout'
 
@@ -26,21 +27,17 @@ const Container = styled.div`
   justify-content: space-between;
 `
 
-// @todo socials
-
-const PageHeader = () => {
-  return (
-    <StyledPageHeader>
-      <LayoutWrapper>
-        <Container>
-          <div>socials</div>
-          <Navigation />
-        </Container>
-        <Brand isFullVersion isDarkVersion={false} />
-        <Categories />
-      </LayoutWrapper>
-    </StyledPageHeader>
-  )
-}
+const PageHeader = () => (
+  <StyledPageHeader>
+    <LayoutWrapper>
+      <Container>
+        <SocialMediaList header />
+        <Navigation />
+      </Container>
+      <Brand isFullVersion isDarkVersion={false} />
+      <Categories />
+    </LayoutWrapper>
+  </StyledPageHeader>
+)
 
 export default PageHeader
