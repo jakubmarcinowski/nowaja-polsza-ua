@@ -13,7 +13,7 @@ const HighlightedArticleStyled = styled.div`
   margin: 0 0 2.5rem;
 
   @media ${mediaQueries.desktop} {
-    flex: 0 0 calc(100% * 7 / 12);
+    flex: 0 0 57%;
     margin: 0 2.5rem 0 0;
   }
 
@@ -36,6 +36,9 @@ const ArticleContent = styled.div`
   transform: ${props =>
     props.isActive ? 'translateY(-30rem)' : 'translateY(-10rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
+  width: 70%;
+  margin: auto;
+  min-width: 280px;
   text-align: center;
 `
 
@@ -56,7 +59,7 @@ class HighlightedArticle extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <ImgWrapper img={heroImage} aspectRatio={2.05} />
+        <ImgWrapper img={heroImage} aspectRatio={1.44} />
         <ArticleContent isActive={isActive}>
           <Header
             size="Big"
@@ -64,6 +67,7 @@ class HighlightedArticle extends Component {
             type={2}
             margin="0 0 1.8rem"
             weight="Bold"
+            lineHeight="Large"
           >
             <Link to={`/blog/${slug}`}>{title}</Link>
           </Header>

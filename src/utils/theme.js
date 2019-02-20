@@ -18,7 +18,8 @@ export const theme = {
     },
   },
   animations: {
-    default: '.3s ease',
+    default: '.3s ease-in',
+    slow: '.5s ease-in',
   },
   gradients: {
     default: `

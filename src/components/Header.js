@@ -6,7 +6,16 @@ import { theme } from '../utils/theme'
 import { childrenType } from '../types/children'
 import { mediaQueries } from '../utils/mediaQueries'
 
-const Header = ({ className, children, type, color, size, weight, margin }) => (
+const Header = ({
+  className,
+  children,
+  type,
+  color,
+  size,
+  weight,
+  margin,
+  lineHeight,
+}) => (
   <HeaderStyled
     as={`h${type}`}
     color={color}
@@ -14,6 +23,7 @@ const Header = ({ className, children, type, color, size, weight, margin }) => (
     weight={weight}
     className={className}
     margin={margin}
+    lineHeight={lineHeight}
   >
     {children}
   </HeaderStyled>
@@ -42,10 +52,17 @@ Header.colors = {
 
 Header.sizes = {
   Big: 'Big',
+  MediumBig: 'MediumBig',
   Medium: 'Medium',
   MediumSmall: 'MediumSmall',
   Small: 'Small',
   ExtraSmall: 'ExtraSmall',
+}
+
+Header.lineHeight = {
+  Big: 'Big',
+  Medium: 'Medium',
+  Small: 'Small',
 }
 
 const fontWeightMap = {
@@ -58,10 +75,17 @@ const fontWeightMap = {
 
 const fontSizeMap = {
   [Header.sizes.Big]: 2.5,
+  [Header.sizes.MediumBig]: 2,
   [Header.sizes.Medium]: 1.6,
   [Header.sizes.MediumSmall]: 1.4,
   [Header.sizes.Small]: 1.2,
   [Header.sizes.ExtraSmall]: 1.0,
+}
+
+const lineHeightMap = {
+  [Header.sizes.Big]: 1.6,
+  [Header.sizes.Medium]: 1.4,
+  [Header.sizes.Small]: 1.2,
 }
 
 const colorMap = () => ({
@@ -72,7 +96,7 @@ const colorMap = () => ({
 
 const HeaderStyled = styled.h1`
   margin: ${({ margin }) => margin};
-  line-height: 1.2;
+  line-height: ${({ lineHeight }) => lineHeightMap[lineHeight]};
   color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
   font-size: ${({ size }) => fontSizeMap[size] * 0.7}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
@@ -89,7 +113,8 @@ Header.propTypes = {
   weight: PropTypes.string,
   children: childrenType,
   margin: PropTypes.string,
-  className: PropTypes.any,
+  className: PropTypes.string,
+  lineHeight: PropTypes.string,
 }
 
 export default Header
