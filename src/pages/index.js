@@ -71,12 +71,7 @@ export const pageQuery = graphql`
               ...GatsbyContentfulFluid
             }
           }
-          description {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 200)
-            }
-          }
+          lead
         }
       }
     }
@@ -94,12 +89,7 @@ export const pageQuery = graphql`
           slug
           color
         }
-        description {
-          childMarkdownRemark {
-            html
-            excerpt(pruneLength: 200)
-          }
-        }
+        lead
         heroImage {
           fluid(maxWidth: 1440, resizingBehavior: SCALE) {
             ...GatsbyContentfulFluid

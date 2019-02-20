@@ -48,7 +48,7 @@ class HighlightedArticle extends Component {
   handleMouseLeave = () => this.setState({ isActive: false })
 
   render() {
-    const { title, slug, heroImage, author, description } = this.props.post
+    const { title, slug, heroImage, author, lead } = this.props.post
     const { isActive } = this.state
 
     return (
@@ -76,10 +76,10 @@ class HighlightedArticle extends Component {
           >
             <Link to={`/author/${author.slug}`}>{author.name}</Link>
           </Header>
-          {isActive && description && (
+          {isActive && lead && (
             <Link to={`/blog/${slug}`}>
               <Paragraph color="white">
-                {description.childMarkdownRemark.excerpt}
+                {lead.childMarkdownRemark.excerpt}
               </Paragraph>
             </Link>
           )}
