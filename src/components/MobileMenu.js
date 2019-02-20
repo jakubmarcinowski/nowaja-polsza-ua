@@ -5,6 +5,8 @@ import { mediaQueries } from '../utils/mediaQueries'
 import Brand from './Brand'
 import { Link, StaticQuery } from 'gatsby'
 import { navigationQuery } from './Navigation'
+import { categoriesQuery } from './Categories'
+import SocialMediaList from './SocialMediaList'
 
 const StyledMenu = styled.header`
   position: fixed;
@@ -56,6 +58,7 @@ const MenuHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 6rem;
   padding: 1rem;
   background: ${props => props.theme.colors.primary};
   background: ${props => props.theme.gradients.header},
@@ -64,24 +67,39 @@ const MenuHeader = styled.div`
 `
 const MenuContent = styled.div`
   position: relative;
-  z-index: -10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 6rem);
+  padding: 40px 0;
   transform: scale(1.2);
   transition: all 0.3s ease-out;
   opacity: 0;
-  background: ${props => props.theme.colors.dark};
+  background: ${props => props.theme.colors.menuBackground};
   color: ${props => props.theme.colors.white};
   text-align: center;
-  ${props =>
-    props.isMenuOpen && ' opacity: 1; z-index: 1; transform: scale(1);'}
+  z-index: -10;
+
+  ${props => props.isMenuOpen && 'opacity: 1; z-index: 1; transform: scale(1);'}
 `
 
 const MenuItem = styled.li`
-  line-height: 6rem;
-  border-bottom: 1px solid ${props => props.theme.colors.white};
+  padding-bottom: 25px;
+  line-height: 1.2;
+  letter-spacing: 0.6px;
+  color: ${props => props.theme.colors.white};
+  font-size: 1.6rem;
 
-  &:last-of-type {
-    border-bottom: 0;
+  &:hover {
+    color: ${props => props.theme.colors.highlighted[props.color]};
   }
+`
+
+const Line = styled.div`
+  height: 2px;
+  width: 190px;
+  margin: 15px auto 40px;
+  background: ${props => props.theme.colors.white};
 `
 
 class MobileMenu extends Component {
@@ -106,6 +124,23 @@ class MobileMenu extends Component {
           <nav>
             <ul>
               <StaticQuery
+                query={categoriesQuery}
+                render={({ allContentfulCategory }) => (
+                  <>
+                    {allContentfulCategory &&
+                      allContentfulCategory.edges &&
+                      allContentfulCategory.edges.map(({ node }) => (
+                        <MenuItem key={node.slug} color={node.color}>
+                          <Link to={`category/${node.slug}`}>{node.title}</Link>
+                        </MenuItem>
+                      ))}
+                  </>
+                )}
+              />
+            </ul>
+            <Line />
+            <ul>
+              <StaticQuery
                 query={navigationQuery}
                 render={({ allContentfulMenuItem }) => (
                   <>
@@ -119,12 +154,9 @@ class MobileMenu extends Component {
                   </>
                 )}
               />
-              <MenuItem>category 1</MenuItem>
-              <MenuItem>category 2</MenuItem>
-              <MenuItem>category 3</MenuItem>
-              <MenuItem>category 4</MenuItem>
             </ul>
           </nav>
+          <SocialMediaList header />
         </MenuContent>
       </StyledMenu>
     )

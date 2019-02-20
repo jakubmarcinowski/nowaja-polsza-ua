@@ -9,9 +9,16 @@ import youtube from '../../static/social-yt.svg'
 import telegram from '../../static/social-telegram.svg'
 import vk from '../../static/social-vk.svg'
 
+import facebookFull from '../../static/social-fb-full.svg'
+import twitterFull from '../../static/social-twitter-full.svg'
+import youtubeFull from '../../static/social-yt-full.svg'
+import telegramFull from '../../static/social-telegram-full.svg'
+import vkFull from '../../static/social-vk-full.svg'
+
 const List = styled.ul`
   display: flex;
   align-items: center;
+  justify-content: center;
 `
 
 const Item = styled.li`
@@ -28,31 +35,43 @@ const Logo = styled.img`
   max-width: 30px;
 `
 
-const SocialMediaList = ({ className }) => (
-  <List className={className}>
+const SocialMediaList = ({ className, header }) => (
+  <List className={className} header={header}>
     <Item>
       <ExternalLink url="https://www.boldare.com">
-        <Logo src={facebook} alt="Facebook Nowaja Polsza" />
+        <Logo
+          src={header ? facebookFull : facebook}
+          alt="Facebook Nowaja Polsza"
+        />
       </ExternalLink>
     </Item>
     <Item>
       <ExternalLink url="https://www.boldare.com">
-        <Logo src={twitter} alt="Twitter Nowaja Polsza" />
+        <Logo
+          src={header ? twitterFull : twitter}
+          alt="Twitter Nowaja Polsza"
+        />
       </ExternalLink>
     </Item>
     <Item>
       <ExternalLink url="https://www.boldare.com">
-        <Logo src={telegram} alt="Telegram Nowaja Polsza" />
+        <Logo
+          src={header ? telegramFull : telegram}
+          alt="Telegram Nowaja Polsza"
+        />
       </ExternalLink>
     </Item>
     <Item>
       <ExternalLink url="https://www.boldare.com">
-        <Logo src={youtube} alt="YouTube Nowaja Polsza" />
+        <Logo
+          src={header ? youtubeFull : youtube}
+          alt="YouTube Nowaja Polsza"
+        />
       </ExternalLink>
     </Item>
     <Item>
       <ExternalLink url="https://www.boldare.com">
-        <Logo src={vk} alt="VK Nowaja Polsza" />
+        <Logo src={header ? vkFull : vk} alt="VK Nowaja Polsza" />
       </ExternalLink>
     </Item>
   </List>
@@ -60,6 +79,7 @@ const SocialMediaList = ({ className }) => (
 
 SocialMediaList.propTypes = {
   className: PropTypes.any,
+  header: PropTypes.bool,
 }
 
 export default SocialMediaList
