@@ -13,7 +13,6 @@ import Line from './Line'
 import MobileMenu from './MobileMenu'
 import { breakpoints } from '../utils/mediaQueries'
 import { mediaQueries } from '../utils/mediaQueries'
-import Line from './Line'
 
 export const LayoutWrapper = styled.div`
   max-width: 1440px;
