@@ -46,6 +46,16 @@ const Lead = styled.div`
   transition: opacity ${({ theme }) => theme.animations.default};
 `
 
+const Title = styled(Header)`
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  text-align: center;
+
+  @media ${mediaQueries.desktop} {
+    display: none;
+  }
+`
+
 class HighlightedArticle extends Component {
   state = {
     isActive: false,
@@ -59,6 +69,8 @@ class HighlightedArticle extends Component {
     const { isActive } = this.state
 
     return (
+      <>
+      <Title weight={'Bold'}>выбор редактора</Title>
       <HighlightedArticleStyled
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
@@ -93,6 +105,7 @@ class HighlightedArticle extends Component {
           )}
         </ArticleContent>
       </HighlightedArticleStyled>
+      </>
     )
   }
 }

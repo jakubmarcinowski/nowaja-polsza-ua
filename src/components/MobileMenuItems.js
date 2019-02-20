@@ -10,10 +10,6 @@ const MenuItem = styled.li`
   letter-spacing: 0.6px;
   color: ${props => props.theme.colors.white};
   font-size: 1.6rem;
-
-  &:hover {
-    color: ${props => props.theme.colors.highlighted[props.color]};
-  }
 `
 
 const navigationQuery = graphql`
@@ -33,13 +29,13 @@ const MobileMenu = () => (
   <ul>
     <StaticQuery
       query={navigationQuery}
-      render={({ allContentfulCategory }) => (
+      render={({ allContentfulMenuItem }) => (
         <>
-          {allContentfulCategory &&
-            allContentfulCategory.edges &&
-            allContentfulCategory.edges.map(({ node }) => (
-              <MenuItem key={node.slug} color={node.color}>
-                <Link to={`category/${node.slug}`}>{node.title}</Link>
+          {allContentfulMenuItem &&
+            allContentfulMenuItem.edges &&
+            allContentfulMenuItem.edges.map(({ node }) => (
+              <MenuItem key={node.slug}>
+                <Link to={node.slug}>{node.name}</Link>
               </MenuItem>
             ))}
         </>

@@ -7,19 +7,10 @@ import SocialMediaList from './SocialMediaList'
 import MobileMenuItems from './MobileMenuItems'
 import MobileMenuCategories from './MobileMenuCategories'
 
-const StyledMenu = styled.header`
-  position: fixed;
-  z-index: 999;
-  width: 100vw;
-
-  @media ${mediaQueries.tablet} {
-    display: none;
-  }
-`
 const MenuIcon = styled.div`
+  position: relative;
   width: 20px;
   height: 19px;
-  position: relative;
 
   &::before,
   &::after,
@@ -54,6 +45,10 @@ const MenuIcon = styled.div`
   }
 `
 const MenuHeader = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,10 +58,18 @@ const MenuHeader = styled.div`
   background: ${props => props.theme.gradients.header},
     url('./header-background.jpg');
   background-position: 50% 50%;
+  z-index: 999;
+
+  @media ${mediaQueries.tablet} {
+    display: none;
+  }
 `
 const MenuContent = styled.div`
-  position: relative;
-  display: none;
+  position: fixed;
+  display: flex;
+  top: 6rem;
+  left: 0;
+  right: 0;
   flex-direction: column;
   justify-content: space-between;
   height: calc(100vh - 6rem);
@@ -79,8 +82,7 @@ const MenuContent = styled.div`
   text-align: center;
   z-index: -10;
   ${props =>
-    props.isMenuOpen &&
-    'display: flex; opacity: 1; z-index: 1; transform: scale(1);'}
+    props.isMenuOpen && 'opacity: 1; z-index: 999; transform: scale(1);'}
 `
 
 const Line = styled.div`
@@ -101,7 +103,7 @@ class MobileMenu extends Component {
   render() {
     const { isMenuOpen } = this.state
     return (
-      <StyledMenu>
+      <>
         <MenuHeader>
           <Brand isDarkVersion={false} />
           <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
@@ -116,7 +118,7 @@ class MobileMenu extends Component {
           </nav>
           <SocialMediaList header />
         </MenuContent>
-      </StyledMenu>
+      </>
     )
   }
 }
