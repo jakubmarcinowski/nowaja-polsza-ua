@@ -2,23 +2,30 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { articleType } from '../types/article'
-import ImgWrapper from './ImgWrapper'
-import Paragraph from './Paragraph'
+import { articleType } from '../../../types/article'
+import ImgWrapper from '../../../components/ImgWrapper'
+import Paragraph from '../../../components/Paragraph'
+import Header from '../../../components/Header'
+import { mediaQueries } from '../../../utils/mediaQueries'
+
+const Wrapper = styled.div`
+  display: flex;
+`
 
 const ImgBox = styled.div`
   position: relative;
-  margin-bottom: 3.6rem;
+  flex: 0 0 calc(100% * 1 / 3);
+  margin-right: 2.5rem;
 `
 const CategoryLink = styled(Link)`
   position: absolute;
   top: 7px;
   left: -3px;
   display: block;
-  transition: opacity ${props => props.theme.animations.default};
-  background: ${({ theme, color }) => theme.colors.highlighted[color]};
-  color: ${props => props.theme.colors.white};
   padding: 0.5rem;
+  transition: opacity ${props => props.theme.animations.default};
+  background: ${props => props.theme.colors.highlighted.rouge};
+  color: ${props => props.theme.colors.white};
 
   &:hover {
     opacity: 0.9;
@@ -32,6 +39,7 @@ const InfoBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  margin: 0 0 1rem;
 `
 const AuthorLink = styled(Link)`
   display: block;
@@ -44,23 +52,20 @@ const AuthorLink = styled(Link)`
     opacity: 0.9;
   }
 `
-const Title = styled.h3`
-  transition: opacity ${props => props.theme.animations.default};
-  margin: 1rem 0 2rem;
-  font-size: 2.6rem;
-
-  &:hover {
-    opacity: 0.9;
+const ParagraphWrapper = styled.div`
+  @media ${mediaQueries.desktop} {
+    max-height: 6rem;
+    overflow: hidden;
   }
 `
 
-const ArticleItem = ({
+const TheNewestItem = ({
   article: { title, slug, author, categories, heroImage, publishDate, lead },
 }) => (
-  <>
+  <Wrapper>
     <ImgBox>
       <Link to={`/blog/${slug}`}>
-        <ImgWrapper img={heroImage} aspectRatio={1.76} />
+        <ImgWrapper img={heroImage} aspectRatio={1} />
       </Link>
       {categories && (
         <CategoryLink
@@ -71,29 +76,37 @@ const ArticleItem = ({
         </CategoryLink>
       )}
     </ImgBox>
-    <InfoBox>
-      {publishDate && <Date>{publishDate}</Date>}
-      {author && (
-        <AuthorLink to={`/author/${author.slug}`}>{author.name}</AuthorLink>
-      )}
-    </InfoBox>
-    {slug && (
-      <>
-        <Title>
+    <div>
+      {slug && (
+        <Header
+          weight="Bold"
+          type={2}
+          size="Medium"
+          color="black"
+          margin="0 0 1rem"
+        >
           <Link to={`/blog/${slug}`}>{title}</Link>
-        </Title>
-        {lead && (
+        </Header>
+      )}
+      <InfoBox>
+        {publishDate && <Date>{publishDate}</Date>}
+        {author && (
+          <AuthorLink to={`/author/${author.slug}`}>{author.name}</AuthorLink>
+        )}
+      </InfoBox>
+      {lead && (
+        <ParagraphWrapper>
           <Link to={`/blog/${slug}`}>
             <Paragraph size={'Big'}>{lead}</Paragraph>
           </Link>
-        )}
-      </>
-    )}
-  </>
+        </ParagraphWrapper>
+      )}
+    </div>
+  </Wrapper>
 )
 
-ArticleItem.propTypes = {
+TheNewestItem.propTypes = {
   article: articleType,
 }
 
-export default ArticleItem
+export default TheNewestItem

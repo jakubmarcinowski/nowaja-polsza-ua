@@ -1,7 +1,3 @@
-/* eslint-disable */
-import React from 'react'
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
-
 export const breakpoints = {
   phone: 320,
   phoneLandscape: 480,
