@@ -9,7 +9,6 @@ const StyledCategories = styled.nav`
   list-style: none;
   text-transform: uppercase;
   font-size: 1.8rem;
-  font-family: ${props => props.theme.fonts.primary};
 `
 
 const Category = styled.li`
@@ -41,7 +40,7 @@ const Categories = () => (
   <StaticQuery
     query={categoriesQuery}
     render={({ allContentfulCategory }) => (
-      <StyledCategories className="navigation">
+      <StyledCategories>
         {allContentfulCategory &&
           allContentfulCategory.edges &&
           allContentfulCategory.edges.map(({ node }) => (
