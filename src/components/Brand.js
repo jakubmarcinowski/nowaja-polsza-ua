@@ -9,7 +9,9 @@ import { theme } from '../utils/theme'
 
 const StyledBrand = styled.div`
   display: flex;
+  flex-direction: ${props => (props.isDesktopFullVersion ? 'column' : 'row')};
   align-items: center;
+  margin-bottom: ${props => (props.isDesktopFullVersion ? '3.7rem' : '0')};
 
   @media ${mediaQueries.tablet} {
     margin-top: 0;
@@ -20,21 +22,25 @@ const StyledBrand = styled.div`
 const LogoWrapper = styled.div`
   position: relative;
   z-index: 0;
+  margin-bottom: ${props => (props.isDesktopFullVersion ? '2.0rem' : '0')};
+  margin-top: ${props => (props.isDesktopFullVersion ? '1.0rem' : '0')};
 
-  @media ${mediaQueries.phoneOnly} {
-    &:after {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      top: -8px;
-      left: -8px;
-      right: -8px;
-      bottom: -8px;
-      border: 1px solid black;
-      border-radius: 50%;
-      background-color: ${({ backgroundColor }) =>
-        colorMap(theme)[backgroundColor] || theme.colors[backgroundColor]};
-      opacity: ${props => props.backgroundOpacity};
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: ${props => (props.isDesktopFullVersion ? '-11px' : '-8px')};
+    left: ${props => (props.isDesktopFullVersion ? '-13px' : '-8px')};
+    right: ${props => (props.isDesktopFullVersion ? '-13px' : '-8px')};
+    bottom: ${props => (props.isDesktopFullVersion ? '-11px' : '-8px')};
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: ${({ backgroundColor }) =>
+      colorMap(theme)[backgroundColor] || theme.colors[backgroundColor]};
+    opacity: ${props => (props.isDarkVersion ? '1' : '0.9')};
+
+    @media ${mediaQueries.tablet} {
+      ${props => props.isDesktopFullVersion || 'display: none;'}
     }
   }
 `
@@ -52,7 +58,7 @@ const Logo = styled.img`
   max-height: 18px;
 
   @media ${mediaQueries.tablet} {
-    max-height: 50px;
+    max-height: ${props => (props.isDesktopFullVersion ? '29px' : '50px')};
   }
 `
 
@@ -60,13 +66,13 @@ const Title = styled(Header)`
   font-size: 1.4rem;
 
   @media ${mediaQueries.tablet} {
-    font-size: 2.7rem;
+    font-size: ${props => (props.isDesktopFullVersion ? '2.0rem' : '2.7rem')};
   }
 `
 
 const Subtitle = styled(Header)`
   font-family: ${theme.fonts.secondary};
-  font-size: 2.1rem;
+  font-size: ${props => (props.isDesktopFullVersion ? '1.6rem' : '2.1rem')};
   letter-spacing: 0.5px;
 
   @media ${mediaQueries.phoneOnly} {
@@ -78,7 +84,7 @@ const TitleWrapper = styled.div`
   margin-left: 15px;
 
   @media ${mediaQueries.tablet} {
-    margin-left: 20px;
+    margin-left: ${props => (props.isDesktopFullVersion ? '0' : '20px')};
   }
 `
 
@@ -90,20 +96,34 @@ const BreakLine = styled.br`
   }
 `
 
-const Brand = ({ isDarkVersion }) => (
-  <StyledBrand>
+const Brand = ({ isDarkVersion, isDesktopFullVersion }) => (
+  <StyledBrand isDesktopFullVersion={isDesktopFullVersion}>
     <LogoWrapper
       backgroundColor="White"
-      backgroundOpacity={isDarkVersion ? '1' : '0.9'}
+      isDarkVersion={isDarkVersion}
+      isDesktopFullVersion={isDesktopFullVersion}
     >
-      <Logo src={logo} alt="Nowaja Polsza logo" />
+      <Logo
+        isDesktopFullVersion={isDesktopFullVersion}
+        src={logo}
+        alt="Nowaja Polsza logo"
+      />
     </LogoWrapper>
-    <TitleWrapper>
-      <Title color={isDarkVersion ? 'Dark' : 'White'} weight="Bold">
+    <TitleWrapper isDesktopFullVersion={isDesktopFullVersion}>
+      <Title
+        isDesktopFullVersion={isDesktopFullVersion}
+        color={isDarkVersion ? 'Dark' : 'White'}
+        weight="Bold"
+      >
         НОВАЯ <BreakLine />
         ПОЛЬША
       </Title>
-      <Subtitle type={2} size="Medium" color="Dark">
+      <Subtitle
+        isDesktopFullVersion={isDesktopFullVersion}
+        type={2}
+        size="Medium"
+        color={isDarkVersion ? 'Dark' : 'White'}
+      >
         Наша миссия - Истина
       </Subtitle>
     </TitleWrapper>
@@ -111,10 +131,12 @@ const Brand = ({ isDarkVersion }) => (
 )
 Brand.defaultProps = {
   isDarkVersion: true,
+  isDesktopFullVersion: false,
 }
 
 Brand.propTypes = {
   isDarkVersion: PropTypes.bool,
+  isDesktopFullVersion: PropTypes.bool,
 }
 
 export default Brand
