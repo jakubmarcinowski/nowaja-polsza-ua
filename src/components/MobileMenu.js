@@ -59,7 +59,7 @@ const MenuHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 6rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   background: ${props => props.theme.colors.primary};
   background: ${props => props.theme.gradients.header},
     url('./header-background.jpg');
@@ -67,7 +67,7 @@ const MenuHeader = styled.div`
 `
 const MenuContent = styled.div`
   position: relative;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   height: calc(100vh - 6rem);
@@ -79,7 +79,7 @@ const MenuContent = styled.div`
   color: ${props => props.theme.colors.white};
   text-align: center;
   z-index: -10;
-  ${props => props.isMenuOpen && 'opacity: 1; z-index: 1; transform: scale(1);'}
+  ${props => props.isMenuOpen && 'display: flex; opacity: 1; z-index: 1; transform: scale(1);'}
 `
 
 const MenuItem = styled.li`
