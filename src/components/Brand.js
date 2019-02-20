@@ -90,16 +90,16 @@ const BreakLine = styled.br`
   }
 `
 
-const Brand = ({ logoBackgroundColor, logoBackgroundOpacity, titleColor }) => (
+const Brand = ({ isDarkVersion }) => (
   <StyledBrand>
     <LogoWrapper
-      backgroundColor={logoBackgroundColor}
-      backgroundOpacity={logoBackgroundOpacity}
+      backgroundColor="White"
+      backgroundOpacity={isDarkVersion ? '1' : '0.9'}
     >
       <Logo src={logo} alt="Nowaja Polsza logo" />
     </LogoWrapper>
     <TitleWrapper>
-      <Title color={titleColor} weight="Bold">
+      <Title color={isDarkVersion ? 'Dark' : 'White'} weight="Bold">
         НОВАЯ <BreakLine />
         ПОЛЬША
       </Title>
@@ -110,15 +110,11 @@ const Brand = ({ logoBackgroundColor, logoBackgroundOpacity, titleColor }) => (
   </StyledBrand>
 )
 Brand.defaultProps = {
-  logoBackgroundOpacity: '1',
-  logoBackgroundColor: 'White',
-  titleColor: 'Dark',
+  isDarkVersion: true,
 }
 
 Brand.propTypes = {
-  logoBackgroundOpacity: PropTypes.string,
-  logoBackgroundColor: PropTypes.string,
-  titleColor: PropTypes.string,
+  isDarkVersion: PropTypes.bool,
 }
 
 export default Brand
