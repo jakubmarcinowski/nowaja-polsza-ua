@@ -12,19 +12,19 @@ const StyledList = styled.ul`
   @media ${mediaQueries.large} {
     flex-direction: column;
   }
+`
 
-  li {
+const ListItem = styled.li`
+  &:not(:last-child) {
+    flex: 0 0 calc(50% - 2.5rem);
+    margin: 0 2.5rem 0 0;
+  }
+
+  @media ${mediaQueries.large} {
+    flex: 0 0 1;
+
     &:not(:last-child) {
-      flex: 0 0 calc(50% - 2.5rem);
-      margin: 0 2.5rem 0 0;
-    }
-
-    @media ${mediaQueries.large} {
-      flex: 0 0 1;
-
-      &:not(:last-child) {
-        margin: 0 0 2.5rem;
-      }
+      margin: 0 0 2.5rem;
     }
   }
 `
@@ -33,9 +33,9 @@ const TheNewestList = ({ posts }) => (
   <StyledList>
     {posts &&
       posts.map(({ node }) => (
-        <li key={node.slug}>
+        <ListItem key={node.slug}>
           <TheNewestItem article={node} key={node.slug} />
-        </li>
+        </ListItem>
       ))}
   </StyledList>
 )

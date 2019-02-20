@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { articleType } from '../../../types/article'
+import { articleType } from 'src/types/article'
 import ImgWrapper from '../../../components/ImgWrapper'
 import Paragraph from '../../../components/Paragraph'
 import Header from '../../../components/Header'
@@ -24,7 +24,7 @@ const CategoryLink = styled(Link)`
   display: block;
   padding: 0.5rem;
   transition: opacity ${props => props.theme.animations.default};
-  background: ${props => props.theme.colors.rouge};
+  background: ${props => props.theme.colors.highlighted.rouge};
   color: ${props => props.theme.colors.white};
 
   &:hover {
