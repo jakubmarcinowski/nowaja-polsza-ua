@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Brand from './Brand'
 import { theme } from '../utils/theme'
 import Navigation from './Navigation'
+import Categories from './Categories'
 import { mediaQueries } from '../utils/mediaQueries'
 import { LayoutWrapper } from './Layout'
 
@@ -36,6 +37,7 @@ const PageHeader = () => {
           <Navigation />
         </Container>
         <Brand />
+        <Categories />
       </LayoutWrapper>
     </StyledPageHeader>
   )
