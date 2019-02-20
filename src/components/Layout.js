@@ -16,10 +16,11 @@ import { mediaQueries } from '../utils/mediaQueries'
 
 export const LayoutWrapper = styled.div`
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 6rem auto 0;
   padding: 0 20px;
 
   @media ${mediaQueries.tablet} {
+    margin: 0 auto;
     padding: 0 40px;
   }
 

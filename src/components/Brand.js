@@ -7,7 +7,7 @@ import logo from '../../static/logo.svg'
 import { mediaQueries } from '../utils/mediaQueries'
 import { theme } from '../utils/theme'
 
-const StyledBrand = styled.div`
+const StyledBrand = styled.a`
   display: flex;
   flex-direction: ${props => (props.isFullVersion ? 'column' : 'row')};
   align-items: center;
@@ -114,7 +114,7 @@ const BreakLine = styled.br`
 `
 
 const Brand = ({ isDarkVersion, isFullVersion }) => (
-  <StyledBrand isFullVersion={isFullVersion}>
+  <StyledBrand isFullVersion={isFullVersion} href="/">
     <LogoContainer isFullVersion={isFullVersion}>
       {isFullVersion && (
         <LogoSubtitleLeft
