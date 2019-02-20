@@ -47,6 +47,7 @@ Header.weights = {
 Header.colors = {
   Primary: 'Primary',
   Dark: 'Dark',
+  White: 'White',
 }
 
 Header.sizes = {
@@ -90,6 +91,7 @@ const lineHeightMap = {
 const colorMap = () => ({
   [Header.colors.Primary]: theme.colors.primary,
   [Header.colors.Dark]: theme.colors.dark,
+  [Header.colors.White]: theme.colors.white,
 })
 
 const HeaderStyled = styled.h1`
