@@ -31,7 +31,7 @@ const Category = styled.li`
   }
 `
 
-export const categoriesQuery = graphql`
+const categoriesQuery = graphql`
   query CategoriesQuery {
     allContentfulCategory {
       edges {
