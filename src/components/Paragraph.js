@@ -36,10 +36,16 @@ Paragraph.colors = {
   Dark: 'Dark',
 }
 
+Paragraph.lineHeight = {
+  Medium: 1.4,
+  Small: 1.2,
+}
+
 Paragraph.defaultProps = {
   size: Paragraph.sizes.Medium,
   weight: Paragraph.weights.Normal,
   color: 'Primary',
+  lineHeight: Paragraph.lineHeight.Small,
 }
 
 const fontWeightMap = {
@@ -62,7 +68,7 @@ const colorMap = () => ({
 })
 
 const ParagraphWrap = styled.p`
-  line-height: 1.2;
+  line-height: ${lineHeight => lineHeight[lineHeight]};
   color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
   font-size: ${({ size }) => fontSizeMap[size]}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
@@ -75,7 +81,8 @@ Paragraph.propTypes = {
   weight: PropTypes.string,
   children: childrenType,
   margin: PropTypes.number,
-  className: PropTypes.any,
+  className: PropTypes.string,
+  lineHeight: PropTypes.number,
 }
 
 export default Paragraph

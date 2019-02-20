@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const ImgBox = styled.div`
   position: relative;
-  flex: 0 0 calc(100% * 1 / 3);
+  flex: 0 0 46%;
   margin-right: 2.5rem;
 `
 const CategoryLink = styled(Link)`
@@ -89,7 +89,7 @@ const TheNewestItem = ({
         <Header
           weight="Bold"
           type={2}
-          size="Medium"
+          size="MediumBig"
           color="black"
           margin="0 0 1rem"
         >
@@ -105,7 +105,7 @@ const TheNewestItem = ({
       {description && (
         <ParagraphWrapper>
           <Link to={`/blog/${slug}`}>
-            <Paragraph size={'Big'}>
+            <Paragraph size={'Medium'}>
               <span
                 dangerouslySetInnerHTML={{
                   __html: description.childMarkdownRemark.excerpt,

@@ -41,6 +41,7 @@ Header.colors = {
 
 Header.sizes = {
   Big: 'Big',
+  MediumBig: 'MediumBig',
   Medium: 'Medium',
   MediumSmall: 'MediumSmall',
   Small: 'Small',
@@ -57,6 +58,7 @@ const fontWeightMap = {
 
 const fontSizeMap = {
   [Header.sizes.Big]: 2.5,
+  [Header.sizes.MediumBig]: 2,
   [Header.sizes.Medium]: 1.6,
   [Header.sizes.MediumSmall]: 1.4,
   [Header.sizes.Small]: 1.2,

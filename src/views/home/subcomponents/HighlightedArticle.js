@@ -13,7 +13,7 @@ const HighlightedArticleStyled = styled.div`
   margin: 0 0 2.5rem;
 
   @media ${mediaQueries.desktop} {
-    flex: 0 0 calc(100% * 7 / 12);
+    flex: 0 0 57%;
     margin: 0 2.5rem 0 0;
   }
 
@@ -56,7 +56,7 @@ class HighlightedArticle extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <ImgWrapper img={heroImage} aspectRatio={2.05} />
+        <ImgWrapper img={heroImage} aspectRatio={1.44} />
         <ArticleContent isActive={isActive}>
           <Header
             size="Big"
