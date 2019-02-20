@@ -8,7 +8,7 @@ const StyledHero = styled.div`
   margin-bottom: 4rem;
   @media ${mediaQueries.desktop} {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
   }
 `
 

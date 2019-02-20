@@ -7,10 +7,11 @@ import ImgWrapper from './ImgWrapper'
 import Paragraph from './Paragraph'
 import ArticleInfoBox from './ArticleInfoBox'
 import Header from './Header'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const ImgBox = styled.div`
   position: relative;
-  margin-bottom: 3.6rem;
+  margin-bottom: 1.5rem;
 `
 const CategoryLink = styled(Link)`
   position: absolute;
@@ -24,6 +25,10 @@ const CategoryLink = styled(Link)`
 
   &:hover {
     opacity: 0.9;
+  }
+
+  @media ${mediaQueries.tablet} {
+    margin-bottom: 3.6rem;
   }
 `
 

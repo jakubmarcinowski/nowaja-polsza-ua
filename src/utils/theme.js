@@ -26,7 +26,7 @@ export const theme = {
     linear-gradient(
       to bottom,
       rgba(17, 29, 34, 0),
-      rgba(17, 29, 34, 0.2) 40%,
+      rgba(17, 29, 34, 0.2) 20%,
       rgba(17, 29, 34, 0.85)
     )
     `,

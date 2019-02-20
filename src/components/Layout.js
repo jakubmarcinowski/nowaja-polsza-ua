@@ -12,6 +12,7 @@ import Footer from './Footer'
 import MobileMenu from './MobileMenu'
 import { breakpoints } from '../utils/mediaQueries'
 import { mediaQueries } from '../utils/mediaQueries'
+import Line from './Line'
 
 export const LayoutWrapper = styled.div`
   max-width: 1440px;
@@ -55,6 +56,7 @@ class Layout extends React.Component {
           {isMobileView ? <MobileMenu /> : <PageHeader />}
           <LayoutWrapper>
             <Container>{children}</Container>
+            <Line />
             <Footer />
             {/* Todo later when will be RWD for Rodo */}
             {/* <Rodo /> */}
