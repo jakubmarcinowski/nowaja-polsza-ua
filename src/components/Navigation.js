@@ -8,37 +8,34 @@ const StyledNavigation = styled.nav`
     justify-content: center;
     list-style: none;
     padding: 0;
-    margin: 0;
-    height: 20vh;
-    max-height: 100px;
-    font-size: 1.25em;
+    font-size: 1.6rem;
+    font-family: ${props => props.theme.fonts.secondary};
   }
 
   .navigationItem {
     display: inline-flex;
     align-items: center;
-    margin: 0 1em;
+    margin: 0 1rem;
+    color: ${props => props.theme.colors.white};
   }
+`
 
-  .navigationItem a {
-    color: currentColor;
+export const navigationQuery = graphql`
+  query NavigationQuery {
+    allContentfulMenuItem(sort: { fields: [order], order: ASC }) {
+      edges {
+        node {
+          name
+          slug
+        }
+      }
+    }
   }
 `
 
 const Navigation = () => (
   <StaticQuery
-    query={graphql`
-      query NavigationQuery {
-        allContentfulMenuItem(sort: { fields: [order], order: ASC }) {
-          edges {
-            node {
-              name
-              slug
-            }
-          }
-        }
-      }
-    `}
+    query={navigationQuery}
     render={({ allContentfulMenuItem }) => (
       <StyledNavigation role="navigation">
         <ul className="navigation">
