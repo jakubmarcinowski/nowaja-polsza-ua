@@ -9,9 +9,9 @@ import { theme } from '../utils/theme'
 
 const StyledBrand = styled.div`
   display: flex;
-  flex-direction: ${props => (props.isDesktopFullVersion ? 'column' : 'row')};
+  flex-direction: ${props => (props.isFullVersion ? 'column' : 'row')};
   align-items: center;
-  margin-bottom: ${props => (props.isDesktopFullVersion ? '3.7rem' : '0')};
+  margin-bottom: ${props => props.isFullVersion && '3.7rem'};
 
   @media ${mediaQueries.tablet} {
     margin-top: 0;
@@ -22,8 +22,8 @@ const StyledBrand = styled.div`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: ${props => (props.isDesktopFullVersion ? '2.0rem' : '0')};
-  margin-top: ${props => (props.isDesktopFullVersion ? '1.0rem' : '0')};
+  margin-bottom: ${props => props.isFullVersion && '2.0rem'};
+  margin-top: ${props => props.isFullVersion && '1.0rem'};
 `
 
 const LogoWrapper = styled.div`
@@ -34,10 +34,10 @@ const LogoWrapper = styled.div`
     content: '';
     position: absolute;
     z-index: -1;
-    top: ${props => (props.isDesktopFullVersion ? '-11px' : '-8px')};
-    left: ${props => (props.isDesktopFullVersion ? '-13px' : '-8px')};
-    right: ${props => (props.isDesktopFullVersion ? '-13px' : '-8px')};
-    bottom: ${props => (props.isDesktopFullVersion ? '-11px' : '-8px')};
+    top: ${props => (props.isFullVersion ? '-11px' : '-8px')};
+    left: ${props => (props.isFullVersion ? '-13px' : '-8px')};
+    right: ${props => (props.isFullVersion ? '-13px' : '-8px')};
+    bottom: ${props => (props.isFullVersion ? '-11px' : '-8px')};
     border: 1px solid black;
     border-radius: 50%;
     background-color: ${({ backgroundColor }) =>
@@ -45,7 +45,7 @@ const LogoWrapper = styled.div`
     opacity: ${props => (props.isDarkVersion ? '1' : '0.9')};
 
     @media ${mediaQueries.tablet} {
-      ${props => props.isDesktopFullVersion || 'display: none;'}
+      ${props => props.isFullVersion || 'display: none;'}
     }
   }
 `
@@ -63,7 +63,7 @@ const Logo = styled.img`
   max-height: 18px;
 
   @media ${mediaQueries.tablet} {
-    max-height: ${props => (props.isDesktopFullVersion ? '29px' : '50px')};
+    max-height: ${props => (props.isFullVersion ? '29px' : '50px')};
   }
 `
 
@@ -71,13 +71,13 @@ const Title = styled(Header)`
   font-size: 1.4rem;
 
   @media ${mediaQueries.tablet} {
-    font-size: ${props => (props.isDesktopFullVersion ? '2.0rem' : '2.7rem')};
+    font-size: ${props => (props.isFullVersion ? '2.0rem' : '2.7rem')};
   }
 `
 
 const Subtitle = styled(Header)`
   font-family: ${theme.fonts.secondary};
-  font-size: ${props => (props.isDesktopFullVersion ? '1.6rem' : '2.1rem')};
+  font-size: ${props => (props.isFullVersion ? '1.6rem' : '2.1rem')};
   letter-spacing: 0.5px;
 
   @media ${mediaQueries.phoneOnly} {
@@ -97,7 +97,7 @@ const TitleWrapper = styled.div`
   margin-left: 15px;
 
   @media ${mediaQueries.tablet} {
-    margin-left: ${props => (props.isDesktopFullVersion ? '0' : '20px')};
+    margin-left: ${props => (props.isFullVersion ? '0' : '20px')};
   }
 `
 
@@ -109,40 +109,44 @@ const BreakLine = styled.br`
   }
 `
 
-const Brand = ({ isDarkVersion, isDesktopFullVersion }) => (
-  <StyledBrand isDesktopFullVersion={isDesktopFullVersion}>
-    <LogoContainer isDesktopFullVersion={isDesktopFullVersion}>
-      <LogoSubtitleLeft
-        isDesktopFullVersion={isDesktopFullVersion}
-        type={2}
-        size="Medium"
-        color={isDarkVersion ? 'Dark' : 'White'}
-      >
-        EST.
-      </LogoSubtitleLeft>
+const Brand = ({ isDarkVersion, isFullVersion }) => (
+  <StyledBrand isFullVersion={isFullVersion}>
+    <LogoContainer isFullVersion={isFullVersion}>
+      {isFullVersion && (
+        <LogoSubtitleLeft
+          isFullVersion={isFullVersion}
+          type={2}
+          size="Medium"
+          color={isDarkVersion ? 'Dark' : 'White'}
+        >
+          EST.
+        </LogoSubtitleLeft>
+      )}
       <LogoWrapper
         backgroundColor="White"
         isDarkVersion={isDarkVersion}
-        isDesktopFullVersion={isDesktopFullVersion}
+        isFullVersion={isFullVersion}
       >
         <Logo
-          isDesktopFullVersion={isDesktopFullVersion}
+          isFullVersion={isFullVersion}
           src={logo}
           alt="Nowaja Polsza logo"
         />
       </LogoWrapper>
-      <LogoSubtitleRight
-        isDesktopFullVersion={isDesktopFullVersion}
-        type={2}
-        size="Medium"
-        color={isDarkVersion ? 'Dark' : 'White'}
-      >
-        1999
-      </LogoSubtitleRight>
+      {isFullVersion && (
+        <LogoSubtitleRight
+          isFullVersion={isFullVersion}
+          type={2}
+          size="Medium"
+          color={isDarkVersion ? 'Dark' : 'White'}
+        >
+          1999
+        </LogoSubtitleRight>
+      )}
     </LogoContainer>
-    <TitleWrapper isDesktopFullVersion={isDesktopFullVersion}>
+    <TitleWrapper isFullVersion={isFullVersion}>
       <Title
-        isDesktopFullVersion={isDesktopFullVersion}
+        isFullVersion={isFullVersion}
         color={isDarkVersion ? 'Dark' : 'White'}
         weight="Bold"
       >
@@ -150,7 +154,7 @@ const Brand = ({ isDarkVersion, isDesktopFullVersion }) => (
         ПОЛЬША
       </Title>
       <Subtitle
-        isDesktopFullVersion={isDesktopFullVersion}
+        isFullVersion={isFullVersion}
         type={2}
         size="Medium"
         color={isDarkVersion ? 'Dark' : 'White'}
@@ -162,12 +166,12 @@ const Brand = ({ isDarkVersion, isDesktopFullVersion }) => (
 )
 Brand.defaultProps = {
   isDarkVersion: true,
-  isDesktopFullVersion: false,
+  isFullVersion: false,
 }
 
 Brand.propTypes = {
   isDarkVersion: PropTypes.bool,
-  isDesktopFullVersion: PropTypes.bool,
+  isFullVersion: PropTypes.bool,
 }
 
 export default Brand
