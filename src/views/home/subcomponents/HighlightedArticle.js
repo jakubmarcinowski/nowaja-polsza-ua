@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import ImgWrapper from '../../../components/ImgWrapper'
 import { articleType } from '../../../types/article'
-import { Link } from 'gatsby'
 import { mediaQueries } from '../../../utils/mediaQueries'
 import Header from '../../../components/Header'
 import Paragraph from '../../../components/Paragraph'
