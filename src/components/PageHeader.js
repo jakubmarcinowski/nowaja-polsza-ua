@@ -13,6 +13,7 @@ const StyledPageHeader = styled.header`
   background: ${props => props.theme.gradients.header},
     url('./header-background.jpg');
   background-position: 50% 50%;
+  background-size: cover;
   padding: 1rem 0 2rem;
   text-align: center;
   z-index: 999;
