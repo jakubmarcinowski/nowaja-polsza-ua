@@ -19,11 +19,16 @@ const StyledBrand = styled.div`
   }
 `
 
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: ${props => (props.isDesktopFullVersion ? '2.0rem' : '0')};
+  margin-top: ${props => (props.isDesktopFullVersion ? '1.0rem' : '0')};
+`
+
 const LogoWrapper = styled.div`
   position: relative;
   z-index: 0;
-  margin-bottom: ${props => (props.isDesktopFullVersion ? '2.0rem' : '0')};
-  margin-top: ${props => (props.isDesktopFullVersion ? '1.0rem' : '0')};
 
   &:after {
     content: '';
@@ -80,6 +85,14 @@ const Subtitle = styled(Header)`
   }
 `
 
+const LogoSubtitleLeft = styled(Subtitle)`
+  margin-right: 2.5rem;
+`
+
+const LogoSubtitleRight = styled(Subtitle)`
+  margin-left: 2.5rem;
+`
+
 const TitleWrapper = styled.div`
   margin-left: 15px;
 
@@ -98,17 +111,35 @@ const BreakLine = styled.br`
 
 const Brand = ({ isDarkVersion, isDesktopFullVersion }) => (
   <StyledBrand isDesktopFullVersion={isDesktopFullVersion}>
-    <LogoWrapper
-      backgroundColor="White"
-      isDarkVersion={isDarkVersion}
-      isDesktopFullVersion={isDesktopFullVersion}
-    >
-      <Logo
+    <LogoContainer isDesktopFullVersion={isDesktopFullVersion}>
+      <LogoSubtitleLeft
         isDesktopFullVersion={isDesktopFullVersion}
-        src={logo}
-        alt="Nowaja Polsza logo"
-      />
-    </LogoWrapper>
+        type={2}
+        size="Medium"
+        color={isDarkVersion ? 'Dark' : 'White'}
+      >
+        EST.
+      </LogoSubtitleLeft>
+      <LogoWrapper
+        backgroundColor="White"
+        isDarkVersion={isDarkVersion}
+        isDesktopFullVersion={isDesktopFullVersion}
+      >
+        <Logo
+          isDesktopFullVersion={isDesktopFullVersion}
+          src={logo}
+          alt="Nowaja Polsza logo"
+        />
+      </LogoWrapper>
+      <LogoSubtitleRight
+        isDesktopFullVersion={isDesktopFullVersion}
+        type={2}
+        size="Medium"
+        color={isDarkVersion ? 'Dark' : 'White'}
+      >
+        1999
+      </LogoSubtitleRight>
+    </LogoContainer>
     <TitleWrapper isDesktopFullVersion={isDesktopFullVersion}>
       <Title
         isDesktopFullVersion={isDesktopFullVersion}
