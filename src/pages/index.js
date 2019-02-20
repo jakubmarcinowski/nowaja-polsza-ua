@@ -5,20 +5,41 @@ import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
+import { breakpoints } from '../utils/mediaQueries'
 
-const RootIndex = props => {
-  const siteTitle = get(props, 'data.site.siteMetadata.title')
-  const posts = get(props, 'data.allContentfulBlogPost.edges')
-  const highlightedPost = get(props, 'data.contentfulHighlightedPost.post')
+class RootIndex extends React.Component {
+  state = {
+    isMobileView: false,
+  }
 
-  return (
-    <Layout>
-      <>
-        <Helmet title={siteTitle} />
-        <HomePage posts={posts} highlightedPost={highlightedPost} />
-      </>
-    </Layout>
-  )
+  componentDidMount() {
+    if (window.innerWidth < breakpoints.desktop) {
+      this.setState({ isMobileView: true })
+    }
+  }
+
+  render() {
+    const { isMobileView } = this.state
+    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+    const highlightedPost = get(
+      this,
+      'props.data.contentfulHighlightedPost.post'
+    )
+
+    return (
+      <Layout>
+        <div>
+          <Helmet title={siteTitle} />
+          <HomePage
+            posts={posts}
+            highlightedPost={highlightedPost}
+            isMobileView={isMobileView}
+          />
+        </div>
+      </Layout>
+    )
+  }
 }
 
 export default RootIndex
@@ -50,12 +71,7 @@ export const pageQuery = graphql`
               ...GatsbyContentfulFluid
             }
           }
-          description {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 200)
-            }
-          }
+          lead
         }
       }
     }
@@ -73,12 +89,7 @@ export const pageQuery = graphql`
           slug
           color
         }
-        description {
-          childMarkdownRemark {
-            html
-            excerpt(pruneLength: 200)
-          }
-        }
+        lead
         heroImage {
           fluid(maxWidth: 1440, resizingBehavior: SCALE) {
             ...GatsbyContentfulFluid
