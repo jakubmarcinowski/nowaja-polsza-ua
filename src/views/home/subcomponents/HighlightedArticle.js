@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import ImgWrapper from '../../../components/ImgWrapper'
 import { articleType } from '../../../types/article'
-import { Link } from 'gatsby'
 import { mediaQueries } from '../../../utils/mediaQueries'
 import Header from '../../../components/Header'
 import Paragraph from '../../../components/Paragraph'
 
 const HighlightedArticleStyled = styled.div`
   position: relative;
+  margin: 0 0 2.5rem;
 
-  @media ${mediaQueries.large} {
-    width: calc(100% * 7 / 12);
+  @media ${mediaQueries.desktop} {
+    flex: 0 0 calc(100% * 7 / 12);
+    margin: 0 2.5rem 0 0;
   }
 
   &::after {
@@ -54,7 +56,7 @@ class HighlightedArticle extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <ImgWrapper img={heroImage} />
+        <ImgWrapper img={heroImage} aspectRatio={2.05} />
         <ArticleContent isActive={isActive}>
           <Header
             size="Big"
