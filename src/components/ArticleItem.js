@@ -52,7 +52,7 @@ const ArticleItem = ({
             weight="Bold"
             type={2}
             size="Big"
-            color="black"
+            color="Dark"
             margin="0 0 1.4rem"
             lineHeight="Big"
           >

@@ -62,7 +62,7 @@ const TheNewestItem = ({
           weight="Bold"
           type={2}
           size="MediumBig"
-          color="black"
+          color="Dark"
           margin="0 0 1rem"
           lineHeight="Medium"
         >
