@@ -5,13 +5,22 @@ import styled from 'styled-components'
 import { childrenType } from '../types/children'
 import { theme } from '../utils/theme'
 
-const Paragraph = ({ className, color, children, size, weight, margin }) => (
+const Paragraph = ({
+  className,
+  color,
+  children,
+  size,
+  weight,
+  margin,
+  lineHeight,
+}) => (
   <ParagraphWrap
     margin={margin}
     color={color}
     size={size}
     weight={weight}
     className={className}
+    lineHeight={lineHeight}
   >
     {children}
   </ParagraphWrap>
@@ -37,8 +46,8 @@ Paragraph.colors = {
 }
 
 Paragraph.lineHeight = {
-  Medium: 1.4,
-  Small: 1.2,
+  Medium: 'Medium',
+  Small: 'Small',
 }
 
 Paragraph.defaultProps = {
@@ -62,17 +71,22 @@ const fontSizeMap = {
   [Paragraph.sizes.Small]: 1.0,
 }
 
+const lineHeightMap = {
+  [Paragraph.sizes.Medium]: 1.4,
+  [Paragraph.sizes.Small]: 1.2,
+}
+
 const colorMap = () => ({
   [Paragraph.colors.Primary]: theme.colors.primary,
   [Paragraph.colors.Dark]: theme.colors.dark,
 })
 
 const ParagraphWrap = styled.p`
-  line-height: ${lineHeight => lineHeight[lineHeight]};
+  ${({ margin }) => margin && `margin: ${margin};`};
+  line-height: ${({ lineHeight }) => lineHeightMap[lineHeight]};
   color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
   font-size: ${({ size }) => fontSizeMap[size]}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
-  ${({ margin }) => margin && `margin: ${margin};`};
 `
 
 Paragraph.propTypes = {
@@ -82,7 +96,7 @@ Paragraph.propTypes = {
   children: childrenType,
   margin: PropTypes.number,
   className: PropTypes.string,
-  lineHeight: PropTypes.number,
+  lineHeight: PropTypes.string,
 }
 
 export default Paragraph

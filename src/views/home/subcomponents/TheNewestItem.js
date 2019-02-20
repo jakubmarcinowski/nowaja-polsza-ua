@@ -33,6 +33,7 @@ const CategoryLink = styled(Link)`
 `
 const Date = styled.div`
   margin: 0 2.4rem 0.5rem 0;
+  font-size: 1.4rem;
   color: ${props => props.theme.colors.darkGreyBlue};
 `
 const InfoBox = styled.div`
@@ -47,6 +48,7 @@ const AuthorLink = styled(Link)`
   margin-bottom: 0.5rem;
   color: ${props => props.theme.colors.plum};
   font-weight: bold;
+  font-size: 1.4rem;
 
   &:hover {
     opacity: 0.9;
@@ -54,7 +56,7 @@ const AuthorLink = styled(Link)`
 `
 const ParagraphWrapper = styled.div`
   @media ${mediaQueries.desktop} {
-    max-height: 6rem;
+    max-height: 7.5rem;
     overflow: hidden;
   }
 `
@@ -84,6 +86,7 @@ const TheNewestItem = ({
           size="MediumBig"
           color="black"
           margin="0 0 1rem"
+          lineHeight="Medium"
         >
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Header>
@@ -97,7 +100,9 @@ const TheNewestItem = ({
       {lead && (
         <ParagraphWrapper>
           <Link to={`/blog/${slug}`}>
-            <Paragraph size={'Big'}>{lead}</Paragraph>
+            <Paragraph size="Medium" lineHeight="Medium">
+              {lead}
+            </Paragraph>
           </Link>
         </ParagraphWrapper>
       )}

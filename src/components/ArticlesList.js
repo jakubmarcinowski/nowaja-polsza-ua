@@ -11,7 +11,7 @@ const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0;
+  margin: 4rem 0 0;
   padding: 0;
   list-style: none;
 

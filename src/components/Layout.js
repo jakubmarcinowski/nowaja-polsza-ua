@@ -9,7 +9,6 @@ import Container from './Container'
 import PageHeader from './PageHeader'
 import Footer from './Footer'
 import Rodo from './Rodo'
-import Line from './Line'
 import MobileMenu from './MobileMenu'
 import { breakpoints } from '../utils/mediaQueries'
 import { mediaQueries } from '../utils/mediaQueries'
@@ -56,9 +55,7 @@ class Layout extends React.Component {
           <MobileMenu />
           <PageHeader />
           <Wrapper>
-            <Line />
             <Container>{children}</Container>
-            <Line />
             <Footer />
             <Rodo />
             <GlobalStyle />
