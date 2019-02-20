@@ -60,15 +60,7 @@ const ParagraphWrapper = styled.div`
 `
 
 const TheNewestItem = ({
-  article: {
-    title,
-    slug,
-    author,
-    categories,
-    heroImage,
-    publishDate,
-    description,
-  },
+  article: { title, slug, author, categories, heroImage, publishDate, lead },
 }) => (
   <Wrapper>
     <ImgBox>
@@ -102,16 +94,10 @@ const TheNewestItem = ({
           <AuthorLink to={`/author/${author.slug}`}>{author.name}</AuthorLink>
         )}
       </InfoBox>
-      {description && (
+      {lead && (
         <ParagraphWrapper>
           <Link to={`/blog/${slug}`}>
-            <Paragraph size={'Medium'}>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: description.childMarkdownRemark.excerpt,
-                }}
-              />
-            </Paragraph>
+            <Paragraph size={'Big'}>{lead}</Paragraph>
           </Link>
         </ParagraphWrapper>
       )}

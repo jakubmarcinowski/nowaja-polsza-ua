@@ -55,15 +55,7 @@ const Title = styled.h3`
 `
 
 const ArticleItem = ({
-  article: {
-    title,
-    slug,
-    author,
-    categories,
-    heroImage,
-    publishDate,
-    description,
-  },
+  article: { title, slug, author, categories, heroImage, publishDate, lead },
 }) => (
   <>
     <ImgBox>
@@ -90,15 +82,9 @@ const ArticleItem = ({
         <Title>
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Title>
-        {description && (
+        {lead && (
           <Link to={`/blog/${slug}`}>
-            <Paragraph size={'Big'}>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: description.childMarkdownRemark.excerpt,
-                }}
-              />
-            </Paragraph>
+            <Paragraph size={'Big'}>{lead}</Paragraph>
           </Link>
         )}
       </>
