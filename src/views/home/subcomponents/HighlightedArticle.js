@@ -4,9 +4,10 @@ import { Link } from 'gatsby'
 
 import ImgWrapper from '../../../components/ImgWrapper'
 import { articleType } from '../../../types/article'
-import { mediaQueries } from '../../../utils/mediaQueries'
+import { breakpoints, mediaQueries } from '../../../utils/mediaQueries'
 import Header from '../../../components/Header'
 import Paragraph from '../../../components/Paragraph'
+import * as PropTypes from 'prop-types'
 
 const HighlightedArticleStyled = styled.div`
   position: relative;
@@ -59,10 +60,21 @@ const Title = styled(Header)`
 class HighlightedArticle extends Component {
   state = {
     isActive: false,
+    isMobileView: false,
   }
 
-  handleMouseEnter = () => this.setState({ isActive: true })
-  handleMouseLeave = () => this.setState({ isActive: false })
+  handleMouseEnter = () =>
+    this.state.isMobileView || this.setState({ isActive: true })
+  handleMouseLeave = () =>
+    this.state.isMobileView || this.setState({ isActive: false })
+
+  componentDidMount() {
+    if (window.innerWidth < breakpoints.desktop) {
+      this.setState({ isMobileView: true })
+      window.innerWidth >= breakpoints.phoneLandscape &&
+        this.setState({ isActive: true })
+    }
+  }
 
   render() {
     const { title, slug, heroImage, author, lead } = this.props.post
@@ -70,41 +82,41 @@ class HighlightedArticle extends Component {
 
     return (
       <>
-      <Title weight={'Bold'}>выбор редактора</Title>
-      <HighlightedArticleStyled
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
-        <ImgWrapper img={heroImage} aspectRatio={1.44} />
-        <ArticleContent isActive={isActive}>
-          <Header
-            size="Big"
-            color="white"
-            type={2}
-            margin="0 0 1.8rem"
-            weight="Bold"
-            lineHeight="Big"
-          >
-            <Link to={`/blog/${slug}`}>{title}</Link>
-          </Header>
-          <Header
-            size="Medium"
-            color="white"
-            type={5}
-            margin="0 0 1.8rem"
-            weight="Bold"
-          >
-            <Link to={`/author/${author.slug}`}>{author.name}</Link>
-          </Header>
-          {lead && (
-            <Lead isActive={isActive}>
-              <Link to={`/blog/${slug}`}>
-                <Paragraph color="white">{lead}</Paragraph>
-              </Link>
-            </Lead>
-          )}
-        </ArticleContent>
-      </HighlightedArticleStyled>
+        <Title weight={'Bold'}>выбор редактора</Title>
+        <HighlightedArticleStyled
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+        >
+          <ImgWrapper img={heroImage} aspectRatio={1.44} />
+          <ArticleContent isActive={isActive}>
+            <Header
+              size="Big"
+              color="white"
+              type={2}
+              margin="0 0 1.8rem"
+              weight="Bold"
+              lineHeight="Big"
+            >
+              <Link to={`/blog/${slug}`}>{title}</Link>
+            </Header>
+            <Header
+              size="Medium"
+              color="white"
+              type={5}
+              margin="0 0 1.8rem"
+              weight="Bold"
+            >
+              <Link to={`/author/${author.slug}`}>{author.name}</Link>
+            </Header>
+            {lead && (
+              <Lead isActive={isActive}>
+                <Link to={`/blog/${slug}`}>
+                  <Paragraph color="white">{lead}</Paragraph>
+                </Link>
+              </Lead>
+            )}
+          </ArticleContent>
+        </HighlightedArticleStyled>
       </>
     )
   }
@@ -112,6 +124,7 @@ class HighlightedArticle extends Component {
 
 HighlightedArticle.propTypes = {
   post: articleType,
+  isMobileView: PropTypes.bool,
 }
 
 export default HighlightedArticle
