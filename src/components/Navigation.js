@@ -20,7 +20,7 @@ const StyledNavigation = styled.nav`
   }
 `
 
-export const navigationQuery = graphql`
+const navigationQuery = graphql`
   query NavigationQuery {
     allContentfulMenuItem(sort: { fields: [order], order: ASC }) {
       edges {

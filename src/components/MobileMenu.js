@@ -3,10 +3,9 @@ import styled from 'styled-components'
 
 import { mediaQueries } from '../utils/mediaQueries'
 import Brand from './Brand'
-import { Link, StaticQuery } from 'gatsby'
-import { navigationQuery } from './Navigation'
-import { categoriesQuery } from './Categories'
 import SocialMediaList from './SocialMediaList'
+import MobileMenuItems from './MobileMenuItems'
+import MobileMenuCategories from './MobileMenuCategories'
 
 const StyledMenu = styled.header`
   position: fixed;
@@ -79,19 +78,9 @@ const MenuContent = styled.div`
   color: ${props => props.theme.colors.white};
   text-align: center;
   z-index: -10;
-  ${props => props.isMenuOpen && 'display: flex; opacity: 1; z-index: 1; transform: scale(1);'}
-`
-
-const MenuItem = styled.li`
-  padding-bottom: 25px;
-  line-height: 1.2;
-  letter-spacing: 0.6px;
-  color: ${props => props.theme.colors.white};
-  font-size: 1.6rem;
-
-  &:hover {
-    color: ${props => props.theme.colors.highlighted[props.color]};
-  }
+  ${props =>
+    props.isMenuOpen &&
+    'display: flex; opacity: 1; z-index: 1; transform: scale(1);'}
 `
 
 const Line = styled.div`
@@ -121,39 +110,9 @@ class MobileMenu extends Component {
         </MenuHeader>
         <MenuContent isMenuOpen={isMenuOpen}>
           <nav>
-            <ul>
-              <StaticQuery
-                query={categoriesQuery}
-                render={({ allContentfulCategory }) => (
-                  <>
-                    {allContentfulCategory &&
-                      allContentfulCategory.edges &&
-                      allContentfulCategory.edges.map(({ node }) => (
-                        <MenuItem key={node.slug} color={node.color}>
-                          <Link to={`category/${node.slug}`}>{node.title}</Link>
-                        </MenuItem>
-                      ))}
-                  </>
-                )}
-              />
-            </ul>
+            <MobileMenuCategories />
             <Line />
-            <ul>
-              <StaticQuery
-                query={navigationQuery}
-                render={({ allContentfulMenuItem }) => (
-                  <>
-                    {allContentfulMenuItem &&
-                      allContentfulMenuItem.edges &&
-                      allContentfulMenuItem.edges.map(({ node }) => (
-                        <MenuItem key={node.slug}>
-                          <Link to={node.slug}>{node.name}</Link>
-                        </MenuItem>
-                      ))}
-                  </>
-                )}
-              />
-            </ul>
+            <MobileMenuItems />
           </nav>
           <SocialMediaList header />
         </MenuContent>
