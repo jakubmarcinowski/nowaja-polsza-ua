@@ -32,7 +32,7 @@ export const pageQuery = graphql`
     }
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      publishDate(formatString: "MMMM Do, YYYY")
+      publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
       heroImage {
         fluid(maxWidth: 1920, background: "rgb:000000") {
           ...GatsbyContentfulFluid

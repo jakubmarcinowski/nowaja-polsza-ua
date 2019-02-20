@@ -56,7 +56,7 @@ export const pageQuery = graphql`
         node {
           title
           slug
-          publishDate(formatString: "MMMM Do, YYYY")
+          publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           author {
             name
             slug
@@ -79,7 +79,7 @@ export const pageQuery = graphql`
       title
       post {
         slug
-        publishDate(formatString: "MMMM Do, YYYY")
+        publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
         author {
           name
           slug

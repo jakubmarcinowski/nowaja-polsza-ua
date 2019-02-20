@@ -7,14 +7,14 @@ import ImgWrapper from '../../../components/ImgWrapper'
 import Paragraph from '../../../components/Paragraph'
 import Header from '../../../components/Header'
 import { mediaQueries } from '../../../utils/mediaQueries'
+import ArticleInfoBox from '../../../components/ArticleInfoBox'
 
 const Wrapper = styled.div`
   display: flex;
 `
-
 const ImgBox = styled.div`
   position: relative;
-  flex: 0 0 calc(100% * 1 / 3);
+  flex: 0 0 46%;
   margin-right: 2.5rem;
 `
 const CategoryLink = styled(Link)`
@@ -31,30 +31,10 @@ const CategoryLink = styled(Link)`
     opacity: 0.9;
   }
 `
-const Date = styled.div`
-  margin: 0 2.4rem 0.5rem 0;
-  color: ${props => props.theme.colors.darkGreyBlue};
-`
-const InfoBox = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 0 0 1rem;
-`
-const AuthorLink = styled(Link)`
-  display: block;
-  transition: opacity ${props => props.theme.animations.default};
-  margin-bottom: 0.5rem;
-  color: ${props => props.theme.colors.plum};
-  font-weight: bold;
 
-  &:hover {
-    opacity: 0.9;
-  }
-`
 const ParagraphWrapper = styled.div`
   @media ${mediaQueries.desktop} {
-    max-height: 6rem;
+    max-height: 7.5rem;
     overflow: hidden;
   }
 `
@@ -81,23 +61,21 @@ const TheNewestItem = ({
         <Header
           weight="Bold"
           type={2}
-          size="Medium"
-          color="black"
+          size="MediumBig"
+          color="Dark"
           margin="0 0 1rem"
+          lineHeight="Medium"
         >
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Header>
       )}
-      <InfoBox>
-        {publishDate && <Date>{publishDate}</Date>}
-        {author && (
-          <AuthorLink to={`/author/${author.slug}`}>{author.name}</AuthorLink>
-        )}
-      </InfoBox>
+      <ArticleInfoBox author={author} publishDate={publishDate} size="Small" />
       {lead && (
         <ParagraphWrapper>
           <Link to={`/blog/${slug}`}>
-            <Paragraph size={'Big'}>{lead}</Paragraph>
+            <Paragraph size="Medium" lineHeight="Medium">
+              {lead}
+            </Paragraph>
           </Link>
         </ParagraphWrapper>
       )}

@@ -13,7 +13,7 @@ const HighlightedArticleStyled = styled.div`
   margin: 0 0 2.5rem;
 
   @media ${mediaQueries.desktop} {
-    flex: 0 0 calc(100% * 7 / 12);
+    flex: 0 0 57%;
     margin: 0 2.5rem 0 0;
   }
 
@@ -36,6 +36,9 @@ const ArticleContent = styled.div`
   transform: ${props =>
     props.isActive ? 'translateY(-30rem)' : 'translateY(-10rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
+  width: 70%;
+  margin: auto;
+  min-width: 280px;
   text-align: center;
 `
 
@@ -63,38 +66,39 @@ class HighlightedArticle extends Component {
 
     return (
       <>
-        <Title weight={'Bold'}>выбор редактора</Title>
-        <HighlightedArticleStyled
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-        >
-          <ImgWrapper img={heroImage} aspectRatio={2.05} />
-          <ArticleContent isActive={isActive}>
-            <Header
-              size="Big"
-              color="white"
-              type={2}
-              margin="0 0 1.8rem"
-              weight="Bold"
-            >
-              <Link to={`/blog/${slug}`}>{title}</Link>
-            </Header>
-            <Header
-              size="Medium"
-              color="white"
-              type={5}
-              margin="0 0 1.8rem"
-              weight="Bold"
-            >
-              <Link to={`/author/${author.slug}`}>{author.name}</Link>
-            </Header>
-            {isActive && lead && (
-              <Link to={`/blog/${slug}`}>
-                <Paragraph color="white">{lead}</Paragraph>
-              </Link>
-            )}
-          </ArticleContent>
-        </HighlightedArticleStyled>
+      <Title weight={'Bold'}>выбор редактора</Title>
+      <HighlightedArticleStyled
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
+        <ImgWrapper img={heroImage} aspectRatio={1.44} />
+        <ArticleContent isActive={isActive}>
+          <Header
+            size="Big"
+            color="white"
+            type={2}
+            margin="0 0 1.8rem"
+            weight="Bold"
+            lineHeight="Large"
+          >
+            <Link to={`/blog/${slug}`}>{title}</Link>
+          </Header>
+          <Header
+            size="Medium"
+            color="white"
+            type={5}
+            margin="0 0 1.8rem"
+            weight="Bold"
+          >
+            <Link to={`/author/${author.slug}`}>{author.name}</Link>
+          </Header>
+          {isActive && lead && (
+            <Link to={`/blog/${slug}`}>
+              <Paragraph color="white">{lead}</Paragraph>
+            </Link>
+          )}
+        </ArticleContent>
+      </HighlightedArticleStyled>
       </>
     )
   }
