@@ -53,8 +53,7 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          <MobileMenu />
-          <PageHeader />
+          {isMobileView ? <MobileMenu /> : <PageHeader />}
           <Wrapper>
             <Line />
             <Container>{children}</Container>
