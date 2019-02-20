@@ -59,6 +59,7 @@ Header.sizes = {
 }
 
 Header.lineHeight = {
+  Big: 'Big',
   Medium: 'Medium',
   Small: 'Small',
 }
@@ -81,6 +82,7 @@ const fontSizeMap = {
 }
 
 const lineHeightMap = {
+  [Header.sizes.Big]: 1.6,
   [Header.sizes.Medium]: 1.4,
   [Header.sizes.Small]: 1.2,
 }
@@ -109,7 +111,8 @@ Header.propTypes = {
   weight: PropTypes.string,
   children: childrenType,
   margin: PropTypes.string,
-  className: PropTypes.any,
+  className: PropTypes.string,
+  lineHeight: PropTypes.string,
 }
 
 export default Header
