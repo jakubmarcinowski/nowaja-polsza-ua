@@ -36,7 +36,7 @@ const PageHeader = () => {
           <div>socials</div>
           <Navigation />
         </Container>
-        <Brand />
+        <Brand isFullVersion isDarkVersion={false} />
         <Categories />
       </LayoutWrapper>
     </StyledPageHeader>
