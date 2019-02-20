@@ -57,7 +57,8 @@ class Layout extends React.Component {
           <Wrapper>
             <Container>{children}</Container>
             <Footer />
-            <Rodo />
+            {/* Todo later when will be RWD for Rodo */}
+            {/* <Rodo /> */}
             <GlobalStyle />
           </Wrapper>
         </>
