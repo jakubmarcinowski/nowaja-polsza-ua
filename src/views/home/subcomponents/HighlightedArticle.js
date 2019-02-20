@@ -12,7 +12,7 @@ const HighlightedArticleStyled = styled.div`
   position: relative;
   margin: 0 0 2.5rem;
 
-  @media ${mediaQueries.large} {
+  @media ${mediaQueries.desktop} {
     flex: 0 0 calc(100% * 7 / 12);
     margin: 0 2.5rem 0 0;
   }

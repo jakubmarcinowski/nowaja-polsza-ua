@@ -53,7 +53,7 @@ const AuthorLink = styled(Link)`
   }
 `
 const ParagraphWrapper = styled.div`
-  @media ${mediaQueries.large} {
+  @media ${mediaQueries.desktop} {
     max-height: 6rem;
     overflow: hidden;
   }

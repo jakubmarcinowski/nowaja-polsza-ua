@@ -9,7 +9,7 @@ import TheNewestItem from './TheNewestItem'
 const StyledList = styled.ul`
   display: flex;
 
-  @media ${mediaQueries.large} {
+  @media ${mediaQueries.desktop} {
     flex-direction: column;
   }
 `
@@ -20,7 +20,7 @@ const ListItem = styled.li`
     margin: 0 2.5rem 0 0;
   }
 
-  @media ${mediaQueries.large} {
+  @media ${mediaQueries.desktop} {
     flex: 0 0 1;
 
     &:not(:last-child) {

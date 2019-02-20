@@ -13,7 +13,7 @@ class RootIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (window.innerWidth < breakpoints.tablet) {
+    if (window.innerWidth < breakpoints.desktop) {
       this.setState({ isMobileView: true })
     }
   }

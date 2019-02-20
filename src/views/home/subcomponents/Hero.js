@@ -6,7 +6,7 @@ import { mediaQueries } from '../../../utils/mediaQueries'
 
 const StyledHero = styled.div`
   margin-bottom: 4rem;
-  @media ${mediaQueries.large} {
+  @media ${mediaQueries.desktop} {
     display: flex;
     align-items: flex-start;
   }
