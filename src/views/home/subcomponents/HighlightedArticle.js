@@ -36,6 +36,9 @@ const ArticleContent = styled.div`
   transform: ${props =>
     props.isActive ? 'translateY(-30rem)' : 'translateY(-10rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
+  width: 70%;
+  margin: auto;
+  min-width: 280px;
   text-align: center;
 `
 
@@ -64,6 +67,7 @@ class HighlightedArticle extends Component {
             type={2}
             margin="0 0 1.8rem"
             weight="Bold"
+            lineHeight="Large"
           >
             <Link to={`/blog/${slug}`}>{title}</Link>
           </Header>

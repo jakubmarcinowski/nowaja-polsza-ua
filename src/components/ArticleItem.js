@@ -26,15 +26,6 @@ const CategoryLink = styled(Link)`
     opacity: 0.9;
   }
 `
-const Title = styled.h3`
-  transition: opacity ${props => props.theme.animations.default};
-  margin: 1rem 0 2rem;
-  font-size: 2.6rem;
-
-  &:hover {
-    opacity: 0.9;
-  }
-`
 
 const ArticleItem = ({
   article: { title, slug, author, categories, heroImage, publishDate, lead },
