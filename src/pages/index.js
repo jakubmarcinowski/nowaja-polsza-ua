@@ -9,17 +9,17 @@ import { breakpoints } from '../utils/mediaQueries'
 
 class RootIndex extends React.Component {
   state = {
-    isSmallerScreen: false,
+    isNotLarge: false,
   }
 
   componentDidMount() {
     if (window.innerWidth < breakpoints.large) {
-      this.setState({ isSmallerScreen: true })
+      this.setState({ isNotLarge: true })
     }
   }
 
   render() {
-    const { isSmallerScreen } = this.state
+    const { isNotLarge } = this.state
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const highlightedPost = get(
@@ -34,7 +34,7 @@ class RootIndex extends React.Component {
           <HomePage
             posts={posts}
             highlightedPost={highlightedPost}
-            isSmallerScreen={isSmallerScreen}
+            isNotLarge={isNotLarge}
           />
         </div>
       </Layout>

@@ -9,8 +9,8 @@ import TheNewestList from './subcomponents/TheNewestList'
 import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
 
-const HomePage = ({ posts, highlightedPost, isSmallerScreen }) => {
-  const promotedPostsNumber = isSmallerScreen ? 0 : 2
+const HomePage = ({ posts, highlightedPost, isNotLarge }) => {
+  const promotedPostsNumber = isNotLarge ? 0 : 2
   const promotedPosts = posts.slice(0, promotedPostsNumber)
   const commonPosts = posts.slice(promotedPostsNumber, posts.length)
 
@@ -19,7 +19,7 @@ const HomePage = ({ posts, highlightedPost, isSmallerScreen }) => {
       <Wrapper>
         <Hero>
           <HighlightedArticle post={highlightedPost} />
-          {!isSmallerScreen && <TheNewestList posts={promotedPosts} />}
+          {!isNotLarge && <TheNewestList posts={promotedPosts} />}
         </Hero>
         <Line />
         <ArticlesList posts={commonPosts} limit={6} initialLimit={9} />
@@ -31,7 +31,7 @@ const HomePage = ({ posts, highlightedPost, isSmallerScreen }) => {
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(articleType),
   highlightedPost: articleType,
-  isSmallerScreen: PropTypes.bool,
+  isNotLarge: PropTypes.bool,
 }
 
 export default HomePage
