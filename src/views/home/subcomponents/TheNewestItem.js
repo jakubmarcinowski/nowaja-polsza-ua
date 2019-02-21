@@ -8,6 +8,7 @@ import Paragraph from '../../../components/Paragraph'
 import Header from '../../../components/Header'
 import { mediaQueries } from '../../../utils/mediaQueries'
 import ArticleInfoBox from '../../../components/ArticleInfoBox'
+import PhotoLabel from '../../../components/PhotoLabel'
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,21 +22,6 @@ const ImgBox = styled.div`
   flex: 0 0 46%;
   margin-right: 2.5rem;
 `
-const CategoryLink = styled(Link)`
-  position: absolute;
-  top: 7px;
-  left: -3px;
-  display: block;
-  padding: 0.5rem;
-  transition: opacity ${props => props.theme.animations.default};
-  background: ${props => props.theme.colors.highlighted.rouge};
-  color: ${props => props.theme.colors.white};
-
-  &:hover {
-    opacity: 0.9;
-  }
-`
-
 const ParagraphWrapper = styled.div`
   @media ${mediaQueries.desktop} {
     max-height: 7.5rem;
@@ -52,12 +38,11 @@ const TheNewestItem = ({
         <ImgWrapper img={heroImage} aspectRatio={1} />
       </Link>
       {categories && (
-        <CategoryLink
-          color={categories[0].color}
-          to={`/category/${categories[0].slug}`}
-        >
-          {categories[0].title}
-        </CategoryLink>
+        <Link to={`/category/${categories[0].slug}`}>
+          <PhotoLabel color={categories[0].color}>
+            {categories[0].title}
+          </PhotoLabel>
+        </Link>
       )}
     </ImgBox>
     <ContentWrapper>

@@ -8,6 +8,8 @@ import { breakpoints, mediaQueries } from '../../../utils/mediaQueries'
 import Header from '../../../components/Header'
 import Paragraph from '../../../components/Paragraph'
 import * as PropTypes from 'prop-types'
+import ArticleInfoBox from '../../../components/ArticleInfoBox'
+import PhotoLabel from '../../../components/PhotoLabel'
 
 const HighlightedArticleStyled = styled.div`
   position: relative;
@@ -28,6 +30,9 @@ const HighlightedArticleStyled = styled.div`
     background-image: ${({ theme }) => theme.gradients.default};
   }
 `
+const ImgBox = styled.div`
+  position: relative;
+`
 const ArticleContent = styled.div`
   position: absolute;
   z-index: 1;
@@ -46,7 +51,6 @@ const Lead = styled.div`
   opacity: ${props => (props.isActive ? 1 : 0)};
   transition: opacity ${({ theme }) => theme.animations.default};
 `
-
 const Title = styled(Header)`
   margin-bottom: 2rem;
   font-size: 1.8rem;
@@ -77,7 +81,14 @@ class HighlightedArticle extends Component {
   }
 
   render() {
-    const { title, slug, heroImage, author, lead } = this.props.post
+    const {
+      title,
+      slug,
+      heroImage,
+      author,
+      lead,
+      publishDate,
+    } = this.props.post
     const { isActive } = this.state
 
     return (
@@ -87,7 +98,10 @@ class HighlightedArticle extends Component {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
-          <ImgWrapper img={heroImage} aspectRatio={1.44} />
+          <ImgBox>
+            <ImgWrapper img={heroImage} aspectRatio={1.44} />
+            <PhotoLabel color="dark">выбор редакции</PhotoLabel>
+          </ImgBox>
           <ArticleContent isActive={isActive}>
             <Header
               size="Big"
@@ -99,19 +113,18 @@ class HighlightedArticle extends Component {
             >
               <Link to={`/blog/${slug}`}>{title}</Link>
             </Header>
-            <Header
-              size="Medium"
+            <ArticleInfoBox
+              author={author}
+              publishDate={publishDate}
+              justify="center"
               color="white"
-              type={5}
-              margin="0 0 1.8rem"
-              weight="Bold"
-            >
-              <Link to={`/author/${author.slug}`}>{author.name}</Link>
-            </Header>
+            />
             {lead && (
               <Lead isActive={isActive}>
                 <Link to={`/blog/${slug}`}>
-                  <Paragraph color="white">{lead}</Paragraph>
+                  <Paragraph color="white" lineHeight="Medium">
+                    {lead}
+                  </Paragraph>
                 </Link>
               </Lead>
             )}
@@ -125,6 +138,7 @@ class HighlightedArticle extends Component {
 HighlightedArticle.propTypes = {
   post: articleType,
   isMobileView: PropTypes.bool,
+  publishDate: PropTypes.string,
 }
 
 export default HighlightedArticle
