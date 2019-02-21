@@ -95,9 +95,9 @@ const Footer = () => (
         <SocialMediaListDesktop />
         <Publisher>
           <PublisherText color="Dark">
-            издатель сайта{' '}
+            издатель{' '}
             <ExternalLink url="http://cprdip.pl/">
-              <u>CPiDPR</u>
+              <u>Издатель Центр польско-российского диалога и согласия</u>
             </ExternalLink>
           </PublisherText>
         </Publisher>
