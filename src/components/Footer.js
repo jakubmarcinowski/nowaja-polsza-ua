@@ -97,7 +97,7 @@ const Footer = () => (
           <PublisherText color="Dark">
             издатель{' '}
             <ExternalLink url="http://cprdip.pl/">
-              <u>Издатель Центр польско-российского диалога и согласия</u>
+              <u>CPiDPR</u>
             </ExternalLink>
           </PublisherText>
         </Publisher>
