@@ -8,6 +8,7 @@ import { breakpoints, mediaQueries } from '../../../utils/mediaQueries'
 import Header from '../../../components/Header'
 import Paragraph from '../../../components/Paragraph'
 import * as PropTypes from 'prop-types'
+import ArticleInfoBox from '../../../components/ArticleInfoBox'
 
 const HighlightedArticleStyled = styled.div`
   position: relative;
@@ -77,7 +78,14 @@ class HighlightedArticle extends Component {
   }
 
   render() {
-    const { title, slug, heroImage, author, lead } = this.props.post
+    const {
+      title,
+      slug,
+      heroImage,
+      author,
+      lead,
+      publishDate,
+    } = this.props.post
     const { isActive } = this.state
 
     return (
@@ -99,19 +107,18 @@ class HighlightedArticle extends Component {
             >
               <Link to={`/blog/${slug}`}>{title}</Link>
             </Header>
-            <Header
-              size="Medium"
+            <ArticleInfoBox
+              author={author}
+              publishDate={publishDate}
+              justify="center"
               color="white"
-              type={5}
-              margin="0 0 1.8rem"
-              weight="Bold"
-            >
-              <Link to={`/author/${author.slug}`}>{author.name}</Link>
-            </Header>
+            />
             {lead && (
               <Lead isActive={isActive}>
                 <Link to={`/blog/${slug}`}>
-                  <Paragraph color="white">{lead}</Paragraph>
+                  <Paragraph color="white" lineHeight="Medium">
+                    {lead}
+                  </Paragraph>
                 </Link>
               </Lead>
             )}
@@ -125,6 +132,7 @@ class HighlightedArticle extends Component {
 HighlightedArticle.propTypes = {
   post: articleType,
   isMobileView: PropTypes.bool,
+  publishDate: PropTypes.string,
 }
 
 export default HighlightedArticle

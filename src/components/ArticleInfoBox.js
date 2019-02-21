@@ -9,9 +9,11 @@ const InfoBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  ${({ justify }) => `justify-content: ${justify};`}
   margin: 0 0 1rem;
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: 1.4rem;
+  color: ${({ theme, color }) => theme.colors[color]};
 
   @media ${mediaQueries.tablet} {
     font-size: ${({ size }) => (size === 'Small' ? '1.4rem' : '1.6rem')};
@@ -19,13 +21,15 @@ const InfoBox = styled.div`
 `
 const Date = styled.div`
   margin: 0 2.4rem 0.5rem 0;
-  color: ${props => props.theme.colors.highlighted.darkGreyBlue};
+  color: ${({ theme, color }) =>
+    color ? theme.colors[color] : theme.colors.highlighted.darkGreyBlue};
 `
 const AuthorLink = styled(Link)`
   display: block;
   transition: opacity ${props => props.theme.animations.default};
   margin-bottom: 0.5rem;
-  color: ${props => props.theme.colors.highlighted.plum};
+  color: ${({ theme, color }) =>
+    color ? theme[color] : theme.colors.highlighted.plum};
   font-weight: bold;
 
   &:hover {
@@ -33,11 +37,13 @@ const AuthorLink = styled(Link)`
   }
 `
 
-const ArticleInfoBox = ({ author, publishDate, size }) => (
-  <InfoBox size={size}>
-    {publishDate && <Date>{publishDate}</Date>}
+const ArticleInfoBox = ({ author, publishDate, size, color, justify }) => (
+  <InfoBox size={size} justify={justify} color={color}>
+    {publishDate && <Date color={color}>{publishDate}</Date>}
     {author && (
-      <AuthorLink to={`/author/${author.slug}`}>{author.name}</AuthorLink>
+      <AuthorLink color={color} to={`/author/${author.slug}`}>
+        {author.name}
+      </AuthorLink>
     )}
   </InfoBox>
 )
@@ -49,6 +55,8 @@ ArticleInfoBox.propTypes = {
   }),
   publishDate: PropTypes.string,
   size: PropTypes.string,
+  color: PropTypes.string,
+  justify: PropTypes.string,
 }
 
 export default ArticleInfoBox
