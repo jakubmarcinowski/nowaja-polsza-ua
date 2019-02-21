@@ -7,29 +7,11 @@ import ImgWrapper from './ImgWrapper'
 import Paragraph from './Paragraph'
 import ArticleInfoBox from './ArticleInfoBox'
 import Header from './Header'
-import { mediaQueries } from '../utils/mediaQueries'
+import PhotoLabel from '../components/PhotoLabel'
 
 const ImgBox = styled.div`
   position: relative;
   margin-bottom: 1.5rem;
-`
-const CategoryLink = styled(Link)`
-  position: absolute;
-  top: 7px;
-  left: -3px;
-  display: block;
-  transition: opacity ${props => props.theme.animations.default};
-  background: ${({ theme, color }) => theme.colors.highlighted[color]};
-  color: ${props => props.theme.colors.white};
-  padding: 0.5rem;
-
-  &:hover {
-    opacity: 0.9;
-  }
-
-  @media ${mediaQueries.tablet} {
-    margin-bottom: 3.6rem;
-  }
 `
 
 const ArticleItem = ({
@@ -41,12 +23,11 @@ const ArticleItem = ({
         <ImgWrapper img={heroImage} aspectRatio={1.76} />
       </Link>
       {categories && (
-        <CategoryLink
-          color={categories[0].color}
-          to={`/category/${categories[0].slug}`}
-        >
-          {categories[0].title}
-        </CategoryLink>
+        <Link to={`/category/${categories[0].slug}`}>
+          <PhotoLabel color={categories[0].color}>
+            {categories[0].title}
+          </PhotoLabel>
+        </Link>
       )}
     </ImgBox>
     <ArticleInfoBox author={author} publishDate={publishDate} />
