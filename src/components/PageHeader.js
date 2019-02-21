@@ -45,7 +45,7 @@ const PageHeader = () => (
     <Wrapper>
       <Container>
         <Navigation />
-        <SocialMediaList header />
+        <SocialMediaList header semiTransparent />
       </Container>
       <Brand isFullVersion isDarkVersion={false} />
       <Categories />
