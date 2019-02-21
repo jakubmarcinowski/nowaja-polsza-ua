@@ -12,6 +12,10 @@ import ArticleInfoBox from '../../../components/ArticleInfoBox'
 const Wrapper = styled.div`
   display: flex;
 `
+const ContentWrapper = styled.div`
+  overflow: hidden;
+  max-height: 21rem;
+`
 const ImgBox = styled.div`
   position: relative;
   flex: 0 0 46%;
@@ -56,7 +60,7 @@ const TheNewestItem = ({
         </CategoryLink>
       )}
     </ImgBox>
-    <div>
+    <ContentWrapper>
       {slug && (
         <Header
           weight="Bold"
@@ -79,7 +83,7 @@ const TheNewestItem = ({
           </Link>
         </ParagraphWrapper>
       )}
-    </div>
+    </ContentWrapper>
   </Wrapper>
 )
 
