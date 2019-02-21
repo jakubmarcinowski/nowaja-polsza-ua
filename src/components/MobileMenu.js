@@ -58,6 +58,7 @@ const MenuHeader = styled.div`
   background: ${props => props.theme.gradients.header},
     url('./header-background.jpg');
   background-position: 50% 50%;
+  background-size: cover;
   z-index: 999;
 
   @media ${mediaQueries.tablet} {
