@@ -123,7 +123,7 @@ const Brand = ({ isDarkVersion, isFullVersion }) => (
           size="Medium"
           color={isDarkVersion ? 'Dark' : 'White'}
         >
-          Oсн.
+          Осн. в
         </LogoSubtitleLeft>
       )}
       <LogoWrapper
@@ -144,7 +144,7 @@ const Brand = ({ isDarkVersion, isFullVersion }) => (
           size="Medium"
           color={isDarkVersion ? 'Dark' : 'White'}
         >
-          1999
+          1999 г.
         </LogoSubtitleRight>
       )}
     </LogoContainer>
