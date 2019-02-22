@@ -27,6 +27,7 @@ const Paragraph = ({
 )
 
 Paragraph.sizes = {
+  Large: 'Large',
   Big: 'Big',
   Medium: 'Medium',
   MediumSmall: 'MediumSmall',
@@ -63,6 +64,7 @@ const fontWeightMap = {
 }
 
 const fontSizeMap = {
+  [Paragraph.sizes.Large]: 1.8,
   [Paragraph.sizes.Big]: 1.6,
   [Paragraph.sizes.Medium]: 1.4,
   [Paragraph.sizes.MediumSmall]: 1.2,

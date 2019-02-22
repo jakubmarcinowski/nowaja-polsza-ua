@@ -22,7 +22,7 @@ export const theme = {
     slow: '.5s ease-in',
   },
   gradients: {
-    default: `
+    hero: `
     linear-gradient(
       to bottom,
       rgba(17, 29, 34, 0),
@@ -36,6 +36,7 @@ export const theme = {
       rgba(17, 29, 34, 0.85)
     ),
     linear-gradient(to bottom, rgba(54, 54, 54, 0), rgba(17, 29, 34, 0.56))`,
+    article: `linear-gradient(to bottom, rgba(53, 53, 53, 0.57), rgba(0, 0, 0, 0.69))`,
   },
   fonts: {
     primary: `'Merriweather', serif`,

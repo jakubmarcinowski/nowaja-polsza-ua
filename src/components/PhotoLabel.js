@@ -6,6 +6,7 @@ import { childrenType } from '../types/children'
 
 const Label = styled.div`
   position: absolute;
+  z-index: 1;
   top: 10px;
   left: -5px;
   display: block;

@@ -1,32 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import ImgWrapper from '../../components/ImgWrapper'
-import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
+import Hero from './subcomponents/Hero'
 
-const StyledHeroImage = styled.div`
-  width: 80%;
-  margin: auto;
+const StyledArticle = styled.article`
+  padding: 5rem 0;
 `
 
-const ArticlePage = ({ article: { title, heroImage, publishDate, body } }) => (
-  <article>
-    <StyledHeroImage>
-      <ImgWrapper img={heroImage} />
-    </StyledHeroImage>
-    <Wrapper>
-      <h1 className="section-headline">{title}</h1>
-      <p>{publishDate}</p>
-      {body && (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: body.childMarkdownRemark.html,
-          }}
-        />
-      )}
-    </Wrapper>
-  </article>
+const ArticlePage = ({ article, article: { body } }) => (
+  <StyledArticle>
+    <Hero article={article} />
+    {body && (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: body.childMarkdownRemark.html,
+        }}
+      />
+    )}
+  </StyledArticle>
 )
 
 ArticlePage.propTypes = {

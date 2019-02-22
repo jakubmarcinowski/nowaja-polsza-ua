@@ -27,7 +27,7 @@ const HighlightedArticleStyled = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: ${({ theme }) => theme.gradients.default};
+    background-image: ${({ theme }) => theme.gradients.hero};
   }
 `
 const ImgBox = styled.div`
