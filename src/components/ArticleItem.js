@@ -40,7 +40,7 @@ const ArticleItem = ({
             size="Big"
             color="Dark"
             margin="0 0 1.4rem"
-            lineHeight="Big"
+            lineHeight="Medium"
             overflow
             height="6.2"
           >

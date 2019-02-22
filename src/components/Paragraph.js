@@ -70,7 +70,7 @@ const fontSizeMap = {
 }
 
 const lineHeightMap = {
-  [Paragraph.sizes.Medium]: 1.4,
+  [Paragraph.sizes.Medium]: 1.5,
   [Paragraph.sizes.Small]: 1.2,
 }
 
