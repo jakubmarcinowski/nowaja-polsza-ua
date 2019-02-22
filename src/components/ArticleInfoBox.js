@@ -30,7 +30,7 @@ const AuthorLink = styled(Link)`
   margin-bottom: 0.5rem;
   color: ${({ theme, color }) =>
     color ? theme[color] : theme.colors.highlighted.plum};
-  font-weight: bold;
+  font-weight: 700;
 
   &:hover {
     opacity: 0.9;

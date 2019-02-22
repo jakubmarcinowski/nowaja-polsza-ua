@@ -42,8 +42,6 @@ Header.defaultProps = {
 
 Header.weights = {
   Bold: 'Bold',
-  BoldMedium: 'BoldMedium',
-  SemiBold: 'SemiBold',
   Light: 'Light',
   Normal: 'Normal',
 }
@@ -72,11 +70,9 @@ Header.lineHeight = {
 }
 
 const fontWeightMap = {
-  [Header.weights.Bold]: 'bold',
-  [Header.weights.BoldMedium]: 600,
-  [Header.weights.SemiBold]: 500,
+  [Header.weights.Bold]: 700,
   [Header.weights.Light]: 300,
-  [Header.weights.Normal]: 'normal',
+  [Header.weights.Normal]: 400,
 }
 
 const fontSizeMap = {

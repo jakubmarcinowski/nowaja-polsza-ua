@@ -15,7 +15,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   font-size: 1.8rem;
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-weight: bold;
+  font-weight: 700;
 
   @media ${mediaQueries.tablet} {
     padding: ${props => (props.size === 'large' ? '1rem 6rem' : '1rem 3rem')};

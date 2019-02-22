@@ -35,7 +35,6 @@ Paragraph.sizes = {
 
 Paragraph.weights = {
   Bold: 'Bold',
-  SemiBold: 'SemiBold',
   Light: 'Light',
   Normal: 'Normal',
 }
@@ -58,10 +57,9 @@ Paragraph.defaultProps = {
 }
 
 const fontWeightMap = {
-  [Paragraph.weights.Bold]: 'bold',
-  [Paragraph.weights.SemiBold]: 500,
+  [Paragraph.weights.Bold]: 700,
   [Paragraph.weights.Light]: 300,
-  [Paragraph.weights.Normal]: 'normal',
+  [Paragraph.weights.Normal]: 400,
 }
 
 const fontSizeMap = {

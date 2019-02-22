@@ -60,7 +60,7 @@ const TheNewestItem = ({
       {lead && (
         <ParagraphWrapper>
           <Link to={`/blog/${slug}`}>
-            <Paragraph size="Medium" lineHeight="Medium">
+            <Paragraph size="Medium" lineHeight="Medium" weight="Light">
               {lead}
             </Paragraph>
           </Link>
