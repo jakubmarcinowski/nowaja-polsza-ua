@@ -15,6 +15,8 @@ const Header = ({
   weight,
   margin,
   lineHeight,
+  overflow,
+  height,
 }) => (
   <HeaderStyled
     as={`h${type}`}
@@ -24,6 +26,8 @@ const Header = ({
     className={className}
     margin={margin}
     lineHeight={lineHeight}
+    overflow={overflow}
+    height={height}
   >
     {children}
   </HeaderStyled>
@@ -51,6 +55,7 @@ Header.colors = {
 }
 
 Header.sizes = {
+  Large: 'Large',
   Big: 'Big',
   MediumBig: 'MediumBig',
   Medium: 'Medium',
@@ -60,6 +65,7 @@ Header.sizes = {
 }
 
 Header.lineHeight = {
+  Large: 'Large',
   Big: 'Big',
   Medium: 'Medium',
   Small: 'Small',
@@ -74,8 +80,9 @@ const fontWeightMap = {
 }
 
 const fontSizeMap = {
-  [Header.sizes.Big]: 2.5,
-  [Header.sizes.MediumBig]: 2,
+  [Header.sizes.Large]: 2.5,
+  [Header.sizes.Big]: 2.3,
+  [Header.sizes.MediumBig]: 1.8,
   [Header.sizes.Medium]: 1.6,
   [Header.sizes.MediumSmall]: 1.4,
   [Header.sizes.Small]: 1.2,
@@ -83,7 +90,8 @@ const fontSizeMap = {
 }
 
 const lineHeightMap = {
-  [Header.sizes.Big]: 1.6,
+  [Header.sizes.Large]: 1.6,
+  [Header.sizes.Big]: 1.4,
   [Header.sizes.Medium]: 1.4,
   [Header.sizes.Small]: 1.2,
 }
@@ -95,6 +103,8 @@ const colorMap = () => ({
 })
 
 const HeaderStyled = styled.h1`
+  ${({ overflow }) => overflow && 'overflow: hidden'};
+  ${({ height }) => height && `height: ${height * 0.7}rem`};
   margin: ${({ margin }) => margin};
   line-height: ${({ lineHeight }) => lineHeightMap[lineHeight]};
   color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
@@ -102,6 +112,7 @@ const HeaderStyled = styled.h1`
   font-weight: ${({ weight }) => fontWeightMap[weight]};
 
   @media ${mediaQueries.tablet} {
+    ${({ height }) => height && `height: ${height}rem`};
     font-size: ${({ size }) => fontSizeMap[size]}rem;
   }
 `
@@ -115,6 +126,8 @@ Header.propTypes = {
   margin: PropTypes.string,
   className: PropTypes.string,
   lineHeight: PropTypes.string,
+  overflow: PropTypes.bool,
+  height: PropTypes.string,
 }
 
 export default Header

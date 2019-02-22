@@ -13,10 +13,6 @@ import PhotoLabel from '../../../components/PhotoLabel'
 const Wrapper = styled.div`
   display: flex;
 `
-const ContentWrapper = styled.div`
-  overflow: hidden;
-  max-height: 21rem;
-`
 const ImgBox = styled.div`
   position: relative;
   flex: 0 0 46%;
@@ -24,7 +20,7 @@ const ImgBox = styled.div`
 `
 const ParagraphWrapper = styled.div`
   @media ${mediaQueries.desktop} {
-    max-height: 7.5rem;
+    max-height: 7.6rem;
     overflow: hidden;
   }
 `
@@ -45,7 +41,7 @@ const TheNewestItem = ({
         </Link>
       )}
     </ImgBox>
-    <ContentWrapper>
+    <div>
       {slug && (
         <Header
           weight="Bold"
@@ -54,6 +50,8 @@ const TheNewestItem = ({
           color="Dark"
           margin="0 0 1rem"
           lineHeight="Medium"
+          overflow
+          height="5.2"
         >
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Header>
@@ -68,7 +66,7 @@ const TheNewestItem = ({
           </Link>
         </ParagraphWrapper>
       )}
-    </ContentWrapper>
+    </div>
   </Wrapper>
 )
 

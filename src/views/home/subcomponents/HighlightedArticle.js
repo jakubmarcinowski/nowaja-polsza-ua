@@ -104,12 +104,12 @@ class HighlightedArticle extends Component {
           </ImgBox>
           <ArticleContent isActive={isActive}>
             <Header
-              size="Big"
+              size="Large"
               color="white"
               type={2}
               margin="0 0 1.8rem"
               weight="Bold"
-              lineHeight="Big"
+              lineHeight="Large"
             >
               <Link to={`/blog/${slug}`}>{title}</Link>
             </Header>

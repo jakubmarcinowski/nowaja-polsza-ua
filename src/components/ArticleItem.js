@@ -41,6 +41,8 @@ const ArticleItem = ({
             color="Dark"
             margin="0 0 1.4rem"
             lineHeight="Big"
+            overflow
+            height="6.2"
           >
             <Link to={`/blog/${slug}`}>{title}</Link>
           </Header>

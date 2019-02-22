@@ -5,7 +5,7 @@ import { childrenType } from '../../../types/children'
 import { mediaQueries } from '../../../utils/mediaQueries'
 
 const StyledHero = styled.div`
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   @media ${mediaQueries.large} {
     display: flex;
     align-items: stretch;
