@@ -36,6 +36,11 @@ export const pageQuery = graphql`
         name
         slug
       }
+      categories {
+        title
+        slug
+        color
+      }
       publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
       heroImage {
         fluid(maxWidth: 1920, background: "rgb:000000") {

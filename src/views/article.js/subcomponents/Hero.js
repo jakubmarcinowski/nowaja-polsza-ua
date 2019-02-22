@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 import ImgWrapper from '../../../components/ImgWrapper'
 import Header from '../../../components/Header'
 import Paragraph from '../../../components/Paragraph'
+import Label from '../../../components/Label'
 
 const StyledHero = styled.header`
   position: relative;
@@ -56,12 +57,21 @@ const AuthorLink = styled(Link)`
     opacity: 0.9;
   }
 `
-const CategoriesBox = styled.div``
-const Label = styled.label`
+const CategoriesBox = styled.div`
+  display: flex;
+`
+const TextLabel = styled.label`
   font-size: 1.6rem;
 `
+const LabelLink = styled(Label)`
+  &:not(:last-child) {
+    margin: 0 25px 0 0;
+  }
+`
 
-const Hero = ({ article: { title, publishDate, heroImage, author } }) => {
+const Hero = ({
+  article: { title, publishDate, heroImage, author, categories },
+}) => {
   return (
     <StyledHero>
       <ImgBox>
@@ -81,14 +91,20 @@ const Hero = ({ article: { title, publishDate, heroImage, author } }) => {
         </HeaderWrapper>
         <InfoBox>
           <Paragraph size="Large" color="dark">
-            <Label>опубликованный</Label> <Date>{publishDate}</Date>
+            <TextLabel>опубликованный</TextLabel> <Date>{publishDate}</Date>
           </Paragraph>
           <Paragraph size="Large" color="dark">
-            <Label>автор</Label>{' '}
+            <TextLabel>автор</TextLabel>{' '}
             <AuthorLink to={`/author/${author.slug}`}>{author.name}</AuthorLink>
           </Paragraph>
         </InfoBox>
-        <CategoriesBox />
+        <CategoriesBox>
+          {categories.map(category => (
+            <LabelLink to={`/category/${category.slug}`} key={category.slug}>
+              <Label color={category.color}>{category.title}</Label>
+            </LabelLink>
+          ))}
+        </CategoriesBox>
       </Banner>
     </StyledHero>
   )

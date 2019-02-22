@@ -3,26 +3,19 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { childrenType } from '../types/children'
+import Label from './Label'
 
-const Label = styled.div`
+const PhotoLabelStyled = styled.div`
   position: absolute;
   z-index: 1;
   top: 10px;
   left: -5px;
-  display: block;
-  padding: 0.5rem 1rem;
-  transition: opacity ${props => props.theme.animations.default};
-  background: ${({ theme, color }) =>
-    theme.colors.highlighted[color] || theme.colors.dark};
-  color: ${props => props.theme.colors.white};
-
-  &:hover {
-    opacity: 0.9;
-  }
 `
 
 const PhotoLabel = ({ color, children }) => (
-  <Label color={color}>{children}</Label>
+  <PhotoLabelStyled>
+    <Label color={color}>{children}</Label>
+  </PhotoLabelStyled>
 )
 
 PhotoLabel.propTypes = {
