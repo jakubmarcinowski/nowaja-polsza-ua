@@ -50,7 +50,7 @@ const TheNewestItem = ({
           color="Dark"
           margin="0 0 1rem"
           lineHeight="Medium"
-          overflow
+          overflow="hidden"
           height="5.2"
         >
           <Link to={`/blog/${slug}`}>{title}</Link>
