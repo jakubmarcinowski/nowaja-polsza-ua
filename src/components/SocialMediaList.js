@@ -32,11 +32,11 @@ const Item = styled.li`
   ${({ semiTransparent }) =>
     semiTransparent &&
     `
-  opacity: 0.5;
-  
-  &:hover {
-    opacity: 1;
-  }
+    opacity: 0.5;
+    
+    &:hover {
+      opacity: 1;
+    }
   `}
 `
 
