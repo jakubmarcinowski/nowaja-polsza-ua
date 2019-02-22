@@ -99,7 +99,7 @@ const colorMap = () => ({
 })
 
 const HeaderStyled = styled.h1`
-  ${({ overflow }) => overflow && 'overflow: hidden'};
+  ${({ overflow }) => overflow && `overflow: ${overflow}`};
   ${({ height }) => height && `height: ${height * 0.7}rem`};
   margin: ${({ margin }) => margin};
   line-height: ${({ lineHeight }) => lineHeightMap[lineHeight]};
@@ -122,7 +122,7 @@ Header.propTypes = {
   margin: PropTypes.string,
   className: PropTypes.string,
   lineHeight: PropTypes.string,
-  overflow: PropTypes.bool,
+  overflow: PropTypes.string,
   height: PropTypes.string,
 }
 
