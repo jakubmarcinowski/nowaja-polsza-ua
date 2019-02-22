@@ -26,7 +26,7 @@ const ParagraphWrapper = styled.div`
 `
 
 const TheNewestItem = ({
-  article: { title, slug, author, categories, heroImage, publishDate, lead },
+  article: { title, slug, authors, categories, heroImage, publishDate, lead },
 }) => (
   <Wrapper>
     <ImgBox>
@@ -56,7 +56,11 @@ const TheNewestItem = ({
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Header>
       )}
-      <ArticleInfoBox author={author} publishDate={publishDate} size="Small" />
+      <ArticleInfoBox
+        author={authors[0]}
+        publishDate={publishDate}
+        size="Small"
+      />
       {lead && (
         <ParagraphWrapper>
           <Link to={`/blog/${slug}`}>
