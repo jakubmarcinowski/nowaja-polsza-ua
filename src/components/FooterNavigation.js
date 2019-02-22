@@ -28,13 +28,13 @@ const Item = styled.li`
 const FooterNavigation = () => (
   <StyledNavigation>
     <Item>
-      <Link to="/">О Новой Польше Контакты</Link>
+      <Link to="/">О нас</Link>
     </Item>
     <Item>
-      <Link to="/">Политика</Link>
+      <Link to="/">Контакт</Link>
     </Item>
     <Item>
-      <Link to="/">конфиденциальности</Link>
+      <Link to="/">Политика конфиденциальности</Link>
     </Item>
   </StyledNavigation>
 )

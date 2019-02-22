@@ -28,6 +28,16 @@ const Item = styled.li`
   &:last-child {
     margin-right: 0;
   }
+
+  ${({ semiTransparent }) =>
+    semiTransparent &&
+    `
+    opacity: 0.5;
+    
+    &:hover {
+      opacity: 1;
+    }
+  `}
 `
 
 const Logo = styled.img`
@@ -35,9 +45,9 @@ const Logo = styled.img`
   max-width: 30px;
 `
 
-const SocialMediaList = ({ className, header }) => (
+const SocialMediaList = ({ className, header, semiTransparent }) => (
   <List className={className} header={header}>
-    <Item>
+    <Item semiTransparent={semiTransparent}>
       <ExternalLink url="https://www.boldare.com">
         <Logo
           src={header ? facebookFull : facebook}
@@ -45,7 +55,7 @@ const SocialMediaList = ({ className, header }) => (
         />
       </ExternalLink>
     </Item>
-    <Item>
+    <Item semiTransparent={semiTransparent}>
       <ExternalLink url="https://www.boldare.com">
         <Logo
           src={header ? twitterFull : twitter}
@@ -53,7 +63,7 @@ const SocialMediaList = ({ className, header }) => (
         />
       </ExternalLink>
     </Item>
-    <Item>
+    <Item semiTransparent={semiTransparent}>
       <ExternalLink url="https://www.boldare.com">
         <Logo
           src={header ? telegramFull : telegram}
@@ -61,7 +71,7 @@ const SocialMediaList = ({ className, header }) => (
         />
       </ExternalLink>
     </Item>
-    <Item>
+    <Item semiTransparent={semiTransparent}>
       <ExternalLink url="https://www.boldare.com">
         <Logo
           src={header ? youtubeFull : youtube}
@@ -69,7 +79,7 @@ const SocialMediaList = ({ className, header }) => (
         />
       </ExternalLink>
     </Item>
-    <Item>
+    <Item semiTransparent={semiTransparent}>
       <ExternalLink url="https://www.boldare.com">
         <Logo src={header ? vkFull : vk} alt="VK Nowaja Polsza" />
       </ExternalLink>
@@ -80,6 +90,7 @@ const SocialMediaList = ({ className, header }) => (
 SocialMediaList.propTypes = {
   className: PropTypes.any,
   header: PropTypes.bool,
+  semiTransparent: PropTypes.bool,
 }
 
 export default SocialMediaList
