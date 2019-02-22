@@ -88,7 +88,7 @@ const fontSizeMap = {
 const lineHeightMap = {
   [Header.sizes.Large]: 1.6,
   [Header.sizes.Big]: 1.4,
-  [Header.sizes.Medium]: 1.4,
+  [Header.sizes.Medium]: 1.3,
   [Header.sizes.Small]: 1.2,
 }
 
