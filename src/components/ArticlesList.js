@@ -11,26 +11,26 @@ const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 4rem 0 0;
+  margin: 5rem 0 0;
   padding: 0;
   list-style: none;
+
+  @media ${mediaQueries.large} {
+    margin: 4rem -2.5rem;
+  }
 
   li {
     flex: 0 0 100%;
     padding-bottom: 4rem;
 
     @media ${mediaQueries.tablet} {
-      flex: 0 0 calc(95% / 2);
-      padding-bottom: 6.5rem;
+      flex: 0 0 calc(100% / 2);
+      padding: 0 2.5rem 6.5rem;
     }
 
     @media ${mediaQueries.large} {
-      flex: 0 0 calc(89% / 3);
-      padding-bottom: 8rem;
-    }
-
-    @media ${mediaQueries.desktop} {
-      padding-bottom: 9.5rem;
+      flex: 0 0 calc(100% / 3);
+      padding: 0 2.5rem 9.5rem;
     }
   }
 `

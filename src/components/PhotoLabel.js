@@ -6,10 +6,10 @@ import { childrenType } from '../types/children'
 
 const Label = styled.div`
   position: absolute;
-  top: 7px;
-  left: -3px;
+  top: 10px;
+  left: -5px;
   display: block;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   transition: opacity ${props => props.theme.animations.default};
   background: ${({ theme, color }) =>
     theme.colors.highlighted[color] || theme.colors.dark};
