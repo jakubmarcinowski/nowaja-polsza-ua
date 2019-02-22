@@ -45,21 +45,7 @@ export const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  @font-face {
-    font-family: "Open Sans";
-    font-weight: 400;
-    font-style: normal;
-    src: url("/open-sans-v15-cyrillic_cyrillic-ext_latin-regular.woff2") format("woff2");
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "Merriweather";
-    font-weight: 400;
-    font-style: normal;
-    src: url("/merriweather-v19-cyrillic_cyrillic-ext_latin-regular.woff2") format("woff2");
-    font-display: swap;
-  }
+  @import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700|Open+Sans:400,700&subset=cyrillic-ext');
 
   html {
     box-sizing: border-box;
@@ -70,6 +56,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: ${theme.fonts.primary};
+    font-weight: 400;
     font-size: 1.6rem;
   }
   a {

@@ -47,7 +47,7 @@ const ArticleItem = ({
         )}
         {lead && (
           <Link to={`/blog/${slug}`}>
-            <Paragraph size="Big" lineHeight="Medium">
+            <Paragraph size="Big" lineHeight="Medium" weight="Light">
               {lead}
             </Paragraph>
           </Link>
