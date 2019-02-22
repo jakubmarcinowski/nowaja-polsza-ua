@@ -20,7 +20,7 @@ const ImgBox = styled.div`
 `
 const ParagraphWrapper = styled.div`
   @media ${mediaQueries.desktop} {
-    max-height: 7.6rem;
+    max-height: 7.9rem;
     overflow: hidden;
   }
 `
@@ -51,7 +51,7 @@ const TheNewestItem = ({
           margin="0 0 1rem"
           lineHeight="Medium"
           overflow
-          height="5.2"
+          height="4.7"
         >
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Header>
