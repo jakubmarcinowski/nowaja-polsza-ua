@@ -123,7 +123,7 @@ const Brand = ({ isDarkVersion, isFullVersion }) => (
           size="Medium"
           color={isDarkVersion ? 'Dark' : 'White'}
         >
-          EST.
+          Oсн.
         </LogoSubtitleLeft>
       )}
       <LogoWrapper
