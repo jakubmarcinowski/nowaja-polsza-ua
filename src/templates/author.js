@@ -58,16 +58,14 @@ class AuthorTemplate extends React.Component {
 
 export default AuthorTemplate
 
-// @todo should be filtered by id or contentful_id instead of slug, but it doesn't work
-
 export const pageQuery = graphql`
-  query AuthorBySlug($slug: String) {
+  query AuthorByContentfulId($contentful_id: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    contentfulPerson(slug: { eq: $slug }) {
+    contentfulPerson(contentful_id: { eq: $contentful_id }) {
       name
       image {
         fluid(maxWidth: 1920, resizingBehavior: SCALE) {
@@ -81,7 +79,9 @@ export const pageQuery = graphql`
       }
     }
     allContentfulBlogPost(
-      filter: { authors: { elemMatch: { slug: { in: [$slug] } } } }
+      filter: {
+        authors: { elemMatch: { contentful_id: { in: [$contentful_id] } } }
+      }
       sort: { fields: [publishDate], order: DESC }
     ) {
       edges {

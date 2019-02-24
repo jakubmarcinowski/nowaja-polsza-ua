@@ -14,7 +14,7 @@ exports.createPages = ({ graphql, actions }) => {
             allContentfulBlogPost {
               edges {
                 node {
-                  title
+                  contentful_id
                   slug
                 }
               }
@@ -33,7 +33,7 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/blog/${post.node.slug}/`,
             component: blogPost,
             context: {
-              slug: post.node.slug,
+              contentful_id: post.node.contentful_id,
             },
           })
         })
@@ -48,6 +48,7 @@ exports.createPages = ({ graphql, actions }) => {
             allContentfulPerson {
               edges {
                 node {
+                  contentful_id
                   slug
                 }
               }
@@ -66,7 +67,7 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/author/${author.node.slug}/`,
             component: authorTemplate,
             context: {
-              slug: author.node.slug,
+              contentful_id: author.node.contentful_id,
             },
           })
         })
