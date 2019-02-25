@@ -5,10 +5,10 @@ import SocialMediaList from '../../../components/SocialMediaList'
 import { mediaQueries } from '../../../utils/mediaQueries'
 
 const Container = styled.div`
-  margin: 15px 0 30px;
+  padding: 15px 0 30px;
 
   @media ${mediaQueries.tablet} {
-    margin: 30px 0 50px;
+    padding: 30px 0 50px;
   }
 `
 
