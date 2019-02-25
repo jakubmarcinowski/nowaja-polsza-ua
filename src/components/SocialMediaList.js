@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { globalHistory } from '@reach/router'
 
 import ExternalLink from './ExternalLink'
 import facebook from '../../static/social-fb.svg'
@@ -54,7 +55,7 @@ const SocialMediaList = ({ className, header, semiTransparent, share }) => (
         url={
           share
             ? `https://www.facebook.com/sharer/sharer.php?u=${
-                window.location.href
+                globalHistory.location.href
               }`
             : 'https://www.boldare.com'
         }
