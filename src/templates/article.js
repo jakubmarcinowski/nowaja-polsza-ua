@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import get from 'lodash/get'
 
 import Layout from '../components/Layout'
-import ArticlePage from '../views/article.js'
+import ArticlePage from '../views/article/index'
 
 const ArticleTemplate = props => {
   const post = get(props, 'data.contentfulBlogPost')
@@ -32,6 +32,15 @@ export const pageQuery = graphql`
     }
     contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
       title
+      authors {
+        name
+        slug
+      }
+      categories {
+        title
+        slug
+        color
+      }
       publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
       heroImage {
         fluid(maxWidth: 1920, background: "rgb:000000") {

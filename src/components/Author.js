@@ -65,13 +65,13 @@ const Author = ({ author: { name, shortBio, image, slug }, authorPage }) => (
     {image && <AuthorImg img={image} />}
     <Info>
       {name && (
-        <Header size="Biggest" color="Black">
+        <Header size="Bigger" color="Black">
           {name}
         </Header>
       )}
 
       {shortBio && (
-        <Desc size="Biggest" weight="Light" lineHeight="Medium" color="Black">
+        <Desc size="Bigger" weight="Light" lineHeight="Medium" color="Black">
           <span
             dangerouslySetInnerHTML={{
               __html: shortBio.childMarkdownRemark.excerpt,

@@ -54,7 +54,7 @@ Header.colors = {
 
 Header.sizes = {
   Biggest: 'Biggest',
-  Large: 'Large',
+  Bigger: 'Bigger',
   Big: 'Big',
   MediumBig: 'MediumBig',
   Medium: 'Medium',
@@ -64,7 +64,8 @@ Header.sizes = {
 }
 
 Header.lineHeight = {
-  Large: 'Large',
+  Biggest: 'Biggest',
+  Bigger: 'Bigger',
   Big: 'Big',
   Medium: 'Medium',
   Small: 'Small',
@@ -77,8 +78,8 @@ const fontWeightMap = {
 }
 
 const fontSizeMap = {
-  [Header.sizes.Biggest]: 2.6,
-  [Header.sizes.Large]: 2.5,
+  [Header.sizes.Biggest]: 3.6,
+  [Header.sizes.Bigger]: 2.6,
   [Header.sizes.Big]: 2.3,
   [Header.sizes.MediumBig]: 1.8,
   [Header.sizes.Medium]: 1.6,
@@ -88,7 +89,8 @@ const fontSizeMap = {
 }
 
 const lineHeightMap = {
-  [Header.sizes.Large]: 1.6,
+  [Header.sizes.Biggest]: 1.8,
+  [Header.sizes.Bigger]: 1.6,
   [Header.sizes.Big]: 1.4,
   [Header.sizes.Medium]: 1.3,
   [Header.sizes.Small]: 1.2,

@@ -27,7 +27,7 @@ const HighlightedArticleStyled = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: ${({ theme }) => theme.gradients.default};
+    background-image: ${({ theme }) => theme.gradients.hero};
   }
 `
 const ImgBox = styled.div`
@@ -104,12 +104,12 @@ class HighlightedArticle extends Component {
           </ImgBox>
           <ArticleContent isActive={isActive}>
             <Header
-              size="Large"
+              size="Bigger"
               color="white"
               type={2}
               margin="0 0 1.8rem"
               weight="Bold"
-              lineHeight="Large"
+              lineHeight="Bigger"
             >
               <Link to={`/blog/${slug}`}>{title}</Link>
             </Header>
