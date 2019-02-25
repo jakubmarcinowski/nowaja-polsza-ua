@@ -118,7 +118,7 @@ const Author = ({
 Author.propTypes = {
   author: PropTypes.any,
   authorPage: PropTypes.bool,
-  few: PropTypes.any,
+  few: PropTypes.bool,
 }
 
 export default Author
