@@ -45,10 +45,20 @@ const Logo = styled.img`
   max-width: 30px;
 `
 
-const SocialMediaList = ({ className, header, semiTransparent }) => (
+// @todo replace static social media urls with correct ones.
+
+const SocialMediaList = ({ className, header, semiTransparent, share }) => (
   <List className={className} header={header}>
     <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
+      <ExternalLink
+        url={
+          share
+            ? `https://www.facebook.com/sharer/sharer.php?u=${
+                window.location.href
+              }`
+            : 'https://www.boldare.com'
+        }
+      >
         <Logo
           src={header ? facebookFull : facebook}
           alt="Facebook Nowaja Polsza"
@@ -91,6 +101,7 @@ SocialMediaList.propTypes = {
   className: PropTypes.any,
   header: PropTypes.bool,
   semiTransparent: PropTypes.bool,
+  share: PropTypes.bool,
 }
 
 export default SocialMediaList
