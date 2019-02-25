@@ -1,9 +1,13 @@
 import React from 'react'
 import SocialMediaList from '../../../components/SocialMediaList'
+import Paragraph from '../../../components/Paragraph'
 
-const ArticleSocialMediaList = () => {
-  return <SocialMediaList share />
-}
+const ArticleSocialMediaList = () => (
+  <>
+    <Paragraph>Поделиться</Paragraph>
+    <SocialMediaList share />
+  </>
+)
 
 ArticleSocialMediaList.propTypes = {}
 
