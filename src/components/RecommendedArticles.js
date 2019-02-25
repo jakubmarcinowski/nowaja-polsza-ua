@@ -1,21 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import ArticlesList from './ArticlesList'
 
-const Element = styled.div`
-  width: 100%;
-  height: 1px;
-  background: ${({ theme }) => theme.colors.black};
-`
+import { articleType } from '../types/article'
 
-const RecommendedArticles = () => (
+const Element = styled.div``
+
+const RecommendedArticles = ({ posts }) => (
   <Element>
-    {/* <ArticlesList posts={posts} /> */}
-    RECOMMENDED
+    <ArticlesList posts={posts} initialLimit={2} />
   </Element>
 )
 
-// RecommendedArticles.propTypes = {
-//   posts: PropTypes.arrayOf(articleType).isRequired,
-// }
+RecommendedArticles.propTypes = {
+  posts: PropTypes.arrayOf(articleType).isRequired,
+}
 
 export default RecommendedArticles

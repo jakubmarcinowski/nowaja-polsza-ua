@@ -9,14 +9,14 @@ import ArticlePage from '../views/article/index'
 const ArticleTemplate = props => {
   const post = get(props, 'data.contentfulBlogPost')
   const siteTitle = get(props, 'data.site.siteMetadata.title')
-  const test = get(props, 'data.allContentfulBlogPost')
+  const posts = get(props, 'data.allContentfulBlogPost.edges')
 
   return (
     <Layout>
       {post && (
         <>
           <Helmet title={`${post.title} | ${siteTitle}`} />
-          <ArticlePage article={post} />
+          <ArticlePage article={post} posts={posts} />
         </>
       )}
     </Layout>
@@ -25,33 +25,40 @@ const ArticleTemplate = props => {
 
 export default ArticleTemplate
 
+// (
+//   $contentful_id: String
+//   $categories_contentful_ids: [String]
+// )
+
 export const pageQuery = graphql`
-  query BlogPostByContentfulId(
-    $contentful_id: String
-    $categories_contentful_ids: [String]
-  ) {
+  query BlogPostByContentfulId($contentful_id: String) {
     site {
       siteMetadata {
         title
       }
     }
 
-    allContentfulBlogPost(
-      filter: {
-        categories: {
-          elemMatch: { contentful_id: { in: [$categories_contentful_ids] } }
-        }
-      }
-      sort: { fields: [publishDate], order: DESC }
-    ) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           title
+          lead
           slug
+          authors {
+            name
+            slug
+          }
           contentful_id
           categories {
             id
             contentful_id
+            title
+            color
+          }
+          heroImage {
+            fluid(maxWidth: 800, background: "rgb:000000") {
+              ...GatsbyContentfulFluid
+            }
           }
         }
       }
