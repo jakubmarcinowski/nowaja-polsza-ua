@@ -78,7 +78,15 @@ class SocialMediaList extends React.Component {
           </ExternalLink>
         </Item>
         <Item semiTransparent={semiTransparent}>
-          <ExternalLink url="https://www.boldare.com">
+          <ExternalLink
+            url={
+              share
+                ? `https://twitter.com/intent/tweet?original_referer=${
+                    this.state.locationHref
+                  }`
+                : 'https://www.boldare.com'
+            }
+          >
             <Logo
               src={header ? twitterFull : twitter}
               alt="Twitter Nowaja Polsza"
@@ -86,23 +94,37 @@ class SocialMediaList extends React.Component {
           </ExternalLink>
         </Item>
         <Item semiTransparent={semiTransparent}>
-          <ExternalLink url="https://www.boldare.com">
+          <ExternalLink
+            url={
+              share
+                ? `https://telegram.me/share/url?url=${this.state.locationHref}`
+                : 'https://www.boldare.com'
+            }
+          >
             <Logo
               src={header ? telegramFull : telegram}
               alt="Telegram Nowaja Polsza"
             />
           </ExternalLink>
         </Item>
+        {share || (
+          <Item semiTransparent={semiTransparent}>
+            <ExternalLink url="https://www.boldare.com">
+              <Logo
+                src={header ? youtubeFull : youtube}
+                alt="YouTube Nowaja Polsza"
+              />
+            </ExternalLink>
+          </Item>
+        )}
         <Item semiTransparent={semiTransparent}>
-          <ExternalLink url="https://www.boldare.com">
-            <Logo
-              src={header ? youtubeFull : youtube}
-              alt="YouTube Nowaja Polsza"
-            />
-          </ExternalLink>
-        </Item>
-        <Item semiTransparent={semiTransparent}>
-          <ExternalLink url="https://www.boldare.com">
+          <ExternalLink
+            url={
+              share
+                ? `https://vk.com/share.php?url=${this.state.locationHref}`
+                : 'https://www.boldare.com'
+            }
+          >
             <Logo src={header ? vkFull : vk} alt="VK Nowaja Polsza" />
           </ExternalLink>
         </Item>
