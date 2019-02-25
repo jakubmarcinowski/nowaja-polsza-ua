@@ -5,11 +5,30 @@ import { articleType } from '../../types/article'
 import PageHeader from './subcomponents/PageHeader'
 import { mediaQueries } from '../../utils/mediaQueries'
 import ArticleSocialMediaList from './subcomponents/ArticleSocialMediaList'
+import Header from '../../components/Header'
+import Author from '../../components/Author'
 
 const StyledArticle = styled.article`
   padding: 2rem 0;
   @media ${mediaQueries.tablet} {
     padding: 5rem 0;
+  }
+`
+
+const HeaderStyled = styled(Header)`
+  text-align: center;
+`
+
+const Authors = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -2rem;
+  padding: 2rem;
+
+  @media ${mediaQueries.tablet} {
+    margin: -5rem;
+    padding: 5rem;
   }
 `
 
