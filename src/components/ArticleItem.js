@@ -15,7 +15,7 @@ const ImgBox = styled.div`
 `
 
 const ArticleItem = ({
-  article: { title, slug, author, categories, heroImage, publishDate, lead },
+  article: { title, slug, authors, categories, heroImage, publishDate, lead },
 }) => (
   <>
     <ImgBox>
@@ -30,7 +30,7 @@ const ArticleItem = ({
         </Link>
       )}
     </ImgBox>
-    <ArticleInfoBox author={author} publishDate={publishDate} />
+    <ArticleInfoBox author={authors[0]} publishDate={publishDate} />
     {slug && (
       <>
         {slug && (

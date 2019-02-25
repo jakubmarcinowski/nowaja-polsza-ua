@@ -24,13 +24,13 @@ const ArticleTemplate = props => {
 export default ArticleTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String) {
+  query BlogPostByContentfulId($contentful_id: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    contentfulBlogPost(slug: { eq: $slug }) {
+    contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
       title
       author {
         name

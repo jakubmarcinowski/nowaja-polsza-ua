@@ -85,7 +85,7 @@ class HighlightedArticle extends Component {
       title,
       slug,
       heroImage,
-      author,
+      authors,
       lead,
       publishDate,
     } = this.props.post
@@ -114,7 +114,7 @@ class HighlightedArticle extends Component {
               <Link to={`/blog/${slug}`}>{title}</Link>
             </Header>
             <ArticleInfoBox
-              author={author}
+              author={authors[0]}
               publishDate={publishDate}
               justify="center"
               color="white"
