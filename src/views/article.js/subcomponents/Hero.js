@@ -4,13 +4,16 @@ import { Link } from 'gatsby'
 
 import ImgWrapper from '../../../components/ImgWrapper'
 import Header from '../../../components/Header'
-import Paragraph from '../../../components/Paragraph'
 import Label from '../../../components/Label'
+import { articleType } from '../../../types/article'
+import { mediaQueries } from '../../../utils/mediaQueries'
 
 const StyledHero = styled.header`
-  position: relative;
-  text-align: center;
-  margin-bottom: 7rem;
+  @media ${mediaQueries.desktop} {
+    position: relative;
+    margin-bottom: 7rem;
+    text-align: center;
+  }
 `
 const ImgBox = styled.div`
   position: relative;
@@ -26,27 +29,57 @@ const ImgBox = styled.div`
   }
 `
 const Banner = styled.div`
-  background: ${({ theme }) => theme.colors.white};
-  position: absolute;
-  bottom: -7rem;
-  left: 10%;
-  width: 80%;
-  padding: 3rem;
-  border: 1px solid ${({ theme }) => theme.colors.dark};
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+
+  @media ${mediaQueries.desktop} {
+    position: absolute;
+    bottom: -7rem;
+    left: 10%;
+    width: 80%;
+    padding: 3rem;
+    border: 1px solid ${({ theme }) => theme.colors.dark};
+    background: ${({ theme }) => theme.colors.white};
+  }
 `
 const HeaderWrapper = styled.div`
-  max-width: 800px;
-  margin: auto;
+  @media ${mediaQueries.desktop} {
+    order: 1;
+    max-width: 800px;
+    margin: auto;
+  }
+`
+const StyledHeader = styled(Header)`
+  @media ${mediaQueries.desktop} {
+    font-size: 3.6rem;
+  }
 `
 const InfoBox = styled.div`
   display: flex;
-  justify-content: center;
   align-items: baseline;
-  margin-bottom: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+
+  @media ${mediaQueries.desktop} {
+    order: 2;
+    justify-content: center;
+    margin-bottom: 3rem;
+    font-size: 1.6rem;
+  }
 `
-const Date = styled.div`
-  margin: 0 2.4rem 0.5rem 0;
+const InfoItem = styled.div`
+  font-size: 1.4rem;
+
+  @media ${mediaQueries.desktop} {
+    font-size: 1.6rem;
+  }
+`
+const Date = styled.span`
   display: inline-block;
+  margin: 0 2.4rem 0.5rem 0;
+  font-weight: 300;
 `
 const AuthorLink = styled(Link)`
   display: inline-block;
@@ -54,68 +87,87 @@ const AuthorLink = styled(Link)`
   margin-bottom: 0.5rem;
   text-decoration: underline;
 
+  &:not(:last-child) {
+    margin: 0 0.5rem 0 0;
+  }
+
   &:hover {
     opacity: 0.9;
   }
 `
 const CategoriesBox = styled.div`
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+
+  @media ${mediaQueries.desktop} {
+    order: 3;
+    justify-content: center;
+  }
 `
 const TextLabel = styled.label`
-  font-size: 1.6rem;
+  display: none;
+
+  @media ${mediaQueries.desktop} {
+    display: inline-block;
+    order: 3;
+  }
 `
 const LabelLink = styled(Link)`
   &:not(:last-child) {
-    margin: 0 25px 0 0;
+    margin: 0 1.5rem 1.5rem 0;
+
+    @media ${mediaQueries.desktop} {
+      margin: 0 2.5rem 0 0;
+    }
   }
 `
-// Todo consol bug for paragraph
+
 const Hero = ({
-  article: { title, publishDate, heroImage, author, categories },
-}) => {
-  return (
-    <StyledHero>
-      <ImgBox>
-        <ImgWrapper img={heroImage} aspectRatio={3.1} />
-      </ImgBox>
-      <Banner>
-        <HeaderWrapper>
-          <Header
-            lineHeight="Large"
-            size="XLarge"
-            color="dark"
-            weight="Bold"
-            margin="0 0 2rem"
-          >
-            {title}
-          </Header>
-        </HeaderWrapper>
-        <InfoBox>
-          <Paragraph size="Large" color="dark">
-            <TextLabel>опубликованный</TextLabel> <Date>{publishDate}</Date>
-          </Paragraph>
-          <Paragraph size="Large" color="dark">
-            <TextLabel>автор</TextLabel>{' '}
-            <AuthorLink to={`/author/${author.slug}`}>{author.name}</AuthorLink>
-          </Paragraph>
-        </InfoBox>
-        <CategoriesBox>
-          {categories.map(category => (
-            <LabelLink to={`/category/${category.slug}`} key={category.slug}>
-              <Label color={category.color}>{category.title}</Label>
-            </LabelLink>
+  article: { title, publishDate, heroImage, authors, categories },
+}) => (
+  <StyledHero>
+    <ImgBox>
+      <ImgWrapper img={heroImage} aspectRatio={2.5} />
+    </ImgBox>
+    <Banner>
+      <InfoBox>
+        <InfoItem>
+          <TextLabel>опубликованный</TextLabel> <Date>{publishDate}</Date>
+        </InfoItem>
+        <InfoItem>
+          <TextLabel>автор</TextLabel>{' '}
+          {authors.map(author => (
+            <AuthorLink key={author.slug} to={`/author/${author.slug}`}>
+              {author.name}
+            </AuthorLink>
           ))}
-        </CategoriesBox>
-      </Banner>
-    </StyledHero>
-  )
+        </InfoItem>
+      </InfoBox>
+      <HeaderWrapper>
+        <StyledHeader
+          lineHeight="Large"
+          size="Large"
+          color="dark"
+          weight="Bold"
+          margin="0 0 2rem"
+        >
+          {title}
+        </StyledHeader>
+      </HeaderWrapper>
+      <CategoriesBox>
+        {categories.map(category => (
+          <LabelLink to={`/category/${category.slug}`} key={category.slug}>
+            <Label color={category.color}>{category.title}</Label>
+          </LabelLink>
+        ))}
+      </CategoriesBox>
+    </Banner>
+  </StyledHero>
+)
+
+Hero.propTypes = {
+  article: articleType,
 }
 
 export default Hero
-
-{
-  /* <StyledHeroImage>
-<ImgWrapper img={heroImage} />
-</StyledHeroImage> */
-}

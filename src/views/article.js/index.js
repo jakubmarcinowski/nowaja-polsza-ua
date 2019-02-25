@@ -3,9 +3,13 @@ import styled from 'styled-components'
 
 import { articleType } from '../../types/article'
 import Hero from './subcomponents/Hero'
+import { mediaQueries } from '../../utils/mediaQueries'
 
 const StyledArticle = styled.article`
-  padding: 5rem 0;
+  padding: 2rem 0;
+  @media ${mediaQueries.tablet} {
+    padding: 5rem 0;
+  }
 `
 
 const ArticlePage = ({ article, article: { body } }) => (

@@ -32,7 +32,7 @@ export const pageQuery = graphql`
     }
     contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
       title
-      author {
+      authors {
         name
         slug
       }
