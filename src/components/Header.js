@@ -53,6 +53,7 @@ Header.colors = {
 }
 
 Header.sizes = {
+  Biggest: 'Biggest',
   Large: 'Large',
   Big: 'Big',
   MediumBig: 'MediumBig',
@@ -76,6 +77,7 @@ const fontWeightMap = {
 }
 
 const fontSizeMap = {
+  [Header.sizes.Biggest]: 2.6,
   [Header.sizes.Large]: 2.5,
   [Header.sizes.Big]: 2.3,
   [Header.sizes.MediumBig]: 1.8,

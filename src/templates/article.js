@@ -43,6 +43,22 @@ export const pageQuery = graphql`
           html
         }
       }
+      authors {
+        id
+        name
+        slug
+        shortBio {
+          childMarkdownRemark {
+            html
+            excerpt
+          }
+        }
+        image {
+          fluid(maxWidth: 480) {
+            ...GatsbyContentfulFluid
+          }
+        }
+      }
     }
   }
 `

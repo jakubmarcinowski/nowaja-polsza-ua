@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { childrenType } from '../types/children'
 import { theme } from '../utils/theme'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const Paragraph = ({
   className,
@@ -27,6 +28,7 @@ const Paragraph = ({
 )
 
 Paragraph.sizes = {
+  Biggest: 'Biggest',
   Big: 'Big',
   Medium: 'Medium',
   MediumSmall: 'MediumSmall',
@@ -63,6 +65,7 @@ const fontWeightMap = {
 }
 
 const fontSizeMap = {
+  [Paragraph.sizes.Biggest]: 2,
   [Paragraph.sizes.Big]: 1.6,
   [Paragraph.sizes.Medium]: 1.4,
   [Paragraph.sizes.MediumSmall]: 1.2,
@@ -83,8 +86,16 @@ const ParagraphWrap = styled.p`
   ${({ margin }) => margin && `margin: ${margin};`};
   line-height: ${({ lineHeight }) => lineHeightMap[lineHeight]};
   color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
-  font-size: ${({ size }) => fontSizeMap[size]}rem;
+  font-size: ${({ size }) => fontSizeMap[size] * 0.7}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
+
+  @media ${mediaQueries.tablet} {
+    font-size: ${({ size }) => fontSizeMap[size] * 0.8}rem;
+  }
+
+  @media ${mediaQueries.desktop} {
+    font-size: ${({ size }) => fontSizeMap[size]}rem;
+  }
 `
 
 Paragraph.propTypes = {
