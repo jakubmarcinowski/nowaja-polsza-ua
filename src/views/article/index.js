@@ -7,6 +7,7 @@ import Header from '../../components/Header'
 import Author from '../../components/Author'
 import { articleType } from '../../types/article'
 import { mediaQueries } from '../../utils/mediaQueries'
+import ArticleSocialMediaList from './subcomponents/ArticleSocialMediaList'
 
 const StyledHeroImage = styled.div`
   width: 80%;
@@ -37,6 +38,7 @@ const ArticlePage = ({
     <StyledHeroImage>
       <ImgWrapper img={heroImage} />
     </StyledHeroImage>
+    <ArticleSocialMediaList />
     <Wrapper>
       <h1 className="section-headline">{title}</h1>
       <p>{publishDate}</p>
@@ -47,6 +49,7 @@ const ArticlePage = ({
           }}
         />
       )}
+      <ArticleSocialMediaList />
       <HeaderStyled size="Biggest">об авторе</HeaderStyled>
       {authors && authors.length > 1 ? (
         <Authors>
