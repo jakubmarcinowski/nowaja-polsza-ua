@@ -25,7 +25,7 @@ const Element = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  min-width: calc(100% - 4rem);
+  min-width: calc(100%);
   margin: 2rem auto;
   background: ${({ theme }) => theme.colors.authorBackground};
 
@@ -48,7 +48,6 @@ const Element = styled.div`
           flex-wrap: wrap;
           margin: 5rem;
           max-width: 3.9rem; 
-          min-width: 3.9rem;
         `};
   }
 `
@@ -93,13 +92,13 @@ const Author = ({
     {image && <AuthorImg img={image} />}
     <Info few={few}>
       {name && (
-        <Header size="Biggest" color="Black">
+        <Header size="Bigger" color="Black">
           {name}
         </Header>
       )}
 
       {shortBio && (
-        <Desc size="Biggest" weight="Light" lineHeight="Medium" color="Black">
+        <Desc size="Bigger" weight="Light" lineHeight="Medium" color="Black">
           <span
             dangerouslySetInnerHTML={{
               __html: shortBio.childMarkdownRemark.excerpt,
