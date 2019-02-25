@@ -25,7 +25,7 @@ const Element = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  min-width: calc(100%);
+  min-width: 100%;
   margin: 2rem auto;
   background: ${({ theme }) => theme.colors.authorBackground};
 

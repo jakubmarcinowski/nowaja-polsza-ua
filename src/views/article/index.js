@@ -48,7 +48,7 @@ const ArticlePage = ({
         />
       )}
       <HeaderStyled size="Biggest">об авторе</HeaderStyled>
-      {authors.length > 1 ? (
+      {authors && authors.length > 1 ? (
         <Authors>
           {authors.map(element => (
             <Author author={element} key={element.id} few />
