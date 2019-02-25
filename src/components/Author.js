@@ -25,14 +25,31 @@ const Element = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  max-width: 30rem;
+  min-width: calc(100% - 4rem);
   margin: 2rem auto;
   background: ${({ theme }) => theme.colors.authorBackground};
+
+  ${({ few }) => few && `margin: 2rem;`};
+
+  @media ${mediaQueries.phoneLandscape} {
+    max-width: 30rem;
+    min-width: 30rem;
+  }
 
   @media ${mediaQueries.tablet} {
     flex-direction: row;
     margin: 5rem auto;
     max-width: 70%;
+
+    ${({ few }) =>
+      few &&
+      `
+          flex-direction: column;
+          flex-wrap: wrap;
+          margin: 5rem;
+          max-width: 3.9rem; 
+          min-width: 3.9rem;
+        `};
   }
 `
 
@@ -53,6 +70,13 @@ const Info = styled.div`
 
   @media ${mediaQueries.tablet} {
     padding: 3rem 3rem 3rem 1rem;
+
+    ${({ few }) =>
+      few
+        ? `
+        padding: 3rem 3rem 5rem 3rem;
+        `
+        : 'flex-direction: row;'};
   }
 `
 
@@ -60,10 +84,14 @@ const Desc = styled(Paragraph)`
   margin-top: 1rem;
 `
 
-const Author = ({ author: { name, shortBio, image, slug }, authorPage }) => (
-  <Element>
+const Author = ({
+  author: { name, shortBio, image, slug },
+  authorPage,
+  few,
+}) => (
+  <Element few={few}>
     {image && <AuthorImg img={image} />}
-    <Info>
+    <Info few={few}>
       {name && (
         <Header size="Biggest" color="Black">
           {name}
@@ -91,6 +119,7 @@ const Author = ({ author: { name, shortBio, image, slug }, authorPage }) => (
 Author.propTypes = {
   author: PropTypes.any,
   authorPage: PropTypes.bool,
+  few: PropTypes.any,
 }
 
 export default Author

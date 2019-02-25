@@ -3,9 +3,10 @@ import styled from 'styled-components'
 
 import ImgWrapper from '../../components/ImgWrapper'
 import Wrapper from '../../components/Wrapper'
-import { articleType } from '../../types/article'
 import Header from '../../components/Header'
 import Author from '../../components/Author'
+import { articleType } from '../../types/article'
+import { mediaQueries } from '../../utils/mediaQueries'
 
 const StyledHeroImage = styled.div`
   width: 80%;
@@ -14,6 +15,19 @@ const StyledHeroImage = styled.div`
 
 const HeaderStyled = styled(Header)`
   text-align: center;
+`
+
+const Authors = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -2rem;
+  padding: 2rem;
+
+  @media ${mediaQueries.tablet} {
+    margin: -5rem;
+    padding: 5rem;
+  }
 `
 
 const ArticlePage = ({
@@ -34,8 +48,15 @@ const ArticlePage = ({
         />
       )}
       <HeaderStyled size="Biggest">об авторе</HeaderStyled>
-      {/* @TODO change when more than one author will be ready */}
-      <Author author={authors[0]} />
+      {authors.length > 1 ? (
+        <Authors>
+          {authors.map(element => (
+            <Author author={element} key={element.id} few />
+          ))}
+        </Authors>
+      ) : (
+        <Author author={authors[0]} />
+      )}
     </Wrapper>
   </article>
 )
