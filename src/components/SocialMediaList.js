@@ -53,7 +53,7 @@ class SocialMediaList extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ href: window.location.href })
+    this.setState({ locationHref: window.location.href })
   }
 
   render() {
