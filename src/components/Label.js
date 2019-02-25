@@ -9,7 +9,7 @@ const StyledLabel = styled.div`
   padding: 0.5rem 1rem;
   transition: opacity ${props => props.theme.animations.default};
   background: ${({ theme, color }) =>
-    theme.colors.highlighted[color] || theme.colors.dark};
+    theme.colors.highlighted[color] || theme.colors[color]};
   color: ${props => props.theme.colors.white};
 
   &:hover {

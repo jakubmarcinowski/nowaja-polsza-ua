@@ -42,6 +42,7 @@ const InfoBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: baseline;
+  margin-bottom: 30px;
 `
 const Date = styled.div`
   margin: 0 2.4rem 0.5rem 0;
@@ -59,16 +60,17 @@ const AuthorLink = styled(Link)`
 `
 const CategoriesBox = styled.div`
   display: flex;
+  justify-content: center;
 `
 const TextLabel = styled.label`
   font-size: 1.6rem;
 `
-const LabelLink = styled(Label)`
+const LabelLink = styled(Link)`
   &:not(:last-child) {
     margin: 0 25px 0 0;
   }
 `
-
+// Todo consol bug for paragraph
 const Hero = ({
   article: { title, publishDate, heroImage, author, categories },
 }) => {
