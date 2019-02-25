@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { globalHistory } from '@reach/router'
 
 import ExternalLink from './ExternalLink'
 import facebook from '../../static/social-fb.svg'
@@ -48,55 +47,69 @@ const Logo = styled.img`
 
 // @todo replace static social media urls with correct ones.
 
-const SocialMediaList = ({ className, header, semiTransparent, share }) => (
-  <List className={className} header={header}>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink
-        url={
-          share
-            ? `https://www.facebook.com/sharer/sharer.php?u=${
-                globalHistory.location.href
-              }`
-            : 'https://www.boldare.com'
-        }
-      >
-        <Logo
-          src={header ? facebookFull : facebook}
-          alt="Facebook Nowaja Polsza"
-        />
-      </ExternalLink>
-    </Item>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
-        <Logo
-          src={header ? twitterFull : twitter}
-          alt="Twitter Nowaja Polsza"
-        />
-      </ExternalLink>
-    </Item>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
-        <Logo
-          src={header ? telegramFull : telegram}
-          alt="Telegram Nowaja Polsza"
-        />
-      </ExternalLink>
-    </Item>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
-        <Logo
-          src={header ? youtubeFull : youtube}
-          alt="YouTube Nowaja Polsza"
-        />
-      </ExternalLink>
-    </Item>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
-        <Logo src={header ? vkFull : vk} alt="VK Nowaja Polsza" />
-      </ExternalLink>
-    </Item>
-  </List>
-)
+class SocialMediaList extends React.Component {
+  state = {
+    locationHref: '',
+  }
+
+  componentDidMount() {
+    this.setState({ href: window.location.href })
+  }
+
+  render() {
+    const { className, header, semiTransparent, share } = this.props
+
+    return (
+      <List className={className} header={header}>
+        <Item semiTransparent={semiTransparent}>
+          <ExternalLink
+            url={
+              share
+                ? `https://www.facebook.com/sharer/sharer.php?u=${
+                    this.state.locationHref
+                  }`
+                : 'https://www.boldare.com'
+            }
+          >
+            <Logo
+              src={header ? facebookFull : facebook}
+              alt="Facebook Nowaja Polsza"
+            />
+          </ExternalLink>
+        </Item>
+        <Item semiTransparent={semiTransparent}>
+          <ExternalLink url="https://www.boldare.com">
+            <Logo
+              src={header ? twitterFull : twitter}
+              alt="Twitter Nowaja Polsza"
+            />
+          </ExternalLink>
+        </Item>
+        <Item semiTransparent={semiTransparent}>
+          <ExternalLink url="https://www.boldare.com">
+            <Logo
+              src={header ? telegramFull : telegram}
+              alt="Telegram Nowaja Polsza"
+            />
+          </ExternalLink>
+        </Item>
+        <Item semiTransparent={semiTransparent}>
+          <ExternalLink url="https://www.boldare.com">
+            <Logo
+              src={header ? youtubeFull : youtube}
+              alt="YouTube Nowaja Polsza"
+            />
+          </ExternalLink>
+        </Item>
+        <Item semiTransparent={semiTransparent}>
+          <ExternalLink url="https://www.boldare.com">
+            <Logo src={header ? vkFull : vk} alt="VK Nowaja Polsza" />
+          </ExternalLink>
+        </Item>
+      </List>
+    )
+  }
+}
 
 SocialMediaList.propTypes = {
   className: PropTypes.any,
