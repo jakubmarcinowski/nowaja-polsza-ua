@@ -137,11 +137,12 @@ const Hero = ({
         </InfoItem>
         <InfoItem>
           <TextLabel>автор</TextLabel>{' '}
-          {authors.map(author => (
-            <AuthorLink key={author.slug} to={`/author/${author.slug}`}>
-              {author.name}
-            </AuthorLink>
-          ))}
+          {authors &&
+            authors.map(author => (
+              <AuthorLink key={author.slug} to={`/author/${author.slug}`}>
+                {author.name}
+              </AuthorLink>
+            ))}
         </InfoItem>
       </InfoBox>
       <HeaderWrapper>
@@ -156,15 +157,23 @@ const Hero = ({
         </StyledHeader>
       </HeaderWrapper>
       <CategoriesBox>
-        {categories.map(category => (
-          <LabelLink to={`/category/${category.slug}`} key={category.slug}>
-            <Label color={category.color}>{category.title}</Label>
-          </LabelLink>
-        ))}
+        {categories &&
+          categories.map(category => (
+            <LabelLink to={`/category/${category.slug}`} key={category.slug}>
+              <Label color={category.color}>{category.title}</Label>
+            </LabelLink>
+          ))}
       </CategoriesBox>
     </Banner>
   </StyledHero>
 )
+
+Hero.defaultProps = {
+  article: {
+    title: '',
+    publishDate: '',
+  },
+}
 
 Hero.propTypes = {
   article: articleType,
