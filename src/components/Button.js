@@ -13,7 +13,7 @@ const StyledButton = styled.button`
   border: 1px solid ${props => props.theme.colors.black};
   background-color: ${props => props.theme.colors.white};
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: ${props => (props.size === 'large' ? '1.8rem' : '1rem')};
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-weight: 700;
 
@@ -32,8 +32,8 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = ({ children, onBtnClick, size }) => (
-  <StyledButton size={size} onClick={onBtnClick}>
+const Button = ({ className, children, onBtnClick, size }) => (
+  <StyledButton className={className} size={size} onClick={onBtnClick}>
     {children}
   </StyledButton>
 )
@@ -43,8 +43,9 @@ Button.defaultProps = {
 }
 
 Button.propTypes = {
+  className: PropTypes.string,
   children: childrenType.isRequired,
-  onBtnClick: PropTypes.func.isRequired,
+  onBtnClick: PropTypes.func,
   size: PropTypes.string,
 }
 

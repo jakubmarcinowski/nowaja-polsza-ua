@@ -145,8 +145,8 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
       </InfoBox>
       <HeaderWrapper>
         <StyledHeader
-          lineHeight="Large"
-          size="Large"
+          lineHeight="Biggest"
+          size="Biggest"
           color="dark"
           weight="Bold"
           margin="0 0 2rem"
