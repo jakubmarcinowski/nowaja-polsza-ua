@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
 
 import ImgWrapper from '../../../components/ImgWrapper'
 import Header from '../../../components/Header'
 import Label from '../../../components/Label'
-import { articleType } from '../../../types/article'
 import { mediaQueries } from '../../../utils/mediaQueries'
 
-const StyledHero = styled.header`
+const StyledPageHeader = styled.header`
   @media ${mediaQueries.desktop} {
     position: relative;
     margin-bottom: 7rem;
@@ -123,10 +123,8 @@ const LabelLink = styled(Link)`
   }
 `
 
-const Hero = ({
-  article: { title, publishDate, heroImage, authors, categories },
-}) => (
-  <StyledHero>
+const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
+  <StyledPageHeader>
     <ImgBox>
       <ImgWrapper img={heroImage} aspectRatio={2.5} />
     </ImgBox>
@@ -165,18 +163,35 @@ const Hero = ({
           ))}
       </CategoriesBox>
     </Banner>
-  </StyledHero>
+  </StyledPageHeader>
 )
 
-Hero.defaultProps = {
-  article: {
-    title: '',
-    publishDate: '',
-  },
+PageHeader.defaultProps = {
+  title: '',
+  publishDate: '',
 }
 
-Hero.propTypes = {
-  article: articleType,
+PageHeader.propTypes = {
+  title: PropTypes.string,
+  publishDate: PropTypes.string,
+  heroImage: PropTypes.shape({
+    fluid: PropTypes.shape({
+      aspectRatio: PropTypes.number,
+      base64: PropTypes.string,
+      sizes: PropTypes.string,
+      src: PropTypes.string,
+      srcSet: PropTypes.string,
+    }),
+  }),
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({ title: PropTypes.string, slug: PropTypes.string })
+  ),
+  authors: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      slug: PropTypes.string,
+    })
+  ),
 }
 
-export default Hero
+export default PageHeader

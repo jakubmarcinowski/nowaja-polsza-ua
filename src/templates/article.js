@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import get from 'lodash/get'
 
 import Layout from '../components/Layout'
-import ArticlePage from '../views/article.js'
+import ArticlePage from '../views/article/index'
 
 const ArticleTemplate = props => {
   const post = get(props, 'data.contentfulBlogPost')

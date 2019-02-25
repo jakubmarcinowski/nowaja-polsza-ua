@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { articleType } from '../../types/article'
-import Hero from './subcomponents/Hero'
+import PageHeader from './subcomponents/PageHeader'
 import { mediaQueries } from '../../utils/mediaQueries'
 
 const StyledArticle = styled.article`
@@ -12,9 +12,17 @@ const StyledArticle = styled.article`
   }
 `
 
-const ArticlePage = ({ article, article: { body } }) => (
+const ArticlePage = ({
+  article: { body, title, publishDate, heroImage, authors, categories },
+}) => (
   <StyledArticle>
-    <Hero article={article} />
+    <PageHeader
+      title={title}
+      publishDate={publishDate}
+      heroImage={heroImage}
+      authors={authors}
+      categories={categories}
+    />
     {body && (
       <div
         dangerouslySetInnerHTML={{

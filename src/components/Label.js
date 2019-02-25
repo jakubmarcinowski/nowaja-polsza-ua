@@ -4,8 +4,9 @@ import PropTypes from 'prop-types'
 
 import { childrenType } from '../types/children'
 import { mediaQueries } from '../utils/mediaQueries'
+import Paragraph from '../components/Paragraph'
 
-const StyledLabel = styled.div`
+const StyledLabel = styled(Paragraph)`
   display: block;
   padding: 0.5rem 1rem;
   transition: opacity ${props => props.theme.animations.default};
