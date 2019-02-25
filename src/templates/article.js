@@ -9,6 +9,8 @@ import ArticlePage from '../views/article/index'
 const ArticleTemplate = props => {
   const post = get(props, 'data.contentfulBlogPost')
   const siteTitle = get(props, 'data.site.siteMetadata.title')
+  const test = get(props, 'data.allContentfulBlogPost')
+
   return (
     <Layout>
       {post && (
@@ -24,12 +26,37 @@ const ArticleTemplate = props => {
 export default ArticleTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByContentfulId($contentful_id: String!) {
+  query BlogPostByContentfulId(
+    $contentful_id: String
+    $categories_contentful_ids: [String]
+  ) {
     site {
       siteMetadata {
         title
       }
     }
+
+    allContentfulBlogPost(
+      filter: {
+        categories: {
+          elemMatch: { contentful_id: { in: [$categories_contentful_ids] } }
+        }
+      }
+      sort: { fields: [publishDate], order: DESC }
+    ) {
+      edges {
+        node {
+          title
+          slug
+          contentful_id
+          categories {
+            id
+            contentful_id
+          }
+        }
+      }
+    }
+
     contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
       title
       authors {

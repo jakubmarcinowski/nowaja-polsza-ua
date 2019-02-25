@@ -7,6 +7,7 @@ import Header from '../../components/Header'
 import Author from '../../components/Author'
 import { articleType } from '../../types/article'
 import { mediaQueries } from '../../utils/mediaQueries'
+import RecommendedArticles from '../../components/RecommendedArticles'
 
 const StyledHeroImage = styled.div`
   width: 80%;
@@ -57,6 +58,7 @@ const ArticlePage = ({
       ) : (
         <Author author={authors[0]} />
       )}
+      <RecommendedArticles />
     </Wrapper>
   </article>
 )
