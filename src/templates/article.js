@@ -50,6 +50,7 @@ export const pageQuery = graphql`
         shortBio {
           childMarkdownRemark {
             html
+            excerpt
           }
         }
         image {

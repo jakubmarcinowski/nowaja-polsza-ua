@@ -74,7 +74,7 @@ const Author = ({ author: { name, shortBio, image, slug }, authorPage }) => (
         <Desc size="Biggest" weight="Light" lineHeight="Medium" color="Black">
           <span
             dangerouslySetInnerHTML={{
-              __html: shortBio.childMarkdownRemark.html,
+              __html: shortBio.childMarkdownRemark.excerpt,
             }}
           />
         </Desc>
