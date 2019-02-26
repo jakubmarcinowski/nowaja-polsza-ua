@@ -73,5 +73,39 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
     )
+
+    const category = path.resolve('./src/templates/category.js')
+    resolve(
+      graphql(
+        `
+          {
+            allContentfulCategory {
+              edges {
+                node {
+                  contentful_id
+                  slug
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
+        }
+
+        const categories = result.data.allContentfulCategory.edges
+        categories.forEach(({ node: { contentful_id, slug } }, index) => {
+          createPage({
+            path: `/category/${slug}/`,
+            component: category,
+            context: {
+              contentful_id: contentful_id,
+            },
+          })
+        })
+      })
+    )
   })
 }
