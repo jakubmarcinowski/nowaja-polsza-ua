@@ -68,9 +68,9 @@ const ArticlePage = ({
         authors={authors}
         categories={categories}
       />
-      <ArticleSocialMediaList />
     </Wrapper>
     <Wrapper size="Small" position="relative">
+      <ArticleSocialMediaList vertical />
       {body && <Content html={body.childMarkdownRemark.html} />}
       <ArticleSocialMediaList />
       <SectionWrapper>
@@ -86,7 +86,6 @@ const ArticlePage = ({
           <Author author={authors[0]} />
         )}
       </SectionWrapper>
-
       <SectionWrapper>
         <HeaderStyled size="Biggest">смотреть похожие посты</HeaderStyled>
         <Line />

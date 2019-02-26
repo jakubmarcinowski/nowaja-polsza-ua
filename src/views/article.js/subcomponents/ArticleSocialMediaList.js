@@ -2,7 +2,7 @@ import React from 'react'
 import SocialMediaList from '../../../components/SocialMediaList'
 
 const ArticleSocialMediaList = () => {
-  return <SocialMediaList share />
+  return <SocialMediaList vertical />
 }
 
 ArticleSocialMediaList.propTypes = {}

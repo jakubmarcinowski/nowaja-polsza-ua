@@ -19,20 +19,22 @@ import facebookFullGray from '../../static/social-fb-full-gray.svg'
 import twitterFullGray from '../../static/social-twitter-full-gray.svg'
 import telegramFullGray from '../../static/social-telegram-full-gray.svg'
 import vkFullGray from '../../static/social-vk-full-gray.svg'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const List = styled.ul`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  max-width: 200px;
+  margin: 0 auto;
+
+  @media ${mediaQueries.large} {
+    ${({ vertical }) => vertical && 'flex-direction: column; height: 230px;'}
+  }
 `
 
 const Item = styled.li`
   display: inline;
-  margin-right: 30px;
-
-  &:last-child {
-    margin-right: 0;
-  }
 
   ${({ semiTransparent }) =>
     semiTransparent &&
@@ -52,6 +54,7 @@ const Logo = styled.img`
   ${({ article }) =>
     article &&
     `
+    height: 25px;
     width: 25px;
   `}
 `
@@ -68,10 +71,10 @@ class SocialMediaList extends React.Component {
   }
 
   render() {
-    const { className, header, semiTransparent, article } = this.props
+    const { className, header, semiTransparent, article, vertical } = this.props
 
     return (
-      <List className={className} header={header}>
+      <List className={className} header={header} vertical={vertical}>
         <Item semiTransparent={semiTransparent}>
           <ExternalLink
             url={
@@ -160,6 +163,7 @@ SocialMediaList.propTypes = {
   header: PropTypes.bool,
   semiTransparent: PropTypes.bool,
   article: PropTypes.bool,
+  vertical: PropTypes.bool,
 }
 
 export default SocialMediaList
