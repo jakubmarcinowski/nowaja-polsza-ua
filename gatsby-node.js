@@ -37,7 +37,6 @@ exports.createPages = ({ graphql, actions }) => {
             component: blogPost,
             context: {
               contentful_id: post.node.contentful_id,
-              categories_contentful_ids: post.node.categories.contentful_id,
             },
           })
         })

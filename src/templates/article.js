@@ -1,20 +1,23 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
-import get from 'lodash/get'
+import { intersectionBy, get } from 'lodash/fp'
 
 import Layout from '../components/Layout'
 import ArticlePage from '../views/article/index'
 
 const ArticleTemplate = props => {
-  const post = get(props, 'data.contentfulBlogPost')
-  const siteTitle = get(props, 'data.site.siteMetadata.title')
-  const posts = get(props, 'data.allContentfulBlogPost.edges')
-  // @todo refactor to search throung one array in another
-  const sameCategoryPosts = posts.filter(item => {
-    return (
-      item.node.categories[0].contentful_id === post.categories[0].contentful_id
+  const post = get('data.contentfulBlogPost', props)
+  const siteTitle = get('data.site.siteMetadata.title', props)
+  const posts = get('data.allContentfulBlogPost.edges', props)
+
+  const sameCategoryPosts = posts.filter(({ node: { categories } }) => {
+    const postIntersection = intersectionBy(
+      'contentful_id',
+      categories,
+      post.categories
     )
+    return !!postIntersection.length
   })
 
   return (
@@ -22,7 +25,7 @@ const ArticleTemplate = props => {
       {post && (
         <>
           <Helmet title={`${post.title} | ${siteTitle}`} />
-          <ArticlePage article={post} posts={posts && sameCategoryPosts} />
+          <ArticlePage article={post} posts={sameCategoryPosts} />
         </>
       )}
     </Layout>
