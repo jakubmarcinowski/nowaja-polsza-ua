@@ -35,17 +35,24 @@ const ImgBox = styled.div`
 `
 const ArticleContent = styled.div`
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   left: 0;
   right: 0;
   transform-origin: bottom;
   transform: ${props =>
-    props.isActive ? 'translateY(-30rem)' : 'translateY(-13rem)'};
+  props.isActive ? 'translateY(-25rem)' : 'translateY(-13rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
   width: 70%;
   margin: auto;
   min-width: 280px;
   text-align: center;
+  
+  ${props =>
+  props.isActive && `
+    @media ${mediaQueries.tablet} {
+      transform: translateY(-30rem)
+    }
+  `}
 `
 const Lead = styled.div`
   opacity: ${props => (props.isActive ? 1 : 0)};
@@ -59,6 +66,13 @@ const Title = styled(Header)`
   @media ${mediaQueries.desktop} {
     display: none;
   }
+`
+
+const LinkOverlay = styled(Link)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 `
 
 class HighlightedArticle extends Component {
@@ -98,6 +112,7 @@ class HighlightedArticle extends Component {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
+          <LinkOverlay to={`/blog/${slug}`}/>
           <ImgBox>
             <ImgWrapper img={heroImage} aspectRatio={1.44} />
             <PhotoLabel color="dark">выбор редакции</PhotoLabel>
