@@ -20,7 +20,7 @@ const ImgBox = styled.div`
 `
 const ParagraphWrapper = styled.div`
   @media ${mediaQueries.desktop} {
-    max-height: 7.9rem;
+    max-height: 7.8rem;
     overflow: hidden;
   }
 `

@@ -1,4 +1,4 @@
 export const contentWidth = {
-  medium: 1400,
+  medium: 1440,
   small: 1152,
 }
