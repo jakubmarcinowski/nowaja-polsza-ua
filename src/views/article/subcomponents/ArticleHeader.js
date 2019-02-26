@@ -31,16 +31,23 @@ const ImgBox = styled.div`
 const Banner = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding-top: 2rem;
 
   @media ${mediaQueries.desktop} {
     position: absolute;
     bottom: -7rem;
-    left: 10%;
-    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 870px;
     padding: 3rem;
     border: 1px solid ${({ theme }) => theme.colors.dark};
     background: ${({ theme }) => theme.colors.white};
+  }
+
+  @media ${mediaQueries.large} {
+    width: ${({ theme }) =>
+      `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
   }
 `
 const HeaderWrapper = styled.div`

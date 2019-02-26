@@ -16,6 +16,9 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   contentful_id
                   slug
+                  categories {
+                    contentful_id
+                  }
                 }
               }
             }

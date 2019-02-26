@@ -1,3 +1,5 @@
+import { contentWidth } from './contentWidth'
+
 export const theme = {
   colors: {
     black: '#000',
@@ -56,5 +58,17 @@ export const theme = {
   fonts: {
     primary: `'Merriweather', serif`,
     secondary: `'Open Sans', sans-serif`,
+  },
+  grid: {
+    width: {
+      medium: `${contentWidth.medium}px`,
+      small: `${contentWidth.small}px`,
+    },
+    paddings: {
+      mobile: '20px',
+      tablet: '40px',
+      desktop: '60px',
+      large: '80px',
+    },
   },
 }
