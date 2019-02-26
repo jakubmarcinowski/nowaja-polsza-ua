@@ -17,14 +17,14 @@ const ImgBox = styled.div`
 
 const ArticleItem = ({
   article: { title, slug, authors, categories, heroImage, publishDate, lead },
-  noCategory,
+  noCategoryLabel,
 }) => (
   <>
     <ImgBox>
       <Link to={`/blog/${slug}`}>
         <ImgWrapper img={heroImage} aspectRatio={1.76} />
       </Link>
-      {!noCategory && categories && (
+      {!noCategoryLabel && categories && (
         <Link to={`/category/${categories[0].slug}`}>
           <PhotoLabel color={categories[0].color}>
             {categories[0].title}
@@ -63,7 +63,7 @@ const ArticleItem = ({
 
 ArticleItem.propTypes = {
   article: articleType,
-  noCategory: PropTypes.bool,
+  noCategoryLabel: PropTypes.bool,
 }
 
 export default ArticleItem

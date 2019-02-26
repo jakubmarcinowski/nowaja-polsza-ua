@@ -62,7 +62,7 @@ class ArticlesList extends React.Component {
   }
 
   render() {
-    const { posts, limit, noCategory } = this.props
+    const { posts, limit, noCategoryLabel } = this.props
     const { postsNumber } = this.state
     const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
 
@@ -75,7 +75,7 @@ class ArticlesList extends React.Component {
                 <ArticleItem
                   article={node}
                   key={node.slug}
-                  noCategory={noCategory}
+                  noCategoryLabel={noCategoryLabel}
                 />
               </li>
             ))}
@@ -97,7 +97,7 @@ ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(articleType).isRequired,
   limit: PropTypes.number,
   initialLimit: PropTypes.number,
-  noCategory: PropTypes.bool,
+  noCategoryLabel: PropTypes.bool,
 }
 
 export default ArticlesList

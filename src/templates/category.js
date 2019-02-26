@@ -24,7 +24,7 @@ class CategoryTemplate extends React.Component {
                   posts={categoryPosts}
                   limit={2}
                   initialLimit={2}
-                  noCategory
+                  noCategoryLabel
                 />
               )}
             </Wrapper>
