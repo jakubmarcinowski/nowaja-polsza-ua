@@ -8,24 +8,16 @@ import { theme } from '../utils/theme'
 import Container from './Container'
 import PageHeader from './PageHeader'
 import Footer from './Footer'
-import Line from './Line'
 // import Rodo from './Rodo'
 import MobileMenu from './MobileMenu'
 import { breakpoints } from '../utils/mediaQueries'
 import { mediaQueries } from '../utils/mediaQueries'
 
 export const LayoutWrapper = styled.div`
-  max-width: 1440px;
   margin: 6rem auto 0;
-  padding: 0 20px;
 
   @media ${mediaQueries.tablet} {
     margin: 0 auto;
-    padding: 0 40px;
-  }
-
-  @media ${mediaQueries.large} {
-    padding: 0 80px;
   }
 `
 
@@ -57,7 +49,6 @@ class Layout extends React.Component {
           {isMobileView ? <MobileMenu /> : <PageHeader />}
           <LayoutWrapper>
             <Container>{children}</Container>
-            <Line />
             <Footer />
             {/* Todo later when will be RWD for Rodo */}
             {/* <Rodo /> */}

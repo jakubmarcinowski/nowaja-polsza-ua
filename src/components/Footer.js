@@ -8,6 +8,8 @@ import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
 import { mediaQueries } from '../utils/mediaQueries'
 import { theme } from '../utils/theme'
+import Wrapper from './Wrapper'
+import Line from './Line'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -84,26 +86,29 @@ const BrandContainer = styled.span`
 `
 
 const Footer = () => (
-  <StyledFooter>
-    <FooterNavigation />
-    <Container>
-      <SocialMediaListMobile />
-      <BrandContainer>
-        <Brand />
-      </BrandContainer>
-      <Info>
-        <SocialMediaListDesktop />
-        <Publisher>
-          <PublisherText color="Dark">
-            издатель{' '}
-            <ExternalLink url="http://cprdip.pl/">
-              <u>CPiDPR</u>
-            </ExternalLink>
-          </PublisherText>
-        </Publisher>
-      </Info>
-    </Container>
-  </StyledFooter>
+  <Wrapper>
+    <Line />
+    <StyledFooter>
+      <FooterNavigation />
+      <Container>
+        <SocialMediaListMobile />
+        <BrandContainer>
+          <Brand />
+        </BrandContainer>
+        <Info>
+          <SocialMediaListDesktop />
+          <Publisher>
+            <PublisherText color="Dark">
+              издатель{' '}
+              <ExternalLink url="http://cprdip.pl/">
+                <u>CPiDPR</u>
+              </ExternalLink>
+            </PublisherText>
+          </Publisher>
+        </Info>
+      </Container>
+    </StyledFooter>
+  </Wrapper>
 )
 
 export default Footer

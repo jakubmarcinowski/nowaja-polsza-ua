@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 
 import ArticleSocialMediaList from './subcomponents/ArticleSocialMediaList'
 import Author from '../../components/Author'
+import ArticleHeader from './subcomponents/ArticleHeader'
+import Content from './subcomponents/Content'
 import Header from '../../components/Header'
 import Line from '../../components/Line'
-import PageHeader from './subcomponents/PageHeader'
 import RecommendedArticles from '../../components/RecommendedArticles'
 import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
@@ -59,29 +60,29 @@ const ArticlePage = ({
   posts,
 }) => (
   <StyledArticle>
-    <PageHeader
-      title={title}
-      publishDate={publishDate}
-      heroImage={heroImage}
-      authors={authors}
-      categories={categories}
-    />
     <Wrapper>
-      <h1 className="section-headline">{title}</h1>
-      <p>{publishDate}</p>
+      <ArticleHeader
+        title={title}
+        publishDate={publishDate}
+        heroImage={heroImage}
+        authors={authors}
+        categories={categories}
+      />
       <ArticleSocialMediaList />
-      {body && (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: body.childMarkdownRemark.html,
-          }}
-        />
-      )}
-      <ArticleSocialMediaList />
+    </Wrapper>
 
+    {body && (
+      <Wrapper size="Small" position="relative">
+        <Content html={body.childMarkdownRemark.html} />
+        <ArticleSocialMediaList />
+      </Wrapper>
+    )}
+
+    <Wrapper>
       <SectionWrapper>
         <HeaderStyled size="Biggest">об авторе</HeaderStyled>
         <Line />
+
         {authors && authors.length > 1 ? (
           <Authors>
             {authors.map(element => (

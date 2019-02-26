@@ -7,6 +7,7 @@ import Navigation from './Navigation'
 import Categories from './Categories'
 import SocialMediaList from './SocialMediaList'
 import { mediaQueries } from '../utils/mediaQueries'
+import Wrapper from '../components/Wrapper'
 
 const StyledPageHeader = styled.header`
   background: ${theme.colors.primary};
@@ -26,18 +27,6 @@ const StyledPageHeader = styled.header`
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-`
-
-const Wrapper = styled.div`
-  @media ${mediaQueries.tablet} {
-    max-width: 1440px;
-    margin: 0 auto 0;
-    padding: 0 40px;
-  }
-
-  @media ${mediaQueries.large} {
-    padding: 0 80px;
-  }
 `
 
 const PageHeader = () => (
