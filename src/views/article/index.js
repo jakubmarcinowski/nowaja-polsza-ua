@@ -26,8 +26,8 @@ const Authors = styled.div`
   padding: 2rem;
 
   @media ${mediaQueries.tablet} {
-    margin: -5rem;
-    padding: 5rem;
+    margin: -4rem;
+    padding: 4rem;
   }
 `
 
