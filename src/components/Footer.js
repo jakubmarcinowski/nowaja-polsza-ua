@@ -9,6 +9,7 @@ import SocialMediaList from './SocialMediaList'
 import { mediaQueries } from '../utils/mediaQueries'
 import { theme } from '../utils/theme'
 import Wrapper from './Wrapper'
+import Line from './Line'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -86,6 +87,7 @@ const BrandContainer = styled.span`
 
 const Footer = () => (
   <Wrapper>
+    <Line />
     <StyledFooter>
       <FooterNavigation />
       <Container>

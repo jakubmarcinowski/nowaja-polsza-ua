@@ -8,12 +8,10 @@ import { theme } from '../utils/theme'
 import Container from './Container'
 import PageHeader from './PageHeader'
 import Footer from './Footer'
-import Line from './Line'
 // import Rodo from './Rodo'
 import MobileMenu from './MobileMenu'
 import { breakpoints } from '../utils/mediaQueries'
 import { mediaQueries } from '../utils/mediaQueries'
-import Wrapper from './Wrapper'
 
 export const LayoutWrapper = styled.div`
   margin: 6rem auto 0;
@@ -51,7 +49,6 @@ class Layout extends React.Component {
           {isMobileView ? <MobileMenu /> : <PageHeader />}
           <LayoutWrapper>
             <Container>{children}</Container>
-            <Line />
             <Footer />
             {/* Todo later when will be RWD for Rodo */}
             {/* <Rodo /> */}
