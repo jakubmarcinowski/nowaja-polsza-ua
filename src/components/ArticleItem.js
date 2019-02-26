@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import { articleType } from '../types/article'
 import ImgWrapper from './ImgWrapper'
@@ -16,13 +17,14 @@ const ImgBox = styled.div`
 
 const ArticleItem = ({
   article: { title, slug, authors, categories, heroImage, publishDate, lead },
+  noCategoryLabel,
 }) => (
   <>
     <ImgBox>
       <Link to={`/blog/${slug}`}>
         <ImgWrapper img={heroImage} aspectRatio={1.76} />
       </Link>
-      {categories && (
+      {!noCategoryLabel && categories && (
         <Link to={`/category/${categories[0].slug}`}>
           <PhotoLabel color={categories[0].color}>
             {categories[0].title}
@@ -61,6 +63,7 @@ const ArticleItem = ({
 
 ArticleItem.propTypes = {
   article: articleType,
+  noCategoryLabel: PropTypes.bool,
 }
 
 export default ArticleItem
