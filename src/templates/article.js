@@ -1,20 +1,31 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
-import get from 'lodash/get'
+import { intersectionBy, get } from 'lodash/fp'
 
 import Layout from '../components/Layout'
 import ArticlePage from '../views/article/index'
 
 const ArticleTemplate = props => {
-  const post = get(props, 'data.contentfulBlogPost')
-  const siteTitle = get(props, 'data.site.siteMetadata.title')
+  const post = get('data.contentfulBlogPost', props)
+  const siteTitle = get('data.site.siteMetadata.title', props)
+  const posts = get('data.allContentfulBlogPost.edges', props)
+
+  const recommendedArticles = posts.filter(({ node: { categories } }) => {
+    const postIntersection = intersectionBy(
+      'contentful_id',
+      categories,
+      post.categories
+    )
+    return !!postIntersection.length
+  })
+
   return (
     <Layout>
       {post && (
         <>
           <Helmet title={`${post.title} | ${siteTitle}`} />
-          <ArticlePage article={post} />
+          <ArticlePage article={post} posts={recommendedArticles} />
         </>
       )}
     </Layout>
@@ -30,6 +41,35 @@ export const pageQuery = graphql`
         title
       }
     }
+
+    allContentfulBlogPost(
+      filter: { contentful_id: { ne: $contentful_id } }
+      sort: { fields: [publishDate], order: DESC }
+    ) {
+      edges {
+        node {
+          title
+          lead
+          slug
+          authors {
+            name
+            slug
+          }
+          contentful_id
+          categories {
+            contentful_id
+            title
+            color
+          }
+          heroImage {
+            fluid(maxWidth: 800, background: "rgb:000000") {
+              ...GatsbyContentfulFluid
+            }
+          }
+        }
+      }
+    }
+
     contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
       title
       authors {
@@ -37,6 +77,7 @@ export const pageQuery = graphql`
         slug
       }
       categories {
+        contentful_id
         title
         slug
         color
