@@ -15,6 +15,11 @@ import youtubeFull from '../../static/social-yt-full.svg'
 import telegramFull from '../../static/social-telegram-full.svg'
 import vkFull from '../../static/social-vk-full.svg'
 
+import facebookFullGray from '../../static/social-fb-full-gray.svg'
+import twitterFullGray from '../../static/social-twitter-full-gray.svg'
+import telegramFullGray from '../../static/social-telegram-full-gray.svg'
+import vkFullGray from '../../static/social-vk-full-gray.svg'
+
 const List = styled.ul`
   display: flex;
   align-items: center;
@@ -43,54 +48,118 @@ const Item = styled.li`
 const Logo = styled.img`
   max-height: 30px;
   max-width: 30px;
+
+  ${({ article }) =>
+    article &&
+    `
+    width: 25px;
+  `}
 `
 
-const SocialMediaList = ({ className, header, semiTransparent }) => (
-  <List className={className} header={header}>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
-        <Logo
-          src={header ? facebookFull : facebook}
-          alt="Facebook Nowaja Polsza"
-        />
-      </ExternalLink>
-    </Item>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
-        <Logo
-          src={header ? twitterFull : twitter}
-          alt="Twitter Nowaja Polsza"
-        />
-      </ExternalLink>
-    </Item>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
-        <Logo
-          src={header ? telegramFull : telegram}
-          alt="Telegram Nowaja Polsza"
-        />
-      </ExternalLink>
-    </Item>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
-        <Logo
-          src={header ? youtubeFull : youtube}
-          alt="YouTube Nowaja Polsza"
-        />
-      </ExternalLink>
-    </Item>
-    <Item semiTransparent={semiTransparent}>
-      <ExternalLink url="https://www.boldare.com">
-        <Logo src={header ? vkFull : vk} alt="VK Nowaja Polsza" />
-      </ExternalLink>
-    </Item>
-  </List>
-)
+// @todo replace static social media urls with correct ones.
+
+class SocialMediaList extends React.Component {
+  state = {
+    locationHref: '',
+  }
+
+  componentDidMount() {
+    this.setState({ locationHref: window.location.href })
+  }
+
+  render() {
+    const { className, header, semiTransparent, article } = this.props
+
+    return (
+      <List className={className} header={header}>
+        <Item semiTransparent={semiTransparent}>
+          <ExternalLink
+            url={
+              article
+                ? `https://www.facebook.com/sharer/sharer.php?u=${
+                    this.state.locationHref
+                  }`
+                : 'https://www.boldare.com'
+            }
+          >
+            <Logo
+              article={article}
+              src={
+                header ? facebookFull : article ? facebookFullGray : facebook
+              }
+              alt="Facebook Nowaja Polsza"
+            />
+          </ExternalLink>
+        </Item>
+        <Item semiTransparent={semiTransparent}>
+          <ExternalLink
+            url={
+              article
+                ? `https://twitter.com/intent/tweet?original_referer=${
+                    this.state.locationHref
+                  }`
+                : 'https://www.boldare.com'
+            }
+          >
+            <Logo
+              article={article}
+              src={header ? twitterFull : article ? twitterFullGray : twitter}
+              alt="Twitter Nowaja Polsza"
+            />
+          </ExternalLink>
+        </Item>
+        <Item semiTransparent={semiTransparent}>
+          <ExternalLink
+            url={
+              article
+                ? `https://telegram.me/share/url?url=${this.state.locationHref}`
+                : 'https://www.boldare.com'
+            }
+          >
+            <Logo
+              article={article}
+              src={
+                header ? telegramFull : article ? telegramFullGray : telegram
+              }
+              alt="Telegram Nowaja Polsza"
+            />
+          </ExternalLink>
+        </Item>
+        {article || (
+          <Item semiTransparent={semiTransparent}>
+            <ExternalLink url="https://www.boldare.com">
+              <Logo
+                src={header ? youtubeFull : youtube}
+                alt="YouTube Nowaja Polsza"
+              />
+            </ExternalLink>
+          </Item>
+        )}
+        <Item semiTransparent={semiTransparent}>
+          <ExternalLink
+            url={
+              article
+                ? `https://vk.com/share.php?url=${this.state.locationHref}`
+                : 'https://www.boldare.com'
+            }
+          >
+            <Logo
+              article={article}
+              src={header ? vkFull : article ? vkFullGray : vk}
+              alt="VK Nowaja Polsza"
+            />
+          </ExternalLink>
+        </Item>
+      </List>
+    )
+  }
+}
 
 SocialMediaList.propTypes = {
   className: PropTypes.any,
   header: PropTypes.bool,
   semiTransparent: PropTypes.bool,
+  article: PropTypes.bool,
 }
 
 export default SocialMediaList

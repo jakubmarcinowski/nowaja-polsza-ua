@@ -2,11 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Wrapper from '../../components/Wrapper'
+import { articleType } from '../../types/article'
+import { mediaQueries } from '../../utils/mediaQueries'
+import ArticleSocialMediaList from './subcomponents/ArticleSocialMediaList'
 import Header from '../../components/Header'
 import Author from '../../components/Author'
-import { articleType } from '../../types/article'
 import ArticleHeader from './subcomponents/ArticleHeader'
-import { mediaQueries } from '../../utils/mediaQueries'
 import Content from './subcomponents/Content'
 
 const StyledArticle = styled.article`
@@ -45,24 +46,24 @@ const ArticlePage = ({
         authors={authors}
         categories={categories}
       />
+      <ArticleSocialMediaList />
     </Wrapper>
     {body && (
       <Wrapper size="Small" position="relative">
         <Content html={body.childMarkdownRemark.html} />
+        <ArticleSocialMediaList />
+        <HeaderStyled size="Biggest">об авторе</HeaderStyled>
+        {authors && authors.length > 1 ? (
+          <Authors>
+            {authors.map(element => (
+              <Author author={element} key={element.id} few />
+            ))}
+          </Authors>
+        ) : (
+          <Author author={authors[0]} />
+        )}
       </Wrapper>
     )}
-    <Wrapper>
-      <HeaderStyled size="Biggest">об авторе</HeaderStyled>
-      {authors && authors.length > 1 ? (
-        <Authors>
-          {authors.map(element => (
-            <Author author={element} key={element.id} few />
-          ))}
-        </Authors>
-      ) : (
-        <Author author={authors[0]} />
-      )}
-    </Wrapper>
   </StyledArticle>
 )
 
