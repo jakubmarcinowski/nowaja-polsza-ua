@@ -11,6 +11,9 @@ import Content from './subcomponents/Content'
 
 const StyledArticle = styled.article`
   padding: 2rem 0;
+  @media ${mediaQueries.tablet} {
+    padding: 5rem 0;
+  }
 `
 
 const HeaderStyled = styled(Header)`
@@ -25,8 +28,8 @@ const Authors = styled.div`
   padding: 2rem;
 
   @media ${mediaQueries.tablet} {
-    margin: -5rem;
-    padding: 5rem;
+    margin: -4rem;
+    padding: 4rem;
   }
 `
 
