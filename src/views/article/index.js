@@ -3,17 +3,20 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Line from '../../components/Line'
-import ImgWrapper from '../../components/ImgWrapper'
 import Wrapper from '../../components/Wrapper'
 import Header from '../../components/Header'
 import Author from '../../components/Author'
+import PageHeader from './subcomponents/PageHeader'
+import RecommendedArticles from '../../components/RecommendedArticles'
 import { articleType } from '../../types/article'
 import { mediaQueries } from '../../utils/mediaQueries'
-import RecommendedArticles from '../../components/RecommendedArticles'
 
-const StyledHeroImage = styled.div`
-  width: 80%;
-  margin: auto;
+const StyledArticle = styled.article`
+  padding: 2rem 0;
+
+  @media ${mediaQueries.tablet} {
+    padding: 5rem 0;
+  }
 `
 
 const HeaderStyled = styled(Header)`
@@ -33,8 +36,8 @@ const Authors = styled.div`
   padding: 2rem;
 
   @media ${mediaQueries.tablet} {
-    margin: -5rem;
-    padding: 5rem;
+    margin: -4rem;
+    padding: 4rem;
   }
 `
 
@@ -55,13 +58,17 @@ const SectionWrapper = styled.div`
 `
 
 const ArticlePage = ({
-  article: { title, heroImage, publishDate, body, authors },
+  article: { title, heroImage, publishDate, body, authors, categories },
   posts,
 }) => (
-  <article>
-    <StyledHeroImage>
-      <ImgWrapper img={heroImage} />
-    </StyledHeroImage>
+  <StyledArticle>
+    <PageHeader
+      title={title}
+      publishDate={publishDate}
+      heroImage={heroImage}
+      authors={authors}
+      categories={categories}
+    />
     <Wrapper>
       <h1 className="section-headline">{title}</h1>
       <p>{publishDate}</p>
@@ -93,7 +100,7 @@ const ArticlePage = ({
         <RecommendedArticles posts={posts} />
       </SectionWrapper>
     </Wrapper>
-  </article>
+  </StyledArticle>
 )
 
 ArticlePage.propTypes = {
