@@ -22,8 +22,8 @@ class CategoryTemplate extends React.Component {
               {categoryPosts && (
                 <ArticlesList
                   posts={categoryPosts}
-                  limit={2}
-                  initialLimit={2}
+                  limit={3}
+                  initialLimit={3}
                   noCategoryLabel
                 />
               )}
