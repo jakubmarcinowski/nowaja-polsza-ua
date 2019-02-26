@@ -5,12 +5,8 @@ import styled from 'styled-components'
 import { mediaQueries } from '../../../utils/mediaQueries'
 
 const StyledContent = styled.div`
-  padding: 2rem 0;
   line-height: 1.6;
 
-  @media ${mediaQueries.desktop} {
-    padding: 7rem 0;
-  }
   h1,
   h2,
   h3,
@@ -62,7 +58,9 @@ const StyledContent = styled.div`
     }
   }
   p {
-    margin-bottom: 3.7em;
+    &:not(:last-child) {
+      margin-bottom: 3.7em;
+    }
     font-size: 1.6rem;
 
     @media ${mediaQueries.tablet} {

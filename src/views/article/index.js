@@ -44,10 +44,10 @@ const Authors = styled.div`
 `
 
 const SectionWrapper = styled.div`
-  margin: 10rem 0;
+  margin: 5rem 0;
 
   @media ${mediaQueries.desktop} {
-    margin: 20rem 0;
+    margin: 10rem 0;
   }
 
   &:last-child {
@@ -70,19 +70,12 @@ const ArticlePage = ({
       />
       <ArticleSocialMediaList />
     </Wrapper>
-
-    {body && (
-      <Wrapper size="Small" position="relative">
-        <Content html={body.childMarkdownRemark.html} />
-        <ArticleSocialMediaList />
-      </Wrapper>
-    )}
-
-    <Wrapper>
+    <Wrapper size="Small" position="relative">
+      {body && <Content html={body.childMarkdownRemark.html} />}
+      <ArticleSocialMediaList />
       <SectionWrapper>
         <HeaderStyled size="Biggest">об авторе</HeaderStyled>
         <Line />
-
         {authors && authors.length > 1 ? (
           <Authors>
             {authors.map(element => (
