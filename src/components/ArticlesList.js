@@ -28,7 +28,7 @@ const ListItem = styled.li`
   }
 
   @media ${mediaQueries.large} {
-    ${({ size }) => size !== 'big' && 'flex: 0 0 calc(100% / 3);'}
+    ${({ size }) => size !== 'Big' && 'flex: 0 0 calc(100% / 3);'}
     padding: 0 2.5rem 9.5rem;
   }
 `
