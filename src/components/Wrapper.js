@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import { childrenType } from '../types/children'
 import { mediaQueries } from '../utils/mediaQueries'
+import { contentWidth } from '../utils/contentWidth'
 
 const Wrapper = ({ children, size, position }) => {
   return (
@@ -23,23 +24,23 @@ Wrapper.sizes = {
 }
 
 const sizeMap = {
-  [Wrapper.sizes.Medium]: 1400,
-  [Wrapper.sizes.Small]: 1152,
+  [Wrapper.sizes.Medium]: contentWidth.medium,
+  [Wrapper.sizes.Small]: contentWidth.small,
 }
 
 const StyledWrapper = styled.div`
   ${({ position }) => position && `position: ${position}`};
   max-width: ${({ size }) => sizeMap[size]}px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 ${({ theme }) => theme.grid.paddings.mobile};
 
   @media ${mediaQueries.tablet} {
     max-width: ${({ size }) => sizeMap[size]}px;
-    padding: 0 40px;
+    padding: 0 ${({ theme }) => theme.grid.paddings.tablet};
   }
 
   @media ${mediaQueries.large} {
-    padding: 0 80px;
+    padding: 0 ${({ theme }) => theme.grid.paddings.large};
   }
 `
 

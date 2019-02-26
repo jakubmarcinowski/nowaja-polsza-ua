@@ -1,22 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import ImgWrapper from '../../components/ImgWrapper'
 import Wrapper from '../../components/Wrapper'
 import Header from '../../components/Header'
 import Author from '../../components/Author'
 import { articleType } from '../../types/article'
-import PageHeader from './subcomponents/PageHeader'
+import ArticleHeader from './subcomponents/ArticleHeader'
 import { mediaQueries } from '../../utils/mediaQueries'
 import Content from './subcomponents/Content'
 
 const StyledArticle = styled.article`
   padding: 2rem 0;
-`
-
-const StyledHeroImage = styled.div`
-  width: 80%;
-  margin: auto;
 `
 
 const HeaderStyled = styled(Header)`
@@ -41,7 +35,7 @@ const ArticlePage = ({
 }) => (
   <StyledArticle>
     <Wrapper>
-      <PageHeader
+      <ArticleHeader
         title={title}
         publishDate={publishDate}
         heroImage={heroImage}
