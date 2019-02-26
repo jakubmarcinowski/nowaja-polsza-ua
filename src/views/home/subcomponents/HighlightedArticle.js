@@ -61,7 +61,7 @@ const Title = styled(Header)`
   }
 `
 
-const ClickableImg = styled(Link)`
+const LinkOverlay = styled(Link)`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -105,7 +105,7 @@ class HighlightedArticle extends Component {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
-          <ClickableImg to={`/blog/${slug}`}/>
+          <LinkOverlay to={`/blog/${slug}`}/>
           <ImgBox>
             <ImgWrapper img={heroImage} aspectRatio={1.44} />
             <PhotoLabel color="dark">выбор редакции</PhotoLabel>
