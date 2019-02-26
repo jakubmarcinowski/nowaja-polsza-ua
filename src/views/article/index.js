@@ -45,10 +45,6 @@ const Authors = styled.div`
 const SectionWrapper = styled.div`
   margin: 10rem 0;
 
-  @media ${mediaQueries.tablet} {
-    margin: 10rem 0;
-  }
-
   @media ${mediaQueries.desktop} {
     margin: 20rem 0;
   }
@@ -107,7 +103,7 @@ const ArticlePage = ({
 )
 
 ArticlePage.propTypes = {
-  article: articleType,
+  article: articleType.isRequired,
   posts: PropTypes.arrayOf(articleType),
 }
 

@@ -11,7 +11,7 @@ const ArticleTemplate = props => {
   const siteTitle = get('data.site.siteMetadata.title', props)
   const posts = get('data.allContentfulBlogPost.edges', props)
 
-  const similarPosts = posts.filter(({ node: { categories } }) => {
+  const recommendedArticles = posts.filter(({ node: { categories } }) => {
     const postIntersection = intersectionBy(
       'contentful_id',
       categories,
@@ -25,7 +25,7 @@ const ArticleTemplate = props => {
       {post && (
         <>
           <Helmet title={`${post.title} | ${siteTitle}`} />
-          <ArticlePage article={post} posts={similarPosts} />
+          <ArticlePage article={post} posts={recommendedArticles} />
         </>
       )}
     </Layout>
@@ -35,7 +35,7 @@ const ArticleTemplate = props => {
 export default ArticleTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByContentfulId($contentful_id: String) {
+  query BlogPostByContentfulId($contentful_id: String!) {
     site {
       siteMetadata {
         title
