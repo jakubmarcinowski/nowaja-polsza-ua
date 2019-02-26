@@ -58,10 +58,20 @@ const HeaderWrapper = styled.div`
   }
 `
 const StyledHeader = styled(Header)`
+  margin-bottom: 1em;
+  line-height: 1.2;
+
+  @media ${mediaQueries.tablet} {
+    margin-bottom: 3rem;
+    line-height: 1.4;
+  }
+
   @media ${mediaQueries.desktop} {
+    line-height: 1.8;
     font-size: 3.6rem;
   }
 `
+
 const InfoBox = styled.div`
   display: flex;
   align-items: baseline;
