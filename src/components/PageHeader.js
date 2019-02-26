@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import Brand from './Brand'
 import { theme } from '../utils/theme'
@@ -10,8 +11,8 @@ import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledPageHeader = styled.header`
   background: ${theme.colors.primary};
-  background: ${props => props.theme.gradients.header},
-    url('./header-background.jpg');
+  background: ${props => props.currentCategory ? props.theme.gradients.highlighted[props.currentCategory.color] : props.theme.gradients.header},
+    url('../header-background.jpg');
   background-position: 50% 50%;
   background-size: cover;
   padding: 1rem 0 2rem;
@@ -40,17 +41,21 @@ const Wrapper = styled.div`
   }
 `
 
-const PageHeader = () => (
-  <StyledPageHeader>
+const PageHeader = ({ currentCategory }) => (
+  <StyledPageHeader currentCategory={currentCategory}>
     <Wrapper>
       <Container>
         <Navigation />
         <SocialMediaList header semiTransparent />
       </Container>
       <Brand isFullVersion isDarkVersion={false} />
-      <Categories />
+      <Categories currentCategory={currentCategory} />
     </Wrapper>
   </StyledPageHeader>
 )
+
+PageHeader.propTypes = {
+  currentCategory: PropTypes.any,
+}
 
 export default PageHeader

@@ -14,7 +14,7 @@ class CategoryTemplate extends React.Component {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
 
     return (
-      <Layout>
+      <Layout currentCategory={category}>
         {category && (
           <>
             <Helmet title={`${category.title} | ${siteTitle}`} />
@@ -46,6 +46,8 @@ export const pageQuery = graphql`
     }
     contentfulCategory(contentful_id: { eq: $contentful_id }) {
       title
+      slug
+      color
     }
     allContentfulBlogPost(
       filter: {
