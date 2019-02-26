@@ -2,12 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Line from '../../components/Line'
-import Wrapper from '../../components/Wrapper'
-import Header from '../../components/Header'
+import ArticleSocialMediaList from './subcomponents/ArticleSocialMediaList'
 import Author from '../../components/Author'
+import Header from '../../components/Header'
+import Line from '../../components/Line'
 import PageHeader from './subcomponents/PageHeader'
 import RecommendedArticles from '../../components/RecommendedArticles'
+import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
 import { mediaQueries } from '../../utils/mediaQueries'
 
@@ -72,6 +73,7 @@ const ArticlePage = ({
     <Wrapper>
       <h1 className="section-headline">{title}</h1>
       <p>{publishDate}</p>
+      <ArticleSocialMediaList />
       {body && (
         <div
           dangerouslySetInnerHTML={{
@@ -79,6 +81,7 @@ const ArticlePage = ({
           }}
         />
       )}
+      <ArticleSocialMediaList />
 
       <SectionWrapper>
         <HeaderStyled size="Biggest">об авторе</HeaderStyled>
