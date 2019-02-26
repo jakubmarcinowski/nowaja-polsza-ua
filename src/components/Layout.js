@@ -8,7 +8,7 @@ import { theme } from '../utils/theme'
 import Container from './Container'
 import PageHeader from './PageHeader'
 import Footer from './Footer'
-// import Rodo from './Rodo'
+import Rodo from './Rodo'
 import MobileMenu from './MobileMenu'
 import { breakpoints } from '../utils/mediaQueries'
 import { mediaQueries } from '../utils/mediaQueries'
@@ -46,12 +46,15 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          {isMobileView ? <MobileMenu /> : <PageHeader currentCategory={currentCategory} />}
+          {isMobileView ? (
+            <MobileMenu />
+          ) : (
+            <PageHeader currentCategory={currentCategory} />
+          )}
           <LayoutWrapper>
             <Container>{children}</Container>
             <Footer />
-            {/* Todo later when will be RWD for Rodo */}
-            {/* <Rodo /> */}
+            <Rodo />
             <GlobalStyle />
           </LayoutWrapper>
         </>

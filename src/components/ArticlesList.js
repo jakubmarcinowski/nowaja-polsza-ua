@@ -80,7 +80,7 @@ class ArticlesList extends React.Component {
 
         {limit && postsNumber < posts.length && (
           <ButtonWrapper>
-            <Button onBtnClick={this.increasePostsNumber} size="large">
+            <Button onClick={this.increasePostsNumber} size="large">
               Загрузи больше
             </Button>
           </ButtonWrapper>
