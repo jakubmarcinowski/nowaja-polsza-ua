@@ -11,7 +11,7 @@ const ArticleTemplate = props => {
   const siteTitle = get('data.site.siteMetadata.title', props)
   const posts = get('data.allContentfulBlogPost.edges', props)
 
-  const sameCategoryPosts = posts.filter(({ node: { categories } }) => {
+  const similarPosts = posts.filter(({ node: { categories } }) => {
     const postIntersection = intersectionBy(
       'contentful_id',
       categories,
@@ -25,7 +25,7 @@ const ArticleTemplate = props => {
       {post && (
         <>
           <Helmet title={`${post.title} | ${siteTitle}`} />
-          <ArticlePage article={post} posts={sameCategoryPosts} />
+          <ArticlePage article={post} posts={similarPosts} />
         </>
       )}
     </Layout>
