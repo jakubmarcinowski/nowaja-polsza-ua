@@ -88,9 +88,7 @@ const ArticlePage = ({
       </SectionWrapper>
 
       <SectionWrapper>
-        <HeaderStyled size="Biggest" margin>
-          смотреть похожие посты
-        </HeaderStyled>
+        <HeaderStyled size="Biggest">смотреть похожие посты</HeaderStyled>
         <Line />
         <RecommendedArticles posts={posts} />
       </SectionWrapper>

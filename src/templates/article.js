@@ -10,13 +10,19 @@ const ArticleTemplate = props => {
   const post = get(props, 'data.contentfulBlogPost')
   const siteTitle = get(props, 'data.site.siteMetadata.title')
   const posts = get(props, 'data.allContentfulBlogPost.edges')
+  // @todo refactor to search throung one array in another
+  const sameCategoryPosts = posts.filter(item => {
+    return (
+      item.node.categories[0].contentful_id === post.categories[0].contentful_id
+    )
+  })
 
   return (
     <Layout>
       {post && (
         <>
           <Helmet title={`${post.title} | ${siteTitle}`} />
-          <ArticlePage article={post} posts={posts} />
+          <ArticlePage article={post} posts={posts && sameCategoryPosts} />
         </>
       )}
     </Layout>
@@ -24,11 +30,6 @@ const ArticleTemplate = props => {
 }
 
 export default ArticleTemplate
-
-// (
-//   $contentful_id: String
-//   $categories_contentful_ids: [String]
-// )
 
 export const pageQuery = graphql`
   query BlogPostByContentfulId($contentful_id: String) {
@@ -38,7 +39,10 @@ export const pageQuery = graphql`
       }
     }
 
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulBlogPost(
+      filter: { contentful_id: { ne: $contentful_id } }
+      sort: { fields: [publishDate], order: DESC }
+    ) {
       edges {
         node {
           title
@@ -50,7 +54,6 @@ export const pageQuery = graphql`
           }
           contentful_id
           categories {
-            id
             contentful_id
             title
             color
@@ -71,6 +74,7 @@ export const pageQuery = graphql`
         slug
       }
       categories {
+        contentful_id
         title
         slug
         color
