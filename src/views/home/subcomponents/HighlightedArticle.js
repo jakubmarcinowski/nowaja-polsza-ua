@@ -35,7 +35,7 @@ const ImgBox = styled.div`
 `
 const ArticleContent = styled.div`
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   left: 0;
   right: 0;
   transform-origin: bottom;
@@ -59,6 +59,13 @@ const Title = styled(Header)`
   @media ${mediaQueries.desktop} {
     display: none;
   }
+`
+
+const ClickableImg = styled(Link)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 `
 
 class HighlightedArticle extends Component {
@@ -98,6 +105,7 @@ class HighlightedArticle extends Component {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
+          <ClickableImg to={`/blog/${slug}`}/>
           <ImgBox>
             <ImgWrapper img={heroImage} aspectRatio={1.44} />
             <PhotoLabel color="dark">выбор редакции</PhotoLabel>
