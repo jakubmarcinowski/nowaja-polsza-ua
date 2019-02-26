@@ -10,7 +10,6 @@ import Button from '../components/Button'
 const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin: 5rem 0 0;
   padding: 0;
   list-style: none;
@@ -18,27 +17,25 @@ const StyledList = styled.ul`
   @media ${mediaQueries.large} {
     margin: 4rem -2.5rem;
   }
+`
+const ListItem = styled.li`
+  flex: 0 0 100%;
+  padding-bottom: 4rem;
 
-  li {
-    flex: 0 0 100%;
-    padding-bottom: 4rem;
+  @media ${mediaQueries.tablet} {
+    flex: 0 0 calc(100% / 2);
+    padding: 0 2.5rem 6.5rem;
+  }
 
-    @media ${mediaQueries.tablet} {
-      flex: 0 0 calc(100% / 2);
-      padding: 0 2.5rem 6.5rem;
-    }
-
-    @media ${mediaQueries.large} {
-      flex: 0 0 calc(100% / 3);
-      padding: 0 2.5rem 9.5rem;
-    }
+  @media ${mediaQueries.large} {
+    ${({ size }) => size !== 'big' && 'flex: 0 0 calc(100% / 3);'}
+    padding: 0 2.5rem 9.5rem;
   }
 `
 const ButtonWrapper = styled.div`
   text-align: center;
   margin-bottom: 4rem;
 `
-
 class ArticlesList extends React.Component {
   state = {
     postsNumber: this.props.initialLimit,
@@ -62,7 +59,7 @@ class ArticlesList extends React.Component {
   }
 
   render() {
-    const { posts, limit, noCategoryLabel } = this.props
+    const { posts, limit, noCategoryLabel, size } = this.props
     const { postsNumber } = this.state
     const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
 
@@ -71,13 +68,13 @@ class ArticlesList extends React.Component {
         <StyledList>
           {posts &&
             slicedPosts.map(({ node }) => (
-              <li key={node.slug}>
+              <ListItem key={node.slug} size={size}>
                 <ArticleItem
                   article={node}
                   key={node.slug}
                   noCategoryLabel={noCategoryLabel}
                 />
-              </li>
+              </ListItem>
             ))}
         </StyledList>
 
@@ -98,6 +95,7 @@ ArticlesList.propTypes = {
   limit: PropTypes.number,
   initialLimit: PropTypes.number,
   noCategoryLabel: PropTypes.bool,
+  size: PropTypes.string,
 }
 
 export default ArticlesList

@@ -5,7 +5,7 @@ import ArticlesList from './ArticlesList'
 import { articleType } from '../types/article'
 
 const RecommendedArticles = ({ posts }) => (
-  <ArticlesList posts={posts} initialLimit={2} />
+  <ArticlesList posts={posts} initialLimit={2} size="big" />
 )
 
 RecommendedArticles.propTypes = {
