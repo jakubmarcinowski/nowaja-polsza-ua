@@ -33,7 +33,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { children } = this.props
+    const { children, currentCategory } = this.props
     const { isMobileView } = this.state
 
     let rootPath = `/`
@@ -46,7 +46,7 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          {isMobileView ? <MobileMenu /> : <PageHeader />}
+          {isMobileView ? <MobileMenu /> : <PageHeader currentCategory={currentCategory} />}
           <LayoutWrapper>
             <Container>{children}</Container>
             <Footer />

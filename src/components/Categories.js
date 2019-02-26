@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { mediaQueries } from '../utils/mediaQueries'
 
@@ -20,7 +21,10 @@ const StyledCategories = styled.nav`
 const Category = styled.li`
   margin-right: 2rem;
   letter-spacing: 0.7px;
-  color: ${props => props.theme.colors.white};
+  color: ${props =>
+    props.currentCategory
+      ? props.theme.colors.highlighted[props.currentCategory.color]
+      : props.theme.colors.white};
 
   &:hover {
     color: ${props => props.theme.colors.highlighted[props.color]};
@@ -46,7 +50,7 @@ const categoriesQuery = graphql`
   }
 `
 
-const Categories = () => (
+const Categories = ({ currentCategory }) => (
   <StaticQuery
     query={categoriesQuery}
     render={({ allContentfulCategory }) => (
@@ -54,7 +58,15 @@ const Categories = () => (
         {allContentfulCategory &&
           allContentfulCategory.edges &&
           allContentfulCategory.edges.map(({ node }) => (
-            <Category key={node.slug} color={node.color}>
+            <Category
+              key={node.slug}
+              color={node.color}
+              currentCategory={
+                currentCategory &&
+                node.slug === currentCategory.slug &&
+                currentCategory
+              }
+            >
               <Link to={`category/${node.slug}`}>{node.title}</Link>
             </Category>
           ))}
@@ -63,4 +75,7 @@ const Categories = () => (
   />
 )
 
+Categories.propTypes = {
+  currentCategory: PropTypes.any,
+}
 export default Categories
