@@ -25,8 +25,10 @@ const List = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 200px;
-  margin: 0 auto;
+
+
+  ${({ article }) =>
+    article ? 'max-width: 200px;  margin: 0 auto;' : 'width: 200px;'}
 
   @media ${mediaQueries.large} {
     ${({ vertical }) => vertical && 'flex-direction: column; height: 230px;'}
@@ -74,7 +76,12 @@ class SocialMediaList extends React.Component {
     const { className, header, semiTransparent, article, vertical } = this.props
 
     return (
-      <List className={className} header={header} vertical={vertical}>
+      <List
+        className={className}
+        header={header}
+        vertical={vertical}
+        article={article}
+      >
         <Item semiTransparent={semiTransparent}>
           <ExternalLink
             url={
