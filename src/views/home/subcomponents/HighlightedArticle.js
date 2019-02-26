@@ -40,12 +40,19 @@ const ArticleContent = styled.div`
   right: 0;
   transform-origin: bottom;
   transform: ${props =>
-    props.isActive ? 'translateY(-30rem)' : 'translateY(-13rem)'};
+  props.isActive ? 'translateY(-25rem)' : 'translateY(-13rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
   width: 70%;
   margin: auto;
   min-width: 280px;
   text-align: center;
+  
+  ${props =>
+  props.isActive && `
+    @media ${mediaQueries.tablet} {
+      transform: translateY(-30rem)
+    }
+  `}
 `
 const Lead = styled.div`
   opacity: ${props => (props.isActive ? 1 : 0)};
