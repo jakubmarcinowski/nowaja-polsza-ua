@@ -8,24 +8,25 @@ import { mediaQueries } from '../utils/mediaQueries'
 const InfoBox = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   ${({ justify }) => `justify-content: ${justify};`}
   margin: 0 0 1rem;
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: 1.4rem;
   color: ${({ theme, color }) => theme.colors[color]};
+  line-height: 1.5;
 
   @media ${mediaQueries.tablet} {
     font-size: ${({ size }) => (size === 'Small' ? '1.4rem' : '1.6rem')};
   }
 `
 const Date = styled.div`
-  margin: 0 2.4rem 0.5rem 0;
+  margin: 0 2.4rem 0 0;
   color: ${({ theme, color }) =>
     color ? theme.colors[color] : theme.colors.highlighted.darkGreyBlue};
 `
 const AuthorLink = styled(Link)`
-  display: block;
+  display: inline;
   transition: opacity ${props => props.theme.animations.default};
   margin-bottom: 0.5rem;
   color: ${({ theme, color }) =>
@@ -38,13 +39,13 @@ const AuthorLink = styled(Link)`
 `
 
 const ArticleInfoBox = ({
-                          author,
-                          publishDate,
-                          size,
-                          color,
-                          justify,
-                          dateLink,
-                        }) => (
+  authors,
+  publishDate,
+  size,
+  color,
+  justify,
+  dateLink,
+}) => (
   <InfoBox size={size} justify={justify} color={color}>
     {publishDate && dateLink ? (
       <Link to={dateLink}>
@@ -53,11 +54,15 @@ const ArticleInfoBox = ({
     ) : (
       <Date color={color}>{publishDate}</Date>
     )}
-    {author && (
-      <AuthorLink color={color} to={`/author/${author.slug}`}>
-        {author.name}
-      </AuthorLink>
-    )}
+    <div>
+      {authors &&
+        authors.map(({ name, slug, id }, i, authors) => (
+          <AuthorLink color={color} to={`/author/${slug}`} key={id}>
+            {name}
+            {!!authors[i + 1] && <>,&nbsp;</>}
+          </AuthorLink>
+        ))}
+    </div>
   </InfoBox>
 )
 
@@ -71,6 +76,13 @@ ArticleInfoBox.propTypes = {
   color: PropTypes.string,
   justify: PropTypes.string,
   dateLink: PropTypes.string,
+  authors: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      slug: PropTypes.string,
+    })
+  ),
 }
 
 export default ArticleInfoBox

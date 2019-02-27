@@ -51,6 +51,7 @@ export const pageQuery = graphql`
           lead
           slug
           authors {
+            id
             name
             slug
           }
@@ -73,6 +74,7 @@ export const pageQuery = graphql`
       title
       lead
       authors {
+        id
         name
         slug
       }

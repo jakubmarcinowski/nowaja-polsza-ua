@@ -32,7 +32,10 @@ const ArticleItem = ({
         </Link>
       )}
     </ImgBox>
-    <ArticleInfoBox author={authors[0]} publishDate={publishDate} />
+    <ArticleInfoBox
+      authors={authors}
+      publishDate={publishDate}
+    />
     {slug && (
       <>
         {slug && (
