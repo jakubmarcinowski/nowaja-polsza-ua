@@ -70,7 +70,7 @@ const ArticlePage = ({
       />
     </Wrapper>
     <Wrapper size="Small" position="relative">
-      <ArticleSocialMediaList vertical />
+      <ArticleSocialMediaList isVertical />
       {body && <Content html={body.childMarkdownRemark.html} lead={lead} />}
       <ArticleSocialMediaList />
       <SectionWrapper>

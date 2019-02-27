@@ -12,7 +12,10 @@ import Wrapper from '../components/Wrapper'
 
 const StyledPageHeader = styled.header`
   background: ${theme.colors.primary};
-  background: ${props => props.currentCategory ? props.theme.gradients.highlighted[props.currentCategory.color] : props.theme.gradients.header},
+  background: ${props =>
+      props.currentCategory
+        ? props.theme.gradients.highlighted[props.currentCategory.color]
+        : props.theme.gradients.header},
     url('../header-background.jpg');
   background-position: 50% 50%;
   background-size: cover;
@@ -35,7 +38,7 @@ const PageHeader = ({ currentCategory }) => (
     <Wrapper>
       <Container>
         <Navigation />
-        <SocialMediaList header semiTransparent />
+        <SocialMediaList isHeader isSmiTransparent />
       </Container>
       <Brand isFullVersion isDarkVersion={false} />
       <Categories currentCategory={currentCategory} />

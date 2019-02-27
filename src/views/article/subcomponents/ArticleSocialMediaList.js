@@ -13,19 +13,19 @@ const Container = styled.div`
   }
 
   @media ${mediaQueries.large} {
-    ${({ vertical }) =>
-      vertical && 'position: absolute; top: -80px; left: 3rem;'}
+    ${({ isVertical }) =>
+      isVertical && 'position: absolute; top: -80px; left: 2.5rem;'}
   }
 `
 
-const ArticleSocialMediaList = ({ vertical }) => (
-  <Container vertical={vertical}>
-    <SocialMediaList article semiTransparent vertical={vertical} />
+const ArticleSocialMediaList = ({ isVertical }) => (
+  <Container isVertical={isVertical}>
+    <SocialMediaList isArticle isSemiTransparent isVertical={isVertical} />
   </Container>
 )
 
 ArticleSocialMediaList.propTypes = {
-  vertical: PropTypes.bool,
+  isVertical: PropTypes.bool,
 }
 
 export default ArticleSocialMediaList
