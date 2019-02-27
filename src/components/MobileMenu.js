@@ -124,7 +124,7 @@ class MobileMenu extends Component {
             <Line />
             <MobileMenuItems />
           </nav>
-          <SocialMediaList isHeader />
+          <SocialMediaList isHeader isMobile />
         </MenuContent>
       </>
     )

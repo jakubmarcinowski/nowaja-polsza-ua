@@ -38,6 +38,9 @@ const List = styled.ul`
     ${({ isVertical }) =>
       isVertical && 'flex-direction: column; height: 230px;'}
   }
+
+  ${({ isMobile }) => isMobile && 'margin: 0 auto;'}
+  /* @todo Unify ifs for isMobile, isArticle, isFooter */
 `
 
 const Item = styled.li`
@@ -85,6 +88,7 @@ class SocialMediaList extends React.Component {
       isArticle,
       isVertical,
       isFooter,
+      isMobile,
     } = this.props
 
     return (
@@ -94,6 +98,7 @@ class SocialMediaList extends React.Component {
         isVertical={isVertical}
         isArticle={isArticle}
         isFooter={isFooter}
+        isMobile={isMobile}
       >
         <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
@@ -195,6 +200,7 @@ SocialMediaList.propTypes = {
   isSemiTransparent: PropTypes.bool,
   isArticle: PropTypes.bool,
   isVertical: PropTypes.bool,
+  isMobile: PropTypes.bool,
 }
 
 export default SocialMediaList
