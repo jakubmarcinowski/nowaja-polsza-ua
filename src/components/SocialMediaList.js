@@ -19,7 +19,6 @@ import facebookFullGray from '../../static/social-fb-full-gray.svg'
 import twitterFullGray from '../../static/social-twitter-full-gray.svg'
 import telegramFullGray from '../../static/social-telegram-full-gray.svg'
 import vkFullGray from '../../static/social-vk-full-gray.svg'
-import { mediaQueries } from '../utils/mediaQueries'
 
 const List = styled.ul`
   display: flex;
