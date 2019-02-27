@@ -87,7 +87,7 @@ class Rodo extends Component {
               )}
             />{' '}
             <Link to="/privacy-policy">
-              <u>Polityka prywatności</u>
+              <u>Политика конфиденциональности</u>
             </Link>
             .
           </Info>
