@@ -64,7 +64,7 @@ const SocialMediaListDesktop = styled(SocialMediaList)`
   display: none;
 
   @media ${mediaQueries.desktop} {
-    display: block;
+    display: flex;
   }
 `
 
