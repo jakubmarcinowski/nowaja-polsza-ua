@@ -40,19 +40,20 @@ const ArticleContent = styled.div`
   right: 0;
   transform-origin: bottom;
   transform: ${props =>
-  props.isActive ? 'translateY(-25rem)' : 'translateY(-13rem)'};
+    props.isActive ? 'translateY(-25rem)' : 'translateY(-13rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
   width: 70%;
   margin: auto;
   min-width: 280px;
   text-align: center;
-  
+
   ${props =>
-  props.isActive && `
-    @media ${mediaQueries.tablet} {
-      transform: translateY(-30rem)
-    }
-  `}
+    props.isActive &&
+    `
+      @media ${mediaQueries.tablet} {
+        transform: translateY(-30rem)
+      }
+    `}
 `
 const Lead = styled.div`
   opacity: ${props => (props.isActive ? 1 : 0)};
@@ -112,7 +113,7 @@ class HighlightedArticle extends Component {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
-          <LinkOverlay to={`/blog/${slug}`}/>
+          <LinkOverlay to={`/blog/${slug}`} />
           <ImgBox>
             <ImgWrapper img={heroImage} aspectRatio={1.44} />
             <PhotoLabel color="dark">выбор редакции</PhotoLabel>
@@ -129,7 +130,7 @@ class HighlightedArticle extends Component {
               <Link to={`/blog/${slug}`}>{title}</Link>
             </Header>
             <ArticleInfoBox
-              author={authors[0]}
+              authors={authors}
               publishDate={publishDate}
               justify="center"
               color="white"

@@ -58,6 +58,7 @@ export const pageQuery = graphql`
           slug
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
+            id
             name
             slug
           }
@@ -81,6 +82,7 @@ export const pageQuery = graphql`
         slug
         publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
         authors {
+          id
           name
           slug
         }
