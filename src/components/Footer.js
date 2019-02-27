@@ -69,13 +69,13 @@ const SocialMediaListDesktop = styled(SocialMediaList)`
 `
 
 const PublisherText = styled(Paragraph)`
-  margin-right: 1rem;
+  margin-right: 2rem;
   letter-spacing: 0.4px;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-family: ${theme.fonts.secondary};
 
   @media ${mediaQueries.tablet} {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 `
 
