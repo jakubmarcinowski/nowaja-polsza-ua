@@ -30,7 +30,17 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${props => props.isFullVersion && '2.0rem'};
-  margin-top: ${props => props.isInHeader ? '2.0rem' : props.isFullVersion ? '1.0rem' : '0'};
+  margin-top: 
+  ${
+  props => {
+    if (props.isInHeader)
+      return '2.0rem'
+    if (props.isFullVersion)
+      return '1.0rem'
+    else
+      return '0'
+  }
+  }
 `
 
 const LogoWrapper = styled.div`
