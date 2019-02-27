@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import { Link, StaticQuery } from 'gatsby'
 
@@ -8,8 +9,11 @@ const MenuItem = styled.li`
   padding-bottom: 25px;
   line-height: 1.2;
   letter-spacing: 0.6px;
-  color: ${props => props.theme.colors.white};
   font-size: 1.6rem;
+  color: ${props =>
+    props.currentCategory
+      ? props.theme.colors.highlighted[props.currentCategory.color]
+      : props.theme.colors.white};
 
   &:hover {
     color: ${props => props.theme.colors.highlighted[props.color]};
@@ -31,7 +35,7 @@ const categoriesQuery = graphql`
   }
 `
 
-const MobileMenu = () => (
+const MobileMenu = ({ currentCategory }) => (
   <ul>
     <StaticQuery
       query={categoriesQuery}
@@ -40,7 +44,15 @@ const MobileMenu = () => (
           {allContentfulCategory &&
             allContentfulCategory.edges &&
             allContentfulCategory.edges.map(({ node }) => (
-              <MenuItem key={node.slug} color={node.color}>
+              <MenuItem
+                key={node.slug}
+                color={node.color}
+                currentCategory={
+                  currentCategory &&
+                  node.slug === currentCategory.slug &&
+                  currentCategory
+                }
+              >
                 <Link to={`category/${node.slug}`}>{node.title}</Link>
               </MenuItem>
             ))}
@@ -49,5 +61,9 @@ const MobileMenu = () => (
     />
   </ul>
 )
+
+MobileMenu.propTypes = {
+  currentCategory: PropTypes.any,
+}
 
 export default MobileMenu
