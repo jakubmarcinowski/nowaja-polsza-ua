@@ -10,7 +10,7 @@ import { mediaQueries } from '../utils/mediaQueries'
 import { theme } from '../utils/theme'
 import Wrapper from './Wrapper'
 import Line from './Line'
-import cprdip from '../../static/CPRDiP-logo-kolor.png'
+import cprdipExtended from '../../static/logo-cprdip-extended.png'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -51,7 +51,7 @@ const Publisher = styled.div`
   @media ${mediaQueries.tablet} {
     align-items: flex-end;
     margin-right: 0;
-    margin: 1rem 0 0;
+    margin: 2rem 0 0;
   }
 `
 
@@ -68,15 +68,15 @@ const SocialMediaListDesktop = styled(SocialMediaList)`
   }
 `
 
-const PublisherText = styled(Paragraph)`
-  letter-spacing: 0.4px;
-  font-size: 1.6rem;
-  font-family: ${theme.fonts.secondary};
+// const PublisherText = styled(Paragraph)`
+//   letter-spacing: 0.4px;
+//   font-size: 1.6rem;
+//   font-family: ${theme.fonts.secondary};
 
-  @media ${mediaQueries.tablet} {
-    font-size: 1.8rem;
-  }
-`
+//   @media ${mediaQueries.tablet} {
+//     font-size: 1.8rem;
+//   }
+// `
 
 const BrandContainer = styled.span`
   margin-top: 3rem;
@@ -86,7 +86,7 @@ const BrandContainer = styled.span`
   }
 `
 const CPRDIPLogo = styled.img`
-  width: 30px;
+  height: 5rem;
 `
 
 const Footer = () => (
@@ -102,12 +102,12 @@ const Footer = () => (
         <Info>
           <SocialMediaListDesktop />
           <Publisher>
-            <PublisherText color="Dark">
-              издатель{' '}
+            {/* <PublisherText color="Dark"> */}
+              {/* издатель{' '} */}
               <ExternalLink url="http://cprdip.pl/">
-                <CPRDIPLogo src={cprdip} />
+                <CPRDIPLogo src={cprdipExtended} />
               </ExternalLink>
-            </PublisherText>
+            {/* </PublisherText> */}
           </Publisher>
         </Info>
       </Container>
