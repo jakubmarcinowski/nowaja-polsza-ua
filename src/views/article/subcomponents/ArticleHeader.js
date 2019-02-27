@@ -148,10 +148,10 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
     <Banner>
       <InfoBox>
         <InfoItem>
-          <TextLabel>опубликованный</TextLabel> <Date>{publishDate}</Date>
+          <TextLabel>Опубликованный</TextLabel> <Date>{publishDate}</Date>
         </InfoItem>
         <InfoItem>
-          <TextLabel>автор</TextLabel>{' '}
+          <TextLabel>Автор</TextLabel>{' '}
           {authors &&
             authors.map(author => (
               <AuthorLink key={author.slug} to={`/author/${author.slug}`}>
