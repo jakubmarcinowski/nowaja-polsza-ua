@@ -6,8 +6,11 @@ import Header from './Header'
 import logo from '../../static/logo.svg'
 import { mediaQueries } from '../utils/mediaQueries'
 import { theme } from '../utils/theme'
+import Navigation from './Navigation'
+import SocialMediaList from './SocialMediaList'
+import { Link } from 'gatsby'
 
-const StyledBrand = styled.a`
+const StyledBrand = styled.div`
   display: flex;
   flex-direction: ${props => (props.isFullVersion ? 'column' : 'row')};
   align-items: center;
@@ -27,7 +30,7 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${props => props.isFullVersion && '2.0rem'};
-  margin-top: ${props => props.isFullVersion && '1.0rem'};
+  margin-top: ${props => props.isInHeader ? '2.0rem' : props.isFullVersion ? '1.0rem' : '0'};
 `
 
 const LogoWrapper = styled.div`
@@ -113,61 +116,116 @@ const BreakLine = styled.br`
   }
 `
 
-const Brand = ({ isDarkVersion, isFullVersion }) => (
-  <StyledBrand isFullVersion={isFullVersion} href="/">
-    <LogoContainer isFullVersion={isFullVersion}>
-      {isFullVersion && (
-        <LogoSubtitleLeft
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+`
+
+const Box = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const BoxLeft = styled.span`
+  margin-right: auto;
+`
+
+const BoxRight = styled.span`
+  margin-left: auto;
+`
+
+
+class Brand extends React.Component {
+  getLogoContainer(isFullVersion, isDarkVersion, isInHeader) {
+    return (
+      <LogoContainer isFullVersion={isFullVersion} isInHeader={isInHeader}>
+        {isFullVersion && (
+          <LogoSubtitleLeft
+            isFullVersion={isFullVersion}
+            type={2}
+            size="Medium"
+            color={isDarkVersion ? 'Dark' : 'White'}
+          >
+            Осн. в
+          </LogoSubtitleLeft>
+        )}
+        <LogoWrapper
+          backgroundColor="White"
+          isDarkVersion={isDarkVersion}
           isFullVersion={isFullVersion}
-          type={2}
-          size="Medium"
-          color={isDarkVersion ? 'Dark' : 'White'}
         >
-          Осн. в
-        </LogoSubtitleLeft>
-      )}
-      <LogoWrapper
-        backgroundColor="White"
-        isDarkVersion={isDarkVersion}
-        isFullVersion={isFullVersion}
-      >
-        <Logo
-          isFullVersion={isFullVersion}
-          src={logo}
-          alt="Nowaja Polsza logo"
-        />
-      </LogoWrapper>
-      {isFullVersion && (
-        <LogoSubtitleRight
-          isFullVersion={isFullVersion}
-          type={2}
-          size="Medium"
-          color={isDarkVersion ? 'Dark' : 'White'}
-        >
-          1999 г.
-        </LogoSubtitleRight>
-      )}
-    </LogoContainer>
-    <TitleWrapper isFullVersion={isFullVersion}>
-      <Title
-        isFullVersion={isFullVersion}
-        color={isDarkVersion ? 'Dark' : 'White'}
-        weight="Bold"
-      >
-        НОВАЯ <BreakLine />
-        ПОЛЬША
-      </Title>
-      <Subtitle
-        isFullVersion={isFullVersion}
-        type={2}
-        size="Medium"
-        color={isDarkVersion ? 'Dark' : 'White'}
-      >
-        Наша миссия - Истина
-      </Subtitle>
-    </TitleWrapper>
-  </StyledBrand>
-)
+          <Logo isFullVersion={isFullVersion} src={logo} alt="Nowaja Polsza logo"/>
+        </LogoWrapper>
+        {isFullVersion && (
+          <LogoSubtitleRight
+            isFullVersion={isFullVersion}
+            type={2}
+            size="Medium"
+            color={isDarkVersion ? 'Dark' : 'White'}
+          >
+            1999 г.
+          </LogoSubtitleRight>
+        )}
+      </LogoContainer>
+    )
+  }
+
+  render() {
+    const { isFullVersion, isDarkVersion, isInHeader } = this.props
+
+    return (
+      <StyledBrand isFullVersion={isFullVersion} href="/">
+        {isInHeader ? (
+          <Container>
+            <Box>
+              <BoxLeft>
+                <Navigation/>
+              </BoxLeft>
+            </Box>
+            <Box>
+              <span>
+                <Link to="/">
+                  {this.getLogoContainer(isFullVersion, isDarkVersion, isInHeader)}
+                </Link>
+              </span>
+            </Box>
+            <Box>
+              <BoxRight>
+                <SocialMediaList isHeader isSemiTransparent/>
+              </BoxRight>
+            </Box>
+          </Container>
+        ) : (
+          <Link to="/">
+            {this.getLogoContainer(isFullVersion, isDarkVersion, isInHeader)}
+          </Link>
+        )}
+        <Link to="/">
+          <TitleWrapper isFullVersion={isFullVersion}>
+            <Title
+              isFullVersion={isFullVersion}
+              color={isDarkVersion ? 'Dark' : 'White'}
+              weight="Bold"
+            >
+              НОВАЯ <BreakLine/>
+              ПОЛЬША
+            </Title>
+            <Subtitle
+              isFullVersion={isFullVersion}
+              type={2}
+              size="Medium"
+              color={isDarkVersion ? 'Dark' : 'White'}
+            >
+              Наша миссия - Истина
+            </Subtitle>
+          </TitleWrapper>
+        </Link>
+      </StyledBrand>
+    )
+  }
+}
 Brand.defaultProps = {
   isDarkVersion: true,
   isFullVersion: false,
@@ -176,6 +234,7 @@ Brand.defaultProps = {
 Brand.propTypes = {
   isDarkVersion: PropTypes.bool,
   isFullVersion: PropTypes.bool,
+  isInHeader: PropTypes.bool,
 }
 
 export default Brand
