@@ -14,10 +14,10 @@ import { breakpoints } from '../utils/mediaQueries'
 import { mediaQueries } from '../utils/mediaQueries'
 
 export const LayoutWrapper = styled.div`
-  margin: 6rem auto 0;
+  margin: 7.5rem auto 0;
 
   @media ${mediaQueries.tablet} {
-    margin: 0 auto;
+    margin: 2.5rem auto 0;
   }
 `
 
@@ -46,11 +46,7 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          {isMobileView ? (
-            <MobileMenu />
-          ) : (
-            <PageHeader currentCategory={currentCategory} />
-          )}
+          {isMobileView ? <MobileMenu currentCategory={currentCategory} /> : <PageHeader currentCategory={currentCategory} />}
           <LayoutWrapper>
             <Container>{children}</Container>
             <Footer />

@@ -10,12 +10,12 @@ import Button from '../components/Button'
 const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  margin: 5rem 0 0;
+  ${({ noMargin }) => !noMargin && 'margin: 5rem 0 0;'}
   padding: 0;
   list-style: none;
 
   @media ${mediaQueries.large} {
-    margin: 4rem -2.5rem;
+    ${({ noMargin }) => !noMargin && 'margin: 4rem -2.5rem;'}
   }
 `
 const ListItem = styled.li`
@@ -59,13 +59,13 @@ class ArticlesList extends React.Component {
   }
 
   render() {
-    const { posts, limit, noCategoryLabel, size } = this.props
+    const { posts, limit, noCategoryLabel, size, noMargin } = this.props
     const { postsNumber } = this.state
     const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
 
     return (
       <>
-        <StyledList>
+        <StyledList noMargin={noMargin}>
           {posts &&
             slicedPosts.map(({ node }) => (
               <ListItem key={node.slug} size={size}>
@@ -95,6 +95,7 @@ ArticlesList.propTypes = {
   limit: PropTypes.number,
   initialLimit: PropTypes.number,
   noCategoryLabel: PropTypes.bool,
+  noMargin: PropTypes.bool,
   size: PropTypes.string,
 }
 
