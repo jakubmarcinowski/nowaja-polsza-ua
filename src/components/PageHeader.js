@@ -4,9 +4,7 @@ import PropTypes from 'prop-types'
 
 import Brand from './Brand'
 import { theme } from '../utils/theme'
-import Navigation from './Navigation'
 import Categories from './Categories'
-import SocialMediaList from './SocialMediaList'
 import { mediaQueries } from '../utils/mediaQueries'
 import Wrapper from '../components/Wrapper'
 import headerImg from '../../static/header-background.jpg'
@@ -29,19 +27,10 @@ const StyledPageHeader = styled.header`
   }
 `
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
 const PageHeader = ({ currentCategory }) => (
   <StyledPageHeader currentCategory={currentCategory}>
     <Wrapper>
-      <Container>
-        <Navigation />
-        <SocialMediaList isHeader isSmiTransparent />
-      </Container>
-      <Brand isFullVersion isDarkVersion={false} />
+      <Brand isFullVersion isDarkVersion={false} isInHeader/>
       <Categories currentCategory={currentCategory} />
     </Wrapper>
   </StyledPageHeader>
