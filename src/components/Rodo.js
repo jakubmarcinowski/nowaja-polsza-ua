@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Link, StaticQuery } from 'gatsby'
+import { graphql, Link, StaticQuery } from 'gatsby'
 import cookie from 'react-cookies'
 import styled from 'styled-components'
 
 import Paragraph from './Paragraph'
-import Button from './Button'
 import closeIcon from '../../static/icon-close.svg'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -17,6 +17,14 @@ const Wrapper = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.black};
   text-align: center;
   background: ${({ theme }) => theme.colors.white};
+
+  @media ${mediaQueries.tablet} {
+    padding: 2rem 4rem;
+  }
+
+  @media ${mediaQueries.desktop} {
+    padding: 2rem 8rem;
+  }
 `
 
 const Info = styled(Paragraph)`
@@ -25,13 +33,15 @@ const Info = styled(Paragraph)`
 
 const InfoWrapper = styled.div`
   display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
 `
 
 const CloseIcon = styled.img`
   position: relative;
   height: 2rem;
   width: 2rem;
-  margin-left: 1rem;
+  margin-left: 3rem;
   cursor: pointer;
 `
 
@@ -83,7 +93,6 @@ class Rodo extends Component {
           </Info>
           <CloseIcon onClick={this.acceptCookies} src={closeIcon} />
         </InfoWrapper>
-        <Button onClick={this.acceptCookies}>Я понимаю</Button>
       </Wrapper>
     )
   }
