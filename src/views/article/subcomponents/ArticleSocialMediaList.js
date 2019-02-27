@@ -14,28 +14,12 @@ const Container = styled.div`
 
   @media ${mediaQueries.large} {
     ${({ vertical }) =>
-      vertical && 'position: absolute; top: -80px; left: -30px;'}
-  }
-`
-const Label = styled.label`
-  display: none;
-
-  @media ${mediaQueries.large} {
-    display: inline-block;
-    width: 70px;
-    text-transform: uppercase;
-    text-align: center;
-    padding-bottom: 25px;
-    font-family: ${({ theme }) => theme.fonts.secondary};
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: ${({ theme }) => theme.colors.primary};
+      vertical && 'position: absolute; top: -80px; left: 3rem;'}
   }
 `
 
 const ArticleSocialMediaList = ({ vertical }) => (
   <Container vertical={vertical}>
-    {vertical && <Label>Share</Label>}
     <SocialMediaList article semiTransparent vertical={vertical} />
   </Container>
 )

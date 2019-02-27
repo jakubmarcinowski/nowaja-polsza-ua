@@ -125,7 +125,7 @@ const StyledContent = styled.div`
 
 const Content = ({ html, lead }) => (
   <>
-    <Lead>{lead}</Lead>
+    {lead && <Lead>{lead}</Lead>}
     <StyledContent
       dangerouslySetInnerHTML={{
         __html: html,
