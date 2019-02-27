@@ -81,7 +81,7 @@ const StyledContent = styled.div`
 
     img {
       display: block;
-      width: 100%;
+      max-width: 100%;
 
       @media ${mediaQueries.desktop} {
         max-width: 870px;
