@@ -39,7 +39,7 @@ const PageHeader = ({ currentCategory }) => (
     <Wrapper>
       <Container>
         <Navigation />
-        <SocialMediaList header semiTransparent />
+        <SocialMediaList isHeader isSmiTransparent />
       </Container>
       <Brand isFullVersion isDarkVersion={false} />
       <Categories currentCategory={currentCategory} />

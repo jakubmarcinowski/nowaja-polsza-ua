@@ -56,7 +56,7 @@ const SectionWrapper = styled.div`
 `
 
 const ArticlePage = ({
-  article: { title, heroImage, publishDate, body, authors, categories },
+  article: { title, heroImage, publishDate, body, authors, categories, lead },
   posts,
 }) => (
   <StyledArticle>
@@ -68,10 +68,10 @@ const ArticlePage = ({
         authors={authors}
         categories={categories}
       />
-      <ArticleSocialMediaList />
     </Wrapper>
     <Wrapper size="Small" position="relative">
-      {body && <Content html={body.childMarkdownRemark.html} />}
+      <ArticleSocialMediaList isVertical />
+      {body && <Content html={body.childMarkdownRemark.html} lead={lead} />}
       <ArticleSocialMediaList />
       <SectionWrapper>
         <HeaderStyled size="Biggest">об авторе</HeaderStyled>
@@ -86,10 +86,8 @@ const ArticlePage = ({
           <Author author={authors[0]} />
         )}
       </SectionWrapper>
-
       <SectionWrapper>
         <HeaderStyled size="Biggest">смотреть похожие посты</HeaderStyled>
-        <Line />
         <RecommendedArticles posts={posts} />
       </SectionWrapper>
     </Wrapper>

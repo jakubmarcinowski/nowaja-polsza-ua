@@ -100,7 +100,7 @@ const Footer = () => (
           <Brand />
         </BrandContainer>
         <Info>
-          <SocialMediaListDesktop />
+          <SocialMediaListDesktop isFooter />
           <Publisher>
             <PublisherText color="Dark">
               издатель{' '}
