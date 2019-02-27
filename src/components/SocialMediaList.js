@@ -26,7 +26,6 @@ const List = styled.ul`
   align-items: center;
   justify-content: space-between;
 
-
   ${({ isArticle, isFooter }) =>
     isArticle
       ? 'max-width: 200px;  margin: 0 auto;'
@@ -34,13 +33,7 @@ const List = styled.ul`
       ? 'width: 250px;'
       : 'width: 200px;'}
 
-  @media ${mediaQueries.large} {
-    ${({ isVertical }) =>
-      isVertical && 'flex-direction: column; height: 230px;'}
-  }
-
   ${({ isMobile }) => isMobile && 'margin: 0 auto;'}
-  /* @todo Unify ifs for isMobile, isArticle, isFooter */
 `
 
 const Item = styled.li`
@@ -86,7 +79,6 @@ class SocialMediaList extends React.Component {
       isHeader,
       isSemiTransparent,
       isArticle,
-      isVertical,
       isFooter,
       isMobile,
     } = this.props
@@ -95,7 +87,6 @@ class SocialMediaList extends React.Component {
       <List
         className={className}
         isHeader={isHeader}
-        isVertical={isVertical}
         isArticle={isArticle}
         isFooter={isFooter}
         isMobile={isMobile}
@@ -199,7 +190,6 @@ SocialMediaList.propTypes = {
   isFooter: PropTypes.bool,
   isSemiTransparent: PropTypes.bool,
   isArticle: PropTypes.bool,
-  isVertical: PropTypes.bool,
   isMobile: PropTypes.bool,
 }
 

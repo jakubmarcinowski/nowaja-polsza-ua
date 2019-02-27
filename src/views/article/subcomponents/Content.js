@@ -18,10 +18,6 @@ const Lead = styled.div`
   @media ${mediaQueries.desktop} {
     font-size: 2.4rem;
   }
-
-  @media ${mediaQueries.large} {
-    padding-top: 7rem;
-  }
 `
 
 const Content = ({ html, lead }) => (
