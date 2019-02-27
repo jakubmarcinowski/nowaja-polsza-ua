@@ -14,10 +14,10 @@ import { articleType } from '../../types/article'
 import { mediaQueries } from '../../utils/mediaQueries'
 
 const StyledArticle = styled.article`
-  padding: 2rem 0;
+  padding: 0 0 2rem;
 
   @media ${mediaQueries.tablet} {
-    padding: 5rem 0;
+    padding: 0 0 5rem;
   }
 `
 

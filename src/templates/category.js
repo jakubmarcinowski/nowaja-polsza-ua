@@ -22,9 +22,10 @@ class CategoryTemplate extends React.Component {
               {categoryPosts && (
                 <ArticlesList
                   posts={categoryPosts}
-                  limit={3}
-                  initialLimit={3}
+                  limit={6}
+                  initialLimit={9}
                   noCategoryLabel
+                  noMargin
                 />
               )}
             </Wrapper>
