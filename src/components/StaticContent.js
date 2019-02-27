@@ -65,10 +65,6 @@ const StyledContent = styled.div`
     }
   }
   p {
-    /* display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column; */
     &:not(:last-child) {
       margin-bottom: 3.7em;
     }
