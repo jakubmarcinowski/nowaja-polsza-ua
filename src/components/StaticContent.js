@@ -15,8 +15,9 @@ const StyledContent = styled.div`
   h1,
   h2,
   h3,
-  p {
-    font-weight: 300;
+  p,
+  ul,
+  ol {
     @media ${mediaQueries.desktop} {
       max-width: 670px;
       margin: 0 auto;
@@ -68,6 +69,7 @@ const StyledContent = styled.div`
       margin-bottom: 3.7em;
     }
     font-size: 1.6rem;
+    font-weight: 300;
 
     @media ${mediaQueries.tablet} {
       font-size: 1.8rem;
@@ -82,12 +84,12 @@ const StyledContent = styled.div`
       width: 100%;
 
       @media ${mediaQueries.desktop} {
-        width: 870px;
+        max-width: 870px;
         margin-left: -100px;
       }
 
       @media ${mediaQueries.large} {
-        width: ${({ theme }) =>
+        max-width: ${({ theme }) =>
           `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
         margin-left: ${({ theme }) => `calc(-${theme.grid.paddings.large} *2)`};
       }
@@ -112,9 +114,9 @@ const StyledContent = styled.div`
   }
 `
 
-const StaticContent = ({ children }) => {
-  return <StyledContent>{children}</StyledContent>
-}
+const StaticContent = ({ children }) => (
+  <StyledContent>{children}</StyledContent>
+)
 
 StaticContent.propTypes = {
   children: childrenType,

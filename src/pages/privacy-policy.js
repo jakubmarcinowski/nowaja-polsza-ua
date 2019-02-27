@@ -21,15 +21,17 @@ const PrivacyPolicy = ({ data }) => {
   return (
     <Layout>
       <Helmet title={title} />
-      <Wrapper>
-        <StaticContent>
-          <PrivacyPolicyStyled
-            dangerouslySetInnerHTML={{
-              __html: content.childMarkdownRemark.html,
-            }}
-          />
-        </StaticContent>
-      </Wrapper>
+      {content && (
+        <Wrapper>
+          <StaticContent>
+            <PrivacyPolicyStyled
+              dangerouslySetInnerHTML={{
+                __html: content.childMarkdownRemark.html,
+              }}
+            />
+          </StaticContent>
+        </Wrapper>
+      )}
     </Layout>
   )
 }
@@ -40,7 +42,7 @@ PrivacyPolicy.propTypes = {
 
 export default PrivacyPolicy
 
-export const aboutQuery = graphql`
+export const PrivacyPolicyPageQuery = graphql`
   query PrivacyPolicyQuery {
     allContentfulPrivacyPolicyStaticContent {
       edges {
