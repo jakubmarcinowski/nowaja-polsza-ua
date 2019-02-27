@@ -57,7 +57,7 @@ const TheNewestItem = ({
         </Header>
       )}
       <ArticleInfoBox
-        author={authors[0]}
+        authors={authors}
         publishDate={publishDate}
         size="Small"
       />

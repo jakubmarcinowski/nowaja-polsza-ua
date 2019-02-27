@@ -38,6 +38,7 @@ module.exports = {
   siteMetadata: {
     siteUrl,
     title: 'НОВАЯ ПОЛЬША',
+    themeColor: '#172429',
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [

@@ -50,6 +50,7 @@ export const pageQuery = graphql`
           title
           lead
           slug
+          publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
             id
             name
