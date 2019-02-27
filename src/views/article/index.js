@@ -75,7 +75,6 @@ const ArticlePage = ({
       <ArticleSocialMediaList />
       <SectionWrapper>
         <HeaderStyled size="Biggest">об авторе</HeaderStyled>
-        <Line />
         {authors && authors.length > 1 ? (
           <Authors>
             {authors.map(element => (
