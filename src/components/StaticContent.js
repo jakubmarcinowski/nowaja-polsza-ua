@@ -65,6 +65,10 @@ const StyledContent = styled.div`
     }
   }
   p {
+    /* display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; */
     &:not(:last-child) {
       margin-bottom: 3.7em;
     }
@@ -81,15 +85,15 @@ const StyledContent = styled.div`
 
     img {
       display: block;
-      width: 100%;
+      max-width: 100%;
 
       @media ${mediaQueries.desktop} {
-        width: 870px;
+        max-width: 870px;
         margin-left: -100px;
       }
 
       @media ${mediaQueries.large} {
-        width: ${({ theme }) =>
+        max-width: ${({ theme }) =>
           `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
         margin-left: ${({ theme }) => `calc(-${theme.grid.paddings.large} *2)`};
       }
