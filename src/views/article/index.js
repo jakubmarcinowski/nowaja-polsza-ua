@@ -73,7 +73,9 @@ const ArticlePage = ({
       {body && <Content html={body.childMarkdownRemark.html} lead={lead} />}
       <ArticleSocialMediaList />
       <SectionWrapper>
-        <HeaderStyled size="Biggest">об авторе</HeaderStyled>
+        <HeaderStyled size="Biggest">
+          {authors.length > 1 ? 'Авторы' : 'Автор'}
+        </HeaderStyled>
         {authors && authors.length > 1 ? (
           <Authors>
             {authors.map(element => (
