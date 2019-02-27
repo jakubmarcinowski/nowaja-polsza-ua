@@ -37,9 +37,22 @@ const AuthorLink = styled(Link)`
   }
 `
 
-const ArticleInfoBox = ({ author, publishDate, size, color, justify }) => (
+const ArticleInfoBox = ({
+                          author,
+                          publishDate,
+                          size,
+                          color,
+                          justify,
+                          dateLink,
+                        }) => (
   <InfoBox size={size} justify={justify} color={color}>
-    {publishDate && <Date color={color}>{publishDate}</Date>}
+    {publishDate && dateLink ? (
+      <Link to={dateLink}>
+        <Date color={color}>{publishDate}</Date>
+      </Link>
+    ) : (
+      <Date color={color}>{publishDate}</Date>
+    )}
     {author && (
       <AuthorLink color={color} to={`/author/${author.slug}`}>
         {author.name}
@@ -57,6 +70,7 @@ ArticleInfoBox.propTypes = {
   size: PropTypes.string,
   color: PropTypes.string,
   justify: PropTypes.string,
+  dateLink: PropTypes.string,
 }
 
 export default ArticleInfoBox
