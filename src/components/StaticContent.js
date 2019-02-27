@@ -84,12 +84,12 @@ const StyledContent = styled.div`
       width: 100%;
 
       @media ${mediaQueries.desktop} {
-        max-width: 870px;
+        width: 870px;
         margin-left: -100px;
       }
 
       @media ${mediaQueries.large} {
-        max-width: ${({ theme }) =>
+        width: ${({ theme }) =>
           `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
         margin-left: ${({ theme }) => `calc(-${theme.grid.paddings.large} *2)`};
       }
