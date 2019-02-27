@@ -2,11 +2,17 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import StaticContent from '../components/StaticContent'
+import Wrapper from '../components/Wrapper'
 
-const About = ({ data }) => {
+const PrivacyPolicyStyled = styled.div`
+  margin-bottom: 8rem;
+`
+
+const PrivacyPolicy = ({ data }) => {
   const {
     title,
     content,
@@ -15,19 +21,27 @@ const About = ({ data }) => {
   return (
     <Layout>
       <Helmet title={title} />
-      <StaticContent content={content} />
+      <Wrapper>
+        <StaticContent>
+          <PrivacyPolicyStyled
+            dangerouslySetInnerHTML={{
+              __html: content.childMarkdownRemark.html,
+            }}
+          />
+        </StaticContent>
+      </Wrapper>
     </Layout>
   )
 }
 
-About.propTypes = {
+PrivacyPolicy.propTypes = {
   data: PropTypes.any,
 }
 
-export default About
+export default PrivacyPolicy
 
 export const aboutQuery = graphql`
-  query AboutQuery {
+  query PrivacyPolicyQuery {
     allContentfulPrivacyPolicyStaticContent {
       edges {
         node {
