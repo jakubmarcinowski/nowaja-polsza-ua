@@ -133,6 +133,7 @@ class HighlightedArticle extends Component {
               publishDate={publishDate}
               justify="center"
               color="white"
+              dateLink={`/blog/${slug}`}
             />
             {lead && (
               <Lead isActive={isActive}>

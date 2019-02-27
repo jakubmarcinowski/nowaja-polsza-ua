@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import { mediaQueries } from '../utils/mediaQueries'
 import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
 import MobileMenuItems from './MobileMenuItems'
 import MobileMenuCategories from './MobileMenuCategories'
+import headerImg from '../../static/header-background.jpg'
 
 const MenuIcon = styled.div`
   position: relative;
@@ -55,8 +57,11 @@ const MenuHeader = styled.div`
   height: 6rem;
   padding: 1rem 2rem;
   background: ${props => props.theme.colors.primary};
-  background: ${props => props.theme.gradients.header},
-    url('./header-background.jpg');
+  background: ${props =>
+      props.currentCategory
+        ? props.theme.gradients.highlighted[props.currentCategory.color]
+        : props.theme.gradients.header},
+    url(${headerImg});
   background-position: 50% 50%;
   background-size: cover;
   z-index: 999;
@@ -103,9 +108,11 @@ class MobileMenu extends Component {
 
   render() {
     const { isMenuOpen } = this.state
+    const { currentCategory } = this.props
+
     return (
       <>
-        <MenuHeader>
+        <MenuHeader currentCategory={currentCategory}>
           <Brand isDarkVersion={false} />
           <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
             <div className="middle" />
@@ -113,7 +120,7 @@ class MobileMenu extends Component {
         </MenuHeader>
         <MenuContent isMenuOpen={isMenuOpen}>
           <nav>
-            <MobileMenuCategories />
+            <MobileMenuCategories currentCategory={currentCategory} />
             <Line />
             <MobileMenuItems />
           </nav>
@@ -122,6 +129,10 @@ class MobileMenu extends Component {
       </>
     )
   }
+}
+
+MobileMenu.propTypes = {
+  currentCategory: PropTypes.any,
 }
 
 export default MobileMenu

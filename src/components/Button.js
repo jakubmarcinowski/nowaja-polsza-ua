@@ -32,8 +32,8 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = ({ className, children, onBtnClick, size }) => (
-  <StyledButton className={className} size={size} onClick={onBtnClick}>
+const Button = ({ className, children, onClick, size }) => (
+  <StyledButton className={className} size={size} onClick={onClick}>
     {children}
   </StyledButton>
 )
@@ -45,7 +45,7 @@ Button.defaultProps = {
 Button.propTypes = {
   className: PropTypes.string,
   children: childrenType.isRequired,
-  onBtnClick: PropTypes.func,
+  onClick: PropTypes.func,
   size: PropTypes.string,
 }
 

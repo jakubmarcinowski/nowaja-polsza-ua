@@ -9,6 +9,7 @@ import Categories from './Categories'
 import SocialMediaList from './SocialMediaList'
 import { mediaQueries } from '../utils/mediaQueries'
 import Wrapper from '../components/Wrapper'
+import headerImg from '../../static/header-background.jpg'
 
 const StyledPageHeader = styled.header`
   background: ${theme.colors.primary};
@@ -16,7 +17,7 @@ const StyledPageHeader = styled.header`
       props.currentCategory
         ? props.theme.gradients.highlighted[props.currentCategory.color]
         : props.theme.gradients.header},
-    url('../header-background.jpg');
+    url(${headerImg});
   background-position: 50% 50%;
   background-size: cover;
   padding: 1rem 0 2rem;
