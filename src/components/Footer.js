@@ -103,7 +103,7 @@ const Footer = () => (
         <SocialMediaListDesktop isFooter />
         <Info>
           <Publisher>
-            <PublisherText color="Dark">издатель:</PublisherText>
+            <PublisherText color="Dark">Издатель:</PublisherText>
             <ExternalLink url="http://cprdip.pl/">
               <CPRDIPLogo src={cprdipExtended} />
             </ExternalLink>
