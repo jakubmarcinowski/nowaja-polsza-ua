@@ -4,13 +4,38 @@ import styled from 'styled-components'
 
 import { mediaQueries } from '../../../utils/mediaQueries'
 
+const Lead = styled.div`
+  line-height: 1.3;
+  font-size: 1.8rem;
+  padding-top: 1rem;
+
+  @media ${mediaQueries.tablet} {
+    font-size: 2.1rem;
+    padding-top: 0;
+  }
+
+  @media ${mediaQueries.desktop} {
+    font-size: 2.4rem;
+  }
+
+  @media ${mediaQueries.large} {
+    padding-top: 7rem;
+  }
+`
+
 const StyledContent = styled.div`
   line-height: 1.6;
+  padding-top: 3rem;
+
+  @media ${mediaQueries.tablet} {
+    padding-top: 6rem;
+  }
 
   h1,
   h2,
   h3,
   p {
+    font-weight: 300;
     @media ${mediaQueries.desktop} {
       max-width: 670px;
       margin: 0 auto;
@@ -98,18 +123,20 @@ const StyledContent = styled.div`
   }
 `
 
-const Content = ({ html }) => {
-  return (
+const Content = ({ html, lead }) => (
+  <>
+    {lead && <Lead>{lead}</Lead>}
     <StyledContent
       dangerouslySetInnerHTML={{
         __html: html,
       }}
     />
-  )
-}
+  </>
+)
 
 Content.propTypes = {
   html: PropTypes.string,
+  lead: PropTypes.string,
 }
 
 export default Content

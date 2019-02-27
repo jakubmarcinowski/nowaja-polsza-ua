@@ -7,7 +7,6 @@ import Author from '../../components/Author'
 import ArticleHeader from './subcomponents/ArticleHeader'
 import Content from './subcomponents/Content'
 import Header from '../../components/Header'
-import Line from '../../components/Line'
 import RecommendedArticles from '../../components/RecommendedArticles'
 import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
@@ -56,7 +55,7 @@ const SectionWrapper = styled.div`
 `
 
 const ArticlePage = ({
-  article: { title, heroImage, publishDate, body, authors, categories },
+  article: { title, heroImage, publishDate, body, authors, categories, lead },
   posts,
 }) => (
   <StyledArticle>
@@ -68,14 +67,13 @@ const ArticlePage = ({
         authors={authors}
         categories={categories}
       />
-      <ArticleSocialMediaList />
     </Wrapper>
     <Wrapper size="Small" position="relative">
-      {body && <Content html={body.childMarkdownRemark.html} />}
+      <ArticleSocialMediaList isVertical />
+      {body && <Content html={body.childMarkdownRemark.html} lead={lead} />}
       <ArticleSocialMediaList />
       <SectionWrapper>
         <HeaderStyled size="Biggest">об авторе</HeaderStyled>
-        <Line />
         {authors && authors.length > 1 ? (
           <Authors>
             {authors.map(element => (
@@ -86,10 +84,8 @@ const ArticlePage = ({
           <Author author={authors[0]} />
         )}
       </SectionWrapper>
-
       <SectionWrapper>
         <HeaderStyled size="Biggest">смотреть похожие посты</HeaderStyled>
-        <Line />
         <RecommendedArticles posts={posts} />
       </SectionWrapper>
     </Wrapper>

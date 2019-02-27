@@ -100,7 +100,7 @@ const Footer = () => (
         <BrandContainer>
           <Brand />
         </BrandContainer>
-        <SocialMediaListDesktop />
+        <SocialMediaListDesktop isFooter />
         <Info>
           <Publisher>
             <PublisherText color="Dark">издатель:</PublisherText>

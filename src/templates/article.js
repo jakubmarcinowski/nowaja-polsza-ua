@@ -19,7 +19,6 @@ const ArticleTemplate = props => {
     )
     return !!postIntersection.length
   })
-
   return (
     <Layout>
       {post && (
@@ -72,6 +71,7 @@ export const pageQuery = graphql`
 
     contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
       title
+      lead
       authors {
         name
         slug

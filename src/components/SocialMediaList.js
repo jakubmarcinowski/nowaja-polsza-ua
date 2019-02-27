@@ -19,23 +19,35 @@ import facebookFullGray from '../../static/social-fb-full-gray.svg'
 import twitterFullGray from '../../static/social-twitter-full-gray.svg'
 import telegramFullGray from '../../static/social-telegram-full-gray.svg'
 import vkFullGray from '../../static/social-vk-full-gray.svg'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const List = styled.ul`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+
+  ${({ isArticle, isFooter }) =>
+    isArticle
+      ? 'max-width: 200px;  margin: 0 auto;'
+      : isFooter
+      ? 'width: 250px;'
+      : 'width: 200px;'}
+
+  @media ${mediaQueries.large} {
+    ${({ isVertical }) =>
+      isVertical && 'flex-direction: column; height: 230px;'}
+  }
+
+  ${({ isMobile }) => isMobile && 'margin: 0 auto;'}
+  /* @todo Unify ifs for isMobile, isArticle, isFooter */
 `
 
 const Item = styled.li`
   display: inline;
-  margin-right: 30px;
 
-  &:last-child {
-    margin-right: 0;
-  }
-
-  ${({ semiTransparent }) =>
-    semiTransparent &&
+  ${({ isSemiTransparent }) =>
+    isSemiTransparent &&
     `
     opacity: 0.5;
     
@@ -49,9 +61,10 @@ const Logo = styled.img`
   max-height: 30px;
   max-width: 30px;
 
-  ${({ article }) =>
-    article &&
+  ${({ isArticle }) =>
+    isArticle &&
     `
+    height: 25px;
     width: 25px;
   `}
 `
@@ -68,14 +81,29 @@ class SocialMediaList extends React.Component {
   }
 
   render() {
-    const { className, header, semiTransparent, article } = this.props
+    const {
+      className,
+      isHeader,
+      isSemiTransparent,
+      isArticle,
+      isVertical,
+      isFooter,
+      isMobile,
+    } = this.props
 
     return (
-      <List className={className} header={header}>
-        <Item semiTransparent={semiTransparent}>
+      <List
+        className={className}
+        isHeader={isHeader}
+        isVertical={isVertical}
+        isArticle={isArticle}
+        isFooter={isFooter}
+        isMobile={isMobile}
+      >
+        <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
             url={
-              article
+              isArticle
                 ? `https://www.facebook.com/sharer/sharer.php?u=${
                     this.state.locationHref
                   }`
@@ -83,18 +111,22 @@ class SocialMediaList extends React.Component {
             }
           >
             <Logo
-              article={article}
+              isArticle={isArticle}
               src={
-                header ? facebookFull : article ? facebookFullGray : facebook
+                isHeader
+                  ? facebookFull
+                  : isArticle
+                  ? facebookFullGray
+                  : facebook
               }
               alt="Facebook Nowaja Polsza"
             />
           </ExternalLink>
         </Item>
-        <Item semiTransparent={semiTransparent}>
+        <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
             url={
-              article
+              isArticle
                 ? `https://twitter.com/intent/tweet?original_referer=${
                     this.state.locationHref
                   }`
@@ -102,50 +134,56 @@ class SocialMediaList extends React.Component {
             }
           >
             <Logo
-              article={article}
-              src={header ? twitterFull : article ? twitterFullGray : twitter}
+              isArticle={isArticle}
+              src={
+                isHeader ? twitterFull : isArticle ? twitterFullGray : twitter
+              }
               alt="Twitter Nowaja Polsza"
             />
           </ExternalLink>
         </Item>
-        <Item semiTransparent={semiTransparent}>
+        <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
             url={
-              article
+              isArticle
                 ? `https://telegram.me/share/url?url=${this.state.locationHref}`
                 : 'https://www.boldare.com'
             }
           >
             <Logo
-              article={article}
+              isArticle={isArticle}
               src={
-                header ? telegramFull : article ? telegramFullGray : telegram
+                isHeader
+                  ? telegramFull
+                  : isArticle
+                  ? telegramFullGray
+                  : telegram
               }
               alt="Telegram Nowaja Polsza"
             />
           </ExternalLink>
         </Item>
-        {article || (
-          <Item semiTransparent={semiTransparent}>
+        {isArticle || (
+          <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink url="https://www.boldare.com">
               <Logo
-                src={header ? youtubeFull : youtube}
+                src={isHeader ? youtubeFull : youtube}
                 alt="YouTube Nowaja Polsza"
               />
             </ExternalLink>
           </Item>
         )}
-        <Item semiTransparent={semiTransparent}>
+        <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
             url={
-              article
+              isArticle
                 ? `https://vk.com/share.php?url=${this.state.locationHref}`
                 : 'https://www.boldare.com'
             }
           >
             <Logo
-              article={article}
-              src={header ? vkFull : article ? vkFullGray : vk}
+              isArticle={isArticle}
+              src={isHeader ? vkFull : isArticle ? vkFullGray : vk}
               alt="VK Nowaja Polsza"
             />
           </ExternalLink>
@@ -156,10 +194,13 @@ class SocialMediaList extends React.Component {
 }
 
 SocialMediaList.propTypes = {
-  className: PropTypes.any,
-  header: PropTypes.bool,
-  semiTransparent: PropTypes.bool,
-  article: PropTypes.bool,
+  className: PropTypes.string,
+  isHeader: PropTypes.bool,
+  isFooter: PropTypes.bool,
+  isSemiTransparent: PropTypes.bool,
+  isArticle: PropTypes.bool,
+  isVertical: PropTypes.bool,
+  isMobile: PropTypes.bool,
 }
 
 export default SocialMediaList

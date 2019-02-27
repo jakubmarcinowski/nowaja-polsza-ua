@@ -16,7 +16,7 @@ export const theme = {
       dullOrange: '#d7973c',
       greyTeal: '#588b8b',
       plum: '#b42121',
-      rouge: '#c52942',
+      rouge: '#ce6879',
       terraCotta: '#c8553d',
     },
   },
@@ -50,7 +50,7 @@ export const theme = {
       plum:
         'linear-gradient(to bottom, rgba(180, 33, 33, .85), rgba(17, 29, 34, 0.85))',
       rouge:
-        'linear-gradient(to bottom, rgba(197, 41, 66, .85), rgba(17, 29, 34, 0.85))',
+        'linear-gradient(to bottom, rgba(206, 104, 121, .85), rgba(17, 29, 34, 0.85))',
       terraCotta:
         'linear-gradient(to bottom, rgba(200, 85, 61, .85), rgba(17, 29, 34, 0.85))',
     },
