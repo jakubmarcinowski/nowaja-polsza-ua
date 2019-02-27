@@ -10,7 +10,7 @@ import { mediaQueries } from '../utils/mediaQueries'
 import { theme } from '../utils/theme'
 import Wrapper from './Wrapper'
 import Line from './Line'
-import cprdip from '../../static/CPRDiP-logo-kolor.png'
+import cprdipExtended from '../../static/logo-cprdip-extended.png'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -28,7 +28,7 @@ const Container = styled.div`
   flex-direction: column;
   margin-top: 3rem;
 
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     margin-top: 45px;
     flex-direction: row;
   }
@@ -39,36 +39,37 @@ const Info = styled.div`
   flex-direction: column;
   margin-top: 3rem;
 
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     align-items: flex-end;
     margin-top: 0;
   }
 `
 
 const Publisher = styled.div`
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
 
   @media ${mediaQueries.tablet} {
-    align-items: flex-end;
-    margin-right: 0;
-    margin: 1rem 0 0;
+    margin: 0;
   }
 `
 
 const SocialMediaListMobile = styled(SocialMediaList)`
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     display: none;
   }
 `
 
 const SocialMediaListDesktop = styled(SocialMediaList)`
-  @media ${mediaQueries.phoneOnly} {
-    display: none;
-    background: red;
+  display: none;
+
+  @media ${mediaQueries.desktop} {
+    display: block;
   }
 `
 
 const PublisherText = styled(Paragraph)`
+  margin-right: 1rem;
   letter-spacing: 0.4px;
   font-size: 1.6rem;
   font-family: ${theme.fonts.secondary};
@@ -81,12 +82,12 @@ const PublisherText = styled(Paragraph)`
 const BrandContainer = styled.span`
   margin-top: 3rem;
 
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     margin-top: 0;
   }
 `
 const CPRDIPLogo = styled.img`
-  width: 30px;
+  height: 5rem;
 `
 
 const Footer = () => (
@@ -99,15 +100,13 @@ const Footer = () => (
         <BrandContainer>
           <Brand />
         </BrandContainer>
+        <SocialMediaListDesktop isFooter />
         <Info>
-          <SocialMediaListDesktop isFooter />
           <Publisher>
-            <PublisherText color="Dark">
-              издатель{' '}
-              <ExternalLink url="http://cprdip.pl/">
-                <CPRDIPLogo src={cprdip} />
-              </ExternalLink>
-            </PublisherText>
+            <PublisherText color="Dark">издатель:</PublisherText>
+            <ExternalLink url="http://cprdip.pl/">
+              <CPRDIPLogo src={cprdipExtended} />
+            </ExternalLink>
           </Publisher>
         </Info>
       </Container>
