@@ -105,7 +105,7 @@ const AuthorLink = styled(Link)`
   text-decoration: underline;
 
   &:not(:last-child) {
-    margin: 0 0.5rem 0 0;
+    margin-bottom: 0;
   }
 
   &:hover {
@@ -153,10 +153,13 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
         <InfoItem>
           <TextLabel>{authors.length > 1 ? 'Авторы' : 'Автор'}</TextLabel>{' '}
           {authors &&
-            authors.map(author => (
-              <AuthorLink key={author.slug} to={`/author/${author.slug}`}>
-                {author.name}
-              </AuthorLink>
+            authors.map(({ slug, name }, i, authors) => (
+              <>
+                <AuthorLink key={slug} to={`/author/${slug}`}>
+                  {name}
+                </AuthorLink>
+                {!!authors[i + 1] && <>,&nbsp;</>}
+              </>
             ))}
         </InfoItem>
       </InfoBox>
