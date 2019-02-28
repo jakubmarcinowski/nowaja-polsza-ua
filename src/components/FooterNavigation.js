@@ -34,7 +34,10 @@ const FooterNavigation = () => (
       <Link to="/">Контакт</Link>
     </Item>
     <Item>
-      <Link to="/">Политика конфиденциальности</Link>
+      <Link to="/privacy-policy">Политика конфиденциальности</Link>
+    </Item>
+    <Item>
+      <Link to="/wcag">Политика доступности</Link>
     </Item>
   </StyledNavigation>
 )

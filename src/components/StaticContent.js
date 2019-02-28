@@ -104,13 +104,16 @@ const StyledContent = styled.div`
       color: ${({ theme }) => theme.colors.secondary};
     }
   }
-  ol {
-    list-style: decimal;
+  ul {
+    list-style: circle inside;
     margin-bottom: 3rem;
-
-    li {
-      margin-bottom: 1rem;
-    }
+  }
+  ol {
+    list-style: decimal inside none;
+    margin-bottom: 3rem;
+  }
+  li {
+    margin-bottom: 1rem;
   }
 `
 
