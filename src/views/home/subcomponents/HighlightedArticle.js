@@ -116,7 +116,7 @@ class HighlightedArticle extends Component {
           <LinkOverlay to={`/blog/${slug}`} />
           <ImgBox>
             <ImgWrapper img={heroImage} aspectRatio={1.44} />
-            <PhotoLabel color="dark">выбор редакции</PhotoLabel>
+            <PhotoLabel color="dark">Выбор редакции</PhotoLabel>
           </ImgBox>
           <ArticleContent isActive={isActive}>
             <Header

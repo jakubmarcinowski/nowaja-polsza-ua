@@ -148,7 +148,7 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
     <Banner>
       <InfoBox>
         <InfoItem>
-          <TextLabel>Опубликованный</TextLabel> <Date>{publishDate}</Date>
+          <Date>{publishDate}</Date>
         </InfoItem>
         <InfoItem>
           <TextLabel>{authors.length > 1 ? 'Авторы' : 'Автор'}</TextLabel>{' '}
