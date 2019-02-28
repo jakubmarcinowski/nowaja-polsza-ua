@@ -109,7 +109,7 @@ const Author = ({
     </Info>
     {!authorPage && slug && (
       <Link to={`/author/${slug}`}>
-        <ReadMoreBtn>ПРОЧИТАЙТЕ БОЛЬШЕ</ReadMoreBtn>
+        <ReadMoreBtn>Все тексты автора</ReadMoreBtn>
       </Link>
     )}
   </Element>
