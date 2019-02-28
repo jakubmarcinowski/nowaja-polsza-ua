@@ -19,13 +19,11 @@ import facebookFullGray from '../../static/social-fb-full-gray.svg'
 import twitterFullGray from '../../static/social-twitter-full-gray.svg'
 import telegramFullGray from '../../static/social-telegram-full-gray.svg'
 import vkFullGray from '../../static/social-vk-full-gray.svg'
-import { mediaQueries } from '../utils/mediaQueries'
 
 const List = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 
   ${({ isArticle, isFooter }) =>
     isArticle
@@ -34,13 +32,7 @@ const List = styled.ul`
       ? 'width: 250px;'
       : 'width: 200px;'}
 
-  @media ${mediaQueries.large} {
-    ${({ isVertical }) =>
-      isVertical && 'flex-direction: column; height: 230px;'}
-  }
-
   ${({ isMobile }) => isMobile && 'margin: 0 auto;'}
-  /* @todo Unify ifs for isMobile, isArticle, isFooter */
 `
 
 const Item = styled.li`
@@ -86,7 +78,6 @@ class SocialMediaList extends React.Component {
       isHeader,
       isSemiTransparent,
       isArticle,
-      isVertical,
       isFooter,
       isMobile,
     } = this.props
@@ -95,7 +86,6 @@ class SocialMediaList extends React.Component {
       <List
         className={className}
         isHeader={isHeader}
-        isVertical={isVertical}
         isArticle={isArticle}
         isFooter={isFooter}
         isMobile={isMobile}
@@ -199,7 +189,6 @@ SocialMediaList.propTypes = {
   isFooter: PropTypes.bool,
   isSemiTransparent: PropTypes.bool,
   isArticle: PropTypes.bool,
-  isVertical: PropTypes.bool,
   isMobile: PropTypes.bool,
 }
 
