@@ -6,6 +6,7 @@ import ImgWrapper from '../../../components/ImgWrapper'
 import { articleType } from '../../../types/article'
 import { breakpoints, mediaQueries } from '../../../utils/mediaQueries'
 import Header from '../../../components/Header'
+import Paragraph from '../../../components/Paragraph'
 import * as PropTypes from 'prop-types'
 import ArticleInfoBox from '../../../components/ArticleInfoBox'
 import PhotoLabel from '../../../components/PhotoLabel'
@@ -37,18 +38,27 @@ const ArticleContent = styled.div`
   z-index: 2;
   left: 0;
   right: 0;
-  top: ${props => (props.isActive ? '50%' : 'calc(100% - 1rem)')};
+  transform-origin: bottom;
   transform: ${props =>
-    props.isActive ? 'translateY(-50%)' : 'translateY(-100%)'};
-  transition: all ${({ theme }) => theme.animations.default};
+    props.isActive ? 'translateY(-25rem)' : 'translateY(-16rem)'};
+  transition: transform ${({ theme }) => theme.animations.default};
   width: 70%;
   margin: 0 auto;
   min-width: 280px;
   text-align: center;
 
-  @media ${mediaQueries.tablet} {
-    top: ${props => (props.isActive ? '50%' : 'calc(100% - 3rem)')};
-  }
+  ${props =>
+    props.isActive &&
+    `
+      @media ${mediaQueries.tablet} {
+        transform: translateY(-30rem)
+      }
+    `}
+`
+
+const Lead = styled.div`
+  opacity: ${props => (props.isActive ? 1 : 0)};
+  transition: opacity ${({ theme }) => theme.animations.default};
 `
 
 const Title = styled(Header)`
@@ -88,7 +98,14 @@ class HighlightedArticle extends Component {
   }
 
   render() {
-    const { title, slug, heroImage, authors, publishDate } = this.props.post
+    const {
+      title,
+      slug,
+      heroImage,
+      authors,
+      lead,
+      publishDate,
+    } = this.props.post
     const { isActive } = this.state
 
     return (
@@ -121,6 +138,15 @@ class HighlightedArticle extends Component {
               color="white"
               dateLink={`/blog/${slug}`}
             />
+            {lead && (
+              <Lead isActive={isActive}>
+                <Link to={`/blog/${slug}`}>
+                  <Paragraph color="white" lineHeight="Medium">
+                    {lead}
+                  </Paragraph>
+                </Link>
+              </Lead>
+            )}
           </ArticleContent>
         </HighlightedArticleStyled>
       </>
