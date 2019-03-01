@@ -14,7 +14,7 @@ const StyledList = styled.ul`
   padding: 0;
   list-style: none;
 
-  @media ${mediaQueries.large} {
+  @media ${mediaQueries.tablet} {
     ${({ noMargin }) => !noMargin && 'margin: 4rem -2.5rem;'}
   }
 `

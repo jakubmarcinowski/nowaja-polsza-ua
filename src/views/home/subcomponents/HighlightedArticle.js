@@ -15,7 +15,7 @@ const HighlightedArticleStyled = styled.div`
   position: relative;
   margin: 0 0 2.5rem;
 
-  @media ${mediaQueries.desktop} {
+  @media ${mediaQueries.large} {
     flex: 0 0 57%;
     margin: 0 2.5rem 0 0;
   }
@@ -40,10 +40,10 @@ const ArticleContent = styled.div`
   right: 0;
   transform-origin: bottom;
   transform: ${props =>
-    props.isActive ? 'translateY(-25rem)' : 'translateY(-13rem)'};
+    props.isActive ? 'translateY(-25rem)' : 'translateY(-16rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
   width: 70%;
-  margin: auto;
+  margin: 0 auto;
   min-width: 280px;
   text-align: center;
 
@@ -55,10 +55,12 @@ const ArticleContent = styled.div`
       }
     `}
 `
+
 const Lead = styled.div`
   opacity: ${props => (props.isActive ? 1 : 0)};
   transition: opacity ${({ theme }) => theme.animations.default};
 `
+
 const Title = styled(Header)`
   margin-bottom: 2rem;
   font-size: 1.8rem;
