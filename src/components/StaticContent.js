@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { childrenType } from '../types/children'
 
 import { mediaQueries } from '../utils/mediaQueries'
+import { forEach } from 'iterall'
 
 const StyledContent = styled.div`
   line-height: 1.6;
@@ -23,12 +24,14 @@ const StyledContent = styled.div`
       margin: 0 auto;
     }
   }
+
   h1,
   h2,
   h3 {
     margin-bottom: 1.2em;
     font-weight: 700;
   }
+
   h1 {
     line-height: 1.3;
     font-size: 2rem;
@@ -41,6 +44,7 @@ const StyledContent = styled.div`
       font-size: 2.6rem;
     }
   }
+
   h2 {
     line-height: 1.8;
 
@@ -52,6 +56,7 @@ const StyledContent = styled.div`
       font-size: 2.4rem;
     }
   }
+
   h3 {
     line-height: 1.1;
     font-size: 1.6rem;
@@ -64,6 +69,7 @@ const StyledContent = styled.div`
       font-size: 2.2rem;
     }
   }
+
   p {
     &:not(:last-child) {
       margin-bottom: 3.7em;
@@ -94,32 +100,72 @@ const StyledContent = styled.div`
         margin-left: ${({ theme }) => `calc(-${theme.grid.paddings.large} *2)`};
       }
     }
+
     strong {
       font-weight: 700;
     }
+
     em {
       font-style: italic;
     }
+
     a {
       color: ${({ theme }) => theme.colors.secondary};
     }
   }
+
   ul {
     list-style: circle inside;
     margin-bottom: 3rem;
   }
+
   ol {
     list-style: decimal inside none;
     margin-bottom: 3rem;
   }
+
   li {
     margin-bottom: 1rem;
   }
+
+  iframe {
+    max-width: 100%;
+  }
+
+  .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+  }
+  .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 `
 
-const StaticContent = ({ children }) => (
-  <StyledContent>{children}</StyledContent>
-)
+class StaticContent extends React.Component {
+  componentDidMount() {
+    const iframes = document.querySelectorAll('iframe')
+    if (iframes) {
+      iframes.forEach(iframe => {
+        const iframeWrapper = document.createElement('div')
+        iframeWrapper.className = 'videoWrapper'
+        iframe.parentNode.insertBefore(iframeWrapper, iframe)
+        iframeWrapper.appendChild(iframe)
+      })
+    }
+  }
+
+  render() {
+    const { children } = this.props
+
+    return <StyledContent>{children}</StyledContent>
+  }
+}
 
 StaticContent.propTypes = {
   children: childrenType,
