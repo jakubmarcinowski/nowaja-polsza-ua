@@ -6,7 +6,6 @@ import ImgWrapper from '../../../components/ImgWrapper'
 import { articleType } from '../../../types/article'
 import { breakpoints, mediaQueries } from '../../../utils/mediaQueries'
 import Header from '../../../components/Header'
-import Paragraph from '../../../components/Paragraph'
 import * as PropTypes from 'prop-types'
 import ArticleInfoBox from '../../../components/ArticleInfoBox'
 import PhotoLabel from '../../../components/PhotoLabel'
@@ -15,7 +14,7 @@ const HighlightedArticleStyled = styled.div`
   position: relative;
   margin: 0 0 2.5rem;
 
-  @media ${mediaQueries.desktop} {
+  @media ${mediaQueries.large} {
     flex: 0 0 57%;
     margin: 0 2.5rem 0 0;
   }
@@ -38,27 +37,20 @@ const ArticleContent = styled.div`
   z-index: 2;
   left: 0;
   right: 0;
-  transform-origin: bottom;
+  top: ${props => (props.isActive ? '50%' : 'calc(100% - 1rem)')};
   transform: ${props =>
-    props.isActive ? 'translateY(-25rem)' : 'translateY(-13rem)'};
-  transition: transform ${({ theme }) => theme.animations.default};
+    props.isActive ? 'translateY(-50%)' : 'translateY(-100%)'};
+  transition: all ${({ theme }) => theme.animations.default};
   width: 70%;
-  margin: auto;
+  margin: 0 auto 3rem;
   min-width: 280px;
   text-align: center;
 
-  ${props =>
-    props.isActive &&
-    `
-      @media ${mediaQueries.tablet} {
-        transform: translateY(-30rem)
-      }
-    `}
+  @media ${mediaQueries.tablet} {
+    top: ${props => (props.isActive ? '50%' : 'calc(100% - 3rem)')};
+  }
 `
-const Lead = styled.div`
-  opacity: ${props => (props.isActive ? 1 : 0)};
-  transition: opacity ${({ theme }) => theme.animations.default};
-`
+
 const Title = styled(Header)`
   margin-bottom: 2rem;
   font-size: 1.8rem;
@@ -96,14 +88,7 @@ class HighlightedArticle extends Component {
   }
 
   render() {
-    const {
-      title,
-      slug,
-      heroImage,
-      authors,
-      lead,
-      publishDate,
-    } = this.props.post
+    const { title, slug, heroImage, authors, publishDate } = this.props.post
     const { isActive } = this.state
 
     return (
@@ -136,15 +121,6 @@ class HighlightedArticle extends Component {
               color="white"
               dateLink={`/blog/${slug}`}
             />
-            {lead && (
-              <Lead isActive={isActive}>
-                <Link to={`/blog/${slug}`}>
-                  <Paragraph color="white" lineHeight="Medium">
-                    {lead}
-                  </Paragraph>
-                </Link>
-              </Lead>
-            )}
           </ArticleContent>
         </HighlightedArticleStyled>
       </>
