@@ -42,7 +42,7 @@ const ArticleContent = styled.div`
     props.isActive ? 'translateY(-50%)' : 'translateY(-100%)'};
   transition: all ${({ theme }) => theme.animations.default};
   width: 70%;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
   min-width: 280px;
   text-align: center;
 
