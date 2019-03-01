@@ -97,7 +97,7 @@ class SocialMediaList extends React.Component {
                 ? `https://www.facebook.com/sharer/sharer.php?u=${
                     this.state.locationHref
                   }`
-                : 'https://www.boldare.com'
+                : 'https://www.facebook.com/novayapolsha/'
             }
           >
             <Logo
@@ -120,7 +120,7 @@ class SocialMediaList extends React.Component {
                 ? `https://twitter.com/intent/tweet?original_referer=${
                     this.state.locationHref
                   }`
-                : 'https://www.boldare.com'
+                : 'https://twitter.com/novayapolsha'
             }
           >
             <Logo
@@ -137,7 +137,7 @@ class SocialMediaList extends React.Component {
             url={
               isArticle
                 ? `https://telegram.me/share/url?url=${this.state.locationHref}`
-                : 'https://www.boldare.com'
+                : 'https://t.me/novayapolsha'
             }
           >
             <Logo
@@ -155,7 +155,7 @@ class SocialMediaList extends React.Component {
         </Item>
         {isArticle || (
           <Item isSemiTransparent={isSemiTransparent}>
-            <ExternalLink url="https://www.boldare.com">
+            <ExternalLink url="https://www.youtube.com/channel/UChqH28eDLVsTpfi6C3QxRcg">
               <Logo
                 src={isHeader ? youtubeFull : youtube}
                 alt="YouTube Nowaja Polsza"
@@ -168,7 +168,7 @@ class SocialMediaList extends React.Component {
             url={
               isArticle
                 ? `https://vk.com/share.php?url=${this.state.locationHref}`
-                : 'https://www.boldare.com'
+                : 'https://vk.com/novayapolsha'
             }
           >
             <Logo
