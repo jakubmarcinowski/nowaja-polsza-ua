@@ -74,17 +74,18 @@ const ArticlePage = ({
       <ArticleSocialMediaList />
       <SectionWrapper>
         <HeaderStyled size="Biggest">
-          {authors && authors.length > 1 ? 'Авторы' : 'Автор'}
+          {authors && (authors.length > 1 ? 'Авторы' : 'Автор')}
         </HeaderStyled>
-        {authors && authors.length > 1 ? (
-          <Authors>
-            {authors.map(element => (
-              <Author author={element} key={element.id} few />
-            ))}
-          </Authors>
-        ) : (
-          <Author author={authors[0]} />
-        )}
+        {authors &&
+          (authors.length > 1 ? (
+            <Authors>
+              {authors.map(element => (
+                <Author author={element} key={element.id} few />
+              ))}
+            </Authors>
+          ) : (
+            <Author author={authors[0]} />
+          ))}
       </SectionWrapper>
       <SectionWrapper>
         <HeaderStyled size="Biggest">Вам также может понравиться</HeaderStyled>
