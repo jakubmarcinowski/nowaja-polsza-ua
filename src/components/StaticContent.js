@@ -127,10 +127,6 @@ const StyledContent = styled.div`
     margin-bottom: 1rem;
   }
 
-  iframe {
-    max-width: 100%;
-  }
-
   .videoWrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
