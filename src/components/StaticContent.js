@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { childrenType } from '../types/children'
 
 import { mediaQueries } from '../utils/mediaQueries'
-import { forEach } from 'iterall'
 
 const StyledContent = styled.div`
   line-height: 1.6;
