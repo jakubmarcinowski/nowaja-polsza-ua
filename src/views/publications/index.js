@@ -1,20 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import Publication from './subcomponents/Publication'
 import Wrapper from '../../components/Wrapper'
 
-const PublicationPage = ({
-  title,
-  slug,
-  publicationDate,
-  authors,
-  heroImage,
-  lead,
-  pdf,
-  mobi,
-  epub,
-}) => (
+const PublicationPage = ({ publications }) => (
   <Wrapper>
-    <div>Test</div>
+    {publications.map(({ node }, i) => (
+      <Publication publication={node} key={i} />
+    ))}
   </Wrapper>
 )
 
