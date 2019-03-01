@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import { mediaQueries } from '../utils/mediaQueries'
 import ImgWrapper from './ImgWrapper'
+import { childrenType } from '../types/children'
 
 const Box = styled.div`
   display: flex;
@@ -50,5 +52,18 @@ const BoxWithPhoto = ({ image, children }) => (
     <Info>{children}</Info>
   </Box>
 )
+
+BoxWithPhoto.propTypes = {
+  children: childrenType,
+  image: PropTypes.shape({
+    fluid: PropTypes.shape({
+      aspectRatio: PropTypes.number,
+      base64: PropTypes.string,
+      sizes: PropTypes.string,
+      src: PropTypes.string,
+      srcSet: PropTypes.string,
+    }),
+  }),
+}
 
 export default BoxWithPhoto

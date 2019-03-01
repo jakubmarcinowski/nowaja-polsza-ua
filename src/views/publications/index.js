@@ -12,6 +12,8 @@ const PublicationPage = ({ publications }) => (
   </Wrapper>
 )
 
-PublicationPage.propTypes = {}
+PublicationPage.propTypes = {
+  publications: PropTypes.any,
+}
 
 export default PublicationPage
