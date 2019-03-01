@@ -61,87 +61,66 @@ class SocialMediaList extends React.Component {
   render() {
     const {
       className,
-      isHeader,
+      isWhite,
       isSemiTransparent,
-      isArticle,
+      isShareUrl,
       isBig,
+      urls: { facebook, twitter, telegram, youtube, vk },
     } = this.props
 
     return (
-      <List className={className} isHeader={isHeader}>
+      <List className={className} isWhite={isWhite}>
         <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
-            url={
-              isArticle
-                ? `https://www.facebook.com/sharer/sharer.php?u=${
-                    this.state.locationHref
-                  }`
-                : 'https://www.facebook.com/novayapolsha/'
-            }
+            url={`${facebook}${isShareUrl ? this.state.locationHref : ''}`}
           >
             <Logo
               isBig={isBig}
-              src={isHeader ? facebookFull : facebookFullGray}
-              alt="Facebook Nowaja Polsza"
+              src={isWhite ? facebookFull : facebookFullGray}
+              alt="Facebook"
             />
           </ExternalLink>
         </Item>
         <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
-            url={
-              isArticle
-                ? `https://twitter.com/intent/tweet?original_referer=${
-                    this.state.locationHref
-                  }`
-                : 'https://twitter.com/novayapolsha'
-            }
+            url={`${twitter}${isShareUrl ? this.state.locationHref : ''}`}
           >
             <Logo
               isBig={isBig}
-              src={isHeader ? twitterFull : twitterFullGray}
-              alt="Twitter Nowaja Polsza"
+              src={isWhite ? twitterFull : twitterFullGray}
+              alt="Twitter"
             />
           </ExternalLink>
         </Item>
         <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
-            url={
-              isArticle
-                ? `https://telegram.me/share/url?url=${this.state.locationHref}`
-                : 'https://t.me/novayapolsha'
-            }
+            url={`${telegram}${isShareUrl ? this.state.locationHref : ''}`}
           >
             <Logo
               isBig={isBig}
-              src={isHeader ? telegramFull : telegramFullGray}
-              alt="Telegram Nowaja Polsza"
+              src={isWhite ? telegramFull : telegramFullGray}
+              alt="Telegram"
             />
           </ExternalLink>
         </Item>
-        {isArticle || (
+        {youtube && (
           <Item isSemiTransparent={isSemiTransparent}>
-            <ExternalLink url="https://www.youtube.com/channel/UChqH28eDLVsTpfi6C3QxRcg">
+            <ExternalLink
+              url={youtube}
+            >
               <Logo
                 isBig={isBig}
-                src={isHeader ? youtubeFull : youtubeFullGray}
-                alt="YouTube Nowaja Polsza"
+                src={isWhite ? youtubeFull : youtubeFullGray}
+                alt="YouTube"
               />
             </ExternalLink>
           </Item>
         )}
         <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
-            url={
-              isArticle
-                ? `https://vk.com/share.php?url=${this.state.locationHref}`
-                : 'https://vk.com/novayapolsha'
-            }
+            url={`${vk}${isShareUrl ? this.state.locationHref : ''}`}
           >
-            <Logo
-              isBig={isBig}
-              src={isHeader ? vkFull : vkFullGray}
-              alt="VK Nowaja Polsza"
-            />
+            <Logo isBig={isBig} src={isWhite ? vkFull : vkFullGray} alt="VK"/>
           </ExternalLink>
         </Item>
       </List>
@@ -151,10 +130,10 @@ class SocialMediaList extends React.Component {
 
 SocialMediaList.propTypes = {
   className: PropTypes.string,
-  isHeader: PropTypes.bool,
+  urls: PropTypes.object,
   isWhite: PropTypes.bool,
   isSemiTransparent: PropTypes.bool,
-  isArticle: PropTypes.bool,
+  isShareUrl: PropTypes.bool,
   isBig: PropTypes.bool,
 }
 

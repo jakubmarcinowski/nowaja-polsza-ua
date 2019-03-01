@@ -53,6 +53,11 @@ export const pageQuery = graphql`
           html
         }
       }
+      facebook,
+      twitter,
+      telegram,
+      youtube,
+      vk,
     }
     allContentfulBlogPost(
       filter: {

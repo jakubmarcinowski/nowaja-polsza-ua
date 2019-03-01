@@ -11,6 +11,7 @@ import { theme } from '../utils/theme'
 import Wrapper from './Wrapper'
 import Line from './Line'
 import cprdipExtended from '../../static/logo-cprdip-extended.png'
+import { getNovPolSocialMediaUrls } from '../utils/socialMedia'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -99,11 +100,11 @@ const Footer = () => (
     <StyledFooter>
       <FooterNavigation />
       <Container>
-        <SocialMediaListMobile isBig isSemiTransparent/>
+        <SocialMediaListMobile isBig isSemiTransparent urls={getNovPolSocialMediaUrls()}/>
         <BrandContainer>
           <Brand />
         </BrandContainer>
-        <SocialMediaListDesktop isBig isSemiTransparent/>
+        <SocialMediaListDesktop isBig isSemiTransparent urls={getNovPolSocialMediaUrls()}/>
         <Info>
           <Publisher>
             <PublisherText color="Dark">Издатель:</PublisherText>

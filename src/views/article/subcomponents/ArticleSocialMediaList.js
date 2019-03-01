@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import SocialMediaList from '../../../components/SocialMediaList'
 import { mediaQueries } from '../../../utils/mediaQueries'
+import { getShareSocialMediaUrls } from '../../../utils/socialMedia'
 
 const Container = styled.div`
   max-width: 200px;  
@@ -16,7 +17,7 @@ const Container = styled.div`
 
 const ArticleSocialMediaList = () => (
   <Container>
-    <SocialMediaList isBig isArticle isSemiTransparent/>
+    <SocialMediaList isBig isShareUrl isSemiTransparent urls={getShareSocialMediaUrls()}/>
   </Container>
 )
 
