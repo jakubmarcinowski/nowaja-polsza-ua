@@ -147,10 +147,12 @@ class StaticContent extends React.Component {
     const iframes = document.querySelectorAll('iframe')
     if (iframes) {
       iframes.forEach(iframe => {
-        const iframeWrapper = document.createElement('div')
-        iframeWrapper.className = 'videoWrapper'
-        iframe.parentNode.insertBefore(iframeWrapper, iframe)
-        iframeWrapper.appendChild(iframe)
+        if (iframe.src.indexOf('soundcloud.com') === -1) {
+          const iframeWrapper = document.createElement('div')
+          iframeWrapper.className = 'videoWrapper'
+          iframe.parentNode.insertBefore(iframeWrapper, iframe)
+          iframeWrapper.appendChild(iframe)
+        }
       })
     }
   }
