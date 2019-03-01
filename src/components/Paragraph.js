@@ -105,7 +105,7 @@ Paragraph.propTypes = {
   size: PropTypes.string,
   weight: PropTypes.string,
   children: childrenType,
-  margin: PropTypes.number,
+  margin: PropTypes.string,
   className: PropTypes.string,
   lineHeight: PropTypes.string,
 }
