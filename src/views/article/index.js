@@ -74,7 +74,7 @@ const ArticlePage = ({
       <ArticleSocialMediaList />
       <SectionWrapper>
         <HeaderStyled size="Biggest">
-          {authors.length > 1 ? 'Авторы' : 'Автор'}
+          {authors && authors.length > 1 ? 'Авторы' : 'Автор'}
         </HeaderStyled>
         {authors && authors.length > 1 ? (
           <Authors>
