@@ -27,7 +27,7 @@ const Element = styled.div`
   flex-direction: column;
   min-width: 100%;
   margin: 2rem auto;
-  background: ${({ theme }) => theme.colors.authorBackground};
+  background: ${({ theme }) => theme.colors.listItemBackground};
 
   ${({ few }) => few && `margin: 2rem;`};
 

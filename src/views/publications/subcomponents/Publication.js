@@ -6,12 +6,13 @@ import PropTypes from 'prop-types'
 import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
 import Paragraph from '../../../components/Paragraph'
+import ExternalLink from '../../../components/ExternalLink'
 
 // @todo Add styles
 const StyledPublication = styled.div``
 const Context = styled.div``
 const Download = styled.div``
-const DownloadItem = styled.a``
+const DownloadItem = styled(ExternalLink)``
 
 const Publication = ({
   publication: { title, heroImage, epub, mobi, pdf, lead, authors },
@@ -41,17 +42,17 @@ const Publication = ({
         {/* @todo add icons */}
         <Download>
           {pdf && (
-            <DownloadItem href={pdf.file.url} download target="_blank">
+            <DownloadItem url={pdf.file.url} download>
               PDF{' '}
             </DownloadItem>
           )}
           {epub && (
-            <DownloadItem href={mobi.file.url} download target="_blank">
+            <DownloadItem url={mobi.file.url} download>
               EPUB{' '}
             </DownloadItem>
           )}
           {mobi && (
-            <DownloadItem href={mobi.file.url} download target="_blank">
+            <DownloadItem url={mobi.file.url} download>
               MOBI
             </DownloadItem>
           )}

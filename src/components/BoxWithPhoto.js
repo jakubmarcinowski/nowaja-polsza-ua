@@ -12,7 +12,7 @@ const Box = styled.div`
   flex-direction: column;
   min-width: 100%;
   margin: 2rem auto;
-  background: ${({ theme }) => theme.colors.authorBackground};
+  background: ${({ theme }) => theme.colors.listItemBackground};
 
   @media ${mediaQueries.phoneLandscape} {
     max-width: 30rem;

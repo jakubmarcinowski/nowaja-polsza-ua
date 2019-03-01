@@ -6,8 +6,8 @@ import Wrapper from '../../components/Wrapper'
 
 const PublicationPage = ({ publications }) => (
   <Wrapper>
-    {publications.map(({ node }, i) => (
-      <Publication publication={node} key={i} />
+    {publications.map(({ node, node: { slug } }) => (
+      <Publication publication={node} key={slug} />
     ))}
   </Wrapper>
 )
