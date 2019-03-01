@@ -3,11 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import ExternalLink from './ExternalLink'
-import facebook from '../../static/social-fb.svg'
-import twitter from '../../static/social-twitter.svg'
-import youtube from '../../static/social-yt.svg'
-import telegram from '../../static/social-telegram.svg'
-import vk from '../../static/social-vk.svg'
 
 import facebookFull from '../../static/social-fb-full.svg'
 import twitterFull from '../../static/social-twitter-full.svg'
@@ -17,6 +12,7 @@ import vkFull from '../../static/social-vk-full.svg'
 
 import facebookFullGray from '../../static/social-fb-full-gray.svg'
 import twitterFullGray from '../../static/social-twitter-full-gray.svg'
+import youtubeFullGray from '../../static/social-yt-full-gray.svg'
 import telegramFullGray from '../../static/social-telegram-full-gray.svg'
 import vkFullGray from '../../static/social-vk-full-gray.svg'
 
@@ -24,15 +20,7 @@ const List = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  ${({ isArticle, isFooter }) =>
-    isArticle
-      ? 'max-width: 200px;  margin: 0 auto;'
-      : isFooter
-      ? 'width: 250px;'
-      : 'width: 200px;'}
-
-  ${({ isMobile }) => isMobile && 'margin: 0 auto;'}
+  width: 200px;
 `
 
 const Item = styled.li`
@@ -53,15 +41,13 @@ const Logo = styled.img`
   max-height: 30px;
   max-width: 30px;
 
-  ${({ isArticle }) =>
-    isArticle &&
+  ${({ isBig }) =>
+  isBig &&
     `
     height: 25px;
     width: 25px;
   `}
 `
-
-// @todo replace static social media urls with correct ones.
 
 class SocialMediaList extends React.Component {
   state = {
@@ -78,18 +64,11 @@ class SocialMediaList extends React.Component {
       isHeader,
       isSemiTransparent,
       isArticle,
-      isFooter,
-      isMobile,
+      isBig,
     } = this.props
 
     return (
-      <List
-        className={className}
-        isHeader={isHeader}
-        isArticle={isArticle}
-        isFooter={isFooter}
-        isMobile={isMobile}
-      >
+      <List className={className} isHeader={isHeader}>
         <Item isSemiTransparent={isSemiTransparent}>
           <ExternalLink
             url={
@@ -101,14 +80,8 @@ class SocialMediaList extends React.Component {
             }
           >
             <Logo
-              isArticle={isArticle}
-              src={
-                isHeader
-                  ? facebookFull
-                  : isArticle
-                  ? facebookFullGray
-                  : facebook
-              }
+              isBig={isBig}
+              src={isHeader ? facebookFull : facebookFullGray}
               alt="Facebook Nowaja Polsza"
             />
           </ExternalLink>
@@ -124,10 +97,8 @@ class SocialMediaList extends React.Component {
             }
           >
             <Logo
-              isArticle={isArticle}
-              src={
-                isHeader ? twitterFull : isArticle ? twitterFullGray : twitter
-              }
+              isBig={isBig}
+              src={isHeader ? twitterFull : twitterFullGray}
               alt="Twitter Nowaja Polsza"
             />
           </ExternalLink>
@@ -141,14 +112,8 @@ class SocialMediaList extends React.Component {
             }
           >
             <Logo
-              isArticle={isArticle}
-              src={
-                isHeader
-                  ? telegramFull
-                  : isArticle
-                  ? telegramFullGray
-                  : telegram
-              }
+              isBig={isBig}
+              src={isHeader ? telegramFull : telegramFullGray}
               alt="Telegram Nowaja Polsza"
             />
           </ExternalLink>
@@ -157,7 +122,8 @@ class SocialMediaList extends React.Component {
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink url="https://www.youtube.com/channel/UChqH28eDLVsTpfi6C3QxRcg">
               <Logo
-                src={isHeader ? youtubeFull : youtube}
+                isBig={isBig}
+                src={isHeader ? youtubeFull : youtubeFullGray}
                 alt="YouTube Nowaja Polsza"
               />
             </ExternalLink>
@@ -172,8 +138,8 @@ class SocialMediaList extends React.Component {
             }
           >
             <Logo
-              isArticle={isArticle}
-              src={isHeader ? vkFull : isArticle ? vkFullGray : vk}
+              isBig={isBig}
+              src={isHeader ? vkFull : vkFullGray}
               alt="VK Nowaja Polsza"
             />
           </ExternalLink>
@@ -186,10 +152,10 @@ class SocialMediaList extends React.Component {
 SocialMediaList.propTypes = {
   className: PropTypes.string,
   isHeader: PropTypes.bool,
-  isFooter: PropTypes.bool,
+  isWhite: PropTypes.bool,
   isSemiTransparent: PropTypes.bool,
   isArticle: PropTypes.bool,
-  isMobile: PropTypes.bool,
+  isBig: PropTypes.bool,
 }
 
 export default SocialMediaList

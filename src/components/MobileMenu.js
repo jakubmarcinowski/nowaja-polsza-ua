@@ -98,6 +98,10 @@ const Line = styled.div`
   background: ${props => props.theme.colors.white};
 `
 
+const MobileSocialMediaList = styled(SocialMediaList)`
+  margin: 0 auto;
+`
+
 class MobileMenu extends Component {
   state = {
     isMenuOpen: false,
@@ -124,7 +128,7 @@ class MobileMenu extends Component {
             <Line />
             <MobileMenuItems />
           </nav>
-          <SocialMediaList isHeader isMobile />
+          <MobileSocialMediaList isHeader/>
         </MenuContent>
       </>
     )

@@ -5,6 +5,8 @@ import SocialMediaList from '../../../components/SocialMediaList'
 import { mediaQueries } from '../../../utils/mediaQueries'
 
 const Container = styled.div`
+  max-width: 200px;  
+  margin: 0 auto;
   padding: 20px 0;
 
   @media ${mediaQueries.tablet} {
@@ -14,7 +16,7 @@ const Container = styled.div`
 
 const ArticleSocialMediaList = () => (
   <Container>
-    <SocialMediaList isArticle isSemiTransparent />
+    <SocialMediaList isBig isArticle isSemiTransparent/>
   </Container>
 )
 
