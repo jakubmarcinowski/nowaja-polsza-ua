@@ -17,14 +17,19 @@ import telegramFullGray from '../../static/social-telegram-full-gray.svg'
 import vkFullGray from '../../static/social-vk-full-gray.svg'
 
 const List = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 200px;
 `
 
 const Item = styled.li`
   display: inline;
+  padding: 0 11px;
+  
+  &:first-of-type {
+    padding-left: 0;
+  }
+  
+  &:last-of-type {
+    padding-right: 0;
+  }
 
   ${({ isSemiTransparent }) =>
     isSemiTransparent &&
@@ -70,44 +75,48 @@ class SocialMediaList extends React.Component {
 
     return (
       <List className={className} isWhite={isWhite}>
-        <Item isSemiTransparent={isSemiTransparent}>
-          <ExternalLink
-            url={`${facebook}${isShareUrl ? this.state.locationHref : ''}`}
-          >
-            <Logo
-              isBig={isBig}
-              src={isWhite ? facebookFull : facebookFullGray}
-              alt="Facebook"
-            />
-          </ExternalLink>
-        </Item>
-        <Item isSemiTransparent={isSemiTransparent}>
-          <ExternalLink
-            url={`${twitter}${isShareUrl ? this.state.locationHref : ''}`}
-          >
-            <Logo
-              isBig={isBig}
-              src={isWhite ? twitterFull : twitterFullGray}
-              alt="Twitter"
-            />
-          </ExternalLink>
-        </Item>
-        <Item isSemiTransparent={isSemiTransparent}>
-          <ExternalLink
-            url={`${telegram}${isShareUrl ? this.state.locationHref : ''}`}
-          >
-            <Logo
-              isBig={isBig}
-              src={isWhite ? telegramFull : telegramFullGray}
-              alt="Telegram"
-            />
-          </ExternalLink>
-        </Item>
-        {youtube && (
+        {facebook && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={youtube}
+              url={`${facebook}${isShareUrl ? this.state.locationHref : ''}`}
             >
+              <Logo
+                isBig={isBig}
+                src={isWhite ? facebookFull : facebookFullGray}
+                alt="Facebook"
+              />
+            </ExternalLink>
+          </Item>
+        )}
+        {twitter && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink
+              url={`${twitter}${isShareUrl ? this.state.locationHref : ''}`}
+            >
+              <Logo
+                isBig={isBig}
+                src={isWhite ? twitterFull : twitterFullGray}
+                alt="Twitter"
+              />
+            </ExternalLink>
+          </Item>
+        )}
+        {telegram && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink
+              url={`${telegram}${isShareUrl ? this.state.locationHref : ''}`}
+            >
+              <Logo
+                isBig={isBig}
+                src={isWhite ? telegramFull : telegramFullGray}
+                alt="Telegram"
+              />
+            </ExternalLink>
+          </Item>
+        )}
+        {youtube && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink url={youtube}>
               <Logo
                 isBig={isBig}
                 src={isWhite ? youtubeFull : youtubeFullGray}
@@ -116,13 +125,19 @@ class SocialMediaList extends React.Component {
             </ExternalLink>
           </Item>
         )}
-        <Item isSemiTransparent={isSemiTransparent}>
-          <ExternalLink
-            url={`${vk}${isShareUrl ? this.state.locationHref : ''}`}
-          >
-            <Logo isBig={isBig} src={isWhite ? vkFull : vkFullGray} alt="VK"/>
-          </ExternalLink>
-        </Item>
+        {vk && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink
+              url={`${vk}${isShareUrl ? this.state.locationHref : ''}`}
+            >
+              <Logo
+                isBig={isBig}
+                src={isWhite ? vkFull : vkFullGray}
+                alt="VK"
+              />
+            </ExternalLink>
+          </Item>
+        )}
       </List>
     )
   }

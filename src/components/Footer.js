@@ -56,8 +56,6 @@ const Publisher = styled.div`
 `
 
 const SocialMediaListMobile = styled(SocialMediaList)`
-  width: 250px;
-
   @media ${mediaQueries.desktop} {
     display: none;
   }
@@ -65,7 +63,6 @@ const SocialMediaListMobile = styled(SocialMediaList)`
 
 const SocialMediaListDesktop = styled(SocialMediaList)`
   display: none;
-  width: 250px;
 
   @media ${mediaQueries.desktop} {
     display: flex;
