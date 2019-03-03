@@ -8,6 +8,7 @@ import Header from './Header'
 import Paragraph from './Paragraph'
 import Button from './Button'
 import { mediaQueries } from '../utils/mediaQueries'
+import SocialMediaList from './SocialMediaList'
 
 const AuthorImg = styled(ImgWrapper)`
   @media ${mediaQueries.tablet} {
@@ -25,21 +26,31 @@ const Element = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  min-width: 100%;
-  margin: 2rem auto;
   background: ${({ theme }) => theme.colors.authorBackground};
 
-  ${({ few }) => few && `margin: 2rem;`};
+  ${({ few }) =>
+  few ?
+    `
+      margin: 2rem;
+      min-width: 100%;
+    `
+    :
+    `
+      margin-left: 2rem;
+      width: calc(100%-2rem);
+    `};
 
   @media ${mediaQueries.phoneLandscape} {
-    max-width: 30rem;
-    min-width: 30rem;
+    ${({ few }) =>
+  few &&
+  `
+        max-width: 30rem;
+        min-width: 30rem;
+      `};
   }
 
   @media ${mediaQueries.tablet} {
     flex-direction: row;
-    margin: 5rem auto;
-    max-width: 70%;
 
     ${({ few }) =>
       few &&
@@ -80,40 +91,106 @@ const Info = styled.div`
 `
 
 const Desc = styled(Paragraph)`
-  margin-top: 1rem;
+  margin-top: ${({ few }) => (few ? '1rem' : '3rem')};
 `
 
-const Author = ({
-  author: { name, shortBio, image, slug },
-  authorPage,
-  few,
-}) => (
-  <Element few={few}>
-    {image && <AuthorImg img={image} />}
-    <Info few={few}>
-      {name && (
-        <Header size="Bigger" color="Black">
-          {name}
-        </Header>
-      )}
+const Container = styled.div`
+    ${({ few }) =>
+  few ||
+  `
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
+      `};
 
-      {shortBio && (
-        <Desc size="Bigger" weight="Light" lineHeight="Medium" color="Black">
-          <span
-            dangerouslySetInnerHTML={{
-              __html: shortBio.childMarkdownRemark.excerpt,
-            }}
-          />
-        </Desc>
-      )}
-    </Info>
-    {!authorPage && slug && (
-      <Link to={`/author/${slug}`}>
-        <ReadMoreBtn>Все тексты автора</ReadMoreBtn>
-      </Link>
-    )}
-  </Element>
-)
+  @media ${mediaQueries.desktop} {
+      ${({ few }) =>
+  few ||
+  `
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center; 
+        `};
+  }
+`
+
+const AuthorSocialMediaList = styled(SocialMediaList)`
+  padding-top: 1.5rem;
+
+  @media ${mediaQueries.desktop} {
+    padding: 0;
+  }
+`
+
+class Author extends React.Component {
+  render() {
+    const {
+      author: {
+        name,
+        shortBio,
+        image,
+        slug,
+        facebook,
+        twitter,
+        telegram,
+        youtube,
+        vk,
+      },
+      authorPage,
+      few,
+    } = this.props
+
+    return (
+      <Element few={few}>
+        {image && <AuthorImg img={image}/>}
+        <Info few={few}>
+          <Container few={few}>
+            {name && (
+              <Header size="Bigger" color="Black">
+                {name}
+              </Header>
+            )}
+            {authorPage && (
+              <AuthorSocialMediaList
+                urls={{
+                  facebook,
+                  twitter,
+                  telegram,
+                  youtube,
+                  vk,
+                }}
+                isSemiTransparent
+                isBig
+              />
+            )}
+          </Container>
+          {shortBio && (
+            <Desc
+              few={few}
+              size="Bigger"
+              weight="Light"
+              lineHeight="Medium"
+              color="Black"
+            >
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: authorPage
+                    ? shortBio.childMarkdownRemark.html
+                    : shortBio.childMarkdownRemark.excerpt,
+                }}
+              />
+            </Desc>
+          )}
+        </Info>
+        {!authorPage && slug && (
+          <Link to={`/author/${slug}`}>
+            <ReadMoreBtn>Все тексты автора</ReadMoreBtn>
+          </Link>
+        )}
+      </Element>
+    )
+  }
+}
 
 Author.propTypes = {
   author: PropTypes.any,
