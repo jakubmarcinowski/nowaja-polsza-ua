@@ -28,6 +28,8 @@ const Element = styled.div`
 
   @media ${mediaQueries.tablet} {
     flex-direction: row;
+    margin-top: 8rem;
+    margin-bottom: 10rem;
   }
 `
 
