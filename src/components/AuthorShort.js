@@ -29,11 +29,7 @@ const Element = styled.div`
   margin: 2rem auto;
   background: ${({ theme }) => theme.colors.authorBackground};
 
-  ${({ few }) =>
-  few &&
-  `
-      margin: 2rem;
-    `};
+  ${({ few }) => few && `margin: 2rem;`};
 
   @media ${mediaQueries.phoneLandscape} {
     max-width: 30rem;
@@ -48,11 +44,11 @@ const Element = styled.div`
     ${({ few }) =>
   few &&
   `
-          flex-direction: column;
-          flex-wrap: wrap;
-          margin: 5rem;
-          max-width: 3.9rem; 
-        `};
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 5rem;
+        max-width: 3.9rem; 
+      `};
   }
 `
 
@@ -75,11 +71,7 @@ const Info = styled.div`
     padding: 3rem 3rem 3rem 1rem;
 
     ${({ few }) =>
-  few
-    ? `
-        padding: 3rem 3rem 5rem 3rem;
-        `
-    : 'flex-direction: row;'};
+  few ? `padding: 3rem 3rem 5rem 3rem;` : 'flex-direction: row;'};
   }
 `
 
