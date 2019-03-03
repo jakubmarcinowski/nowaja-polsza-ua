@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import ArticleSocialMediaList from './subcomponents/ArticleSocialMediaList'
-import Author from '../../components/Author'
 import ArticleHeader from './subcomponents/ArticleHeader'
 import Content from './subcomponents/Content'
 import Header from '../../components/Header'
