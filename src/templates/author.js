@@ -20,7 +20,7 @@ class AuthorTemplate extends React.Component {
           <>
             <Helmet title={`${author.name} | ${siteTitle}`} />
             <Wrapper>
-              <Author author={author} authorPage />
+              <Author author={author}/>
               {authorPosts && (
                 <ArticlesList posts={authorPosts} limit={6} initialLimit={9} />
               )}
