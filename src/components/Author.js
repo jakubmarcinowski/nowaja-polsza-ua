@@ -29,15 +29,10 @@ const Element = styled.div`
   background: ${({ theme }) => theme.colors.authorBackground};
 
   ${({ few }) =>
-  few ?
+  few &&
     `
       margin: 2rem;
       min-width: 100%;
-    `
-    :
-    `
-      margin-left: 2rem;
-      width: calc(100%-2rem);
     `};
 
   @media ${mediaQueries.phoneLandscape} {
@@ -53,13 +48,19 @@ const Element = styled.div`
     flex-direction: row;
 
     ${({ few }) =>
-      few &&
-      `
+  few ?
+    `
           flex-direction: column;
           flex-wrap: wrap;
           margin: 5rem;
           max-width: 3.9rem; 
-        `};
+        `
+    :
+    `
+          width: calc(100%-2rem);
+          margin-left: 2rem;
+        `
+  };
   }
 `
 
@@ -76,10 +77,16 @@ const ReadMoreBtn = styled(Button)`
 `
 
 const Info = styled.div`
-  padding: 3rem 3rem 5rem 3rem;
+  padding: 2rem 2rem 4rem 2rem;
+  
+   ${({ few }) =>
+  few &&
+  `
+      padding: 3rem 3rem 5rem 3rem;
+    `};
 
   @media ${mediaQueries.tablet} {
-    padding: 3rem 3rem 3rem 1rem;
+    padding: 3rem 8rem 3rem 3rem;
 
     ${({ few }) =>
       few
