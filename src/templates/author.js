@@ -78,6 +78,7 @@ export const pageQuery = graphql`
           categories {
             title
             slug
+            color
           }
           heroImage {
             fluid(maxWidth: 1920, resizingBehavior: SCALE) {
