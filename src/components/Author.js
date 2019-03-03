@@ -86,7 +86,7 @@ const Info = styled.div`
     `};
 
   @media ${mediaQueries.tablet} {
-    padding: 3rem 8rem 3rem 3rem;
+    padding: 3rem 8rem 5rem 3rem;
 
     ${({ few }) =>
       few
@@ -174,7 +174,7 @@ class Author extends React.Component {
           {shortBio && (
             <Desc
               few={few}
-              size="Bigger"
+              size={few ? 'Bigger' : 'Biggest'}
               weight="Light"
               lineHeight="Medium"
               color="Black"
