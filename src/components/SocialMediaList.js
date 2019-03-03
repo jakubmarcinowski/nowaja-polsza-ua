@@ -16,17 +16,16 @@ import youtubeFullGray from '../../static/social-yt-full-gray.svg'
 import telegramFullGray from '../../static/social-telegram-full-gray.svg'
 import vkFullGray from '../../static/social-vk-full-gray.svg'
 
-const List = styled.ul`
-`
+const List = styled.ul``
 
 const Item = styled.li`
   display: inline;
   padding: 0 11px;
-  
+
   &:first-of-type {
     padding-left: 0;
   }
-  
+
   &:last-of-type {
     padding-right: 0;
   }

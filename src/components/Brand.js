@@ -147,7 +147,6 @@ const BoxRight = styled.span`
   margin-left: auto;
 `
 
-
 class Brand extends React.Component {
   getLogoContainer(isFullVersion, isDarkVersion, isInHeader) {
     return (
@@ -167,7 +166,11 @@ class Brand extends React.Component {
           isDarkVersion={isDarkVersion}
           isFullVersion={isFullVersion}
         >
-          <Logo isFullVersion={isFullVersion} src={logo} alt="Nowaja Polsza logo"/>
+          <Logo
+            isFullVersion={isFullVersion}
+            src={logo}
+            alt="Nowaja Polsza logo"
+          />
         </LogoWrapper>
         {isFullVersion && (
           <LogoSubtitleRight
@@ -198,13 +201,21 @@ class Brand extends React.Component {
             <Box>
               <span>
                 <Link to="/">
-                  {this.getLogoContainer(isFullVersion, isDarkVersion, isInHeader)}
+                  {this.getLogoContainer(
+                    isFullVersion,
+                    isDarkVersion,
+                    isInHeader,
+                  )}
                 </Link>
               </span>
             </Box>
             <Box>
               <BoxRight>
-                <SocialMediaList isWhite isSemiTransparent urls={getNovPolSocialMediaUrls()}/>
+                <SocialMediaList
+                  isWhite
+                  isSemiTransparent
+                  urls={getNovPolSocialMediaUrls()}
+                />
               </BoxRight>
             </Box>
           </Container>

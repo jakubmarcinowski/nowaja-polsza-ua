@@ -97,11 +97,19 @@ const Footer = () => (
     <StyledFooter>
       <FooterNavigation />
       <Container>
-        <SocialMediaListMobile isBig isSemiTransparent urls={getNovPolSocialMediaUrls()}/>
+        <SocialMediaListMobile
+          isBig
+          isSemiTransparent
+          urls={getNovPolSocialMediaUrls()}
+        />
         <BrandContainer>
           <Brand />
         </BrandContainer>
-        <SocialMediaListDesktop isBig isSemiTransparent urls={getNovPolSocialMediaUrls()}/>
+        <SocialMediaListDesktop
+          isBig
+          isSemiTransparent
+          urls={getNovPolSocialMediaUrls()}
+        />
         <Info>
           <Publisher>
             <PublisherText color="Dark">Издатель:</PublisherText>

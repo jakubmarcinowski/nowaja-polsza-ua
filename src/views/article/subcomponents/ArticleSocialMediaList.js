@@ -9,7 +9,7 @@ const StyledArticleSocialMediaList = styled(SocialMediaList)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 200px;  
+  max-width: 200px;
   margin: 0 auto;
   padding: 20px 0;
 
@@ -19,7 +19,12 @@ const StyledArticleSocialMediaList = styled(SocialMediaList)`
 `
 
 const ArticleSocialMediaList = () => (
-  <StyledArticleSocialMediaList isBig isShareUrl isSemiTransparent urls={getShareSocialMediaUrls()}/>
+  <StyledArticleSocialMediaList
+    isBig
+    isShareUrl
+    isSemiTransparent
+    urls={getShareSocialMediaUrls()}
+  />
 )
 
 export default ArticleSocialMediaList
