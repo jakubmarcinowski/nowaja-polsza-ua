@@ -22,13 +22,14 @@ const MenuItem = styled.li`
 
 const categoriesQuery = graphql`
   query CategoriesMobileQuery {
-    allContentfulCategory {
+    allContentfulCategory(sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id
           slug
           title
           color
+          order
         }
       }
     }
