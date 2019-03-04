@@ -9,7 +9,7 @@ import { theme } from '../utils/theme'
 import Navigation from './Navigation'
 import SocialMediaList from './SocialMediaList'
 import { Link } from 'gatsby'
-import { getNovPolSocialMediaUrls } from '../utils/socialMedia'
+import { novPolSocialMediaUrls } from '../utils/socialMedia'
 
 const StyledBrand = styled.div`
   display: flex;
@@ -214,7 +214,7 @@ class Brand extends React.Component {
                 <SocialMediaList
                   isWhite
                   isSemiTransparent
-                  urls={getNovPolSocialMediaUrls()}
+                  urls={novPolSocialMediaUrls}
                 />
               </BoxRight>
             </Box>

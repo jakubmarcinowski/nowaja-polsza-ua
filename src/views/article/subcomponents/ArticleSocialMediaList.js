@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import SocialMediaList from '../../../components/SocialMediaList'
 import { mediaQueries } from '../../../utils/mediaQueries'
-import { getShareSocialMediaUrls } from '../../../utils/socialMedia'
+import { shareSocialMediaUrls } from '../../../utils/socialMedia'
 
 const StyledArticleSocialMediaList = styled(SocialMediaList)`
   display: flex;
@@ -23,7 +23,7 @@ const ArticleSocialMediaList = () => (
     isBig
     isShareUrl
     isSemiTransparent
-    urls={getShareSocialMediaUrls()}
+    urls={shareSocialMediaUrls}
   />
 )
 
