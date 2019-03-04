@@ -11,6 +11,7 @@ import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
 import { mediaQueries } from '../../utils/mediaQueries'
 import AuthorShort from '../../components/AuthorShort'
+import ImgWrapper from '../../components/ImgWrapper'
 
 const StyledArticle = styled.article`
   padding: 0 0 2rem;
@@ -54,8 +55,21 @@ const SectionWrapper = styled.div`
   }
 `
 
+const Gallery = styled.div`
+  margin-top: 3.7em;
+`
+
 const ArticlePage = ({
-  article: { title, heroImage, publishDate, body, authors, categories, lead },
+  article: {
+    title,
+    heroImage,
+    publishDate,
+    body,
+    authors,
+    categories,
+    lead,
+    gallery,
+  },
   posts,
 }) => (
   <StyledArticle>
@@ -71,6 +85,10 @@ const ArticlePage = ({
     <Wrapper size="Small" position="relative">
       <ArticleSocialMediaList />
       {body && <Content html={body.childMarkdownRemark.html} lead={lead} />}
+      <Gallery>
+        {gallery &&
+          gallery.map(photo => <ImgWrapper img={photo} key={photo.id} />)}
+      </Gallery>
       <ArticleSocialMediaList />
       <SectionWrapper>
         <HeaderStyled size="Biggest">
@@ -80,11 +98,11 @@ const ArticlePage = ({
           (authors.length > 1 ? (
             <Authors>
               {authors.map(element => (
-                <AuthorShort author={element} key={element.id} few/>
+                <AuthorShort author={element} key={element.id} few />
               ))}
             </Authors>
           ) : (
-            <AuthorShort author={authors[0]}/>
+            <AuthorShort author={authors[0]} />
           ))}
       </SectionWrapper>
       <SectionWrapper>
