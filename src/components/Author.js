@@ -91,7 +91,7 @@ const Author = ({
       </Container>
       {shortBio && (
         <Desc size="Biggest" weight="Light" lineHeight="Medium" color="Black">
-          <span
+          <div
             dangerouslySetInnerHTML={{
               __html: shortBio.childMarkdownRemark.html,
             }}
