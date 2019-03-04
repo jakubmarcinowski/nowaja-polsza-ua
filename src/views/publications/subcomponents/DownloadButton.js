@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import ExternalLink from '../../../components/ExternalLink'
 import Button from '../../../components/Button'
-import DownloadIcon from '../../../../static/download-button.svg'
+import DownloadIcon from '../../../../static/icon-download-button.svg'
 
 const StyledDownloadButton = styled(Button)`
   padding: 1rem 1.5rem;
@@ -21,18 +21,16 @@ const Icon = styled.img`
   margin-right: 5px;
 `
 
-const DownloadButton = ({ url, text }) => {
-  return (
-    <ExternalLink url={url} download>
-      <StyledDownloadButton>
-        <Item>
-          <Icon src={DownloadIcon} />
-          <span>{text}</span>
-        </Item>
-      </StyledDownloadButton>
-    </ExternalLink>
-  )
-}
+const DownloadButton = ({ url, text }) => (
+  <ExternalLink url={url} download>
+    <StyledDownloadButton>
+      <Item>
+        <Icon src={DownloadIcon} />
+        {text}
+      </Item>
+    </StyledDownloadButton>
+  </ExternalLink>
+)
 
 DownloadButton.propTypes = {
   url: PropTypes.string,

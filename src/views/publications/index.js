@@ -11,6 +11,8 @@ const PublicationsWrapper = styled.div`
   padding: 4rem 0;
 `
 
+// @todo crete styled component for page header which is center and has a line
+
 const PublicationPage = ({ publications }) => (
   <Wrapper size="Small">
     <Header
@@ -25,9 +27,11 @@ const PublicationPage = ({ publications }) => (
     </Header>
     <Line />
     <PublicationsWrapper>
-      {publications.map(({ node, node: { slug } }) => (
-        <Publication publication={node} key={slug} />
-      ))}
+      {publications && publications.length === 0
+        ? 'Нет публикации'
+        : publications.map(({ node, node: { slug } }) => (
+            <Publication publication={node} key={slug} />
+          ))}
     </PublicationsWrapper>
   </Wrapper>
 )

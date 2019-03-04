@@ -34,7 +34,7 @@ const LogoContainer = styled.div`
   margin-top: ${props => {
     if (props.isInHeader) return '2.0rem'
     if (props.isFullVersion) return '1.0rem'
-    else return '0'
+    return '0'
   }};
 `
 

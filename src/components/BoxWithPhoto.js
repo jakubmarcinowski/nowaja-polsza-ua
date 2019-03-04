@@ -47,7 +47,7 @@ const Info = styled.div`
 const BoxWithPhoto = ({ image, children }) => (
   <Box>
     {image && <Image img={image} />}
-    <Info>{children}</Info>
+    {children && <Info>{children}</Info>}
   </Box>
 )
 

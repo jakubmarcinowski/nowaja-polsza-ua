@@ -34,12 +34,12 @@ const ParagraphsWrapper = styled.div`
   ${({ hasFullDescription, theme }) =>
     !hasFullDescription &&
     `
-    max-height: 94px;
+    max-height: 9.4rem;
     position: relative;
     overflow: hidden;
 
     @media ${mediaQueries.tablet} {
-      max-height: 128px;
+      max-height: 12.8rem;
     }
 
     &::after {
@@ -53,10 +53,18 @@ const ParagraphsWrapper = styled.div`
     }
   `}
 `
-const ReadMore = styled.a`
+const ReadMore = styled.button`
   position: relative;
-  ${({ hasFullDescription }) => !hasFullDescription && 'opacity: 0.7;'}
+  ${({ hasFullDescription }) => hasFullDescription || 'opacity: 0.7;'}
   cursor: pointer;
+  border: 0;
+  background: none;
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.colors.primary};
+
+  &:focus {
+    outline: none;
+  }
 
   &::after {
     content: '';
@@ -107,7 +115,7 @@ class Publication extends Component {
         <DownloadButtons>
           {pdf && <DownloadButton url={pdf.file.url} text="PDF" />}
           {epub && <DownloadButton url={epub.file.url} text="EPUB" />}
-          {epub && <DownloadButton url={mobi.file.url} text="MOBI" />}
+          {mobi && <DownloadButton url={mobi.file.url} text="MOBI" />}
         </DownloadButtons>
         {lead && (
           <ParagraphsWrapper hasFullDescription={hasFullDescription}>

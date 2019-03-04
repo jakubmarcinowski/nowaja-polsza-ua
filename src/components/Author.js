@@ -38,11 +38,11 @@ const Element = styled.div`
 const Info = styled.div`
   width: 100%;
   padding: 2rem 2rem 4rem 2rem;
-  
+
   @media ${mediaQueries.tablet} {
     padding: 3rem 8rem 5rem 3rem;
+  }
 `
-
 const Desc = styled(Paragraph)`
   margin-top: 3rem;
 `
