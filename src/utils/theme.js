@@ -18,6 +18,7 @@ export const theme = {
       plum: '#b42121',
       rouge: '#ce6879',
       terraCotta: '#c8553d',
+      multimediaColor: '#83b420',
     },
   },
   animations: {
@@ -54,6 +55,8 @@ export const theme = {
         'linear-gradient(to bottom, rgba(206, 104, 121, .85), rgba(17, 29, 34, 0.85))',
       terraCotta:
         'linear-gradient(to bottom, rgba(200, 85, 61, .85), rgba(17, 29, 34, 0.85))',
+      multimediaColor:
+        'linear-gradient(to bottom, rgba(131, 180, 32, .85), rgba(17, 29, 34, 0.85))',
     },
   },
   fonts: {

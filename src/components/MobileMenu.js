@@ -8,6 +8,7 @@ import SocialMediaList from './SocialMediaList'
 import MobileMenuItems from './MobileMenuItems'
 import MobileMenuCategories from './MobileMenuCategories'
 import headerImg from '../../static/header-background.jpg'
+import { novPolSocialMediaUrls } from '../utils/socialMedia'
 
 const MenuIcon = styled.div`
   position: relative;
@@ -98,6 +99,10 @@ const Line = styled.div`
   background: ${props => props.theme.colors.white};
 `
 
+const MobileSocialMediaList = styled(SocialMediaList)`
+  margin: 0 auto;
+`
+
 class MobileMenu extends Component {
   state = {
     isMenuOpen: false,
@@ -124,7 +129,7 @@ class MobileMenu extends Component {
             <Line />
             <MobileMenuItems />
           </nav>
-          <SocialMediaList isHeader isMobile />
+          <MobileSocialMediaList isWhite urls={novPolSocialMediaUrls}/>
         </MenuContent>
       </>
     )
