@@ -37,13 +37,14 @@ const Category = styled.li`
 
 const categoriesQuery = graphql`
   query CategoriesQuery {
-    allContentfulCategory {
+    allContentfulCategory(sort: { fields: [order], order: ASC }) {
       edges {
         node {
           id
           slug
           title
           color
+          order
         }
       }
     }
