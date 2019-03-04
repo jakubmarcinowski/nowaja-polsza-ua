@@ -64,62 +64,42 @@ const AuthorSocialMediaList = styled(SocialMediaList)`
   }
 `
 
-class Author extends React.Component {
-  render() {
-    const {
-      author: {
-        name,
-        shortBio,
-        image,
-        facebook,
-        twitter,
-        telegram,
-        youtube,
-        vk,
-      },
-    } = this.props
-
-    return (
-      <Element>
-        {image && <AuthorImg img={image}/>}
-        <Info>
-          <Container>
-            {name && (
-              <Header size="Bigger" color="Black">
-                {name}
-              </Header>
-            )}
-            <AuthorSocialMediaList
-              urls={{
-                facebook,
-                twitter,
-                telegram,
-                youtube,
-                vk,
-              }}
-              isSemiTransparent
-              isBig
-            />
-          </Container>
-          {shortBio && (
-            <Desc
-              size="Biggest"
-              weight="Light"
-              lineHeight="Medium"
-              color="Black"
-            >
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: shortBio.childMarkdownRemark.html,
-                }}
-              />
-            </Desc>
-          )}
-        </Info>
-      </Element>
-    )
-  }
-}
+const Author = ({
+                  author: { name, shortBio, image, facebook, twitter, telegram, youtube, vk },
+                }) => (
+  <Element>
+    {image && <AuthorImg img={image}/>}
+    <Info>
+      <Container>
+        {name && (
+          <Header size="Bigger" color="Black">
+            {name}
+          </Header>
+        )}
+        <AuthorSocialMediaList
+          urls={{
+            facebook,
+            twitter,
+            telegram,
+            youtube,
+            vk,
+          }}
+          isSemiTransparent
+          isBig
+        />
+      </Container>
+      {shortBio && (
+        <Desc size="Biggest" weight="Light" lineHeight="Medium" color="Black">
+          <span
+            dangerouslySetInnerHTML={{
+              __html: shortBio.childMarkdownRemark.html,
+            }}
+          />
+        </Desc>
+      )}
+    </Info>
+  </Element>
+)
 
 Author.propTypes = {
   author: PropTypes.any,

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { mediaQueries } from '../utils/mediaQueries'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
+import { mediaQueries } from '../utils/mediaQueries'
 import Header from './Header'
 import Button from './Button'
 import Paragraph from './Paragraph'
