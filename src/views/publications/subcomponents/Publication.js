@@ -6,13 +6,21 @@ import PropTypes from 'prop-types'
 import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
 import Paragraph from '../../../components/Paragraph'
-import ExternalLink from '../../../components/ExternalLink'
+import Button from '../../../components/Button'
+import DownloadButton from './DownloadButton'
 
 // @todo Add styles
 const StyledPublication = styled.div``
 const Context = styled.div``
-const Download = styled.div``
-const DownloadItem = styled(ExternalLink)``
+const DownloadButtons = styled.div`
+  display: flex;
+  width: 360px;
+  justify-content: space-between;
+`
+const AuthorLink = styled(Link)`
+  display: inline-block;
+  margin-bottom: 2rem;
+`
 
 const Publication = ({
   publication: { title, heroImage, epub, mobi, pdf, lead, authors },
@@ -27,36 +35,23 @@ const Publication = ({
         )}
         {authors
           ? authors.map(({ name, slug }, i, authors) => (
-              <Link to={`/author/${slug}`} key={i}>
+              <AuthorLink to={`/author/${slug}`} key={i}>
                 {name}
                 {!!authors[i + 1] && <>,&nbsp;</>}
-              </Link>
+              </AuthorLink>
             ))
           : 'Журнал'}
-
+        <DownloadButtons>
+          {pdf && <DownloadButton url={pdf.file.url} text="PDF" />}
+          {epub && <DownloadButton url={epub.file.url} text="EPUB" />}
+          {epub && <DownloadButton url={mobi.file.url} text="MOBI" />}
+        </DownloadButtons>
         {lead && (
           <Paragraph margin="2rem 0" lineHeight="Medium" color="Black">
             {lead}
           </Paragraph>
         )}
-        {/* @todo add icons */}
-        <Download>
-          {pdf && (
-            <DownloadItem url={pdf.file.url} download>
-              PDF{' '}
-            </DownloadItem>
-          )}
-          {epub && (
-            <DownloadItem url={mobi.file.url} download>
-              EPUB{' '}
-            </DownloadItem>
-          )}
-          {mobi && (
-            <DownloadItem url={mobi.file.url} download>
-              MOBI
-            </DownloadItem>
-          )}
-        </Download>
+        <Button>Загрузить еще</Button>
       </Context>
     </BoxWithPhoto>
   </StyledPublication>
