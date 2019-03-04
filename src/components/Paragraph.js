@@ -48,6 +48,7 @@ Paragraph.colors = {
 }
 
 Paragraph.lineHeight = {
+  Big: 'Big',
   Medium: 'Medium',
   Small: 'Small',
 }
@@ -75,6 +76,7 @@ const fontSizeMap = {
 }
 
 const lineHeightMap = {
+  [Paragraph.sizes.Big]: 2,
   [Paragraph.sizes.Medium]: 1.5,
   [Paragraph.sizes.Small]: 1.2,
 }

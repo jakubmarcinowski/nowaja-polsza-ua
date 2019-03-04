@@ -1,35 +1,98 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 
+import { mediaQueries } from '../../../utils/mediaQueries'
 import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
-import Paragraph from '../../../components/Paragraph'
-import Button from '../../../components/Button'
 import DownloadButton from './DownloadButton'
 
-// @todo Add styles
-const StyledPublication = styled.div``
-const Context = styled.div``
 const DownloadButtons = styled.div`
   display: flex;
-  width: 360px;
+  width: 240px;
   justify-content: space-between;
+
+  @media ${mediaQueries.tablet} {
+    width: 280px;
+  }
 `
 const AuthorLink = styled(Link)`
   display: inline-block;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
+`
+const ParagraphsWrapper = styled.div`
+  margin: 2em 0;
+  line-height: 1.8;
+  font-size: 1.4rem;
+
+  @media ${mediaQueries.tablet} {
+    line-height: 2;
+    font-size: 1.6rem;
+  }
+
+  ${({ hasFullDescription, theme }) =>
+    !hasFullDescription &&
+    `
+    max-height: 94px;
+    position: relative;
+    overflow: hidden;
+
+    @media ${mediaQueries.tablet} {
+      max-height: 128px;
+    }
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 3rem;
+      background: ${theme.gradients.publication};
+    }
+  `}
+`
+const ReadMore = styled.a`
+  position: relative;
+  ${({ hasFullDescription }) => !hasFullDescription && 'opacity: 0.7;'}
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    border: 1px solid ${({ theme }) => theme.colors.primary};
+  }
 `
 
-const Publication = ({
-  publication: { title, heroImage, epub, mobi, pdf, lead, authors },
-}) => (
-  <StyledPublication>
-    <BoxWithPhoto image={heroImage}>
-      <Context>
+class Publication extends Component {
+  state = {
+    hasFullDescription: false,
+  }
+  render() {
+    const {
+      title,
+      heroImage,
+      epub,
+      mobi,
+      pdf,
+      lead,
+      authors,
+    } = this.props.publication
+    const { hasFullDescription } = this.state
+    return (
+      <BoxWithPhoto image={heroImage}>
         {title && (
-          <Header size="Big" margin="0 0 1rem" color="Black" weight="Bold">
+          <Header
+            size="Big"
+            margin="0 0 0.8em"
+            color="Black"
+            weight="Bold"
+            type={3}
+          >
             {title}
           </Header>
         )}
@@ -47,15 +110,28 @@ const Publication = ({
           {epub && <DownloadButton url={mobi.file.url} text="MOBI" />}
         </DownloadButtons>
         {lead && (
-          <Paragraph margin="2rem 0" lineHeight="Medium" color="Black">
-            {lead}
-          </Paragraph>
+          <ParagraphsWrapper hasFullDescription={hasFullDescription}>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: lead.childMarkdownRemark.html,
+              }}
+            />
+          </ParagraphsWrapper>
         )}
-        <Button>Загрузить еще</Button>
-      </Context>
-    </BoxWithPhoto>
-  </StyledPublication>
-)
+        <ReadMore
+          hasFullDescription={hasFullDescription}
+          onClick={() =>
+            this.setState(({ hasFullDescription }) => ({
+              hasFullDescription: !hasFullDescription,
+            }))
+          }
+        >
+          {hasFullDescription ? 'Скачать меньше' : 'Загрузить еще'}
+        </ReadMore>
+      </BoxWithPhoto>
+    )
+  }
+}
 
 Publication.propTypes = {
   publication: PropTypes.any,

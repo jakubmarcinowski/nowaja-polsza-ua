@@ -14,15 +14,14 @@ const Box = styled.div`
   margin: 2rem auto;
   background: ${({ theme }) => theme.colors.listItemBackground};
 
-  @media ${mediaQueries.phoneLandscape} {
-    max-width: 30rem;
-    min-width: 30rem;
-  }
-
   @media ${mediaQueries.tablet} {
     flex-direction: row;
     margin: 5rem auto;
-    max-width: 70%;
+    max-width: 80%;
+  }
+
+  @media ${mediaQueries.desktop} {
+    margin: 10rem auto;
   }
 `
 const Image = styled(ImgWrapper)`
@@ -38,11 +37,10 @@ const Image = styled(ImgWrapper)`
 `
 
 const Info = styled.div`
-  max-width: 70%;
-  padding: 3rem 3rem 5rem 3rem;
+  padding: 1rem 1rem 2rem;
 
   @media ${mediaQueries.tablet} {
-    padding: 3rem 3rem 3rem 1rem;
+    padding: 3rem 3rem 4rem 1rem;
   }
 `
 

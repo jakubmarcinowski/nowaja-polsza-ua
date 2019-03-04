@@ -41,7 +41,11 @@ export const PublicationsPageQuery = graphql`
               ...GatsbyContentfulFluid
             }
           }
-          lead
+          lead {
+            childMarkdownRemark {
+              html
+            }
+          }
           pdf {
             file {
               url

@@ -7,6 +7,7 @@ import Button from '../../../components/Button'
 import DownloadIcon from '../../../../static/download-button.svg'
 
 const StyledDownloadButton = styled(Button)`
+  padding: 1rem 1.5rem;
   &:hover img {
     filter: invert(1);
   }

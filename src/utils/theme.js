@@ -40,6 +40,7 @@ export const theme = {
     ),
     linear-gradient(to bottom, rgba(54, 54, 54, 0), rgba(17, 29, 34, 0.56))`,
     article: `linear-gradient(to bottom, rgba(53, 53, 53, 0.57), rgba(0, 0, 0, 0.69))`,
+    publication: `linear-gradient(to bottom, rgba(255, 255, 255, 0), #f5f5f5 75%, #f5f5f5)`,
     highlighted: {
       darkGreyBlue:
         'linear-gradient(to bottom, rgba(140, 156, 155, .85), rgba(17, 29, 34, 0.85))',
