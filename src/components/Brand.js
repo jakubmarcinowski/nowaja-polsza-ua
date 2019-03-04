@@ -31,17 +31,11 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${props => props.isFullVersion && '2.0rem'};
-  margin-top: 
-  ${
-  props => {
-    if (props.isInHeader)
-      return '2.0rem'
-    if (props.isFullVersion)
-      return '1.0rem'
-    else
-      return '0'
-  }
-  }
+  margin-top: ${props => {
+    if (props.isInHeader) return '2.0rem'
+    if (props.isFullVersion) return '1.0rem'
+    return '0'
+  }};
 `
 
 const LogoWrapper = styled.div`
@@ -195,7 +189,7 @@ class Brand extends React.Component {
           <Container>
             <Box>
               <BoxLeft>
-                <Navigation/>
+                <Navigation />
               </BoxLeft>
             </Box>
             <Box>
@@ -204,7 +198,7 @@ class Brand extends React.Component {
                   {this.getLogoContainer(
                     isFullVersion,
                     isDarkVersion,
-                    isInHeader,
+                    isInHeader
                   )}
                 </Link>
               </span>
@@ -231,7 +225,7 @@ class Brand extends React.Component {
               color={isDarkVersion ? 'Dark' : 'White'}
               weight="Bold"
             >
-              НОВАЯ <BreakLine/>
+              НОВАЯ <BreakLine />
               ПОЛЬША
             </Title>
             <Subtitle
