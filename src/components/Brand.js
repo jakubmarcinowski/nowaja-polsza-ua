@@ -9,6 +9,7 @@ import { theme } from '../utils/theme'
 import Navigation from './Navigation'
 import SocialMediaList from './SocialMediaList'
 import { Link } from 'gatsby'
+import { novPolSocialMediaUrls } from '../utils/socialMedia'
 
 const StyledBrand = styled.div`
   display: flex;
@@ -146,7 +147,6 @@ const BoxRight = styled.span`
   margin-left: auto;
 `
 
-
 class Brand extends React.Component {
   getLogoContainer(isFullVersion, isDarkVersion, isInHeader) {
     return (
@@ -166,7 +166,11 @@ class Brand extends React.Component {
           isDarkVersion={isDarkVersion}
           isFullVersion={isFullVersion}
         >
-          <Logo isFullVersion={isFullVersion} src={logo} alt="Nowaja Polsza logo"/>
+          <Logo
+            isFullVersion={isFullVersion}
+            src={logo}
+            alt="Nowaja Polsza logo"
+          />
         </LogoWrapper>
         {isFullVersion && (
           <LogoSubtitleRight
@@ -197,13 +201,21 @@ class Brand extends React.Component {
             <Box>
               <span>
                 <Link to="/">
-                  {this.getLogoContainer(isFullVersion, isDarkVersion, isInHeader)}
+                  {this.getLogoContainer(
+                    isFullVersion,
+                    isDarkVersion,
+                    isInHeader,
+                  )}
                 </Link>
               </span>
             </Box>
             <Box>
               <BoxRight>
-                <SocialMediaList isHeader isSemiTransparent/>
+                <SocialMediaList
+                  isWhite
+                  isSemiTransparent
+                  urls={novPolSocialMediaUrls}
+                />
               </BoxRight>
             </Box>
           </Container>

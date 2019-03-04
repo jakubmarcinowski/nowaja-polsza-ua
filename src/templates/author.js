@@ -20,7 +20,7 @@ class AuthorTemplate extends React.Component {
           <>
             <Helmet title={`${author.name} | ${siteTitle}`} />
             <Wrapper>
-              <Author author={author} authorPage />
+              <Author author={author}/>
               {authorPosts && (
                 <ArticlesList posts={authorPosts} limit={6} initialLimit={9} />
               )}
@@ -53,6 +53,11 @@ export const pageQuery = graphql`
           html
         }
       }
+      facebook
+      twitter
+      telegram
+      youtube
+      vk
     }
     allContentfulBlogPost(
       filter: {
@@ -73,6 +78,7 @@ export const pageQuery = graphql`
           categories {
             title
             slug
+            color
           }
           heroImage {
             fluid(maxWidth: 1920, resizingBehavior: SCALE) {
