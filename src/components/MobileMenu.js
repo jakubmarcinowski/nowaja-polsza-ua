@@ -109,7 +109,7 @@ const PageHeaderQueryMobile = graphql`
       edges {
         node {
           headerPhoto {
-            fluid(maxWidth: 1920, background: "rgb:000000") {
+            fluid(maxWidth: 768, background: "rgb:000000") {
               ...GatsbyContentfulFluid
             }
           }
