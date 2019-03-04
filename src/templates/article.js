@@ -61,6 +61,7 @@ export const pageQuery = graphql`
             contentful_id
             title
             color
+            slug
           }
           heroImage {
             fluid(maxWidth: 800, background: "rgb:000000") {
