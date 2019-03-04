@@ -1,31 +1,126 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Brand from './Brand'
 import FooterNavigation from './FooterNavigation'
+import Paragraph from './Paragraph'
+import ExternalLink from './ExternalLink'
+import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
+import { mediaQueries } from '../utils/mediaQueries'
+import { theme } from '../utils/theme'
+import Wrapper from './Wrapper'
+import Line from './Line'
+import cprdipExtended from '../../static/logo-cprdip-extended.png'
+import { novPolSocialMediaUrls } from '../utils/socialMedia'
 
 const StyledFooter = styled.footer`
-  background: #aaa;
-  padding: 24px;
+  padding: 3rem 0 4rem;
+  overflow: hidden;
 
-  .container {
-    display: flex;
-    justify-content: space-between;
+  @media ${mediaQueries.desktop} {
+    padding: 2.4rem 0 7rem;
   }
 `
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 3rem;
+
+  @media ${mediaQueries.desktop} {
+    margin-top: 45px;
+    flex-direction: row;
+  }
+`
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+
+  @media ${mediaQueries.desktop} {
+    align-items: flex-end;
+    margin-top: 0;
+  }
+`
+
+const Publisher = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media ${mediaQueries.tablet} {
+    margin: 0;
+  }
+`
+
+const SocialMediaListMobile = styled(SocialMediaList)`
+  @media ${mediaQueries.desktop} {
+    display: none;
+  }
+`
+
+const SocialMediaListDesktop = styled(SocialMediaList)`
+  display: none;
+
+  @media ${mediaQueries.desktop} {
+    display: flex;
+  }
+`
+
+const PublisherText = styled(Paragraph)`
+  margin-right: 2rem;
+  letter-spacing: 0.4px;
+  font-size: 1.4rem;
+  font-family: ${theme.fonts.secondary};
+
+  @media ${mediaQueries.tablet} {
+    font-size: 1.6rem;
+  }
+`
+
+const BrandContainer = styled.span`
+  margin-top: 3rem;
+
+  @media ${mediaQueries.desktop} {
+    margin-top: 0;
+  }
+`
+const CPRDIPLogo = styled.img`
+  height: 5rem;
+`
+
 const Footer = () => (
-  <StyledFooter>
-    <FooterNavigation />
-    <div className="container">
-      <Brand />
-      <div>
-        <SocialMediaList />
-        <div>Wydawcą strony jest CPIDPR</div>
-      </div>
-    </div>
-  </StyledFooter>
+  <Wrapper>
+    <Line />
+    <StyledFooter>
+      <FooterNavigation />
+      <Container>
+        <SocialMediaListMobile
+          isBig
+          isSemiTransparent
+          urls={novPolSocialMediaUrls}
+        />
+        <BrandContainer>
+          <Brand />
+        </BrandContainer>
+        <SocialMediaListDesktop
+          isBig
+          isSemiTransparent
+          urls={novPolSocialMediaUrls}
+        />
+        <Info>
+          <Publisher>
+            <PublisherText color="Dark">Издатель:</PublisherText>
+            <ExternalLink url="http://cprdip.pl/">
+              <CPRDIPLogo src={cprdipExtended} />
+            </ExternalLink>
+          </Publisher>
+        </Info>
+      </Container>
+    </StyledFooter>
+  </Wrapper>
 )
 
 export default Footer

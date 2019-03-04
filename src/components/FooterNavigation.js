@@ -2,42 +2,43 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-const StyledNavigation = styled.nav`
-  .navigation {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 20vh;
-    max-height: 100px;
-    font-size: 1.25em;
-  }
+import { mediaQueries } from '../utils/mediaQueries'
+import { theme } from '../utils/theme'
 
-  .navigationItem {
-    display: inline-flex;
-    align-items: center;
-    margin: 0 1em;
-  }
+const StyledNavigation = styled.ul`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-right: -6rem;
+  line-height: 2.25;
+  list-style: none;
+`
 
-  .navigationItem a {
-    color: currentColor;
+const Item = styled.li`
+  margin-right: 6rem;
+  font-size: 1.6rem;
+  font-family: ${theme.fonts.secondary};
+  letter-spacing: 0.5px;
+
+  @media ${mediaQueries.tablet} {
+    font-size: 2rem;
   }
 `
 
 const FooterNavigation = () => (
-  <StyledNavigation role="navigation">
-    <ul className="navigation">
-      <li className="navigationItem">
-        <Link to="/">Home</Link>
-      </li>
-      <li className="navigationItem">
-        <Link to="/">About NP</Link>
-      </li>
-      <li className="navigationItem">
-        <Link to="/">Privacy Policy</Link>
-      </li>
-    </ul>
+  <StyledNavigation>
+    <Item>
+      <Link to="/">О нас</Link>
+    </Item>
+    <Item>
+      <Link to="/">Контакт</Link>
+    </Item>
+    <Item>
+      <Link to="/privacy-policy">Политика конфиденциальности</Link>
+    </Item>
+    <Item>
+      <Link to="/wcag">Политика доступности</Link>
+    </Item>
   </StyledNavigation>
 )
 

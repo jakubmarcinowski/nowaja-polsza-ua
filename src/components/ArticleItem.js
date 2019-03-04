@@ -1,69 +1,72 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import { articleType } from '../types/article'
 import ImgWrapper from './ImgWrapper'
+import Paragraph from './Paragraph'
+import ArticleInfoBox from './ArticleInfoBox'
+import Header from './Header'
+import PhotoLabel from '../components/PhotoLabel'
 
-const StyledPreview = styled.div`
-  .title {
-    font-size: 1.5em;
-  }
-
-  .subtitle {
-    font-weight: 800;
-    margin: 0;
-    font-size: 1em;
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
-  }
+const ImgBox = styled.div`
+  position: relative;
+  margin-bottom: 1.5rem;
 `
 
 const ArticleItem = ({
-  article: {
-    title,
-    description,
-    slug,
-    author,
-    categories,
-    heroImage,
-    publishDate,
-  },
+  article: { title, slug, authors, categories, heroImage, publishDate, lead },
+  noCategoryLabel,
 }) => (
-  <StyledPreview>
-    <ImgWrapper img={heroImage} />
-    <h3 className="title">
-      <Link to={`/blog/${slug}`}>{title}</Link>
-    </h3>
-    <small>{publishDate}</small>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: description.childMarkdownRemark.html,
-      }}
+  <>
+    <ImgBox>
+      <Link to={`/blog/${slug}`}>
+        <ImgWrapper img={heroImage} aspectRatio={1.76} />
+      </Link>
+      {!noCategoryLabel && categories && (
+        <Link to={`/category/${categories[0].slug}`}>
+          <PhotoLabel color={categories[0].color}>
+            {categories[0].title}
+          </PhotoLabel>
+        </Link>
+      )}
+    </ImgBox>
+    <ArticleInfoBox
+      authors={authors}
+      publishDate={publishDate}
     />
-    <div>
-      <h6 className="subtitle">Autor:</h6>
-      <Link to={`/author/${author.slug}`}>{author.name}</Link>
-    </div>
-    <div>
-      <h6 className="subtitle">Kategorie:</h6>
-      <ul>
-        {categories &&
-          categories.map(category => (
-            <li key={category.slug}>
-              <Link to={`/category/${category.slug}`}>{category.title}</Link>
-            </li>
-          ))}
-      </ul>
-    </div>
-  </StyledPreview>
+    {slug && (
+      <>
+        {slug && (
+          <Header
+            weight="Bold"
+            type={2}
+            size="Big"
+            color="Dark"
+            margin="0 0 1.4rem"
+            lineHeight="Medium"
+            overflow="hidden"
+            height="6.2"
+          >
+            <Link to={`/blog/${slug}`}>{title}</Link>
+          </Header>
+        )}
+        {lead && (
+          <Link to={`/blog/${slug}`}>
+            <Paragraph size="Big" lineHeight="Medium" weight="Light">
+              {lead}
+            </Paragraph>
+          </Link>
+        )}
+      </>
+    )}
+  </>
 )
 
 ArticleItem.propTypes = {
   article: articleType,
+  noCategoryLabel: PropTypes.bool,
 }
 
 export default ArticleItem

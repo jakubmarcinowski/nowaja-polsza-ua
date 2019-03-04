@@ -9,6 +9,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby-image": "^2.0.29",
+    "gatsby-plugin-portal": "^1.0.7",
     "gatsby-plugin-react-helmet": "^3.0.5",
     "gatsby-plugin-robots-txt": "^1.4.0",
     "gatsby-plugin-sharp": "^2.0.19",
@@ -18,6 +19,7 @@
     "gatsby-transformer-sharp": "^2.1.13",
     "lodash": "^4.17.11",
     "react": "^16.7.0",
+    "react-cookies": "^0.1.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
     "sharp": "^0.21.3",
@@ -57,6 +59,6 @@
     "heroku-postbuild": "gatsby build",
     "cleanup-repository": "rimraf bin contentful && yarn remove contentful-import chalk inquirer rimraf",
     "remove-cache": "rm -rf .cache",
-    "contentful-refresh": "yarn run remove-cache && contentful space export --export-dir contentful --content-file export.json"
+    "contentful-refresh": "yarn run remove-cache && mkdir -p contentful && contentful space export --export-dir contentful --content-file export.json"
   }
 }

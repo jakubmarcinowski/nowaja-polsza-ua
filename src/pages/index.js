@@ -5,9 +5,21 @@ import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
+import { breakpoints } from '../utils/mediaQueries'
 
 class RootIndex extends React.Component {
+  state = {
+    isNotLarge: false,
+  }
+
+  componentDidMount() {
+    if (window.innerWidth < breakpoints.large) {
+      this.setState({ isNotLarge: true })
+    }
+  }
+
   render() {
+    const { isNotLarge } = this.state
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const highlightedPost = get(
@@ -17,10 +29,14 @@ class RootIndex extends React.Component {
 
     return (
       <Layout>
-        <>
+        <div>
           <Helmet title={siteTitle} />
-          <HomePage posts={posts} highlightedPost={highlightedPost} />
-        </>
+          <HomePage
+            posts={posts}
+            highlightedPost={highlightedPost}
+            isNotLarge={isNotLarge}
+          />
+        </div>
       </Layout>
     )
   }
@@ -30,30 +46,33 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           title
           slug
-          publishDate(formatString: "MMMM Do, YYYY")
-          author {
+          publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+          authors {
+            id
             name
             slug
           }
           categories {
             title
             slug
+            color
           }
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+            fluid(maxWidth: 768, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
             }
           }
-          description {
-            childMarkdownRemark {
-              html
-            }
-          }
+          lead
         }
       }
     }
@@ -61,22 +80,20 @@ export const pageQuery = graphql`
       title
       post {
         slug
-        publishDate(formatString: "MMMM Do, YYYY")
-        author {
+        publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+        authors {
+          id
           name
           slug
         }
         categories {
           title
           slug
+          color
         }
-        description {
-          childMarkdownRemark {
-            html
-          }
-        }
+        lead
         heroImage {
-          fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+          fluid(maxWidth: 1440, resizingBehavior: SCALE) {
             ...GatsbyContentfulFluid
           }
         }

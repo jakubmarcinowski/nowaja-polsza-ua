@@ -37,6 +37,8 @@ const siteUrl =
 module.exports = {
   siteMetadata: {
     siteUrl,
+    title: 'НОВАЯ ПОЛЬША',
+    themeColor: '#172429',
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
@@ -45,6 +47,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-portal',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,

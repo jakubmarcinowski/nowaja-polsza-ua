@@ -2,15 +2,24 @@ import React from 'react'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 
-const ImgWrapper = ({ img }) => {
+const ImgWrapper = ({ className, img, aspectRatio }) => {
   return img === undefined || img === null ? (
-    <div>No image</div>
+    <div className={className}>No image</div>
   ) : (
-    <Img alt={img.title} fluid={img.fluid} />
+    <Img
+      alt={img.title}
+      fluid={{ ...img.fluid, aspectRatio }}
+      className={className}
+    />
   )
 }
 
+ImgWrapper.defaultProps = {
+  aspectRatio: 16 / 9,
+}
+
 ImgWrapper.propTypes = {
+  className: PropTypes.string,
   img: PropTypes.shape({
     fluid: PropTypes.shape({
       aspectRatio: PropTypes.number,
@@ -19,6 +28,7 @@ ImgWrapper.propTypes = {
       srcSet: PropTypes.string,
     }),
   }),
+  aspectRatio: PropTypes.number,
 }
 
 export default ImgWrapper

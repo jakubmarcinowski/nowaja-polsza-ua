@@ -4,31 +4,99 @@ import styled from 'styled-components'
 
 import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
+import { mediaQueries } from '../utils/mediaQueries'
+import Button from '../components/Button'
 
 const StyledList = styled.ul`
-  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  ${({ noMargin }) => !noMargin && 'margin: 5rem 0 0;'}
   padding: 0;
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  grid-gap: 5vmin;
-`
 
-const ArticlesList = ({ posts }) => (
-  <StyledList>
-    {posts &&
-      posts.map(({ node }) => {
-        return (
-          <li key={node.slug}>
-            <ArticleItem article={node} />
-          </li>
-        )
-      })}
-  </StyledList>
-)
+  @media ${mediaQueries.tablet} {
+    ${({ noMargin }) => !noMargin && 'margin: 4rem -2.5rem;'}
+  }
+`
+const ListItem = styled.li`
+  flex: 0 0 100%;
+  padding-bottom: 4rem;
+
+  @media ${mediaQueries.tablet} {
+    flex: 0 0 calc(100% / 2);
+    padding: 0 2.5rem 6.5rem;
+  }
+
+  @media ${mediaQueries.large} {
+    ${({ size }) => size !== 'Big' && 'flex: 0 0 calc(100% / 3);'}
+    padding: 0 2.5rem 9.5rem;
+  }
+`
+const ButtonWrapper = styled.div`
+  text-align: center;
+  margin-bottom: 4rem;
+`
+class ArticlesList extends React.Component {
+  state = {
+    postsNumber: this.props.initialLimit,
+  }
+
+  componentDidMount() {
+    const urlParams = new URLSearchParams(window.location.search)
+    const postsLimit = parseInt(urlParams.get('postsLimit'))
+    const { limit } = this.props
+
+    limit && postsLimit && this.setState({ postsNumber: postsLimit })
+  }
+
+  increasePostsNumber = () => {
+    const { postsNumber } = this.state
+    const { limit } = this.props
+
+    this.setState({ postsNumber: postsNumber + limit }, () => {
+      window.history.pushState('', '', `?postsLimit=${this.state.postsNumber}`)
+    })
+  }
+
+  render() {
+    const { posts, limit, noCategoryLabel, size, noMargin } = this.props
+    const { postsNumber } = this.state
+    const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
+
+    return (
+      <>
+        <StyledList noMargin={noMargin}>
+          {posts &&
+            slicedPosts.map(({ node }) => (
+              <ListItem key={node.slug} size={size}>
+                <ArticleItem
+                  article={node}
+                  key={node.slug}
+                  noCategoryLabel={noCategoryLabel}
+                />
+              </ListItem>
+            ))}
+        </StyledList>
+
+        {limit && postsNumber < posts.length && (
+          <ButtonWrapper>
+            <Button onClick={this.increasePostsNumber} size="large">
+              Загрузить еще
+            </Button>
+          </ButtonWrapper>
+        )}
+      </>
+    )
+  }
+}
 
 ArticlesList.propTypes = {
-  posts: PropTypes.arrayOf(articleType),
+  posts: PropTypes.arrayOf(articleType).isRequired,
+  limit: PropTypes.number,
+  initialLimit: PropTypes.number,
+  noCategoryLabel: PropTypes.bool,
+  noMargin: PropTypes.bool,
+  size: PropTypes.string,
 }
 
 export default ArticlesList
