@@ -8,9 +8,6 @@ import DownloadIcon from '../../../../static/icon-download-button.svg'
 
 const StyledDownloadButton = styled(Button)`
   padding: 1rem 1.5rem;
-  &:hover img {
-    filter: invert(1);
-  }
 `
 const Item = styled.div`
   display: flex;
@@ -19,6 +16,10 @@ const Item = styled.div`
 const Icon = styled.img`
   transition: filter ${props => props.theme.animations.default};
   margin-right: 5px;
+
+  ${StyledDownloadButton}:hover & {
+    filter: invert(1);
+  }
 `
 
 const DownloadButton = ({ url, text }) => (

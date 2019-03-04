@@ -55,12 +55,12 @@ const ParagraphsWrapper = styled.div`
 `
 const ReadMore = styled.button`
   position: relative;
-  ${({ hasFullDescription }) => hasFullDescription || 'opacity: 0.7;'}
+  ${({ hasFullDescription }) => !hasFullDescription && 'opacity: 0.5;'}
   cursor: pointer;
   border: 0;
   background: none;
   font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.black};
 
   &:focus {
     outline: none;
@@ -72,7 +72,7 @@ const ReadMore = styled.button`
     bottom: -3px;
     left: 0;
     width: 100%;
-    border: 1px solid ${({ theme }) => theme.colors.primary};
+    border: 1px solid ${({ theme }) => theme.colors.black};
   }
 `
 
