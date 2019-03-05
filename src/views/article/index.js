@@ -15,6 +15,7 @@ import { articleType } from '../../types/article'
 import { mediaQueries } from '../../utils/mediaQueries'
 import AuthorShort from '../../components/AuthorShort'
 import ImgWrapper from '../../components/ImgWrapper'
+import iconArrow from '../../../static/icon-arrow.svg'
 
 const StyledArticle = styled.article`
   padding: 0 0 2rem;
@@ -68,22 +69,94 @@ const Gallery = styled.div`
   }
 `
 
+const ArrowIcon = styled.img`
+  max-width: 20px;
+  opacity: 0.7;
+`
+
+const ArrowIconPrev = styled.img`
+  max-width: 20px;
+  transform: rotate(180deg);
+`
+
 const SliderStyled = styled(Slider)`
-  .slick-arrow {
-    height: 100%;
-    width: 5rem;
+  &:hover {
+    .slick-arrow {
+      opacity: 1;
+    }
   }
 
-  .slick-arrow:before {
-    color: black;
+  /* ARROWS */
+  .slick-arrow {
+    opacity: 0;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 7rem;
+    z-index: 1;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:before {
+      content: none;
+    }
+
+    &.slick-disabled {
+      display: none !important;
+      background: none;
+      pointer-events: none;
+    }
+
+    @media ${mediaQueries.phoneOnly} {
+      display: none !important;
+    }
   }
 
   .slick-next {
-    right: -4rem;
+    right: 0;
+    background: ${props => props.theme.gradients.carouselArrowNext};
+
+    &:hover {
+      background: ${props => props.theme.gradients.carouselArrowNext};
+
+      ${ArrowIcon} {
+        opacity: 1;
+      }
+    }
   }
 
   .slick-prev {
-    left: -4rem;
+    left: 0;
+    background: ${props => props.theme.gradients.carouselArrowPrev};
+
+    &:hover {
+      background: ${props => props.theme.gradients.carouselArrowPrev};
+
+      ${ArrowIcon} {
+        opacity: 1;
+      }
+    }
+  }
+
+  /* DOTS */
+  .slick-dots {
+    display: flex;
+    justify-content: space-between;
+    bottom: -3rem;
+
+    li {
+      margin: 0 2px;
+      button {
+        padding: 1rem;
+
+        &:before {
+          font-size: 1rem;
+        }
+      }
+    }
   }
 `
 
@@ -104,6 +177,16 @@ const ArticlePage = ({
     dots: true,
     infinite: false,
     arrows: true,
+    nextArrow: (
+      <div>
+        <ArrowIcon src={iconArrow} alt="arrow" />
+      </div>
+    ),
+    prevArrow: (
+      <div>
+        <ArrowIconPrev src={iconArrow} alt="arrow" />
+      </div>
+    ),
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
