@@ -76,6 +76,7 @@ const TheNewestItem = ({
   const isSoundCloud =
     body &&
     body.childMarkdownRemark &&
+    body.childMarkdownRemark.html &&
     body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
 
   return (

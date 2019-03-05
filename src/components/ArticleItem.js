@@ -47,6 +47,7 @@ const IconPlay = styled.img`
   }
 `
 
+// @todo make one component to wrap ArticleItem and TheNewestItem
 const ArticleItem = ({
   article: {
     title,
@@ -67,6 +68,7 @@ const ArticleItem = ({
   const isSoundCloud =
     body &&
     body.childMarkdownRemark &&
+    body.childMarkdownRemark.html &&
     body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
 
   return (
