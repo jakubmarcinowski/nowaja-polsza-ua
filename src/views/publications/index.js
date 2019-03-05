@@ -21,11 +21,12 @@ const PublicationPage = ({ publications }) => (
       библиотека
     </Header>
     <Line />
-    {publications && publications.length === 0
-      ? 'Нет публикации'
-      : publications.map(({ node, node: { slug } }) => (
-          <Publication publication={node} key={slug} />
-        ))}
+    {publications &&
+      (publications.length === 0
+        ? 'Нет публикации'
+        : publications.map(({ node, node: { slug } }) => (
+            <Publication publication={node} key={slug} />
+          )))}
   </Wrapper>
 )
 
