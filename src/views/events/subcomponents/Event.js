@@ -5,20 +5,26 @@ import PropTypes from 'prop-types'
 import { mediaQueries } from '../../../utils/mediaQueries'
 import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
-import ButtonWithIcon from '../../../components/ButtonWithIcon'
-import FacebookIcon from '../../../../static/icon-facebook.svg'
+import FacebookIconUrl from '../../../../static/icon-facebook.svg'
+import ExternalLink from '../../../components/ExternalLink'
 
 const Info = styled.div`
-  padding: 1rem 0 2rem 1rem;
+  padding: 1rem 1rem 2rem 1rem;
+  font-size: 1.4rem;
 
   @media ${mediaQueries.tablet} {
-    padding: 3rem 0 4rem 1rem;
+    padding: 3rem 3rem 4rem 1rem;
+    font-size: 1.6rem;
   }
 `
 const Container = styled.div`
+  margin-bottom: 1em;
+
   @media ${mediaQueries.tablet} {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
   }
 `
 const HeaderBox = styled.div`
@@ -29,40 +35,41 @@ const HeaderBox = styled.div`
   }
 `
 const Organizer = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 1em;
 `
-const PlaceBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 calc(100% / 3);
-  align-items: flex-start;
-  line-height: 1.4;
-  font-family: ${({ theme }) => theme.fonts.secondary};
+const Date = styled.span`
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0 2rem;
 
-  @media ${mediaQueries.tablet} {
-    align-items: flex-end;
-    text-align: right;
-  }
-`
-const Label = styled.label`
-  padding: 0.6rem 2rem;
+  line-height: 1.8;
   background: ${({ theme }) => theme.colors.dark};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
-  font-size: 1.8rem;
+
+  @media ${mediaQueries.tablet} {
+    margin: 1rem 1rem 1rem 0;
+    font-size: 1.8rem;
+  }
 `
 const Location = styled.div`
   margin: 1rem 2rem 0 0;
+`
+const FacebookButton = styled(ExternalLink)`
+  display: flex;
+  align-items: center;
+`
+const FacebookIcon = styled.img`
+  margin-right: 1.5rem;
 `
 const ParagraphsWrapper = styled.div`
   margin: 2em 0;
   max-width: 830px;
   line-height: 1.8;
-  font-size: 1.4rem;
+  font-weight: 300;
 
   @media ${mediaQueries.tablet} {
     line-height: 2;
-    font-size: 1.6rem;
   }
 
   ${({ hasFullDescription }) =>
@@ -79,15 +86,18 @@ const ParagraphsWrapper = styled.div`
 const ReadMore = styled.button`
   cursor: pointer;
   border: 0;
-  padding-bottom: 2px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.greyDark};
   background: none;
-  font-size: 1.6rem;
   color: ${({ theme }) => theme.colors.greyDark};
   text-transform: uppercase;
+  font-weight: 700;
 
   &:focus {
     outline: none;
+  }
+
+  @media ${mediaQueries.tablet} {
+    font-size: 1.6rem;
   }
 `
 
@@ -110,32 +120,30 @@ class Event extends Component {
       <BoxWithPhoto image={heroImage}>
         <Info>
           <Container>
-            <HeaderBox>
-              {title && (
-                <Header
-                  size="Big"
-                  margin="0 0 0.8em"
-                  color="Black"
-                  weight="Bold"
-                  type={3}
-                >
-                  {title}
-                </Header>
-              )}
-              {organizer && <Organizer>{organizer}</Organizer>}
-              {link && (
-                <ButtonWithIcon
-                  icon={FacebookIcon}
-                  text="Куб билеты"
-                  gap="1.5rem"
-                />
-              )}
-            </HeaderBox>
-            <PlaceBox>
-              {displayedDate && <Label>{displayedDate}</Label>}
-              {location && <Location>{location}</Location>}
-            </PlaceBox>
+            <div>{displayedDate && <Date>{displayedDate}</Date>}</div>
+
+            {link && (
+              <FacebookButton url={link}>
+                <FacebookIcon src={FacebookIconUrl} />
+                событие в фейсбуке
+              </FacebookButton>
+            )}
           </Container>
+          <HeaderBox>
+            {title && (
+              <Header
+                size="Big"
+                margin="0 0 0.8em"
+                color="Black"
+                weight="Bold"
+                type={3}
+              >
+                {title}
+              </Header>
+            )}
+            {organizer && <Organizer>{organizer}</Organizer>}
+            {location && <Location>{location}</Location>}
+          </HeaderBox>
 
           {lead && (
             <ParagraphsWrapper

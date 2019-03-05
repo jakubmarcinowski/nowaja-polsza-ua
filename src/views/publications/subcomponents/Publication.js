@@ -56,7 +56,6 @@ const ParagraphsWrapper = styled.div`
 const ReadMore = styled.button`
   cursor: pointer;
   border: 0;
-  padding-bottom: 2px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.greyDark};
   background: none;
   font-size: 1.6rem;
