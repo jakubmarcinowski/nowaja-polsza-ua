@@ -50,6 +50,7 @@ const ReadMore = styled.button`
   background: none;
   font-size: 1.6rem;
   color: ${({ theme }) => theme.colors.greyDark};
+  text-transform: uppercase;
 
   &:focus {
     outline: none;
@@ -112,7 +113,7 @@ class Publication extends Component {
             }))
           }
         >
-          {hasFullDescription ? 'Скачать меньше' : 'Загрузить еще'}
+          {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
         </ReadMore>
       </BoxWithPhoto>
     )
