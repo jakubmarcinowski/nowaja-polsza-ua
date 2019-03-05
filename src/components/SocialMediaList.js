@@ -15,6 +15,7 @@ import twitterFullGray from '../../static/social-twitter-full-gray.svg'
 import youtubeFullGray from '../../static/social-yt-full-gray.svg'
 import telegramFullGray from '../../static/social-telegram-full-gray.svg'
 import vkFullGray from '../../static/social-vk-full-gray.svg'
+import academiaFullGray from '../../static/social-academia-full-gray.svg'
 
 const Item = styled.li`
   display: inline;
@@ -47,7 +48,6 @@ const Logo = styled.img`
   isBig &&
     `
     height: 25px;
-    width: 25px;
   `}
 `
 
@@ -67,7 +67,7 @@ class SocialMediaList extends React.Component {
       isSemiTransparent,
       isShareUrl,
       isBig,
-      urls: { facebook, twitter, telegram, youtube, vk },
+      urls: { facebook, twitter, telegram, youtube, vk, academia },
     } = this.props
 
     return (
@@ -75,7 +75,9 @@ class SocialMediaList extends React.Component {
         {facebook && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${facebook}${isShareUrl ? this.state.locationHref : ''}`}
+              url={`${facebook}${
+                isShareUrl ? this.state.locationHref : ''
+                }`}
             >
               <Logo
                 isBig={isBig}
@@ -101,7 +103,9 @@ class SocialMediaList extends React.Component {
         {telegram && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${telegram}${isShareUrl ? this.state.locationHref : ''}`}
+              url={`${telegram}${
+                isShareUrl ? this.state.locationHref : ''
+                }`}
             >
               <Logo
                 isBig={isBig}
@@ -132,6 +136,17 @@ class SocialMediaList extends React.Component {
                 src={isWhite ? vkFull : vkFullGray}
                 alt="VK"
               />
+            </ExternalLink>
+          </Item>
+        )}
+        {academia && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink
+              url={`${academia}${
+                isShareUrl ? this.state.locationHref : ''
+                }`}
+            >
+              <Logo isBig={isBig} src={academiaFullGray} alt="Academia"/>
             </ExternalLink>
           </Item>
         )}
