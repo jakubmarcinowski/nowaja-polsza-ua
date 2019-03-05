@@ -31,48 +31,28 @@ const ParagraphsWrapper = styled.div`
     font-size: 1.6rem;
   }
 
-  ${({ hasFullDescription, theme }) =>
+  ${({ hasFullDescription }) =>
     !hasFullDescription &&
     `
-    max-height: 9.4rem;
-    position: relative;
+    max-height: 7.3rem;
     overflow: hidden;
 
     @media ${mediaQueries.tablet} {
-      max-height: 12.8rem;
-    }
-
-    &::after {
-      content: '';
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 3rem;
-      background: ${theme.gradients.publication};
+      max-height: 6rem;
     }
   `}
 `
 const ReadMore = styled.button`
-  position: relative;
-  ${({ hasFullDescription }) => !hasFullDescription && 'opacity: 0.5;'}
   cursor: pointer;
   border: 0;
+  padding-bottom: 2px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.greyDark};
   background: none;
   font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.greyDark};
 
   &:focus {
     outline: none;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 100%;
-    border: 1px solid ${({ theme }) => theme.colors.black};
   }
 `
 
@@ -118,16 +98,14 @@ class Publication extends Component {
           {mobi && <DownloadButton url={mobi.file.url} text="MOBI" />}
         </DownloadButtons>
         {lead && (
-          <ParagraphsWrapper hasFullDescription={hasFullDescription}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: lead.childMarkdownRemark.html,
-              }}
-            />
-          </ParagraphsWrapper>
+          <ParagraphsWrapper
+            hasFullDescription={hasFullDescription}
+            dangerouslySetInnerHTML={{
+              __html: lead.childMarkdownRemark.html,
+            }}
+          />
         )}
         <ReadMore
-          hasFullDescription={hasFullDescription}
           onClick={() =>
             this.setState(({ hasFullDescription }) => ({
               hasFullDescription: !hasFullDescription,

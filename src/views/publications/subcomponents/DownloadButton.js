@@ -7,6 +7,7 @@ import Button from '../../../components/Button'
 import DownloadIcon from '../../../../static/icon-download-button.svg'
 
 const StyledDownloadButton = styled(Button)`
+  background: ${({ theme }) => theme.colors.listItemBackground};
   padding: 1rem 1.5rem;
 `
 const Item = styled.div`
