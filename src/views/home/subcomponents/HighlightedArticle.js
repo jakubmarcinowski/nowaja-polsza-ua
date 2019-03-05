@@ -82,6 +82,7 @@ class HighlightedArticle extends Component {
   state = {
     isActive: false,
     isMobileView: false,
+    isSmallMobile: false,
   }
 
   handleMouseEnter = () =>
@@ -92,8 +93,11 @@ class HighlightedArticle extends Component {
   componentDidMount() {
     if (window.innerWidth < breakpoints.desktop) {
       this.setState({ isMobileView: true })
-      window.innerWidth >= breakpoints.phoneLandscape &&
+      if (window.innerWidth >= breakpoints.phoneLandscape) {
         this.setState({ isActive: true })
+      } else {
+        this.setState({ isSmallMobile: true })
+      }
     }
   }
 
@@ -127,13 +131,13 @@ class HighlightedArticle extends Component {
               type={2}
               margin="0 0 1.8rem"
               weight="Bold"
-              lineHeight="Bigger"
+              lineHeight={this.state.isSmallMobile ? 'Small' : 'Bigger'}
             >
               <Link to={`/blog/${slug}`}>{title}</Link>
             </Header>
             <ArticleInfoBox
               authors={authors}
-              publishDate={publishDate}
+              publishDate={!this.state.isMobileView && publishDate}
               justify="center"
               color="white"
               dateLink={`/blog/${slug}`}
