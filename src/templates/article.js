@@ -102,6 +102,12 @@ export const pageQuery = graphql`
           html
         }
       }
+      gallery {
+        id
+        fluid(maxWidth: 1920, background: "rgb:000000") {
+          ...GatsbyContentfulFluid
+        }
+      }
       authors {
         id
         name
