@@ -86,7 +86,6 @@ const SliderStyled = styled(Slider)`
     }
   }
 
-  /* ARROWS */
   .slick-arrow {
     opacity: 0;
     display: flex !important;
@@ -141,7 +140,6 @@ const SliderStyled = styled(Slider)`
     }
   }
 
-  /* DOTS */
   .slick-dots {
     display: flex;
     justify-content: space-between;
@@ -213,7 +211,9 @@ const ArticlePage = ({
       </Wrapper>
       <Wrapper size="Small" position="relative">
         <ArticleSocialMediaList />
-        {body && <Content html={body.childMarkdownRemark.html} lead={lead} />}
+        {body && lead && (
+          <Content html={body.childMarkdownRemark.html} lead={lead} />
+        )}
         {gallery && (
           <Gallery>
             <SliderStyled {...settings}>
