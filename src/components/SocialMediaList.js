@@ -75,8 +75,8 @@ class SocialMediaList extends React.Component {
         {facebook && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${facebook}${
-                isShareUrl ? this.state.locationHref : ''
+              url={`${
+                isShareUrl ? facebook + this.state.locationHref : facebook
                 }`}
             >
               <Logo
@@ -90,7 +90,9 @@ class SocialMediaList extends React.Component {
         {twitter && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${twitter}${isShareUrl ? this.state.locationHref : ''}`}
+              url={`${
+                isShareUrl ? twitter + this.state.locationHref : twitter
+                }`}
             >
               <Logo
                 isBig={isBig}
@@ -103,8 +105,8 @@ class SocialMediaList extends React.Component {
         {telegram && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${telegram}${
-                isShareUrl ? this.state.locationHref : ''
+              url={`${
+                isShareUrl ? telegram + this.state.locationHref : telegram
                 }`}
             >
               <Logo
@@ -129,7 +131,9 @@ class SocialMediaList extends React.Component {
         {vk && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${vk}${isShareUrl ? this.state.locationHref : ''}`}
+              url={`${
+                isShareUrl ? vk + this.state.locationHref : vk
+                }`}
             >
               <Logo
                 isBig={isBig}
@@ -142,8 +146,8 @@ class SocialMediaList extends React.Component {
         {academia && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${academia}${
-                isShareUrl ? this.state.locationHref : ''
+              url={`${
+                isShareUrl ? academia + this.state.locationHref : academia
                 }`}
             >
               <Logo isBig={isBig} src={academiaFullGray} alt="Academia"/>
