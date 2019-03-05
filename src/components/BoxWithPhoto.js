@@ -36,18 +36,10 @@ const Image = styled(ImgWrapper)`
   }
 `
 
-const Info = styled.div`
-  padding: 1rem 1rem 2rem;
-
-  @media ${mediaQueries.tablet} {
-    padding: 3rem 3rem 4rem 1rem;
-  }
-`
-
 const BoxWithPhoto = ({ image, children }) => (
   <Box>
     {image && <Image img={image} />}
-    {children && <Info>{children}</Info>}
+    {children && children}
   </Box>
 )
 

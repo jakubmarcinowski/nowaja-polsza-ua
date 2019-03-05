@@ -8,6 +8,13 @@ import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
 import DownloadButton from './DownloadButton'
 
+const Info = styled.div`
+  padding: 1rem 1rem 2rem;
+
+  @media ${mediaQueries.tablet} {
+    padding: 3rem 3rem 4rem 1rem;
+  }
+`
 const DownloadButtons = styled.div`
   display: flex;
   width: 240px;
@@ -23,6 +30,7 @@ const AuthorLink = styled(Link)`
 `
 const ParagraphsWrapper = styled.div`
   margin: 2em 0;
+  max-width: 830px;
   line-height: 1.8;
   font-size: 1.4rem;
 
@@ -74,47 +82,49 @@ class Publication extends Component {
     const { hasFullDescription } = this.state
     return (
       <BoxWithPhoto image={heroImage}>
-        {title && (
-          <Header
-            size="Big"
-            margin="0 0 0.8em"
-            color="Black"
-            weight="Bold"
-            type={3}
+        <Info>
+          {title && (
+            <Header
+              size="Big"
+              margin="0 0 0.8em"
+              color="Black"
+              weight="Bold"
+              type={3}
+            >
+              {title}
+            </Header>
+          )}
+          {authors
+            ? authors.map(({ name, slug }, i, authors) => (
+                <AuthorLink to={`/author/${slug}`} key={i}>
+                  {name}
+                  {!!authors[i + 1] && <>,&nbsp;</>}
+                </AuthorLink>
+              ))
+            : 'Журнал'}
+          <DownloadButtons>
+            {pdf && <DownloadButton url={pdf.file.url} text="PDF" />}
+            {epub && <DownloadButton url={epub.file.url} text="EPUB" />}
+            {mobi && <DownloadButton url={mobi.file.url} text="MOBI" />}
+          </DownloadButtons>
+          {lead && (
+            <ParagraphsWrapper
+              hasFullDescription={hasFullDescription}
+              dangerouslySetInnerHTML={{
+                __html: lead.childMarkdownRemark.html,
+              }}
+            />
+          )}
+          <ReadMore
+            onClick={() =>
+              this.setState(({ hasFullDescription }) => ({
+                hasFullDescription: !hasFullDescription,
+              }))
+            }
           >
-            {title}
-          </Header>
-        )}
-        {authors
-          ? authors.map(({ name, slug }, i, authors) => (
-              <AuthorLink to={`/author/${slug}`} key={i}>
-                {name}
-                {!!authors[i + 1] && <>,&nbsp;</>}
-              </AuthorLink>
-            ))
-          : 'Журнал'}
-        <DownloadButtons>
-          {pdf && <DownloadButton url={pdf.file.url} text="PDF" />}
-          {epub && <DownloadButton url={epub.file.url} text="EPUB" />}
-          {mobi && <DownloadButton url={mobi.file.url} text="MOBI" />}
-        </DownloadButtons>
-        {lead && (
-          <ParagraphsWrapper
-            hasFullDescription={hasFullDescription}
-            dangerouslySetInnerHTML={{
-              __html: lead.childMarkdownRemark.html,
-            }}
-          />
-        )}
-        <ReadMore
-          onClick={() =>
-            this.setState(({ hasFullDescription }) => ({
-              hasFullDescription: !hasFullDescription,
-            }))
-          }
-        >
-          {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
-        </ReadMore>
+            {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
+          </ReadMore>
+        </Info>
       </BoxWithPhoto>
     )
   }
