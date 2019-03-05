@@ -21,11 +21,6 @@ export const LayoutWrapper = styled.div`
   }
 `
 
-const Wrapper = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-`
-
 class Layout extends React.Component {
   state = {
     isMobileView: false,
@@ -49,13 +44,11 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          <Wrapper>
-            {isMobileView ? (
-              <MobileMenu currentCategory={currentCategory} />
-            ) : (
-              <PageHeader currentCategory={currentCategory} />
-            )}
-          </Wrapper>
+          {isMobileView ? (
+            <MobileMenu currentCategory={currentCategory} />
+          ) : (
+            <PageHeader currentCategory={currentCategory} />
+          )}
           <LayoutWrapper>
             <Container>{children}</Container>
             <Footer />
