@@ -151,18 +151,19 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
           <Date>{publishDate}</Date>
         </InfoItem>
         <InfoItem>
-          <TextLabel>
-            {authors && (authors.length > 1 ? 'Авторы' : 'Автор')}
-          </TextLabel>{' '}
-          {authors &&
-            authors.map(({ slug, name }, i, authors) => (
-              <>
-                <AuthorLink key={slug} to={`/author/${slug}`}>
-                  {name}
-                </AuthorLink>
-                {!!authors[i + 1] && <>,&nbsp;</>}
-              </>
-            ))}
+          {authors && (
+            <>
+              <TextLabel>{authors.length > 1 ? 'Авторы' : 'Автор'}</TextLabel>{' '}
+              {authors.map(({ slug, name }, i, authors) => (
+                <>
+                  <AuthorLink key={slug} to={`/author/${slug}`}>
+                    {name}
+                  </AuthorLink>
+                  {!!authors[i + 1] && <>,&nbsp;</>}
+                </>
+              ))}
+            </>
+          )}
         </InfoItem>
       </InfoBox>
       <HeaderWrapper>

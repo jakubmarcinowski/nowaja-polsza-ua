@@ -21,6 +21,11 @@ export const LayoutWrapper = styled.div`
   }
 `
 
+const Wrapper = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
+`
+
 class Layout extends React.Component {
   state = {
     isMobileView: false,
@@ -41,12 +46,16 @@ class Layout extends React.Component {
       rootPath = __PATH_PREFIX__ + `/`
     }
 
-    //@todo add social media for desktop and categories
-
     return (
       <ThemeProvider theme={theme}>
         <>
-          {isMobileView ? <MobileMenu currentCategory={currentCategory} /> : <PageHeader currentCategory={currentCategory} />}
+          <Wrapper>
+            {isMobileView ? (
+              <MobileMenu currentCategory={currentCategory} />
+            ) : (
+              <PageHeader currentCategory={currentCategory} />
+            )}
+          </Wrapper>
           <LayoutWrapper>
             <Container>{children}</Container>
             <Footer />
