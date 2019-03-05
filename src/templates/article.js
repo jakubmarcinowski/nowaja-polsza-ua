@@ -49,6 +49,11 @@ export const pageQuery = graphql`
         node {
           title
           lead
+          body {
+            childMarkdownRemark {
+              html
+            }
+          }
           slug
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {

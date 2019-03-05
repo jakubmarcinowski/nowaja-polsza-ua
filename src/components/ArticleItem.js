@@ -10,12 +10,13 @@ import ArticleInfoBox from './ArticleInfoBox'
 import Header from './Header'
 import PhotoLabel from '../components/PhotoLabel'
 import playIcon from '../../static/icon-play.svg'
+import headphonesIcon from '../../static/icon-headphones.svg'
 
 const ImgBox = styled.div`
   position: relative;
   margin-bottom: 1.5rem;
 
-  ${({ isMultimedia }) =>
+  ${({ isMultimedia, theme }) =>
     isMultimedia &&
     `&:after {
       content: '';
@@ -24,8 +25,8 @@ const ImgBox = styled.div`
       left: 0;
       right: 0;
       bottom: 0;
-      background: black;
-      opacity: 0.5;
+      background: ${theme.colors.black};
+      opacity: 0.2;
       pointer-events: none;
     }`};
 `
@@ -38,26 +39,45 @@ const IconPlay = styled.img`
   width: 5rem;
   height: 5rem;
   z-index: 1;
+  opacity: 0.7;
   cursor: pointer;
 
   ${ImgBox}:hover & {
-    opacity: 0.8;
+    opacity: 1;
   }
 `
 
 const ArticleItem = ({
-  article: { title, slug, authors, categories, heroImage, publishDate, lead },
+  article: {
+    title,
+    body,
+    slug,
+    authors,
+    categories,
+    heroImage,
+    publishDate,
+    lead,
+  },
   noCategoryLabel,
 }) => {
   const isMultimedia =
     categories &&
     categories.filter(({ slug }) => slug === 'multimedia').length > 0
+
+  const isSoundCloud =
+    body &&
+    body.childMarkdownRemark &&
+    body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
+
   return (
     <>
       <ImgBox isMultimedia={isMultimedia}>
         {isMultimedia && (
           <Link to={`/blog/${slug}`}>
-            <IconPlay src={playIcon} alt="Play icon" />
+            <IconPlay
+              src={isSoundCloud ? headphonesIcon : playIcon}
+              alt="Play icon"
+            />
           </Link>
         )}
         <Link to={`/blog/${slug}`}>
