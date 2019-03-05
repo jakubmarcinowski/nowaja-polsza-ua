@@ -151,7 +151,9 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
           <Date>{publishDate}</Date>
         </InfoItem>
         <InfoItem>
-          <TextLabel>{authors.length > 1 ? 'Авторы' : 'Автор'}</TextLabel>{' '}
+          <TextLabel>
+            {authors && (authors.length > 1 ? 'Авторы' : 'Автор')}
+          </TextLabel>{' '}
           {authors &&
             authors.map(({ slug, name }, i, authors) => (
               <>
