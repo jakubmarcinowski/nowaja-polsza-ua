@@ -9,15 +9,10 @@ import Paragraph from '../components/Paragraph'
 const StyledLabel = styled(Paragraph)`
   display: block;
   padding: 0.5rem 1rem;
-  transition: opacity ${props => props.theme.animations.default};
   background: ${({ theme, color }) =>
     theme.colors.highlighted[color] || theme.colors[color]};
   font-size: 1.4rem;
   color: ${props => props.theme.colors.white};
-
-  &:hover {
-    opacity: 0.9;
-  }
 
   @media ${mediaQueries.tablet} {
     font-size: 1.6rem;

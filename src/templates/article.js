@@ -49,6 +49,11 @@ export const pageQuery = graphql`
         node {
           title
           lead
+          body {
+            childMarkdownRemark {
+              html
+            }
+          }
           slug
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
@@ -61,6 +66,7 @@ export const pageQuery = graphql`
             contentful_id
             title
             color
+            slug
           }
           heroImage {
             fluid(maxWidth: 800, background: "rgb:000000") {
