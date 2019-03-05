@@ -58,6 +58,7 @@ export const pageQuery = graphql`
       telegram
       youtube
       vk
+      academia
     }
     allContentfulBlogPost(
       filter: {

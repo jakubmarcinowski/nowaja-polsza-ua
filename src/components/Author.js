@@ -68,7 +68,17 @@ const AuthorSocialMediaList = styled(SocialMediaList)`
 `
 
 const Author = ({
-  author: { name, shortBio, image, facebook, twitter, telegram, youtube, vk },
+                  author: {
+                    name,
+                    shortBio,
+                    image,
+                    facebook,
+                    twitter,
+                    telegram,
+                    youtube,
+                    vk,
+                    academia,
+                  },
 }) => (
   <Element>
     {image && <AuthorImg img={image} />}
@@ -86,9 +96,9 @@ const Author = ({
             telegram,
             youtube,
             vk,
+            academia,
           }}
           isSemiTransparent
-          isBig
         />
       </Container>
       {shortBio && (
