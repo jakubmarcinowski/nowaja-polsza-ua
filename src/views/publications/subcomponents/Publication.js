@@ -7,14 +7,8 @@ import { mediaQueries } from '../../../utils/mediaQueries'
 import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
 import DownloadButton from './DownloadButton'
+import ReadMoreButton from '../../../components/ReadMoreButton'
 
-const Info = styled.div`
-  padding: 1rem 1rem 2rem;
-
-  @media ${mediaQueries.tablet} {
-    padding: 3rem 3rem 4rem 1rem;
-  }
-`
 const DownloadButtons = styled.div`
   display: flex;
   width: 240px;
@@ -34,12 +28,10 @@ const ParagraphsWrapper = styled.div`
   margin: 2em 0;
   max-width: 830px;
   line-height: 1.8;
-  font-size: 1.4rem;
   font-weight: 300;
 
   @media ${mediaQueries.tablet} {
     line-height: 2;
-    font-size: 1.6rem;
   }
 
   ${({ hasFullDescription }) =>
@@ -53,23 +45,15 @@ const ParagraphsWrapper = styled.div`
     }
   `}
 `
-const ReadMore = styled.button`
-  cursor: pointer;
-  border: 0;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.greyDark};
-  background: none;
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.greyDark};
-  text-transform: uppercase;
-
-  &:focus {
-    outline: none;
-  }
-`
 
 class Publication extends Component {
   state = {
     hasFullDescription: false,
+  }
+  toggleDescription = () => {
+    this.setState(({ hasFullDescription }) => ({
+      hasFullDescription: !hasFullDescription,
+    }))
   }
   render() {
     const {
@@ -84,51 +68,43 @@ class Publication extends Component {
     const { hasFullDescription } = this.state
     return (
       <BoxWithPhoto image={heroImage}>
-        <Info>
-          {title && (
-            <Header
-              size="Big"
-              margin="0 0 0.8em"
-              color="Black"
-              weight="Bold"
-              type={3}
-            >
-              {title}
-            </Header>
-          )}
-          <AuthorWrapper>
-            {authors
-              ? authors.map(({ name, slug }, i, authors) => (
-                  <AuthorLink to={`/author/${slug}`} key={i}>
-                    {name}
-                    {!!authors[i + 1] && <>,&nbsp;</>}
-                  </AuthorLink>
-                ))
-              : 'Журнал'}
-          </AuthorWrapper>
-          <DownloadButtons>
-            {pdf && <DownloadButton url={pdf.file.url} text="PDF" />}
-            {epub && <DownloadButton url={epub.file.url} text="EPUB" />}
-            {mobi && <DownloadButton url={mobi.file.url} text="MOBI" />}
-          </DownloadButtons>
-          {lead && (
-            <ParagraphsWrapper
-              hasFullDescription={hasFullDescription}
-              dangerouslySetInnerHTML={{
-                __html: lead.childMarkdownRemark.html,
-              }}
-            />
-          )}
-          <ReadMore
-            onClick={() =>
-              this.setState(({ hasFullDescription }) => ({
-                hasFullDescription: !hasFullDescription,
-              }))
-            }
+        {title && (
+          <Header
+            size="Big"
+            margin="0 0 0.8em"
+            color="Black"
+            weight="Bold"
+            type={3}
           >
-            {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
-          </ReadMore>
-        </Info>
+            {title}
+          </Header>
+        )}
+        <AuthorWrapper>
+          {authors
+            ? authors.map(({ name, slug }, i, authors) => (
+                <AuthorLink to={`/author/${slug}`} key={i}>
+                  {name}
+                  {!!authors[i + 1] && <>,&nbsp;</>}
+                </AuthorLink>
+              ))
+            : 'Журнал'}
+        </AuthorWrapper>
+        <DownloadButtons>
+          {pdf && <DownloadButton url={pdf.file.url} text="PDF" />}
+          {epub && <DownloadButton url={epub.file.url} text="EPUB" />}
+          {mobi && <DownloadButton url={mobi.file.url} text="MOBI" />}
+        </DownloadButtons>
+        {lead && (
+          <ParagraphsWrapper
+            hasFullDescription={hasFullDescription}
+            dangerouslySetInnerHTML={{
+              __html: lead.childMarkdownRemark.html,
+            }}
+          />
+        )}
+        <ReadMoreButton onClick={this.toggleDescription}>
+          {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
+        </ReadMoreButton>
       </BoxWithPhoto>
     )
   }

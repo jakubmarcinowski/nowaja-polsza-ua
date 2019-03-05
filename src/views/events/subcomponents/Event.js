@@ -7,16 +7,8 @@ import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
 import FacebookIconUrl from '../../../../static/icon-facebook.svg'
 import ExternalLink from '../../../components/ExternalLink'
+import ReadMoreButton from '../../../components/ReadMoreButton'
 
-const Info = styled.div`
-  padding: 1rem 1rem 2rem 1rem;
-  font-size: 1.4rem;
-
-  @media ${mediaQueries.tablet} {
-    padding: 3rem 3rem 4rem 1rem;
-    font-size: 1.6rem;
-  }
-`
 const Container = styled.div`
   margin-bottom: 1em;
 
@@ -62,6 +54,11 @@ const FacebookButton = styled(ExternalLink)`
 const FacebookIcon = styled.img`
   margin-right: 1.5rem;
 `
+const FacebookText = styled.span`
+  font-weight: 700;
+`
+
+//@todo Unify ParagraphsWrapper for Event and Publication
 const ParagraphsWrapper = styled.div`
   margin: 2em 0;
   max-width: 830px;
@@ -83,27 +80,15 @@ const ParagraphsWrapper = styled.div`
     }
   `}
 `
-const ReadMore = styled.button`
-  cursor: pointer;
-  border: 0;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.greyDark};
-  background: none;
-  color: ${({ theme }) => theme.colors.greyDark};
-  text-transform: uppercase;
-  font-weight: 700;
-
-  &:focus {
-    outline: none;
-  }
-
-  @media ${mediaQueries.tablet} {
-    font-size: 1.6rem;
-  }
-`
 
 class Event extends Component {
   state = {
     hasFullDescription: false,
+  }
+  toggleDescription = () => {
+    this.setState(({ hasFullDescription }) => ({
+      hasFullDescription: !hasFullDescription,
+    }))
   }
   render() {
     const {
@@ -118,52 +103,42 @@ class Event extends Component {
     const { hasFullDescription } = this.state
     return (
       <BoxWithPhoto image={heroImage}>
-        <Info>
-          <Container>
-            <div>{displayedDate && <Date>{displayedDate}</Date>}</div>
+        <Container>
+          <div>{displayedDate && <Date>{displayedDate}</Date>}</div>
 
-            {link && (
-              <FacebookButton url={link}>
-                <FacebookIcon src={FacebookIconUrl} />
-                событие в фейсбуке
-              </FacebookButton>
-            )}
-          </Container>
-          <HeaderBox>
-            {title && (
-              <Header
-                size="Big"
-                margin="0 0 0.8em"
-                color="Black"
-                weight="Bold"
-                type={3}
-              >
-                {title}
-              </Header>
-            )}
-            {organizer && <Organizer>{organizer}</Organizer>}
-            {location && <Location>{location}</Location>}
-          </HeaderBox>
-
-          {lead && (
-            <ParagraphsWrapper
-              hasFullDescription={hasFullDescription}
-              dangerouslySetInnerHTML={{
-                __html: lead.childMarkdownRemark.html,
-              }}
-            />
+          {link && (
+            <FacebookButton url={link}>
+              <FacebookIcon src={FacebookIconUrl} />
+              <FacebookText>событие в фейсбуке</FacebookText>
+            </FacebookButton>
           )}
-
-          <ReadMore
-            onClick={() =>
-              this.setState(({ hasFullDescription }) => ({
-                hasFullDescription: !hasFullDescription,
-              }))
-            }
-          >
-            {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
-          </ReadMore>
-        </Info>
+        </Container>
+        <HeaderBox>
+          {title && (
+            <Header
+              size="Big"
+              margin="0 0 0.8em"
+              color="Black"
+              weight="Bold"
+              type={3}
+            >
+              {title}
+            </Header>
+          )}
+          {organizer && <Organizer>{organizer}</Organizer>}
+          {location && <Location>{location}</Location>}
+        </HeaderBox>
+        {lead && (
+          <ParagraphsWrapper
+            hasFullDescription={hasFullDescription}
+            dangerouslySetInnerHTML={{
+              __html: lead.childMarkdownRemark.html,
+            }}
+          />
+        )}
+        <ReadMoreButton onClick={this.toggleDescription}>
+          {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
+        </ReadMoreButton>
       </BoxWithPhoto>
     )
   }
