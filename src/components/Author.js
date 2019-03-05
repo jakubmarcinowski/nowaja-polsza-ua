@@ -24,7 +24,9 @@ const Element = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  background: ${({ theme }) => theme.colors.authorBackground};
+  min-width: 100%;
+  margin: 2rem auto;
+  background: ${({ theme }) => theme.colors.listItemBackground};
 
   @media ${mediaQueries.tablet} {
     flex-direction: row;
@@ -36,11 +38,11 @@ const Element = styled.div`
 const Info = styled.div`
   width: 100%;
   padding: 2rem 2rem 4rem 2rem;
-  
+
   @media ${mediaQueries.tablet} {
     padding: 3rem 8rem 5rem 3rem;
+  }
 `
-
 const Desc = styled(Paragraph)`
   margin-top: 3rem;
 `
@@ -66,10 +68,10 @@ const AuthorSocialMediaList = styled(SocialMediaList)`
 `
 
 const Author = ({
-                  author: { name, shortBio, image, facebook, twitter, telegram, youtube, vk },
-                }) => (
+  author: { name, shortBio, image, facebook, twitter, telegram, youtube, vk },
+}) => (
   <Element>
-    {image && <AuthorImg img={image}/>}
+    {image && <AuthorImg img={image} />}
     <Info>
       <Container>
         {name && (
