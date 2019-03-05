@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { StaticQuery } from 'gatsby'
 
 import Brand from './Brand'
 import { theme } from '../utils/theme'
 import Categories from './Categories'
 import { mediaQueries } from '../utils/mediaQueries'
 import Wrapper from '../components/Wrapper'
-import headerImg from '../../static/header-background.jpg'
 
 const StyledPageHeader = styled.header`
   background: ${theme.colors.primary};
@@ -15,7 +15,7 @@ const StyledPageHeader = styled.header`
       props.currentCategory
         ? props.theme.gradients.highlighted[props.currentCategory.color]
         : props.theme.gradients.header},
-    url(${headerImg});
+    url(${({ headerPhoto }) => headerPhoto.fluid.src});
   background-position: 50% 50%;
   background-size: cover;
   padding: 1rem 0 2rem;
@@ -27,13 +27,46 @@ const StyledPageHeader = styled.header`
   }
 `
 
+const PageHeaderQuery = graphql`
+  query PageHeaderQuery {
+    allContentfulHomepageStaticContent {
+      edges {
+        node {
+          headerPhoto {
+            fluid(maxWidth: 1440, background: "rgb:000000") {
+              ...GatsbyContentfulFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 const PageHeader = ({ currentCategory }) => (
-  <StyledPageHeader currentCategory={currentCategory}>
-    <Wrapper>
-      <Brand isFullVersion isDarkVersion={false} isInHeader/>
-      <Categories currentCategory={currentCategory} />
-    </Wrapper>
-  </StyledPageHeader>
+  <StaticQuery
+    query={PageHeaderQuery}
+    render={({ allContentfulHomepageStaticContent }) => (
+      <>
+        {allContentfulHomepageStaticContent &&
+          allContentfulHomepageStaticContent.edges &&
+          allContentfulHomepageStaticContent.edges[0].node &&
+          allContentfulHomepageStaticContent.edges[0].node.headerPhoto && (
+            <StyledPageHeader
+              currentCategory={currentCategory}
+              headerPhoto={
+                allContentfulHomepageStaticContent.edges[0].node.headerPhoto
+              }
+            >
+              <Wrapper>
+                <Brand isFullVersion isDarkVersion={false} isInHeader />
+                <Categories currentCategory={currentCategory} />
+              </Wrapper>
+            </StyledPageHeader>
+          )}
+      </>
+    )}
+  />
 )
 
 PageHeader.propTypes = {

@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { StaticQuery } from 'gatsby'
 
 import { mediaQueries } from '../utils/mediaQueries'
 import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
 import MobileMenuItems from './MobileMenuItems'
 import MobileMenuCategories from './MobileMenuCategories'
-import headerImg from '../../static/header-background.jpg'
+import { novPolSocialMediaUrls } from '../utils/socialMedia'
 
 const MenuIcon = styled.div`
   position: relative;
@@ -61,7 +62,7 @@ const MenuHeader = styled.div`
       props.currentCategory
         ? props.theme.gradients.highlighted[props.currentCategory.color]
         : props.theme.gradients.header},
-    url(${headerImg});
+    url(${({ headerPhoto }) => headerPhoto.fluid.src});
   background-position: 50% 50%;
   background-size: cover;
   z-index: 999;
@@ -102,6 +103,22 @@ const MobileSocialMediaList = styled(SocialMediaList)`
   margin: 0 auto;
 `
 
+const PageHeaderQueryMobile = graphql`
+  query PageHeaderQueryMobile {
+    allContentfulHomepageStaticContent {
+      edges {
+        node {
+          headerPhoto {
+            fluid(maxWidth: 768, background: "rgb:000000") {
+              ...GatsbyContentfulFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 class MobileMenu extends Component {
   state = {
     isMenuOpen: false,
@@ -115,22 +132,43 @@ class MobileMenu extends Component {
     const { currentCategory } = this.props
 
     return (
-      <>
-        <MenuHeader currentCategory={currentCategory}>
-          <Brand isDarkVersion={false} />
-          <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
-            <div className="middle" />
-          </MenuIcon>
-        </MenuHeader>
-        <MenuContent isMenuOpen={isMenuOpen}>
-          <nav>
-            <MobileMenuCategories currentCategory={currentCategory} />
-            <Line />
-            <MobileMenuItems />
-          </nav>
-          <MobileSocialMediaList isHeader/>
-        </MenuContent>
-      </>
+      <StaticQuery
+        query={PageHeaderQueryMobile}
+        render={({ allContentfulHomepageStaticContent }) => (
+          <>
+            {allContentfulHomepageStaticContent &&
+              allContentfulHomepageStaticContent.edges &&
+              allContentfulHomepageStaticContent.edges[0].node &&
+              allContentfulHomepageStaticContent.edges[0].node.headerPhoto && (
+                <>
+                  <MenuHeader
+                    currentCategory={currentCategory}
+                    headerPhoto={
+                      allContentfulHomepageStaticContent.edges[0].node
+                        .headerPhoto
+                    }
+                  >
+                    <Brand isDarkVersion={false} />
+                    <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
+                      <div className="middle" />
+                    </MenuIcon>
+                  </MenuHeader>
+                  <MenuContent isMenuOpen={isMenuOpen}>
+                    <nav>
+                      <MobileMenuCategories currentCategory={currentCategory} />
+                      <Line />
+                      <MobileMenuItems />
+                    </nav>
+                    <MobileSocialMediaList
+                      isWhite
+                      urls={novPolSocialMediaUrls}
+                    />
+                  </MenuContent>
+                </>
+              )}
+          </>
+        )}
+      />
     )
   }
 }

@@ -9,6 +9,7 @@ import { theme } from '../utils/theme'
 import Navigation from './Navigation'
 import SocialMediaList from './SocialMediaList'
 import { Link } from 'gatsby'
+import { novPolSocialMediaUrls } from '../utils/socialMedia'
 
 const StyledBrand = styled.div`
   display: flex;
@@ -30,17 +31,11 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${props => props.isFullVersion && '2.0rem'};
-  margin-top: 
-  ${
-  props => {
-    if (props.isInHeader)
-      return '2.0rem'
-    if (props.isFullVersion)
-      return '1.0rem'
-    else
-      return '0'
-  }
-  }
+  margin-top: ${props => {
+    if (props.isInHeader) return '2.0rem'
+    if (props.isFullVersion) return '1.0rem'
+    return '0'
+  }};
 `
 
 const LogoWrapper = styled.div`
@@ -146,7 +141,6 @@ const BoxRight = styled.span`
   margin-left: auto;
 `
 
-
 class Brand extends React.Component {
   getLogoContainer(isFullVersion, isDarkVersion, isInHeader) {
     return (
@@ -166,7 +160,11 @@ class Brand extends React.Component {
           isDarkVersion={isDarkVersion}
           isFullVersion={isFullVersion}
         >
-          <Logo isFullVersion={isFullVersion} src={logo} alt="Nowaja Polsza logo"/>
+          <Logo
+            isFullVersion={isFullVersion}
+            src={logo}
+            alt="Nowaja Polsza logo"
+          />
         </LogoWrapper>
         {isFullVersion && (
           <LogoSubtitleRight
@@ -191,19 +189,27 @@ class Brand extends React.Component {
           <Container>
             <Box>
               <BoxLeft>
-                <Navigation/>
+                <Navigation />
               </BoxLeft>
             </Box>
             <Box>
               <span>
                 <Link to="/">
-                  {this.getLogoContainer(isFullVersion, isDarkVersion, isInHeader)}
+                  {this.getLogoContainer(
+                    isFullVersion,
+                    isDarkVersion,
+                    isInHeader
+                  )}
                 </Link>
               </span>
             </Box>
             <Box>
               <BoxRight>
-                <SocialMediaList isHeader isSemiTransparent/>
+                <SocialMediaList
+                  isWhite
+                  isSemiTransparent
+                  urls={novPolSocialMediaUrls}
+                />
               </BoxRight>
             </Box>
           </Container>
@@ -219,7 +225,7 @@ class Brand extends React.Component {
               color={isDarkVersion ? 'Dark' : 'White'}
               weight="Bold"
             >
-              НОВАЯ <BreakLine/>
+              НОВАЯ <BreakLine />
               ПОЛЬША
             </Title>
             <Subtitle

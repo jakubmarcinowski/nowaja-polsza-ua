@@ -4,12 +4,13 @@ export const theme = {
   colors: {
     black: '#000',
     dark: '#111d22',
+    greyDark: '#999999',
     greyLight: '#e5e5e5',
     primary: '#253e48',
     secondary: '#820204',
     white: '#fff',
     menuBackground: 'rgba(17, 29, 34, 0.98)',
-    authorBackground: 'rgba(155, 155, 155, 0.1)',
+    listItemBackground: 'rgba(155, 155, 155, 0.1)',
 
     highlighted: {
       darkGreyBlue: '#8c9c9b',
@@ -64,6 +65,7 @@ export const theme = {
   },
   grid: {
     width: {
+      big: `${contentWidth.big}px`,
       medium: `${contentWidth.medium}px`,
       small: `${contentWidth.small}px`,
     },

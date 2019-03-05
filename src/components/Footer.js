@@ -11,6 +11,7 @@ import { theme } from '../utils/theme'
 import Wrapper from './Wrapper'
 import Line from './Line'
 import cprdipExtended from '../../static/logo-cprdip-extended.png'
+import { novPolSocialMediaUrls } from '../utils/socialMedia'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -55,8 +56,6 @@ const Publisher = styled.div`
 `
 
 const SocialMediaListMobile = styled(SocialMediaList)`
-  width: 250px;
-
   @media ${mediaQueries.desktop} {
     display: none;
   }
@@ -64,7 +63,6 @@ const SocialMediaListMobile = styled(SocialMediaList)`
 
 const SocialMediaListDesktop = styled(SocialMediaList)`
   display: none;
-  width: 250px;
 
   @media ${mediaQueries.desktop} {
     display: flex;
@@ -99,11 +97,19 @@ const Footer = () => (
     <StyledFooter>
       <FooterNavigation />
       <Container>
-        <SocialMediaListMobile isBig isSemiTransparent/>
+        <SocialMediaListMobile
+          isBig
+          isSemiTransparent
+          urls={novPolSocialMediaUrls}
+        />
         <BrandContainer>
           <Brand />
         </BrandContainer>
-        <SocialMediaListDesktop isBig isSemiTransparent/>
+        <SocialMediaListDesktop
+          isBig
+          isSemiTransparent
+          urls={novPolSocialMediaUrls}
+        />
         <Info>
           <Publisher>
             <PublisherText color="Dark">Издатель:</PublisherText>

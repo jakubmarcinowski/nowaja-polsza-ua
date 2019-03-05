@@ -15,16 +15,19 @@ import twitterFullGray from '../../static/social-twitter-full-gray.svg'
 import youtubeFullGray from '../../static/social-yt-full-gray.svg'
 import telegramFullGray from '../../static/social-telegram-full-gray.svg'
 import vkFullGray from '../../static/social-vk-full-gray.svg'
-
-const List = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 200px;
-`
+import academiaFullGray from '../../static/social-academia-full-gray.svg'
 
 const Item = styled.li`
   display: inline;
+  padding: 0 1.1rem;
+
+  &:first-of-type {
+    padding-left: 0;
+  }
+
+  &:last-of-type {
+    padding-right: 0;
+  }
 
   ${({ isSemiTransparent }) =>
     isSemiTransparent &&
@@ -45,7 +48,6 @@ const Logo = styled.img`
   isBig &&
     `
     height: 25px;
-    width: 25px;
   `}
 `
 
@@ -61,100 +63,106 @@ class SocialMediaList extends React.Component {
   render() {
     const {
       className,
-      isHeader,
+      isWhite,
       isSemiTransparent,
-      isArticle,
+      isShareUrl,
       isBig,
+      urls: { facebook, twitter, telegram, youtube, vk, academia },
     } = this.props
 
     return (
-      <List className={className} isHeader={isHeader}>
-        <Item isSemiTransparent={isSemiTransparent}>
-          <ExternalLink
-            url={
-              isArticle
-                ? `https://www.facebook.com/sharer/sharer.php?u=${
-                    this.state.locationHref
-                  }`
-                : 'https://www.facebook.com/novayapolsha/'
-            }
-          >
-            <Logo
-              isBig={isBig}
-              src={isHeader ? facebookFull : facebookFullGray}
-              alt="Facebook Nowaja Polsza"
-            />
-          </ExternalLink>
-        </Item>
-        <Item isSemiTransparent={isSemiTransparent}>
-          <ExternalLink
-            url={
-              isArticle
-                ? `https://twitter.com/intent/tweet?original_referer=${
-                    this.state.locationHref
-                  }`
-                : 'https://twitter.com/novayapolsha'
-            }
-          >
-            <Logo
-              isBig={isBig}
-              src={isHeader ? twitterFull : twitterFullGray}
-              alt="Twitter Nowaja Polsza"
-            />
-          </ExternalLink>
-        </Item>
-        <Item isSemiTransparent={isSemiTransparent}>
-          <ExternalLink
-            url={
-              isArticle
-                ? `https://telegram.me/share/url?url=${this.state.locationHref}`
-                : 'https://t.me/novayapolsha'
-            }
-          >
-            <Logo
-              isBig={isBig}
-              src={isHeader ? telegramFull : telegramFullGray}
-              alt="Telegram Nowaja Polsza"
-            />
-          </ExternalLink>
-        </Item>
-        {isArticle || (
+      <ul className={className}>
+        {facebook && (
           <Item isSemiTransparent={isSemiTransparent}>
-            <ExternalLink url="https://www.youtube.com/channel/UChqH28eDLVsTpfi6C3QxRcg">
+            <ExternalLink
+              url={
+                isShareUrl ? `${facebook}${this.state.locationHref}` : facebook
+              }
+            >
               <Logo
                 isBig={isBig}
-                src={isHeader ? youtubeFull : youtubeFullGray}
-                alt="YouTube Nowaja Polsza"
+                src={isWhite ? facebookFull : facebookFullGray}
+                alt="Facebook"
               />
             </ExternalLink>
           </Item>
         )}
-        <Item isSemiTransparent={isSemiTransparent}>
-          <ExternalLink
-            url={
-              isArticle
-                ? `https://vk.com/share.php?url=${this.state.locationHref}`
-                : 'https://vk.com/novayapolsha'
-            }
-          >
-            <Logo
-              isBig={isBig}
-              src={isHeader ? vkFull : vkFullGray}
-              alt="VK Nowaja Polsza"
-            />
-          </ExternalLink>
-        </Item>
-      </List>
+        {twitter && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink
+              url={
+                isShareUrl ? `${twitter}${this.state.locationHref}` : twitter
+              }
+            >
+              <Logo
+                isBig={isBig}
+                src={isWhite ? twitterFull : twitterFullGray}
+                alt="Twitter"
+              />
+            </ExternalLink>
+          </Item>
+        )}
+        {telegram && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink
+              url={
+                isShareUrl ? `${telegram}${this.state.locationHref}` : telegram
+              }
+            >
+              <Logo
+                isBig={isBig}
+                src={isWhite ? telegramFull : telegramFullGray}
+                alt="Telegram"
+              />
+            </ExternalLink>
+          </Item>
+        )}
+        {youtube && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink url={youtube}>
+              <Logo
+                isBig={isBig}
+                src={isWhite ? youtubeFull : youtubeFullGray}
+                alt="YouTube"
+              />
+            </ExternalLink>
+          </Item>
+        )}
+        {vk && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink
+              url={isShareUrl ? `${vk}${this.state.locationHref}` : vk}
+            >
+              <Logo
+                isBig={isBig}
+                src={isWhite ? vkFull : vkFullGray}
+                alt="VK"
+              />
+            </ExternalLink>
+          </Item>
+        )}
+        {academia && (
+          <Item isSemiTransparent={isSemiTransparent}>
+            <ExternalLink
+              url={
+                isShareUrl ? `${academia}${this.state.locationHref}` : academia
+              }
+            >
+              <Logo isBig={isBig} src={academiaFullGray} alt="Academia"/>
+            </ExternalLink>
+          </Item>
+        )}
+      </ul>
     )
   }
 }
 
 SocialMediaList.propTypes = {
   className: PropTypes.string,
-  isHeader: PropTypes.bool,
+  urls: PropTypes.object,
   isWhite: PropTypes.bool,
   isSemiTransparent: PropTypes.bool,
-  isArticle: PropTypes.bool,
+  isShareUrl: PropTypes.bool,
   isBig: PropTypes.bool,
 }
 

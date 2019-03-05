@@ -15,15 +15,17 @@ const Wrapper = ({ children, size, position }) => {
 }
 
 Wrapper.defaultProps = {
-  size: 'Medium',
+  size: 'Big',
 }
 
 Wrapper.sizes = {
+  Big: 'Big',
   Medium: 'Medium',
   Small: 'Small',
 }
 
 const sizeMap = {
+  [Wrapper.sizes.Big]: contentWidth.big,
   [Wrapper.sizes.Medium]: contentWidth.medium,
   [Wrapper.sizes.Small]: contentWidth.small,
 }

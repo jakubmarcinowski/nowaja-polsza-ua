@@ -3,9 +3,13 @@ import styled from 'styled-components'
 
 import SocialMediaList from '../../../components/SocialMediaList'
 import { mediaQueries } from '../../../utils/mediaQueries'
+import { shareSocialMediaUrls } from '../../../utils/socialMedia'
 
-const Container = styled.div`
-  max-width: 200px;  
+const StyledArticleSocialMediaList = styled(SocialMediaList)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 200px;
   margin: 0 auto;
   padding: 20px 0;
 
@@ -15,9 +19,12 @@ const Container = styled.div`
 `
 
 const ArticleSocialMediaList = () => (
-  <Container>
-    <SocialMediaList isBig isArticle isSemiTransparent/>
-  </Container>
+  <StyledArticleSocialMediaList
+    isBig
+    isShareUrl
+    isSemiTransparent
+    urls={shareSocialMediaUrls}
+  />
 )
 
 export default ArticleSocialMediaList

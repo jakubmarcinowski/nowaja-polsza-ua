@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 
 import ImgWrapper from './ImgWrapper'
 import Header from './Header'
 import Paragraph from './Paragraph'
-import Button from './Button'
 import { mediaQueries } from '../utils/mediaQueries'
+import SocialMediaList from './SocialMediaList'
 
 const AuthorImg = styled(ImgWrapper)`
   @media ${mediaQueries.tablet} {
@@ -27,98 +26,96 @@ const Element = styled.div`
   flex-direction: column;
   min-width: 100%;
   margin: 2rem auto;
-  background: ${({ theme }) => theme.colors.authorBackground};
-
-  ${({ few }) => few && `margin: 2rem;`};
-
-  @media ${mediaQueries.phoneLandscape} {
-    max-width: 30rem;
-    min-width: 30rem;
-  }
+  background: ${({ theme }) => theme.colors.listItemBackground};
 
   @media ${mediaQueries.tablet} {
     flex-direction: row;
-    margin: 5rem auto;
-    max-width: 70%;
-
-    ${({ few }) =>
-      few &&
-      `
-          flex-direction: column;
-          flex-wrap: wrap;
-          margin: 5rem;
-          max-width: 3.9rem; 
-        `};
-  }
-`
-
-const ReadMoreBtn = styled(Button)`
-  position: absolute;
-  bottom: 0;
-  right: 50%;
-  transform: translate(50%, 50%);
-
-  @media ${mediaQueries.tablet} {
-    right: 2rem;
-    transform: translate(0, 50%);
+    margin-top: 8rem;
+    margin-bottom: 10rem;
   }
 `
 
 const Info = styled.div`
-  padding: 3rem 3rem 5rem 3rem;
+  width: 100%;
+  padding: 2rem 2rem 4rem 2rem;
 
   @media ${mediaQueries.tablet} {
-    padding: 3rem 3rem 3rem 1rem;
+    padding: 3rem 8rem 5rem 3rem;
+  }
+`
+const Desc = styled(Paragraph)`
+  margin-top: 3rem;
+`
 
-    ${({ few }) =>
-      few
-        ? `
-        padding: 3rem 3rem 5rem 3rem;
-        `
-        : 'flex-direction: row;'};
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media ${mediaQueries.desktop} {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 `
 
-const Desc = styled(Paragraph)`
-  margin-top: 1rem;
+const AuthorSocialMediaList = styled(SocialMediaList)`
+  padding-top: 1.5rem;
+
+  @media ${mediaQueries.desktop} {
+    padding: 0;
+  }
 `
 
 const Author = ({
-  author: { name, shortBio, image, slug },
-  authorPage,
-  few,
+                  author: {
+                    name,
+                    shortBio,
+                    image,
+                    facebook,
+                    twitter,
+                    telegram,
+                    youtube,
+                    vk,
+                    academia,
+                  },
 }) => (
-  <Element few={few}>
+  <Element>
     {image && <AuthorImg img={image} />}
-    <Info few={few}>
-      {name && (
-        <Header size="Bigger" color="Black">
-          {name}
-        </Header>
-      )}
-
+    <Info>
+      <Container>
+        {name && (
+          <Header size="Bigger" color="Black">
+            {name}
+          </Header>
+        )}
+        <AuthorSocialMediaList
+          urls={{
+            facebook,
+            twitter,
+            telegram,
+            youtube,
+            vk,
+            academia,
+          }}
+          isSemiTransparent
+        />
+      </Container>
       {shortBio && (
-        <Desc size="Bigger" weight="Light" lineHeight="Medium" color="Black">
-          <span
+        <Desc size="Biggest" weight="Light" lineHeight="Medium" color="Black">
+          <div
             dangerouslySetInnerHTML={{
-              __html: shortBio.childMarkdownRemark.excerpt,
+              __html: shortBio.childMarkdownRemark.html,
             }}
           />
         </Desc>
       )}
     </Info>
-    {!authorPage && slug && (
-      <Link to={`/author/${slug}`}>
-        <ReadMoreBtn>Все тексты автора</ReadMoreBtn>
-      </Link>
-    )}
   </Element>
 )
 
 Author.propTypes = {
   author: PropTypes.any,
-  authorPage: PropTypes.bool,
-  few: PropTypes.bool,
 }
 
 export default Author

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import ArticleSocialMediaList from './subcomponents/ArticleSocialMediaList'
-import Author from '../../components/Author'
 import ArticleHeader from './subcomponents/ArticleHeader'
 import Content from './subcomponents/Content'
 import Header from '../../components/Header'
@@ -11,6 +10,7 @@ import RecommendedArticles from '../../components/RecommendedArticles'
 import Wrapper from '../../components/Wrapper'
 import { articleType } from '../../types/article'
 import { mediaQueries } from '../../utils/mediaQueries'
+import AuthorShort from '../../components/AuthorShort'
 
 const StyledArticle = styled.article`
   padding: 0 0 2rem;
@@ -80,11 +80,11 @@ const ArticlePage = ({
           (authors.length > 1 ? (
             <Authors>
               {authors.map(element => (
-                <Author author={element} key={element.id} few />
+                <AuthorShort author={element} key={element.id} few/>
               ))}
             </Authors>
           ) : (
-            <Author author={authors[0]} />
+            <AuthorShort author={authors[0]}/>
           ))}
       </SectionWrapper>
       <SectionWrapper>

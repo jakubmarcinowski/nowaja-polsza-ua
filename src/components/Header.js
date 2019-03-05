@@ -17,6 +17,7 @@ const Header = ({
   lineHeight,
   overflow,
   height,
+  textAlign,
 }) => (
   <HeaderStyled
     as={`h${type}`}
@@ -28,6 +29,7 @@ const Header = ({
     lineHeight={lineHeight}
     overflow={overflow}
     height={height}
+    textAlign={textAlign}
   >
     {children}
   </HeaderStyled>
@@ -110,6 +112,7 @@ const HeaderStyled = styled.h1`
   color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
   font-size: ${({ size }) => fontSizeMap[size] * 0.7}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
+  text-align: ${({ textAlign }) => textAlign};
 
   @media ${mediaQueries.tablet} {
     ${({ height }) => height && `height: ${height}rem`};
@@ -128,6 +131,7 @@ Header.propTypes = {
   lineHeight: PropTypes.string,
   overflow: PropTypes.string,
   height: PropTypes.string,
+  textAlign: PropTypes.string,
 }
 
 export default Header
