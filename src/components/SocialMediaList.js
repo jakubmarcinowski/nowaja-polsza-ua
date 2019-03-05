@@ -75,9 +75,9 @@ class SocialMediaList extends React.Component {
         {facebook && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${
-                isShareUrl ? facebook + this.state.locationHref : facebook
-                }`}
+              url={
+                isShareUrl ? `${facebook}${this.state.locationHref}` : facebook
+              }
             >
               <Logo
                 isBig={isBig}
@@ -90,9 +90,9 @@ class SocialMediaList extends React.Component {
         {twitter && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${
-                isShareUrl ? twitter + this.state.locationHref : twitter
-                }`}
+              url={
+                isShareUrl ? `${twitter}${this.state.locationHref}` : twitter
+              }
             >
               <Logo
                 isBig={isBig}
@@ -105,9 +105,9 @@ class SocialMediaList extends React.Component {
         {telegram && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${
-                isShareUrl ? telegram + this.state.locationHref : telegram
-                }`}
+              url={
+                isShareUrl ? `${telegram}${this.state.locationHref}` : telegram
+              }
             >
               <Logo
                 isBig={isBig}
@@ -131,9 +131,7 @@ class SocialMediaList extends React.Component {
         {vk && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${
-                isShareUrl ? vk + this.state.locationHref : vk
-                }`}
+              url={isShareUrl ? `${vk}${this.state.locationHref}` : vk}
             >
               <Logo
                 isBig={isBig}
@@ -146,9 +144,9 @@ class SocialMediaList extends React.Component {
         {academia && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
-              url={`${
-                isShareUrl ? academia + this.state.locationHref : academia
-                }`}
+              url={
+                isShareUrl ? `${academia}${this.state.locationHref}` : academia
+              }
             >
               <Logo isBig={isBig} src={academiaFullGray} alt="Academia"/>
             </ExternalLink>
