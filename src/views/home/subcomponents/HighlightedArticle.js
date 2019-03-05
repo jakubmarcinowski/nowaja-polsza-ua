@@ -42,18 +42,15 @@ const ArticleContent = styled.div`
   transform: ${props =>
     props.isActive ? 'translateY(-25rem)' : 'translateY(-16rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   min-width: 280px;
   text-align: center;
 
-  ${props =>
-    props.isActive &&
-    `
-      @media ${mediaQueries.tablet} {
-        transform: translateY(-30rem)
-      }
-    `}
+  @media ${mediaQueries.tablet} {
+  transform: ${props =>
+  props.isActive ? 'translateY(-30rem)' : 'translateY(-23rem)'};
+  }
 `
 
 const Lead = styled.div`
