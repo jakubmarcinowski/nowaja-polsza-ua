@@ -14,7 +14,7 @@ const PublicationsWrapper = styled.div`
 // @todo crete styled component for page header which is center and has a line
 
 const PublicationPage = ({ publications }) => (
-  <Wrapper size="Small">
+  <Wrapper size="Medium">
     <Header
       size="Big"
       margin="5rem auto 2.5rem"

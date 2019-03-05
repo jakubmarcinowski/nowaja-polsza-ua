@@ -27,8 +27,8 @@ const Box = styled.div`
 const Image = styled(ImgWrapper)`
   @media ${mediaQueries.tablet} {
     position: absolute;
-    top: -2rem;
-    left: -2rem;
+    top: -1.5rem;
+    left: -1.5rem;
     min-width: 17rem;
     min-height: 22rem;
     max-width: 17rem;
