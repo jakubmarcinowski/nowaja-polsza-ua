@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 import ArticleSocialMediaList from './subcomponents/ArticleSocialMediaList'
 import ArticleHeader from './subcomponents/ArticleHeader'
@@ -57,6 +60,31 @@ const SectionWrapper = styled.div`
 
 const Gallery = styled.div`
   margin-top: 3.7em;
+  padding-bottom: 3.7em;
+  overflow: hidden;
+
+  @media ${mediaQueries.tablet} {
+    overflow: visible;
+  }
+`
+
+const SliderStyled = styled(Slider)`
+  .slick-arrow {
+    height: 100%;
+    width: 5rem;
+  }
+
+  .slick-arrow:before {
+    color: black;
+  }
+
+  .slick-next {
+    right: -4rem;
+  }
+
+  .slick-prev {
+    left: -4rem;
+  }
 `
 
 const ArticlePage = ({
@@ -71,47 +99,74 @@ const ArticlePage = ({
     gallery,
   },
   posts,
-}) => (
-  <StyledArticle>
-    <Wrapper>
-      <ArticleHeader
-        title={title}
-        publishDate={publishDate}
-        heroImage={heroImage}
-        authors={authors}
-        categories={categories}
-      />
-    </Wrapper>
-    <Wrapper size="Small" position="relative">
-      <ArticleSocialMediaList />
-      {body && <Content html={body.childMarkdownRemark.html} lead={lead} />}
-      <Gallery>
-        {gallery &&
-          gallery.map(photo => <ImgWrapper img={photo} key={photo.id} />)}
-      </Gallery>
-      <ArticleSocialMediaList />
-      <SectionWrapper>
-        <HeaderStyled size="Biggest">
-          {authors && (authors.length > 1 ? 'Авторы' : 'Автор')}
-        </HeaderStyled>
-        {authors &&
-          (authors.length > 1 ? (
-            <Authors>
-              {authors.map(element => (
-                <AuthorShort author={element} key={element.id} few />
+}) => {
+  const settings = {
+    dots: true,
+    infinite: false,
+    arrows: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: mediaQueries.tablet,
+        settings: {
+          arrows: false,
+        },
+      },
+    ],
+  }
+  return (
+    <StyledArticle>
+      <Wrapper>
+        <ArticleHeader
+          title={title}
+          publishDate={publishDate}
+          heroImage={heroImage}
+          authors={authors}
+          categories={categories}
+        />
+      </Wrapper>
+      <Wrapper size="Small" position="relative">
+        <ArticleSocialMediaList />
+        {body && <Content html={body.childMarkdownRemark.html} lead={lead} />}
+        {gallery && (
+          <Gallery>
+            <SliderStyled {...settings}>
+              {gallery.map(photo => (
+                <ImgWrapper img={photo} key={photo.id} />
               ))}
-            </Authors>
-          ) : (
-            <AuthorShort author={authors[0]} />
-          ))}
-      </SectionWrapper>
-      <SectionWrapper>
-        <HeaderStyled size="Biggest">Вам также может понравиться</HeaderStyled>
-        <RecommendedArticles posts={posts} />
-      </SectionWrapper>
-    </Wrapper>
-  </StyledArticle>
-)
+            </SliderStyled>
+          </Gallery>
+        )}
+
+        <ArticleSocialMediaList />
+        <SectionWrapper>
+          <HeaderStyled size="Biggest">
+            {authors && (authors.length > 1 ? 'Авторы' : 'Автор')}
+          </HeaderStyled>
+          {authors &&
+            (authors.length > 1 ? (
+              <Authors>
+                {authors.map(element => (
+                  <AuthorShort author={element} key={element.id} few />
+                ))}
+              </Authors>
+            ) : (
+              <AuthorShort author={authors[0]} />
+            ))}
+        </SectionWrapper>
+        <SectionWrapper>
+          <HeaderStyled size="Biggest">
+            Вам также может понравиться
+          </HeaderStyled>
+          <RecommendedArticles posts={posts} />
+        </SectionWrapper>
+      </Wrapper>
+    </StyledArticle>
+  )
+}
 
 ArticlePage.propTypes = {
   article: articleType.isRequired,
