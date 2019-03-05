@@ -58,6 +58,20 @@ export const theme = {
       multimediaColor:
         'linear-gradient(to bottom, rgba(131, 180, 32, .85), rgba(17, 29, 34, 0.85))',
     },
+    carouselArrowNext: `
+      linear-gradient(
+        to right,
+        rgba(17, 29, 34, 0),
+        rgba(17, 29, 34, 0.85)
+      )
+    `,
+    carouselArrowPrev: `
+    linear-gradient(
+      to left,
+      rgba(17, 29, 34, 0),
+      rgba(17, 29, 34, 0.85)
+    )
+  `,
   },
   fonts: {
     primary: `'Merriweather', serif`,

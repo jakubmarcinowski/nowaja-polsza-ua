@@ -24,15 +24,18 @@ const DownloadButtons = styled.div`
     width: 280px;
   }
 `
+const AuthorWrapper = styled.div`
+  margin-bottom: 2em;
+`
 const AuthorLink = styled(Link)`
   display: inline-block;
-  margin-bottom: 2em;
 `
 const ParagraphsWrapper = styled.div`
   margin: 2em 0;
   max-width: 830px;
   line-height: 1.8;
   font-size: 1.4rem;
+  font-weight: 300;
 
   @media ${mediaQueries.tablet} {
     line-height: 2;
@@ -94,14 +97,16 @@ class Publication extends Component {
               {title}
             </Header>
           )}
-          {authors
-            ? authors.map(({ name, slug }, i, authors) => (
-                <AuthorLink to={`/author/${slug}`} key={i}>
-                  {name}
-                  {!!authors[i + 1] && <>,&nbsp;</>}
-                </AuthorLink>
-              ))
-            : 'Журнал'}
+          <AuthorWrapper>
+            {authors
+              ? authors.map(({ name, slug }, i, authors) => (
+                  <AuthorLink to={`/author/${slug}`} key={i}>
+                    {name}
+                    {!!authors[i + 1] && <>,&nbsp;</>}
+                  </AuthorLink>
+                ))
+              : 'Журнал'}
+          </AuthorWrapper>
           <DownloadButtons>
             {pdf && <DownloadButton url={pdf.file.url} text="PDF" />}
             {epub && <DownloadButton url={epub.file.url} text="EPUB" />}
