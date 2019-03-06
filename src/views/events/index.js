@@ -1,40 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import Event from './subcomponents/Event'
 import Wrapper from '../../components/Wrapper'
-import Header from '../../components/Header'
-import Line from '../../components/Line'
-
-const EventsWrapper = styled.div`
-  padding: 4rem 0;
-`
-
-// @todo create styled component for page header which is center and has a line
-// @todo style if no events ("Nie mamy w tej chwili wydarzen, zobacz na facebooku")
+import HeaderWithLine from '../../components/HeaderWithLine'
 
 const EventPage = ({ events }) => (
   <Wrapper size="Medium">
-    <Header
-      size="Big"
-      margin="5rem auto 2.5rem"
-      color="Black"
-      weight="Bold"
-      type={2}
-      textAlign="center"
-    >
-      Предстоящие события
-    </Header>
-    <Line />
-    <EventsWrapper>
-      {events &&
-        (events.length === 0
-          ? 'Нет событий'
-          : events.map(({ node, node: { slug } }) => (
-              <Event event={node} key={slug} />
-            )))}
-    </EventsWrapper>
+    <HeaderWithLine>Предстоящие события</HeaderWithLine>
+    {events &&
+      (events.length === 0
+        ? 'Нет событий'
+        : events.map(({ node, node: { slug } }) => (
+            <Event event={node} key={slug} />
+          )))}
   </Wrapper>
 )
 
