@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Button from './Button'
 
 const StyledButtonWithIcon = styled(Button)`
-  background: ${({ theme }) => theme.colors.listItemBackground};
+  background: transparent;
   padding: 1rem 1.5rem;
 `
 const Item = styled.div`

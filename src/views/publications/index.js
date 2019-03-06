@@ -3,24 +3,11 @@ import PropTypes from 'prop-types'
 
 import Publication from './subcomponents/Publication'
 import Wrapper from '../../components/Wrapper'
-import Header from '../../components/Header'
-import Line from '../../components/Line'
+import HeaderWithLine from '../../components/HeaderWithLine'
 
-// @todo crete styled component for page header which is center and has a line
-
-const PublicationPage = ({ publications }) => (
+const PublicationPage = ({ publications, title }) => (
   <Wrapper size="Medium">
-    <Header
-      size="Big"
-      margin="5rem auto 2.5rem"
-      color="Black"
-      weight="Bold"
-      type={2}
-      textAlign="center"
-    >
-      библиотека
-    </Header>
-    <Line />
+    <HeaderWithLine>{title}</HeaderWithLine>
     {publications &&
       (publications.length === 0
         ? 'Нет публикации'
@@ -32,6 +19,7 @@ const PublicationPage = ({ publications }) => (
 
 PublicationPage.propTypes = {
   publications: PropTypes.any,
+  title: PropTypes.string,
 }
 
 export default PublicationPage
