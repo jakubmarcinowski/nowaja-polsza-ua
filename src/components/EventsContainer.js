@@ -17,7 +17,7 @@ const Container = styled.div`
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 575px;
+  max-width: 575rem;
   padding: 2.5rem 0;
 `
 
