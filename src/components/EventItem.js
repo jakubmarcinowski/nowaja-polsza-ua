@@ -37,6 +37,7 @@ const Date = styled(Paragraph)`
 `
 
 const City = styled(Paragraph)`
+  padding-top: .7rem;
   text-align: center;
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.secondary};
@@ -55,11 +56,11 @@ const EventItem = ({ event }) => (
         <br/>
         {event.expirationMonth}
       </Date>
-      <City size="MediumSmall" lineHeight="Medium">
+      <City size="MediumSmall" lineHeight="Small">
         {event.city}
       </City>
     </Container>
-    <Title size="Bigger" weight="Bold">
+    <Title size="Biggest" weight="Bold">
       {event.title}
     </Title>
   </Wrapper>
