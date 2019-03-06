@@ -91,7 +91,7 @@ class ArticlesList extends React.Component {
               />
             </ListItem>
           ))}
-          {highlightedEvents.length !== 0 && (
+          {highlightedEvents && highlightedEvents.length !== 0 && (
             <ListItem key="eventsContainer" size={size}>
               <EventsContainer events={highlightedEvents}/>
             </ListItem>
