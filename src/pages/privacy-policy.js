@@ -18,9 +18,11 @@ const PrivacyPolicy = ({ data }) => {
     content,
   } = data.allContentfulPrivacyPolicyStaticContent.edges[0].node
 
+  const { title: siteTitle } = data.site.siteMetadata
+
   return (
     <Layout>
-      <Helmet title={title} />
+      <Helmet title={`${title} | ${siteTitle}`} />
       {content && (
         <Wrapper>
           <StaticContent>
@@ -44,6 +46,12 @@ export default PrivacyPolicy
 
 export const PrivacyPolicyPageQuery = graphql`
   query PrivacyPolicyQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+
     allContentfulPrivacyPolicyStaticContent {
       edges {
         node {

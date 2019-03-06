@@ -28,10 +28,7 @@ const Item = styled.li`
 const FooterNavigation = () => (
   <StyledNavigation>
     <Item>
-      <Link to="/">О нас</Link>
-    </Item>
-    <Item>
-      <Link to="/">Контакт</Link>
+      <Link to="/about-us">О нас</Link>
     </Item>
     <Item>
       <Link to="/privacy-policy">Политика конфиденциальности</Link>
