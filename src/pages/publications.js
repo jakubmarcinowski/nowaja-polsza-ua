@@ -9,7 +9,7 @@ import PublicationPage from '../views/publications'
 const Publications = ({ data }) => {
   const publications = data.allContentfulPublication.edges
   const siteTitle = data.site.siteMetadata.title
-  const title = 'библиотека'
+  const title = 'Библиотека'
 
   return (
     <Layout>

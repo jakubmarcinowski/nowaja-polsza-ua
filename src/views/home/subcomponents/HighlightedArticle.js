@@ -39,20 +39,34 @@ const ArticleContent = styled.div`
   left: 0;
   right: 0;
   transform-origin: bottom;
-  transform: ${props =>
-    props.isActive ? 'translateY(-25rem)' : 'translateY(-16rem)'};
+  transform: translateY(-13rem);
   transition: transform ${({ theme }) => theme.animations.default};
-  width: 80%;
   margin: 0 auto;
-  min-width: 280px;
+  min-width: 264px;
+  width: 90%;
   text-align: center;
 
+  @media ${mediaQueries.phoneLandscape} {
+    transform: translateY(-22rem);
+    width: 80%;
+    min-width: 280px;
+  }
+
   @media ${mediaQueries.tablet} {
-  transform: ${props =>
-  props.isActive ? 'translateY(-30rem)' : 'translateY(-23rem)'};
+    transform: translateY(-26rem);
   }
 `
+const StyledHeader = styled(Header)`
+  font-size: 1.4rem;
 
+  @media ${mediaQueries.tablet} {
+    font-size: 2rem;
+  }
+
+  @media ${mediaQueries.desktop} {
+    font-size: 2.6rem;
+  }
+`
 const Lead = styled.div`
   opacity: ${props => (props.isActive ? 1 : 0)};
   transition: opacity ${({ theme }) => theme.animations.default};
@@ -111,8 +125,7 @@ class HighlightedArticle extends Component {
             <PhotoLabel color="dark">Выбор редакции</PhotoLabel>
           </ImgBox>
           <ArticleContent isActive={isActive}>
-            <Header
-              size="Bigger"
+            <StyledHeader
               color="white"
               type={2}
               margin="0 0 1.8rem"
@@ -120,7 +133,7 @@ class HighlightedArticle extends Component {
               lineHeight={this.state.isSmallMobile ? 'Small' : 'Bigger'}
             >
               <Link to={`/blog/${slug}`}>{title}</Link>
-            </Header>
+            </StyledHeader>
             <ArticleInfoBox
               authors={authors}
               publishDate={!this.state.isMobileView && publishDate}
