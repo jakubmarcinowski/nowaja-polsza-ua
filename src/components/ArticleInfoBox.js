@@ -47,13 +47,13 @@ const ArticleInfoBox = ({
   dateLink,
 }) => (
   <InfoBox size={size} justify={justify} color={color}>
-    {publishDate && dateLink ? (
+    {publishDate && (dateLink ? (
       <Link to={dateLink}>
         <Date color={color}>{publishDate}</Date>
       </Link>
     ) : (
       <Date color={color}>{publishDate}</Date>
-    )}
+    ))}
     <div>
       {authors &&
         authors.map(({ name, slug, id }, i, authors) => (
