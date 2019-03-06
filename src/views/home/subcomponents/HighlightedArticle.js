@@ -61,16 +61,6 @@ const Lead = styled.div`
   transition: opacity ${({ theme }) => theme.animations.default};
 `
 
-const Title = styled(Header)`
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  text-align: center;
-
-  @media ${mediaQueries.desktop} {
-    display: none;
-  }
-`
-
 const LinkOverlay = styled(Link)`
   position: absolute;
   width: 100%;
@@ -110,7 +100,6 @@ class HighlightedArticle extends Component {
 
     return (
       <>
-        <Title weight={'Bold'}>выбор редактора</Title>
         <HighlightedArticleStyled
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
