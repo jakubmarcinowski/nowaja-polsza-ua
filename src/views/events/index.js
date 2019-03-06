@@ -5,9 +5,9 @@ import Event from './subcomponents/Event'
 import Wrapper from '../../components/Wrapper'
 import HeaderWithLine from '../../components/HeaderWithLine'
 
-const EventPage = ({ events }) => (
+const EventPage = ({ events, title }) => (
   <Wrapper size="Medium">
-    <HeaderWithLine>Предстоящие события</HeaderWithLine>
+    <HeaderWithLine>{title}</HeaderWithLine>
     {events &&
       (events.length === 0
         ? 'Нет событий'
@@ -19,6 +19,7 @@ const EventPage = ({ events }) => (
 
 EventPage.propTypes = {
   events: PropTypes.any,
+  title: PropTypes.string,
 }
 
 export default EventPage
