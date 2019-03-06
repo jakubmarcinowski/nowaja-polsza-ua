@@ -12,9 +12,13 @@ const InfoBox = styled.div`
   ${({ justify }) => `justify-content: ${justify};`}
   margin: 0 0 1rem;
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: ${({ theme, color }) => theme.colors[color]};
   line-height: 1.5;
+
+  @media ${mediaQueries.phoneLandscape} {
+    font-size: 1.4rem;
+  }
 
   @media ${mediaQueries.tablet} {
     font-size: ${({ size }) => (size === 'Small' ? '1.4rem' : '1.6rem')};
@@ -47,13 +51,14 @@ const ArticleInfoBox = ({
   dateLink,
 }) => (
   <InfoBox size={size} justify={justify} color={color}>
-    {publishDate && (dateLink ? (
-      <Link to={dateLink}>
+    {publishDate &&
+      (dateLink ? (
+        <Link to={dateLink}>
+          <Date color={color}>{publishDate}</Date>
+        </Link>
+      ) : (
         <Date color={color}>{publishDate}</Date>
-      </Link>
-    ) : (
-      <Date color={color}>{publishDate}</Date>
-    ))}
+      ))}
     <div>
       {authors &&
         authors.map(({ name, slug, id }, i, authors) => (
