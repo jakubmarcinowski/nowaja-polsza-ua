@@ -30,6 +30,7 @@ export const PublicationsPageQuery = graphql`
         node {
           title
           slug
+          typeOfPublications
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
             id
