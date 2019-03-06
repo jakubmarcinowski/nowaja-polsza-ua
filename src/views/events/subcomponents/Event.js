@@ -13,8 +13,6 @@ import ReadMoreButton from '../../../components/ReadMoreButton'
 import IconGroup from '../../../components/IconGroup'
 
 const Container = styled.div`
-  /* margin-bottom: 1em;*/
-
   @media ${mediaQueries.tablet} {
     display: flex;
     justify-content: space-between;
@@ -123,7 +121,6 @@ class Event extends Component {
             )}
           </div>
         </Container>
-
         {lead && (
           <ParagraphsWrapper
             hasFullDescription={hasFullDescription}
