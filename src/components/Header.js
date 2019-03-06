@@ -18,6 +18,7 @@ const Header = ({
   overflow,
   height,
   textAlign,
+  onClick,
 }) => (
   <HeaderStyled
     as={`h${type}`}
@@ -30,6 +31,7 @@ const Header = ({
     overflow={overflow}
     height={height}
     textAlign={textAlign}
+    onClick={onClick}
   >
     {children}
   </HeaderStyled>
@@ -132,6 +134,7 @@ Header.propTypes = {
   overflow: PropTypes.string,
   height: PropTypes.string,
   textAlign: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 export default Header

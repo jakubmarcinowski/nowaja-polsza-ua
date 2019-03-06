@@ -58,11 +58,10 @@ const MenuHeader = styled.div`
   height: 6rem;
   padding: 1rem 2rem;
   background: ${props => props.theme.colors.primary};
-  background: ${props =>
-      props.currentCategory
-        ? props.theme.gradients.highlighted[props.currentCategory.color]
-        : props.theme.gradients.header},
-    url(${({ headerPhoto }) => headerPhoto.fluid.src});
+  background: ${({ currentCategory, theme }) =>
+    currentCategory
+      ? theme.gradients.highlighted[currentCategory.color]
+      : theme.gradients.header},
   background-position: 50% 50%;
   background-size: cover;
   z-index: 999;
