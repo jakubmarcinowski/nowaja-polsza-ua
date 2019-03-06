@@ -52,9 +52,14 @@ const ArticleContent = styled.div`
     min-width: 280px;
   }
 
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     transform: ${({ isActive }) =>
-      isActive ? 'translateY(-33rem)' : 'translateY(-26rem)'};
+      isActive ? 'translateY(-30rem)' : 'translateY(-20rem)'};
+  }
+
+  @media ${mediaQueries.large} {
+    transform: ${({ isActive }) =>
+      isActive ? 'translateY(-33rem)' : 'translateY(-18rem)'};
   }
 `
 const StyledHeader = styled(Header)`
