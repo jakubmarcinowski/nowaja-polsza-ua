@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { mediaQueries } from '../../../utils/mediaQueries'
 import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
-import FacebookIconUrl from '../../../../static/icon-facebook.svg'
+import FacebookIconUrl from '../../../../static/icon-facebook-event.svg'
 import ExternalLink from '../../../components/ExternalLink'
 import ReadMoreButton from '../../../components/ReadMoreButton'
 
