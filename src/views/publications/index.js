@@ -79,10 +79,11 @@ class PublicationPage extends React.Component {
         {publications &&
           (publications.length === 0
             ? 'Нет публикации'
-            : publications.map(({ node, node: { slug, typeOfPublications } }) =>
-                !filter || typeOfPublications === filter ? (
-                  <Publication publication={node} key={slug} />
-                ) : null
+            : publications.map(
+                ({ node, node: { slug, typeOfPublications } }) =>
+                  (!filter || typeOfPublications === filter) && (
+                    <Publication publication={node} key={slug} />
+                  )
               ))}
       </Wrapper>
     )
