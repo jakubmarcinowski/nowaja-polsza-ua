@@ -20,13 +20,21 @@ const Container = styled.div`
     flex-wrap: wrap;
   }
 `
+const LeftColumn = styled.div`
+  flex: 1;
+`
+const RightColumn = styled.div`
+  @media ${mediaQueries.desktop} {
+    flex: 0 0 200px;
+  }
+`
 const Date = styled.span`
   display: inline-block;
   margin: 0 0 1.5rem;
   padding: 0 2rem;
   font-family: ${({ theme }) => theme.fonts.secondary};
 
-  line-height: 1.8;
+  line-height: 2.4;
   background: ${({ theme }) => theme.colors.dark};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
@@ -90,7 +98,7 @@ class Event extends Component {
     return (
       <BoxWithPhoto image={heroImage}>
         <Container>
-          <div>
+          <LeftColumn>
             {displayedDate && (
               <div>
                 <Date>{displayedDate}</Date>
@@ -110,8 +118,8 @@ class Event extends Component {
             )}
             {location && <IconGroup src={IconPin}>{location}</IconGroup>}
             {organizer && <IconGroup src={IconUser}>{organizer}</IconGroup>}
-          </div>
-          <div>
+          </LeftColumn>
+          <RightColumn>
             {link && (
               <ExternalLink url={link}>
                 <IconGroup src={IconTicket}>
@@ -119,7 +127,7 @@ class Event extends Component {
                 </IconGroup>
               </ExternalLink>
             )}
-          </div>
+          </RightColumn>
         </Container>
         {lead && (
           <ParagraphsWrapper
