@@ -6,6 +6,8 @@ import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
 import { mediaQueries } from '../utils/mediaQueries'
 import Button from '../components/Button'
+import EventsContainer from './EventsContainer'
+import { highlightedEventType } from '../types/highlightedEvent'
 
 const StyledList = styled.ul`
   display: flex;
@@ -59,15 +61,41 @@ class ArticlesList extends React.Component {
   }
 
   render() {
-    const { posts, limit, noCategoryLabel, size, noMargin } = this.props
+    const {
+      posts,
+      limit,
+      noCategoryLabel,
+      size,
+      noMargin,
+      highlightedEvents,
+    } = this.props
     const { postsNumber } = this.state
     const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
+    const eventsContainerPosition = 2
+    const postsBeforeEventsContainer = slicedPosts.slice(
+      0,
+      eventsContainerPosition,
+    )
+    const postsAfterEventsContainer = slicedPosts.slice(eventsContainerPosition)
 
     return (
       <>
         <StyledList noMargin={noMargin}>
-          {posts &&
-            slicedPosts.map(({ node }) => (
+          {postsBeforeEventsContainer &&
+          postsBeforeEventsContainer.map(({ node }) => (
+            <ListItem key={node.slug} size={size}>
+              <ArticleItem
+                article={node}
+                key={node.slug}
+                noCategoryLabel={noCategoryLabel}
+              />
+            </ListItem>
+          ))}
+          <ListItem key="eventsContainer" size={size}>
+            <EventsContainer events={highlightedEvents}/>
+          </ListItem>
+          {postsAfterEventsContainer &&
+          postsAfterEventsContainer.map(({ node }) => (
               <ListItem key={node.slug} size={size}>
                 <ArticleItem
                   article={node}
@@ -92,6 +120,7 @@ class ArticlesList extends React.Component {
 
 ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(articleType).isRequired,
+  highlightedEvents: PropTypes.arrayOf(highlightedEventType),
   limit: PropTypes.number,
   initialLimit: PropTypes.number,
   noCategoryLabel: PropTypes.bool,

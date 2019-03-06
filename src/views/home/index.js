@@ -8,8 +8,14 @@ import { articleType } from '../../types/article'
 import TheNewestList from './subcomponents/TheNewestList'
 import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
+import { highlightedEventType } from '../../types/highlightedEvent'
 
-const HomePage = ({ posts, highlightedPost, isNotLarge }) => {
+const HomePage = ({
+                    posts,
+                    highlightedPost,
+                    isNotLarge,
+                    highlightedEvents,
+                  }) => {
   const promotedPostsNumber = isNotLarge ? 0 : 2
   const promotedPosts = posts.slice(0, promotedPostsNumber)
   const commonPosts = posts.slice(promotedPostsNumber, posts.length)
@@ -22,7 +28,12 @@ const HomePage = ({ posts, highlightedPost, isNotLarge }) => {
           {!isNotLarge && <TheNewestList posts={promotedPosts} />}
         </Hero>
         <Line />
-        <ArticlesList posts={commonPosts} limit={6} initialLimit={9} />
+        <ArticlesList
+          posts={commonPosts}
+          limit={6}
+          initialLimit={9}
+          highlightedEvents={highlightedEvents}
+        />
       </Wrapper>
     </>
   )
@@ -30,6 +41,7 @@ const HomePage = ({ posts, highlightedPost, isNotLarge }) => {
 
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(articleType),
+  highlightedEvents: PropTypes.arrayOf(highlightedEventType),
   highlightedPost: articleType,
   isNotLarge: PropTypes.bool,
 }
