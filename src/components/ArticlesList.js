@@ -91,9 +91,11 @@ class ArticlesList extends React.Component {
               />
             </ListItem>
           ))}
-          <ListItem key="eventsContainer" size={size}>
-            <EventsContainer events={highlightedEvents}/>
-          </ListItem>
+          {highlightedEvents.length !== 0 && (
+            <ListItem key="eventsContainer" size={size}>
+              <EventsContainer events={highlightedEvents}/>
+            </ListItem>
+          )}
           {postsAfterEventsContainer &&
           postsAfterEventsContainer.map(({ node }) => (
               <ListItem key={node.slug} size={size}>
