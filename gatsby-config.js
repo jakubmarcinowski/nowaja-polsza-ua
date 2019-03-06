@@ -28,15 +28,9 @@ if (!spaceId || !accessToken) {
   )
 }
 
-// todo modify production domain
-const siteUrl =
-  process.env.GATSBY_ENV === 'production'
-    ? 'https://novpol.org/'
-    : 'https://vibrant-golick-e7ab63.netlify.com/'
-
 module.exports = {
   siteMetadata: {
-    siteUrl,
+    siteUrl: process.env.HOST,
     title: 'НОВАЯ ПОЛЬША',
     themeColor: '#172429',
   },
