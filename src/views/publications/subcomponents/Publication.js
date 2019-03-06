@@ -7,6 +7,7 @@ import { mediaQueries } from '../../../utils/mediaQueries'
 import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
 import DownloadButton from './DownloadButton'
+import ReadMoreButton from '../../../components/ReadMoreButton'
 
 const DownloadButtons = styled.div`
   display: flex;
@@ -25,10 +26,10 @@ const AuthorLink = styled(Link)`
 `
 const ParagraphsWrapper = styled.div`
   margin: 2em 0;
-  max-width: 830px;
+  max-width: 83rem;
   line-height: 1.8;
-  font-size: 1.4rem;
   font-weight: 300;
+  font-size: 1.4rem;
 
   @media ${mediaQueries.tablet} {
     line-height: 2;
@@ -46,24 +47,15 @@ const ParagraphsWrapper = styled.div`
     }
   `}
 `
-const ReadMore = styled.button`
-  cursor: pointer;
-  border: 0;
-  padding-bottom: 2px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.greyDark};
-  background: none;
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.greyDark};
-  text-transform: uppercase;
-
-  &:focus {
-    outline: none;
-  }
-`
 
 class Publication extends Component {
   state = {
     hasFullDescription: false,
+  }
+  toggleDescription = () => {
+    this.setState(({ hasFullDescription }) => ({
+      hasFullDescription: !hasFullDescription,
+    }))
   }
   render() {
     const {
@@ -112,15 +104,9 @@ class Publication extends Component {
             }}
           />
         )}
-        <ReadMore
-          onClick={() =>
-            this.setState(({ hasFullDescription }) => ({
-              hasFullDescription: !hasFullDescription,
-            }))
-          }
-        >
+        <ReadMoreButton onClick={this.toggleDescription}>
           {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
-        </ReadMore>
+        </ReadMoreButton>
       </BoxWithPhoto>
     )
   }

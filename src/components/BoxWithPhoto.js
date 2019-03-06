@@ -24,6 +24,13 @@ const Box = styled.div`
     margin: 10rem auto;
   }
 `
+const Info = styled.div`
+  padding: 1rem 1rem 2rem;
+
+  @media ${mediaQueries.tablet} {
+    padding: 3rem 3rem 4rem 1rem;
+  }
+`
 const Image = styled(ImgWrapper)`
   @media ${mediaQueries.tablet} {
     position: absolute;
@@ -33,14 +40,6 @@ const Image = styled(ImgWrapper)`
     min-height: 22rem;
     max-width: 17rem;
     max-height: 22rem;
-  }
-`
-
-const Info = styled.div`
-  padding: 1rem 1rem 2rem;
-
-  @media ${mediaQueries.tablet} {
-    padding: 3rem 3rem 4rem 1rem;
   }
 `
 
