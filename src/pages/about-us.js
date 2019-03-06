@@ -8,12 +8,16 @@ import Layout from '../components/Layout'
 import StaticContent from '../components/StaticContent'
 import Wrapper from '../components/Wrapper'
 
-const WCAGStyled = styled.div`
+const AboutUsStyled = styled.div`
   margin-bottom: 8rem;
 `
 
-const WCAG = ({ data }) => {
-  const { title, content } = data.allContentfulWcagStaticContent.edges[0].node
+const AboutUs = ({ data }) => {
+  const {
+    title,
+    content,
+  } = data.allContentfulAboutUsStaticContent.edges[0].node
+
   const { title: siteTitle } = data.site.siteMetadata
 
   return (
@@ -22,7 +26,7 @@ const WCAG = ({ data }) => {
       {content && (
         <Wrapper>
           <StaticContent>
-            <WCAGStyled
+            <AboutUsStyled
               dangerouslySetInnerHTML={{
                 __html: content.childMarkdownRemark.html,
               }}
@@ -34,21 +38,21 @@ const WCAG = ({ data }) => {
   )
 }
 
-WCAG.propTypes = {
+AboutUs.propTypes = {
   data: PropTypes.any,
 }
 
-export default WCAG
+export default AboutUs
 
-export const WCAGPageQuery = graphql`
-  query WCAGQuery {
+export const AboutUsPageQuery = graphql`
+  query AboutUsQuery {
     site {
       siteMetadata {
         title
       }
     }
 
-    allContentfulWcagStaticContent {
+    allContentfulAboutUsStaticContent {
       edges {
         node {
           id
