@@ -5,7 +5,7 @@ import { childrenType } from '../types/children'
 
 const StyledIconGroup = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   line-height: 2;
 `
 const Icon = styled.img`
