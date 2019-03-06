@@ -10,11 +10,12 @@ const StyledLink = styled.a`
   }
 `
 
-const ExternalLink = ({ url, sameCard, children }) => (
+const ExternalLink = ({ className, url, sameCard, children }) => (
   <StyledLink
     href={url}
     target={sameCard ? '' : '_blank'}
     rel={sameCard ? '' : 'noopener noreferrer'}
+    className={className}
   >
     {children}
   </StyledLink>
@@ -23,6 +24,7 @@ const ExternalLink = ({ url, sameCard, children }) => (
 ExternalLink.propTypes = {
   url: PropTypes.string.isRequired,
   sameCard: PropTypes.bool,
+  className: PropTypes.string,
   children: PropTypes.any,
 }
 
