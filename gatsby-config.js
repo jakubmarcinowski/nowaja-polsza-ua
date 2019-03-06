@@ -30,7 +30,7 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    siteUrl: process.env.HOST,
+    siteUrl: process.env.HOST || 'https://silly-morse-77d306.netlify.com/',
     title: 'НОВАЯ ПОЛЬША',
     themeColor: '#172429',
   },
