@@ -9,13 +9,16 @@ import Categories from './Categories'
 import { mediaQueries } from '../utils/mediaQueries'
 import Wrapper from '../components/Wrapper'
 
+// @TODO add below code instead of background: url(${({ headerPhoto }) => headerPhoto.fluid.src});
+// background: ${props =>
+//   props.currentCategory
+//     ? props.theme.gradients.highlighted[props.currentCategory.color]
+//     : props.theme.gradients.header},
+// url(${({ headerPhoto }) => headerPhoto.fluid.src});
+
 const StyledPageHeader = styled.header`
   background: ${theme.colors.primary};
-  background: ${props =>
-      props.currentCategory
-        ? props.theme.gradients.highlighted[props.currentCategory.color]
-        : props.theme.gradients.header},
-    url(${({ headerPhoto }) => headerPhoto.fluid.src});
+  background: url(${({ headerPhoto }) => headerPhoto.fluid.src});
   background-position: 50% 50%;
   background-size: cover;
   padding: 1rem 0 2rem;

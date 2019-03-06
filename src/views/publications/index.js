@@ -91,6 +91,7 @@ class PublicationPage extends React.Component {
 
 PublicationPage.propTypes = {
   publications: PropTypes.any,
+  title: PropTypes.string,
 }
 
 export default PublicationPage
