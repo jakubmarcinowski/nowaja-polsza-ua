@@ -11,6 +11,8 @@ export const theme = {
     white: '#fff',
     menuBackground: 'rgba(17, 29, 34, 0.98)',
     listItemBackground: 'rgba(155, 155, 155, 0.1)',
+    date: '#8c9c9b',
+    authorLink: '#b42121',
 
     highlighted: {
       dullRed: '#a13636',

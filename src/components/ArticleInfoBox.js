@@ -27,14 +27,14 @@ const InfoBox = styled.div`
 const Date = styled.div`
   margin: 0 2.4rem 0 0;
   color: ${({ theme, color }) =>
-    color ? theme.colors[color] : theme.colors.highlighted.darkGreyBlue};
+    color ? theme.colors[color] : theme.colors.date};
 `
 const AuthorLink = styled(Link)`
   display: inline;
   transition: opacity ${props => props.theme.animations.default};
   margin-bottom: 0.5rem;
   color: ${({ theme, color }) =>
-    color ? theme[color] : theme.colors.highlighted.plum};
+    color ? theme[color] : theme.colors.authorLink};
   font-weight: 700;
 
   &:hover {
