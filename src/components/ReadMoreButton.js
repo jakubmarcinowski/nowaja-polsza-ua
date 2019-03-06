@@ -24,10 +24,7 @@ const ReadMore = styled.button`
 `
 
 const ReadMoreButton = ({ children, onClick }) => (
-  <ReadMore onClick={onClick}>
-    {children}
-    {/* {hasFullDescription ? 'Показывай меньше' : 'Показать больше'} */}
-  </ReadMore>
+  <ReadMore onClick={onClick}>{children}</ReadMore>
 )
 
 ReadMoreButton.propTypes = {

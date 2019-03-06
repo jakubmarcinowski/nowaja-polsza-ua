@@ -11,7 +11,8 @@ const EventsWrapper = styled.div`
   padding: 4rem 0;
 `
 
-// @todo crete styled component for page header which is center and has a line
+// @todo create styled component for page header which is center and has a line
+// @todo style if no events ("Nie mamy w tej chwili wydarzen, zobacz na facebooku")
 
 const EventPage = ({ events }) => (
   <Wrapper size="Medium">
@@ -27,11 +28,12 @@ const EventPage = ({ events }) => (
     </Header>
     <Line />
     <EventsWrapper>
-      {events && events.length === 0
-        ? 'Нет событий'
-        : events.map(({ node, node: { slug } }) => (
-            <Event event={node} key={slug} />
-          ))}
+      {events &&
+        (events.length === 0
+          ? 'Нет событий'
+          : events.map(({ node, node: { slug } }) => (
+              <Event event={node} key={slug} />
+            )))}
     </EventsWrapper>
   </Wrapper>
 )

@@ -26,7 +26,7 @@ const AuthorLink = styled(Link)`
 `
 const ParagraphsWrapper = styled.div`
   margin: 2em 0;
-  max-width: 830px;
+  max-width: 83rem;
   line-height: 1.8;
   font-weight: 300;
 

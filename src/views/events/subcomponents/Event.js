@@ -47,7 +47,7 @@ const Date = styled.span`
 const Location = styled.div`
   margin: 1rem 2rem 0 0;
 `
-const FacebookButton = styled(ExternalLink)`
+const FacebookButton = styled.div`
   display: flex;
   align-items: center;
 `
@@ -61,7 +61,7 @@ const FacebookText = styled.span`
 //@todo Unify ParagraphsWrapper for Event and Publication
 const ParagraphsWrapper = styled.div`
   margin: 2em 0;
-  max-width: 830px;
+  max-width: 83rem;
   line-height: 1.8;
   font-weight: 300;
 
@@ -82,6 +82,7 @@ const ParagraphsWrapper = styled.div`
 `
 
 class Event extends Component {
+  // @todo DRY Create component for toogle description for Events and Publications
   state = {
     hasFullDescription: false,
   }
@@ -104,13 +105,18 @@ class Event extends Component {
     return (
       <BoxWithPhoto image={heroImage}>
         <Container>
-          <div>{displayedDate && <Date>{displayedDate}</Date>}</div>
-
+          {displayedDate && (
+            <div>
+              <Date>{displayedDate}</Date>
+            </div>
+          )}
           {link && (
-            <FacebookButton url={link}>
-              <FacebookIcon src={FacebookIconUrl} />
-              <FacebookText>событие в фейсбуке</FacebookText>
-            </FacebookButton>
+            <ExternalLink url={link}>
+              <FacebookButton>
+                <FacebookIcon src={FacebookIconUrl} />
+                <FacebookText>событие в фейсбуке</FacebookText>
+              </FacebookButton>
+            </ExternalLink>
           )}
         </Container>
         <HeaderBox>
@@ -143,6 +149,8 @@ class Event extends Component {
     )
   }
 }
+
+// @todo ReadMore shoudn't be visible if text is short
 
 Event.propTypes = {
   event: PropTypes.any,
