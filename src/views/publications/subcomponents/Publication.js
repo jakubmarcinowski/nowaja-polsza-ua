@@ -7,6 +7,7 @@ import { mediaQueries } from '../../../utils/mediaQueries'
 import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
 import DownloadButton from './DownloadButton'
+import ReadMoreButton from '../../../components/ReadMoreButton'
 
 const DownloadButtons = styled.div`
   display: flex;
@@ -17,13 +18,17 @@ const DownloadButtons = styled.div`
     width: 280px;
   }
 `
+const AuthorWrapper = styled.div`
+  margin-bottom: 2em;
+`
 const AuthorLink = styled(Link)`
   display: inline-block;
-  margin-bottom: 2em;
 `
 const ParagraphsWrapper = styled.div`
   margin: 2em 0;
+  max-width: 83rem;
   line-height: 1.8;
+  font-weight: 300;
   font-size: 1.4rem;
 
   @media ${mediaQueries.tablet} {
@@ -31,54 +36,26 @@ const ParagraphsWrapper = styled.div`
     font-size: 1.6rem;
   }
 
-  ${({ hasFullDescription, theme }) =>
+  ${({ hasFullDescription }) =>
     !hasFullDescription &&
     `
-    max-height: 9.4rem;
-    position: relative;
+    max-height: 7.3rem;
     overflow: hidden;
 
     @media ${mediaQueries.tablet} {
-      max-height: 12.8rem;
-    }
-
-    &::after {
-      content: '';
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 3rem;
-      background: ${theme.gradients.publication};
+      max-height: 6rem;
     }
   `}
-`
-const ReadMore = styled.button`
-  position: relative;
-  ${({ hasFullDescription }) => !hasFullDescription && 'opacity: 0.5;'}
-  cursor: pointer;
-  border: 0;
-  background: none;
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.black};
-
-  &:focus {
-    outline: none;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 100%;
-    border: 1px solid ${({ theme }) => theme.colors.black};
-  }
 `
 
 class Publication extends Component {
   state = {
     hasFullDescription: false,
+  }
+  toggleDescription = () => {
+    this.setState(({ hasFullDescription }) => ({
+      hasFullDescription: !hasFullDescription,
+    }))
   }
   render() {
     const {
@@ -104,38 +81,32 @@ class Publication extends Component {
             {title}
           </Header>
         )}
-        {authors
-          ? authors.map(({ name, slug }, i, authors) => (
-              <AuthorLink to={`/author/${slug}`} key={i}>
-                {name}
-                {!!authors[i + 1] && <>,&nbsp;</>}
-              </AuthorLink>
-            ))
-          : 'Журнал'}
+        <AuthorWrapper>
+          {authors
+            ? authors.map(({ name, slug }, i, authors) => (
+                <AuthorLink to={`/author/${slug}`} key={i}>
+                  {name}
+                  {!!authors[i + 1] && <>,&nbsp;</>}
+                </AuthorLink>
+              ))
+            : 'Журнал'}
+        </AuthorWrapper>
         <DownloadButtons>
           {pdf && <DownloadButton url={pdf.file.url} text="PDF" />}
           {epub && <DownloadButton url={epub.file.url} text="EPUB" />}
           {mobi && <DownloadButton url={mobi.file.url} text="MOBI" />}
         </DownloadButtons>
         {lead && (
-          <ParagraphsWrapper hasFullDescription={hasFullDescription}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: lead.childMarkdownRemark.html,
-              }}
-            />
-          </ParagraphsWrapper>
+          <ParagraphsWrapper
+            hasFullDescription={hasFullDescription}
+            dangerouslySetInnerHTML={{
+              __html: lead.childMarkdownRemark.html,
+            }}
+          />
         )}
-        <ReadMore
-          hasFullDescription={hasFullDescription}
-          onClick={() =>
-            this.setState(({ hasFullDescription }) => ({
-              hasFullDescription: !hasFullDescription,
-            }))
-          }
-        >
-          {hasFullDescription ? 'Скачать меньше' : 'Загрузить еще'}
-        </ReadMore>
+        <ReadMoreButton onClick={this.toggleDescription}>
+          {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
+        </ReadMoreButton>
       </BoxWithPhoto>
     )
   }

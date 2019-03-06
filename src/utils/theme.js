@@ -4,6 +4,7 @@ export const theme = {
   colors: {
     black: '#000',
     dark: '#111d22',
+    greyDark: '#999999',
     greyLight: '#e5e5e5',
     primary: '#253e48',
     secondary: '#820204',
@@ -41,7 +42,6 @@ export const theme = {
     ),
     linear-gradient(to bottom, rgba(54, 54, 54, 0), rgba(17, 29, 34, 0.56))`,
     article: `linear-gradient(to bottom, rgba(53, 53, 53, 0.57), rgba(0, 0, 0, 0.69))`,
-    publication: `linear-gradient(to bottom, rgba(255, 255, 255, 0), #f5f5f5 75%, #f5f5f5)`,
     highlighted: {
       darkGreyBlue:
         'linear-gradient(to bottom, rgba(140, 156, 155, .85), rgba(17, 29, 34, 0.85))',
@@ -58,6 +58,20 @@ export const theme = {
       multimediaColor:
         'linear-gradient(to bottom, rgba(131, 180, 32, .85), rgba(17, 29, 34, 0.85))',
     },
+    carouselArrowNext: `
+      linear-gradient(
+        to right,
+        rgba(17, 29, 34, 0),
+        rgba(17, 29, 34, 0.85)
+      )
+    `,
+    carouselArrowPrev: `
+    linear-gradient(
+      to left,
+      rgba(17, 29, 34, 0),
+      rgba(17, 29, 34, 0.85)
+    )
+  `,
   },
   fonts: {
     primary: `'Merriweather', serif`,
@@ -65,6 +79,7 @@ export const theme = {
   },
   grid: {
     width: {
+      big: `${contentWidth.big}px`,
       medium: `${contentWidth.medium}px`,
       small: `${contentWidth.small}px`,
     },

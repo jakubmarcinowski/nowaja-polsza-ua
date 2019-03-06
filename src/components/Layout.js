@@ -16,30 +16,25 @@ import { mediaQueries } from '../utils/mediaQueries'
 export const LayoutWrapper = styled.div`
   margin: 7.5rem auto 0;
 
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     margin: 2.5rem auto 0;
   }
 `
 
-const Wrapper = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-`
-
 class Layout extends React.Component {
   state = {
-    isMobileView: false,
+    isNotDesktopView: false,
   }
 
   componentDidMount() {
-    if (window.innerWidth < breakpoints.tablet) {
-      this.setState({ isMobileView: true })
+    if (window.innerWidth < breakpoints.desktop) {
+      this.setState({ isNotDesktopView: true })
     }
   }
 
   render() {
     const { children, currentCategory } = this.props
-    const { isMobileView } = this.state
+    const { isNotDesktopView } = this.state
 
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
@@ -49,13 +44,11 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <>
-          <Wrapper>
-            {isMobileView ? (
-              <MobileMenu currentCategory={currentCategory} />
-            ) : (
-              <PageHeader currentCategory={currentCategory} />
-            )}
-          </Wrapper>
+          {isNotDesktopView ? (
+            <MobileMenu currentCategory={currentCategory} />
+          ) : (
+            <PageHeader currentCategory={currentCategory} />
+          )}
           <LayoutWrapper>
             <Container>{children}</Container>
             <Footer />

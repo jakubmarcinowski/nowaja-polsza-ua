@@ -42,33 +42,20 @@ const ArticleContent = styled.div`
   transform: ${props =>
     props.isActive ? 'translateY(-25rem)' : 'translateY(-16rem)'};
   transition: transform ${({ theme }) => theme.animations.default};
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   min-width: 280px;
   text-align: center;
 
-  ${props =>
-    props.isActive &&
-    `
-      @media ${mediaQueries.tablet} {
-        transform: translateY(-30rem)
-      }
-    `}
+  @media ${mediaQueries.tablet} {
+  transform: ${props =>
+  props.isActive ? 'translateY(-30rem)' : 'translateY(-23rem)'};
+  }
 `
 
 const Lead = styled.div`
   opacity: ${props => (props.isActive ? 1 : 0)};
   transition: opacity ${({ theme }) => theme.animations.default};
-`
-
-const Title = styled(Header)`
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  text-align: center;
-
-  @media ${mediaQueries.desktop} {
-    display: none;
-  }
 `
 
 const LinkOverlay = styled(Link)`
@@ -82,6 +69,7 @@ class HighlightedArticle extends Component {
   state = {
     isActive: false,
     isMobileView: false,
+    isSmallMobile: false,
   }
 
   handleMouseEnter = () =>
@@ -92,8 +80,11 @@ class HighlightedArticle extends Component {
   componentDidMount() {
     if (window.innerWidth < breakpoints.desktop) {
       this.setState({ isMobileView: true })
-      window.innerWidth >= breakpoints.phoneLandscape &&
+      if (window.innerWidth >= breakpoints.phoneLandscape) {
         this.setState({ isActive: true })
+      } else {
+        this.setState({ isSmallMobile: true })
+      }
     }
   }
 
@@ -110,7 +101,6 @@ class HighlightedArticle extends Component {
 
     return (
       <>
-        <Title weight={'Bold'}>выбор редактора</Title>
         <HighlightedArticleStyled
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
@@ -127,13 +117,13 @@ class HighlightedArticle extends Component {
               type={2}
               margin="0 0 1.8rem"
               weight="Bold"
-              lineHeight="Bigger"
+              lineHeight={this.state.isSmallMobile ? 'Small' : 'Bigger'}
             >
               <Link to={`/blog/${slug}`}>{title}</Link>
             </Header>
             <ArticleInfoBox
               authors={authors}
-              publishDate={publishDate}
+              publishDate={!this.state.isMobileView && publishDate}
               justify="center"
               color="white"
               dateLink={`/blog/${slug}`}

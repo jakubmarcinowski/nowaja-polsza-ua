@@ -10,7 +10,7 @@ import Button from '../components/Button'
 const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  ${({ noMargin }) => !noMargin && 'margin: 5rem 0 0;'}
+  ${({ noMargin }) => !noMargin && 'margin: 2.5rem 0 0;'}
   padding: 0;
   list-style: none;
 

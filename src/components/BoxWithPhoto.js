@@ -24,23 +24,22 @@ const Box = styled.div`
     margin: 10rem auto;
   }
 `
-const Image = styled(ImgWrapper)`
-  @media ${mediaQueries.tablet} {
-    position: absolute;
-    top: -2rem;
-    left: -2rem;
-    min-width: 17rem;
-    min-height: 22rem;
-    max-width: 17rem;
-    max-height: 22rem;
-  }
-`
-
 const Info = styled.div`
   padding: 1rem 1rem 2rem;
 
   @media ${mediaQueries.tablet} {
     padding: 3rem 3rem 4rem 1rem;
+  }
+`
+const Image = styled(ImgWrapper)`
+  @media ${mediaQueries.tablet} {
+    position: absolute;
+    top: -1.5rem;
+    left: -1.5rem;
+    min-width: 17rem;
+    min-height: 22rem;
+    max-width: 17rem;
+    max-height: 22rem;
   }
 `
 
