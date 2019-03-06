@@ -68,6 +68,10 @@ const MenuHeader = styled.div`
   z-index: 999;
 
   @media ${mediaQueries.tablet} {
+    padding: 1rem 4rem;
+  }
+
+  @media ${mediaQueries.desktop} {
     display: none;
   }
 `

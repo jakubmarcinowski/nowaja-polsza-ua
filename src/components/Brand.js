@@ -17,7 +17,7 @@ const StyledBrand = styled.div`
   align-items: center;
   margin-bottom: ${props => props.isFullVersion && '3.7rem'};
 
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     margin-top: 0;
     justify-content: center;
   }
@@ -56,7 +56,7 @@ const LogoWrapper = styled.div`
       colorMap(theme)[backgroundColor] || theme.colors[backgroundColor]};
     opacity: ${props => (props.isDarkVersion ? '1' : '0.9')};
 
-    @media ${mediaQueries.tablet} {
+    @media ${mediaQueries.desktop} {
       ${props => props.isFullVersion || 'display: none;'}
     }
   }
@@ -74,7 +74,7 @@ const Logo = styled.img`
   display: block;
   max-height: 18px;
 
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     max-height: ${props => (props.isFullVersion ? '29px' : '50px')};
   }
 `
@@ -82,18 +82,19 @@ const Logo = styled.img`
 const Title = styled(Header)`
   font-size: 1.4rem;
 
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     font-size: ${props => (props.isFullVersion ? '2.0rem' : '2.7rem')};
   }
 `
 
 const Subtitle = styled(Header)`
+  display: none;
   font-family: ${theme.fonts.secondary};
   font-size: ${props => (props.isFullVersion ? '1.6rem' : '2.1rem')};
   letter-spacing: 0.5px;
 
-  @media ${mediaQueries.phoneOnly} {
-    display: none;
+  @media ${mediaQueries.desktop} {
+    display: block;
   }
 `
 
@@ -108,16 +109,16 @@ const LogoSubtitleRight = styled(Subtitle)`
 const TitleWrapper = styled.div`
   margin-left: 15px;
 
-  @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.desktop} {
     margin-left: ${props => (props.isFullVersion ? '0' : '20px')};
   }
 `
 
 const BreakLine = styled.br`
-  display: none;
+display: block;
 
-  @media ${mediaQueries.phoneOnly} {
-    display: block;
+  @media ${mediaQueries.desktop} {
+    display: none;
   }
 `
 
