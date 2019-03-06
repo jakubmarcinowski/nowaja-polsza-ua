@@ -29,9 +29,11 @@ const ParagraphsWrapper = styled.div`
   max-width: 83rem;
   line-height: 1.8;
   font-weight: 300;
+  font-size: 1.4rem;
 
   @media ${mediaQueries.tablet} {
     line-height: 2;
+    font-size: 1.6rem;
   }
 
   ${({ hasFullDescription }) =>
