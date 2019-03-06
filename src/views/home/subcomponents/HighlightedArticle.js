@@ -53,7 +53,8 @@ const ArticleContent = styled.div`
   }
 
   @media ${mediaQueries.tablet} {
-    transform: translateY(-26rem);
+    transform: ${({ isActive }) =>
+      isActive ? 'translateY(-33rem)' : 'translateY(-26rem)'};
   }
 `
 const StyledHeader = styled(Header)`
