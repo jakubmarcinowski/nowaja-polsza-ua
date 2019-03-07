@@ -41,7 +41,8 @@ export const EventsPageQuery = graphql`
           displayedDate
           organizer
           link
-          location
+          address
+          city
           heroImage {
             fluid(maxWidth: 768, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
