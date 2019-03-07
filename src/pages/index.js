@@ -94,6 +94,7 @@ export const pageQuery = graphql`
     }
 
     contentfulHomepageStaticContent {
+      importantInfoStatus
       importantInfo
       importantInfoLinkUrl
     }

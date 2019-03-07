@@ -32,14 +32,17 @@ const Info = styled(Paragraph)`
 
 const ImportantInfo = ({ importantInfo }) => (
   <ImportantInfoBox>
-    <Info weight="Light">{importantInfo.importantInfo}</Info>
-    {importantInfo.importantInfoLinkUrl && (
-      <ExternalLink url={importantInfo.importantInfoLinkUrl}>
-        <Link weight="Light">
-          <u>узнать&nbsp;больше</u>
-        </Link>
-      </ExternalLink>
+    {importantInfo.importantInfo && (
+      <Info weight="Light">{importantInfo.importantInfo}</Info>
     )}
+    {importantInfo.importantInfoStatus === 'visibleWithLink' &&
+      (importantInfo.importantInfoLinkUrl && (
+        <ExternalLink url={importantInfo.importantInfoLinkUrl}>
+          <Link weight="Light">
+            <u>узнать&nbsp;больше</u>
+          </Link>
+        </ExternalLink>
+      ))}
   </ImportantInfoBox>
 )
 
