@@ -59,8 +59,6 @@ const rodoQuery = graphql`
   }
 `
 
-// Наш веб-сайт использует файлы cookie для обеспечения лучшего доступа к предлагаемому контенту, а также в статистических целях. Нажимая на любую ссылку на этом сайте, вы даете свое согласие на использование и хранение файлов cookie.
-
 class Rodo extends Component {
   state = {
     isRodoAccepted: cookie.load('rodo-accepted'),
