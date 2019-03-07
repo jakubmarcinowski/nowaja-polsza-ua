@@ -13,10 +13,14 @@ const ReadMore = styled.button`
   background: none;
   color: ${({ theme }) => theme.colors.greyDark};
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 500;
 
   &:focus {
     outline: none;
+  }
+  
+  &:hover {
+    color: ${({ theme }) => theme.colors.doveGray};
   }
 
   @media ${mediaQueries.tablet} {
