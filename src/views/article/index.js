@@ -227,6 +227,12 @@ const ArticlePage = ({
         <ArticleSocialMediaList />
         <SectionWrapper>
           <HeaderStyled size="Biggest">
+            Вам также может понравиться
+          </HeaderStyled>
+          <RecommendedArticles posts={posts} />
+        </SectionWrapper>
+        <SectionWrapper>
+          <HeaderStyled size="Biggest">
             {authors && (authors.length > 1 ? 'Авторы' : 'Автор')}
           </HeaderStyled>
           {authors &&
@@ -239,12 +245,6 @@ const ArticlePage = ({
             ) : (
               <AuthorShort author={authors[0]} />
             ))}
-        </SectionWrapper>
-        <SectionWrapper>
-          <HeaderStyled size="Biggest">
-            Вам также может понравиться
-          </HeaderStyled>
-          <RecommendedArticles posts={posts} />
         </SectionWrapper>
       </Wrapper>
     </StyledArticle>

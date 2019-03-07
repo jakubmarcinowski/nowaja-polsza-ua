@@ -32,7 +32,7 @@ export const EventsPageQuery = graphql`
         title
       }
     }
-    allContentfulEvent(sort: { fields: [expirationDate], order: DESC }) {
+    allContentfulEvent(sort: { fields: [expirationDate], order: ASC }) {
       edges {
         node {
           title
