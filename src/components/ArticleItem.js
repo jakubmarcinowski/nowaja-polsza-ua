@@ -11,6 +11,7 @@ import Header from './Header'
 import PhotoLabel from '../components/PhotoLabel'
 import playIcon from '../../static/icon-play.svg'
 import headphonesIcon from '../../static/icon-headphones.svg'
+import AnimatedLink from './AnimatedLink'
 
 const ImgBox = styled.div`
   position: relative;
@@ -107,7 +108,9 @@ const ArticleItem = ({
               overflow="hidden"
               height="6.2"
             >
-              <Link to={`/blog/${slug}`}>{title}</Link>
+              <AnimatedLink url={`/blog/${slug}`} opacity={0.7}>
+                {title}
+              </AnimatedLink>
             </Header>
           )}
           {lead && (
