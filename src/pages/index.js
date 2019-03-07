@@ -28,12 +28,9 @@ class RootIndex extends React.Component {
     )
     const highlightedPost = get(
       this,
-      'props.data.contentfulHighlightedPost.post'
+      'props.data.allContentfulHighlightedEvents.edges[0].node.events'
     )
     const highlightedEvents = get(this, 'props.data.allContentfulEvent.edges')
-
-    //todo remove when get highlighted events not newest ones
-    const newestEvents = highlightedEvents.slice(0, 2)
 
     return (
       <Layout>
@@ -44,7 +41,7 @@ class RootIndex extends React.Component {
             highlightedPost={highlightedPost}
             isNotLarge={isNotLarge}
             importantInfo={importantInfo}
-            highlightedEvents={newestEvents}
+            highlightedEvents={highlightedEvents}
           />
         </div>
       </Layout>
@@ -123,14 +120,19 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulEvent(sort: { fields: [expirationDate], order: ASC }) {
+    allContentfulHighlightedEvents {
       edges {
         node {
-          id
+          events {
+            id
+            title
+            city
+            expirationDay: expirationDate(formatString: "DD", locale: "ru")
+            expirationMonth: expirationDate(formatString: "MMMM", locale: "ru")
+            address
+          }
           title
-          expirationDay: expirationDate(formatString: "DD", locale: "ru")
-          expirationMonth: expirationDate(formatString: "MMMM", locale: "ru")
-          city
+          id
         }
       }
     }
