@@ -5,59 +5,50 @@ import PropTypes from 'prop-types'
 import { mediaQueries } from '../../../utils/mediaQueries'
 import BoxWithPhoto from '../../../components/BoxWithPhoto'
 import Header from '../../../components/Header'
-import FacebookIconUrl from '../../../../static/icon-facebook-event.svg'
+import IconPin from '../../../../static/icon-pin.svg'
+import IconTicket from '../../../../static/icon-ticket.svg'
+import IconUser from '../../../../static/icon-user.svg'
 import ExternalLink from '../../../components/ExternalLink'
 import ReadMoreButton from '../../../components/ReadMoreButton'
+import IconGroup from '../../../components/IconGroup'
 
 const Container = styled.div`
-  margin-bottom: 1em;
-
   @media ${mediaQueries.tablet} {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
   }
 `
-const HeaderBox = styled.div`
-  margin-bottom: 1rem;
-
-  @media ${mediaQueries.tablet} {
-    margin-bottom: 0;
-  }
+const LeftColumn = styled.div`
+  flex: 1;
 `
-const Organizer = styled.div`
-  margin-bottom: 1em;
+const RightColumn = styled.div`
+  @media ${mediaQueries.desktop} {
+    flex: 0 0 200px;
+  }
 `
 const Date = styled.span`
   display: inline-block;
-  margin: 0 0 1rem;
+  margin: 0 0 1.5rem;
   padding: 0 2rem;
+  font-family: ${({ theme }) => theme.fonts.secondary};
 
-  line-height: 1.8;
+  line-height: 2.4;
   background: ${({ theme }) => theme.colors.dark};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
 
   @media ${mediaQueries.tablet} {
-    margin: 1rem 1rem 1rem 0;
     font-size: 1.8rem;
   }
 `
-const Location = styled.div`
-  margin: 1rem 2rem 0 0;
-`
-const FacebookButton = styled.div`
-  display: flex;
-  align-items: center;
-`
-const FacebookIcon = styled.img`
-  margin-right: 1.5rem;
-`
-const FacebookText = styled.span`
+const TicketText = styled.span`
+  text-transform: uppercase;
+  font-size: 1.4rem;
   font-weight: 700;
+  font-family: ${({ theme }) => theme.fonts.secondary};
 `
-
 //@todo Unify ParagraphsWrapper for Event and Publication
 const ParagraphsWrapper = styled.div`
   margin: 2em 0;
@@ -101,41 +92,46 @@ class Event extends Component {
       displayedDate,
       organizer,
       link,
-      location,
+      city,
+      address,
     } = this.props.event
     const { hasFullDescription } = this.state
     return (
       <BoxWithPhoto image={heroImage}>
         <Container>
-          {displayedDate && (
-            <div>
-              <Date>{displayedDate}</Date>
-            </div>
-          )}
-          {link && (
-            <ExternalLink url={link}>
-              <FacebookButton>
-                <FacebookIcon src={FacebookIconUrl} />
-                <FacebookText>событие в фейсбуке</FacebookText>
-              </FacebookButton>
-            </ExternalLink>
-          )}
+          <LeftColumn>
+            {displayedDate && (
+              <div>
+                <Date>{displayedDate}</Date>
+              </div>
+            )}
+
+            {title && (
+              <Header
+                size="Bigger"
+                margin="0 0 0.4em"
+                color="Black"
+                weight="Bold"
+                type={3}
+              >
+                {title}
+              </Header>
+            )}
+            {city && address && (
+              <IconGroup src={IconPin}>{`${address} ${city}`}</IconGroup>
+            )}
+            {organizer && <IconGroup src={IconUser}>{organizer}</IconGroup>}
+          </LeftColumn>
+          <RightColumn>
+            {link && (
+              <ExternalLink url={link}>
+                <IconGroup src={IconTicket}>
+                  <TicketText>событие в фейсбуке</TicketText>
+                </IconGroup>
+              </ExternalLink>
+            )}
+          </RightColumn>
         </Container>
-        <HeaderBox>
-          {title && (
-            <Header
-              size="Big"
-              margin="0 0 0.8em"
-              color="Black"
-              weight="Bold"
-              type={3}
-            >
-              {title}
-            </Header>
-          )}
-          {organizer && <Organizer>{organizer}</Organizer>}
-          {location && <Location>{location}</Location>}
-        </HeaderBox>
         {lead && (
           <ParagraphsWrapper
             hasFullDescription={hasFullDescription}

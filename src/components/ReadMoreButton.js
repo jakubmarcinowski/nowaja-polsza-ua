@@ -9,6 +9,7 @@ const ReadMore = styled.button`
   cursor: pointer;
   border: 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.greyDark};
+  padding: 0;
   background: none;
   color: ${({ theme }) => theme.colors.greyDark};
   text-transform: uppercase;

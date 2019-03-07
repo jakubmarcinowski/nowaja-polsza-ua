@@ -8,11 +8,13 @@ import PublicationPage from '../views/publications'
 
 const Publications = ({ data }) => {
   const publications = data.allContentfulPublication.edges
+  const siteTitle = data.site.siteMetadata.title
+  const title = 'Библиотека'
 
   return (
     <Layout>
-      <Helmet title="Publications" />
-      <PublicationPage publications={publications} />
+      <Helmet title={`${title} | ${siteTitle}`} />
+      <PublicationPage publications={publications} title={title} />
     </Layout>
   )
 }
@@ -25,11 +27,17 @@ export default Publications
 
 export const PublicationsPageQuery = graphql`
   query PublicationQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allContentfulPublication(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           title
           slug
+          typeOfPublications
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
             id

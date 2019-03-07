@@ -11,10 +11,10 @@ import Wrapper from '../components/Wrapper'
 
 const StyledPageHeader = styled.header`
   background: ${theme.colors.primary};
-  background: ${props =>
-      props.currentCategory
-        ? props.theme.gradients.highlighted[props.currentCategory.color]
-        : props.theme.gradients.header},
+  background: ${({ currentCategory, theme }) =>
+      currentCategory
+        ? theme.gradients.highlighted[currentCategory.color]
+        : theme.gradients.header},
     url(${({ headerPhoto }) => headerPhoto.fluid.src});
   background-position: 50% 50%;
   background-size: cover;

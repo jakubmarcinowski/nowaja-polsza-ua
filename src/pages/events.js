@@ -8,11 +8,13 @@ import EventPage from '../views/events'
 
 const Events = ({ data }) => {
   const events = data.allContentfulEvent.edges
+  const siteTitle = data.site.siteMetadata.title
+  const title = 'Предстоящие события'
 
   return (
     <Layout>
-      <Helmet title="Events" />
-      <EventPage events={events} />
+      <Helmet title={`${title} | ${siteTitle}`} />
+      <EventPage events={events} title={title} />
     </Layout>
   )
 }
@@ -25,7 +27,12 @@ export default Events
 
 export const EventsPageQuery = graphql`
   query EventQuery {
-    allContentfulEvent(sort: { fields: [expirationDate], order: DESC }) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allContentfulEvent(sort: { fields: [expirationDate], order: ASC }) {
       edges {
         node {
           title
@@ -34,7 +41,8 @@ export const EventsPageQuery = graphql`
           displayedDate
           organizer
           link
-          location
+          address
+          city
           heroImage {
             fluid(maxWidth: 768, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid

@@ -21,7 +21,7 @@ const Box = styled.div`
   }
 
   @media ${mediaQueries.desktop} {
-    margin: 10rem auto;
+    margin: 7rem auto;
   }
 `
 const Info = styled.div`

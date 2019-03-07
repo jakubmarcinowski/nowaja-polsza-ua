@@ -22,10 +22,15 @@ class RootIndex extends React.Component {
     const { isNotLarge } = this.state
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+    const importantInfo = get(
+      this,
+      'props.data.contentfulHomepageStaticContent'
+    )
     const highlightedPost = get(
       this,
-      'props.data.contentfulHighlightedPost.post'
+      'props.data.contentfulHighlightedPost.post',
     )
+    const highlightedEvents = get(this, 'props.data.allContentfulHighlightedEvents.edges[0].node.events')
 
     return (
       <Layout>
@@ -35,6 +40,8 @@ class RootIndex extends React.Component {
             posts={posts}
             highlightedPost={highlightedPost}
             isNotLarge={isNotLarge}
+            importantInfo={importantInfo}
+            highlightedEvents={highlightedEvents}
           />
         </div>
       </Layout>
@@ -51,6 +58,7 @@ export const pageQuery = graphql`
         title
       }
     }
+
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
@@ -81,6 +89,13 @@ export const pageQuery = graphql`
         }
       }
     }
+
+    contentfulHomepageStaticContent {
+      importantInfoStatus
+      importantInfo
+      importantInfoLinkUrl
+    }
+
     contentfulHighlightedPost {
       title
       post {
@@ -103,6 +118,22 @@ export const pageQuery = graphql`
           }
         }
         title
+      }
+    }
+    allContentfulHighlightedEvents {
+      edges {
+        node {
+          events {
+            id
+            title
+            city
+            expirationDay: expirationDate(formatString: "DD", locale: "ru")
+            expirationMonth: expirationDate(formatString: "MMMM", locale: "ru")
+            address
+          }
+          title
+          id
+        }
       }
     }
   }

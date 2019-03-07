@@ -26,6 +26,7 @@
 3. CONTENTFUL_SPACE_ID - found in contentful Settings/API keys/content delivery preview tokens
 4. CONTENTFUL_DELIVERY_TOKEN - found in contentful Settings/API keys/content delivery preview tokens
 5. CONTENTFUL_API = 'delivery' - This variable controls the contentful API that we use Delivery or Preview.
+6. HOST = hostname used for sitemap and host values in robots.txt
 
 ### Preview Environment
 
@@ -36,6 +37,7 @@ In order to have the ability to preview the content that you put in contentful, 
 3. CONTENTFUL_SPACE_ID - found in contentful Settings/API keys/content delivery preview tokens
 4. CONTENTFUL_PREVIEW_TOKEN - found in contentful Settings/API keys/content delivery preview tokens.
 5. CONTENTFUL_API = 'preview' - This variable controls the contentful API that we use Delivery or Preview.
+6. HOST = hostname used for sitemap and host values in robots.txt
 
 Keep in mind that in preview env you don't set CONTENTFUL_DELIVERY_TOKEN instead you set CONTENTFUL_PREVIEW_TOKEN. Use contentful [docs](https://www.contentful.com/developers/docs/references/content-preview-api/#/introduction/preview-api-authentication) for reference
 
