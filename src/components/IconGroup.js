@@ -5,16 +5,16 @@ import { childrenType } from '../types/children'
 
 const StyledIconGroup = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   line-height: 2;
 `
 const Icon = styled.img`
   margin-right: 1.2rem;
 `
 
-const IconGroup = ({ src, children }) => (
+const IconGroup = ({ className, src, children }) => (
   <div>
-    <StyledIconGroup>
+    <StyledIconGroup className={className}>
       <Icon src={src} />
       {children}
     </StyledIconGroup>
@@ -24,6 +24,7 @@ const IconGroup = ({ src, children }) => (
 IconGroup.propTypes = {
   children: childrenType,
   src: PropTypes.string,
+  className: PropTypes.string,
 }
 
 export default IconGroup

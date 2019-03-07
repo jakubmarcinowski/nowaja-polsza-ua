@@ -11,11 +11,12 @@ import ReadMoreButton from '../../../components/ReadMoreButton'
 
 const DownloadButtons = styled.div`
   display: flex;
-  width: 240px;
+  max-width: 240px;
   justify-content: space-between;
 
   @media ${mediaQueries.tablet} {
     width: 280px;
+    max-width: inherit;
   }
 `
 const AuthorWrapper = styled.div`

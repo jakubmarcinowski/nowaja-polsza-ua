@@ -90,7 +90,7 @@ const ParagraphWrap = styled.p`
   ${({ margin }) => margin && `margin: ${margin};`};
   line-height: ${({ lineHeight }) => lineHeightMap[lineHeight]};
   color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
-  font-size: ${({ size }) => fontSizeMap[size] * 0.7}rem;
+  font-size: ${({ size }) => fontSizeMap[size] * 0.75}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
 
   @media ${mediaQueries.tablet} {
