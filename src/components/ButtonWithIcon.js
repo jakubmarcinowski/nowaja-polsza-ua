@@ -15,6 +15,7 @@ const Item = styled.div`
 const Icon = styled.img`
   transition: filter ${props => props.theme.animations.default};
   margin-right: ${({ gap }) => gap};
+  max-width: 1.2rem;
 
   ${StyledButtonWithIcon}:hover & {
     filter: invert(1);

@@ -10,11 +10,12 @@ const StyledArticleSocialMediaList = styled(SocialMediaList)`
   align-items: center;
   justify-content: space-between;
   max-width: 200px;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
   padding: 20px 0;
 
   @media ${mediaQueries.tablet} {
     padding: 50px 0;
+    margin: 0 auto 5rem;
   }
 `
 

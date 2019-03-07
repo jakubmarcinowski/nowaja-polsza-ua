@@ -74,7 +74,7 @@ class ArticlesList extends React.Component {
     const eventsContainerPosition = 2
     const postsBeforeEventsContainer = slicedPosts.slice(
       0,
-      eventsContainerPosition,
+      eventsContainerPosition
     )
     const postsAfterEventsContainer = slicedPosts.slice(eventsContainerPosition)
 
@@ -82,22 +82,22 @@ class ArticlesList extends React.Component {
       <>
         <StyledList noMargin={noMargin}>
           {postsBeforeEventsContainer &&
-          postsBeforeEventsContainer.map(({ node }) => (
-            <ListItem key={node.slug} size={size}>
-              <ArticleItem
-                article={node}
-                key={node.slug}
-                noCategoryLabel={noCategoryLabel}
-              />
-            </ListItem>
-          ))}
+            postsBeforeEventsContainer.map(({ node }) => (
+              <ListItem key={node.slug} size={size}>
+                <ArticleItem
+                  article={node}
+                  key={node.slug}
+                  noCategoryLabel={noCategoryLabel}
+                />
+              </ListItem>
+            ))}
           {highlightedEvents && highlightedEvents.length !== 0 && (
             <ListItem key="eventsContainer" size={size}>
-              <EventsContainer events={highlightedEvents}/>
+              <EventsContainer events={highlightedEvents} />
             </ListItem>
           )}
           {postsAfterEventsContainer &&
-          postsAfterEventsContainer.map(({ node }) => (
+            postsAfterEventsContainer.map(({ node }) => (
               <ListItem key={node.slug} size={size}>
                 <ArticleItem
                   article={node}

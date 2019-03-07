@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { mediaQueries } from '../utils/mediaQueries'
 import { theme } from '../utils/theme'
 
 const StyledNavigation = styled.ul`
@@ -19,10 +18,6 @@ const Item = styled.li`
   font-size: 1.6rem;
   font-family: ${theme.fonts.secondary};
   letter-spacing: 0.5px;
-
-  @media ${mediaQueries.tablet} {
-    font-size: 2rem;
-  }
 `
 
 const FooterNavigation = () => (
