@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { StaticQuery } from 'gatsby'
 
 import Header from './Header'
 import logo from '../../static/logo.svg'
@@ -114,7 +115,7 @@ const TitleWrapper = styled.div`
 `
 
 const BreakLine = styled.br`
-display: block;
+  display: block;
 
   @media ${mediaQueries.desktop} {
     display: none;
@@ -141,6 +142,13 @@ const BoxRight = styled.span`
   margin-left: auto;
 `
 
+const BrandQuery = graphql`
+  query BrandQuery {
+    contentfulHomepageStaticContent {
+      motto
+    }
+  }
+`
 class Brand extends React.Component {
   getLogoContainer(isFullVersion, isDarkVersion, isInHeader) {
     return (
@@ -228,14 +236,25 @@ class Brand extends React.Component {
               НОВАЯ <BreakLine />
               ПОЛЬША
             </Title>
-            <Subtitle
-              isFullVersion={isFullVersion}
-              type={2}
-              size="Medium"
-              color={isDarkVersion ? 'Dark' : 'White'}
-            >
-              Наша миссия - Истина
-            </Subtitle>
+
+            <StaticQuery
+              query={BrandQuery}
+              render={({ contentfulHomepageStaticContent }) => (
+                <>
+                  {contentfulHomepageStaticContent &&
+                    contentfulHomepageStaticContent.motto && (
+                      <Subtitle
+                        isFullVersion={isFullVersion}
+                        type={2}
+                        size="Medium"
+                        color={isDarkVersion ? 'Dark' : 'White'}
+                      >
+                        {contentfulHomepageStaticContent.motto}
+                      </Subtitle>
+                    )}
+                </>
+              )}
+            />
           </TitleWrapper>
         </Link>
       </StyledBrand>
