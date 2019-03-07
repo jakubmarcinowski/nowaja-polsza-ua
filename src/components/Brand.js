@@ -50,7 +50,6 @@ const LogoWrapper = styled.div`
     left: ${props => (props.isFullVersion ? '-13px' : '-8px')};
     right: ${props => (props.isFullVersion ? '-13px' : '-8px')};
     bottom: ${props => (props.isFullVersion ? '-11px' : '-8px')};
-    border: 1px solid black;
     border-radius: 50%;
     background-color: ${({ backgroundColor }) =>
       colorMap(theme)[backgroundColor] || theme.colors[backgroundColor]};
