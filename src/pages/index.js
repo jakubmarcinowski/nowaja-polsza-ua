@@ -26,6 +26,13 @@ class RootIndex extends React.Component {
       this,
       'props.data.contentfulHighlightedPost.post'
     )
+    const highlightedEvents = get(
+      this,
+      'props.data.allContentfulEvent.edges',
+    )
+
+    //todo remove when get highlighted events not newest ones
+    const newestEvents = highlightedEvents.slice(0, 2)
 
     return (
       <Layout>
@@ -35,6 +42,7 @@ class RootIndex extends React.Component {
             posts={posts}
             highlightedPost={highlightedPost}
             isNotLarge={isNotLarge}
+            highlightedEvents={newestEvents}
           />
         </div>
       </Layout>
@@ -103,6 +111,17 @@ export const pageQuery = graphql`
           }
         }
         title
+      }
+    }
+    allContentfulEvent(sort: { fields: [expirationDate], order: ASC }) {
+      edges {
+        node {
+          id
+          title
+          expirationDay: expirationDate(formatString: "DD", locale: "ru")
+          expirationMonth: expirationDate(formatString: "MMMM", locale: "ru")
+          city
+        }
       }
     }
   }
