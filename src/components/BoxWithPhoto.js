@@ -25,7 +25,11 @@ const Box = styled.div`
   }
 `
 const Info = styled.div`
-  padding: 1rem 1rem 2rem;
+  padding: 2rem;
+
+  @media ${mediaQueries.phoneLandscape} {
+    padding: 3rem;
+  }
 
   @media ${mediaQueries.tablet} {
     padding: 3rem 3rem 4rem 1rem;

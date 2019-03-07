@@ -20,17 +20,24 @@ const Container = styled.div`
     flex-wrap: wrap;
   }
 `
+
+const ContainerTop = styled.div`
+  margin-bottom: 1rem;
+
+  @media ${mediaQueries.tablet} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+`
+
 const LeftColumn = styled.div`
   flex: 1;
 `
-const RightColumn = styled.div`
-  @media ${mediaQueries.desktop} {
-    flex: 0 0 200px;
-  }
-`
+
 const Date = styled.span`
   display: inline-block;
-  margin: 0 0 1.5rem;
   padding: 0 2rem;
   font-family: ${({ theme }) => theme.fonts.secondary};
 
@@ -45,9 +52,17 @@ const Date = styled.span`
 `
 const TicketText = styled.span`
   text-transform: uppercase;
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 500;
   font-family: ${({ theme }) => theme.fonts.secondary};
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  @media ${mediaQueries.tablet} {
+    font-size: 1.4rem;
+  }
 `
 //@todo Unify ParagraphsWrapper for Event and Publication
 const ParagraphsWrapper = styled.div`
@@ -74,6 +89,37 @@ const ParagraphsWrapper = styled.div`
   `}
 `
 
+const Details = styled(Header)`
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+
+  @media ${mediaQueries.tablet} {
+    font-size: 1.4rem;
+  }
+
+  @media ${mediaQueries.desktop} {
+    font-size: 1.6rem;
+  }
+`
+
+const DetailsWrapper = styled(IconGroup)`
+  margin-bottom: 1rem;
+`
+
+const TicketsContainerDesktop = styled.div`
+  display: none;
+
+  @media ${mediaQueries.tablet} {
+    display: block;
+  }
+`
+
+const TicketsContainerMobile = styled.div`
+  @media ${mediaQueries.tablet} {
+    display: none;
+  }
+`
+
 class Event extends Component {
   // @todo DRY Create component for toogle description for Events and Publications
   state = {
@@ -98,18 +144,33 @@ class Event extends Component {
     const { hasFullDescription } = this.state
     return (
       <BoxWithPhoto image={heroImage}>
-        <Container>
+        <ContainerTop>
           <LeftColumn>
             {displayedDate && (
               <div>
                 <Date>{displayedDate}</Date>
               </div>
             )}
-
+          </LeftColumn>
+          <TicketsContainerDesktop>
+            {link && (
+              <ExternalLink url={link}>
+                <IconGroup src={IconTicket}>
+                  <TicketText>
+                    <u>событие в фейсбуке</u>
+                  </TicketText>
+                </IconGroup>
+              </ExternalLink>
+            )}
+          </TicketsContainerDesktop>
+        </ContainerTop>
+        <Container>
+          <LeftColumn>
             {title && (
               <Header
                 size="Bigger"
-                margin="0 0 0.4em"
+                lineHeight="Medium"
+                margin="0 0 2.5rem"
                 color="Black"
                 weight="Bold"
                 type={3}
@@ -118,19 +179,39 @@ class Event extends Component {
               </Header>
             )}
             {city && address && (
-              <IconGroup src={IconPin}>{`${address} ${city}`}</IconGroup>
+              <DetailsWrapper src={IconPin}>
+                <Details
+                  type={2}
+                  size="Medium"
+                  color="Dark"
+                  lineHeight="Medium"
+                >{`${address} ${city}`}</Details>
+              </DetailsWrapper>
             )}
-            {organizer && <IconGroup src={IconUser}>{organizer}</IconGroup>}
+            {organizer && (
+              <DetailsWrapper src={IconUser}>
+                <Details
+                  type={2}
+                  size="Medium"
+                  color="Dark"
+                  lineHeight="Medium"
+                >
+                  {organizer}
+                </Details>
+              </DetailsWrapper>
+            )}
+            <TicketsContainerMobile>
+              {link && (
+                <ExternalLink url={link}>
+                  <IconGroup src={IconTicket}>
+                    <TicketText>
+                      <u>событие в фейсбуке</u>
+                    </TicketText>
+                  </IconGroup>
+                </ExternalLink>
+              )}
+            </TicketsContainerMobile>
           </LeftColumn>
-          <RightColumn>
-            {link && (
-              <ExternalLink url={link}>
-                <IconGroup src={IconTicket}>
-                  <TicketText>событие в фейсбуке</TicketText>
-                </IconGroup>
-              </ExternalLink>
-            )}
-          </RightColumn>
         </Container>
         {lead && (
           <ParagraphsWrapper
