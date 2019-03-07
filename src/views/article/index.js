@@ -221,12 +221,12 @@ const ArticlePage = ({
         )}
 
         <ArticleSocialMediaList />
-        <SectionWrapper>
+        <div>
           <HeaderStyled size="Biggest">
             Вам также может понравиться
           </HeaderStyled>
           <RecommendedArticles posts={posts} />
-        </SectionWrapper>
+        </div>
         <SectionWrapper>
           <HeaderStyled size="Biggest">
             {authors && (authors.length > 1 ? 'Авторы' : 'Автор')}

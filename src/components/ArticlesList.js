@@ -22,22 +22,16 @@ const StyledList = styled.ul`
 `
 const ListItem = styled.li`
   flex: 0 0 100%;
-
-  &:not(:last-child) {
-    padding: 0 0 4rem;
-  }
+  padding-bottom: 4rem;
 
   @media ${mediaQueries.tablet} {
     flex: 0 0 calc(100% / 2);
-
-    &:not(:last-child) {
-      padding: 0 2.5rem;
-    }
+    padding: 0 2.5rem 6.5rem;
   }
 
   @media ${mediaQueries.large} {
     ${({ size }) => size !== 'Big' && 'flex: 0 0 calc(100% / 3);'}
-    padding: 0 2.5rem;
+    padding: 0 2.5rem 9.5rem;
   }
 `
 const ButtonWrapper = styled.div`
