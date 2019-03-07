@@ -92,7 +92,8 @@ class Event extends Component {
       displayedDate,
       organizer,
       link,
-      location,
+      city,
+      address,
     } = this.props.event
     const { hasFullDescription } = this.state
     return (
@@ -116,7 +117,9 @@ class Event extends Component {
                 {title}
               </Header>
             )}
-            {location && <IconGroup src={IconPin}>{location}</IconGroup>}
+            {city && address && (
+              <IconGroup src={IconPin}>{`${address} ${city}`}</IconGroup>
+            )}
             {organizer && <IconGroup src={IconUser}>{organizer}</IconGroup>}
           </LeftColumn>
           <RightColumn>

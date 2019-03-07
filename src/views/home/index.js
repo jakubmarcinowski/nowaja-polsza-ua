@@ -9,13 +9,15 @@ import TheNewestList from './subcomponents/TheNewestList'
 import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
 import { highlightedEventType } from '../../types/highlightedEvent'
+import ImportantInfo from './subcomponents/ImportantInfo'
 
 const HomePage = ({
-                    posts,
-                    highlightedPost,
-                    isNotLarge,
-                    highlightedEvents,
-                  }) => {
+  posts,
+  highlightedPost,
+  isNotLarge,
+  highlightedEvents,
+  importantInfo,
+}) => {
   const promotedPostsNumber = isNotLarge ? 0 : 2
   const promotedPosts = posts.slice(0, promotedPostsNumber)
   const commonPosts = posts.slice(promotedPostsNumber, posts.length)
@@ -23,6 +25,11 @@ const HomePage = ({
   return (
     <>
       <Wrapper>
+        {importantInfo &&
+          importantInfo.importantInfoStatus &&
+          importantInfo.importantInfoStatus !== 'hidden' && (
+            <ImportantInfo importantInfo={importantInfo} />
+          )}
         <Hero>
           <HighlightedArticle post={highlightedPost} />
           {!isNotLarge && <TheNewestList posts={promotedPosts} />}
@@ -44,6 +51,7 @@ HomePage.propTypes = {
   highlightedEvents: PropTypes.arrayOf(highlightedEventType),
   highlightedPost: articleType,
   isNotLarge: PropTypes.bool,
+  importantInfo: PropTypes.any,
 }
 
 export default HomePage

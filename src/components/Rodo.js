@@ -58,6 +58,7 @@ const rodoQuery = graphql`
     }
   }
 `
+
 class Rodo extends Component {
   state = {
     isRodoAccepted: cookie.load('rodo-accepted'),

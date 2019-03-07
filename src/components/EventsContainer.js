@@ -60,7 +60,7 @@ const EventsContainer = ({ events }) => (
       </HeaderContainer>
       <EventsList>
         {events &&
-        events.map(({ node }) => <EventItem event={node} key={node.id}/>)}
+          events.map(event => <EventItem event={event} key={event.id} />)}
       </EventsList>
       <ButtonContainer>
         <ReadMoreButton>

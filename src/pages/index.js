@@ -22,17 +22,15 @@ class RootIndex extends React.Component {
     const { isNotLarge } = this.state
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+    const importantInfo = get(
+      this,
+      'props.data.contentfulHomepageStaticContent'
+    )
     const highlightedPost = get(
       this,
-      'props.data.contentfulHighlightedPost.post'
+      'props.data.allContentfulHighlightedEvents.edges[0].node.events'
     )
-    const highlightedEvents = get(
-      this,
-      'props.data.allContentfulEvent.edges',
-    )
-
-    //todo remove when get highlighted events not newest ones
-    const newestEvents = highlightedEvents.slice(0, 2)
+    const highlightedEvents = get(this, 'props.data.allContentfulEvent.edges')
 
     return (
       <Layout>
@@ -42,7 +40,8 @@ class RootIndex extends React.Component {
             posts={posts}
             highlightedPost={highlightedPost}
             isNotLarge={isNotLarge}
-            highlightedEvents={newestEvents}
+            importantInfo={importantInfo}
+            highlightedEvents={highlightedEvents}
           />
         </div>
       </Layout>
@@ -59,6 +58,7 @@ export const pageQuery = graphql`
         title
       }
     }
+
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
@@ -89,6 +89,13 @@ export const pageQuery = graphql`
         }
       }
     }
+
+    contentfulHomepageStaticContent {
+      importantInfoStatus
+      importantInfo
+      importantInfoLinkUrl
+    }
+
     contentfulHighlightedPost {
       title
       post {
@@ -113,14 +120,19 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulEvent(sort: { fields: [expirationDate], order: ASC }) {
+    allContentfulHighlightedEvents {
       edges {
         node {
-          id
+          events {
+            id
+            title
+            city
+            expirationDay: expirationDate(formatString: "DD", locale: "ru")
+            expirationMonth: expirationDate(formatString: "MMMM", locale: "ru")
+            address
+          }
           title
-          expirationDay: expirationDate(formatString: "DD", locale: "ru")
-          expirationMonth: expirationDate(formatString: "MMMM", locale: "ru")
-          city
+          id
         }
       }
     }
