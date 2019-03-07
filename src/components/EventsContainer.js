@@ -24,11 +24,15 @@ const InnerContainer = styled.div`
 const HeaderContainer = styled.div`
   margin: 0 auto;
   padding: 0 0.5rem;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.dark};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.dark};
 `
 
 const EventsList = styled.div`
-  padding: 1.7rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 350px;
+  padding: 0.7rem 0 1rem;
 `
 
 const ButtonContainer = styled.div`

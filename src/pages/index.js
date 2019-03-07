@@ -28,9 +28,9 @@ class RootIndex extends React.Component {
     )
     const highlightedPost = get(
       this,
-      'props.data.allContentfulHighlightedEvents.edges[0].node.events'
+      'props.data.contentfulHighlightedPost.post',
     )
-    const highlightedEvents = get(this, 'props.data.allContentfulEvent.edges')
+    const highlightedEvents = get(this, 'props.data.allContentfulHighlightedEvents.edges[0].node.events')
 
     return (
       <Layout>

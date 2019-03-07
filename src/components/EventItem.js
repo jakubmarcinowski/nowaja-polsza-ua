@@ -7,7 +7,7 @@ import { highlightedEventType } from '../types/highlightedEvent'
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 3rem 0;
+  padding: 0.5rem 0;
 `
 
 const Container = styled.div`
@@ -17,6 +17,7 @@ const Container = styled.div`
   flex: 0 0 8rem;
   height: 8rem;
   padding: 1rem;
+  margin-left: -0.4rem;
   background-color: ${({ theme }) => theme.colors.pickledBluewood};
 
   @media ${mediaQueries.tablet} {
@@ -37,15 +38,21 @@ const Date = styled(Paragraph)`
 `
 
 const City = styled(Paragraph)`
-  padding-top: .7rem;
+  padding-top: 0.7rem;
   text-align: center;
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.secondary};
 `
 
 const Title = styled(Paragraph)`
+  height: 11.6rem;
+  overflow: hidden;
   padding: 0 3.5rem 0 2rem;
   color: ${({ theme }) => theme.colors.dark};
+
+  @media ${mediaQueries.desktop} {
+    height: 12.5rem;
+  }
 `
 
 const EventItem = ({ event }) => (
@@ -60,7 +67,7 @@ const EventItem = ({ event }) => (
         {event.city}
       </City>
     </Container>
-    <Title size="Biggest" weight="Bold">
+    <Title size="Bigger" weight="Bold">
       {event.title}
     </Title>
   </Wrapper>
