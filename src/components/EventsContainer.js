@@ -30,9 +30,9 @@ const HeaderContainer = styled.div`
 const EventsList = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   min-height: 350px;
-  padding: 0.7rem 0 1rem;
+  padding: 1.7rem 0 3rem;
 `
 
 const ButtonContainer = styled.div`
