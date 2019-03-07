@@ -48,14 +48,10 @@ const Authors = styled.div`
 `
 
 const SectionWrapper = styled.div`
-  margin: 5rem 0;
+  margin: 0 0 5rem 0;
 
   @media ${mediaQueries.desktop} {
-    margin: 10rem 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
+    margin: 0 0 10rem;
   }
 `
 
