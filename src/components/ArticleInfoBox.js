@@ -38,7 +38,7 @@ const AuthorLink = styled(Link)`
   font-weight: 700;
 
   &:hover {
-    opacity: 0.9;
+    opacity: 0.8;
   }
 `
 

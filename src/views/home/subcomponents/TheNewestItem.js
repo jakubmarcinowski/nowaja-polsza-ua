@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import { articleType } from '../../../types/article'
 import ImgWrapper from '../../../components/ImgWrapper'
@@ -11,6 +11,7 @@ import ArticleInfoBox from '../../../components/ArticleInfoBox'
 import PhotoLabel from '../../../components/PhotoLabel'
 import playIcon from '../../../../static/icon-play.svg'
 import headphonesIcon from '../../../../static/icon-close.svg'
+import AnimatedLink from '../../../components/AnimatedLink'
 
 const Wrapper = styled.div`
   display: flex;
@@ -113,7 +114,9 @@ const TheNewestItem = ({
             overflow="hidden"
             height="4.6"
           >
-            <Link to={`/blog/${slug}`}>{title}</Link>
+            <AnimatedLink url={`/blog/${slug}`} opacity={0.7}>
+              {title}
+            </AnimatedLink>
           </Header>
         )}
         <ArticleInfoBox
