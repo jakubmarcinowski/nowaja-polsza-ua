@@ -55,7 +55,7 @@ const EventsContainer = ({ events }) => (
           overflow="hidden"
           height="2.9"
         >
-          предстоящие события
+          Ближайшие мероприятия
         </Header>
       </HeaderContainer>
       <EventsList>
