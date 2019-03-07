@@ -9,7 +9,6 @@ import { mediaQueries } from '../../../utils/mediaQueries'
 const ImportantInfoBox = styled.div`
   margin-bottom: 2.5rem;
   padding: 2rem;
-  background: red;
   background: ${({ theme }) => theme.colors.listItemBackground};
 
   @media ${mediaQueries.tablet} {
