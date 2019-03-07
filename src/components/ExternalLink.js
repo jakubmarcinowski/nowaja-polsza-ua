@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { childrenType } from '../types/children'
+
 const StyledLink = styled.a`
   transition: opacity ${({ theme }) => theme.animations.default};
 
@@ -10,11 +12,12 @@ const StyledLink = styled.a`
   }
 `
 
-const ExternalLink = ({ url, sameCard, children }) => (
+const ExternalLink = ({ className, url, sameCard, children }) => (
   <StyledLink
     href={url}
     target={sameCard ? '' : '_blank'}
     rel={sameCard ? '' : 'noopener noreferrer'}
+    className={className}
   >
     {children}
   </StyledLink>
@@ -23,7 +26,8 @@ const ExternalLink = ({ url, sameCard, children }) => (
 ExternalLink.propTypes = {
   url: PropTypes.string.isRequired,
   sameCard: PropTypes.bool,
-  children: PropTypes.any,
+  className: PropTypes.string,
+  children: childrenType,
 }
 
 export default ExternalLink
