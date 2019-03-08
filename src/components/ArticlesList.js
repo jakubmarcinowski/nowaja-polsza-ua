@@ -32,6 +32,10 @@ const ListItem = styled.li`
   @media ${mediaQueries.large} {
     ${({ size }) => size !== 'Big' && 'flex: 0 0 calc(100% / 3);'}
     padding: 0 2.5rem 9.5rem;
+
+    &:nth-child(-n + 2) {
+      display: none;
+    }
   }
 `
 const ButtonWrapper = styled.div`
@@ -71,12 +75,14 @@ class ArticlesList extends React.Component {
     } = this.props
     const { postsNumber } = this.state
     const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
-    const eventsContainerPosition = 2
+    const eventsContainerPosition = 3
     const postsBeforeEventsContainer = slicedPosts.slice(
       0,
-      eventsContainerPosition
+      eventsContainerPosition + 1
     )
-    const postsAfterEventsContainer = slicedPosts.slice(eventsContainerPosition)
+    const postsAfterEventsContainer = slicedPosts.slice(
+      eventsContainerPosition + 1
+    )
 
     return (
       <>
