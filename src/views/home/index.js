@@ -11,67 +11,49 @@ import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
 import { highlightedEventType } from '../../types/highlightedEvent'
 import ImportantInfo from './subcomponents/ImportantInfo'
-import { breakpoints } from '../../utils/mediaQueries'
+import { mediaQueries } from '../../utils/mediaQueries'
 
-class HomePage extends React.Component {
-  state = {
-    isNotLarge: true,
+const TheNewestListContainer = styled.div`
+  display: none;
+
+  @media ${mediaQueries.large} {
+    display: block;
   }
+`
 
-  componentDidMount() {
-    console.log('did mount')
-    if (window.innerWidth < breakpoints.large) {
-      this.setState({ isNotLarge: true })
-    }
-  }
+const HomePage = ({
+  posts,
+  highlightedPost,
+  highlightedEvents,
+  importantInfo,
+}) => {
+  const promotedPostsNumber = 2
+  const promotedPosts = posts.slice(0, promotedPostsNumber)
 
-  isLargeScreen = () => {
-    if (window.innerWidth < breakpoints.large) {
-      // this.setState({ isNotLarge: true })
-      return true
-    }
-    return false
-  }
-
-  render() {
-    const {
-      posts,
-      highlightedPost,
-      highlightedEvents,
-      importantInfo,
-    } = this.props
-    // const { isNotLarge } = this.state
-
-    const promotedPostsNumber = this.isLargeScreen() ? 0 : 2
-    const promotedPosts = posts.slice(0, promotedPostsNumber)
-    const commonPosts = posts.slice(promotedPostsNumber, posts.length)
-
-    return (
-      <>
-        <Wrapper>
-          {importantInfo &&
-            importantInfo.importantInfoStatus &&
-            importantInfo.importantInfoStatus !== 'hidden' && (
-              <ImportantInfo importantInfo={importantInfo} />
-            )}
-          <Hero>
-            <HighlightedArticle post={highlightedPost} />
-            <TheNewestListContainer>
-              <TheNewestList posts={promotedPosts} />
-            </TheNewestListContainer>
-            {!this.isLargeScreen() && <TheNewestList posts={promotedPosts} />}
-          </Hero>
-          <Line />
-          <ArticlesList
-            posts={commonPosts}
-            limit={6}
-            initialLimit={9}
-            highlightedEvents={highlightedEvents}
-          />
-        </Wrapper>
-      </>
-    )
-  }
+  return (
+    <>
+      <Wrapper>
+        {importantInfo &&
+          importantInfo.importantInfoStatus &&
+          importantInfo.importantInfoStatus !== 'hidden' && (
+            <ImportantInfo importantInfo={importantInfo} />
+          )}
+        <Hero>
+          <HighlightedArticle post={highlightedPost} />
+          <TheNewestListContainer>
+            <TheNewestList posts={promotedPosts} />
+          </TheNewestListContainer>
+        </Hero>
+        <Line />
+        <ArticlesList
+          posts={posts}
+          limit={6}
+          initialLimit={9}
+          highlightedEvents={highlightedEvents}
+        />
+      </Wrapper>
+    </>
+  )
 }
 
 HomePage.propTypes = {
