@@ -157,7 +157,7 @@ class Event extends Component {
               <ExternalLink url={link}>
                 <IconGroup src={IconTicket}>
                   <TicketText>
-                    <u>событие в фейсбуке</u>
+                    <u>Мероприятие в Фейсбуке</u>
                   </TicketText>
                 </IconGroup>
               </ExternalLink>
@@ -205,7 +205,7 @@ class Event extends Component {
                 <ExternalLink url={link}>
                   <IconGroup src={IconTicket}>
                     <TicketText>
-                      <u>событие в фейсбуке</u>
+                      <u>Мероприятие в Фейсбуке</u>
                     </TicketText>
                   </IconGroup>
                 </ExternalLink>
@@ -222,7 +222,7 @@ class Event extends Component {
           />
         )}
         <ReadMoreButton onClick={this.toggleDescription}>
-          {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
+          {hasFullDescription ? 'Смотреть меньше' : 'Смотреть больше'}
         </ReadMoreButton>
       </BoxWithPhoto>
     )
