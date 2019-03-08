@@ -91,6 +91,7 @@ const MenuContent = styled.div`
   background: ${props => props.theme.colors.menuBackground};
   color: ${props => props.theme.colors.white};
   text-align: center;
+  overflow-y: scroll;
   z-index: -10;
   ${props =>
     props.isMenuOpen && 'opacity: 1; z-index: 999; transform: scale(1);'}
