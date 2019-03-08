@@ -106,7 +106,7 @@ class Publication extends Component {
           />
         )}
         <ReadMoreButton onClick={this.toggleDescription}>
-          {hasFullDescription ? 'Показывай меньше' : 'Показать больше'}
+          {hasFullDescription ? 'Смотреть меньше' : 'Смотреть больше'}
         </ReadMoreButton>
       </BoxWithPhoto>
     )

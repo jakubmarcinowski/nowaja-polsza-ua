@@ -63,7 +63,7 @@ const EventsContainer = ({ events }) => (
       </EventsList>
       <ButtonContainer>
         <ReadMoreButton>
-          <Link to="/events">увидеть больше</Link>
+          <Link to="/events">Узнать больше</Link>
         </ReadMoreButton>
       </ButtonContainer>
     </InnerContainer>
