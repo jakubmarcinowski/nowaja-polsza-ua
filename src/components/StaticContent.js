@@ -127,11 +127,20 @@ const StyledContent = styled.div`
     margin-bottom: 1rem;
   }
 
+  iframe {
+    &:not(:last-child) {
+      margin-bottom: 3.7em;
+    }
+  }
+
   .videoWrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     padding-top: 25px;
     height: 0;
+    &:not(:last-child) {
+      margin-bottom: 3.7em;
+    }
   }
   .videoWrapper iframe {
     position: absolute;

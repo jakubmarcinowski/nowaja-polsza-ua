@@ -12,6 +12,7 @@ import PhotoLabel from '../components/PhotoLabel'
 import playIcon from '../../static/icon-play.svg'
 import headphonesIcon from '../../static/icon-headphones.svg'
 import AnimatedLink from './AnimatedLink'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const ImgBox = styled.div`
   position: relative;
@@ -45,6 +46,12 @@ const IconPlay = styled.img`
 
   ${ImgBox}:hover & {
     opacity: 1;
+  }
+`
+
+const HeaderArticle = styled(Header)`
+  @media ${mediaQueries.tablet} {
+    height: 6.2rem;
   }
 `
 
@@ -98,7 +105,7 @@ const ArticleItem = ({
       {slug && (
         <>
           {slug && (
-            <Header
+            <HeaderArticle
               weight="Bold"
               type={2}
               size="Big"
@@ -106,12 +113,11 @@ const ArticleItem = ({
               margin="0 0 1.4rem"
               lineHeight="Medium"
               overflow="hidden"
-              height="6.2"
             >
               <AnimatedLink url={`/blog/${slug}`} opacity={0.7}>
                 {title}
               </AnimatedLink>
-            </Header>
+            </HeaderArticle>
           )}
           {lead && (
             <Link to={`/blog/${slug}`}>

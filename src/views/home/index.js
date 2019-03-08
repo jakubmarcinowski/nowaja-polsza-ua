@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import HighlightedArticle from './subcomponents/HighlightedArticle'
 import ArticlesList from '../../components/ArticlesList'
@@ -10,17 +11,24 @@ import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
 import { highlightedEventType } from '../../types/highlightedEvent'
 import ImportantInfo from './subcomponents/ImportantInfo'
+import { mediaQueries } from '../../utils/mediaQueries'
+
+const TheNewestListContainer = styled.div`
+  display: none;
+
+  @media ${mediaQueries.large} {
+    display: block;
+  }
+`
 
 const HomePage = ({
   posts,
   highlightedPost,
-  isNotLarge,
   highlightedEvents,
   importantInfo,
 }) => {
-  const promotedPostsNumber = isNotLarge ? 0 : 2
+  const promotedPostsNumber = 2
   const promotedPosts = posts.slice(0, promotedPostsNumber)
-  const commonPosts = posts.slice(promotedPostsNumber, posts.length)
 
   return (
     <>
@@ -32,11 +40,13 @@ const HomePage = ({
           )}
         <Hero>
           <HighlightedArticle post={highlightedPost} />
-          {!isNotLarge && <TheNewestList posts={promotedPosts} />}
+          <TheNewestListContainer>
+            <TheNewestList posts={promotedPosts} />
+          </TheNewestListContainer>
         </Hero>
         <Line />
         <ArticlesList
-          posts={commonPosts}
+          posts={posts}
           limit={6}
           initialLimit={9}
           highlightedEvents={highlightedEvents}
