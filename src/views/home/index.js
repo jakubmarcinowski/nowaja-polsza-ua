@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import HighlightedArticle from './subcomponents/HighlightedArticle'
 import ArticlesList from '../../components/ArticlesList'
@@ -10,40 +11,67 @@ import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
 import { highlightedEventType } from '../../types/highlightedEvent'
 import ImportantInfo from './subcomponents/ImportantInfo'
+import { breakpoints } from '../../utils/mediaQueries'
 
-const HomePage = ({
-  posts,
-  highlightedPost,
-  isNotLarge,
-  highlightedEvents,
-  importantInfo,
-}) => {
-  const promotedPostsNumber = isNotLarge ? 0 : 2
-  const promotedPosts = posts.slice(0, promotedPostsNumber)
-  const commonPosts = posts.slice(promotedPostsNumber, posts.length)
+class HomePage extends React.Component {
+  state = {
+    isNotLarge: true,
+  }
 
-  return (
-    <>
-      <Wrapper>
-        {importantInfo &&
-          importantInfo.importantInfoStatus &&
-          importantInfo.importantInfoStatus !== 'hidden' && (
-            <ImportantInfo importantInfo={importantInfo} />
-          )}
-        <Hero>
-          <HighlightedArticle post={highlightedPost} />
-          {!isNotLarge && <TheNewestList posts={promotedPosts} />}
-        </Hero>
-        <Line />
-        <ArticlesList
-          posts={commonPosts}
-          limit={6}
-          initialLimit={9}
-          highlightedEvents={highlightedEvents}
-        />
-      </Wrapper>
-    </>
-  )
+  componentDidMount() {
+    console.log('did mount')
+    if (window.innerWidth < breakpoints.large) {
+      this.setState({ isNotLarge: true })
+    }
+  }
+
+  isLargeScreen = () => {
+    if (window.innerWidth < breakpoints.large) {
+      // this.setState({ isNotLarge: true })
+      return true
+    }
+    return false
+  }
+
+  render() {
+    const {
+      posts,
+      highlightedPost,
+      highlightedEvents,
+      importantInfo,
+    } = this.props
+    // const { isNotLarge } = this.state
+
+    const promotedPostsNumber = this.isLargeScreen() ? 0 : 2
+    const promotedPosts = posts.slice(0, promotedPostsNumber)
+    const commonPosts = posts.slice(promotedPostsNumber, posts.length)
+
+    return (
+      <>
+        <Wrapper>
+          {importantInfo &&
+            importantInfo.importantInfoStatus &&
+            importantInfo.importantInfoStatus !== 'hidden' && (
+              <ImportantInfo importantInfo={importantInfo} />
+            )}
+          <Hero>
+            <HighlightedArticle post={highlightedPost} />
+            <TheNewestListContainer>
+              <TheNewestList posts={promotedPosts} />
+            </TheNewestListContainer>
+            {!this.isLargeScreen() && <TheNewestList posts={promotedPosts} />}
+          </Hero>
+          <Line />
+          <ArticlesList
+            posts={commonPosts}
+            limit={6}
+            initialLimit={9}
+            highlightedEvents={highlightedEvents}
+          />
+        </Wrapper>
+      </>
+    )
+  }
 }
 
 HomePage.propTypes = {

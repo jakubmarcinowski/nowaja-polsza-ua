@@ -21,44 +21,44 @@ export const LayoutWrapper = styled.div`
   }
 `
 
-class Layout extends React.Component {
-  state = {
-    isNotDesktopView: false,
+const MobileMenuContainer = styled.div`
+  @media ${mediaQueries.desktop} {
+    display: none;
+  }
+`
+
+const PageHeaderContainer = styled.div`
+  display: none;
+
+  @media ${mediaQueries.desktop} {
+    display: block;
+  }
+`
+
+const Layout = ({ children, currentCategory }) => {
+  let rootPath = `/`
+  if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
+    rootPath = __PATH_PREFIX__ + `/`
   }
 
-  componentDidMount() {
-    if (window.innerWidth < breakpoints.desktop) {
-      this.setState({ isNotDesktopView: true })
-    }
-  }
-
-  render() {
-    const { children, currentCategory } = this.props
-    const { isNotDesktopView } = this.state
-
-    let rootPath = `/`
-    if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
-      rootPath = __PATH_PREFIX__ + `/`
-    }
-
-    return (
-      <ThemeProvider theme={theme}>
-        <>
-          {isNotDesktopView ? (
-            <MobileMenu currentCategory={currentCategory} />
-          ) : (
-            <PageHeader currentCategory={currentCategory} />
-          )}
-          <LayoutWrapper>
-            <Container>{children}</Container>
-            <Footer />
-            <Rodo />
-            <GlobalStyle />
-          </LayoutWrapper>
-        </>
-      </ThemeProvider>
-    )
-  }
+  return (
+    <ThemeProvider theme={theme}>
+      <>
+        <MobileMenuContainer>
+          <MobileMenu currentCategory={currentCategory} />
+        </MobileMenuContainer>
+        <PageHeaderContainer>
+          <PageHeader currentCategory={currentCategory} />
+        </PageHeaderContainer>
+        <LayoutWrapper>
+          <Container>{children}</Container>
+          <Footer />
+          <Rodo />
+          <GlobalStyle />
+        </LayoutWrapper>
+      </>
+    </ThemeProvider>
+  )
 }
 
 export default Layout

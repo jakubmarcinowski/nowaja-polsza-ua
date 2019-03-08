@@ -5,48 +5,30 @@ import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
-import { breakpoints } from '../utils/mediaQueries'
 
-class RootIndex extends React.Component {
-  state = {
-    isNotLarge: false,
-  }
+const RootIndex = props => {
+  const siteTitle = get(props, 'data.site.siteMetadata.title')
+  const posts = get(props, 'data.allContentfulBlogPost.edges')
+  const importantInfo = get(props, 'data.contentfulHomepageStaticContent')
+  const highlightedPost = get(props, 'data.contentfulHighlightedPost.post')
+  const highlightedEvents = get(
+    props,
+    'data.allContentfulHighlightedEvents.edges[0].node.events'
+  )
 
-  componentDidMount() {
-    if (window.innerWidth < breakpoints.large) {
-      this.setState({ isNotLarge: true })
-    }
-  }
-
-  render() {
-    const { isNotLarge } = this.state
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const importantInfo = get(
-      this,
-      'props.data.contentfulHomepageStaticContent'
-    )
-    const highlightedPost = get(
-      this,
-      'props.data.contentfulHighlightedPost.post',
-    )
-    const highlightedEvents = get(this, 'props.data.allContentfulHighlightedEvents.edges[0].node.events')
-
-    return (
-      <Layout>
-        <div>
-          <Helmet title={siteTitle} />
-          <HomePage
-            posts={posts}
-            highlightedPost={highlightedPost}
-            isNotLarge={isNotLarge}
-            importantInfo={importantInfo}
-            highlightedEvents={highlightedEvents}
-          />
-        </div>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <div>
+        <Helmet title={siteTitle} />
+        <HomePage
+          posts={posts}
+          highlightedPost={highlightedPost}
+          importantInfo={importantInfo}
+          highlightedEvents={highlightedEvents}
+        />
+      </div>
+    </Layout>
+  )
 }
 
 export default RootIndex
