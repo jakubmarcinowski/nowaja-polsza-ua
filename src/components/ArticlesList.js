@@ -75,12 +75,14 @@ class ArticlesList extends React.Component {
     } = this.props
     const { postsNumber } = this.state
     const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
-    const eventsContainerPosition = 4
+    const eventsContainerPosition = 3
     const postsBeforeEventsContainer = slicedPosts.slice(
       0,
-      eventsContainerPosition
+      eventsContainerPosition + 1
     )
-    const postsAfterEventsContainer = slicedPosts.slice(eventsContainerPosition)
+    const postsAfterEventsContainer = slicedPosts.slice(
+      eventsContainerPosition + 1
+    )
 
     return (
       <>
