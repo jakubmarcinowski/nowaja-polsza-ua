@@ -7,6 +7,7 @@ import Header from './Header'
 import ReadMoreButton from './ReadMoreButton'
 import EventItem from './EventItem'
 import { highlightedEventType } from '../types/highlightedEvent'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const Container = styled.div`
   display: flex;
@@ -31,8 +32,11 @@ const EventsList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 350px;
   padding: 1.7rem 0 3rem;
+
+  @media ${mediaQueries.tablet} {
+    min-height: 350px;
+  }
 `
 
 const ButtonContainer = styled.div`

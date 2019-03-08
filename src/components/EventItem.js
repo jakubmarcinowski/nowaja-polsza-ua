@@ -7,7 +7,7 @@ import { highlightedEventType } from '../types/highlightedEvent'
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
 `
 
 const Container = styled.div`
@@ -45,10 +45,14 @@ const City = styled(Paragraph)`
 `
 
 const Title = styled(Paragraph)`
-  height: 11.6rem;
+  height: 9.45rem;
   overflow: hidden;
   padding: 0 3.5rem 0 2rem;
   color: ${({ theme }) => theme.colors.dark};
+
+  @media ${mediaQueries.tablet} {
+    height: 11.6rem;
+  }
 
   @media ${mediaQueries.desktop} {
     height: 12.5rem;
