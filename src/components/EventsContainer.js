@@ -53,7 +53,6 @@ const EventsContainer = ({ events }) => (
           margin="0 0 1.4rem"
           lineHeight="Medium"
           overflow="hidden"
-          height="2.9"
         >
           предстоящие события
         </Header>
