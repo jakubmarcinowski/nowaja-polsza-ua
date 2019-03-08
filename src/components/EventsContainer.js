@@ -48,7 +48,7 @@ const EventsContainer = ({ events }) => (
         <Header
           weight="Bold"
           type={2}
-          size="Big"
+          size="MediumBigger"
           color="Dark"
           margin="0 0 1.4rem"
           lineHeight="Medium"
