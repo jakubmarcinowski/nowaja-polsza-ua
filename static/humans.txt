@@ -1,0 +1,19 @@
+/* TEAM */
+
+  Graphic Designer: Claudia Wensierska
+  Contact: claudia.wensierska [at] boldare.com
+
+  Front-end Developer: Michał Niciński
+  Contact: michal.nicinski [at] boldare.com
+
+  Front-end Developer: Żaneta Górska
+  Contact: zaneta.gorska [at] boldare.com
+
+  Front-end Developer: Jakub Masłoń
+  Contact: jakub.maslon [at] boldare.com
+
+
+/* SITE */
+
+  Language: Russian
+  Standards: HTML5, CSS3, ReactJS, GatsbyJS, Contentful

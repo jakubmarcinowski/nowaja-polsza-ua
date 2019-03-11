@@ -9,7 +9,7 @@ import EventPage from '../views/events'
 const Events = ({ data }) => {
   const events = data.allContentfulEvent.edges
   const siteTitle = data.site.siteMetadata.title
-  const title = 'Предстоящие события'
+  const title = 'Ближайшие мероприятия'
 
   return (
     <Layout>

@@ -2,10 +2,16 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import Wrapper from '../components/Wrapper'
 import ArticlesList from '../components/ArticlesList'
+
+const NoPostsInfo = styled.div`
+  padding: 2em;
+  text-align: center;
+`
 
 class CategoryTemplate extends React.Component {
   render() {
@@ -19,7 +25,7 @@ class CategoryTemplate extends React.Component {
           <>
             <Helmet title={`${category.title} | ${siteTitle}`} />
             <Wrapper>
-              {categoryPosts && (
+              {categoryPosts ? (
                 <ArticlesList
                   posts={categoryPosts}
                   limit={6}
@@ -27,6 +33,8 @@ class CategoryTemplate extends React.Component {
                   noCategoryLabel
                   noMargin
                 />
+              ) : (
+                <NoPostsInfo>Нет статей</NoPostsInfo>
               )}
             </Wrapper>
           </>

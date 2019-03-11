@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import AnimatedLink from './AnimatedLink'
 
 const StyledNavigation = styled.nav`
   .navigation {
@@ -43,7 +44,7 @@ const Navigation = () => (
             allContentfulMenuItem.edges &&
             allContentfulMenuItem.edges.map(({ node }) => (
               <li key={node.slug} className="navigationItem">
-                <Link to={node.slug}>{node.name}</Link>
+                <AnimatedLink url={node.slug}>{node.name}</AnimatedLink>
               </li>
             ))}
         </ul>

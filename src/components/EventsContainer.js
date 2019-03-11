@@ -7,6 +7,7 @@ import Header from './Header'
 import ReadMoreButton from './ReadMoreButton'
 import EventItem from './EventItem'
 import { highlightedEventType } from '../types/highlightedEvent'
+import { mediaQueries } from '../utils/mediaQueries'
 
 const Container = styled.div`
   display: flex;
@@ -31,8 +32,11 @@ const EventsList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 350px;
-  padding: 1.7rem 0 3rem;
+  padding: 1.7rem 0 2.5rem;
+
+  @media ${mediaQueries.tablet} {
+    min-height: 35rem;
+  }
 `
 
 const ButtonContainer = styled.div`
@@ -48,13 +52,13 @@ const EventsContainer = ({ events }) => (
         <Header
           weight="Bold"
           type={2}
-          size="Big"
+          size="MediumBigger"
           color="Dark"
           margin="0 0 1.4rem"
           lineHeight="Medium"
           overflow="hidden"
         >
-          предстоящие события
+          Ближайшие мероприятия
         </Header>
       </HeaderContainer>
       <EventsList>
@@ -62,9 +66,9 @@ const EventsContainer = ({ events }) => (
           events.map(event => <EventItem event={event} key={event.id} />)}
       </EventsList>
       <ButtonContainer>
-        <ReadMoreButton>
-          <Link to="/events">Узнать больше</Link>
-        </ReadMoreButton>
+        <Link to="/events">
+          <ReadMoreButton>Узнать больше</ReadMoreButton>
+        </Link>
       </ButtonContainer>
     </InnerContainer>
   </Container>

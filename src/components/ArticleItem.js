@@ -51,7 +51,7 @@ const IconPlay = styled.img`
 
 const HeaderArticle = styled(Header)`
   @media ${mediaQueries.tablet} {
-    height: 6.2rem;
+    height: 6rem;
   }
 `
 

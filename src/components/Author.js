@@ -30,8 +30,11 @@ const Element = styled.div`
 
   @media ${mediaQueries.tablet} {
     flex-direction: row;
-    margin-top: 8rem;
-    margin-bottom: 10rem;
+    margin: 9.5rem auto 10rem;
+  }
+
+  @media ${mediaQueries.desktop} {
+    margin: 8rem auto 10rem;
   }
 `
 
@@ -68,17 +71,17 @@ const AuthorSocialMediaList = styled(SocialMediaList)`
 `
 
 const Author = ({
-                  author: {
-                    name,
-                    shortBio,
-                    image,
-                    facebook,
-                    twitter,
-                    telegram,
-                    youtube,
-                    vk,
-                    academia,
-                  },
+  author: {
+    name,
+    shortBio,
+    image,
+    facebook,
+    twitter,
+    telegram,
+    youtube,
+    vk,
+    academia,
+  },
 }) => (
   <Element>
     {image && <AuthorImg img={image} />}
