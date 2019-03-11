@@ -32,7 +32,7 @@ const EventsList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1.7rem 0 3rem;
+  padding: 1.7rem 0 2.5rem;
 
   @media ${mediaQueries.tablet} {
     min-height: 350px;
