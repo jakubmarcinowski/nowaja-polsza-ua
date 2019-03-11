@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -9,8 +9,8 @@ import IconPin from '../../../../static/icon-pin.svg'
 import IconTicket from '../../../../static/icon-ticket.svg'
 import IconUser from '../../../../static/icon-user.svg'
 import ExternalLink from '../../../components/ExternalLink'
-import ReadMoreButton from '../../../components/ReadMoreButton'
 import IconGroup from '../../../components/IconGroup'
+import ReadMoreWrapper from '../../../components/ReadMoreWrapper'
 
 const Container = styled.div`
   @media ${mediaQueries.tablet} {
@@ -64,30 +64,6 @@ const TicketText = styled.span`
     font-size: 1.4rem;
   }
 `
-//@todo Unify ParagraphsWrapper for Event and Publication
-const ParagraphsWrapper = styled.div`
-  margin: 2em 0;
-  max-width: 83rem;
-  line-height: 1.8;
-  font-weight: 300;
-  font-size: 1.4rem;
-
-  @media ${mediaQueries.tablet} {
-    line-height: 2;
-    font-size: 1.6rem;
-  }
-
-  ${({ hasFullDescription }) =>
-    !hasFullDescription &&
-    `
-    max-height: 7.3rem;
-    overflow: hidden;
-
-    @media ${mediaQueries.tablet} {
-      max-height: 6rem;
-    }
-  `}
-`
 
 const Details = styled(Header)`
   font-size: 1.2rem;
@@ -120,116 +96,86 @@ const TicketsContainerMobile = styled.div`
   }
 `
 
-class Event extends Component {
-  // @todo DRY Create component for toogle description for Events and Publications
-  state = {
-    hasFullDescription: false,
-  }
-  toggleDescription = () => {
-    this.setState(({ hasFullDescription }) => ({
-      hasFullDescription: !hasFullDescription,
-    }))
-  }
-  render() {
-    const {
-      title,
-      heroImage,
-      lead,
-      displayedDate,
-      organizer,
-      link,
-      city,
-      address,
-    } = this.props.event
-    const { hasFullDescription } = this.state
-    return (
-      <BoxWithPhoto image={heroImage}>
-        <ContainerTop>
-          <LeftColumn>
-            {displayedDate && (
-              <div>
-                <Date>{displayedDate}</Date>
-              </div>
-            )}
-          </LeftColumn>
-          <TicketsContainerDesktop>
-            {link && (
-              <ExternalLink url={link}>
-                <IconGroup src={IconTicket}>
-                  <TicketText>
-                    <u>Мероприятие в Фейсбуке</u>
-                  </TicketText>
-                </IconGroup>
-              </ExternalLink>
-            )}
-          </TicketsContainerDesktop>
-        </ContainerTop>
-        <Container>
-          <LeftColumn>
-            {title && (
-              <Header
-                size="Bigger"
-                lineHeight="Medium"
-                margin="0 0 2.5rem"
-                color="Black"
-                weight="Bold"
-                type={3}
-              >
-                {title}
-              </Header>
-            )}
-            {city && address && (
-              <DetailsWrapper src={IconPin}>
-                <Details
-                  type={2}
-                  size="Medium"
-                  color="Dark"
-                  lineHeight="Medium"
-                >{`${address} ${city}`}</Details>
-              </DetailsWrapper>
-            )}
-            {organizer && (
-              <DetailsWrapper src={IconUser}>
-                <Details
-                  type={2}
-                  size="Medium"
-                  color="Dark"
-                  lineHeight="Medium"
-                >
-                  {organizer}
-                </Details>
-              </DetailsWrapper>
-            )}
-            <TicketsContainerMobile>
-              {link && (
-                <ExternalLink url={link}>
-                  <IconGroup src={IconTicket}>
-                    <TicketText>
-                      <u>Мероприятие в Фейсбуке</u>
-                    </TicketText>
-                  </IconGroup>
-                </ExternalLink>
-              )}
-            </TicketsContainerMobile>
-          </LeftColumn>
-        </Container>
-        {lead && (
-          <ParagraphsWrapper
-            hasFullDescription={hasFullDescription}
-            dangerouslySetInnerHTML={{
-              __html: lead.childMarkdownRemark.html,
-            }}
-          />
+const Event = ({
+                 event: {
+                   title,
+                   heroImage,
+                   lead,
+                   displayedDate,
+                   organizer,
+                   link,
+                   city,
+                   address,
+                 },
+               }) => (
+  <BoxWithPhoto image={heroImage}>
+    <ContainerTop>
+      <LeftColumn>
+        {displayedDate && (
+          <div>
+            <Date>{displayedDate}</Date>
+          </div>
         )}
-        <ReadMoreButton onClick={this.toggleDescription}>
-          {hasFullDescription ? 'Смотреть меньше' : 'Смотреть больше'}
-        </ReadMoreButton>
-      </BoxWithPhoto>
-    )
-  }
-}
-
-// @todo ReadMore shoudn't be visible if text is short
+      </LeftColumn>
+      <TicketsContainerDesktop>
+        {link && (
+          <ExternalLink url={link}>
+            <IconGroup src={IconTicket}>
+              <TicketText>
+                <u>Мероприятие в Фейсбуке</u>
+              </TicketText>
+            </IconGroup>
+          </ExternalLink>
+        )}
+      </TicketsContainerDesktop>
+    </ContainerTop>
+    <Container>
+      <LeftColumn>
+        {title && (
+          <Header
+            size="Bigger"
+            lineHeight="Medium"
+            margin="0 0 2.5rem"
+            color="Black"
+            weight="Bold"
+            type={3}
+          >
+            {title}
+          </Header>
+        )}
+        {city && address && (
+          <DetailsWrapper src={IconPin}>
+            <Details
+              type={2}
+              size="Medium"
+              color="Dark"
+              lineHeight="Medium"
+            >{`${address} ${city}`}</Details>
+          </DetailsWrapper>
+        )}
+        {organizer && (
+          <DetailsWrapper src={IconUser}>
+            <Details type={2} size="Medium" color="Dark" lineHeight="Medium">
+              {organizer}
+            </Details>
+          </DetailsWrapper>
+        )}
+        <TicketsContainerMobile>
+          {link && (
+            <ExternalLink url={link}>
+              <IconGroup src={IconTicket}>
+                <TicketText>
+                  <u>Мероприятие в Фейсбуке</u>
+                </TicketText>
+              </IconGroup>
+            </ExternalLink>
+          )}
+        </TicketsContainerMobile>
+      </LeftColumn>
+    </Container>
+    <ReadMoreWrapper description={lead}/>
+  </BoxWithPhoto>
+)
 
 Event.propTypes = {
   event: PropTypes.any,
