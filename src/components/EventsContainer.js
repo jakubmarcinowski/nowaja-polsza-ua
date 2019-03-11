@@ -62,9 +62,9 @@ const EventsContainer = ({ events }) => (
           events.map(event => <EventItem event={event} key={event.id} />)}
       </EventsList>
       <ButtonContainer>
-        <ReadMoreButton>
-          <Link to="/events">Узнать больше</Link>
-        </ReadMoreButton>
+        <Link to="/events">
+          <ReadMoreButton>Узнать больше</ReadMoreButton>
+        </Link>
       </ButtonContainer>
     </InnerContainer>
   </Container>
