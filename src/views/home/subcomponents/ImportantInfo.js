@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import Paragraph from '../../../components/Paragraph'
 import ExternalLink from '../../../components/ExternalLink'
 import { mediaQueries } from '../../../utils/mediaQueries'
+import AlertIcon from '../../../../static/icon-alert.svg'
 
 const ImportantInfoBox = styled.div`
   margin-bottom: 2.5rem;
@@ -13,6 +14,16 @@ const ImportantInfoBox = styled.div`
 
   @media ${mediaQueries.tablet} {
     display: flex;
+  }
+`
+
+const Icon = styled.img`
+  height: 12px;
+  margin-right: 1rem;
+
+  @media ${mediaQueries.tablet} {
+    height: auto;
+    margin-right: 2rem;
   }
 `
 
@@ -31,6 +42,7 @@ const Info = styled(Paragraph)`
 
 const ImportantInfo = ({ importantInfo }) => (
   <ImportantInfoBox>
+    <Icon src={AlertIcon} />
     {importantInfo.importantInfo && (
       <Info weight="Light">{importantInfo.importantInfo}</Info>
     )}
