@@ -35,7 +35,7 @@ const EventsList = styled.div`
   padding: 1.7rem 0 2.5rem;
 
   @media ${mediaQueries.tablet} {
-    min-height: 350px;
+    min-height: 35rem;
   }
 `
 

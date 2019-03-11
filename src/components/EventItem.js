@@ -45,7 +45,7 @@ const City = styled(Paragraph)`
 `
 
 const Title = styled(Paragraph)`
-  height: 9.45rem;
+  height: 9.4rem;
   overflow: hidden;
   padding: 0 3.5rem 0 2rem;
   color: ${({ theme }) => theme.colors.dark};
