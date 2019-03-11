@@ -16,7 +16,7 @@ const Box = styled.div`
 
   @media ${mediaQueries.tablet} {
     flex-direction: row;
-    margin: 5rem auto;
+    margin: 9rem auto 5rem;
     max-width: 80%;
   }
 
