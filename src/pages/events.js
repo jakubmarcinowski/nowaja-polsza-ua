@@ -14,7 +14,7 @@ const Events = ({ data }) => {
   return (
     <Layout>
       <Helmet title={`${title} | ${siteTitle}`} />
-      <EventPage events={events} title={title} />
+      <EventPage events={events} />
     </Layout>
   )
 }
