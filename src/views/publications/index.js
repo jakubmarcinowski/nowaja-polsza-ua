@@ -41,54 +41,65 @@ class PublicationPage extends React.Component {
     filter: null,
   }
 
+  renderPublications = () => {
+    const { publications } = this.props
+    const { filter } = this.state
+    return publications.map(
+      ({ node, node: { slug, typeOfPublications } }) =>
+        (!filter || typeOfPublications === filter) && (
+          <Publication publication={node} key={slug} />
+        )
+    )
+  }
+
   render() {
     const { publications } = this.props
     const { filter } = this.state
 
+    const filteredPublications = publications.filter(
+      ({ node: { typeOfPublications } }) => typeOfPublications === filter
+    )
+
+    if (publications && publications.length === 0) {
+      return <Placeholder>Нет публикации</Placeholder>
+    }
+
     return (
       <Wrapper size="Medium">
-        {publications &&
-          (publications.length === 0 ? (
-            <Placeholder>Нет публикации</Placeholder>
-          ) : (
-            <>
-              <Filters>
-                <Filter
-                  size="MediumBig"
-                  color="Primary"
-                  weight="Bold"
-                  onClick={() => this.setState({ filter: null })}
-                  isActive={filter === null}
-                >
-                  все публикации
-                </Filter>
-                <Filter
-                  size="MediumBig"
-                  color="Primary"
-                  weight="Bold"
-                  onClick={() => this.setState({ filter: 'книги' })}
-                  isActive={filter === 'книги'}
-                >
-                  книги
-                </Filter>
-                <Filter
-                  size="MediumBig"
-                  color="Primary"
-                  weight="Bold"
-                  onClick={() => this.setState({ filter: 'журналы' })}
-                  isActive={filter === 'журналы'}
-                >
-                  журналы
-                </Filter>
-              </Filters>
-              {publications.map(
-                ({ node, node: { slug, typeOfPublications } }) =>
-                  (!filter || typeOfPublications === filter) && (
-                    <Publication publication={node} key={slug} />
-                  )
-              )}
-            </>
-          ))}
+        <Filters>
+          <Filter
+            size="MediumBig"
+            color="Primary"
+            weight="Bold"
+            onClick={() => this.setState({ filter: null })}
+            isActive={filter === null}
+          >
+            все публикации
+          </Filter>
+          <Filter
+            size="MediumBig"
+            color="Primary"
+            weight="Bold"
+            onClick={() => this.setState({ filter: 'книги' })}
+            isActive={filter === 'книги'}
+          >
+            книги
+          </Filter>
+          <Filter
+            size="MediumBig"
+            color="Primary"
+            weight="Bold"
+            onClick={() => this.setState({ filter: 'журналы' })}
+            isActive={filter === 'журналы'}
+          >
+            журналы
+          </Filter>
+        </Filters>
+        {publications && (!filter || filteredPublications.length !== 0) ? (
+          this.renderPublications()
+        ) : (
+          <Placeholder>Нет публикации</Placeholder>
+        )}
       </Wrapper>
     )
   }
