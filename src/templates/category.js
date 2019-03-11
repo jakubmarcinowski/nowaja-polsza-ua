@@ -34,7 +34,7 @@ class CategoryTemplate extends React.Component {
                   noMargin
                 />
               ) : (
-                <NoPostsInfo>Нет постов в категории</NoPostsInfo>
+                <NoPostsInfo>Нет статей</NoPostsInfo>
               )}
             </Wrapper>
           </>
