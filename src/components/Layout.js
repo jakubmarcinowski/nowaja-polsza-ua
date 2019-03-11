@@ -2,6 +2,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import styled from 'styled-components'
+import cookie from 'react-cookies'
 
 import { GlobalStyle } from '../utils/global'
 import { theme } from '../utils/theme'
@@ -69,7 +70,7 @@ const Layout = ({ children, currentCategory }) => {
             <Container>{children}</Container>
           </BodyContainer>
           <Footer />
-          <Rodo />
+          {cookie.load('rodo-accepted') || <Rodo />}
           <GlobalStyle />
         </LayoutWrapper>
       </>
