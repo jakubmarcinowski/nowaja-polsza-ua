@@ -34,7 +34,7 @@ const Text = styled(Paragraph)`
 `
 
 const Image = styled.img`
-  max-height: 50px;
+  max-height: 5rem;
 
   @media ${mediaQueries.tablet} {
     max-height: inherit;
