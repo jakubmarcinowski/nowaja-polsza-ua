@@ -15,11 +15,11 @@ const StyledButton = styled.button`
   cursor: pointer;
   font-size: ${props => (props.size === 'large' ? '1.8rem' : '1rem')};
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-weight: 700;
+  font-weight: ${props => (props.size === 'large' ? 600 : 700)};
 
   @media ${mediaQueries.tablet} {
-    padding: ${props => (props.size === 'large' ? '1rem 6rem' : '1rem 3rem')};
-    font-size: ${props => (props.size === 'large' ? '2.2rem' : '1.2rem')};
+    padding: ${props => (props.size === 'large' ? '1rem 4rem' : '1rem 3rem')};
+    font-size: ${props => (props.size === 'large' ? '2rem' : '1.2rem')};
   }
 
   &:hover {
