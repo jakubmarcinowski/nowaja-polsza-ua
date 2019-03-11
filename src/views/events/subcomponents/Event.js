@@ -38,10 +38,10 @@ const LeftColumn = styled.div`
 
 const Date = styled.span`
   display: inline-block;
-  padding: 0 2rem;
+  padding: 0.3em 1.1em;
   font-family: ${({ theme }) => theme.fonts.secondary};
 
-  line-height: 2.4;
+  line-height: 1.4;
   background: ${({ theme }) => theme.colors.dark};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
