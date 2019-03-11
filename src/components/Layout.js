@@ -10,7 +10,6 @@ import PageHeader from './PageHeader'
 import Footer from './Footer'
 import Rodo from './Rodo'
 import MobileMenu from './MobileMenu'
-import { breakpoints } from '../utils/mediaQueries'
 import { mediaQueries } from '../utils/mediaQueries'
 
 export const LayoutWrapper = styled.div`
@@ -34,6 +33,21 @@ const PageHeaderContainer = styled.div`
     display: block;
   }
 `
+const BodyContainer = styled.div`
+  min-height: 21vh;
+
+  @media ${mediaQueries.phoneLandscape} {
+    min-height: 0;
+  }
+
+  @media ${mediaQueries.tablet} {
+    min-height: 60vh;
+  }
+
+  @media ${mediaQueries.desktop} {
+    min-height: 50vh;
+  }
+`
 
 const Layout = ({ children, currentCategory }) => {
   let rootPath = `/`
@@ -51,7 +65,9 @@ const Layout = ({ children, currentCategory }) => {
           <PageHeader currentCategory={currentCategory} />
         </PageHeaderContainer>
         <LayoutWrapper>
-          <Container>{children}</Container>
+          <BodyContainer>
+            <Container>{children}</Container>
+          </BodyContainer>
           <Footer />
           <Rodo />
           <GlobalStyle />
