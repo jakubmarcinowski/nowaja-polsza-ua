@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import { theme } from '../utils/theme'
+import AnimatedLink from './AnimatedLink'
 
 const StyledNavigation = styled.ul`
   display: flex;
@@ -23,13 +23,15 @@ const Item = styled.li`
 const FooterNavigation = () => (
   <StyledNavigation>
     <Item>
-      <Link to="/about-us">О нас</Link>
+      <AnimatedLink url="/about-us">О нас</AnimatedLink>
     </Item>
     <Item>
-      <Link to="/privacy-policy">Политика конфиденциальности</Link>
+      <AnimatedLink url="/privacy-policy">
+        Политика конфиденциальности
+      </AnimatedLink>
     </Item>
     <Item>
-      <Link to="/wcag">Политика доступности</Link>
+      <AnimatedLink url="/wcag">Политика доступности</AnimatedLink>
     </Item>
   </StyledNavigation>
 )
