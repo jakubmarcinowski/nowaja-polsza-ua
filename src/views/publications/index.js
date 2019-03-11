@@ -6,6 +6,7 @@ import Publication from './subcomponents/Publication'
 import Wrapper from '../../components/Wrapper'
 import Header from '../../components/Header'
 import { mediaQueries } from '../../utils/mediaQueries'
+import Placeholder from '../../components/Placeholder'
 
 // @todo crete styled component for page header which is center and has a line
 
@@ -46,45 +47,48 @@ class PublicationPage extends React.Component {
 
     return (
       <Wrapper size="Medium">
-        <Filters>
-          <Filter
-            size="MediumBig"
-            color="Primary"
-            weight="Bold"
-            onClick={() => this.setState({ filter: null })}
-            isActive={filter === null}
-          >
-            все публикации
-          </Filter>
-          <Filter
-            size="MediumBig"
-            color="Primary"
-            weight="Bold"
-            onClick={() => this.setState({ filter: 'книги' })}
-            isActive={filter === 'книги'}
-          >
-            книги
-          </Filter>
-          <Filter
-            size="MediumBig"
-            color="Primary"
-            weight="Bold"
-            onClick={() => this.setState({ filter: 'журналы' })}
-            isActive={filter === 'журналы'}
-          >
-            журналы
-          </Filter>
-        </Filters>
-
         {publications &&
-          (publications.length === 0
-            ? 'Нет публикации'
-            : publications.map(
+          (publications.length === 0 ? (
+            <Placeholder>Нет публикации</Placeholder>
+          ) : (
+            <>
+              <Filters>
+                <Filter
+                  size="MediumBig"
+                  color="Primary"
+                  weight="Bold"
+                  onClick={() => this.setState({ filter: null })}
+                  isActive={filter === null}
+                >
+                  все публикации
+                </Filter>
+                <Filter
+                  size="MediumBig"
+                  color="Primary"
+                  weight="Bold"
+                  onClick={() => this.setState({ filter: 'книги' })}
+                  isActive={filter === 'книги'}
+                >
+                  книги
+                </Filter>
+                <Filter
+                  size="MediumBig"
+                  color="Primary"
+                  weight="Bold"
+                  onClick={() => this.setState({ filter: 'журналы' })}
+                  isActive={filter === 'журналы'}
+                >
+                  журналы
+                </Filter>
+              </Filters>
+              {publications.map(
                 ({ node, node: { slug, typeOfPublications } }) =>
                   (!filter || typeOfPublications === filter) && (
                     <Publication publication={node} key={slug} />
                   )
-              ))}
+              )}
+            </>
+          ))}
       </Wrapper>
     )
   }
