@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 
 import logo from '../../static/logo.svg'
 
+// @todo add logo as gatsby config param
+
 class SEO extends Component {
   state = {
     locationHref: '',
