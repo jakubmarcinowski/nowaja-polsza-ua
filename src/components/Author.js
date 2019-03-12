@@ -25,16 +25,16 @@ const Element = styled.div`
   position: relative;
   flex-direction: column;
   min-width: 100%;
-  margin: 2rem auto;
+  margin: 0 auto 2rem;
   background: ${({ theme }) => theme.colors.listItemBackground};
 
   @media ${mediaQueries.tablet} {
     flex-direction: row;
-    margin: 9.5rem auto 10rem;
+    margin: 0 auto 5rem;
   }
 
   @media ${mediaQueries.desktop} {
-    margin: 8rem auto 10rem;
+    margin: 5rem auto 10rem;
   }
 `
 

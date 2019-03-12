@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import Publication from './subcomponents/Publication'
 import Wrapper from '../../components/Wrapper'
 import Header from '../../components/Header'
-import { mediaQueries } from '../../utils/mediaQueries'
 import Placeholder from '../../components/Placeholder'
 
 // @todo crete styled component for page header which is center and has a line
@@ -13,16 +12,8 @@ import Placeholder from '../../components/Placeholder'
 const Filters = styled.div`
   display: flex;
   justify-content: center;
-  margin: 8rem -1rem 0;
+  margin: 0 -1rem;
   text-transform: uppercase;
-
-  @media ${mediaQueries.tablet} {
-    margin: 10rem -1rem 0;
-  }
-
-  @media ${mediaQueries.desktop} {
-    margin: 5rem -1rem 0;
-  }
 `
 
 const Filter = styled(Header)`

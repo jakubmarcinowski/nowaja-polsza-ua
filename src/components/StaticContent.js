@@ -6,11 +6,6 @@ import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledContent = styled.div`
   line-height: 1.6;
-  padding-top: 3rem;
-
-  @media ${mediaQueries.tablet} {
-    padding-top: 6rem;
-  }
 
   h1,
   h2,
