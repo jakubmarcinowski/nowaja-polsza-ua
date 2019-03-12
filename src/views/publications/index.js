@@ -6,6 +6,7 @@ import Publication from './subcomponents/Publication'
 import Wrapper from '../../components/Wrapper'
 import Header from '../../components/Header'
 import { mediaQueries } from '../../utils/mediaQueries'
+import Placeholder from '../../components/Placeholder'
 
 // @todo crete styled component for page header which is center and has a line
 
@@ -20,7 +21,7 @@ const Filters = styled.div`
   }
 
   @media ${mediaQueries.desktop} {
-    margin: 8rem -1rem 0;
+    margin: 5rem -1rem 0;
   }
 `
 
@@ -40,9 +41,28 @@ class PublicationPage extends React.Component {
     filter: null,
   }
 
+  renderPublications = () => {
+    const { publications } = this.props
+    const { filter } = this.state
+    return publications.map(
+      ({ node, node: { slug, typeOfPublications } }) =>
+        (!filter || typeOfPublications === filter) && (
+          <Publication publication={node} key={slug} />
+        )
+    )
+  }
+
   render() {
     const { publications } = this.props
     const { filter } = this.state
+
+    const filteredPublications = publications.filter(
+      ({ node: { typeOfPublications } }) => typeOfPublications === filter
+    )
+
+    if (publications && publications.length === 0) {
+      return <Placeholder>Нет публикации</Placeholder>
+    }
 
     return (
       <Wrapper size="Medium">
@@ -75,16 +95,11 @@ class PublicationPage extends React.Component {
             журналы
           </Filter>
         </Filters>
-
-        {publications &&
-          (publications.length === 0
-            ? 'Нет публикации'
-            : publications.map(
-                ({ node, node: { slug, typeOfPublications } }) =>
-                  (!filter || typeOfPublications === filter) && (
-                    <Publication publication={node} key={slug} />
-                  )
-              ))}
+        {publications && (!filter || filteredPublications.length !== 0) ? (
+          this.renderPublications()
+        ) : (
+          <Placeholder>Нет публикации</Placeholder>
+        )}
       </Wrapper>
     )
   }
