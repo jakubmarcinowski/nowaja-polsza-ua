@@ -11,17 +11,17 @@ const Box = styled.div`
   position: relative;
   flex-direction: column;
   min-width: 100%;
-  margin: 2rem auto;
+  margin: 2.5rem auto;
   background: ${({ theme }) => theme.colors.listItemBackground};
 
   @media ${mediaQueries.tablet} {
     flex-direction: row;
-    margin: 9rem auto 5rem;
+    margin: 5rem auto 5rem;
     max-width: 80%;
   }
 
   @media ${mediaQueries.desktop} {
-    margin: 7rem auto;
+    margin: 5rem auto;
   }
 `
 const Info = styled.div`

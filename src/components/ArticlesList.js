@@ -12,12 +12,16 @@ import { highlightedEventType } from '../types/highlightedEvent'
 const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  ${({ noMargin }) => !noMargin && 'margin: 2.5rem 0 0;'}
+  margin: 2.5rem 0 0;
   padding: 0;
   list-style: none;
 
   @media ${mediaQueries.tablet} {
-    ${({ noMargin }) => !noMargin && 'margin: 4rem -2.5rem;'}
+    margin: 5rem -1.25rem 4rem;
+  }
+
+  @media ${mediaQueries.desktop} {
+    margin: 5rem -2.5rem 4rem;
   }
 `
 const ListItem = styled.li`
@@ -26,6 +30,10 @@ const ListItem = styled.li`
 
   @media ${mediaQueries.tablet} {
     flex: 0 0 calc(100% / 2);
+    padding: 0 1.25rem 6.5rem;
+  }
+
+  @media ${mediaQueries.desktop} {
     padding: 0 2.5rem 6.5rem;
   }
 

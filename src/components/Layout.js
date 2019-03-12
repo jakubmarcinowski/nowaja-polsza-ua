@@ -14,10 +14,10 @@ import MobileMenu from './MobileMenu'
 import { mediaQueries } from '../utils/mediaQueries'
 
 export const LayoutWrapper = styled.div`
-  margin: 7.5rem auto 0;
+  margin: 8.7rem auto 0;
 
   @media ${mediaQueries.desktop} {
-    margin: 2.5rem auto 0;
+    margin: 5rem auto 0;
   }
 `
 
