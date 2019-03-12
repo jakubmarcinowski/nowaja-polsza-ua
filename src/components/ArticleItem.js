@@ -36,11 +36,13 @@ const ImgBox = styled.div`
 const IconPlay = styled.img`
   position: absolute;
   transform: translate(-50%, -50%);
+
   top: 50%;
   left: 50%;
   width: 5rem;
   height: 5rem;
   z-index: 1;
+  transition: opacity ${props => props.theme.animations.default};
   opacity: 0.7;
   cursor: pointer;
 

@@ -60,6 +60,7 @@ const TicketText = styled.span`
   font-size: 1.2rem;
   font-weight: 500;
   font-family: ${({ theme }) => theme.fonts.secondary};
+  transition: opacity ${props => props.theme.animations.default};
 
   &:hover {
     opacity: 0.6;

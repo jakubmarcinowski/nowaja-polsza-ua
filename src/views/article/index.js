@@ -67,6 +67,7 @@ const Gallery = styled.div`
 
 const ArrowIcon = styled.img`
   max-width: 20px;
+  transition: opacity ${props => props.theme.animations.default};
   opacity: 0.7;
 `
 
@@ -87,6 +88,7 @@ const SliderStyled = styled(Slider)`
     display: flex !important;
     justify-content: center;
     align-items: center;
+    transition: opacity ${props => props.theme.animations.default};
     height: 100%;
     width: 7rem;
     z-index: 1;
