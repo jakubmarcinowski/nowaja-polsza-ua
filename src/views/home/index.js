@@ -32,12 +32,12 @@ const HomePage = ({
 
   return (
     <>
+      {importantInfo &&
+        importantInfo.importantInfoStatus &&
+        importantInfo.importantInfoStatus !== 'hidden' && (
+          <ImportantInfo importantInfo={importantInfo} />
+        )}
       <Wrapper>
-        {importantInfo &&
-          importantInfo.importantInfoStatus &&
-          importantInfo.importantInfoStatus !== 'hidden' && (
-            <ImportantInfo importantInfo={importantInfo} />
-          )}
         <Hero>
           <HighlightedArticle post={highlightedPost} />
           <TheNewestListContainer>
