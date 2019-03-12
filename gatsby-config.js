@@ -28,10 +28,12 @@ if (!spaceId || !accessToken) {
   )
 }
 
+//@todo change meta description
 module.exports = {
   siteMetadata: {
     siteUrl: process.env.HOST || 'https://silly-morse-77d306.netlify.com/',
     title: 'НОВАЯ ПОЛЬША',
+    description: '...',
     themeColor: '#172429',
   },
   pathPrefix: '/gatsby-contentful-starter',

@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
 import { intersectionBy, get } from 'lodash/fp'
 
 import Layout from '../components/Layout'
 import ArticlePage from '../views/article/index'
+import ArticleSEO from '../views/article/subcomponents/ArticleSEO'
 
 const ArticleTemplate = props => {
   const post = get('data.contentfulBlogPost', props)
@@ -23,7 +23,7 @@ const ArticleTemplate = props => {
     <Layout>
       {post && (
         <>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <ArticleSEO siteTitle={`${post.title} | ${siteTitle}`} />
           <ArticlePage article={post} posts={recommendedArticles} />
         </>
       )}

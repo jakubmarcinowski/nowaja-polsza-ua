@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
+import SEO from '../components/SEO'
 
 const RootIndex = props => {
   const siteTitle = get(props, 'data.site.siteMetadata.title')
@@ -19,7 +20,7 @@ const RootIndex = props => {
   return (
     <Layout>
       <div>
-        <Helmet title={siteTitle} />
+        <SEO siteTitle={siteTitle} />
         <HomePage
           posts={posts}
           highlightedPost={highlightedPost}
