@@ -26,7 +26,7 @@ const AboutUs = ({ data }) => {
       <SEO
         siteTitle={`${title} | ${siteTitle}`}
         description={description}
-        type="about"
+        type="page"
       />
       {content && (
         <Wrapper>

@@ -26,7 +26,7 @@ const PrivacyPolicy = ({ data }) => {
       <SEO
         siteTitle={`${title} | ${siteTitle}`}
         description={description}
-        type="privacy policy"
+        type="page"
       />
       {content && (
         <Wrapper>

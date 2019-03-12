@@ -22,7 +22,7 @@ const WCAG = ({ data }) => {
       <SEO
         siteTitle={`${title} | ${siteTitle}`}
         description={description}
-        type="publications"
+        type="page"
       />
       {content && (
         <Wrapper>

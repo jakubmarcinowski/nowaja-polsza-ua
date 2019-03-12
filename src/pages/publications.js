@@ -17,7 +17,7 @@ const Publications = ({ data }) => {
       <SEO
         siteTitle={`${title} | ${siteTitle}`}
         description={description}
-        type="publications"
+        type="publications list"
       />
       <PublicationPage publications={publications} title={title} />
     </Layout>
