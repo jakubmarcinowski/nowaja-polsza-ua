@@ -257,3 +257,4 @@ ArticlePage.propTypes = {
 }
 
 export default ArticlePage
+
