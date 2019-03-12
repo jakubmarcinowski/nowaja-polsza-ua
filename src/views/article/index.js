@@ -75,6 +75,10 @@ const ArrowIconPrev = styled.img`
   transform: rotate(180deg);
 `
 
+const ArticleSocialMediaListBottom = styled(ArticleSocialMediaList)`
+  margin: 2rem auto 4rem;
+`
+
 const SliderStyled = styled(Slider)`
   &:hover {
     .slick-arrow {
@@ -220,7 +224,7 @@ const ArticlePage = ({
           </Gallery>
         )}
 
-        <ArticleSocialMediaList />
+        <ArticleSocialMediaListBottom />
         <div>
           <HeaderStyled size="Biggest">
             Вам также может понравиться
