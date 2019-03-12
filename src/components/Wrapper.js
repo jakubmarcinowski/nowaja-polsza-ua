@@ -6,9 +6,9 @@ import { childrenType } from '../types/children'
 import { mediaQueries } from '../utils/mediaQueries'
 import { contentWidth } from '../utils/contentWidth'
 
-const Wrapper = ({ children, size, position }) => {
+const Wrapper = ({ className, children, size, position }) => {
   return (
-    <StyledWrapper size={size} position={position}>
+    <StyledWrapper size={size} position={position} className={className}>
       {children}
     </StyledWrapper>
   )
@@ -50,6 +50,7 @@ Wrapper.propTypes = {
   children: childrenType,
   size: PropTypes.string,
   position: PropTypes.string,
+  className: PropTypes.string,
 }
 
 export default Wrapper

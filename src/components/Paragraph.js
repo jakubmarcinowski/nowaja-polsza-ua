@@ -45,6 +45,7 @@ Paragraph.weights = {
 Paragraph.colors = {
   Primary: 'Primary',
   Dark: 'Dark',
+  White: 'White',
 }
 
 Paragraph.lineHeight = {
@@ -84,6 +85,7 @@ const lineHeightMap = {
 const colorMap = () => ({
   [Paragraph.colors.Primary]: theme.colors.primary,
   [Paragraph.colors.Dark]: theme.colors.dark,
+  [Paragraph.colors.White]: theme.colors.white,
 })
 
 const ParagraphWrap = styled.p`
