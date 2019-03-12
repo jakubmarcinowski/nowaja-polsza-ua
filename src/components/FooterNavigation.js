@@ -23,15 +23,19 @@ const Item = styled.li`
 const FooterNavigation = () => (
   <StyledNavigation>
     <Item>
-      <AnimatedLink url="/about-us">О нас</AnimatedLink>
+      <AnimatedLink opacity={0.7} url="/about-us">
+        О нас
+      </AnimatedLink>
     </Item>
     <Item>
-      <AnimatedLink url="/privacy-policy">
+      <AnimatedLink opacity={0.7} url="/privacy-policy">
         Политика конфиденциальности
       </AnimatedLink>
     </Item>
     <Item>
-      <AnimatedLink url="/wcag">Политика доступности</AnimatedLink>
+      <AnimatedLink opacity={0.7} url="/wcag">
+        Политика доступности
+      </AnimatedLink>
     </Item>
   </StyledNavigation>
 )
