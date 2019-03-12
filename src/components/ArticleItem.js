@@ -55,6 +55,20 @@ const HeaderArticle = styled(Header)`
   }
 `
 
+const ArticleItemContainer = styled.div``
+
+const ThumbnailWrapper = styled.div`
+  overflow: hidden;
+`
+
+const Thumbnail = styled(ImgWrapper)`
+  transition: transform ${props => props.theme.animations.default};
+
+  ${ArticleItemContainer}:hover & {
+    transform: scale(1.05);
+  }
+`
+
 // @todo make one component to wrap ArticleItem and TheNewestItem
 const ArticleItem = ({
   article: {
@@ -80,7 +94,7 @@ const ArticleItem = ({
     body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
 
   return (
-    <>
+    <ArticleItemContainer>
       <ImgBox isMultimedia={isMultimedia}>
         {isMultimedia && (
           <Link to={`/blog/${slug}`}>
@@ -90,9 +104,11 @@ const ArticleItem = ({
             />
           </Link>
         )}
-        <Link to={`/blog/${slug}`}>
-          <ImgWrapper img={heroImage} aspectRatio={1.76} />
-        </Link>
+        <ThumbnailWrapper>
+          <Link to={`/blog/${slug}`}>
+            <Thumbnail img={heroImage} aspectRatio={1.76} />
+          </Link>
+        </ThumbnailWrapper>
         {!noCategoryLabel && categories && (
           <Link to={`/category/${categories[0].slug}`}>
             <PhotoLabel color={categories[0].color}>
@@ -128,7 +144,7 @@ const ArticleItem = ({
           )}
         </>
       )}
-    </>
+    </ArticleItemContainer>
   )
 }
 
