@@ -10,7 +10,7 @@ const Events = ({ data }) => {
   const events = data.allContentfulEvent.edges
   const siteTitle = data.site.siteMetadata.title
   const title = 'Ближайшие мероприятия'
-  const description = data.siteMetadata.description
+  const description = data.site.siteMetadata.description
 
   return (
     <Layout>
