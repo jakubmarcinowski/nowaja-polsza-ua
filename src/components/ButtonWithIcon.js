@@ -25,7 +25,7 @@ const Icon = styled.img`
 const ButtonWithIcon = ({ icon, text, gap }) => (
   <StyledButtonWithIcon>
     <Item>
-      <Icon src={icon} gap={gap} />
+      <Icon src={icon} gap={gap} alt="icon" />
       {text}
     </Item>
   </StyledButtonWithIcon>

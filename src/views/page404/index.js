@@ -52,8 +52,8 @@ const Page404 = () => {
     <Wrapper>
       <Container>
         <div>
-          <Image src={Text404} />
-          <Image src={Sign404} />
+          <Image src={Text404} alt="404" />
+          <Image src={Sign404} alt="sign" />
         </div>
         <Text weight="Light" lineHeight="Medium">
           Очень жаль, но запрашиваемая вами страница не найдена. Ничего

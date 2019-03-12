@@ -1,15 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
 import { intersectionBy, get } from 'lodash/fp'
 
 import Layout from '../components/Layout'
 import ArticlePage from '../views/article/index'
+import SEO from '../components/SEO'
+import logo from '../../static/logo.svg'
 
 const ArticleTemplate = props => {
   const post = get('data.contentfulBlogPost', props)
   const siteTitle = get('data.site.siteMetadata.title', props)
   const posts = get('data.allContentfulBlogPost.edges', props)
+  const imageSrc = post.heroImage ? post.heroImage.fluid.src.substring(2) : logo
 
   const recommendedArticles = posts.filter(({ node: { categories } }) => {
     const postIntersection = intersectionBy(
@@ -23,7 +25,12 @@ const ArticleTemplate = props => {
     <Layout>
       {post && (
         <>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <SEO
+            siteTitle={`${post.title} | ${siteTitle}`}
+            description={post.lead}
+            type="article"
+            image={imageSrc}
+          />
           <ArticlePage article={post} posts={recommendedArticles} />
         </>
       )}
