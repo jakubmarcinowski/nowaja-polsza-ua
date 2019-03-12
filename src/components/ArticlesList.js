@@ -33,9 +33,11 @@ const ListItem = styled.li`
     ${({ size }) => size !== 'Big' && 'flex: 0 0 calc(100% / 3);'}
     padding: 0 2.5rem 9.5rem;
 
-    &:nth-child(-n + 2) {
+    ${({ isOnHomepage }) =>
+      isOnHomepage &&
+      `&:nth-child(-n + 2) {
       display: none;
-    }
+    }`}
   }
 `
 const ButtonWrapper = styled.div`
@@ -72,6 +74,7 @@ class ArticlesList extends React.Component {
       size,
       noMargin,
       highlightedEvents,
+      isOnHomepage,
     } = this.props
     const { postsNumber } = this.state
     const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
@@ -89,7 +92,7 @@ class ArticlesList extends React.Component {
         <StyledList noMargin={noMargin}>
           {postsBeforeEventsContainer &&
             postsBeforeEventsContainer.map(({ node }) => (
-              <ListItem key={node.slug} size={size}>
+              <ListItem key={node.slug} size={size} isOnHomepage={isOnHomepage}>
                 <ArticleItem
                   article={node}
                   key={node.slug}
@@ -134,6 +137,7 @@ ArticlesList.propTypes = {
   noCategoryLabel: PropTypes.bool,
   noMargin: PropTypes.bool,
   size: PropTypes.string,
+  isOnHomepage: PropTypes.bool,
 }
 
 export default ArticlesList

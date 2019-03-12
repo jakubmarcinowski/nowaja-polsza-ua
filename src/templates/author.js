@@ -22,7 +22,7 @@ class AuthorTemplate extends React.Component {
             <Wrapper>
               <Author author={author}/>
               {authorPosts && (
-                <ArticlesList posts={authorPosts} limit={6} initialLimit={9} />
+                <ArticlesList posts={authorPosts} limit={6} initialLimit={6} />
               )}
             </Wrapper>
           </>

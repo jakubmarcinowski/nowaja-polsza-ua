@@ -50,6 +50,7 @@ const HomePage = ({
           limit={6}
           initialLimit={7}
           highlightedEvents={highlightedEvents}
+          isOnHomepage
         />
       </Wrapper>
     </>
