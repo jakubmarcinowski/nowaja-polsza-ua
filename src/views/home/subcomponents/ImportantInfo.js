@@ -5,25 +5,29 @@ import PropTypes from 'prop-types'
 import Paragraph from '../../../components/Paragraph'
 import ExternalLink from '../../../components/ExternalLink'
 import { mediaQueries } from '../../../utils/mediaQueries'
-import AlertIcon from '../../../../static/icon-alert.svg'
+
+const ImportantInfoBoxWrapper = styled.div`
+  background: ${({ theme }) => theme.colors.importantInfo};
+`
 
 const ImportantInfoBox = styled.div`
+  max-width: 1440px;
+  margin-top: -1.5rem;
   margin-bottom: 2.5rem;
   padding: 2rem;
-  background: ${({ theme }) => theme.colors.listItemBackground};
 
   @media ${mediaQueries.tablet} {
     display: flex;
+    justify-content: space-between;
+    padding: 2rem 4rem;
   }
-`
 
-const Icon = styled.img`
-  height: 12px;
-  margin-right: 1rem;
+  @media ${mediaQueries.desktop} {
+    margin: -2.5rem auto 2.5rem;
+  }
 
-  @media ${mediaQueries.tablet} {
-    height: auto;
-    margin-right: 2rem;
+  @media ${mediaQueries.large} {
+    padding: 2rem 8rem;
   }
 `
 
@@ -41,20 +45,23 @@ const Info = styled(Paragraph)`
 `
 
 const ImportantInfo = ({ importantInfo }) => (
-  <ImportantInfoBox>
-    <Icon src={AlertIcon} alt="alert icon" />
-    {importantInfo.importantInfo && (
-      <Info weight="Light">{importantInfo.importantInfo}</Info>
-    )}
-    {importantInfo.importantInfoStatus === 'visibleWithLink' &&
-      (importantInfo.importantInfoLinkUrl && (
-        <ExternalLink url={importantInfo.importantInfoLinkUrl}>
-          <Link weight="Light">
-            <u>узнать&nbsp;больше</u>
-          </Link>
-        </ExternalLink>
-      ))}
-  </ImportantInfoBox>
+  <ImportantInfoBoxWrapper>
+    <ImportantInfoBox>
+      {importantInfo.importantInfo && (
+        <Info color="White" weight="Light">
+          {importantInfo.importantInfo}
+        </Info>
+      )}
+      {importantInfo.importantInfoStatus === 'visibleWithLink' &&
+        (importantInfo.importantInfoLinkUrl && (
+          <ExternalLink url={importantInfo.importantInfoLinkUrl}>
+            <Link color="White" weight="Light">
+              <u>узнать&nbsp;больше</u>
+            </Link>
+          </ExternalLink>
+        ))}
+    </ImportantInfoBox>
+  </ImportantInfoBoxWrapper>
 )
 
 ImportantInfo.propTypes = {

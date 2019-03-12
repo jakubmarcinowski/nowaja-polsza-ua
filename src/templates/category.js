@@ -29,7 +29,7 @@ class CategoryTemplate extends React.Component {
                 <ArticlesList
                   posts={categoryPosts}
                   limit={6}
-                  initialLimit={9}
+                  initialLimit={6}
                   noCategoryLabel
                   noMargin
                 />

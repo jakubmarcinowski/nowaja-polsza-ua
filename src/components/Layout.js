@@ -70,7 +70,7 @@ const Layout = ({ children, currentCategory }) => {
             <Container>{children}</Container>
           </BodyContainer>
           <Footer />
-          {cookie.load('rodo-accepted') || <Rodo />}
+          {!cookie.load('rodo-accepted') && <Rodo />}
           <GlobalStyle />
         </LayoutWrapper>
       </>

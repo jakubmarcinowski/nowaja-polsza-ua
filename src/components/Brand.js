@@ -75,7 +75,7 @@ const Logo = styled.img`
   max-height: 18px;
 
   @media ${mediaQueries.desktop} {
-    max-height: ${props => (props.isFullVersion ? '29px' : '50px')};
+    max-height: ${props => (props.isFullVersion ? '29px' : '37px')};
   }
 `
 
@@ -83,7 +83,7 @@ const Title = styled(Header)`
   font-size: 1.4rem;
 
   @media ${mediaQueries.desktop} {
-    font-size: ${props => (props.isFullVersion ? '2.0rem' : '2.7rem')};
+    font-size: 2rem;
   }
 `
 
@@ -228,33 +228,45 @@ class Brand extends React.Component {
         )}
         <Link to="/">
           <TitleWrapper isFullVersion={isFullVersion}>
-            <Title
-              isFullVersion={isFullVersion}
-              color={isDarkVersion ? 'Dark' : 'White'}
-              weight="Bold"
-            >
-              НОВАЯ <BreakLine />
-              ПОЛЬША
-            </Title>
-
-            <StaticQuery
-              query={BrandQuery}
-              render={({ contentfulHomepageStaticContent }) => (
-                <>
-                  {contentfulHomepageStaticContent &&
-                    contentfulHomepageStaticContent.motto && (
-                      <Subtitle
-                        isFullVersion={isFullVersion}
-                        type={2}
-                        size="Medium"
-                        color={isDarkVersion ? 'Dark' : 'White'}
-                      >
-                        {contentfulHomepageStaticContent.motto}
-                      </Subtitle>
-                    )}
-                </>
-              )}
-            />
+            {isInHeader ? (
+              <>
+                <Title
+                  isFullVersion={isFullVersion}
+                  color={isDarkVersion ? 'Dark' : 'White'}
+                  weight="Bold"
+                >
+                  НОВАЯ <BreakLine />
+                  ПОЛЬША
+                </Title>
+                <StaticQuery
+                  query={BrandQuery}
+                  render={({ contentfulHomepageStaticContent }) => (
+                    <>
+                      {contentfulHomepageStaticContent &&
+                        contentfulHomepageStaticContent.motto && (
+                          <Subtitle
+                            isFullVersion={isFullVersion}
+                            type={2}
+                            size="Medium"
+                            color={isDarkVersion ? 'Dark' : 'White'}
+                          >
+                            {contentfulHomepageStaticContent.motto}
+                          </Subtitle>
+                        )}
+                    </>
+                  )}
+                />
+              </>
+            ) : (
+              <Title
+                isFullVersion={isFullVersion}
+                color={isDarkVersion ? 'Dark' : 'White'}
+                weight="Bold"
+              >
+                НОВАЯ <br />
+                ПОЛЬША
+              </Title>
+            )}
           </TitleWrapper>
         </Link>
       </StyledBrand>

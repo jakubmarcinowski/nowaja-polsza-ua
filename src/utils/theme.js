@@ -16,6 +16,7 @@ export const theme = {
     pickledBluewood: '#263E48',
     date: '#8c9c9b',
     authorLink: '#b42121',
+    importantInfo: '#3681a1',
 
     highlighted: {
       dullRed: '#a13636',
