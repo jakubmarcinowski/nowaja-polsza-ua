@@ -9,7 +9,7 @@ const StyledIconGroup = styled.div`
   line-height: 2;
 `
 const Icon = styled.img`
-  width: 1.4rem;
+  flex: 0 0 1.4rem;
   margin-right: 1.2rem;
 `
 
