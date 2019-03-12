@@ -27,9 +27,11 @@ const Container = styled.div`
 
 const Text = styled(Paragraph)`
   margin-top: 1rem;
+  font-size: 1.2rem;
 
   @media ${mediaQueries.tablet} {
     margin-top: 3rem;
+    font-size: 1.4rem;
   }
 `
 
@@ -54,10 +56,10 @@ const Page404 = () => {
           <Image src={Sign404} />
         </div>
         <Text weight="Light" lineHeight="Medium">
-          Что-то пошло не так, и мы не можем найти эту страницу. Не волнуйся!
-          Другой Интересные статьи ждут вас{' '}
+          Очень жаль, но запрашиваемая вами страница не найдена. Ничего
+          страшного! Другие интересные статьи ждут Вас на{' '}
           <Link to="/">
-            <u>на нашей странице</u>
+            <u>нашей странице</u>
           </Link>
           .
         </Text>
