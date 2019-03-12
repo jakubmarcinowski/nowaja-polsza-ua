@@ -20,6 +20,7 @@ const StyledCategories = styled.nav`
 
 const Category = styled.li`
   margin-right: 2rem;
+  transition: color ${props => props.theme.animations.default};
   letter-spacing: 0.7px;
   color: ${props =>
     props.currentCategory

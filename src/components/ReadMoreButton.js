@@ -10,6 +10,7 @@ const ReadMore = styled.button`
   border: 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.greyDark};
   padding: 0;
+  transition: color ${props => props.theme.animations.default};
   background: none;
   color: ${({ theme }) => theme.colors.greyDark};
   text-transform: uppercase;
@@ -18,7 +19,7 @@ const ReadMore = styled.button`
   &:focus {
     outline: none;
   }
-  
+
   &:hover {
     color: ${({ theme }) => theme.colors.doveGray};
   }

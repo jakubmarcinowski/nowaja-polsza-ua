@@ -49,6 +49,7 @@ const IconPlay = styled.img`
   left: 50%;
   width: 5rem;
   height: 5rem;
+  transition: opacity ${props => props.theme.animations.default};
   opacity: 0.7;
   z-index: 1;
   cursor: pointer;
