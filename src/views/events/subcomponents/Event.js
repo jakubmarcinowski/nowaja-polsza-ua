@@ -47,6 +47,11 @@ const Date = styled.span`
   font-weight: 700;
 
   @media ${mediaQueries.tablet} {
+    margin-right: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  @media ${mediaQueries.desktop} {
     font-size: 1.8rem;
   }
 `
@@ -97,17 +102,17 @@ const TicketsContainerMobile = styled.div`
 `
 
 const Event = ({
-                 event: {
-                   title,
-                   heroImage,
-                   lead,
-                   displayedDate,
-                   organizer,
-                   link,
-                   city,
-                   address,
-                 },
-               }) => (
+  event: {
+    title,
+    heroImage,
+    lead,
+    displayedDate,
+    organizer,
+    link,
+    city,
+    address,
+  },
+}) => (
   <BoxWithPhoto image={heroImage}>
     <ContainerTop>
       <LeftColumn>
@@ -173,7 +178,7 @@ const Event = ({
         </TicketsContainerMobile>
       </LeftColumn>
     </Container>
-    <ReadMoreWrapper description={lead}/>
+    <ReadMoreWrapper description={lead} />
   </BoxWithPhoto>
 )
 
