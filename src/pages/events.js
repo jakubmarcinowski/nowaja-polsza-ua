@@ -17,7 +17,7 @@ const Events = ({ data }) => {
       <SEO
         siteTitle={`${title} | ${siteTitle}`}
         description={description}
-        type="page"
+        type="website"
       />
       <EventPage events={events} />
     </Layout>

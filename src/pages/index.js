@@ -20,7 +20,7 @@ const RootIndex = props => {
   return (
     <Layout>
       <div>
-        <SEO siteTitle={siteTitle} description={description} type="page" />
+        <SEO siteTitle={siteTitle} description={description} type="website" />
         <HomePage
           posts={posts}
           highlightedPost={highlightedPost}
