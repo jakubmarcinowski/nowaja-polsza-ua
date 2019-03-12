@@ -62,7 +62,7 @@ const ThumbnailWrapper = styled.div`
 `
 
 const Thumbnail = styled(ImgWrapper)`
-  transition: all ${props => props.theme.animations.default};
+  transition: transform ${props => props.theme.animations.default};
 
   ${ArticleItemContainer}:hover & {
     transform: scale(1.05);
