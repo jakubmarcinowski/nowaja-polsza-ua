@@ -1,19 +1,24 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
 import Layout from '../components/Layout'
 import EventPage from '../views/events'
+import SEO from '../components/SEO'
 
 const Events = ({ data }) => {
   const events = data.allContentfulEvent.edges
   const siteTitle = data.site.siteMetadata.title
   const title = 'Ближайшие мероприятия'
+  const description = data.siteMetadata.description
 
   return (
     <Layout>
-      <Helmet title={`${title} | ${siteTitle}`} />
+      <SEO
+        siteTitle={`${title} | ${siteTitle}`}
+        description={description}
+        type="events"
+      />
       <EventPage events={events} />
     </Layout>
   )
@@ -30,6 +35,7 @@ export const EventsPageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     allContentfulEvent(sort: { fields: [expirationDate], order: ASC }) {

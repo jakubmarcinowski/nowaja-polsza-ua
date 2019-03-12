@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import get from 'lodash/get'
 
 import Layout from '../components/Layout'
@@ -13,12 +13,17 @@ class CategoryTemplate extends React.Component {
     const category = get(this.props, 'data.contentfulCategory')
     const categoryPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const description = get(this.props, 'data.site.siteMetadata.description')
 
     return (
       <Layout currentCategory={category}>
         {category && (
           <>
-            <Helmet title={`${category.title} | ${siteTitle}`} />
+            <SEO
+              siteTitle={`${category.title} | ${siteTitle}`}
+              description={description}
+              type="category"
+            />
             <Wrapper>
               {categoryPosts ? (
                 <ArticlesList
@@ -46,6 +51,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     contentfulCategory(contentful_id: { eq: $contentful_id }) {

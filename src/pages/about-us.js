@@ -1,8 +1,8 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import SEO from '../components/SEO'
 
 import Layout from '../components/Layout'
 import StaticContent from '../components/StaticContent'
@@ -16,13 +16,18 @@ const AboutUs = ({ data }) => {
   const {
     title,
     content,
+    description,
   } = data.allContentfulAboutUsStaticContent.edges[0].node
 
   const { title: siteTitle } = data.site.siteMetadata
 
   return (
     <Layout>
-      <Helmet title={`${title} | ${siteTitle}`} />
+      <SEO
+        siteTitle={`${title} | ${siteTitle}`}
+        description={description}
+        type="about"
+      />
       {content && (
         <Wrapper>
           <StaticContent>
@@ -49,6 +54,7 @@ export const AboutUsPageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
 

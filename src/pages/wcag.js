@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import SEO from '../components/SEO'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -15,10 +15,15 @@ const WCAGStyled = styled.div`
 const WCAG = ({ data }) => {
   const { title, content } = data.allContentfulWcagStaticContent.edges[0].node
   const { title: siteTitle } = data.site.siteMetadata
+  const { description: description } = data.site.siteMetadata
 
   return (
     <Layout>
-      <Helmet title={`${title} | ${siteTitle}`} />
+      <SEO
+        siteTitle={`${title} | ${siteTitle}`}
+        description={description}
+        type="publications"
+      />
       {content && (
         <Wrapper>
           <StaticContent>
@@ -45,6 +50,7 @@ export const WCAGPageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
 
