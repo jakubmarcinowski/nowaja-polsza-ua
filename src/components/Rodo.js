@@ -92,7 +92,11 @@ class Rodo extends Component {
             </Link>
             .
           </Info>
-          <CloseIcon onClick={this.acceptCookies} src={closeIcon} />
+          <CloseIcon
+            onClick={this.acceptCookies}
+            src={closeIcon}
+            alt="close icon"
+          />
         </InfoWrapper>
       </Wrapper>
     )

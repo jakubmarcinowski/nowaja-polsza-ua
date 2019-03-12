@@ -114,7 +114,7 @@ const Footer = () => (
           <Publisher>
             <PublisherText color="Dark">Издатель:</PublisherText>
             <ExternalLink url="http://cprdip.pl/">
-              <CPRDIPLogo src={cprdipExtended} />
+              <CPRDIPLogo src={cprdipExtended} alt="CPRDIP logo" />
             </ExternalLink>
           </Publisher>
         </Info>

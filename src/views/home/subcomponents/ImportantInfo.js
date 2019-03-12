@@ -42,7 +42,7 @@ const Info = styled(Paragraph)`
 
 const ImportantInfo = ({ importantInfo }) => (
   <ImportantInfoBox>
-    <Icon src={AlertIcon} />
+    <Icon src={AlertIcon} alt="alert icon" />
     {importantInfo.importantInfo && (
       <Info weight="Light">{importantInfo.importantInfo}</Info>
     )}
