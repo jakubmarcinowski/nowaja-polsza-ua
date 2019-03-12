@@ -21,7 +21,7 @@ const Filters = styled.div`
   }
 
   @media ${mediaQueries.desktop} {
-    margin: 8rem -1rem 0;
+    margin: 5rem -1rem 0;
   }
 `
 
@@ -89,7 +89,7 @@ class PublicationPage extends React.Component {
             size="MediumBig"
             color="Primary"
             weight="Bold"
-            onClick={() => this.setState({ filter: 'журналы' })}
+            onClick={() => this.setState({ filter: 'журналыa' })}
             isActive={filter === 'журналы'}
           >
             журналы
