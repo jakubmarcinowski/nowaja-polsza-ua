@@ -89,7 +89,7 @@ class PublicationPage extends React.Component {
             size="MediumBig"
             color="Primary"
             weight="Bold"
-            onClick={() => this.setState({ filter: 'журналыa' })}
+            onClick={() => this.setState({ filter: 'журналы' })}
             isActive={filter === 'журналы'}
           >
             журналы
