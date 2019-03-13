@@ -7,7 +7,6 @@ import Layout from '../components/Layout'
 import Wrapper from '../components/Wrapper'
 import ArticlesList from '../components/ArticlesList'
 import Author from '../components/Author'
-import logo from '../../static/logo.svg'
 
 class AuthorTemplate extends React.Component {
   render() {
@@ -15,7 +14,7 @@ class AuthorTemplate extends React.Component {
     const authorPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const description = get(this.props, 'data.site.siteMetadata.description')
-    const imageSrc = author.image ? author.image.fluid.src.substring(2) : logo
+    const imageSrc = author.image ? `https://${author.image.fluid.src.substring(2)}` : ''
 
     return (
       <Layout>
