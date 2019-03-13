@@ -61,18 +61,24 @@ const rodoQuery = graphql`
 
 class Rodo extends Component {
   state = {
-    isRodoAccepted: false,
+    isRodoVisible: false,
+  }
+
+  componentDidMount() {
+    if (!cookie.load('rodo-accepted')) {
+      this.setState({ isRodoVisible: true })
+    }
   }
 
   acceptCookies = () => {
-    this.setState({ isRodoAccepted: true })
+    this.setState({ isRodoVisible: false })
     cookie.save('rodo-accepted', true)
   }
 
   render() {
-    const { isRodoAccepted } = this.state
+    const { isRodoVisible } = this.state
 
-    return isRodoAccepted ? null : (
+    return !isRodoVisible ? null : (
       <Wrapper>
         <InfoWrapper>
           <Info size="Medium">
