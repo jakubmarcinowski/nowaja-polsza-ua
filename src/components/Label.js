@@ -12,20 +12,22 @@ const StyledLabel = styled(Paragraph)`
   background: ${({ theme, color }) =>
     theme.colors.highlighted[color] || theme.colors[color]};
   font-size: 1.4rem;
-  color: ${props => props.theme.colors.white};
+  color: ${({ theme, color }) =>
+    color === 'white' ? theme.colors.black : theme.colors.white};
 
   @media ${mediaQueries.tablet} {
     font-size: 1.6rem;
   }
 `
 
-const Label = ({ color, children }) => (
-  <StyledLabel color={color}>{children}</StyledLabel>
+const Label = ({ className, color, children }) => (
+  <StyledLabel className={className} color={color}>{children}</StyledLabel>
 )
 
 Label.propTypes = {
   children: childrenType.isRequired,
   color: PropTypes.string,
+  className: PropTypes.string,
 }
 
 export default Label
