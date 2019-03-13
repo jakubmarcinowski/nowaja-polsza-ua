@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-import logo from '../../static/logo.svg'
-
-// @todo add logo as gatsby config param
-
 class SEO extends Component {
   state = {
     locationHref: '',
@@ -39,10 +35,6 @@ class SEO extends Component {
       </Helmet>
     )
   }
-}
-
-SEO.defaultProps = {
-  image: logo,
 }
 
 SEO.propTypes = {
