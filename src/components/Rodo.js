@@ -78,11 +78,7 @@ class Rodo extends Component {
   render() {
     const { isRodoVisible } = this.state
 
-    if (!isRodoVisible) {
-      return null
-    }
-
-    return (
+    return !isRodoVisible ? null : (
       <Wrapper>
         <InfoWrapper>
           <Info size="Medium">
