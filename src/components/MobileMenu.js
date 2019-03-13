@@ -8,7 +8,7 @@ import SocialMediaList from './SocialMediaList'
 import MobileMenuItems from './MobileMenuItems'
 import MobileMenuCategories from './MobileMenuCategories'
 import { novPolSocialMediaUrls } from '../utils/socialMedia'
-import Brand from './BrandSmall'
+import Brand from './Brand'
 
 const MenuIcon = styled.div`
   position: relative;

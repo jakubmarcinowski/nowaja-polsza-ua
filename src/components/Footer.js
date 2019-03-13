@@ -11,7 +11,7 @@ import Wrapper from './Wrapper'
 import Line from './Line'
 import cprdipExtended from '../../static/logo-cprdip-extended.png'
 import { novPolSocialMediaUrls } from '../utils/socialMedia'
-import Brand from './BrandSmall'
+import Brand from './Brand'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
