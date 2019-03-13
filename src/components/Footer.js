@@ -11,7 +11,7 @@ import Wrapper from './Wrapper'
 import Line from './Line'
 import cprdipExtended from '../../static/logo-cprdip-extended.png'
 import { novPolSocialMediaUrls } from '../utils/socialMedia'
-import BrandSmall from './BrandSmall'
+import Brand from './BrandSmall'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -103,7 +103,7 @@ const Footer = () => (
           urls={novPolSocialMediaUrls}
         />
         <BrandContainer>
-          <BrandSmall isDarkVersion/>
+          <Brand isDarkVersion/>
         </BrandContainer>
         <SocialMediaListDesktop
           isBig

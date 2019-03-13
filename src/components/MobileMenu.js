@@ -8,7 +8,7 @@ import SocialMediaList from './SocialMediaList'
 import MobileMenuItems from './MobileMenuItems'
 import MobileMenuCategories from './MobileMenuCategories'
 import { novPolSocialMediaUrls } from '../utils/socialMedia'
-import BrandSmall from './BrandSmall'
+import Brand from './BrandSmall'
 
 const MenuIcon = styled.div`
   position: relative;
@@ -153,7 +153,7 @@ class MobileMenu extends Component {
                         .headerPhoto
                     }
                   >
-                    <BrandSmall/>
+                    <Brand/>
                     <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
                       <div className="middle" />
                     </MenuIcon>
