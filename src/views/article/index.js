@@ -67,12 +67,17 @@ const Gallery = styled.div`
 
 const ArrowIcon = styled.img`
   max-width: 20px;
+  transition: opacity ${props => props.theme.animations.default};
   opacity: 0.7;
 `
 
 const ArrowIconPrev = styled.img`
   max-width: 20px;
   transform: rotate(180deg);
+`
+
+const ArticleSocialMediaListBottom = styled(ArticleSocialMediaList)`
+  margin: 2rem auto 4rem;
 `
 
 const SliderStyled = styled(Slider)`
@@ -87,6 +92,7 @@ const SliderStyled = styled(Slider)`
     display: flex !important;
     justify-content: center;
     align-items: center;
+    transition: opacity ${props => props.theme.animations.default};
     height: 100%;
     width: 7rem;
     z-index: 1;
@@ -220,7 +226,7 @@ const ArticlePage = ({
           </Gallery>
         )}
 
-        <ArticleSocialMediaList />
+        <ArticleSocialMediaListBottom />
         <div>
           <HeaderStyled size="Biggest">
             Вам также может понравиться
@@ -253,3 +259,4 @@ ArticlePage.propTypes = {
 }
 
 export default ArticlePage
+

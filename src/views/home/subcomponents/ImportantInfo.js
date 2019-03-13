@@ -3,58 +3,89 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Paragraph from '../../../components/Paragraph'
+import Label from '../../../components/Label'
 import ExternalLink from '../../../components/ExternalLink'
 import { mediaQueries } from '../../../utils/mediaQueries'
-import AlertIcon from '../../../../static/icon-alert.svg'
+
+const ImportantInfoBoxWrapper = styled.div`
+  background: ${({ theme }) => theme.colors.importantInfo};
+`
 
 const ImportantInfoBox = styled.div`
-  margin-bottom: 2.5rem;
-  padding: 2rem;
-  background: ${({ theme }) => theme.colors.listItemBackground};
+  max-width: 1440px;
+  margin: -2.7rem 0 2.5rem;
+  padding: 2rem 2rem 4rem;
 
   @media ${mediaQueries.tablet} {
     display: flex;
+    justify-content: space-between;
+    padding: 2rem 4rem;
   }
-`
 
-const Icon = styled.img`
-  height: 12px;
-  margin-right: 1rem;
+  @media ${mediaQueries.desktop} {
+    margin: -5rem auto 2.5rem;
+  }
 
-  @media ${mediaQueries.tablet} {
-    height: auto;
-    margin-right: 2rem;
+  @media ${mediaQueries.large} {
+    padding: 2rem 8rem;
   }
 `
 
 const Link = styled(Paragraph)`
-  margin-left: 1rem;
+  margin-top: 1rem;
   display: inline;
+  float: right;
 
   @media ${mediaQueries.tablet} {
     display: block;
+    margin-top: 0;
+    margin-left: 1.5rem;
   }
 `
 
 const Info = styled(Paragraph)`
   display: inline;
+  margin-left: 1.5rem;
+`
+
+const InfoContainer = styled.div`
+  display: flex;
+`
+
+const LabelStyled = styled(Label)`
+  display: inline-table;
+  font-size: 1rem;
+
+  @media ${mediaQueries.tablet} {
+    font-size: 1.6rem;
+  }
 `
 
 const ImportantInfo = ({ importantInfo }) => (
-  <ImportantInfoBox>
-    <Icon src={AlertIcon} />
-    {importantInfo.importantInfo && (
-      <Info weight="Light">{importantInfo.importantInfo}</Info>
-    )}
-    {importantInfo.importantInfoStatus === 'visibleWithLink' &&
-      (importantInfo.importantInfoLinkUrl && (
-        <ExternalLink url={importantInfo.importantInfoLinkUrl}>
-          <Link weight="Light">
-            <u>узнать&nbsp;больше</u>
-          </Link>
-        </ExternalLink>
-      ))}
-  </ImportantInfoBox>
+  <ImportantInfoBoxWrapper>
+    <ImportantInfoBox>
+      <InfoContainer>
+        <LabelStyled color="white" textColor="">
+          Инфо
+        </LabelStyled>
+        {importantInfo.importantInfo && (
+          <Info color="White" weight="Light">
+            {importantInfo.importantInfo}
+          </Info>
+        )}
+      </InfoContainer>
+      <div>
+        {importantInfo.importantInfoStatus === 'visibleWithLink' &&
+          (importantInfo.importantInfoLinkUrl && (
+            <ExternalLink url={importantInfo.importantInfoLinkUrl}>
+              <Link color="White" weight="Light">
+                <u>узнать&nbsp;больше</u>
+              </Link>
+            </ExternalLink>
+          ))}
+      </div>
+    </ImportantInfoBox>
+  </ImportantInfoBoxWrapper>
 )
 
 ImportantInfo.propTypes = {

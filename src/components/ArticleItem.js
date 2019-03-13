@@ -36,11 +36,13 @@ const ImgBox = styled.div`
 const IconPlay = styled.img`
   position: absolute;
   transform: translate(-50%, -50%);
+
   top: 50%;
   left: 50%;
   width: 5rem;
   height: 5rem;
   z-index: 1;
+  transition: opacity ${props => props.theme.animations.default};
   opacity: 0.7;
   cursor: pointer;
 
@@ -52,6 +54,20 @@ const IconPlay = styled.img`
 const HeaderArticle = styled(Header)`
   @media ${mediaQueries.tablet} {
     height: 6rem;
+  }
+`
+
+const ArticleItemContainer = styled.div``
+
+const ThumbnailWrapper = styled.div`
+  overflow: hidden;
+`
+
+const Thumbnail = styled(ImgWrapper)`
+  transition: transform ${props => props.theme.animations.default};
+
+  ${ArticleItemContainer}:hover & {
+    transform: scale(1.05);
   }
 `
 
@@ -80,7 +96,7 @@ const ArticleItem = ({
     body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
 
   return (
-    <>
+    <ArticleItemContainer>
       <ImgBox isMultimedia={isMultimedia}>
         {isMultimedia && (
           <Link to={`/blog/${slug}`}>
@@ -90,9 +106,11 @@ const ArticleItem = ({
             />
           </Link>
         )}
-        <Link to={`/blog/${slug}`}>
-          <ImgWrapper img={heroImage} aspectRatio={1.76} />
-        </Link>
+        <ThumbnailWrapper>
+          <Link to={`/blog/${slug}`}>
+            <Thumbnail img={heroImage} aspectRatio={1.76} />
+          </Link>
+        </ThumbnailWrapper>
         {!noCategoryLabel && categories && (
           <Link to={`/category/${categories[0].slug}`}>
             <PhotoLabel color={categories[0].color}>
@@ -128,7 +146,7 @@ const ArticleItem = ({
           )}
         </>
       )}
-    </>
+    </ArticleItemContainer>
   )
 }
 

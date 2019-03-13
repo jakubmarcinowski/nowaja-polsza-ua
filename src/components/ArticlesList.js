@@ -12,12 +12,16 @@ import { highlightedEventType } from '../types/highlightedEvent'
 const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  ${({ noMargin }) => !noMargin && 'margin: 2.5rem 0 0;'}
+  margin: 2.5rem 0 0;
   padding: 0;
   list-style: none;
 
   @media ${mediaQueries.tablet} {
-    ${({ noMargin }) => !noMargin && 'margin: 4rem -2.5rem;'}
+    margin: 5rem -1.25rem 4rem;
+  }
+
+  @media ${mediaQueries.desktop} {
+    margin: 5rem -2.5rem 4rem;
   }
 `
 const ListItem = styled.li`
@@ -26,6 +30,10 @@ const ListItem = styled.li`
 
   @media ${mediaQueries.tablet} {
     flex: 0 0 calc(100% / 2);
+    padding: 0 1.25rem 6.5rem;
+  }
+
+  @media ${mediaQueries.desktop} {
     padding: 0 2.5rem 6.5rem;
   }
 
@@ -33,9 +41,11 @@ const ListItem = styled.li`
     ${({ size }) => size !== 'Big' && 'flex: 0 0 calc(100% / 3);'}
     padding: 0 2.5rem 9.5rem;
 
-    &:nth-child(-n + 2) {
+    ${({ isOnHomepage }) =>
+      isOnHomepage &&
+      `&:nth-child(-n + 2) {
       display: none;
-    }
+    }`}
   }
 `
 const ButtonWrapper = styled.div`
@@ -72,6 +82,7 @@ class ArticlesList extends React.Component {
       size,
       noMargin,
       highlightedEvents,
+      isOnHomepage,
     } = this.props
     const { postsNumber } = this.state
     const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
@@ -89,7 +100,7 @@ class ArticlesList extends React.Component {
         <StyledList noMargin={noMargin}>
           {postsBeforeEventsContainer &&
             postsBeforeEventsContainer.map(({ node }) => (
-              <ListItem key={node.slug} size={size}>
+              <ListItem key={node.slug} size={size} isOnHomepage={isOnHomepage}>
                 <ArticleItem
                   article={node}
                   key={node.slug}
@@ -134,6 +145,7 @@ ArticlesList.propTypes = {
   noCategoryLabel: PropTypes.bool,
   noMargin: PropTypes.bool,
   size: PropTypes.string,
+  isOnHomepage: PropTypes.bool,
 }
 
 export default ArticlesList

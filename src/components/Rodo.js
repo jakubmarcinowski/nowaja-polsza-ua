@@ -61,7 +61,7 @@ const rodoQuery = graphql`
 
 class Rodo extends Component {
   state = {
-    isRodoAccepted: cookie.load('rodo-accepted'),
+    isRodoAccepted: false,
   }
 
   acceptCookies = () => {
@@ -92,7 +92,11 @@ class Rodo extends Component {
             </Link>
             .
           </Info>
-          <CloseIcon onClick={this.acceptCookies} src={closeIcon} />
+          <CloseIcon
+            onClick={this.acceptCookies}
+            src={closeIcon}
+            alt="close icon"
+          />
         </InfoWrapper>
       </Wrapper>
     )

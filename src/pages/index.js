@@ -1,13 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
+import SEO from '../components/SEO'
 
 const RootIndex = props => {
   const siteTitle = get(props, 'data.site.siteMetadata.title')
+  const description = get(props, 'data.site.siteMetadata.description')
   const posts = get(props, 'data.allContentfulBlogPost.edges')
   const importantInfo = get(props, 'data.contentfulHomepageStaticContent')
   const highlightedPost = get(props, 'data.contentfulHighlightedPost.post')
@@ -19,7 +20,7 @@ const RootIndex = props => {
   return (
     <Layout>
       <div>
-        <Helmet title={siteTitle} />
+        <SEO siteTitle={siteTitle} description={description} type="website" />
         <HomePage
           posts={posts}
           highlightedPost={highlightedPost}
@@ -38,6 +39,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
 

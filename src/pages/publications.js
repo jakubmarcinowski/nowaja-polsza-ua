@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import SEO from '../components/SEO'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
@@ -10,10 +10,15 @@ const Publications = ({ data }) => {
   const publications = data.allContentfulPublication.edges
   const siteTitle = data.site.siteMetadata.title
   const title = 'Библиотека'
+  const description = data.site.siteMetadata.description
 
   return (
     <Layout>
-      <Helmet title={`${title} | ${siteTitle}`} />
+      <SEO
+        siteTitle={`${title} | ${siteTitle}`}
+        description={description}
+        type="website"
+      />
       <PublicationPage publications={publications} title={title} />
     </Layout>
   )
@@ -30,6 +35,7 @@ export const PublicationsPageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     allContentfulPublication(sort: { fields: [publishDate], order: DESC }) {

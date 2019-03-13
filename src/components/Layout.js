@@ -2,6 +2,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import styled from 'styled-components'
+import cookie from 'react-cookies'
 
 import { GlobalStyle } from '../utils/global'
 import { theme } from '../utils/theme'
@@ -13,10 +14,10 @@ import MobileMenu from './MobileMenu'
 import { mediaQueries } from '../utils/mediaQueries'
 
 export const LayoutWrapper = styled.div`
-  margin: 7.5rem auto 0;
+  margin: 8.7rem auto 0;
 
   @media ${mediaQueries.desktop} {
-    margin: 2.5rem auto 0;
+    margin: 5rem auto 0;
   }
 `
 
@@ -69,7 +70,7 @@ const Layout = ({ children, currentCategory }) => {
             <Container>{children}</Container>
           </BodyContainer>
           <Footer />
-          <Rodo />
+          {!cookie.load('rodo-accepted') && <Rodo />}
           <GlobalStyle />
         </LayoutWrapper>
       </>

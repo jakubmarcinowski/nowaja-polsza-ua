@@ -7,12 +7,12 @@ import StaticContent from '../../../components/StaticContent'
 
 const Lead = styled.div`
   line-height: 1.3;
+  padding: 1rem 0 3rem;
   font-size: 1.8rem;
-  padding-top: 1rem;
 
   @media ${mediaQueries.tablet} {
+    padding: 0 0 6rem;
     font-size: 2.1rem;
-    padding-top: 0;
   }
 
   @media ${mediaQueries.desktop} {

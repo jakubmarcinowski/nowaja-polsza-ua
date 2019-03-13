@@ -49,12 +49,26 @@ const IconPlay = styled.img`
   left: 50%;
   width: 5rem;
   height: 5rem;
+  transition: opacity ${props => props.theme.animations.default};
   opacity: 0.7;
   z-index: 1;
   cursor: pointer;
 
   ${ImgBox}:hover & {
     opacity: 1;
+  }
+`
+
+const ThumbnailWrapper = styled.div`
+  overflow: hidden;
+`
+
+const Thumbnail = styled(ImgWrapper)`
+  transition: transform ${props => props.theme.animations.default};
+  transform: scale(1.01);
+
+  ${Wrapper}:hover & {
+    transform: scale(1.05);
   }
 `
 
@@ -91,9 +105,11 @@ const TheNewestItem = ({
             />
           </Link>
         )}
-        <Link to={`/blog/${slug}`}>
-          <ImgWrapper img={heroImage} aspectRatio={1} />
-        </Link>
+        <ThumbnailWrapper>
+          <Link to={`/blog/${slug}`}>
+            <Thumbnail img={heroImage} aspectRatio={1} />
+          </Link>
+        </ThumbnailWrapper>
         {categories && (
           <Link to={`/category/${categories[0].slug}`}>
             <PhotoLabel color={categories[0].color}>

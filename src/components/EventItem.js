@@ -45,17 +45,17 @@ const City = styled(Paragraph)`
 `
 
 const Title = styled(Paragraph)`
-  height: 9.4rem;
+  height: 10rem;
   overflow: hidden;
   padding: 0 3.5rem 0 2rem;
   color: ${({ theme }) => theme.colors.dark};
 
   @media ${mediaQueries.tablet} {
-    height: 11.6rem;
+    height: 10.5rem;
   }
 
   @media ${mediaQueries.desktop} {
-    height: 12.5rem;
+    height: 11rem;
   }
 `
 
@@ -71,7 +71,7 @@ const EventItem = ({ event }) => (
         {event.city}
       </City>
     </Container>
-    <Title size="Bigger" weight="Bold">
+    <Title size="Bigger" weight="Bold" lineHeight="Medium">
       {event.title}
     </Title>
   </Wrapper>

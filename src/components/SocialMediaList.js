@@ -20,6 +20,7 @@ import academiaFullGray from '../../static/social-academia-full-gray.svg'
 const Item = styled.li`
   display: inline;
   padding: 0 1.1rem;
+  transition: opacity ${props => props.theme.animations.default};
 
   &:first-of-type {
     padding-left: 0;
@@ -45,7 +46,7 @@ const Logo = styled.img`
   max-width: 30px;
 
   ${({ isBig }) =>
-  isBig &&
+    isBig &&
     `
     height: 25px;
   `}
@@ -148,7 +149,7 @@ class SocialMediaList extends React.Component {
                 isShareUrl ? `${academia}${this.state.locationHref}` : academia
               }
             >
-              <Logo isBig={isBig} src={academiaFullGray} alt="Academia"/>
+              <Logo isBig={isBig} src={academiaFullGray} alt="Academia" />
             </ExternalLink>
           </Item>
         )}

@@ -1,40 +1,40 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import get from 'lodash/get'
-import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import Wrapper from '../components/Wrapper'
 import ArticlesList from '../components/ArticlesList'
-
-const NoPostsInfo = styled.div`
-  padding: 2em;
-  text-align: center;
-`
+import Placeholder from '../components/Placeholder'
 
 class CategoryTemplate extends React.Component {
   render() {
     const category = get(this.props, 'data.contentfulCategory')
     const categoryPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const description = get(this.props, 'data.site.siteMetadata.description')
 
     return (
       <Layout currentCategory={category}>
         {category && (
           <>
-            <Helmet title={`${category.title} | ${siteTitle}`} />
+            <SEO
+              siteTitle={`${category.title} | ${siteTitle}`}
+              description={description}
+              type="category"
+            />
             <Wrapper>
               {categoryPosts ? (
                 <ArticlesList
                   posts={categoryPosts}
                   limit={6}
-                  initialLimit={9}
+                  initialLimit={6}
                   noCategoryLabel
                   noMargin
                 />
               ) : (
-                <NoPostsInfo>Нет статей</NoPostsInfo>
+                <Placeholder>Нет статей</Placeholder>
               )}
             </Wrapper>
           </>
@@ -51,6 +51,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     contentfulCategory(contentful_id: { eq: $contentful_id }) {

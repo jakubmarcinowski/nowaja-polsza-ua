@@ -7,6 +7,7 @@ import { Link, StaticQuery } from 'gatsby'
 
 const MenuItem = styled.li`
   padding-bottom: 25px;
+  transition: color ${props => props.theme.animations.default};
   line-height: 1.2;
   letter-spacing: 0.6px;
   font-size: 1.6rem;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import get from 'lodash/get'
 
 import Layout from '../components/Layout'
@@ -13,16 +13,23 @@ class AuthorTemplate extends React.Component {
     const author = get(this.props, 'data.contentfulPerson')
     const authorPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const description = get(this.props, 'data.site.siteMetadata.description')
+    const imageSrc = author.image ? `https://${author.image.fluid.src.substring(2)}` : ''
 
     return (
       <Layout>
         {author && (
           <>
-            <Helmet title={`${author.name} | ${siteTitle}`} />
+            <SEO
+              siteTitle={`${author.name} | ${siteTitle}`}
+              description={description}
+              type="author"
+              image={imageSrc}
+            />
             <Wrapper>
-              <Author author={author}/>
+              <Author author={author} />
               {authorPosts && (
-                <ArticlesList posts={authorPosts} limit={6} initialLimit={9} />
+                <ArticlesList posts={authorPosts} limit={6} initialLimit={6} />
               )}
             </Wrapper>
           </>
@@ -39,6 +46,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     contentfulPerson(contentful_id: { eq: $contentful_id }) {
