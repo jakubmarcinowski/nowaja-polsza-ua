@@ -35,7 +35,7 @@ const TitleWrapper = styled.div`
   margin-left: ${props => (props.isDarkVersion ? '15px' : '7px')};
 
   @media ${mediaQueries.desktop} {
-    margin-left: 20px;
+    margin-left: 2rem;
   }
 `
 
