@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import { mediaQueries } from '../utils/mediaQueries'
-import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
 import MobileMenuItems from './MobileMenuItems'
 import MobileMenuCategories from './MobileMenuCategories'
 import { novPolSocialMediaUrls } from '../utils/socialMedia'
+import BrandSmall from './BrandSmall'
 
 const MenuIcon = styled.div`
   position: relative;
@@ -153,7 +153,7 @@ class MobileMenu extends Component {
                         .headerPhoto
                     }
                   >
-                    <Brand isDarkVersion={false} />
+                    <BrandSmall/>
                     <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
                       <div className="middle" />
                     </MenuIcon>

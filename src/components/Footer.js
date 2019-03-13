@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import FooterNavigation from './FooterNavigation'
 import Paragraph from './Paragraph'
 import ExternalLink from './ExternalLink'
-import Brand from './Brand'
 import SocialMediaList from './SocialMediaList'
 import { mediaQueries } from '../utils/mediaQueries'
 import { theme } from '../utils/theme'
@@ -12,6 +11,7 @@ import Wrapper from './Wrapper'
 import Line from './Line'
 import cprdipExtended from '../../static/logo-cprdip-extended.png'
 import { novPolSocialMediaUrls } from '../utils/socialMedia'
+import BrandSmall from './BrandSmall'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -103,7 +103,7 @@ const Footer = () => (
           urls={novPolSocialMediaUrls}
         />
         <BrandContainer>
-          <Brand />
+          <BrandSmall isDarkVersion/>
         </BrandContainer>
         <SocialMediaListDesktop
           isBig
