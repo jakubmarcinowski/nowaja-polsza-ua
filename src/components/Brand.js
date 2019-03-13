@@ -159,6 +159,7 @@ class Brand extends React.Component {
             type={2}
             size="Medium"
             color={isDarkVersion ? 'Dark' : 'White'}
+            weight="Light"
           >
             Осн. в
           </LogoSubtitleLeft>
@@ -180,6 +181,7 @@ class Brand extends React.Component {
             type={2}
             size="Medium"
             color={isDarkVersion ? 'Dark' : 'White'}
+            weight="Light"
           >
             1999 г.
           </LogoSubtitleRight>
@@ -249,6 +251,7 @@ class Brand extends React.Component {
                             type={2}
                             size="Medium"
                             color={isDarkVersion ? 'Dark' : 'White'}
+                            weight="Light"
                           >
                             {contentfulHomepageStaticContent.motto}
                           </Subtitle>

@@ -45,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  @import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700|Open+Sans:400,600,700&subset=cyrillic-ext');
+  @import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700|Open+Sans:300,400,600,700&subset=cyrillic-ext');
 
   html {
     box-sizing: border-box;
