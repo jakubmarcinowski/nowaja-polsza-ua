@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Brand from './Brand'
+import TopBar from './TopBar'
 import { theme } from '../utils/theme'
 import Categories from './Categories'
 import { mediaQueries } from '../utils/mediaQueries'
@@ -59,7 +59,7 @@ const PageHeader = ({ currentCategory }) => (
               }
             >
               <Wrapper>
-                <Brand isFullVersion isDarkVersion={false} isInHeader />
+                <TopBar/>
                 <Categories currentCategory={currentCategory} />
               </Wrapper>
             </StyledPageHeader>
