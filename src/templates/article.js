@@ -86,6 +86,7 @@ export const pageQuery = graphql`
     contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
       title
       lead
+      authorTitle
       authors {
         id
         name

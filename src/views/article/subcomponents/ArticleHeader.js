@@ -139,7 +139,7 @@ const LabelLink = styled(Link)`
   }
 `
 
-const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
+const PageHeader = ({ title, publishDate, heroImage, authors, categories, authorTitle }) => (
   <StyledPageHeader>
     <ImgBox>
       <ImgWrapper img={heroImage} aspectRatio={2.5} />
@@ -152,7 +152,7 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
         <InfoItem>
           {authors && (
             <>
-              <TextLabel>{authors.length > 1 ? 'Авторы' : 'Автор'}</TextLabel>{' '}
+              {authorTitle && <TextLabel>{authorTitle}</TextLabel>}{' '}
               {authors.map(({ slug, name }, i, authors) => (
                 <>
                   <AuthorLink key={slug} to={`/author/${slug}`}>
@@ -214,6 +214,7 @@ PageHeader.propTypes = {
       slug: PropTypes.string,
     })
   ),
+  authorTitle: PropTypes.string,
 }
 
 export default PageHeader
