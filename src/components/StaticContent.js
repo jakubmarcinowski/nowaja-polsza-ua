@@ -101,6 +101,7 @@ const StyledContent = styled.div`
 
     .tag {
       display: block;
+      margin-top: 1.5rem;
       text-align: center;
       opacity: 0.7;
       font-size: 1.2rem;
