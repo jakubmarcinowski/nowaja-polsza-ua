@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Paragraph from '../../../components/Paragraph'
-import Label from '../../../components/Label'
 import ExternalLink from '../../../components/ExternalLink'
 import { mediaQueries } from '../../../utils/mediaQueries'
 
@@ -45,32 +44,23 @@ const Link = styled(Paragraph)`
 
 const Info = styled(Paragraph)`
   display: inline;
-  margin-left: 1.5rem;
 `
 
 const InfoContainer = styled.div`
   display: flex;
 `
 
-const LabelStyled = styled(Label)`
-  display: inline-table;
-  font-size: 1rem;
-
-  @media ${mediaQueries.tablet} {
-    font-size: 1.6rem;
-  }
+const InfoLabel = styled.span`
+  font-weight: bold;
 `
 
 const ImportantInfo = ({ importantInfo }) => (
   <ImportantInfoBoxWrapper>
     <ImportantInfoBox>
       <InfoContainer>
-        <LabelStyled color="white" textColor="">
-          Инфо
-        </LabelStyled>
         {importantInfo.importantInfo && (
           <Info color="White" weight="Light">
-            {importantInfo.importantInfo}
+            <InfoLabel>Инфо: </InfoLabel>{importantInfo.importantInfo}
           </Info>
         )}
       </InfoContainer>
