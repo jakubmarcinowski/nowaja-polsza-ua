@@ -130,6 +130,34 @@ export const pageQuery = graphql`
           }
         }
       }
+      recommendedArticles {
+        title
+          lead
+          body {
+            childMarkdownRemark {
+              html
+            }
+          }
+          slug
+          publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+          authors {
+            id
+            name
+            slug
+          }
+          contentful_id
+          categories {
+            contentful_id
+            title
+            color
+            slug
+          }
+          heroImage {
+            fluid(maxWidth: 800, background: "rgb:000000") {
+              ...GatsbyContentfulFluid
+            }
+          }
+      }
     }
   }
 `
