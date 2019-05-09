@@ -16,13 +16,24 @@ const RootIndex = props => {
     props,
     'data.allContentfulHighlightedEvents.edges[0].node.events'
   )
+  const highlightedPosts = get(props, 'data.contentfulHighlightedPost.posts')
+
+  let allHighlightedPosts = posts
+  if (highlightedPosts) {
+    const moreHighlightedPosts = highlightedPosts.map(article => {
+      return {node: article}
+    })
+
+    const postsWithoutDuplicates = posts.filter(post => !moreHighlightedPosts.find(highlightedPost => highlightedPost.node.id === post.node.id))
+    allHighlightedPosts = moreHighlightedPosts.concat(postsWithoutDuplicates);
+  }
 
   return (
     <Layout>
       <div>
         <SEO siteTitle={siteTitle} description={description} type="website" />
         <HomePage
-          posts={posts}
+          posts={allHighlightedPosts}
           highlightedPost={highlightedPost}
           importantInfo={importantInfo}
           highlightedEvents={highlightedEvents}
@@ -46,6 +57,7 @@ export const pageQuery = graphql`
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
+          id
           title
           slug
           body {
@@ -102,6 +114,33 @@ export const pageQuery = graphql`
           }
         }
         title
+      }
+      posts {
+        id
+        title
+          slug
+          body {
+            childMarkdownRemark {
+              html
+            }
+          }
+          publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+          authors {
+            id
+            name
+            slug
+          }
+          categories {
+            title
+            slug
+            color
+          }
+          heroImage {
+            fluid(maxWidth: 768, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
+            }
+          }
+          lead
       }
     }
     allContentfulHighlightedEvents {
