@@ -99,6 +99,21 @@ const StyledContent = styled.div`
       font-weight: 700;
     }
 
+    .tag {
+      display: block;
+      text-align: center;
+      opacity: 0.7;
+      font-size: 1.2rem;
+
+      @media ${mediaQueries.tablet} {
+        font-size: 1.4rem;
+      }
+
+      @media ${mediaQueries.desktop} {
+        font-size: 1.6rem;
+      }
+    }
+
     em {
       font-style: italic;
     }
