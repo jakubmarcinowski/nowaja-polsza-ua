@@ -106,13 +106,7 @@ const StyledContent = styled.div`
       opacity: 0.7;
       font-size: 1.2rem;
 
-      @media ${mediaQueries.tablet} {
-        margin-top: 1rem;
-        font-size: 1.2rem;
-      }
-
       @media ${mediaQueries.desktop} {
-        margin-top: 1rem;
         font-size: 1.4rem;
       }
     }
