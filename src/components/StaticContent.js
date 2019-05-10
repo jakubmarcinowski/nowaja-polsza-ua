@@ -101,17 +101,19 @@ const StyledContent = styled.div`
 
     .tag {
       display: block;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       text-align: center;
       opacity: 0.7;
       font-size: 1.2rem;
 
       @media ${mediaQueries.tablet} {
-        font-size: 1.4rem;
+        margin-top: 1rem;
+        font-size: 1.2rem;
       }
 
       @media ${mediaQueries.desktop} {
-        font-size: 1.6rem;
+        margin-top: 1rem;
+        font-size: 1.4rem;
       }
     }
 
