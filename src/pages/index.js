@@ -12,6 +12,7 @@ const RootIndex = props => {
   const posts = get(props, 'data.allContentfulBlogPost.edges')
   const importantInfo = get(props, 'data.contentfulHomepageStaticContent')
   const highlightedPost = get(props, 'data.contentfulHighlightedPost.post')
+  const highlightMorePosts = get(props, 'data.contentfulHighlightedPost.highlightMorePosts')
   const highlightedEvents = get(
     props,
     'data.allContentfulHighlightedEvents.edges[0].node.events'
@@ -19,7 +20,7 @@ const RootIndex = props => {
   const highlightedPosts = get(props, 'data.contentfulHighlightedPost.posts')
 
   let allHighlightedPosts = posts
-  if (highlightedPosts) {
+  if (highlightMorePosts && highlightedPosts) {
     const moreHighlightedPosts = highlightedPosts.map(article => {
       return {node: article}
     })
@@ -115,6 +116,7 @@ export const pageQuery = graphql`
         }
         title
       }
+      highlightMorePosts
       posts {
         id
         title
