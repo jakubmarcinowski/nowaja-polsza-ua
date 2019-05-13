@@ -94,9 +94,15 @@ const InfoItem = styled.div`
 `
 const Date = styled.span`
   display: inline-block;
-  margin: 0 2.4rem 0.5rem 0;
   font-weight: 300;
+  margin-bottom: 0.5rem;
 `
+
+const DateDivider = styled.span`
+  display: inline-block;
+  width: 2.4rem;
+`
+
 const AuthorLink = styled(Link)`
   display: inline-block;
   transition: opacity ${props => props.theme.animations.default};
@@ -139,7 +145,14 @@ const LabelLink = styled(Link)`
   }
 `
 
-const PageHeader = ({ title, publishDate, heroImage, authors, categories, authorTitle }) => (
+const PageHeader = ({
+  title,
+  publishDate,
+  heroImage,
+  authors,
+  categories,
+  authorsWithoutAccount,
+}) => (
   <StyledPageHeader>
     <ImgBox>
       <ImgWrapper img={heroImage} aspectRatio={2.5} />
@@ -148,11 +161,11 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories, author
       <InfoBox>
         <InfoItem>
           <Date>{publishDate}</Date>
+          {(authors || authorsWithoutAccount) && <DateDivider />}
         </InfoItem>
         <InfoItem>
           {authors && (
             <>
-              {authorTitle && <TextLabel>{authorTitle}</TextLabel>}{' '}
               {authors.map(({ slug, name }, i, authors) => (
                 <>
                   <AuthorLink key={slug} to={`/author/${slug}`}>
@@ -161,6 +174,12 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories, author
                   {!!authors[i + 1] && <>,&nbsp;</>}
                 </>
               ))}
+            </>
+          )}
+          {authorsWithoutAccount && (
+            <>
+              {' '}
+              <TextLabel>{authorsWithoutAccount}</TextLabel>
             </>
           )}
         </InfoItem>
@@ -214,7 +233,7 @@ PageHeader.propTypes = {
       slug: PropTypes.string,
     })
   ),
-  authorTitle: PropTypes.string,
+  authorsWithoutAccount: PropTypes.string,
 }
 
 export default PageHeader
