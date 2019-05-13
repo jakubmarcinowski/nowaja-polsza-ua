@@ -48,6 +48,7 @@ export const PublicationsPageQuery = graphql`
           slug
           typeOfPublications
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+          subtitle
           authors {
             id
             name

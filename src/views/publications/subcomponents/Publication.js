@@ -27,8 +27,8 @@ const AuthorLink = styled(Link)`
 `
 
 const Publication = ({
-                       publication: { title, heroImage, epub, mobi, pdf, lead, authors },
-                     }) => (
+  publication: { title, heroImage, epub, mobi, pdf, lead, authors, subtitle },
+}) => (
   <BoxWithPhoto image={heroImage}>
     {title && (
       <Header
@@ -42,21 +42,22 @@ const Publication = ({
       </Header>
     )}
     <AuthorWrapper>
-      {authors
-        ? authors.map(({ name, slug }, i, authors) => (
-          <AuthorLink to={`/author/${slug}`} key={i}>
-            {name}
-            {!!authors[i + 1] && <>,&nbsp;</>}
-          </AuthorLink>
-        ))
-        : 'Журнал'}
+      {subtitle
+        ? subtitle
+        : authors &&
+          authors.map(({ name, slug }, i, authors) => (
+            <AuthorLink to={`/author/${slug}`} key={i}>
+              {name}
+              {!!authors[i + 1] && <>,&nbsp;</>}
+            </AuthorLink>
+          ))}
     </AuthorWrapper>
     <DownloadButtons>
-      {pdf && <DownloadButton url={pdf.file.url} text="PDF"/>}
-      {epub && <DownloadButton url={epub.file.url} text="EPUB"/>}
-      {mobi && <DownloadButton url={mobi.file.url} text="MOBI"/>}
+      {pdf && <DownloadButton url={pdf.file.url} text="PDF" />}
+      {epub && <DownloadButton url={epub.file.url} text="EPUB" />}
+      {mobi && <DownloadButton url={mobi.file.url} text="MOBI" />}
     </DownloadButtons>
-    <ReadMoreWrapper description={lead}/>
+    <ReadMoreWrapper description={lead} />
   </BoxWithPhoto>
 )
 
