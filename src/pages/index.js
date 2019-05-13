@@ -12,7 +12,10 @@ const RootIndex = props => {
   const posts = get(props, 'data.allContentfulBlogPost.edges')
   const importantInfo = get(props, 'data.contentfulHomepageStaticContent')
   const highlightedPost = get(props, 'data.contentfulHighlightedPost.post')
-  const highlightMorePosts = get(props, 'data.contentfulHighlightedPost.highlightMorePosts')
+  const highlightMorePosts = get(
+    props,
+    'data.contentfulHighlightedPost.highlightMorePosts'
+  )
   const highlightedEvents = get(
     props,
     'data.allContentfulHighlightedEvents.edges[0].node.events'
@@ -22,11 +25,16 @@ const RootIndex = props => {
   let allHighlightedPosts = posts
   if (highlightMorePosts && highlightedPosts) {
     const moreHighlightedPosts = highlightedPosts.map(article => {
-      return {node: article}
+      return { node: article }
     })
 
-    const postsWithoutDuplicates = posts.filter(post => !moreHighlightedPosts.find(highlightedPost => highlightedPost.node.id === post.node.id))
-    allHighlightedPosts = moreHighlightedPosts.concat(postsWithoutDuplicates);
+    const postsWithoutDuplicates = posts.filter(
+      post =>
+        !moreHighlightedPosts.find(
+          highlightedPost => highlightedPost.node.id === post.node.id
+        )
+    )
+    allHighlightedPosts = moreHighlightedPosts.concat(postsWithoutDuplicates)
   }
 
   return (
@@ -54,8 +62,10 @@ export const pageQuery = graphql`
         description
       }
     }
-
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulBlogPost(
+      filter: { slug: { nin: ["xxx", "xxx2"] } }
+      sort: { fields: [publishDate], order: DESC }
+    ) {
       edges {
         node {
           id
@@ -120,29 +130,29 @@ export const pageQuery = graphql`
       posts {
         id
         title
+        slug
+        body {
+          childMarkdownRemark {
+            html
+          }
+        }
+        publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+        authors {
+          id
+          name
           slug
-          body {
-            childMarkdownRemark {
-              html
-            }
+        }
+        categories {
+          title
+          slug
+          color
+        }
+        heroImage {
+          fluid(maxWidth: 768, resizingBehavior: SCALE) {
+            ...GatsbyContentfulFluid
           }
-          publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
-          authors {
-            id
-            name
-            slug
-          }
-          categories {
-            title
-            slug
-            color
-          }
-          heroImage {
-            fluid(maxWidth: 768, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
-            }
-          }
-          lead
+        }
+        lead
       }
     }
     allContentfulHighlightedEvents {

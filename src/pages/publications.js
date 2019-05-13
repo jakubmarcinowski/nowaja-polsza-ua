@@ -38,7 +38,10 @@ export const PublicationsPageQuery = graphql`
         description
       }
     }
-    allContentfulPublication(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulPublication(
+      filter: { slug: { ne: "xxx" } }
+      sort: { fields: [publishDate], order: DESC }
+    ) {
       edges {
         node {
           title
