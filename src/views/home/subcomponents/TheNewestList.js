@@ -21,7 +21,7 @@ const ListItem = styled.li`
   }
 
   @media ${mediaQueries.desktop} {
-    flex: 0 0 1;
+    flex: 0 0 auto;
 
     &:not(:last-child) {
       margin: 0 0 2.5rem;
