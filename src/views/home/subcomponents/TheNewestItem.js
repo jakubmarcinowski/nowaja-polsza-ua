@@ -4,14 +4,16 @@ import { Link } from 'gatsby'
 
 import { articleType } from '../../../types/article'
 import ImgWrapper from '../../../components/ImgWrapper'
-import Paragraph from '../../../components/Paragraph'
 import Header from '../../../components/Header'
-import { mediaQueries } from '../../../utils/mediaQueries'
 import ArticleInfoBox from '../../../components/ArticleInfoBox'
 import PhotoLabel from '../../../components/PhotoLabel'
 import playIcon from '../../../../static/icon-play.svg'
 import headphonesIcon from '../../../../static/icon-close.svg'
 import AnimatedLink from '../../../components/AnimatedLink'
+
+const NewestItemHeader = styled(Header)`
+  max-height: 11.5rem;
+`
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,12 +36,6 @@ const ImgBox = styled.div`
       opacity: 0.2;
       pointer-events: none;
     }`};
-`
-const ParagraphWrapper = styled.div`
-  @media ${mediaQueries.desktop} {
-    max-height: 7.8rem;
-    overflow: hidden;
-  }
 `
 
 const IconPlay = styled.img`
@@ -81,7 +77,6 @@ const TheNewestItem = ({
     categories,
     heroImage,
     publishDate,
-    lead,
   },
 }) => {
   const isMultimedia =
@@ -120,7 +115,7 @@ const TheNewestItem = ({
       </ImgBox>
       <div>
         {slug && (
-          <Header
+          <NewestItemHeader
             weight="Bold"
             type={2}
             size="MediumBig"
@@ -128,27 +123,17 @@ const TheNewestItem = ({
             margin="0 0 1rem"
             lineHeight="Medium"
             overflow="hidden"
-            height="4.6"
           >
             <AnimatedLink url={`/blog/${slug}`} opacity={0.7}>
-              {title}
+              {title} 
             </AnimatedLink>
-          </Header>
+          </NewestItemHeader>
         )}
         <ArticleInfoBox
           authors={authors}
           publishDate={publishDate}
           size="Small"
         />
-        {lead && (
-          <ParagraphWrapper>
-            <Link to={`/blog/${slug}`}>
-              <Paragraph size="Medium" lineHeight="Medium" weight="Light">
-                {lead}
-              </Paragraph>
-            </Link>
-          </ParagraphWrapper>
-        )}
       </div>
     </Wrapper>
   )
