@@ -11,34 +11,22 @@ import { mediaQueries } from '../../../utils/mediaQueries'
 const StyledPageHeader = styled.header`
   @media ${mediaQueries.desktop} {
     position: relative;
-    margin-bottom: 7rem;
     text-align: center;
   }
 `
 const ImgBox = styled.div`
   position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: ${({ theme }) => theme.gradients.article};
-  }
 `
+
 const Banner = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin: 0 auto;
   padding-top: 2rem;
 
   @media ${mediaQueries.desktop} {
-    position: absolute;
-    bottom: -7rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -31rem;
     width: 870px;
     padding: 3rem;
     background: ${({ theme }) => theme.colors.white};
