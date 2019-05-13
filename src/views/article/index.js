@@ -171,9 +171,19 @@ const ArticlePage = ({
     categories,
     lead,
     gallery,
+    recommendedArticles,
   },
   posts,
 }) => {
+  let recommendedAutoAndManually = posts
+
+  if (recommendedArticles) {
+    const manuallyRecommended = recommendedArticles.map(article => {
+      return {node: article}
+    })
+    recommendedAutoAndManually = manuallyRecommended.concat(posts);
+  }
+
   const settings = {
     dots: true,
     infinite: false,
@@ -233,7 +243,7 @@ const ArticlePage = ({
           <HeaderStyled size="Biggest">
             Вам также может понравиться
           </HeaderStyled>
-          <RecommendedArticles posts={posts} />
+          <RecommendedArticles posts={recommendedAutoAndManually} />
         </div>
         <SectionWrapper>
           <HeaderStyled size="Biggest">
