@@ -50,17 +50,13 @@ const InfoContainer = styled.div`
   display: flex;
 `
 
-const InfoLabel = styled.span`
-  font-weight: bold;
-`
-
 const ImportantInfo = ({ importantInfo }) => (
   <ImportantInfoBoxWrapper>
     <ImportantInfoBox>
       <InfoContainer>
         {importantInfo.importantInfo && (
           <Info color="White" weight="Light">
-            <InfoLabel>Инфо: </InfoLabel>{importantInfo.importantInfo}
+            {importantInfo.importantInfo}
           </Info>
         )}
       </InfoContainer>
