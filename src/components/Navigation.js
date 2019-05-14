@@ -8,6 +8,7 @@ const StyledNavigation = styled.nav`
     display: flex;
     justify-content: center;
     list-style: none;
+    margin: 0 -1rem;
     padding: 0;
     font-size: 1.6rem;
     font-family: ${props => props.theme.fonts.secondary};

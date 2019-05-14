@@ -18,6 +18,7 @@ const TheNewestListContainer = styled.div`
 
   @media ${mediaQueries.large} {
     display: block;
+    width: 100%;
   }
 `
 

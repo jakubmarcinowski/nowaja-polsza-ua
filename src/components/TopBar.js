@@ -38,14 +38,6 @@ const Subtitle = styled(Header)`
   letter-spacing: 0.5px;
 `
 
-const LogoSubtitleLeft = styled(Subtitle)`
-  margin-right: 1rem;
-`
-
-const LogoSubtitleRight = styled(Subtitle)`
-  margin-left: 1rem;
-`
-
 const Container = styled.div`
   display: flex;
   width: 100%;
@@ -85,23 +77,7 @@ const TopBar = () => (
         <span>
           <Link to="/">
             <LogoContainer>
-              <LogoSubtitleLeft
-                type={2}
-                size="Medium"
-                color="White"
-                weight="Light"
-              >
-                Осн. в
-              </LogoSubtitleLeft>
               <Logo src={logoWithBackground} alt="Nowaja Polsza logo"/>
-              <LogoSubtitleRight
-                type={2}
-                size="Medium"
-                color="White"
-                weight="Light"
-              >
-                1999 г.
-              </LogoSubtitleRight>
             </LogoContainer>
           </Link>
         </span>
