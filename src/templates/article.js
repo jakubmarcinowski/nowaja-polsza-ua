@@ -86,6 +86,7 @@ export const pageQuery = graphql`
     contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
       title
       lead
+      authorsWithoutAccount
       authors {
         id
         name
@@ -129,6 +130,34 @@ export const pageQuery = graphql`
             ...GatsbyContentfulFluid
           }
         }
+      }
+      recommendedArticles {
+        title
+          lead
+          body {
+            childMarkdownRemark {
+              html
+            }
+          }
+          slug
+          publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+          authors {
+            id
+            name
+            slug
+          }
+          contentful_id
+          categories {
+            contentful_id
+            title
+            color
+            slug
+          }
+          heroImage {
+            fluid(maxWidth: 800, background: "rgb:000000") {
+              ...GatsbyContentfulFluid
+            }
+          }
       }
     }
   }

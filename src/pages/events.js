@@ -38,7 +38,10 @@ export const EventsPageQuery = graphql`
         description
       }
     }
-    allContentfulEvent(sort: { fields: [expirationDate], order: ASC }) {
+    allContentfulEvent(
+      filter: { slug: { ne: "xxx" } }
+      sort: { fields: [expirationDate], order: ASC }
+    ) {
       edges {
         node {
           title

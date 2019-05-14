@@ -87,7 +87,7 @@ const ArticleItem = ({
 }) => {
   const isMultimedia =
     categories &&
-    categories.filter(({ slug }) => slug === 'multimedia').length > 0
+    categories.filter(({ slug }) => slug === 'mediateka').length > 0
 
   const isSoundCloud =
     body &&

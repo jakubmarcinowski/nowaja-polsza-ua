@@ -38,7 +38,10 @@ const Category = styled.li`
 
 const categoriesQuery = graphql`
   query CategoriesQuery {
-    allContentfulCategory(sort: { fields: [order], order: ASC }) {
+    allContentfulCategory(
+      filter: { slug: { ne: "xxx" } }
+      sort: { fields: [order], order: ASC }
+    ) {
       edges {
         node {
           id
@@ -59,19 +62,23 @@ const Categories = ({ currentCategory }) => (
       <StyledCategories>
         {allContentfulCategory &&
           allContentfulCategory.edges &&
-          allContentfulCategory.edges.map(({ node }) => (
-            <Category
-              key={node.slug}
-              color={node.color}
-              currentCategory={
-                currentCategory &&
-                node.slug === currentCategory.slug &&
-                currentCategory
-              }
-            >
-              <Link to={`category/${node.slug}`}>{node.title}</Link>
-            </Category>
-          ))}
+          allContentfulCategory.edges.map(({ node }) => {
+            if (node.slug === 'mediateka') return null
+
+            return (
+              <Category
+                key={node.slug}
+                color={node.color}
+                currentCategory={
+                  currentCategory &&
+                  node.slug === currentCategory.slug &&
+                  currentCategory
+                }
+              >
+                <Link to={`category/${node.slug}`}>{node.title}</Link>
+              </Category>
+            )
+          })}
       </StyledCategories>
     )}
   />

@@ -11,34 +11,22 @@ import { mediaQueries } from '../../../utils/mediaQueries'
 const StyledPageHeader = styled.header`
   @media ${mediaQueries.desktop} {
     position: relative;
-    margin-bottom: 7rem;
     text-align: center;
   }
 `
 const ImgBox = styled.div`
   position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: ${({ theme }) => theme.gradients.article};
-  }
 `
+
 const Banner = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin: 0 auto;
   padding-top: 2rem;
 
   @media ${mediaQueries.desktop} {
-    position: absolute;
-    bottom: -7rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -31rem;
     width: 870px;
     padding: 3rem;
     background: ${({ theme }) => theme.colors.white};
@@ -94,9 +82,15 @@ const InfoItem = styled.div`
 `
 const Date = styled.span`
   display: inline-block;
-  margin: 0 2.4rem 0.5rem 0;
   font-weight: 300;
+  margin-bottom: 0.5rem;
 `
+
+const DateDivider = styled.span`
+  display: inline-block;
+  width: 2.4rem;
+`
+
 const AuthorLink = styled(Link)`
   display: inline-block;
   transition: opacity ${props => props.theme.animations.default};
@@ -139,7 +133,14 @@ const LabelLink = styled(Link)`
   }
 `
 
-const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
+const PageHeader = ({
+  title,
+  publishDate,
+  heroImage,
+  authors,
+  categories,
+  authorsWithoutAccount,
+}) => (
   <StyledPageHeader>
     <ImgBox>
       <ImgWrapper img={heroImage} aspectRatio={2.5} />
@@ -148,11 +149,11 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
       <InfoBox>
         <InfoItem>
           <Date>{publishDate}</Date>
+          {(authors || authorsWithoutAccount) && <DateDivider />}
         </InfoItem>
         <InfoItem>
           {authors && (
             <>
-              <TextLabel>{authors.length > 1 ? 'Авторы' : 'Автор'}</TextLabel>{' '}
               {authors.map(({ slug, name }, i, authors) => (
                 <>
                   <AuthorLink key={slug} to={`/author/${slug}`}>
@@ -161,6 +162,12 @@ const PageHeader = ({ title, publishDate, heroImage, authors, categories }) => (
                   {!!authors[i + 1] && <>,&nbsp;</>}
                 </>
               ))}
+            </>
+          )}
+          {authorsWithoutAccount && (
+            <>
+              {' '}
+              <TextLabel>{authorsWithoutAccount}</TextLabel>
             </>
           )}
         </InfoItem>
@@ -214,6 +221,7 @@ PageHeader.propTypes = {
       slug: PropTypes.string,
     })
   ),
+  authorsWithoutAccount: PropTypes.string,
 }
 
 export default PageHeader
