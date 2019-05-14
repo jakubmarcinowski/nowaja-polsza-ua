@@ -65,6 +65,10 @@ const StyledContent = styled.div`
   }
 
   p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     &:not(:last-child) {
       margin-bottom: 3.7em;
     }
@@ -85,13 +89,11 @@ const StyledContent = styled.div`
 
       @media ${mediaQueries.desktop} {
         max-width: 870px;
-        margin-left: -100px;
       }
 
       @media ${mediaQueries.large} {
         max-width: ${({ theme }) =>
           `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
-        margin-left: ${({ theme }) => `calc(-${theme.grid.paddings.large} *2)`};
       }
     }
 
