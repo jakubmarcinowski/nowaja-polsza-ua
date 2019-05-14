@@ -23,7 +23,10 @@ const MenuItem = styled.li`
 
 const categoriesQuery = graphql`
   query CategoriesMobileQuery {
-    allContentfulCategory(sort: { fields: [order], order: ASC }) {
+    allContentfulCategory(
+      filter: { slug: { ne: "xxx" } }
+      sort: { fields: [order], order: ASC }
+    ) {
       edges {
         node {
           id
@@ -45,19 +48,23 @@ const MobileMenu = ({ currentCategory }) => (
         <>
           {allContentfulCategory &&
             allContentfulCategory.edges &&
-            allContentfulCategory.edges.map(({ node }) => (
-              <MenuItem
-                key={node.slug}
-                color={node.color}
-                currentCategory={
-                  currentCategory &&
-                  node.slug === currentCategory.slug &&
-                  currentCategory
-                }
-              >
-                <Link to={`category/${node.slug}`}>{node.title}</Link>
-              </MenuItem>
-            ))}
+            allContentfulCategory.edges.map(({ node }) => {
+              if (node.slug === 'mediateka') return null
+
+              return (
+                <MenuItem
+                  key={node.slug}
+                  color={node.color}
+                  currentCategory={
+                    currentCategory &&
+                    node.slug === currentCategory.slug &&
+                    currentCategory
+                  }
+                >
+                  <Link to={`category/${node.slug}`}>{node.title}</Link>
+                </MenuItem>
+              )
+            })}
         </>
       )}
     />
