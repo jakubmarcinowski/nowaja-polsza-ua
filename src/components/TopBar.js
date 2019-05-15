@@ -29,7 +29,8 @@ const Logo = styled.img`
 `
 
 const Title = styled(Header)`
-  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
 `
 
 const Subtitle = styled(Header)`
