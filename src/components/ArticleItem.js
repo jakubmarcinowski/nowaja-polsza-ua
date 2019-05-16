@@ -137,10 +137,10 @@ const ArticleItem = ({
               </AnimatedLink>
             </HeaderArticle>
           )}
-          {leadLong && (
+          {leadLong && leadLong.childMarkdownRemark && (
             <Link to={`/blog/${slug}`}>
               <Paragraph size="Big" lineHeight="Medium" weight="Light">
-                <span
+                <div
                   dangerouslySetInnerHTML={{
                     __html: leadLong.childMarkdownRemark.html,
                   }}
