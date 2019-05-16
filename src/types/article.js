@@ -10,7 +10,7 @@ export const articleType = PropTypes.shape({
   categories: PropTypes.arrayOf(
     PropTypes.shape({ title: PropTypes.string, slug: PropTypes.string })
   ),
-  leadLong: PropTypes.any,
+  leadLong: PropTypes.node,
   heroImage: PropTypes.shape({
     fluid: PropTypes.shape({
       aspectRatio: PropTypes.number,
