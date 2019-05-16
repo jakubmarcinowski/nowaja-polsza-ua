@@ -92,7 +92,13 @@ class SocialMediaList extends React.Component {
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
               url={
-                isShareUrl ? `${twitter}${this.state.locationHref}` : twitter
+                isShareUrl
+                  ? `${twitter}${this.state.locationHref}&original_referer=${
+                      this.state.locationHref
+                    }
+                    &text=${this.state.locationHref}
+                    &via=novayapolsha`
+                  : twitter
               }
             >
               <Logo

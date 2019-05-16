@@ -14,7 +14,9 @@ class AuthorTemplate extends React.Component {
     const authorPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const description = get(this.props, 'data.site.siteMetadata.description')
-    const imageSrc = author.image ? `https://${author.image.fluid.src.substring(2)}` : ''
+    const imageSrc = author.image
+      ? `https://${author.image.fluid.src.substring(2)}`
+      : ''
 
     return (
       <Layout>
@@ -94,7 +96,11 @@ export const pageQuery = graphql`
               ...GatsbyContentfulFluid
             }
           }
-          lead
+          leadLong {
+            childMarkdownRemark {
+              html
+            }
+          }
         }
       }
     }

@@ -90,7 +90,11 @@ export const pageQuery = graphql`
               ...GatsbyContentfulFluid
             }
           }
-          lead
+          leadLong {
+            childMarkdownRemark {
+              html
+            }
+          }
         }
       }
     }

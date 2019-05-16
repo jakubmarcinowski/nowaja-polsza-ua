@@ -5,7 +5,8 @@ import { childrenType } from '../types/children'
 import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledContent = styled.div`
-  line-height: 1.6;
+  overflow: hidden;
+  line-height: 1.7;
 
   h1,
   h2,
@@ -65,26 +66,24 @@ const StyledContent = styled.div`
   }
 
   p {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     &:not(:last-child) {
-      margin-bottom: 3.7em;
+      margin-bottom: 2.5em;
     }
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 300;
 
     @media ${mediaQueries.tablet} {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
 
     @media ${mediaQueries.desktop} {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
 
     img {
-      display: block;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
       max-width: 100%;
 
       @media ${mediaQueries.desktop} {
@@ -138,7 +137,7 @@ const StyledContent = styled.div`
 
   iframe {
     &:not(:last-child) {
-      margin-bottom: 3.7em;
+      margin-bottom: 2.5em;
     }
   }
 
@@ -148,7 +147,7 @@ const StyledContent = styled.div`
     padding-top: 25px;
     height: 0;
     &:not(:last-child) {
-      margin-bottom: 3.7em;
+      margin-bottom: 2.5em;
     }
   }
   .videoWrapper iframe {

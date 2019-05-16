@@ -12,15 +12,15 @@ const StyledArticleSocialMediaList = styled(SocialMediaList)`
   justify-content: space-between;
   max-width: 200px;
   margin: 0 auto 0.5rem;
-  padding: 20px 0;
+  padding: 2rem 0;
 
   @media ${mediaQueries.tablet} {
-    padding: 50px 0;
+    padding: 2rem 0 3rem;
     margin: 0 auto 1.5rem;
   }
 
   @media ${mediaQueries.desktop} {
-    padding: 50px 0;
+    padding: 0 0 5rem;
     margin: 0 auto 3rem;
   }
 `
