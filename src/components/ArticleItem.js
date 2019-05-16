@@ -141,11 +141,12 @@ const ArticleItem = ({
             <Link to={`/blog/${slug}`}>
               <Paragraph size="Big" lineHeight="Medium" weight="Light">
                 tu:
-                <span
+                {/* <span
                   dangerouslySetInnerHTML={{
                     __html: leadLong.childMarkdownRemark.html,
                   }}
-                />
+                /> */}
+                {leadLong.childMarkdownRemark.html}
               </Paragraph>
             </Link>
           )}
