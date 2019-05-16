@@ -92,7 +92,11 @@ export const pageQuery = graphql`
               ...GatsbyContentfulFluid
             }
           }
-          lead
+          leadLong {
+            childMarkdownRemark {
+              html
+            }
+          }
         }
       }
     }
@@ -118,7 +122,11 @@ export const pageQuery = graphql`
           slug
           color
         }
-        lead
+        leadLong {
+          childMarkdownRemark {
+            html
+          }
+        }
         heroImage {
           fluid(maxWidth: 1440, resizingBehavior: SCALE) {
             ...GatsbyContentfulFluid
@@ -152,7 +160,11 @@ export const pageQuery = graphql`
             ...GatsbyContentfulFluid
           }
         }
-        lead
+        leadLong {
+          childMarkdownRemark {
+            html
+          }
+        }
       }
     }
     allContentfulHighlightedEvents {

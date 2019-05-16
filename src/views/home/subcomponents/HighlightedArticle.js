@@ -114,7 +114,7 @@ class HighlightedArticle extends Component {
       slug,
       heroImage,
       authors,
-      lead,
+      leadLong,
       publishDate,
     } = this.props.post
     const { isActive } = this.state
@@ -147,11 +147,15 @@ class HighlightedArticle extends Component {
               color="white"
               dateLink={`/blog/${slug}`}
             />
-            {lead && (
+            {leadLong && (
               <Lead isActive={isActive}>
                 <Link to={`/blog/${slug}`}>
                   <Paragraph color="white" lineHeight="Medium">
-                    {lead}
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: leadLong.childMarkdownRemark.html,
+                      }}
+                    />
                   </Paragraph>
                 </Link>
               </Lead>

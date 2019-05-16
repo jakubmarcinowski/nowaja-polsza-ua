@@ -45,16 +45,17 @@ const HeaderWrapper = styled.div`
   }
 `
 const StyledHeader = styled(Header)`
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   line-height: 1.2;
 
   @media ${mediaQueries.tablet} {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     line-height: 1.4;
   }
 
   @media ${mediaQueries.desktop} {
-    line-height: 1.8;
+    margin-bottom: 3rem;
+    line-height: 1.6;
     font-size: 3.6rem;
   }
 `
@@ -69,7 +70,7 @@ const InfoBox = styled.div`
   @media ${mediaQueries.desktop} {
     order: 2;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 1.6rem;
   }
 `
@@ -133,10 +134,22 @@ const LabelLink = styled(Link)`
   }
 `
 
+const Credit = styled.div`
+  text-align: right;
+  margin-top: 1rem;
+  opacity: 0.7;
+  font-size: 1.2rem;
+
+  @media ${mediaQueries.desktop} {
+    font-size: 1.4rem;
+  }
+`
+
 const PageHeader = ({
   title,
   publishDate,
   heroImage,
+  heroImageCredit,
   authors,
   categories,
   authorsWithoutAccount,
@@ -144,6 +157,7 @@ const PageHeader = ({
   <StyledPageHeader>
     <ImgBox>
       <ImgWrapper img={heroImage} aspectRatio={2.5} />
+      {heroImageCredit && <Credit>{heroImageCredit}</Credit>}
     </ImgBox>
     <Banner>
       <InfoBox>
@@ -212,6 +226,7 @@ PageHeader.propTypes = {
       srcSet: PropTypes.string,
     }),
   }),
+  heroImageCredit: PropTypes.string,
   categories: PropTypes.arrayOf(
     PropTypes.shape({ title: PropTypes.string, slug: PropTypes.string })
   ),

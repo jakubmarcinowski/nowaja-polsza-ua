@@ -11,7 +11,7 @@ const Lead = styled.div`
   font-size: 1.8rem;
 
   @media ${mediaQueries.tablet} {
-    padding: 0 0 6rem;
+    padding: 0 0 2.5em;
     font-size: 2.1rem;
   }
 
@@ -22,7 +22,14 @@ const Lead = styled.div`
 
 const Content = ({ html, lead }) => (
   <>
-    {lead && <Lead>{lead}</Lead>}
+    {lead && (
+      <Lead
+        dangerouslySetInnerHTML={{
+          __html: lead,
+        }}
+      >
+      </Lead>
+    )}
     <StaticContent>
       <div
         dangerouslySetInnerHTML={{
