@@ -94,8 +94,6 @@ const ArticleItem = ({
     body.childMarkdownRemark &&
     body.childMarkdownRemark.html &&
     body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
-  
-  console.log(leadLong)
 
   return (
     <ArticleItemContainer>
@@ -139,7 +137,7 @@ const ArticleItem = ({
               </AnimatedLink>
             </HeaderArticle>
           )}
-          {leadLong && (
+          {leadLong && leadLong.childMarkdownRemark && leadLong.childMarkdownRemark.html (
             <Link to={`/blog/${slug}`}>
               <Paragraph size="Big" lineHeight="Medium" weight="Light">
               tu:
