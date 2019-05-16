@@ -164,6 +164,7 @@ const ArticlePage = ({
   article: {
     title,
     heroImage,
+    heroImageCredit,
     publishDate,
     body,
     authorsWithoutAccount,
@@ -218,6 +219,7 @@ const ArticlePage = ({
           title={title}
           publishDate={publishDate}
           heroImage={heroImage}
+          heroImageCredit={heroImageCredit}
           authorsWithoutAccount={authorsWithoutAccount}
           authors={authors}
           categories={categories}
