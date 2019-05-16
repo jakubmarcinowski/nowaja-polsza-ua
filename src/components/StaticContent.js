@@ -5,6 +5,7 @@ import { childrenType } from '../types/children'
 import { mediaQueries } from '../utils/mediaQueries'
 
 const StyledContent = styled.div`
+  overflow: hidden;
   line-height: 1.7;
 
   h1,
@@ -65,10 +66,6 @@ const StyledContent = styled.div`
   }
 
   p {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     &:not(:last-child) {
       margin-bottom: 2.5em;
     }
@@ -84,7 +81,9 @@ const StyledContent = styled.div`
     }
 
     img {
-      display: block;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
       max-width: 100%;
 
       @media ${mediaQueries.desktop} {
