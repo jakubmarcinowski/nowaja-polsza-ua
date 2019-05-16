@@ -22,7 +22,14 @@ const Lead = styled.div`
 
 const Content = ({ html, lead }) => (
   <>
-    {lead && <Lead>{lead}</Lead>}
+    {lead && (
+      <Lead
+        dangerouslySetInnerHTML={{
+          __html: lead,
+        }}
+      >
+      </Lead>
+    )}
     <StaticContent>
       <div
         dangerouslySetInnerHTML={{

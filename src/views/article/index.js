@@ -169,7 +169,7 @@ const ArticlePage = ({
     authorsWithoutAccount,
     authors,
     categories,
-    lead,
+    leadLong,
     gallery,
     recommendedArticles,
   },
@@ -179,9 +179,9 @@ const ArticlePage = ({
 
   if (recommendedArticles) {
     const manuallyRecommended = recommendedArticles.map(article => {
-      return {node: article}
+      return { node: article }
     })
-    recommendedAutoAndManually = manuallyRecommended.concat(posts);
+    recommendedAutoAndManually = manuallyRecommended.concat(posts)
   }
 
   const settings = {
@@ -225,9 +225,10 @@ const ArticlePage = ({
       </Wrapper>
       <Wrapper size="Small" position="relative">
         <ArticleSocialMediaList />
-        {body && lead && (
-          <Content html={body.childMarkdownRemark.html} lead={lead} />
-        )}
+          <Content
+            html={body && body.childMarkdownRemark.html}
+            lead={leadLong && leadLong.childMarkdownRemark.html}
+          />
         {gallery && (
           <Gallery>
             <SliderStyled {...settings}>
@@ -271,4 +272,3 @@ ArticlePage.propTypes = {
 }
 
 export default ArticlePage
-

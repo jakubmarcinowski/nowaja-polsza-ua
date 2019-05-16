@@ -10,7 +10,9 @@ const ArticleTemplate = props => {
   const post = get('data.contentfulBlogPost', props)
   const siteTitle = get('data.site.siteMetadata.title', props)
   const posts = get('data.allContentfulBlogPost.edges', props)
-  const imageSrc = post.heroImage ? `https://${post.heroImage.fluid.src.substring(2)}` : ''
+  const imageSrc = post.heroImage
+    ? `https://${post.heroImage.fluid.src.substring(2)}`
+    : ''
 
   const recommendedArticles = posts.filter(({ node: { categories } }) => {
     const postIntersection = intersectionBy(
@@ -26,7 +28,7 @@ const ArticleTemplate = props => {
         <>
           <SEO
             siteTitle={`${post.title} | ${siteTitle}`}
-            description={post.lead}
+            description={post.leadLong && post.leadLong.childMarkdownRemark.html}
             type="article"
             image={imageSrc}
           />
@@ -54,7 +56,11 @@ export const pageQuery = graphql`
       edges {
         node {
           title
-          lead
+          leadLong {
+            childMarkdownRemark {
+              html
+            }
+          }
           body {
             childMarkdownRemark {
               html
@@ -85,7 +91,11 @@ export const pageQuery = graphql`
 
     contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
       title
-      lead
+      leadLong {
+        childMarkdownRemark {
+          html
+        }
+      }
       authorsWithoutAccount
       authors {
         id
@@ -133,31 +143,35 @@ export const pageQuery = graphql`
       }
       recommendedArticles {
         title
-          lead
-          body {
-            childMarkdownRemark {
-              html
-            }
+        leadLong {
+          childMarkdownRemark {
+            html
           }
+        }
+        body {
+          childMarkdownRemark {
+            html
+          }
+        }
+        slug
+        publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+        authors {
+          id
+          name
           slug
-          publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
-          authors {
-            id
-            name
-            slug
-          }
+        }
+        contentful_id
+        categories {
           contentful_id
-          categories {
-            contentful_id
-            title
-            color
-            slug
+          title
+          color
+          slug
+        }
+        heroImage {
+          fluid(maxWidth: 800, background: "rgb:000000") {
+            ...GatsbyContentfulFluid
           }
-          heroImage {
-            fluid(maxWidth: 800, background: "rgb:000000") {
-              ...GatsbyContentfulFluid
-            }
-          }
+        }
       }
     }
   }
