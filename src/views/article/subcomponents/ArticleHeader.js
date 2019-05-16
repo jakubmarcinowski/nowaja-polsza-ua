@@ -133,10 +133,22 @@ const LabelLink = styled(Link)`
   }
 `
 
+const Credit = styled.div`
+  text-align: right;
+  margin-top: 1rem;
+  opacity: 0.7;
+  font-size: 1.2rem;
+
+  @media ${mediaQueries.desktop} {
+    font-size: 1.4rem;
+  }
+`
+
 const PageHeader = ({
   title,
   publishDate,
   heroImage,
+  heroImageCredit,
   authors,
   categories,
   authorsWithoutAccount,
@@ -144,6 +156,7 @@ const PageHeader = ({
   <StyledPageHeader>
     <ImgBox>
       <ImgWrapper img={heroImage} aspectRatio={2.5} />
+      {heroImageCredit && <Credit>{heroImageCredit}</Credit>}
     </ImgBox>
     <Banner>
       <InfoBox>
@@ -212,6 +225,7 @@ PageHeader.propTypes = {
       srcSet: PropTypes.string,
     }),
   }),
+  heroImageCredit: PropTypes.string,
   categories: PropTypes.arrayOf(
     PropTypes.shape({ title: PropTypes.string, slug: PropTypes.string })
   ),

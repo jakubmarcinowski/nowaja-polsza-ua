@@ -104,6 +104,7 @@ export const pageQuery = graphql`
           ...GatsbyContentfulFluid
         }
       }
+      heroImageCredit
       body {
         childMarkdownRemark {
           html

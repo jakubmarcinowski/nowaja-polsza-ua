@@ -20,6 +20,7 @@ export const articleType = PropTypes.shape({
       srcSet: PropTypes.string,
     }),
   }),
+  heroImageCredit: PropTypes.string,
   publishDate: PropTypes.string,
   slug: PropTypes.string,
   title: PropTypes.string,
