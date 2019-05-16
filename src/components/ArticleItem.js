@@ -94,6 +94,8 @@ const ArticleItem = ({
     body.childMarkdownRemark &&
     body.childMarkdownRemark.html &&
     body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
+  
+  console.log(leadLong)
 
   return (
     <ArticleItemContainer>
