@@ -14,7 +14,7 @@ const StyledCategories = styled.nav`
 
   @media ${mediaQueries.desktop} {
     margin-right: -4rem;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 `
 
@@ -26,6 +26,10 @@ const Category = styled.li`
     props.currentCategory
       ? props.theme.colors.highlighted[props.currentCategory.color]
       : props.theme.colors.white};
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   &:hover {
     color: ${props => props.theme.colors.highlighted[props.color]};
