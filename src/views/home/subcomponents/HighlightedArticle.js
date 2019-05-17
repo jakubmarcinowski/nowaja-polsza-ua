@@ -151,7 +151,7 @@ class HighlightedArticle extends Component {
               <Lead isActive={isActive}>
                 <Link to={`/blog/${slug}`}>
                   <Paragraph color="white" lineHeight="Medium">
-                    <span
+                    <div
                       dangerouslySetInnerHTML={{
                         __html: leadLong.childMarkdownRemark.html,
                       }}
