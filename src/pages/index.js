@@ -22,7 +22,10 @@ const RootIndex = props => {
   )
   const highlightedPosts = get(props, 'data.contentfulHighlightedPost.posts')
 
-  let allHighlightedPosts = posts
+  let allHighlightedPosts = posts.filter(
+    ({ node: { id } }) => highlightedPost.id !== id
+  )
+
   if (highlightMorePosts && highlightedPosts) {
     const moreHighlightedPosts = highlightedPosts.map(article => {
       return { node: article }
@@ -110,6 +113,7 @@ export const pageQuery = graphql`
     contentfulHighlightedPost {
       title
       post {
+        id
         slug
         publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
         authors {
