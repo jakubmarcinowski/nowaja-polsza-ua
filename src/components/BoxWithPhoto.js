@@ -36,6 +36,8 @@ const Info = styled.div`
   }
 `
 const Image = styled(ImgWrapper)`
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  
   @media ${mediaQueries.tablet} {
     position: absolute;
     top: -1.5rem;
