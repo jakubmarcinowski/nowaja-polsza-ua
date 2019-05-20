@@ -52,12 +52,24 @@ const IconPlay = styled.img`
 `
 
 const HeaderArticle = styled(Header)`
-  @media ${mediaQueries.tablet} {
-    height: 6rem;
-  }
+  
 `
 
-const ArticleItemContainer = styled.div``
+const ArticleItemContainer = styled.div`
+  position: relative;
+  height: 440px;
+  overflow: hidden;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 85%, rgba(255,255,255,0.47) 47%, rgba(255,255,255,1) 100%);
+  }
+`
 
 const ThumbnailWrapper = styled.div`
   overflow: hidden;
