@@ -110,5 +110,42 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
     )
+
+    const markdownTemplate = path.resolve('./src/templates/markdown.js')
+    resolve(
+      graphql(
+        `
+          {
+            allMarkdownRemark(limit: 1000) {
+              edges {
+                node {
+                  frontmatter {
+                    path
+                  }
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
+        }
+
+        console.log('TUTAJ')
+        console.log(result.data.allMarkdownRemark.edges[0].node)
+
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+          if (node.frontmatter.path) {
+            createPage({
+              path: node.frontmatter.path,
+              component: markdownTemplate,
+              context: {}, // additional data can be passed via context
+            })
+          }
+        })
+      })
+    )
   })
 }
