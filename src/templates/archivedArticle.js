@@ -7,11 +7,13 @@ import Layout from '../components/Layout'
 class MarkdownTemplate extends React.Component {
   render() {
     // const markdownData = get(this.props, 'data')
-    const markdownData = get(this.props, 'data.markdownRemark')
-    console.log('markdownData:')
-    console.log(markdownData)
-
-    return <Layout>MARKDOWN PAGE</Layout>
+    const markdownData = get(this.props, 'data.markdownRemark.frontmatter')
+    return (
+      <Layout>
+        MARKDOWN PAGE
+        <a href={markdownData.pdf}>DOWNLOAD PDF FILE</a>
+      </Layout>
+    )
   }
 }
 
@@ -25,6 +27,7 @@ export const pageQuery = graphql`
         path
         title
         article
+        pdf
       }
     }
   }
