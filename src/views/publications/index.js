@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Publication from './subcomponents/Publication'
+import ArchivePublication from './subcomponents/ArchivePublication'
 import Wrapper from '../../components/Wrapper'
 import Header from '../../components/Header'
 import Placeholder from '../../components/Placeholder'
 
 // @todo crete styled component for page header which is center and has a line
-
 const Filters = styled.div`
   display: flex;
   justify-content: center;
@@ -56,7 +56,7 @@ const DateFilters = styled.div`
 class PublicationPage extends React.Component {
   state = {
     filter: null,
-    dateFilter: null,
+    dateFilter: 1999,
   }
 
   renderPublications = () => {
@@ -126,15 +126,18 @@ class PublicationPage extends React.Component {
 
     return (
       <Wrapper size="Medium">
+        <a href={'/pdf/sample.pdf'}>DUPA</a>
         <Filters>{this.renderFilters()}</Filters>
         <DateFilters isActive={filter === 'архив'}>
           {this.renderDates()}
         </DateFilters>
-
         {publications && (!filter || filteredPublications.length !== 0) ? (
           this.renderPublications()
         ) : (
           <Placeholder>Нет публикации</Placeholder>
+        )}
+        {filter == 'архив' && (
+          <ArchivePublication></ArchivePublication>
         )}
       </Wrapper>
     )

@@ -37,7 +37,7 @@ const Info = styled.div`
 `
 const Image = styled(ImgWrapper)`
   border: 1px solid rgba(0, 0, 0, 0.05);
-  
+
   @media ${mediaQueries.tablet} {
     position: absolute;
     top: -1.5rem;
@@ -49,14 +49,34 @@ const Image = styled(ImgWrapper)`
   }
 `
 
-const BoxWithPhoto = ({ image, children }) => (
+const ArchiveCover = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 15rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: red;
+
+  @media ${mediaQueries.tablet} {
+    min-width: 17rem;
+    min-height: 22rem;
+    max-width: 17rem;
+    max-height: 22rem;
+    margin: -1.5rem 1.5rem 0 -1.5rem;
+  }
+`
+
+const BoxWithPhoto = ({ image, children, archive }) => (
   <Box>
-    {image && <Image img={image} />}
+    {!archive && <div>{image && <Image img={image} />}</div>}
+    {archive && <div><ArchiveCover><span>XII</span><span>SIERPNIA</span></ArchiveCover></div>}
     {children && <Info>{children}</Info>}
   </Box>
 )
 
 BoxWithPhoto.propTypes = {
+  archive: PropTypes.bool,
   children: childrenType,
   image: PropTypes.shape({
     fluid: PropTypes.shape({
