@@ -12,7 +12,6 @@ import PhotoLabel from '../components/PhotoLabel'
 import playIcon from '../../static/icon-play.svg'
 import headphonesIcon from '../../static/icon-headphones.svg'
 import AnimatedLink from './AnimatedLink'
-import { mediaQueries } from '../utils/mediaQueries'
 
 const ImgBox = styled.div`
   position: relative;
@@ -51,13 +50,9 @@ const IconPlay = styled.img`
   }
 `
 
-const HeaderArticle = styled(Header)`
-  
-`
-
 const ArticleItemContainer = styled.div`
   position: relative;
-  height: 440px;
+  max-height: 56rem;
   overflow: hidden;
 
   &:after {
@@ -67,7 +62,6 @@ const ArticleItemContainer = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 85%, rgba(255,255,255,0.47) 47%, rgba(255,255,255,1) 100%);
   }
 `
 
@@ -135,7 +129,7 @@ const ArticleItem = ({
       {slug && (
         <>
           {slug && (
-            <HeaderArticle
+            <Header
               weight="Bold"
               type={2}
               size="Big"
@@ -147,7 +141,7 @@ const ArticleItem = ({
               <AnimatedLink url={`/blog/${slug}`} opacity={0.7}>
                 {title}
               </AnimatedLink>
-            </HeaderArticle>
+            </Header>
           )}
           {leadLong && leadLong.childMarkdownRemark && (
             <Link to={`/blog/${slug}`}>
