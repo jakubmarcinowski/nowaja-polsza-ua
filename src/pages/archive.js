@@ -4,11 +4,13 @@ import get from 'lodash/get'
 
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
+import ArticlesList from '../components/ArticlesList'
+import Wrapper from '../components/Wrapper'
 import SEO from '../components/SEO'
 
 const RootIndex = props => {
-  const archivePosts = get(props, 'data.allMarkdownRemark.edges')
-  console.log(archivePosts)
+  const archivedPosts = get(props, 'data.allMarkdownRemark.edges')
+  console.log(archivedPosts)
   // const siteTitle = get(props, 'data.site.siteMetadata.title')
   // const description = get(props, 'data.site.siteMetadata.description')
   // const posts = get(props, 'data.allContentfulBlogPost.edges')
@@ -53,6 +55,19 @@ const RootIndex = props => {
           importantInfo={importantInfo}
           highlightedEvents={highlightedEvents}
   />*/}
+        <Wrapper>
+          {archivedPosts ? (
+            <ArticlesList
+              posts={archivedPosts}
+              limit={6}
+              initialLimit={6}
+              noCategoryLabel
+              noMargin
+            />
+          ) : (
+            <Placeholder>Нет статей</Placeholder>
+          )}
+        </Wrapper>
       </div>
     </Layout>
   )

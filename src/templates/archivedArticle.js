@@ -2,16 +2,19 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 
+import ArchivedArticlePage from '../views/archiveArticle/index'
 import Layout from '../components/Layout'
 
 class MarkdownTemplate extends React.Component {
   render() {
     // const markdownData = get(this.props, 'data')
-    const markdownData = get(this.props, 'data.markdownRemark.frontmatter')
+    const article = get(this.props, 'data.markdownRemark.frontmatter')
+    console.log(article)
     return (
       <Layout>
         MARKDOWN PAGE
-        <a href={markdownData.pdf}>DOWNLOAD PDF FILE</a>
+        <a href={article.pdf}>DOWNLOAD PDF FILE</a>
+        <ArchivedArticlePage article={article} />
       </Layout>
     )
   }
@@ -27,6 +30,7 @@ export const pageQuery = graphql`
         path
         title
         article
+        date
         pdf
       }
     }
