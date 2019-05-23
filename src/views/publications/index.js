@@ -59,9 +59,25 @@ class PublicationPage extends React.Component {
     dateFilter: 1999,
   }
 
+  renderArchiveArticles = () => {
+    const { dateFilter } = this.state
+
+    const startMonth = 1
+    const endMonth = 12
+    const months = []
+    for (let i = startMonth; i <= endMonth; i++) {
+      months.push(i)
+    }
+
+    return months.map(month => (
+      <ArchivePublication key={month} year={dateFilter} month={month} />
+    ))
+  }
+
   renderPublications = () => {
     const { publications } = this.props
     const { filter } = this.state
+
     return publications.map(
       ({ node, node: { slug, typeOfPublications } }) =>
         (!filter || typeOfPublications === filter) && (
@@ -112,7 +128,7 @@ class PublicationPage extends React.Component {
     ))
   }
 
-  render() {
+  renderPublicationsOrPlaceholder = () => {
     const { publications } = this.props
     const { filter } = this.state
 
@@ -120,25 +136,32 @@ class PublicationPage extends React.Component {
       ({ node: { typeOfPublications } }) => typeOfPublications === filter
     )
 
+    {
+      return publications && (!filter || filteredPublications.length !== 0) ? (
+        this.renderPublications()
+      ) : (
+        <Placeholder>Нет публикации</Placeholder>
+      )
+    }
+  }
+
+  render() {
+    const { publications } = this.props
+    const { filter } = this.state
+
     if (publications && publications.length === 0) {
       return <Placeholder>Нет публикации</Placeholder>
     }
 
     return (
       <Wrapper size="Medium">
-        <a href={'/pdf/sample.pdf'}>DUPA</a>
         <Filters>{this.renderFilters()}</Filters>
         <DateFilters isActive={filter === 'архив'}>
           {this.renderDates()}
         </DateFilters>
-        {publications && (!filter || filteredPublications.length !== 0) ? (
-          this.renderPublications()
-        ) : (
-          <Placeholder>Нет публикации</Placeholder>
-        )}
-        {filter == 'архив' && (
-          <ArchivePublication></ArchivePublication>
-        )}
+        {filter === 'архив'
+          ? this.renderArchiveArticles()
+          : this.renderPublicationsOrPlaceholder()}
       </Wrapper>
     )
   }

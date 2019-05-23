@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { mediaQueries } from '../utils/mediaQueries'
 import ImgWrapper from './ImgWrapper'
 import { childrenType } from '../types/children'
+import archiveBg from '../../static/archive.jpg'
 
 const Box = styled.div`
   display: flex;
@@ -49,14 +50,25 @@ const Image = styled(ImgWrapper)`
   }
 `
 
+const Layer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: ${({ theme }) => theme.colors.archiveBackground};
+}`
+
 const ArchiveCover = styled.div`
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   min-height: 15rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  background: red;
+  background-image: url('${archiveBg}');
+  background-size: cover;
+  color: ${({ theme }) => theme.colors.white};
 
   @media ${mediaQueries.tablet} {
     min-width: 17rem;
@@ -67,16 +79,45 @@ const ArchiveCover = styled.div`
   }
 `
 
-const BoxWithPhoto = ({ image, children, archive }) => (
+const Month = styled.span`
+  font-size: 2.6rem;
+  z-index: 1;
+`
+
+const Year = styled.span`
+  font-size: 2.6rem;
+  z-index: 1;
+`
+
+const Line = styled.span`
+  height: 1px;
+  width: 7rem;
+  margin: 1rem 0;
+  background: ${({ theme }) => theme.colors.white};
+  z-index: 1;
+`
+
+const BoxWithPhoto = ({ image, children, archive, month, year }) => (
   <Box>
     {!archive && <div>{image && <Image img={image} />}</div>}
-    {archive && <div><ArchiveCover><span>XII</span><span>SIERPNIA</span></ArchiveCover></div>}
+    {archive && (
+      <div>
+        <ArchiveCover>
+          <Layer />
+          <Month>{month}</Month>
+          <Line />
+          <Year>{year}</Year>
+        </ArchiveCover>
+      </div>
+    )}
     {children && <Info>{children}</Info>}
   </Box>
 )
 
 BoxWithPhoto.propTypes = {
   archive: PropTypes.bool,
+  month: PropTypes.string,
+  year: PropTypes.number,
   children: childrenType,
   image: PropTypes.shape({
     fluid: PropTypes.shape({

@@ -23,25 +23,53 @@ const Desc = styled(Paragraph)`
   margin-top: 2em;
 `
 
-const ArchivePublication = () => (
-  <BoxWithPhoto archive={true}>
-    <Header size="Big" margin="0 0 0.8em" color="Black" weight="Bold" type={3}>
-      Nowaja Polsza month/year
-    </Header>
-    <DownloadButtons>
-      {<DownloadButton url={`/pdf/sample.pdf`} text="PDF" />}
-    </DownloadButtons>
-    {/* <ReadMoreWrapper description={lead} /> */}
-    <Desc color={'Black'} size={'Big'} weight={'Light'} lineHeight={'Big'}>
-      ARTICLES LIST KURWA JEBANA DUPA DUAP DUAPDUP ACHUJ ARTICLES LIST KURWA
-      JEBANA DUPA DUAP DUAPDUP ACHUJARTICLES LIST KURWA JEBANA DUPA DUAP DUAPDUP
-      ACHUJARTICLES LIST KURWA JEBANA DUPA DUAP DUAPDUP ACHUJ
-    </Desc>
-  </BoxWithPhoto>
-)
+const ArchivePublication = ({ month, year }) => {
+  const twoDigitsMonth = ('0' + month).slice(-2)
+  const convertToRoman = num => {
+    const decimalValue = [10, 9, 5, 4, 1]
+    const romanNumeral = ['X', 'IX', 'V', 'IV', 'I']
+
+    let romanized = ''
+    for (let i = 0; i < decimalValue.length; i++) {
+      while (decimalValue[i] <= num) {
+        romanized += romanNumeral[i]
+        num -= decimalValue[i]
+      }
+    }
+    return romanized
+  }
+
+  const romanizedMonth = convertToRoman(month)
+
+  return (
+    <BoxWithPhoto archive={true} month={romanizedMonth} year={year}>
+      <Header
+        size="Big"
+        margin="0 0 0.8em"
+        color="Black"
+        weight="Bold"
+        type={3}
+      >
+        Nowaja Polsza {twoDigitsMonth}/{year}
+      </Header>
+      <DownloadButtons>
+        {
+          <DownloadButton
+            url={`/pdf/${year}/${twoDigitsMonth}.pdf`}
+            text="PDF"
+          />
+        }
+      </DownloadButtons>
+      <Desc color={'Black'} size={'Big'} weight={'Light'} lineHeight={'Big'}>
+        LIST OF ARTICLES IN THIS NOWAJA POLSZA EDITION
+      </Desc>
+    </BoxWithPhoto>
+  )
+}
 
 ArchivePublication.propTypes = {
-  publication: PropTypes.any,
+  month: PropTypes.any,
+  year: PropTypes.any,
 }
 
 export default ArchivePublication
