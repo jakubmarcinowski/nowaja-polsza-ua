@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 
 import { articleType } from '../../../types/article'
 import ImgWrapper from '../../../components/ImgWrapper'
+import Paragraph from '../../../components/Paragraph'
 import Header from '../../../components/Header'
 import ArticleInfoBox from '../../../components/ArticleInfoBox'
 import PhotoLabel from '../../../components/PhotoLabel'
@@ -12,12 +13,15 @@ import headphonesIcon from '../../../../static/icon-close.svg'
 import AnimatedLink from '../../../components/AnimatedLink'
 
 const NewestItemHeader = styled(Header)`
-  max-height: 11.5rem;
+  max-height: 21.5rem;
 `
 
 const Wrapper = styled.div`
   display: flex;
+  max-height: 50%;
+  overflow: hidden;
 `
+
 const ImgBox = styled.div`
   position: relative;
   flex: 0 0 46%;
@@ -68,10 +72,16 @@ const Thumbnail = styled(ImgWrapper)`
   }
 `
 
+const Info = styled.div`
+  max-height: 20.5rem;
+  overflow: hidden;
+`
+
 const TheNewestItem = ({
   article: {
     title,
     body,
+    leadLong,
     slug,
     authors,
     categories,
@@ -113,7 +123,7 @@ const TheNewestItem = ({
           </Link>
         )}
       </ImgBox>
-      <div>
+      <Info>
         {slug && (
           <NewestItemHeader
             weight="Bold"
@@ -125,7 +135,7 @@ const TheNewestItem = ({
             overflow="hidden"
           >
             <AnimatedLink url={`/blog/${slug}`} opacity={0.7}>
-              {title} 
+              {title}
             </AnimatedLink>
           </NewestItemHeader>
         )}
@@ -134,7 +144,20 @@ const TheNewestItem = ({
           publishDate={publishDate}
           size="Small"
         />
-      </div>
+        {leadLong && (
+          <Paragraph>
+            <Link to={`/blog/${slug}`}>
+              <Paragraph size="Medium" lineHeight="Medium" weight="Light">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: leadLong.childMarkdownRemark.html,
+                  }}
+                />
+              </Paragraph>
+            </Link>
+          </Paragraph>
+        )}
+      </Info>
     </Wrapper>
   )
 }
