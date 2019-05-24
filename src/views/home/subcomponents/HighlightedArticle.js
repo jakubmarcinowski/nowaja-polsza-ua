@@ -116,6 +116,7 @@ class HighlightedArticle extends Component {
       authors,
       leadLong,
       publishDate,
+      categories,
     } = this.props.post
     const { isActive } = this.state
 
@@ -128,7 +129,9 @@ class HighlightedArticle extends Component {
           <LinkOverlay to={`/blog/${slug}`} />
           <ImgBox>
             <ImgWrapper img={heroImage} aspectRatio={1.44} />
-            <PhotoLabel color="dark">Выбор редакции</PhotoLabel>
+            <PhotoLabel color={categories[0].color}>
+              {categories[0].title}
+            </PhotoLabel>
           </ImgBox>
           <ArticleContent isActive={isActive}>
             <StyledHeader
