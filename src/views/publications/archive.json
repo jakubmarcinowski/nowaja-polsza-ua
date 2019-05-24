@@ -1,0 +1,21 @@
+{
+  "articles": {
+    "2018": [
+      [
+        "Example",
+        "Please",
+        "Remove it",
+        "later",
+        "5 one",
+        "6 one",
+        "7 one",
+        "8 one"
+      ],
+      ["Open", "Second Article", "Third one"],
+      ["Open", "Second Article", "Third one"],
+      ["Open", "Second Article", "Third one"],
+      ["Open", "Second Article", "Third one"],
+      ["Open", "Second Article", "Third one"]
+    ]
+  }
+}
