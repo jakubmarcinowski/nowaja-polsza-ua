@@ -1,21 +1,31 @@
 {
-  "articles": {
-    "2018": [
-      [
-        "Example",
-        "Please",
-        "Remove it",
-        "later",
-        "5 one",
-        "6 one",
-        "7 one",
-        "8 one"
-      ],
-      ["Open", "Second Article", "Third one"],
-      ["Open", "Second Article", "Third one"],
-      ["Open", "Second Article", "Third one"],
-      ["Open", "Second Article", "Third one"],
-      ["Open", "Second Article", "Third one"]
-    ]
-  }
+  "articles": [
+    {
+      "title": "Партии «Право и Справедливость» скажем — стоп!",
+      "order": 2,
+      "issue": {
+        "year": "2016",
+        "number": "1",
+        "order": 201601
+      }
+    },
+    {
+      "title": "Из книги «Геоглифы» (2014)",
+      "order": 12,
+      "issue": {
+        "year": "2016",
+        "number": "1",
+        "order": 201601
+      }
+    },
+    {
+      "title": "Российский памятник Катыни",
+      "order": 7,
+      "issue": {
+        "year": "2016",
+        "number": "1",
+        "order": 201601
+      }
+    }
+  ]
 }

@@ -77,7 +77,11 @@ class ArchivePublication extends React.Component {
 
     const romanizedMonth = convertToRoman(month)
 
-    const listOfArticles = articles[2018][0] // @todo change this later articles[year][month]
+    const listOfArticles = articles.filter(
+      article => article.issue.year === year.toString()
+    )
+
+    // const listOfArticles = articles[2018][0] // @todo change this later articles[year][month]
 
     return (
       <BoxWithPhoto archive={true} month={romanizedMonth} year={year}>
@@ -99,7 +103,7 @@ class ArchivePublication extends React.Component {
           }
         </DownloadButtons>
         <Desc color={'Black'} size={'Big'} weight={'Light'} lineHeight={'Big'}>
-          {this.renderTitles(listOfArticles)}
+          {/* {this.renderTitles(listOfArticles)} */}
         </Desc>
       </BoxWithPhoto>
     )
