@@ -31,7 +31,7 @@ const RootIndex = props => {
       return { node: article }
     })
 
-    const postsWithoutDuplicates = posts.filter(
+    const postsWithoutDuplicates = allHighlightedPosts.filter(
       post =>
         !moreHighlightedPosts.find(
           highlightedPost => highlightedPost.node.id === post.node.id
