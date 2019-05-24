@@ -69,6 +69,8 @@ class PublicationPage extends React.Component {
       months.push(i)
     }
 
+    months.splice(7, 1)
+
     return months.map(month => (
       <ArchivePublication key={month} year={dateFilter} month={month} />
     ))

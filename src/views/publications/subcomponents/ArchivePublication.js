@@ -8,7 +8,7 @@ import Header from '../../../components/Header'
 import Paragraph from '../../../components/Paragraph'
 import ReadMoreButton from '../../../components/ReadMoreButton'
 import DownloadButton from './DownloadButton'
-import { articles } from '../archive'
+import articles from '../archive'
 
 const DownloadButtons = styled.div`
   display: flex;
@@ -40,12 +40,12 @@ class ArchivePublication extends React.Component {
 
     return (
       <>
-        {listOfArticles.map((title, i) => {
+        {listOfArticles.map((article, i) => {
           if (isMoreVisible) {
-            return <h1 key={i}>{title}</h1>
+            return <h1 key={i}>{article.title}</h1>
           } else {
             if (i < visibleTitles) {
-              return <h1 key={i}>{title}</h1>
+              return <h1 key={i}>{article.title}</h1>
             }
           }
         })}
@@ -75,13 +75,25 @@ class ArchivePublication extends React.Component {
       return romanized
     }
 
-    const romanizedMonth = convertToRoman(month)
+    let romanizedMonth = convertToRoman(month)
+    if (romanizedMonth === 'VII') {
+      romanizedMonth = 'VII-VIII'
+    }
 
     const listOfArticles = articles.filter(
-      article => article.issue.year === year.toString()
+      article =>
+        article.issue.year === year.toString() &&
+        (article.issue.number === month.toString() ||
+          (month === 7 && article.issue.number === '7-8'))
     )
 
-    // const listOfArticles = articles[2018][0] // @todo change this later articles[year][month]
+    if (listOfArticles.length === 0) {
+      return null
+    }
+
+    const pdfUrl = `/pdf/${year}/${twoDigitsMonth}${
+      month === 7 ? '-08' : ''
+    }.pdf`
 
     return (
       <BoxWithPhoto archive={true} month={romanizedMonth} year={year}>
@@ -92,18 +104,14 @@ class ArchivePublication extends React.Component {
           weight="Bold"
           type={3}
         >
-          Nowaja Polsza {twoDigitsMonth}/{year}
+          Nowaja Polsza {twoDigitsMonth}
+          {month === 7 && '-08'}/{year}
         </Header>
         <DownloadButtons>
-          {
-            <DownloadButton
-              url={`/pdf/${year}/${twoDigitsMonth}.pdf`}
-              text="PDF"
-            />
-          }
+          {<DownloadButton url={pdfUrl} text="PDF" />}
         </DownloadButtons>
         <Desc color={'Black'} size={'Big'} weight={'Light'} lineHeight={'Big'}>
-          {/* {this.renderTitles(listOfArticles)} */}
+          {this.renderTitles(listOfArticles)}
         </Desc>
       </BoxWithPhoto>
     )
