@@ -8,7 +8,6 @@ import SEO from '../components/SEO'
 
 const ArticleTemplate = props => {
   const post = get('data.contentfulBlogPost', props)
-  const siteTitle = get('data.site.siteMetadata.title', props)
   const posts = get('data.allContentfulBlogPost.edges', props)
   const imageSrc = post.heroImage
     ? `https://${post.heroImage.fluid.src.substring(2)}`
@@ -27,7 +26,7 @@ const ArticleTemplate = props => {
       {post && (
         <>
           <SEO
-            siteTitle={`${post.title} | ${siteTitle}`}
+            siteTitle={post.title}
             description={post.summary}
             type="article"
             image={imageSrc}
