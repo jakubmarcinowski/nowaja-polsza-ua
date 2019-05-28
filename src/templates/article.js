@@ -28,7 +28,7 @@ const ArticleTemplate = props => {
         <>
           <SEO
             siteTitle={`${post.title} | ${siteTitle}`}
-            description={post.leadLong && post.leadLong.childMarkdownRemark.html}
+            description={post.summary}
             type="article"
             image={imageSrc}
           />
@@ -61,6 +61,7 @@ export const pageQuery = graphql`
               html
             }
           }
+          summary
           body {
             childMarkdownRemark {
               html
@@ -96,6 +97,7 @@ export const pageQuery = graphql`
           html
         }
       }
+      summary
       authorsWithoutAccount
       authors {
         id
@@ -149,6 +151,7 @@ export const pageQuery = graphql`
             html
           }
         }
+        summary
         body {
           childMarkdownRemark {
             html

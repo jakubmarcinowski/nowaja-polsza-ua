@@ -95,6 +95,7 @@ export const pageQuery = graphql`
               html
             }
           }
+          summary
         }
       }
     }

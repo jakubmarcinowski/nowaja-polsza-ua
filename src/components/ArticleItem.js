@@ -78,7 +78,7 @@ const ArticleItem = ({
     categories,
     heroImage,
     publishDate,
-    leadLong,
+    summary,
   },
   noCategoryLabel,
 }) => {
@@ -134,14 +134,10 @@ const ArticleItem = ({
               </AnimatedLink>
             </Header>
           )}
-          {leadLong && leadLong.childMarkdownRemark && (
+          {summary && (
             <Link to={`/blog/${slug}`}>
               <Paragraph size="Big" lineHeight="Medium" weight="Light">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: leadLong.childMarkdownRemark.html,
-                  }}
-                />
+                {summary}
               </Paragraph>
             </Link>
           )}

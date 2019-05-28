@@ -106,6 +106,7 @@ export const pageQuery = graphql`
               html
             }
           }
+          summary
         }
       }
     }
@@ -139,6 +140,7 @@ export const pageQuery = graphql`
                 html
               }
             }
+            summary
             heroImage {
               fluid(maxWidth: 1440, resizingBehavior: SCALE) {
                 ...GatsbyContentfulFluid
@@ -177,6 +179,7 @@ export const pageQuery = graphql`
                 html
               }
             }
+            summary
           }
         }
       }
