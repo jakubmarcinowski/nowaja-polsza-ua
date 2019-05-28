@@ -81,7 +81,7 @@ const TheNewestItem = ({
   article: {
     title,
     body,
-    leadLong,
+    summary,
     slug,
     authors,
     categories,
@@ -144,18 +144,12 @@ const TheNewestItem = ({
           publishDate={publishDate}
           size="Small"
         />
-        {leadLong && (
-          <Paragraph>
-            <Link to={`/blog/${slug}`}>
-              <Paragraph size="Medium" lineHeight="Medium" weight="Light">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: leadLong.childMarkdownRemark.html,
-                  }}
-                />
-              </Paragraph>
-            </Link>
-          </Paragraph>
+        {summary && (
+          <Link to={`/blog/${slug}`}>
+            <Paragraph size="Medium" lineHeight="Medium" weight="Light">
+              {summary}
+            </Paragraph>
+          </Link>
         )}
       </Info>
     </Wrapper>
