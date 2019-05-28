@@ -11,17 +11,12 @@ const Events = ({ data }) => {
   if (data.allContentfulEvent) {
     events = data.allContentfulEvent.edges
   }
-  const siteTitle = data.site.siteMetadata.title
   const title = 'Ближайшие мероприятия'
   const description = data.site.siteMetadata.description
 
   return (
     <Layout>
-      <SEO
-        siteTitle={`${title} | ${siteTitle}`}
-        description={description}
-        type="website"
-      />
+      <SEO siteTitle={title} description={description} type="website" />
       {events && <EventPage events={events} />}
     </Layout>
   )

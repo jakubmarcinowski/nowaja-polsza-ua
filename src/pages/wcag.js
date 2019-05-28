@@ -14,16 +14,11 @@ const WCAGStyled = styled.div`
 
 const WCAG = ({ data }) => {
   const { title, content } = data.allContentfulWcagStaticContent.edges[0].node
-  const { title: siteTitle } = data.site.siteMetadata
   const { description: description } = data.site.siteMetadata
 
   return (
     <Layout>
-      <SEO
-        siteTitle={`${title} | ${siteTitle}`}
-        description={description}
-        type="website"
-      />
+      <SEO siteTitle={title} description={description} type="website" />
       {content && (
         <Wrapper>
           <StaticContent>
