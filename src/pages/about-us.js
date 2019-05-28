@@ -19,12 +19,10 @@ const AboutUs = ({ data }) => {
     description,
   } = data.allContentfulAboutUsStaticContent.edges[0].node
 
-  const { title: siteTitle } = data.site.siteMetadata
-
   return (
     <Layout>
       <SEO
-        siteTitle={`${title} | ${siteTitle}`}
+        siteTitle={title}
         description={description}
         type="website"
       />

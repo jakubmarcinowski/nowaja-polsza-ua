@@ -12,7 +12,6 @@ class CategoryTemplate extends React.Component {
   render() {
     const category = get(this.props, 'data.contentfulCategory')
     const categoryPosts = get(this.props, 'data.allContentfulBlogPost.edges')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const description = get(this.props, 'data.site.siteMetadata.description')
 
     return (
@@ -20,7 +19,7 @@ class CategoryTemplate extends React.Component {
         {category && (
           <>
             <SEO
-              siteTitle={`${category.title} | ${siteTitle}`}
+              siteTitle={category.title}
               description={description}
               type="category"
             />

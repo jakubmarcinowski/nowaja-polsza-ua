@@ -96,7 +96,7 @@ const ArticleItem = ({
     <ArticleItemContainer>
       <ImgBox isMultimedia={isMultimedia}>
         {isMultimedia && (
-          <Link to={`/blog/${slug}`}>
+          <Link to={`/article/${slug}`}>
             <IconPlay
               src={isSoundCloud ? headphonesIcon : playIcon}
               alt="Play icon"
@@ -104,7 +104,7 @@ const ArticleItem = ({
           </Link>
         )}
         <ThumbnailWrapper>
-          <Link to={`/blog/${slug}`}>
+          <Link to={`/article/${slug}`}>
             <Thumbnail img={heroImage} aspectRatio={1.76} />
           </Link>
         </ThumbnailWrapper>
@@ -129,13 +129,13 @@ const ArticleItem = ({
               lineHeight="Medium"
               overflow="hidden"
             >
-              <AnimatedLink url={`/blog/${slug}`} opacity={0.7}>
+              <AnimatedLink url={`/article/${slug}`} opacity={0.7}>
                 {title}
               </AnimatedLink>
             </Header>
           )}
           {summary && (
-            <Link to={`/blog/${slug}`}>
+            <Link to={`/article/${slug}`}>
               <Paragraph size="Big" lineHeight="Medium" weight="Light">
                 {summary}
               </Paragraph>
