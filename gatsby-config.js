@@ -63,9 +63,17 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: 'UA-135924819-1',
+        includeInDevelopment: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: 'UA-135924819-1',
+        optimizeId: 'GTM-5CSFCP5',
       },
     },
   ],
