@@ -5,11 +5,8 @@ import PropTypes from 'prop-types'
 
 import Layout from '../components/Layout'
 import PublicationPage from '../views/publications'
-import { isSiteBlocked } from '../utils/blockSiteBeforeLive'
 
 const Publications = ({ data }) => {
-  if (isSiteBlocked()) return null
-
   const publications = data.allContentfulPublication.edges
   const title = 'Библиотека'
   const description = data.site.siteMetadata.description

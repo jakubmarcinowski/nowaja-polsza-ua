@@ -5,10 +5,8 @@ import PropTypes from 'prop-types'
 import Layout from '../components/Layout'
 import EventPage from '../views/events'
 import SEO from '../components/SEO'
-import { isSiteBlocked } from '../utils/blockSiteBeforeLive'
 
 const Events = ({ data }) => {
-  if (isSiteBlocked()) return null
 
   let events = null
   if (data.allContentfulEvent) {

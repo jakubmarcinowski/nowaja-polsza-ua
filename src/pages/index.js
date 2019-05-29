@@ -5,7 +5,6 @@ import get from 'lodash/get'
 import Layout from '../components/Layout'
 import HomePage from '../views/home'
 import SEO from '../components/SEO'
-import { isSiteBlocked } from '../utils/blockSiteBeforeLive'
 
 const RootIndex = props => {
   const siteTitle = get(props, 'data.site.siteMetadata.title')
@@ -46,8 +45,6 @@ const RootIndex = props => {
     )
     allHighlightedPosts = moreHighlightedPosts.concat(postsWithoutDuplicates)
   }
-
-  if (isSiteBlocked()) return null
 
   return (
     <Layout>

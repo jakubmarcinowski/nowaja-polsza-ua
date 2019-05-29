@@ -7,12 +7,9 @@ import Layout from '../components/Layout'
 import Wrapper from '../components/Wrapper'
 import ArticlesList from '../components/ArticlesList'
 import Placeholder from '../components/Placeholder'
-import { isSiteBlocked } from '../utils/blockSiteBeforeLive'
 
 class CategoryTemplate extends React.Component {
   render() {
-    if (isSiteBlocked()) return null
-
     const category = get(this.props, 'data.contentfulCategory')
     const categoryPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const description = get(this.props, 'data.site.siteMetadata.description')
