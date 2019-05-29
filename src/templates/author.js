@@ -7,9 +7,12 @@ import Layout from '../components/Layout'
 import Wrapper from '../components/Wrapper'
 import ArticlesList from '../components/ArticlesList'
 import Author from '../components/Author'
+import { isSiteBlocked } from '../utils/blockSiteBeforeLive'
 
 class AuthorTemplate extends React.Component {
-  render() {
+  render() {  
+    if (isSiteBlocked()) return null
+
     const author = get(this.props, 'data.contentfulPerson')
     const authorPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const description = get(this.props, 'data.site.siteMetadata.description')

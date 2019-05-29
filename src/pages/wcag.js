@@ -7,15 +7,16 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import StaticContent from '../components/StaticContent'
 import Wrapper from '../components/Wrapper'
+import { isSiteBlocked } from '../utils/blockSiteBeforeLive'
 
 const WCAGStyled = styled.div`
   margin-bottom: 8rem;
 `
 
 const WCAG = ({ data }) => {
+  if (isSiteBlocked()) return null
   const { title, content } = data.allContentfulWcagStaticContent.edges[0].node
   const { description: description } = data.site.siteMetadata
-
   return (
     <Layout>
       <SEO siteTitle={title} description={description} type="website" />

@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import StaticContent from '../components/StaticContent'
 import Wrapper from '../components/Wrapper'
+import { isSiteBlocked } from '../utils/blockSiteBeforeLive'
 
 const PrivacyPolicyStyled = styled.div`
   margin-bottom: 8rem;
@@ -18,6 +19,7 @@ const PrivacyPolicy = ({ data }) => {
     content,
     description,
   } = data.allContentfulPrivacyPolicyStaticContent.edges[0].node
+  if (isSiteBlocked()) return null
 
   return (
     <Layout>

@@ -7,6 +7,7 @@ import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import StaticContent from '../components/StaticContent'
 import Wrapper from '../components/Wrapper'
+import { isSiteBlocked } from '../utils/blockSiteBeforeLive'
 
 const AboutUsStyled = styled.div`
   margin-bottom: 8rem;
@@ -19,13 +20,11 @@ const AboutUs = ({ data }) => {
     description,
   } = data.allContentfulAboutUsStaticContent.edges[0].node
 
+  if (isSiteBlocked()) return null
+
   return (
     <Layout>
-      <SEO
-        siteTitle={title}
-        description={description}
-        type="website"
-      />
+      <SEO siteTitle={title} description={description} type="website" />
       {content && (
         <Wrapper>
           <StaticContent>
