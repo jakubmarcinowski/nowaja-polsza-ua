@@ -227,10 +227,10 @@ const ArticlePage = ({
       </Wrapper>
       <Wrapper size="Small" position="relative">
         <ArticleSocialMediaList />
-          <Content
-            html={body && body.childMarkdownRemark.html}
-            lead={leadLong && leadLong.childMarkdownRemark.html}
-          />
+        <Content
+          html={body && body.childMarkdownRemark.html}
+          lead={leadLong && leadLong.childMarkdownRemark.html}
+        />
         {gallery && (
           <Gallery>
             <SliderStyled {...settings}>
@@ -243,9 +243,7 @@ const ArticlePage = ({
 
         <ArticleSocialMediaListBottom />
         <div>
-          <HeaderStyled size="Biggest">
-            Вам также может понравиться
-          </HeaderStyled>
+          <HeaderStyled size="Biggest">Читайте также</HeaderStyled>
           <RecommendedArticles posts={recommendedAutoAndManually} />
         </div>
         <SectionWrapper>
