@@ -54,9 +54,20 @@ const DateFilters = styled.div`
 `
 
 class PublicationPage extends React.Component {
-  state = {
-    filter: null,
-    dateFilter: 1999,
+  constructor(props) {
+    super(props)
+
+    const { publications } = this.props
+    const journals = publications.filter(
+      ({ node: { typeOfPublications } }) => typeOfPublications === 'журналы'
+    )
+    const areJournals = journals.length > 0
+
+    this.state = {
+      filter: !areJournals ? 'книги' : null,
+      dateFilter: 1999,
+      areJournals: areJournals,
+    }
   }
 
   renderArchiveArticles = () => {
@@ -89,8 +100,9 @@ class PublicationPage extends React.Component {
   }
 
   renderFilters = () => {
-    const { filter } = this.state
-    const filters = [null, 'книги', 'журналы', 'архив']
+    const { filter, areJournals } = this.state
+    const filters = areJournals ? [null, 'книги', 'журналы', 'архив'] : ['книги', 'архив']
+
 
     return filters.map(filterName => (
       <Filter
