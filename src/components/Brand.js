@@ -51,8 +51,8 @@ const Brand = ({ isDarkVersion }) => (
     <Link to="/">
       <TitleWrapper isDarkVersion={isDarkVersion}>
         <Title color={isDarkVersion ? 'Dark' : 'White'} weight="Bold">
-          НОВАЯ <br/>
-          ПОЛЬША
+          Новая <br />
+          Польша
         </Title>
       </TitleWrapper>
     </Link>
