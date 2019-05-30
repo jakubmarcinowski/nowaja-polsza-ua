@@ -91,9 +91,7 @@ class ArchivePublication extends React.Component {
       return null
     }
 
-    const pdfUrl = `/pdf/${year}/${twoDigitsMonth}${
-      month === 7 ? '-08' : ''
-    }.pdf`
+    const pdfUrl = `/pdf/${year}/${twoDigitsMonth}.pdf`
 
     return (
       <BoxWithPhoto archive={true} month={romanizedMonth} year={year}>
@@ -104,7 +102,7 @@ class ArchivePublication extends React.Component {
           weight="Bold"
           type={3}
         >
-          Nowaja Polsza {twoDigitsMonth}
+          Новая Польша {twoDigitsMonth}
           {month === 7 && '-08'}/{year}
         </Header>
         <DownloadButtons>
