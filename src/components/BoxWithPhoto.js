@@ -101,14 +101,12 @@ const BoxWithPhoto = ({ image, children, archive, month, year }) => (
   <Box>
     {!archive && <div>{image && <Image img={image} />}</div>}
     {archive && (
-      <div>
-        <ArchiveCover>
-          <Layer />
-          <Month>{month}</Month>
-          <Line />
-          <Year>{year}</Year>
-        </ArchiveCover>
-      </div>
+      <ArchiveCover>
+        <Layer />
+        <Month>{month}</Month>
+        <Line />
+        <Year>{year}</Year>
+      </ArchiveCover>
     )}
     {children && <Info>{children}</Info>}
   </Box>
