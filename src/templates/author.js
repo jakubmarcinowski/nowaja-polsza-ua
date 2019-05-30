@@ -9,10 +9,9 @@ import ArticlesList from '../components/ArticlesList'
 import Author from '../components/Author'
 
 class AuthorTemplate extends React.Component {
-  render() {
+  render() {  
     const author = get(this.props, 'data.contentfulPerson')
     const authorPosts = get(this.props, 'data.allContentfulBlogPost.edges')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const description = get(this.props, 'data.site.siteMetadata.description')
     const imageSrc = author.image
       ? `https://${author.image.fluid.src.substring(2)}`
@@ -23,7 +22,7 @@ class AuthorTemplate extends React.Component {
         {author && (
           <>
             <SEO
-              siteTitle={`${author.name} | ${siteTitle}`}
+              siteTitle={author.name}
               description={description}
               type="author"
               image={imageSrc}
@@ -101,6 +100,7 @@ export const pageQuery = graphql`
               html
             }
           }
+          summary
         }
       }
     }

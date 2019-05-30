@@ -54,15 +54,6 @@ const ArticleItemContainer = styled.div`
   position: relative;
   max-height: 56rem;
   overflow: hidden;
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
 `
 
 const ThumbnailWrapper = styled.div`
@@ -87,7 +78,7 @@ const ArticleItem = ({
     categories,
     heroImage,
     publishDate,
-    leadLong,
+    summary,
   },
   noCategoryLabel,
 }) => {
@@ -105,7 +96,7 @@ const ArticleItem = ({
     <ArticleItemContainer>
       <ImgBox isMultimedia={isMultimedia}>
         {isMultimedia && (
-          <Link to={`/blog/${slug}`}>
+          <Link to={`/article/${slug}`}>
             <IconPlay
               src={isSoundCloud ? headphonesIcon : playIcon}
               alt="Play icon"
@@ -113,7 +104,7 @@ const ArticleItem = ({
           </Link>
         )}
         <ThumbnailWrapper>
-          <Link to={`/blog/${slug}`}>
+          <Link to={`/article/${slug}`}>
             <Thumbnail img={heroImage} aspectRatio={1.76} />
           </Link>
         </ThumbnailWrapper>
@@ -138,19 +129,15 @@ const ArticleItem = ({
               lineHeight="Medium"
               overflow="hidden"
             >
-              <AnimatedLink url={`/blog/${slug}`} opacity={0.7}>
+              <AnimatedLink url={`/article/${slug}`} opacity={0.7}>
                 {title}
               </AnimatedLink>
             </Header>
           )}
-          {leadLong && leadLong.childMarkdownRemark && (
-            <Link to={`/blog/${slug}`}>
+          {summary && (
+            <Link to={`/article/${slug}`}>
               <Paragraph size="Big" lineHeight="Medium" weight="Light">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: leadLong.childMarkdownRemark.html,
-                  }}
-                />
+                {summary}
               </Paragraph>
             </Link>
           )}

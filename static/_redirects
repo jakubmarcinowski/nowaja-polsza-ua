@@ -1,0 +1,14 @@
+# These rules will change if you change your site’s custom domains or HTTPS settings
+
+# Redirect domain aliases to primary domain
+https://www.novayapolsha.com/* https://www.novayapolsha.pl/:splat 301!
+https://novayapolsha.com/* https://www.novayapolsha.pl/:splat 301!
+https://novayapolsha.eu/* https://www.novayapolsha.pl/:splat 301!
+https://novayapolsha.ru/* https://www.novayapolsha.pl/:splat 301!
+https://www.novayapolsha.ru/* https://www.novayapolsha.pl/:splat 301!
+https://www.novayapolsha.eu/* https://www.novayapolsha.pl/:splat 301!
+https://novayapolsha.org/* https://www.novayapolsha.pl/:splat 301!
+https://www.novayapolsha.org/* https://www.novayapolsha.pl/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://silly-morse-77d306.netlify.com/* https://www.novayapolsha.pl/:splat 301!

@@ -8,7 +8,6 @@ import SEO from '../components/SEO'
 
 const ArticleTemplate = props => {
   const post = get('data.contentfulBlogPost', props)
-  const siteTitle = get('data.site.siteMetadata.title', props)
   const posts = get('data.allContentfulBlogPost.edges', props)
   const imageSrc = post.heroImage
     ? `https://${post.heroImage.fluid.src.substring(2)}`
@@ -27,8 +26,8 @@ const ArticleTemplate = props => {
       {post && (
         <>
           <SEO
-            siteTitle={`${post.title} | ${siteTitle}`}
-            description={post.leadLong && post.leadLong.childMarkdownRemark.html}
+            siteTitle={post.title}
+            description={post.summary}
             type="article"
             image={imageSrc}
           />
@@ -61,6 +60,7 @@ export const pageQuery = graphql`
               html
             }
           }
+          summary
           body {
             childMarkdownRemark {
               html
@@ -96,6 +96,7 @@ export const pageQuery = graphql`
           html
         }
       }
+      summary
       authorsWithoutAccount
       authors {
         id
@@ -149,6 +150,7 @@ export const pageQuery = graphql`
             html
           }
         }
+        summary
         body {
           childMarkdownRemark {
             html

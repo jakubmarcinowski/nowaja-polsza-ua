@@ -11,16 +11,22 @@ const RootIndex = props => {
   const description = get(props, 'data.site.siteMetadata.description')
   const posts = get(props, 'data.allContentfulBlogPost.edges')
   const importantInfo = get(props, 'data.contentfulHomepageStaticContent')
-  const highlightedPost = get(props, 'data.contentfulHighlightedPost.post')
+  const highlightedPost = get(
+    props,
+    'data.allContentfulHighlightedPost.edges[0].node.post'
+  )
   const highlightMorePosts = get(
     props,
-    'data.contentfulHighlightedPost.highlightMorePosts'
+    'data.allContentfulHighlightedPost.edges[0].node.highlightMorePosts'
   )
   const highlightedEvents = get(
     props,
     'data.allContentfulHighlightedEvents.edges[0].node.events'
   )
-  const highlightedPosts = get(props, 'data.contentfulHighlightedPost.posts')
+  const highlightedPosts = get(
+    props,
+    'data.allContentfulHighlightedPost.edges[0].node.posts'
+  )
 
   let allHighlightedPosts = posts.filter(
     ({ node: { id } }) => highlightedPost.id !== id
@@ -100,6 +106,7 @@ export const pageQuery = graphql`
               html
             }
           }
+          summary
         }
       }
     }
@@ -110,68 +117,74 @@ export const pageQuery = graphql`
       importantInfoLinkUrl
     }
 
-    contentfulHighlightedPost {
-      title
-      post {
-        id
-        slug
-        publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
-        authors {
-          id
-          name
-          slug
-        }
-        categories {
+    allContentfulHighlightedPost(filter: { slug: { ne: "xxx" } }) {
+      edges {
+        node {
           title
-          slug
-          color
-        }
-        leadLong {
-          childMarkdownRemark {
-            html
+          post {
+            id
+            slug
+            publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+            authors {
+              id
+              name
+              slug
+            }
+            categories {
+              title
+              slug
+              color
+            }
+            leadLong {
+              childMarkdownRemark {
+                html
+              }
+            }
+            summary
+            heroImage {
+              fluid(maxWidth: 1440, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
+              }
+            }
+            title
           }
-        }
-        heroImage {
-          fluid(maxWidth: 1440, resizingBehavior: SCALE) {
-            ...GatsbyContentfulFluid
-          }
-        }
-        title
-      }
-      highlightMorePosts
-      posts {
-        id
-        title
-        slug
-        body {
-          childMarkdownRemark {
-            html
-          }
-        }
-        publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
-        authors {
-          id
-          name
-          slug
-        }
-        categories {
-          title
-          slug
-          color
-        }
-        heroImage {
-          fluid(maxWidth: 768, resizingBehavior: SCALE) {
-            ...GatsbyContentfulFluid
-          }
-        }
-        leadLong {
-          childMarkdownRemark {
-            html
+          highlightMorePosts
+          posts {
+            id
+            title
+            slug
+            body {
+              childMarkdownRemark {
+                html
+              }
+            }
+            publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
+            authors {
+              id
+              name
+              slug
+            }
+            categories {
+              title
+              slug
+              color
+            }
+            heroImage {
+              fluid(maxWidth: 768, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
+              }
+            }
+            leadLong {
+              childMarkdownRemark {
+                html
+              }
+            }
+            summary
           }
         }
       }
     }
-    allContentfulHighlightedEvents {
+    allContentfulHighlightedEvents(filter: { slug: { ne: "xxx" } }) {
       edges {
         node {
           events {

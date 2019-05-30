@@ -7,19 +7,18 @@ import EventPage from '../views/events'
 import SEO from '../components/SEO'
 
 const Events = ({ data }) => {
-  const events = data.allContentfulEvent.edges
-  const siteTitle = data.site.siteMetadata.title
+
+  let events = null
+  if (data.allContentfulEvent) {
+    events = data.allContentfulEvent.edges
+  }
   const title = 'Ближайшие мероприятия'
   const description = data.site.siteMetadata.description
 
   return (
     <Layout>
-      <SEO
-        siteTitle={`${title} | ${siteTitle}`}
-        description={description}
-        type="website"
-      />
-      <EventPage events={events} />
+      <SEO siteTitle={title} description={description} type="website" />
+      {events && <EventPage events={events} />}
     </Layout>
   )
 }

@@ -33,7 +33,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: process.env.HOST || 'https://silly-morse-77d306.netlify.com/',
     title: 'НОВАЯ ПОЛЬША',
-    description: '...',
+    description: 'Вся Польша в вашей ленте',
     themeColor: '#172429',
   },
   pathPrefix: '/gatsby-contentful-starter',
@@ -63,9 +63,17 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: 'UA-135924819-1',
+        includeInDevelopment: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: 'UA-135924819-1',
+        optimizeId: 'GTM-5CSFCP5',
       },
     },
   ],

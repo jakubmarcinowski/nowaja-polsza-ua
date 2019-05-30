@@ -114,7 +114,7 @@ class HighlightedArticle extends Component {
       slug,
       heroImage,
       authors,
-      leadLong,
+      summary,
       publishDate,
       categories,
     } = this.props.post
@@ -126,7 +126,7 @@ class HighlightedArticle extends Component {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
-          <LinkOverlay to={`/blog/${slug}`} />
+          <LinkOverlay to={`/article/${slug}`} />
           <ImgBox>
             <ImgWrapper img={heroImage} aspectRatio={1.44} />
             <PhotoLabel color={categories[0].color}>
@@ -141,24 +141,20 @@ class HighlightedArticle extends Component {
               weight="Bold"
               lineHeight={this.state.isSmallMobile ? 'Small' : 'Bigger'}
             >
-              <Link to={`/blog/${slug}`}>{title}</Link>
+              <Link to={`/article/${slug}`}>{title}</Link>
             </StyledHeader>
             <ArticleInfoBox
               authors={authors}
               publishDate={!this.state.isMobileView && publishDate}
               justify="center"
               color="white"
-              dateLink={`/blog/${slug}`}
+              dateLink={`/article/${slug}`}
             />
-            {leadLong && (
+            {summary && (
               <Lead isActive={isActive}>
-                <Link to={`/blog/${slug}`}>
+                <Link to={`/article/${slug}`}>
                   <Paragraph color="white" lineHeight="Medium">
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: leadLong.childMarkdownRemark.html,
-                      }}
-                    />
+                    {summary}
                   </Paragraph>
                 </Link>
               </Lead>

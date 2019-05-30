@@ -81,7 +81,7 @@ const TheNewestItem = ({
   article: {
     title,
     body,
-    leadLong,
+    summary,
     slug,
     authors,
     categories,
@@ -103,7 +103,7 @@ const TheNewestItem = ({
     <Wrapper>
       <ImgBox isMultimedia={isMultimedia}>
         {isMultimedia && (
-          <Link to={`/blog/${slug}`}>
+          <Link to={`/article/${slug}`}>
             <IconPlay
               src={isSoundCloud ? headphonesIcon : playIcon}
               alt="Play icon"
@@ -111,7 +111,7 @@ const TheNewestItem = ({
           </Link>
         )}
         <ThumbnailWrapper>
-          <Link to={`/blog/${slug}`}>
+          <Link to={`/article/${slug}`}>
             <Thumbnail img={heroImage} aspectRatio={1} />
           </Link>
         </ThumbnailWrapper>
@@ -134,7 +134,7 @@ const TheNewestItem = ({
             lineHeight="Medium"
             overflow="hidden"
           >
-            <AnimatedLink url={`/blog/${slug}`} opacity={0.7}>
+            <AnimatedLink url={`/article/${slug}`} opacity={0.7}>
               {title}
             </AnimatedLink>
           </NewestItemHeader>
@@ -144,18 +144,12 @@ const TheNewestItem = ({
           publishDate={publishDate}
           size="Small"
         />
-        {leadLong && (
-          <Paragraph>
-            <Link to={`/blog/${slug}`}>
-              <Paragraph size="Medium" lineHeight="Medium" weight="Light">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: leadLong.childMarkdownRemark.html,
-                  }}
-                />
-              </Paragraph>
-            </Link>
-          </Paragraph>
+        {summary && (
+          <Link to={`/article/${slug}`}>
+            <Paragraph size="Medium" lineHeight="Medium" weight="Light">
+              {summary}
+            </Paragraph>
+          </Link>
         )}
       </Info>
     </Wrapper>

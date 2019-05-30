@@ -8,17 +8,12 @@ import PublicationPage from '../views/publications'
 
 const Publications = ({ data }) => {
   const publications = data.allContentfulPublication.edges
-  const siteTitle = data.site.siteMetadata.title
   const title = 'Библиотека'
   const description = data.site.siteMetadata.description
 
   return (
     <Layout>
-      <SEO
-        siteTitle={`${title} | ${siteTitle}`}
-        description={description}
-        type="website"
-      />
+      <SEO siteTitle={title} description={description} type="website" />
       <PublicationPage publications={publications} title={title} />
     </Layout>
   )
