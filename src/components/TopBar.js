@@ -31,7 +31,7 @@ const Logo = styled.img`
 const Title = styled(Header)`
   margin-bottom: 0.5rem;
   font-size: 2.2rem;
-` 
+`
 
 const Subtitle = styled(Header)`
   font-family: ${theme.fonts.secondary};
@@ -71,14 +71,14 @@ const TopBar = () => (
     <Container>
       <Box>
         <BoxLeft>
-          <Navigation/>
+          <Navigation />
         </BoxLeft>
       </Box>
       <Box>
         <span>
           <Link to="/">
             <LogoContainer>
-              <Logo src={logoWithBackground} alt="Nowaja Polsza logo"/>
+              <Logo src={logoWithBackground} alt="Nowaja Polsza logo" />
             </LogoContainer>
           </Link>
         </span>
@@ -95,23 +95,18 @@ const TopBar = () => (
     </Container>
     <Link to="/">
       <Title color="White" weight="Bold">
-        НОВАЯ ПОЛЬША
+        Новая Польша
       </Title>
       <StaticQuery
         query={BrandQuery}
         render={({ contentfulHomepageStaticContent }) => (
           <>
             {contentfulHomepageStaticContent &&
-            contentfulHomepageStaticContent.motto && (
-              <Subtitle
-                type={2}
-                size="Medium"
-                color="White"
-                weight="Light"
-              >
-                {contentfulHomepageStaticContent.motto}
-              </Subtitle>
-            )}
+              contentfulHomepageStaticContent.motto && (
+                <Subtitle type={2} size="Medium" color="White" weight="Light">
+                  {contentfulHomepageStaticContent.motto}
+                </Subtitle>
+              )}
           </>
         )}
       />

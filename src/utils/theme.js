@@ -12,6 +12,7 @@ export const theme = {
     white: '#fff',
     menuBackground: 'rgba(17, 29, 34, 0.98)',
     listItemBackground: 'rgba(155, 155, 155, 0.1)',
+    archiveBackground: 'rgba(17, 29, 34, 0.8)',
     whiteSmoke: '#f5f5f5',
     pickledBluewood: '#263E48',
     date: '#8c9c9b',
