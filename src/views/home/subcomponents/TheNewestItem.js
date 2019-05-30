@@ -18,7 +18,6 @@ const NewestItemHeader = styled(Header)`
 
 const Wrapper = styled.div`
   display: flex;
-  max-height: 50%;
   overflow: hidden;
 `
 
