@@ -95,7 +95,7 @@ const TopBar = () => (
     </Container>
     <Link to="/">
       <Title color="White" weight="Bold">
-        Новая Польша
+        НОВАЯ ПОЛЬША
       </Title>
       <StaticQuery
         query={BrandQuery}
