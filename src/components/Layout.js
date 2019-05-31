@@ -11,7 +11,6 @@ import Footer from './Footer'
 import Rodo from './Rodo'
 import MobileMenu from './MobileMenu'
 import { mediaQueries } from '../utils/mediaQueries'
-import { isSiteBlocked } from '../utils/blockSiteBeforeLive'
 
 export const LayoutWrapper = styled.div`
   margin: 8.7rem auto 0;
@@ -63,78 +62,32 @@ const BodyContainer = styled.div`
   }
 `
 
-class Layout extends React.Component {
-  state = {
-    isBlocked: true,
+const Layout = ({ children, currentCategory }) => {
+  let rootPath = `/`
+  if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
+    rootPath = __PATH_PREFIX__ + `/`
   }
 
-  componentDidMount() {
-    console.log('did mount')
-    setTimeout(() => {
-      if (!isSiteBlocked()) {
-        this.setState({ isBlocked: false })
-      }
-    }, 1000)
-  }
-
-  render() {
-    const { children, currentCategory } = this.props
-    let rootPath = `/`
-    if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
-      rootPath = __PATH_PREFIX__ + `/`
-    }
-
-    return (
-      <ThemeProvider theme={theme}>
-        <>
-          <MobileMenuContainer>
-            <MobileMenu currentCategory={currentCategory} />
-          </MobileMenuContainer>
-          <PageHeaderContainer>
-            <PageHeader currentCategory={currentCategory} />
-          </PageHeaderContainer>
-          <LayoutWrapper isBlocked={this.state.isBlocked}>
-            <BodyContainer>
-              <Container>{children}</Container>
-            </BodyContainer>
-            <Footer />
-            <Rodo />
-            <GlobalStyle />
-          </LayoutWrapper>
-        </>
-      </ThemeProvider>
-    )
-  }
+  return (
+    <ThemeProvider theme={theme}>
+      <>
+        <MobileMenuContainer>
+          <MobileMenu currentCategory={currentCategory} />
+        </MobileMenuContainer>
+        <PageHeaderContainer>
+          <PageHeader currentCategory={currentCategory} />
+        </PageHeaderContainer>
+        <LayoutWrapper>
+          <BodyContainer>
+            <Container>{children}</Container>
+          </BodyContainer>
+          <Footer />
+          <Rodo />
+          <GlobalStyle />
+        </LayoutWrapper>
+      </>
+    </ThemeProvider>
+  )
 }
-
-// const Layout = ({ children, currentCategory }) => {
-//   let rootPath = `/`
-//   if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
-//     rootPath = __PATH_PREFIX__ + `/`
-//   }
-
-//   console.log(isSiteBlocked())
-
-//   return (
-//     <ThemeProvider theme={theme}>
-//       <>
-//         <MobileMenuContainer>
-//           <MobileMenu currentCategory={currentCategory} />
-//         </MobileMenuContainer>
-//         <PageHeaderContainer>
-//           <PageHeader currentCategory={currentCategory} />
-//         </PageHeaderContainer>
-//         <LayoutWrapper>
-//           <BodyContainer>
-//             <Container>{children}</Container>
-//           </BodyContainer>
-//           <Footer />
-//           <Rodo />
-//           <GlobalStyle />
-//         </LayoutWrapper>
-//       </>
-//     </ThemeProvider>
-//   )
-// }
 
 export default Layout
