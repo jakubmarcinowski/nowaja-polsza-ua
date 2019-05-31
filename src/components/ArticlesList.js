@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import 'url-search-params-polyfill';
 
 import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
