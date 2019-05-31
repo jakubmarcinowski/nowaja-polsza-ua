@@ -18,7 +18,6 @@ const NewestItemHeader = styled(Header)`
 
 const Wrapper = styled.div`
   display: flex;
-  overflow: hidden;
 `
 
 const ImgBox = styled.div`
