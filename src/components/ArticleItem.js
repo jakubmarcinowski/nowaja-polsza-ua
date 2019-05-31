@@ -52,8 +52,6 @@ const IconPlay = styled.img`
 
 const ArticleItemContainer = styled.div`
   position: relative;
-  max-height: 56rem;
-  overflow: hidden;
 `
 
 const ThumbnailWrapper = styled.div`
@@ -66,6 +64,11 @@ const Thumbnail = styled(ImgWrapper)`
   ${ArticleItemContainer}:hover & {
     transform: scale(1.05);
   }
+`
+
+const Text = styled.div`
+  max-height: 21rem;
+  overflow: hidden
 `
 
 // @todo make one component to wrap ArticleItem and TheNewestItem
@@ -118,7 +121,7 @@ const ArticleItem = ({
       </ImgBox>
       <ArticleInfoBox authors={authors} publishDate={publishDate} />
       {slug && (
-        <>
+        <Text>
           {slug && (
             <Header
               weight="Bold"
@@ -141,7 +144,7 @@ const ArticleItem = ({
               </Paragraph>
             </Link>
           )}
-        </>
+        </Text>
       )}
     </ArticleItemContainer>
   )
