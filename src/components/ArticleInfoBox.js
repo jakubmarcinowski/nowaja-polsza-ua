@@ -42,8 +42,14 @@ const AuthorLink = styled(Link)`
   }
 `
 
+const AuthorsWithoutAccount = styled.span`
+  color: ${({ theme }) => theme.colors.authorLink};
+  font-weight: 600;
+`
+
 const ArticleInfoBox = ({
   authors,
+  authorsWithoutAccount,
   publishDate,
   size,
   color,
@@ -67,6 +73,9 @@ const ArticleInfoBox = ({
             {!!authors[i + 1] && <>,&nbsp;</>}
           </AuthorLink>
         ))}
+      {authorsWithoutAccount && (
+        <AuthorsWithoutAccount> {authorsWithoutAccount}</AuthorsWithoutAccount>
+      )}
     </div>
   </InfoBox>
 )
@@ -76,6 +85,7 @@ ArticleInfoBox.propTypes = {
     name: PropTypes.string,
     slug: PropTypes.string,
   }),
+  authorsWithoutAccount: PropTypes.string,
   publishDate: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
