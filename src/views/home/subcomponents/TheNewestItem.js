@@ -82,6 +82,7 @@ const TheNewestItem = ({
     summary,
     slug,
     authors,
+    authorsWithoutAccount,
     categories,
     heroImage,
     publishDate,
@@ -139,6 +140,7 @@ const TheNewestItem = ({
         )}
         <ArticleInfoBox
           authors={authors}
+          authorsWithoutAccount={authorsWithoutAccount}
           publishDate={publishDate}
           size="Small"
         />

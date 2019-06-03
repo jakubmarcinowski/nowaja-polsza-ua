@@ -163,6 +163,7 @@ export const pageQuery = graphql`
           name
           slug
         }
+        authorsWithoutAccount
         contentful_id
         categories {
           contentful_id

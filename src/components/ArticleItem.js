@@ -68,7 +68,7 @@ const Thumbnail = styled(ImgWrapper)`
 
 const Text = styled.div`
   max-height: 21rem;
-  overflow: hidden
+  overflow: hidden;
 `
 
 // @todo make one component to wrap ArticleItem and TheNewestItem
@@ -78,6 +78,7 @@ const ArticleItem = ({
     body,
     slug,
     authors,
+    authorsWithoutAccount,
     categories,
     heroImage,
     publishDate,
@@ -119,7 +120,11 @@ const ArticleItem = ({
           </Link>
         )}
       </ImgBox>
-      <ArticleInfoBox authors={authors} publishDate={publishDate} />
+      <ArticleInfoBox
+        authors={authors}
+        authorsWithoutAccount={authorsWithoutAccount}
+        publishDate={publishDate}
+      />
       {slug && (
         <Text>
           {slug && (

@@ -91,6 +91,7 @@ export const pageQuery = graphql`
             name
             slug
           }
+          authorsWithoutAccount
           categories {
             title
             slug
@@ -130,6 +131,7 @@ export const pageQuery = graphql`
               name
               slug
             }
+            authorsWithoutAccount
             categories {
               title
               slug
@@ -164,6 +166,7 @@ export const pageQuery = graphql`
               name
               slug
             }
+            authorsWithoutAccount
             categories {
               title
               slug
