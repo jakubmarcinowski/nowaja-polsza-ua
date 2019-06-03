@@ -69,7 +69,6 @@ class Layout extends React.Component {
   }
 
   componentDidMount() {
-    console.log('did mount')
     setTimeout(() => {
       if (!isSiteBlocked()) {
         this.setState({ isBlocked: false })

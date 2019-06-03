@@ -114,6 +114,7 @@ class HighlightedArticle extends Component {
       slug,
       heroImage,
       authors,
+      authorsWithoutAccount,
       summary,
       publishDate,
       categories,
@@ -145,6 +146,7 @@ class HighlightedArticle extends Component {
             </StyledHeader>
             <ArticleInfoBox
               authors={authors}
+              authorsWithoutAccount={authorsWithoutAccount}
               publishDate={!this.state.isMobileView && publishDate}
               justify="center"
               color="white"
