@@ -18,7 +18,6 @@ const NewestItemHeader = styled(Header)`
 
 const Wrapper = styled.div`
   display: flex;
-  overflow: hidden;
 `
 
 const ImgBox = styled.div`
@@ -83,6 +82,7 @@ const TheNewestItem = ({
     summary,
     slug,
     authors,
+    authorsWithoutAccount,
     categories,
     heroImage,
     publishDate,
@@ -140,6 +140,7 @@ const TheNewestItem = ({
         )}
         <ArticleInfoBox
           authors={authors}
+          authorsWithoutAccount={authorsWithoutAccount}
           publishDate={publishDate}
           size="Small"
         />
