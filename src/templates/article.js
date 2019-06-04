@@ -73,6 +73,7 @@ export const pageQuery = graphql`
             name
             slug
           }
+          authorsWithoutAccount
           contentful_id
           categories {
             contentful_id
@@ -97,12 +98,12 @@ export const pageQuery = graphql`
         }
       }
       summary
-      authorsWithoutAccount
       authors {
         id
         name
         slug
       }
+      authorsWithoutAccount
       categories {
         contentful_id
         title
