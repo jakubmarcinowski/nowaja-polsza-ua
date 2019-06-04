@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
+import logo from '../../static/logo.svg'
+
 class SEO extends Component {
   state = {
     locationHref: '',
@@ -19,19 +21,19 @@ class SEO extends Component {
       <Helmet>
         <title>{siteTitle}</title>
         <meta name="description" content={description} />
-        <meta name="image" content={image} />
+        <meta name="image" content={image || logo} />
 
         <meta property="og:url" content={locationHref} />
         <meta property="og:type" content={type} />
         <meta property="og:title" content={siteTitle} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
+        <meta property="og:image" content={image || logo} />
 
         <meta name="twitter:card" content={type} />
         <meta name="twitter:site" content={locationHref} />
         <meta name="twitter:title" content={siteTitle} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image} />
+        <meta name="twitter:image" content={image || logo} />
       </Helmet>
     )
   }
