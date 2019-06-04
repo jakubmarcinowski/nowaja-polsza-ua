@@ -21,7 +21,7 @@ class CategoryTemplate extends React.Component {
             <SEO
               siteTitle={category.title}
               description={description}
-              type="category"
+              type="summary"
             />
             <Wrapper>
               {categoryPosts ? (
@@ -79,6 +79,7 @@ export const pageQuery = graphql`
             name
             slug
           }
+          authorsWithoutAccount
           categories {
             title
             slug

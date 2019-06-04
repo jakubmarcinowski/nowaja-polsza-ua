@@ -17,7 +17,7 @@ const Events = ({ data }) => {
 
   return (
     <Layout>
-      <SEO siteTitle={title} description={description} type="website" />
+      <SEO siteTitle={title} description={description} type="summary" />
       {events && <EventPage events={events} />}
     </Layout>
   )

@@ -28,7 +28,7 @@ const ArticleTemplate = props => {
           <SEO
             siteTitle={post.title}
             description={post.summary}
-            type="article"
+            type="summary"
             image={imageSrc}
           />
           <ArticlePage article={post} posts={recommendedArticles} />
@@ -73,6 +73,7 @@ export const pageQuery = graphql`
             name
             slug
           }
+          authorsWithoutAccount
           contentful_id
           categories {
             contentful_id
@@ -97,12 +98,12 @@ export const pageQuery = graphql`
         }
       }
       summary
-      authorsWithoutAccount
       authors {
         id
         name
         slug
       }
+      authorsWithoutAccount
       categories {
         contentful_id
         title

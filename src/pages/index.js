@@ -49,7 +49,7 @@ const RootIndex = props => {
   return (
     <Layout>
       <div>
-        <SEO siteTitle={siteTitle} description={description} type="website" />
+        <SEO siteTitle={siteTitle} description={description} type="summary" />
         <HomePage
           posts={allHighlightedPosts}
           highlightedPost={highlightedPost}

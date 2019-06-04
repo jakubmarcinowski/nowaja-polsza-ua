@@ -24,7 +24,7 @@ class AuthorTemplate extends React.Component {
             <SEO
               siteTitle={author.name}
               description={description}
-              type="author"
+              type="summary"
               image={imageSrc}
             />
             <Wrapper>
@@ -85,6 +85,7 @@ export const pageQuery = graphql`
             name
             slug
           }
+          authorsWithoutAccount
           categories {
             title
             slug
