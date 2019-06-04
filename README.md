@@ -1,5 +1,7 @@
 # Installation instruction
 
+(It doesn't work on node in version ~12, please use 10.16.0)
+
 1. Install Yarn
 2. Run `yarn run setup`. You will be asked for contentful space ID, and access tokens for the Contentful Management and Delivery API. You can find them in contentful Settings/API keys/content delivery preview tokens and content management tokens.
 3. Setup env vars.
@@ -8,6 +10,7 @@
 
 # Contentful content update
 
+0. Make a copy of `.contentful.json.sample` to `.contentful.json` in the same directory and fill the fields with data from contentful.
 1. Install contentful-cli
    yarn global add contentful-cli
 2. Login to contentful
@@ -16,6 +19,14 @@
    contentful space use
 4. Refresh contentful content (this will remove .cache, and create content to export.json in contentful folder)
    yarn contentful-refresh
+
+# Flow
+
+1. Create a feature branch
+2. Create a pull request to DEVELOP on boldare repo
+3. Create a pull request from DEVELOP to MASTER on boldare repo
+4. You can see effects here (dev preview) https://vibrant-golick-e7ab63.netlify.com/
+5. If you want to see effects on live enviroment (novayapolsha.pl) push your code into MASTER on client's repository https://github.com/cprdip/nowaja-polsza
 
 ## Environment variables
 
