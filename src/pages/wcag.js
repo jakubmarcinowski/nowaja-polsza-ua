@@ -17,7 +17,7 @@ const WCAG = ({ data }) => {
   const { description: description } = data.site.siteMetadata
   return (
     <Layout>
-      <SEO siteTitle={title} description={description} type="website" />
+      <SEO siteTitle={title} description={description} type="summary" />
       {content && (
         <Wrapper>
           <StaticContent>

@@ -24,7 +24,7 @@ class AuthorTemplate extends React.Component {
             <SEO
               siteTitle={author.name}
               description={description}
-              type="author"
+              type="summary"
               image={imageSrc}
             />
             <Wrapper>
