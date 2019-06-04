@@ -49,7 +49,7 @@ const HomePage = ({
         <ArticlesList
           posts={posts}
           limit={6}
-          initialLimit={7}
+          initialLimit={13}
           highlightedEvents={highlightedEvents}
           isOnHomepage
         />
