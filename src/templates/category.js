@@ -21,7 +21,7 @@ class CategoryTemplate extends React.Component {
             <SEO
               siteTitle={category.title}
               description={description}
-              type="category"
+              type="summary"
             />
             <Wrapper>
               {categoryPosts ? (
