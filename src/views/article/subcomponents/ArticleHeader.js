@@ -117,8 +117,6 @@ const CategoriesBox = styled.div`
   }
 `
 const TextLabel = styled.label`
-  display: none;
-
   @media ${mediaQueries.desktop} {
     display: inline-block;
     order: 3;
