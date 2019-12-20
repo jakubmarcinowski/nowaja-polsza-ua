@@ -7,7 +7,6 @@ import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
 import { mediaQueries } from '../utils/mediaQueries'
 import Button from '../components/Button'
-import EventsContainer from './EventsContainer'
 import { highlightedEventType } from '../types/highlightedEvent'
 
 const StyledList = styled.ul`
@@ -82,7 +81,6 @@ class ArticlesList extends React.Component {
       noCategoryLabel,
       size,
       noMargin,
-      highlightedEvents,
       isOnHomepage,
     } = this.props
     const { postsNumber } = this.state
@@ -109,11 +107,6 @@ class ArticlesList extends React.Component {
                 />
               </ListItem>
             ))}
-          {highlightedEvents && highlightedEvents.length !== 0 && (
-            <ListItem key="eventsContainer" size={size}>
-              <EventsContainer events={highlightedEvents} />
-            </ListItem>
-          )}
           {postsAfterEventsContainer &&
             postsAfterEventsContainer.map(({ node }) => (
               <ListItem key={node.slug} size={size}>
