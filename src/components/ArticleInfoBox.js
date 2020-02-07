@@ -50,21 +50,11 @@ const AuthorsWithoutAccount = styled.span`
 const ArticleInfoBox = ({
   authors,
   authorsWithoutAccount,
-  publishDate,
   size,
   color,
   justify,
-  dateLink,
 }) => (
   <InfoBox size={size} justify={justify} color={color}>
-    {publishDate &&
-      (dateLink ? (
-        <Link to={dateLink}>
-          <Date color={color}>{publishDate}</Date>
-        </Link>
-      ) : (
-        <Date color={color}>{publishDate}</Date>
-      ))}
     <div>
       {authors &&
         authors.map(({ name, slug, id }, i, authors) => (
