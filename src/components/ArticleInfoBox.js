@@ -24,11 +24,6 @@ const InfoBox = styled.div`
     font-size: ${({ size }) => (size === 'Small' ? '1.4rem' : '1.6rem')};
   }
 `
-const Date = styled.div`
-  margin: 0 2.4rem 0 0;
-  color: ${({ theme, color }) =>
-    color ? theme.colors[color] : theme.colors.date};
-`
 const AuthorLink = styled(Link)`
   display: inline;
   transition: opacity ${props => props.theme.animations.default};
