@@ -13,7 +13,7 @@ const Publications = ({ data }) => {
 
   return (
     <Layout>
-      <SEO siteTitle={title} description={description} type="summary" />
+      <SEO siteTitle={title} description={description} type="summary_large_image" />
       <PublicationPage publications={publications} title={title} />
     </Layout>
   )
