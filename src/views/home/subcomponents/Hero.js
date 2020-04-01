@@ -6,7 +6,12 @@ import { mediaQueries } from '../../../utils/mediaQueries'
 
 const StyledHero = styled.div`
   @media ${mediaQueries.large} {
-    display: flex;
+    display: grid;
+    max-width: 100vw;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flows: dense;
+    grid-auto-rows: minmax(50px, 185px);
+    grid-gap: 45px;
     align-items: stretch;
     padding: 0 0 2.5rem;
   }

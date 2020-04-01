@@ -6,38 +6,31 @@ import { mediaQueries } from '../../../utils/mediaQueries'
 import { articleType } from '../../../types/article'
 import TheNewestItem from './TheNewestItem'
 
-const StyledList = styled.ul`
-  display: flex;
-
-  @media ${mediaQueries.desktop} {
-    flex-direction: column;
-  }
-`
-
-const ListItem = styled.li`
+const ListItem = styled.div`
+  height: 100%;
   &:not(:last-child) {
-    flex: 0 0 calc(50% - 2.5rem);
-    margin: 0 2.5rem 0 0;
+    //flex: 0 0 calc(50% - 2.5rem);
+    //margin: 0 2.5rem 0 0;
   }
 
   @media ${mediaQueries.desktop} {
-    flex: 0 0 auto;
+    //flex: 0 0 auto;
 
     &:not(:last-child) {
-      margin: 0 0 2.5rem;
+      //margin: 0 0 2.5rem;
     }
   }
 `
 
 const TheNewestList = ({ posts }) => (
-  <StyledList>
+  <>
     {posts &&
       posts.map(({ node }) => (
         <ListItem key={node.slug}>
           <TheNewestItem article={node} key={node.slug} />
         </ListItem>
       ))}
-  </StyledList>
+      </>
 )
 
 TheNewestList.propTypes = {

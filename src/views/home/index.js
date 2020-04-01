@@ -11,16 +11,6 @@ import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
 import { highlightedEventType } from '../../types/highlightedEvent'
 import ImportantInfo from './subcomponents/ImportantInfo'
-import { mediaQueries } from '../../utils/mediaQueries'
-
-const TheNewestListContainer = styled.div`
-  display: none;
-
-  @media ${mediaQueries.large} {
-    display: block;
-    width: 100%;
-  }
-`
 
 const HomePage = ({
   posts,
@@ -28,7 +18,7 @@ const HomePage = ({
   highlightedEvents,
   importantInfo,
 }) => {
-  const promotedPostsNumber = 2
+  const promotedPostsNumber = 4
   const promotedPosts = posts.slice(0, promotedPostsNumber)
 
   return (
@@ -41,9 +31,7 @@ const HomePage = ({
       <Wrapper>
         <Hero>
           <HighlightedArticle post={highlightedPost} />
-          <TheNewestListContainer>
-            <TheNewestList posts={promotedPosts} />
-          </TheNewestListContainer>
+          <TheNewestList posts={promotedPosts} />
         </Hero>
         <Line />
         <ArticlesList
