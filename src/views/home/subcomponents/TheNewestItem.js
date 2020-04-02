@@ -15,11 +15,6 @@ import AnimatedLink from '../../../components/AnimatedLink'
 const NewestItemHeader = styled(Header)`
   max-height: 21.5rem;
 `
-
-const Wrapper = styled.div`
-  //display: flex;
-`
-
 const ImgBox = styled.div`
   position: relative;
   height: 100%;
@@ -63,12 +58,13 @@ const ThumbnailWrapper = styled.div`
   
   &::after {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient( to bottom, rgba(17,29,34,0), rgba(17,29,34,0.2) 20%, rgba(17,29,34,0.85) );
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: ${({ theme }) => theme.gradients.hero};
   }
 `
 
@@ -79,10 +75,10 @@ const Thumbnail = styled(ImgWrapper)`
   :hover {
     transform: scale(1.05);
   }
-`
-
-const SyledArticleInfoBox = styled(ArticleInfoBox)`
-  color: white;
+  
+   ${ThumbnailWrapper}:hover & {
+    transform: scale(1.05);
+  }
 `
 
 const Info = styled.div`
@@ -98,11 +94,8 @@ const TheNewestItem = ({
     title,
     body,
     slug,
-    authors,
-    authorsWithoutAccount,
     categories,
     heroImage,
-    publishDate,
   },
 }) => {
   const isMultimedia =

@@ -38,7 +38,7 @@ const AuthorLink = styled(Link)`
 `
 
 const AuthorsWithoutAccount = styled.span`
-  color: ${({ theme }) => theme.colors.authorLink};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
 `
 
