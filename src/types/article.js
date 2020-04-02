@@ -25,4 +25,5 @@ export const articleType = PropTypes.shape({
   slug: PropTypes.string,
   title: PropTypes.string,
   summary: PropTypes.string,
+  galleryDescription: PropTypes.string,
 })

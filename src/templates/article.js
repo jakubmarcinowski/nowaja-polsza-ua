@@ -128,6 +128,7 @@ export const pageQuery = graphql`
           ...GatsbyContentfulFluid
         }
       }
+      galleryDescription
       authors {
         id
         name

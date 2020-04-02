@@ -172,6 +172,7 @@ const ArticlePage = ({
     categories,
     leadLong,
     gallery,
+    galleryDescription,
     recommendedArticles,
   },
   posts,
@@ -238,6 +239,7 @@ const ArticlePage = ({
                 <ImgWrapper img={photo} key={photo.id} />
               ))}
             </SliderStyled>
+            {galleryDescription}
           </Gallery>
         )}
 
