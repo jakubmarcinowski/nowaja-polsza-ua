@@ -56,6 +56,7 @@ const Text = styled.div`
 // @todo make one component to wrap ArticleItem and TheNewestItem
 const StickedPost = ({
   post: {
+    slug,
     authors,
     title,
     heroImage,
@@ -67,7 +68,7 @@ const StickedPost = ({
     <ArticleItemContainer>
       <ImgBox>
         <ThumbnailWrapper>
-          <Link to={`/article/${categories[0].slug}`}>
+          <Link to={`/article/${slug}`}>
             <Thumbnail img={heroImage} aspectRatio={1.76} />
           </Link>
         </ThumbnailWrapper>
@@ -94,13 +95,13 @@ const StickedPost = ({
               lineHeight="Medium"
               overflow="hidden"
             >
-              <AnimatedLink url={`/article/${categories[0].slug}`} opacity={0.7}>
+              <AnimatedLink url={`/article/${slug}`} opacity={0.7}>
                 {title}
               </AnimatedLink>
             </Header>
           )}
           {summary && (
-            <Link to={`/article/${categories[0].slug}`}>
+            <Link to={`/article/${slug}`}>
               <Paragraph size="Big" lineHeight="Medium" weight="Light">
                 {summary}
               </Paragraph>

@@ -212,6 +212,7 @@ export const pageQuery = graphql`
       edges {
         node {
           stickedPost {
+            slug
             title
             heroImage {
               fluid(maxWidth: 768, resizingBehavior: SCALE) {
@@ -226,6 +227,7 @@ export const pageQuery = graphql`
             summary
             authors {
               name
+              slug
             }
           }
         }
