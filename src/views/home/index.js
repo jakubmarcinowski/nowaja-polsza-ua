@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import HighlightedArticle from './subcomponents/HighlightedArticle'
 import ArticlesList from '../../components/ArticlesList'
@@ -15,12 +14,11 @@ import ImportantInfo from './subcomponents/ImportantInfo'
 const HomePage = ({
   posts,
   highlightedPost,
-  highlightedEvents,
+  stickedPost,
   importantInfo,
 }) => {
   const promotedPostsNumber = 4
   const promotedPosts = posts.slice(0, promotedPostsNumber)
-
   return (
     <>
       {importantInfo &&
@@ -37,8 +35,8 @@ const HomePage = ({
         <ArticlesList
           posts={posts}
           limit={6}
-          initialLimit={14}
-          highlightedEvents={highlightedEvents}
+          initialLimit={stickedPost ? 13 : 14}
+          stickedPost={stickedPost}
           isOnHomepage
         />
       </Wrapper>
@@ -48,7 +46,7 @@ const HomePage = ({
 
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(articleType),
-  highlightedEvents: PropTypes.arrayOf(highlightedEventType),
+  stickedPost: PropTypes.object,
   highlightedPost: articleType,
   isNotLarge: PropTypes.bool,
   importantInfo: PropTypes.any,

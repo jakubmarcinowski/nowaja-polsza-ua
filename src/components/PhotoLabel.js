@@ -11,25 +11,19 @@ const PhotoLabelStyled = styled.div`
   z-index: 1;
   top: 10px;
   left: -5px;
-  
-  @media ${mediaQueries.desktop} {
-  top: 10px;
-  left: -5px;
-  transform: translateX(-50%);
-  }
 `
 
 const PhotoLabelHighlightedStyled = styled.div`
  position: absolute;
-  z-index: 1;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+ z-index: 1;
+ bottom: 2rem;
+ left: 50%;
+ transform: translateX(-50%);
   
   @media ${mediaQueries.desktop} {
-  transform: none;
   top: 10px;
   left: -5px;
+  transform: none;
   }
 `
 

@@ -7,7 +7,7 @@ import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
 import { mediaQueries } from '../utils/mediaQueries'
 import Button from '../components/Button'
-import { highlightedEventType } from '../types/highlightedEvent'
+import StickedPost from './StickedPost'
 
 const StyledList = styled.ul`
   display: flex;
@@ -77,6 +77,7 @@ class ArticlesList extends React.Component {
   render() {
     const {
       posts,
+      stickedPost,
       limit,
       noCategoryLabel,
       size,
@@ -93,7 +94,6 @@ class ArticlesList extends React.Component {
     const postsAfterEventsContainer = slicedPosts.slice(
       eventsContainerPosition + 1
     )
-
     return (
       <>
         <StyledList noMargin={noMargin}>
@@ -107,6 +107,13 @@ class ArticlesList extends React.Component {
                 />
               </ListItem>
             ))}
+          {stickedPost && stickedPost.length !== 0 && (
+            <ListItem key="eventsContainer" size={size}>
+              <StickedPost
+                post={stickedPost}
+              />
+            </ListItem>
+          )}
           {postsAfterEventsContainer &&
             postsAfterEventsContainer.map(({ node }) => (
               <ListItem key={node.slug} size={size}>
@@ -133,7 +140,7 @@ class ArticlesList extends React.Component {
 
 ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(articleType).isRequired,
-  highlightedEvents: PropTypes.arrayOf(highlightedEventType),
+  stickedPost: PropTypes.object,
   limit: PropTypes.number,
   initialLimit: PropTypes.number,
   noCategoryLabel: PropTypes.bool,
