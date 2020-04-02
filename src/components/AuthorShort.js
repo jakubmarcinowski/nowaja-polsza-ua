@@ -19,6 +19,12 @@ const AuthorImg = styled(ImgWrapper)`
     max-width: 22rem;
     max-height: 22rem;
   }
+  
+  @media print {
+    page-break-before: auto;
+    page-break-after: auto;
+    page-break-inside: avoid;
+  }
 `
 
 const Element = styled.div`
@@ -49,6 +55,12 @@ const Element = styled.div`
         margin: 5rem;
         max-width: 3.9rem; 
       `};
+  }
+  
+  @media print {
+    page-break-before: auto;
+    page-break-after: auto;
+    page-break-inside: avoid;
   }
 `
 

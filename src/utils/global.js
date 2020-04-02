@@ -63,4 +63,11 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: currentColor;
   }
+  @media print {
+    img {
+      page-break-before: auto;
+      page-break-after: auto;
+      page-break-inside: avoid;
+      }
+    }
 `
