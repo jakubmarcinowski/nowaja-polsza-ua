@@ -10,12 +10,12 @@ try {
 contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
   accessToken:
-    process.env.CONTENTFUL_API === 'preview'
-      ? process.env.CONTENTFUL_PREVIEW_TOKEN
+    contentfulConfig.CONTENTFUL_API === 'preview'
+      ? contentfulConfig.CONTENTFUL_PREVIEW_TOKEN
       : process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
   environment: process.env.CONTENTFUL_ENV, // master|develop
   host:
-    process.env.CONTENTFUL_API === 'preview'
+    contentfulConfig.CONTENTFUL_API === 'preview'
       ? 'preview.contentful.com'
       : 'cdn.contentful.com',
 }

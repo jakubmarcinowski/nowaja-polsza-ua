@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 import { mediaQueries } from '../utils/mediaQueries'
 
 const InfoBox = styled.div`
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   align-items: flex-start;
   ${({ justify }) => `justify-content: ${justify};`}
@@ -21,6 +21,7 @@ const InfoBox = styled.div`
   }
 
   @media ${mediaQueries.tablet} {
+  display: flex;
     font-size: ${({ size }) => (size === 'Small' ? '1.4rem' : '1.6rem')};
   }
 `

@@ -4,13 +4,12 @@ import { Link } from 'gatsby'
 
 import { articleType } from '../../../types/article'
 import ImgWrapper from '../../../components/ImgWrapper'
-import Paragraph from '../../../components/Paragraph'
 import Header from '../../../components/Header'
-import ArticleInfoBox from '../../../components/ArticleInfoBox'
 import PhotoLabel from '../../../components/PhotoLabel'
 import playIcon from '../../../../static/icon-play.svg'
 import headphonesIcon from '../../../../static/icon-close.svg'
 import AnimatedLink from '../../../components/AnimatedLink'
+import { mediaQueries } from '../../../utils/mediaQueries'
 
 const NewestItemHeader = styled(Header)`
   max-height: 21.5rem;
@@ -18,6 +17,11 @@ const NewestItemHeader = styled(Header)`
 const ImgBox = styled.div`
   position: relative;
   height: 100%;
+  max-height: 33vh;
+
+  @media ${mediaQueries.phoneLandscape} {
+  max-height: none;
+  }
 
   ${({ isMultimedia, theme }) =>
   isMultimedia &&
@@ -85,8 +89,14 @@ const Info = styled.div`
   position: absolute;
   max-height: 20.5rem;
   margin: 1rem;
-  bottom: 0;
+  bottom: 5rem;
+  text-align: center;
   z-index: 10;
+  
+  @media ${mediaQueries.desktop} {
+  bottom: 0;
+  text-align: left;
+}
 `
 
 const TheNewestItem = ({
@@ -141,7 +151,7 @@ const TheNewestItem = ({
       </ThumbnailWrapper>
       {categories && (
         <Link to={`/category/${categories[0].slug}`}>
-          <PhotoLabel color={categories[0].color}>
+          <PhotoLabel color={categories[0].color} isHighlighted>
             {categories[0].title}
           </PhotoLabel>
         </Link>
