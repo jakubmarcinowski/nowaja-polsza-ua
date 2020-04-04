@@ -8,13 +8,13 @@ import { articleType } from '../../types/article'
 import TheNewestList from './subcomponents/TheNewestList'
 import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
-import { highlightedEventType } from '../../types/highlightedEvent'
 import ImportantInfo from './subcomponents/ImportantInfo'
 
 const HomePage = ({
   posts,
   highlightedPost,
   stickedPost,
+  stickedPostActive,
   importantInfo,
 }) => {
   const promotedPostsNumber = 4
@@ -35,8 +35,9 @@ const HomePage = ({
         <ArticlesList
           posts={posts}
           limit={6}
-          initialLimit={stickedPost ? 13 : 14}
+          initialLimit={stickedPostActive ? 15 : 16}
           stickedPost={stickedPost}
+          stickedPostActive={stickedPostActive}
           isOnHomepage
         />
       </Wrapper>
@@ -47,6 +48,7 @@ const HomePage = ({
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(articleType),
   stickedPost: PropTypes.object,
+  stickedPostActive: PropTypes.bool,
   highlightedPost: articleType,
   isNotLarge: PropTypes.bool,
   importantInfo: PropTypes.any,

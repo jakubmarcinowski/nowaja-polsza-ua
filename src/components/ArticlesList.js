@@ -43,7 +43,7 @@ const ListItem = styled.li`
 
     ${({ isOnHomepage }) =>
       isOnHomepage &&
-      `&:nth-child(-n + 2) {
+      `&:nth-child(-n + 4) {
       display: none;
     }`}
   }
@@ -78,6 +78,7 @@ class ArticlesList extends React.Component {
     const {
       posts,
       stickedPost,
+      stickedPostActive,
       limit,
       noCategoryLabel,
       size,
@@ -107,7 +108,7 @@ class ArticlesList extends React.Component {
                 />
               </ListItem>
             ))}
-          {stickedPost && stickedPost.length !== 0 && (
+          {stickedPost && stickedPost.length !== 0 && stickedPostActive && (
             <ListItem key="eventsContainer" size={size}>
               <StickedPost
                 post={stickedPost}
@@ -141,6 +142,7 @@ class ArticlesList extends React.Component {
 ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(articleType).isRequired,
   stickedPost: PropTypes.object,
+  stickedPostActive: PropTypes.bool,
   limit: PropTypes.number,
   initialLimit: PropTypes.number,
   noCategoryLabel: PropTypes.bool,
