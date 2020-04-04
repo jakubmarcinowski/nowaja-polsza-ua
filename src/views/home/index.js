@@ -37,7 +37,7 @@ const HomePage = ({
           limit={6}
           initialLimit={stickedPostActive ? 15 : 16}
           stickedPost={stickedPost}
-          stickedPostActive={true}
+          stickedPostActive={stickedPostActive}
           isOnHomepage
         />
       </Wrapper>
