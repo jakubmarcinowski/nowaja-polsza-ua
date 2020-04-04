@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import HighlightedArticle from './subcomponents/HighlightedArticle'
 import ArticlesList from '../../components/ArticlesList'
@@ -11,26 +10,15 @@ import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
 import { highlightedEventType } from '../../types/highlightedEvent'
 import ImportantInfo from './subcomponents/ImportantInfo'
-import { mediaQueries } from '../../utils/mediaQueries'
-
-const TheNewestListContainer = styled.div`
-  display: none;
-
-  @media ${mediaQueries.large} {
-    display: block;
-    width: 100%;
-  }
-`
 
 const HomePage = ({
   posts,
   highlightedPost,
-  highlightedEvents,
+  stickedPost,
   importantInfo,
 }) => {
-  const promotedPostsNumber = 2
+  const promotedPostsNumber = 4
   const promotedPosts = posts.slice(0, promotedPostsNumber)
-
   return (
     <>
       {importantInfo &&
@@ -41,16 +29,14 @@ const HomePage = ({
       <Wrapper>
         <Hero>
           <HighlightedArticle post={highlightedPost} />
-          <TheNewestListContainer>
-            <TheNewestList posts={promotedPosts} />
-          </TheNewestListContainer>
+          <TheNewestList posts={promotedPosts} />
         </Hero>
         <Line />
         <ArticlesList
           posts={posts}
           limit={6}
-          initialLimit={14}
-          highlightedEvents={highlightedEvents}
+          initialLimit={stickedPost ? 13 : 14}
+          stickedPost={stickedPost}
           isOnHomepage
         />
       </Wrapper>
@@ -60,7 +46,7 @@ const HomePage = ({
 
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(articleType),
-  highlightedEvents: PropTypes.arrayOf(highlightedEventType),
+  stickedPost: PropTypes.object,
   highlightedPost: articleType,
   isNotLarge: PropTypes.bool,
   importantInfo: PropTypes.any,

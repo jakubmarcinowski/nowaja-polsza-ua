@@ -4,30 +4,28 @@ import { Link } from 'gatsby'
 
 import { articleType } from '../../../types/article'
 import ImgWrapper from '../../../components/ImgWrapper'
-import Paragraph from '../../../components/Paragraph'
 import Header from '../../../components/Header'
-import ArticleInfoBox from '../../../components/ArticleInfoBox'
 import PhotoLabel from '../../../components/PhotoLabel'
 import playIcon from '../../../../static/icon-play.svg'
 import headphonesIcon from '../../../../static/icon-close.svg'
 import AnimatedLink from '../../../components/AnimatedLink'
+import { mediaQueries } from '../../../utils/mediaQueries'
 
 const NewestItemHeader = styled(Header)`
   max-height: 21.5rem;
 `
-
-const Wrapper = styled.div`
-  display: flex;
-`
-
 const ImgBox = styled.div`
   position: relative;
-  flex: 0 0 46%;
-  margin-right: 2.5rem;
+  height: 100%;
+  max-height: 33vh;
+
+  @media ${mediaQueries.phoneLandscape} {
+  max-height: none;
+  }
 
   ${({ isMultimedia, theme }) =>
-    isMultimedia &&
-    `&:after {
+  isMultimedia &&
+  `&:after {
       content: '';
       position: absolute;
       top: 0;
@@ -58,34 +56,56 @@ const IconPlay = styled.img`
 `
 
 const ThumbnailWrapper = styled.div`
+  position: relative;
+  height: 100%;
   overflow: hidden;
+  
+  &::after {
+  content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: ${({ theme }) => theme.gradients.hero};
+  }
 `
 
 const Thumbnail = styled(ImgWrapper)`
   transition: transform ${props => props.theme.animations.default};
   transform: scale(1.01);
 
-  ${Wrapper}:hover & {
+  :hover {
+    transform: scale(1.05);
+  }
+  
+   ${ThumbnailWrapper}:hover & {
     transform: scale(1.05);
   }
 `
 
 const Info = styled.div`
+  position: absolute;
   max-height: 20.5rem;
-  overflow: hidden;
+  margin: 1rem;
+  bottom: 5rem;
+  text-align: center;
+  z-index: 10;
+  
+  @media ${mediaQueries.desktop} {
+  bottom: 0;
+  text-align: left;
+}
 `
 
 const TheNewestItem = ({
   article: {
     title,
     body,
-    summary,
     slug,
-    authors,
-    authorsWithoutAccount,
     categories,
     heroImage,
-    publishDate,
   },
 }) => {
   const isMultimedia =
@@ -99,60 +119,44 @@ const TheNewestItem = ({
     body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
 
   return (
-    <Wrapper>
-      <ImgBox isMultimedia={isMultimedia}>
-        {isMultimedia && (
-          <Link to={`/article/${slug}`}>
-            <IconPlay
-              src={isSoundCloud ? headphonesIcon : playIcon}
-              alt="Play icon"
-            />
-          </Link>
-        )}
-        <ThumbnailWrapper>
-          <Link to={`/article/${slug}`}>
-            <Thumbnail img={heroImage} aspectRatio={1} />
-          </Link>
-        </ThumbnailWrapper>
-        {categories && (
-          <Link to={`/category/${categories[0].slug}`}>
-            <PhotoLabel color={categories[0].color}>
-              {categories[0].title}
-            </PhotoLabel>
-          </Link>
-        )}
-      </ImgBox>
-      <Info>
-        {slug && (
-          <NewestItemHeader
-            weight="Bold"
-            type={2}
-            size="MediumBig"
-            color="Dark"
-            margin="0 0 1rem"
-            lineHeight="Medium"
-            overflow="hidden"
-          >
-            <AnimatedLink url={`/article/${slug}`} opacity={0.7}>
-              {title}
-            </AnimatedLink>
-          </NewestItemHeader>
-        )}
-        <ArticleInfoBox
-          authors={authors}
-          authorsWithoutAccount={authorsWithoutAccount}
-          publishDate={publishDate}
-          size="Small"
-        />
-        {summary && (
-          <Link to={`/article/${slug}`}>
-            <Paragraph size="Medium" lineHeight="Medium" weight="Light">
-              {summary}
-            </Paragraph>
-          </Link>
-        )}
-      </Info>
-    </Wrapper>
+    <ImgBox isMultimedia={isMultimedia}>
+      {isMultimedia && (
+        <Link to={`/article/${slug}`}>
+          <IconPlay
+            src={isSoundCloud ? headphonesIcon : playIcon}
+            alt="Play icon"
+          />
+        </Link>
+      )}
+      <ThumbnailWrapper>
+        <Link to={`/article/${slug}`}>
+          <Thumbnail img={heroImage} aspectRatio={1} />
+        </Link>
+        <Info>
+          {slug && (
+            <NewestItemHeader
+              weight="Normal"
+              type={2}
+              size="MediumBig"
+              color="white"
+              margin=".65rem"
+              lineHeight="Medium"
+            >
+              <AnimatedLink url={`/article/${slug}`} opacity={0.7}>
+                {title}
+              </AnimatedLink>
+            </NewestItemHeader>
+          )}
+            </Info>
+      </ThumbnailWrapper>
+      {categories && (
+        <Link to={`/category/${categories[0].slug}`}>
+          <PhotoLabel color={categories[0].color} isHighlighted>
+            {categories[0].title}
+          </PhotoLabel>
+        </Link>
+      )}
+    </ImgBox>
   )
 }
 

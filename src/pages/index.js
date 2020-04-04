@@ -28,6 +28,11 @@ const RootIndex = props => {
     'data.allContentfulHighlightedPost.edges[0].node.posts'
   )
 
+  const stickedPost = get(
+    props,
+    'data.allContentfulStickedPost.edges[0].node.stickedPost'
+  )
+
   let allHighlightedPosts = posts.filter(
     ({ node: { id } }) => highlightedPost.id !== id
   )
@@ -54,7 +59,7 @@ const RootIndex = props => {
           posts={allHighlightedPosts}
           highlightedPost={highlightedPost}
           importantInfo={importantInfo}
-          highlightedEvents={highlightedEvents}
+          stickedPost={stickedPost}
         />
       </div>
     </Layout>
@@ -200,6 +205,31 @@ export const pageQuery = graphql`
           }
           title
           id
+        }
+      }
+    }
+    allContentfulStickedPost {
+      edges {
+        node {
+          stickedPost {
+            slug
+            title
+            heroImage {
+              fluid(maxWidth: 768, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
+              }
+            }
+            categories {
+              title
+              slug
+              color
+            }
+            summary
+            authors {
+              name
+              slug
+            }
+          }
         }
       }
     }

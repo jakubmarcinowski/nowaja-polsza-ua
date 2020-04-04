@@ -6,11 +6,11 @@ import { Link } from 'gatsby'
 import { mediaQueries } from '../utils/mediaQueries'
 
 const InfoBox = styled.div`
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   align-items: flex-start;
   ${({ justify }) => `justify-content: ${justify};`}
-  margin: 0 0 1rem;
+  margin: 0;
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: 1.2rem;
   color: ${({ theme, color }) => theme.colors[color]};
@@ -21,6 +21,7 @@ const InfoBox = styled.div`
   }
 
   @media ${mediaQueries.tablet} {
+  display: flex;
     font-size: ${({ size }) => (size === 'Small' ? '1.4rem' : '1.6rem')};
   }
 `
@@ -38,7 +39,7 @@ const AuthorLink = styled(Link)`
 `
 
 const AuthorsWithoutAccount = styled.span`
-  color: ${({ theme }) => theme.colors.authorLink};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
 `
 
