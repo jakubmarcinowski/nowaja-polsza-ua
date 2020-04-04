@@ -41,12 +41,17 @@ const RootIndex = props => {
       return { node: article }
     })
 
-    const postsWithoutDuplicates = allHighlightedPosts.filter(
+    let postsWithoutDuplicates = allHighlightedPosts.filter(
       post =>
         !moreHighlightedPosts.find(
           highlightedPost => highlightedPost.node.id === post.node.id
         )
     )
+
+    if(stickedPostActive) {
+      postsWithoutDuplicates = postsWithoutDuplicates.filter( post => stickedPost.id !== post.node.id)
+    }
+
     allHighlightedPosts = moreHighlightedPosts.concat(postsWithoutDuplicates)
   }
 
@@ -197,6 +202,7 @@ export const pageQuery = graphql`
         node {
           active
           stickedPost {
+            id
             slug
             title
             heroImage {
