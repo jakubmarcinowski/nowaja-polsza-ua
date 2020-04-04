@@ -13,7 +13,7 @@ import PhotoLabel from '../../../components/PhotoLabel'
 
 const HighlightedArticleStyled = styled.div`
   position: relative;
-  margin: 0;
+  margin: 0 0 2.5rem;
   grid-column: span 2;
   grid-row: span 2;
   
@@ -41,8 +41,8 @@ const ArticleContent = styled.div`
   z-index: 2;
   left: 0;
   right: 0;
-  bottom: 1.4rem;
   transform-origin: bottom;
+  transform: translateY(-13rem);
   transition: transform ${({ theme }) => theme.animations.default};
   margin: 0 auto;
   min-width: 264px;
@@ -50,7 +50,7 @@ const ArticleContent = styled.div`
   text-align: center;
 
   @media ${mediaQueries.phoneLandscape} {
-    transform: translateY(-5rem);
+    transform: translateY(-22rem);
     width: 80%;
     min-width: 280px;
   }
@@ -68,6 +68,7 @@ const ArticleContent = styled.div`
 `
 const StyledHeader = styled(Header)`
   font-size: 1.4rem;
+  line-height: 1.5em;
 
   @media ${mediaQueries.tablet} {
     font-size: 2rem;
@@ -140,7 +141,7 @@ class HighlightedArticle extends Component {
           <LinkOverlay to={`/article/${slug}`} />
           <ImgBox>
             <StyledImgWrapper img={heroImage} aspectRatio={1.44} />
-            <PhotoLabel color={categories[0].color} isHighlighted>
+            <PhotoLabel color={categories[0].color}>
               {categories[0].title}
             </PhotoLabel>
           </ImgBox>

@@ -59,7 +59,7 @@ const RootIndex = props => {
           highlightedPost={highlightedPost}
           importantInfo={importantInfo}
           stickedPost={stickedPost}
-          stickedPostActive={true}
+          stickedPostActive={stickedPostActive}
         />
       </div>
     </Layout>
