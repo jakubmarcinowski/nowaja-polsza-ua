@@ -151,7 +151,7 @@ const TheNewestItem = ({
       </ThumbnailWrapper>
       {categories && (
         <Link to={`/category/${categories[0].slug}`}>
-          <PhotoLabel color={categories[0].color} isHighlighted>
+          <PhotoLabel color={categories[0].color} >
             {categories[0].title}
           </PhotoLabel>
         </Link>

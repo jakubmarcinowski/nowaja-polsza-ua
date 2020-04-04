@@ -27,6 +27,7 @@ const StyledList = styled.ul`
 const ListItem = styled.li`
   flex: 0 0 100%;
   padding-bottom: 4rem;
+ 
 
   @media ${mediaQueries.tablet} {
     flex: 0 0 calc(100% / 2);
@@ -35,18 +36,18 @@ const ListItem = styled.li`
 
   @media ${mediaQueries.desktop} {
     padding: 0 2.5rem 6.5rem;
-  }
+    
+      ${({ isOnHomepage }) => 
+  isOnHomepage && 
+  `&:nth-child(-n + 4) {
+    display: none;
+  }`}
+      }
 
   @media ${mediaQueries.large} {
     ${({ size }) => size !== 'Big' && 'flex: 0 0 calc(100% / 3);'}
     padding: 0 2.5rem 9.5rem;
-
-    ${({ isOnHomepage }) =>
-      isOnHomepage &&
-      `&:nth-child(-n + 4) {
-      display: none;
-    }`}
-  }
+    }
 `
 const ButtonWrapper = styled.div`
   text-align: center;

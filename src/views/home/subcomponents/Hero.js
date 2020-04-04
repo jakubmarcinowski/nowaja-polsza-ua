@@ -11,7 +11,6 @@ const StyledHero = styled.div`
     max-width: 100vw;
     grid-gap: 15px;
     align-items: stretch;
-    padding: 0 0 2.5rem;
   
   @media ${mediaQueries.phoneLandscape} {
     grid-auto-flows: dense;
