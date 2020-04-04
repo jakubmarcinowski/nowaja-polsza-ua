@@ -7,7 +7,6 @@ import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
 import { mediaQueries } from '../utils/mediaQueries'
 import Button from '../components/Button'
-import StickedPost from './StickedPost'
 
 const StyledList = styled.ul`
   display: flex;
@@ -111,8 +110,8 @@ class ArticlesList extends React.Component {
             ))}
           {stickedPost && stickedPost.length !== 0 && stickedPostActive && (
             <ListItem key="eventsContainer" size={size}>
-              <StickedPost
-                post={stickedPost}
+              <ArticleItem
+                article={stickedPost}
               />
             </ListItem>
           )}
@@ -125,7 +124,8 @@ class ArticlesList extends React.Component {
                   noCategoryLabel={noCategoryLabel}
                 />
               </ListItem>
-            ))}
+              ))
+          }
         </StyledList>
 
         {limit && postsNumber < posts.length && (
