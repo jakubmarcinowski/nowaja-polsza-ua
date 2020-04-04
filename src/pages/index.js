@@ -19,18 +19,17 @@ const RootIndex = props => {
     props,
     'data.allContentfulHighlightedPost.edges[0].node.highlightMorePosts'
   )
-  const highlightedEvents = get(
-    props,
-    'data.allContentfulHighlightedEvents.edges[0].node.events'
-  )
   const highlightedPosts = get(
     props,
     'data.allContentfulHighlightedPost.edges[0].node.posts'
   )
-
   const stickedPost = get(
     props,
     'data.allContentfulStickedPost.edges[0].node.stickedPost'
+  )
+  const stickedPostActive = get(
+    props,
+    'data.allContentfulStickedPost.edges[0].node.active'
   )
 
   let allHighlightedPosts = posts.filter(
@@ -60,6 +59,7 @@ const RootIndex = props => {
           highlightedPost={highlightedPost}
           importantInfo={importantInfo}
           stickedPost={stickedPost}
+          stickedPostActive={true}
         />
       </div>
     </Layout>
@@ -192,25 +192,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulHighlightedEvents(filter: { slug: { ne: "xxx" } }) {
-      edges {
-        node {
-          events {
-            id
-            title
-            city
-            expirationDay: expirationDate(formatString: "DD", locale: "ru")
-            expirationMonth: expirationDate(formatString: "MMMM", locale: "ru")
-            address
-          }
-          title
-          id
-        }
-      }
-    }
     allContentfulStickedPost {
       edges {
         node {
+          active
           stickedPost {
             slug
             title
