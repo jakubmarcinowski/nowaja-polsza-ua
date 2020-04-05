@@ -92,7 +92,7 @@ const StyledContent = styled.div`
 
       @media ${mediaQueries.large} {
         max-width: ${({ theme }) =>
-          `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
+  `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
       }
     }
 
@@ -157,6 +157,25 @@ const StyledContent = styled.div`
     width: 100%;
     height: 100%;
   }
+  [id^='przypis'] {
+    position: relative;
+  }
+  .annotation-tooltip {
+    position: absolute;
+    bottom: 27px;
+    left: 0;
+    background-color: white;
+    width: 340px;
+    font-size: 13px;
+    padding: 15px;
+    border: 1px solid;
+    opacity: 0;
+    pointer-events: none;
+}
+[id^='przypis']:hover .annotation-tooltip {
+opacity: 1;
+}
+  }
 `
 
 class StaticContent extends React.Component {
@@ -172,6 +191,19 @@ class StaticContent extends React.Component {
         }
       })
     }
+
+    const annotations = document.querySelectorAll("[id^='przypis']")
+    if (annotations) {
+      annotations.forEach(annotation => {
+        const annotationHref = annotation.getAttribute('href').substr(1)
+        const annotationHrefText = document.getElementById(annotationHref).innerText
+        const annotationTextWrapper = document.createElement('div')
+        annotationTextWrapper.className = 'annotation-tooltip'
+        annotationTextWrapper.innerText = annotationHrefText
+        annotation.appendChild(annotationTextWrapper)
+      })
+    }
+
   }
 
   render() {
