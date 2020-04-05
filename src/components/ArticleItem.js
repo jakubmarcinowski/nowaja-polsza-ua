@@ -56,6 +56,7 @@ const ArticleItemContainer = styled.div`
 
 const ThumbnailWrapper = styled.div`
   overflow: hidden;
+  height: 100%;
 `
 
 const Thumbnail = styled(ImgWrapper)`
@@ -81,6 +82,7 @@ const ArticleItem = ({
     authorsWithoutAccount,
     categories,
     heroImage,
+    heroImageThumbnail,
     publishDate,
     summary,
   },
@@ -108,12 +110,12 @@ const ArticleItem = ({
           </Link>
         )}
         <ThumbnailWrapper>
-          <Link to={`/article/${slug}`}>
-            <Thumbnail img={heroImage} aspectRatio={1.76} />
+          <Link to={`/article/${slug}`} title={slug}>
+            <Thumbnail img={heroImageThumbnail ? heroImageThumbnail : heroImage} aspectRatio={1.76} />
           </Link>
         </ThumbnailWrapper>
         {!noCategoryLabel && categories && (
-          <Link to={`/category/${categories[0].slug}`}>
+          <Link to={`/category/${categories[0].slug}`} title={categories[0].slug}>
             <PhotoLabel color={categories[0].color}>
               {categories[0].title}
             </PhotoLabel>
@@ -143,7 +145,7 @@ const ArticleItem = ({
             </Header>
           )}
           {summary && (
-            <Link to={`/article/${slug}`}>
+            <Link to={`/article/${slug}`} title={slug}>
               <Paragraph size="Big" lineHeight="Medium" weight="Light">
                 {summary}
               </Paragraph>

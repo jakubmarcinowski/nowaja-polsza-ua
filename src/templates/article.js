@@ -28,7 +28,7 @@ const ArticleTemplate = props => {
           <SEO
             siteTitle={post.title}
             description={post.summary}
-            type="summary"
+            type="summary_large_image"
             image={imageSrc}
           />
           <ArticlePage article={post} posts={recommendedArticles} />
@@ -124,6 +124,7 @@ export const pageQuery = graphql`
       }
       gallery {
         id
+        description
         fluid(maxWidth: 1920, background: "rgb:000000") {
           ...GatsbyContentfulFluid
         }

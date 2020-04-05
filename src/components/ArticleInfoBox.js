@@ -10,7 +10,7 @@ const InfoBox = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   ${({ justify }) => `justify-content: ${justify};`}
-  margin: 0 0 1rem;
+  margin: 0;
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: 1.2rem;
   color: ${({ theme, color }) => theme.colors[color]};
@@ -23,11 +23,6 @@ const InfoBox = styled.div`
   @media ${mediaQueries.tablet} {
     font-size: ${({ size }) => (size === 'Small' ? '1.4rem' : '1.6rem')};
   }
-`
-const Date = styled.div`
-  margin: 0 2.4rem 0 0;
-  color: ${({ theme, color }) =>
-    color ? theme.colors[color] : theme.colors.date};
 `
 const AuthorLink = styled(Link)`
   display: inline;
@@ -50,21 +45,11 @@ const AuthorsWithoutAccount = styled.span`
 const ArticleInfoBox = ({
   authors,
   authorsWithoutAccount,
-  publishDate,
   size,
   color,
   justify,
-  dateLink,
 }) => (
   <InfoBox size={size} justify={justify} color={color}>
-    {publishDate &&
-      (dateLink ? (
-        <Link to={dateLink}>
-          <Date color={color}>{publishDate}</Date>
-        </Link>
-      ) : (
-        <Date color={color}>{publishDate}</Date>
-      ))}
     <div>
       {authors &&
         authors.map(({ name, slug, id }, i, authors) => (

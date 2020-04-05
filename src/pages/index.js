@@ -19,13 +19,17 @@ const RootIndex = props => {
     props,
     'data.allContentfulHighlightedPost.edges[0].node.highlightMorePosts'
   )
-  const highlightedEvents = get(
-    props,
-    'data.allContentfulHighlightedEvents.edges[0].node.events'
-  )
   const highlightedPosts = get(
     props,
     'data.allContentfulHighlightedPost.edges[0].node.posts'
+  )
+  const stickedPost = get(
+    props,
+    'data.allContentfulStickedPost.edges[0].node.stickedPost'
+  )
+  const stickedPostActive = get(
+    props,
+    'data.allContentfulStickedPost.edges[0].node.active'
   )
 
   let allHighlightedPosts = posts.filter(
@@ -37,12 +41,17 @@ const RootIndex = props => {
       return { node: article }
     })
 
-    const postsWithoutDuplicates = allHighlightedPosts.filter(
+    let postsWithoutDuplicates = allHighlightedPosts.filter(
       post =>
         !moreHighlightedPosts.find(
           highlightedPost => highlightedPost.node.id === post.node.id
         )
     )
+
+    if(stickedPostActive) {
+      postsWithoutDuplicates = postsWithoutDuplicates.filter( post => stickedPost.id !== post.node.id)
+    }
+
     allHighlightedPosts = moreHighlightedPosts.concat(postsWithoutDuplicates)
   }
 
@@ -54,7 +63,8 @@ const RootIndex = props => {
           posts={allHighlightedPosts}
           highlightedPost={highlightedPost}
           importantInfo={importantInfo}
-          highlightedEvents={highlightedEvents}
+          stickedPost={stickedPost}
+          stickedPostActive={stickedPostActive}
         />
       </div>
     </Layout>
@@ -99,6 +109,11 @@ export const pageQuery = graphql`
           }
           heroImage {
             fluid(maxWidth: 768, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
+            }
+          }
+          heroImageThumbnail {
+            fluid(maxWidth: 620, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
             }
           }
@@ -187,19 +202,30 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulHighlightedEvents(filter: { slug: { ne: "xxx" } }) {
+    allContentfulStickedPost {
       edges {
         node {
-          events {
+          active
+          stickedPost {
             id
+            slug
             title
-            city
-            expirationDay: expirationDate(formatString: "DD", locale: "ru")
-            expirationMonth: expirationDate(formatString: "MMMM", locale: "ru")
-            address
+            heroImage {
+              fluid(maxWidth: 768, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
+              }
+            }
+            categories {
+              title
+              slug
+              color
+            }
+            summary
+            authors {
+              name
+              slug
+            }
           }
-          title
-          id
         }
       }
     }

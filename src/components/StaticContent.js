@@ -92,7 +92,7 @@ const StyledContent = styled.div`
 
       @media ${mediaQueries.large} {
         max-width: ${({ theme }) =>
-          `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
+  `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
       }
     }
 
@@ -117,7 +117,8 @@ const StyledContent = styled.div`
     }
 
     a {
-      color: ${({ theme }) => theme.colors.secondary};
+      color: ${({ theme }) => theme.colors.authorLink};
+      text-decoration: underline;
     }
   }
 
@@ -147,7 +148,7 @@ const StyledContent = styled.div`
     padding-top: 25px;
     height: 0;
     &:not(:last-child) {
-      margin-bottom: 2.5em;
+      margin-bottom: 3em;
     }
   }
   .videoWrapper iframe {
@@ -157,6 +158,47 @@ const StyledContent = styled.div`
     width: 100%;
     height: 100%;
   }
+  .videoWrapperTitle {
+  position: absolute;
+  bottom: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin-top: 1rem;
+  opacity: 0.7;
+  font-size: 1.2rem;
+
+   @media ${mediaQueries.desktop} {
+     font-size: 1.4rem;
+   }
+  }
+  
+  [id^='przypis'] {
+    position: relative;
+  }
+  .annotation-tooltip {
+    position: absolute;
+    bottom: 27px;
+    left: 0;
+    background-color: white;
+    width: 340px;
+    font-size: 13px;
+    padding: 15px;
+    border: 1px solid;
+    opacity: 0;
+    pointer-events: none;
+   }
+   [id^='przypis']:hover .annotation-tooltip {
+    @media ${mediaQueries.desktop} {
+    opacity: 1;
+   }
+  }
+
+//Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
+[id$='b']:hover .annotation-tooltip {
+  display: none;
+}
+
 `
 
 class StaticContent extends React.Component {
@@ -166,12 +208,31 @@ class StaticContent extends React.Component {
       iframes.forEach(iframe => {
         if (iframe.src.indexOf('soundcloud.com') === -1) {
           const iframeWrapper = document.createElement('div')
+          const title = iframe.getAttribute('title')
           iframeWrapper.className = 'videoWrapper'
           iframe.parentNode.insertBefore(iframeWrapper, iframe)
           iframeWrapper.appendChild(iframe)
+          const iframeTitle = document.createElement('p')
+          iframeTitle.className = 'videoWrapperTitle'
+          iframeTitle.innerText = title
+          iframeWrapper.appendChild(iframeTitle)
         }
       })
     }
+
+    const annotations = document.querySelectorAll("[id^='przypis']")
+    if (annotations) {
+      annotations.forEach(annotation => {
+        const annotationHref = annotation.getAttribute('href').substr(1)
+        const foundAnnotationHref = document.getElementById(annotationHref)
+        const annotationHrefText = foundAnnotationHref ? foundAnnotationHref.innerText : ''
+        const annotationTextWrapper = document.createElement('div')
+        annotationTextWrapper.className = 'annotation-tooltip'
+        annotationTextWrapper.innerText = annotationHrefText
+        annotation.appendChild(annotationTextWrapper)
+      })
+    }
+
   }
 
   render() {

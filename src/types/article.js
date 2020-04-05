@@ -20,9 +20,19 @@ export const articleType = PropTypes.shape({
       srcSet: PropTypes.string,
     }),
   }),
+  heroImageThumbnail: PropTypes.shape({
+    fluid: PropTypes.shape({
+      aspectRatio: PropTypes.number,
+      base64: PropTypes.string,
+      sizes: PropTypes.string,
+      src: PropTypes.string,
+      srcSet: PropTypes.string,
+    }),
+  }),
   heroImageCredit: PropTypes.string,
   publishDate: PropTypes.string,
   slug: PropTypes.string,
   title: PropTypes.string,
   summary: PropTypes.string,
+  galleryDescription: PropTypes.string,
 })

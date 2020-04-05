@@ -7,7 +7,6 @@ import ArticleItem from '../components/ArticleItem'
 import { articleType } from '../types/article'
 import { mediaQueries } from '../utils/mediaQueries'
 import Button from '../components/Button'
-import { highlightedEventType } from '../types/highlightedEvent'
 
 const StyledList = styled.ul`
   display: flex;
@@ -23,10 +22,17 @@ const StyledList = styled.ul`
   @media ${mediaQueries.desktop} {
     margin: 5rem -2.5rem 4rem;
   }
+  
+  @media print {
+    page-break-before: auto;
+    page-break-after: auto;
+    page-break-inside: avoid;
+  }
 `
 const ListItem = styled.li`
   flex: 0 0 100%;
   padding-bottom: 4rem;
+ 
 
   @media ${mediaQueries.tablet} {
     flex: 0 0 calc(100% / 2);
@@ -35,18 +41,18 @@ const ListItem = styled.li`
 
   @media ${mediaQueries.desktop} {
     padding: 0 2.5rem 6.5rem;
-  }
+    
+      ${({ isOnHomepage }) => 
+  isOnHomepage && 
+  `&:nth-child(-n + 4) {
+    display: none;
+  }`}
+      }
 
   @media ${mediaQueries.large} {
     ${({ size }) => size !== 'Big' && 'flex: 0 0 calc(100% / 3);'}
     padding: 0 2.5rem 9.5rem;
-
-    ${({ isOnHomepage }) =>
-      isOnHomepage &&
-      `&:nth-child(-n + 2) {
-      display: none;
-    }`}
-  }
+    }
 `
 const ButtonWrapper = styled.div`
   text-align: center;
@@ -77,6 +83,8 @@ class ArticlesList extends React.Component {
   render() {
     const {
       posts,
+      stickedPost,
+      stickedPostActive,
       limit,
       noCategoryLabel,
       size,
@@ -93,7 +101,6 @@ class ArticlesList extends React.Component {
     const postsAfterEventsContainer = slicedPosts.slice(
       eventsContainerPosition + 1
     )
-
     return (
       <>
         <StyledList noMargin={noMargin}>
@@ -107,6 +114,13 @@ class ArticlesList extends React.Component {
                 />
               </ListItem>
             ))}
+          {stickedPost && stickedPost.length !== 0 && stickedPostActive && (
+            <ListItem key="eventsContainer" size={size}>
+              <ArticleItem
+                article={stickedPost}
+              />
+            </ListItem>
+          )}
           {postsAfterEventsContainer &&
             postsAfterEventsContainer.map(({ node }) => (
               <ListItem key={node.slug} size={size}>
@@ -116,7 +130,8 @@ class ArticlesList extends React.Component {
                   noCategoryLabel={noCategoryLabel}
                 />
               </ListItem>
-            ))}
+              ))
+          }
         </StyledList>
 
         {limit && postsNumber < posts.length && (
@@ -133,7 +148,8 @@ class ArticlesList extends React.Component {
 
 ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(articleType).isRequired,
-  highlightedEvents: PropTypes.arrayOf(highlightedEventType),
+  stickedPost: PropTypes.object,
+  stickedPostActive: PropTypes.bool,
   limit: PropTypes.number,
   initialLimit: PropTypes.number,
   noCategoryLabel: PropTypes.bool,

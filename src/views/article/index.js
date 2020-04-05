@@ -23,6 +23,10 @@ const StyledArticle = styled.article`
   @media ${mediaQueries.tablet} {
     padding: 0 0 5rem;
   }
+  
+  .videoWrapper {
+    display:block;
+  }
 `
 
 const HeaderStyled = styled(Header)`
@@ -78,6 +82,18 @@ const ArrowIconPrev = styled.img`
 
 const ArticleSocialMediaListBottom = styled(ArticleSocialMediaList)`
   margin: 2rem auto 4rem;
+`
+const ImgDescription = styled.p`
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 10px;
+  text-align: center;
+  opacity: 0.7;
+  font-size: 1.2rem;
+
+  @media ${mediaQueries.desktop} {
+    font-size: 1.4rem;
+  }
 `
 
 const SliderStyled = styled(Slider)`
@@ -235,8 +251,11 @@ const ArticlePage = ({
           <Gallery>
             <SliderStyled {...settings}>
               {gallery.map(photo => (
+                <>
                 <ImgWrapper img={photo} key={photo.id} />
-              ))}
+                <ImgDescription>{photo.description}</ImgDescription>
+              </>
+                ))}
             </SliderStyled>
           </Gallery>
         )}

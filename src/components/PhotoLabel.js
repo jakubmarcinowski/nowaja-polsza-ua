@@ -13,9 +13,9 @@ const PhotoLabelStyled = styled.div`
 `
 
 const PhotoLabel = ({ color, children }) => (
-  <PhotoLabelStyled>
-    <Label color={color}>{children}</Label>
-  </PhotoLabelStyled>
+      <PhotoLabelStyled>
+        <Label color={color}>{children}</Label>
+      </PhotoLabelStyled>
 )
 
 PhotoLabel.propTypes = {
