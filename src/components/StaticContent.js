@@ -171,11 +171,16 @@ const StyledContent = styled.div`
     border: 1px solid;
     opacity: 0;
     pointer-events: none;
-}
-[id^='przypis']:hover .annotation-tooltip {
-opacity: 1;
-}
+   }
+   [id^='przypis']:hover .annotation-tooltip {
+    @media ${mediaQueries.desktop} {
+    opacity: 1;
+   }
   }
+//Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
+[id$='b']:hover .annotation-tooltip {
+  display: none;
+}
 `
 
 class StaticContent extends React.Component {
