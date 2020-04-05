@@ -197,7 +197,7 @@ class StaticContent extends React.Component {
       })
     }
 
-    const annotations = document.querySelectorAll('[id^=\'przypis\']')
+    const annotations = document.querySelectorAll("[id^='przypis']")
     if (annotations) {
       annotations.forEach(annotation => {
         const annotationHref = annotation.getAttribute('href').substr(1)
