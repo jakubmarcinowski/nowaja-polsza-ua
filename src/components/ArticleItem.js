@@ -82,6 +82,7 @@ const ArticleItem = ({
     authorsWithoutAccount,
     categories,
     heroImage,
+    heroImageThumbnail,
     publishDate,
     summary,
   },
@@ -110,7 +111,7 @@ const ArticleItem = ({
         )}
         <ThumbnailWrapper>
           <Link to={`/article/${slug}`}>
-            <Thumbnail img={heroImage} aspectRatio={1.76} />
+            <Thumbnail img={heroImageThumbnail ? heroImageThumbnail : heroImage} aspectRatio={1.76} />
           </Link>
         </ThumbnailWrapper>
         {!noCategoryLabel && categories && (
