@@ -194,11 +194,6 @@ const StyledContent = styled.div`
    }
   }
 
-//Quick fix footer iframe bug   
-.videoWrapper {
-  display: none;
-}
-
 //Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
 [id$='b']:hover .annotation-tooltip {
   display: none;
