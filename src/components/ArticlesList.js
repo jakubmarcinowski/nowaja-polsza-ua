@@ -22,6 +22,12 @@ const StyledList = styled.ul`
   @media ${mediaQueries.desktop} {
     margin: 5rem -2.5rem 4rem;
   }
+  
+  @media print {
+    page-break-before: auto;
+    page-break-after: auto;
+    page-break-inside: avoid;
+  }
 `
 const ListItem = styled.li`
   flex: 0 0 100%;
