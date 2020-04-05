@@ -143,7 +143,6 @@ const StyledContent = styled.div`
   }
 
   .videoWrapper {
-    display: none;
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     padding-top: 25px;
@@ -194,10 +193,17 @@ const StyledContent = styled.div`
     opacity: 1;
    }
   }
+
+//Quick fix footer iframe bug   
+.videoWrapper {
+  display: none;
+}
+
 //Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
 [id$='b']:hover .annotation-tooltip {
   display: none;
 }
+
 `
 
 class StaticContent extends React.Component {
