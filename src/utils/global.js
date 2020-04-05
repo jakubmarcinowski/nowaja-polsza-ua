@@ -73,4 +73,9 @@ export const GlobalStyle = createGlobalStyle`
       page-break-inside: avoid;
       }
     }
+    
+//Quick fix footer iframe bug   
+  .videoWrapper {
+    display: none;
+  }
 `
