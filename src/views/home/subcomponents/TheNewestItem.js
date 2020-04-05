@@ -106,6 +106,7 @@ const TheNewestItem = ({
     slug,
     categories,
     heroImage,
+    heroImageThumbnail,
   },
 }) => {
   const isMultimedia =
@@ -130,7 +131,7 @@ const TheNewestItem = ({
       )}
       <ThumbnailWrapper>
         <Link to={`/article/${slug}`}>
-          <Thumbnail img={heroImage} aspectRatio={1} />
+          <Thumbnail img={heroImageThumbnail ? heroImageThumbnail : heroImage} aspectRatio={1} />
         </Link>
         <Info>
           {slug && (

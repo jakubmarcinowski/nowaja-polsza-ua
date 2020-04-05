@@ -107,6 +107,11 @@ export const pageQuery = graphql`
               ...GatsbyContentfulFluid
             }
           }
+          heroImageThumbnail {
+            fluid(maxWidth: 620, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
+            }
+          }
           leadLong {
             childMarkdownRemark {
               html

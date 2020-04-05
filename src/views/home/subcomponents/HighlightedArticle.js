@@ -124,6 +124,7 @@ class HighlightedArticle extends Component {
       title,
       slug,
       heroImage,
+      heroImageThumbnail,
       authors,
       authorsWithoutAccount,
       summary,
@@ -140,7 +141,7 @@ class HighlightedArticle extends Component {
         >
           <LinkOverlay to={`/article/${slug}`} />
           <ImgBox>
-            <StyledImgWrapper img={heroImage} aspectRatio={1.44} />
+            <StyledImgWrapper img={heroImageThumbnail ? heroImageThumbnail : heroImage} aspectRatio={1.44} />
             <PhotoLabel color={categories[0].color}>
               {categories[0].title}
             </PhotoLabel>
