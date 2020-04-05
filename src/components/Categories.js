@@ -18,14 +18,20 @@ const StyledCategories = styled.nav`
   }
 `
 
+const StyledCategoriesUnorderedList = styled.ul`
+display:flex;
+justify-content: center;
+list-style: none;
+`
+
 const Category = styled.li`
   margin-right: 2rem;
   transition: color ${props => props.theme.animations.default};
   letter-spacing: 0.7px;
   color: ${props =>
-    props.currentCategory
-      ? props.theme.colors.highlighted[props.currentCategory.color]
-      : props.theme.colors.white};
+  props.currentCategory
+    ? props.theme.colors.highlighted[props.currentCategory.color]
+    : props.theme.colors.white};
 
   &:last-child {
     margin-right: 0;
@@ -64,7 +70,8 @@ const Categories = ({ currentCategory }) => (
     query={categoriesQuery}
     render={({ allContentfulCategory }) => (
       <StyledCategories>
-        {allContentfulCategory &&
+        <StyledCategoriesUnorderedList>
+          {allContentfulCategory &&
           allContentfulCategory.edges &&
           allContentfulCategory.edges.map(({ node }) => {
             if (node.slug === 'mediateka') return null
@@ -83,6 +90,7 @@ const Categories = ({ currentCategory }) => (
               </Category>
             )
           })}
+        </StyledCategoriesUnorderedList>
       </StyledCategories>
     )}
   />

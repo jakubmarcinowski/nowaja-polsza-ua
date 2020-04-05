@@ -122,7 +122,7 @@ const TheNewestItem = ({
   return (
     <ImgBox isMultimedia={isMultimedia}>
       {isMultimedia && (
-        <Link to={`/article/${slug}`}>
+        <Link to={`/article/${slug}`} title={slug}>
           <IconPlay
             src={isSoundCloud ? headphonesIcon : playIcon}
             alt="Play icon"
@@ -130,7 +130,7 @@ const TheNewestItem = ({
         </Link>
       )}
       <ThumbnailWrapper>
-        <Link to={`/article/${slug}`}>
+        <Link to={`/article/${slug}`} title={slug}>
           <Thumbnail img={heroImageThumbnail ? heroImageThumbnail : heroImage} aspectRatio={1} />
         </Link>
         <Info>
@@ -143,7 +143,7 @@ const TheNewestItem = ({
               margin=".65rem"
               lineHeight="Medium"
             >
-              <AnimatedLink url={`/article/${slug}`} opacity={0.7}>
+              <AnimatedLink url={`/article/${slug}`} opacity={0.7} title={title}>
                 {title}
               </AnimatedLink>
             </NewestItemHeader>
@@ -151,7 +151,7 @@ const TheNewestItem = ({
             </Info>
       </ThumbnailWrapper>
       {categories && (
-        <Link to={`/category/${categories[0].slug}`}>
+        <Link to={`/category/${categories[0].slug}`} title={slug}>
           <PhotoLabel color={categories[0].color} >
             {categories[0].title}
           </PhotoLabel>
