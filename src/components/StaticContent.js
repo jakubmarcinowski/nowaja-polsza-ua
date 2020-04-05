@@ -117,7 +117,8 @@ const StyledContent = styled.div`
     }
 
     a {
-      color: ${({ theme }) => theme.colors.secondary};
+      color: ${({ theme }) => theme.colors.authorLink};
+      text-decoration: underline;
     }
   }
 
