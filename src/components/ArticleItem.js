@@ -56,6 +56,7 @@ const ArticleItemContainer = styled.div`
 
 const ThumbnailWrapper = styled.div`
   overflow: hidden;
+  height: 100%;
 `
 
 const Thumbnail = styled(ImgWrapper)`

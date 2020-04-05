@@ -24,7 +24,7 @@ const FooterNavigation = () => (
   <StyledNavigation>
     <Item>
       <AnimatedLink opacity={0.7} url="/about-us">
-        О нас
+        О проекте
       </AnimatedLink>
     </Item>
     <Item>
