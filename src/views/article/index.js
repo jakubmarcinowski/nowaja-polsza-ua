@@ -23,6 +23,10 @@ const StyledArticle = styled.article`
   @media ${mediaQueries.tablet} {
     padding: 0 0 5rem;
   }
+  
+  .videoWrapper {
+    display:block;
+  }
 `
 
 const HeaderStyled = styled(Header)`

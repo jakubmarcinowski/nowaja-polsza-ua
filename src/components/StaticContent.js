@@ -143,6 +143,7 @@ const StyledContent = styled.div`
   }
 
   .videoWrapper {
+    display: none;
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     padding-top: 25px;
