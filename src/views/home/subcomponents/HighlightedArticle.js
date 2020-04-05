@@ -139,7 +139,7 @@ class HighlightedArticle extends Component {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
-          <LinkOverlay to={`/article/${slug}`} />
+          <LinkOverlay to={`/article/${slug}`} title={slug}/>
           <ImgBox>
             <StyledImgWrapper img={heroImageThumbnail ? heroImageThumbnail : heroImage} aspectRatio={1.44} />
             <PhotoLabel color={categories[0].color}>
@@ -154,7 +154,7 @@ class HighlightedArticle extends Component {
               weight="Bold"
               lineHeight={this.state.isSmallMobile ? 'Small' : 'Bigger'}
             >
-              <Link to={`/article/${slug}`}>{title}</Link>
+              <Link to={`/article/${slug}`} title={slug}>{title}</Link>
             </StyledHeader>
             <ArticleInfoBox
               authors={authors}
@@ -166,7 +166,7 @@ class HighlightedArticle extends Component {
             />
             {summary && (
               <Lead isActive={isActive}>
-                <Link to={`/article/${slug}`}>
+                <Link to={`/article/${slug}`} title={slug}>
                   <Paragraph color="white" lineHeight="Medium">
                     {summary}
                   </Paragraph>
