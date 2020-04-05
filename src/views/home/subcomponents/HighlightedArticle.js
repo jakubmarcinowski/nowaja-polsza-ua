@@ -14,10 +14,12 @@ import PhotoLabel from '../../../components/PhotoLabel'
 const HighlightedArticleStyled = styled.div`
   position: relative;
   margin: 0 0 2.5rem;
-
+  grid-column: span 2;
+  grid-row: span 2;
+  
   @media ${mediaQueries.large} {
     flex: 0 0 57%;
-    margin: 0 2.5rem 0 0;
+    margin: 0;
   }
 
   &::after {
@@ -32,6 +34,7 @@ const HighlightedArticleStyled = styled.div`
 `
 const ImgBox = styled.div`
   position: relative;
+  height: 100%;
 `
 const ArticleContent = styled.div`
   position: absolute;
@@ -53,17 +56,19 @@ const ArticleContent = styled.div`
   }
 
   @media ${mediaQueries.desktop} {
+  bottom: 0;
     transform: ${({ isActive }) =>
-      isActive ? 'translateY(-30rem)' : 'translateY(-20rem)'};
+      isActive ? 'translateY(-10rem)' : 'translateY(0)'};
   }
 
   @media ${mediaQueries.large} {
     transform: ${({ isActive }) =>
-      isActive ? 'translateY(-33rem)' : 'translateY(-18rem)'};
+      isActive ? 'translateY(-10rem)' : 'translateY(0)'};
   }
 `
 const StyledHeader = styled(Header)`
   font-size: 1.4rem;
+  line-height: 1.5em;
 
   @media ${mediaQueries.tablet} {
     font-size: 2rem;
@@ -73,7 +78,13 @@ const StyledHeader = styled(Header)`
     font-size: 2.6rem;
   }
 `
+
+const StyledImgWrapper = styled(ImgWrapper)`
+  height: 100%;
+`
+
 const Lead = styled.div`
+margin-top: 1rem;
   opacity: ${props => (props.isActive ? 1 : 0)};
   transition: opacity ${({ theme }) => theme.animations.default};
 `
@@ -129,7 +140,7 @@ class HighlightedArticle extends Component {
         >
           <LinkOverlay to={`/article/${slug}`} />
           <ImgBox>
-            <ImgWrapper img={heroImage} aspectRatio={1.44} />
+            <StyledImgWrapper img={heroImage} aspectRatio={1.44} />
             <PhotoLabel color={categories[0].color}>
               {categories[0].title}
             </PhotoLabel>

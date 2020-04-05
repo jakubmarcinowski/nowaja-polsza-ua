@@ -10,7 +10,7 @@ const InfoBox = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   ${({ justify }) => `justify-content: ${justify};`}
-  margin: 0 0 1rem;
+  margin: 0;
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: 1.2rem;
   color: ${({ theme, color }) => theme.colors[color]};
@@ -38,7 +38,7 @@ const AuthorLink = styled(Link)`
 `
 
 const AuthorsWithoutAccount = styled.span`
-  color: ${({ theme }) => theme.colors.authorLink};
+  color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
 `
 

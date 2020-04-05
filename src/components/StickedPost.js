@@ -3,14 +3,11 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { articleType } from '../types/article'
 import ImgWrapper from './ImgWrapper'
 import Paragraph from './Paragraph'
 import ArticleInfoBox from './ArticleInfoBox'
 import Header from './Header'
 import PhotoLabel from '../components/PhotoLabel'
-import playIcon from '../../static/icon-play.svg'
-import headphonesIcon from '../../static/icon-headphones.svg'
 import AnimatedLink from './AnimatedLink'
 
 const ImgBox = styled.div`
@@ -18,8 +15,8 @@ const ImgBox = styled.div`
   margin-bottom: 1.5rem;
 
   ${({ isMultimedia, theme }) =>
-    isMultimedia &&
-    `&:after {
+  isMultimedia &&
+  `&:after {
       content: '';
       position: absolute;
       top: 0;
@@ -32,26 +29,10 @@ const ImgBox = styled.div`
     }`};
 `
 
-const IconPlay = styled.img`
-  position: absolute;
-  transform: translate(-50%, -50%);
-
-  top: 50%;
-  left: 50%;
-  width: 5rem;
-  height: 5rem;
-  z-index: 1;
-  transition: opacity ${props => props.theme.animations.default};
-  opacity: 0.7;
-  cursor: pointer;
-
-  ${ImgBox}:hover & {
-    opacity: 1;
-  }
-`
-
 const ArticleItemContainer = styled.div`
   position: relative;
+  padding: 30px;
+  background-color: #f5f5f5;
 `
 
 const ThumbnailWrapper = styled.div`
@@ -73,47 +54,25 @@ const Text = styled.div`
 `
 
 // @todo make one component to wrap ArticleItem and TheNewestItem
-const ArticleItem = ({
-  article: {
-    title,
-    body,
+const StickedPost = ({
+  post: {
     slug,
     authors,
-    authorsWithoutAccount,
-    categories,
+    title,
     heroImage,
-    publishDate,
     summary,
+    categories
   },
-  noCategoryLabel,
 }) => {
-  const isMultimedia =
-    categories &&
-    categories.filter(({ slug }) => slug === 'mediateka').length > 0
-
-  const isSoundCloud =
-    body &&
-    body.childMarkdownRemark &&
-    body.childMarkdownRemark.html &&
-    body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
-
   return (
     <ArticleItemContainer>
-      <ImgBox isMultimedia={isMultimedia}>
-        {isMultimedia && (
-          <Link to={`/article/${slug}`}>
-            <IconPlay
-              src={isSoundCloud ? headphonesIcon : playIcon}
-              alt="Play icon"
-            />
-          </Link>
-        )}
+      <ImgBox>
         <ThumbnailWrapper>
           <Link to={`/article/${slug}`}>
             <Thumbnail img={heroImage} aspectRatio={1.76} />
           </Link>
         </ThumbnailWrapper>
-        {!noCategoryLabel && categories && (
+        {categories && (
           <Link to={`/category/${categories[0].slug}`}>
             <PhotoLabel color={categories[0].color}>
               {categories[0].title}
@@ -123,12 +82,10 @@ const ArticleItem = ({
       </ImgBox>
       <ArticleInfoBox
         authors={authors}
-        authorsWithoutAccount={authorsWithoutAccount}
-        publishDate={publishDate}
       />
-      {slug && (
+      {categories[0].slug && (
         <Text>
-          {slug && (
+          {categories[0].slug && (
             <Header
               weight="Bold"
               type={2}
@@ -156,9 +113,8 @@ const ArticleItem = ({
   )
 }
 
-ArticleItem.propTypes = {
-  article: articleType,
-  noCategoryLabel: PropTypes.bool,
+StickedPost.propTypes = {
+  post: PropTypes.object,
 }
 
-export default ArticleItem
+export default StickedPost
