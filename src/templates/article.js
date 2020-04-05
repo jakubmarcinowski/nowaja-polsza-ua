@@ -124,6 +124,7 @@ export const pageQuery = graphql`
       }
       gallery {
         id
+        description
         fluid(maxWidth: 1920, background: "rgb:000000") {
           ...GatsbyContentfulFluid
         }
