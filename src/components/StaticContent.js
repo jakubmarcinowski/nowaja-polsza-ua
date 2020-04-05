@@ -196,7 +196,8 @@ class StaticContent extends React.Component {
     if (annotations) {
       annotations.forEach(annotation => {
         const annotationHref = annotation.getAttribute('href').substr(1)
-        const annotationHrefText = document.getElementById(annotationHref).innerText
+        const foundAnnotationHref = document.getElementById(annotationHref)
+        const annotationHrefText = foundAnnotationHref ? foundAnnotationHref.innerText : ''
         const annotationTextWrapper = document.createElement('div')
         annotationTextWrapper.className = 'annotation-tooltip'
         annotationTextWrapper.innerText = annotationHrefText
