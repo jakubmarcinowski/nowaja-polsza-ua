@@ -63,6 +63,9 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: currentColor;
   }
+  .text-right {
+    text-align: right;
+  }
   @media print {
     img {
       page-break-before: auto;
