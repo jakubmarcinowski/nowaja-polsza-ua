@@ -97,6 +97,12 @@ const MenuContent = styled.div`
     props.isMenuOpen && 'opacity: 1; z-index: 999; transform: scale(1);'}
 `
 
+const MenuPrintArea = styled.div`
+   @media print {
+    display: none;
+  }
+`
+
 const Line = styled.div`
   height: 2px;
   width: 190px;
@@ -145,7 +151,7 @@ class MobileMenu extends Component {
               allContentfulHomepageStaticContent.edges &&
               allContentfulHomepageStaticContent.edges[0].node &&
               allContentfulHomepageStaticContent.edges[0].node.headerPhoto && (
-                <>
+                <MenuPrintArea>
                   <MenuHeader
                     currentCategory={currentCategory}
                     headerPhoto={
@@ -169,7 +175,7 @@ class MobileMenu extends Component {
                       urls={novPolSocialMediaUrls}
                     />
                   </MenuContent>
-                </>
+                </MenuPrintArea>
               )}
           </>
         )}
