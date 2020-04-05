@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import HighlightedArticle from './subcomponents/HighlightedArticle'
 import ArticlesList from '../../components/ArticlesList'
@@ -9,28 +8,17 @@ import { articleType } from '../../types/article'
 import TheNewestList from './subcomponents/TheNewestList'
 import Hero from './subcomponents/Hero'
 import Line from '../../components/Line'
-import { highlightedEventType } from '../../types/highlightedEvent'
 import ImportantInfo from './subcomponents/ImportantInfo'
-import { mediaQueries } from '../../utils/mediaQueries'
-
-const TheNewestListContainer = styled.div`
-  display: none;
-
-  @media ${mediaQueries.large} {
-    display: block;
-    width: 100%;
-  }
-`
 
 const HomePage = ({
   posts,
   highlightedPost,
-  highlightedEvents,
+  stickedPost,
+  stickedPostActive,
   importantInfo,
 }) => {
-  const promotedPostsNumber = 2
+  const promotedPostsNumber = 4
   const promotedPosts = posts.slice(0, promotedPostsNumber)
-
   return (
     <>
       {importantInfo &&
@@ -41,16 +29,15 @@ const HomePage = ({
       <Wrapper>
         <Hero>
           <HighlightedArticle post={highlightedPost} />
-          <TheNewestListContainer>
-            <TheNewestList posts={promotedPosts} />
-          </TheNewestListContainer>
+          <TheNewestList posts={promotedPosts} />
         </Hero>
         <Line />
         <ArticlesList
           posts={posts}
           limit={6}
-          initialLimit={14}
-          highlightedEvents={highlightedEvents}
+          initialLimit={stickedPostActive ? 15 : 16}
+          stickedPost={stickedPost}
+          stickedPostActive={stickedPostActive}
           isOnHomepage
         />
       </Wrapper>
@@ -60,7 +47,8 @@ const HomePage = ({
 
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(articleType),
-  highlightedEvents: PropTypes.arrayOf(highlightedEventType),
+  stickedPost: PropTypes.object,
+  stickedPostActive: PropTypes.bool,
   highlightedPost: articleType,
   isNotLarge: PropTypes.bool,
   importantInfo: PropTypes.any,

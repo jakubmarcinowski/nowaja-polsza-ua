@@ -28,7 +28,7 @@ const ArticleTemplate = props => {
           <SEO
             siteTitle={post.title}
             description={post.summary}
-            type="summary"
+            type="summary_large_image"
             image={imageSrc}
           />
           <ArticlePage article={post} posts={recommendedArticles} />

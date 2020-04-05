@@ -20,6 +20,7 @@ class SEO extends Component {
     return (
       <Helmet>
         <title>{siteTitle}</title>
+        <meta name="google-site-verification" content="VAcDR6SFVZ0YzkE5bFdsnrvRu3kUjG5h8bWKStYd92c"/>
         <meta name="description" content={description} />
         <meta name="image" content={image || logo} />
 
