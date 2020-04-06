@@ -27,6 +27,7 @@ ImgWrapper.propTypes = {
       sizes: PropTypes.string,
       srcSet: PropTypes.string,
     }),
+    title: PropTypes.string,
   }),
   aspectRatio: PropTypes.number,
 }
