@@ -163,6 +163,11 @@ export const pageQuery = graphql`
                 ...GatsbyContentfulFluid
               }
             }
+            heroImageThumbnail {
+              fluid(maxWidth: 620, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
+              }
+            }
             title
           }
           highlightMorePosts
@@ -192,6 +197,11 @@ export const pageQuery = graphql`
                 ...GatsbyContentfulFluid
               }
             }
+            heroImageThumbnail {
+              fluid(maxWidth: 620, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
+              }
+            }
             leadLong {
               childMarkdownRemark {
                 html
@@ -213,6 +223,11 @@ export const pageQuery = graphql`
             heroImage {
               fluid(maxWidth: 768, resizingBehavior: SCALE) {
                 ...GatsbyContentfulFluid
+              }
+            }
+            heroImageThumbnail {
+              fluid(maxWidth: 620, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
               }
             }
             categories {
