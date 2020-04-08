@@ -41,7 +41,10 @@ const ArticleTemplate = props => {
 export default ArticleTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByContentfulId($contentful_id: String!) {
+  query BlogPostByContentfulId(
+    $contentful_id: String!
+    $categories_ids: [String!]
+  ) {
     site {
       siteMetadata {
         title
@@ -49,9 +52,12 @@ export const pageQuery = graphql`
     }
 
     allContentfulBlogPost(
-      filter: { contentful_id: { ne: $contentful_id } }
+      filter: {
+        contentful_id: { ne: $contentful_id }
+        categories: { elemMatch: { contentful_id: { in: $categories_ids } } }
+      }
       sort: { fields: [publishDate], order: DESC }
-      limit: 3
+      limit: 2
     ) {
       edges {
         node {
