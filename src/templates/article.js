@@ -51,7 +51,7 @@ export const pageQuery = graphql`
     allContentfulBlogPost(
       filter: { contentful_id: { ne: $contentful_id } }
       sort: { fields: [publishDate], order: DESC }
-      limit: 2
+      limit: 3
     ) {
       edges {
         node {
