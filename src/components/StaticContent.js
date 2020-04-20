@@ -92,7 +92,7 @@ const StyledContent = styled.div`
 
       @media ${mediaQueries.large} {
         max-width: ${({ theme }) =>
-  `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
+          `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
       }
     }
 
@@ -159,20 +159,20 @@ const StyledContent = styled.div`
     height: 100%;
   }
   .videoWrapperTitle {
-  position: absolute;
-  bottom: -4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
-  margin-top: 1rem;
-  opacity: 0.7;
-  font-size: 1.2rem;
+    position: absolute;
+    bottom: -4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    margin-top: 1rem;
+    opacity: 0.7;
+    font-size: 1.2rem;
 
-   @media ${mediaQueries.desktop} {
-     font-size: 1.4rem;
-   }
+    @media ${mediaQueries.desktop} {
+      font-size: 1.4rem;
+    }
   }
-  
+
   [id^='przypis'] {
     position: relative;
   }
@@ -187,21 +187,29 @@ const StyledContent = styled.div`
     border: 1px solid;
     opacity: 0;
     pointer-events: none;
-   }
-   [id^='przypis']:hover .annotation-tooltip {
+  }
+  .annotation-tooltip--left {
+    left: auto;
+    right: 0;
+  }
+  [id^='przypis']:hover .annotation-tooltip {
     @media ${mediaQueries.desktop} {
-    opacity: 1;
-   }
+      opacity: 1;
+    }
   }
 
-//Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
-[id$='b']:hover .annotation-tooltip {
-  display: none;
-}
-
+  //Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
+  [id$='b']:hover .annotation-tooltip {
+    display: none;
+  }
 `
 
 class StaticContent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.rootRef = React.createRef()
+  }
+
   componentDidMount() {
     const iframes = document.querySelectorAll('iframe')
     if (iframes) {
@@ -225,7 +233,9 @@ class StaticContent extends React.Component {
       annotations.forEach(annotation => {
         const annotationHref = annotation.getAttribute('href').substr(1)
         const foundAnnotationHref = document.getElementById(annotationHref)
-        const annotationHrefText = foundAnnotationHref ? foundAnnotationHref.innerText : ''
+        const annotationHrefText = foundAnnotationHref
+          ? foundAnnotationHref.innerText
+          : ''
         const annotationTextWrapper = document.createElement('div')
         annotationTextWrapper.className = 'annotation-tooltip'
         annotationTextWrapper.innerText = annotationHrefText
@@ -233,12 +243,25 @@ class StaticContent extends React.Component {
       })
     }
 
+    document.fonts.onloadingdone = () => {
+      const annotationMaxRightPosition = this.rootRef.current.getBoundingClientRect()
+        .right
+
+      annotations.forEach(annotation => {
+        const annotationRight = annotation.getBoundingClientRect().right
+        if (annotationRight + 400 > annotationMaxRightPosition) {
+          annotation
+            .querySelector('.annotation-tooltip')
+            .classList.add('annotation-tooltip--left')
+        }
+      })
+    }
   }
 
   render() {
     const { children } = this.props
 
-    return <StyledContent>{children}</StyledContent>
+    return <StyledContent ref={this.rootRef}>{children}</StyledContent>
   }
 }
 
