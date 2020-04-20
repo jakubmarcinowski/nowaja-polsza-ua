@@ -1,4 +1,6 @@
 /* eslint-disable */
+require('dotenv').config()
+
 let contentfulConfig
 
 try {
