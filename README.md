@@ -2,31 +2,17 @@
 
 (It doesn't work on node in version ~12, please use 10.16.0)
 
-1. Install Yarn
-2. Run `yarn run setup`. You will be asked for contentful space ID, and access tokens for the Contentful Management and Delivery API. You can find them in contentful Settings/API keys/content delivery preview tokens and content management tokens.
-3. Setup env vars.
-4. Configure webhook.
-5. Setup preview environment.
-
-# Contentful content update
-
-0. Make a copy of `.contentful.json.sample` to `.contentful.json` in the same directory and fill the fields with data from contentful.
-1. Install contentful-cli
-   yarn global add contentful-cli
-2. Login to contentful
-   contentful login
-3. Choose space of contentful
-   contentful space use
-4. Refresh contentful content (this will remove .cache, and create content to export.json in contentful folder)
-   yarn contentful-refresh
+1. Run `yarn install`.
+2. Copy `.env.dev` file to `.env` file (`cp .env.dev .env`).
+3. Setup env vars in `.env` file.
+4. To run development server run command `yarn run dev`.
 
 # Flow
 
 1. Create a feature branch
 2. Create a pull request to DEVELOP on boldare repo
 3. Create a pull request from DEVELOP to MASTER on boldare repo
-4. You can see effects here (dev preview) https://vibrant-golick-e7ab63.netlify.com/
-5. If you want to see effects on live enviroment (novayapolsha.pl) push your code into MASTER on client's repository https://github.com/cprdip/nowaja-polsza
+4. If you want to see effects on live enviroment (novayapolsha.pl) push your code into MASTER on client's repository https://github.com/cprdip/nowaja-polsza
 
 ## Environment variables
 
@@ -51,13 +37,3 @@ In order to have the ability to preview the content that you put in contentful, 
 6. HOST = hostname used for sitemap and host values in robots.txt
 
 Keep in mind that in preview env you don't set CONTENTFUL_DELIVERY_TOKEN instead you set CONTENTFUL_PREVIEW_TOKEN. Use contentful [docs](https://www.contentful.com/developers/docs/references/content-preview-api/#/introduction/preview-api-authentication) for reference
-
-## webhooks
-
-Webhooks are needed for the gatsby based front app to know that it needs to rebuild the static files that it serves to the users, when the changes to the content are made (through contentful). You need to set up a webhook that after being hit with POST request by contentful will trigger a rebuild of the front app, by calling `yarn run build` command. Webhook needs to be configured in contentful as well.
-
-If the build command returns a non-zero exit code it's recommended to run `contentful-refresh` command and then `yarn run build` again. That should be automated in the deploy script.
-
-# Gatsby contentful starter
-
-This product is based on [gatsby-contentful-starter](gatsby-contentful-starter-Readme.md)
