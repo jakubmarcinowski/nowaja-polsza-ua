@@ -13,7 +13,8 @@ const StyledContent = styled.div`
   h3,
   p,
   ul,
-  ol {
+  ol,
+  .row {
     @media ${mediaQueries.desktop} {
       max-width: 670px;
       margin: 0 auto;
@@ -65,7 +66,8 @@ const StyledContent = styled.div`
     }
   }
 
-  p {
+  p,
+  .row {
     &:not(:last-child) {
       margin-bottom: 2.5em;
     }
@@ -92,7 +94,7 @@ const StyledContent = styled.div`
 
       @media ${mediaQueries.large} {
         max-width: ${({ theme }) =>
-  `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
+          `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
       }
     }
 
@@ -159,20 +161,20 @@ const StyledContent = styled.div`
     height: 100%;
   }
   .videoWrapperTitle {
-  position: absolute;
-  bottom: -4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
-  margin-top: 1rem;
-  opacity: 0.7;
-  font-size: 1.2rem;
+    position: absolute;
+    bottom: -4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    margin-top: 1rem;
+    opacity: 0.7;
+    font-size: 1.2rem;
 
-   @media ${mediaQueries.desktop} {
-     font-size: 1.4rem;
-   }
+    @media ${mediaQueries.desktop} {
+      font-size: 1.4rem;
+    }
   }
-  
+
   [id^='przypis'] {
     position: relative;
   }
@@ -187,18 +189,42 @@ const StyledContent = styled.div`
     border: 1px solid;
     opacity: 0;
     pointer-events: none;
-   }
-   [id^='przypis']:hover .annotation-tooltip {
+  }
+  [id^='przypis']:hover .annotation-tooltip {
     @media ${mediaQueries.desktop} {
-    opacity: 1;
-   }
+      opacity: 1;
+    }
   }
 
-//Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
-[id$='b']:hover .annotation-tooltip {
-  display: none;
-}
+  //Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
+  [id$='b']:hover .annotation-tooltip {
+    display: none;
+  }
 
+  .row {
+    margin-bottom: 2.5em;
+
+    @media ${mediaQueries.desktop} {
+      display: flex;
+    }
+  }
+
+  .column {
+    margin-bottom: 2.5em;
+
+    @media ${mediaQueries.desktop} {
+      margin-bottom: 0;
+      flex: 1;
+
+      &:not(:first-child) {
+        margin-left: 1em;
+      }
+
+      &:not(:last-child) {
+        margin-right: 1em;
+      }
+    }
+  }
 `
 
 class StaticContent extends React.Component {
@@ -225,14 +251,15 @@ class StaticContent extends React.Component {
       annotations.forEach(annotation => {
         const annotationHref = annotation.getAttribute('href').substr(1)
         const foundAnnotationHref = document.getElementById(annotationHref)
-        const annotationHrefText = foundAnnotationHref ? foundAnnotationHref.innerText : ''
+        const annotationHrefText = foundAnnotationHref
+          ? foundAnnotationHref.innerText
+          : ''
         const annotationTextWrapper = document.createElement('div')
         annotationTextWrapper.className = 'annotation-tooltip'
         annotationTextWrapper.innerText = annotationHrefText
         annotation.appendChild(annotationTextWrapper)
       })
     }
-
   }
 
   render() {
