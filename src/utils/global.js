@@ -65,6 +65,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   .text-right {
     text-align: right;
+    white-space: pre-line;
   }
   @media print {
     img {
