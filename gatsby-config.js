@@ -1,21 +1,14 @@
 /* eslint-disable */
 require('dotenv').config()
 
-let contentfulConfig
-
-try {
-  // Load the Contentful config from the .contentful.json
-  contentfulConfig = require('./.contentful')
-} catch (_) {}
-
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken:
     process.env.CONTENTFUL_API === 'preview'
       ? process.env.CONTENTFUL_PREVIEW_TOKEN
-      : process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
-  environment: process.env.CONTENTFUL_ENV, // master|develop
+      : process.env.CONTENTFUL_DELIVERY_TOKEN,
+  environment: process.env.CONTENTFUL_ENV,
   host:
     process.env.CONTENTFUL_API === 'preview'
       ? 'preview.contentful.com'

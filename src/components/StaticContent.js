@@ -190,6 +190,12 @@ const StyledContent = styled.div`
     opacity: 0;
     pointer-events: none;
   }
+
+  .annotation-tooltip--left {
+    left: auto;
+    right: 0;
+  }
+
   [id^='przypis']:hover .annotation-tooltip {
     @media ${mediaQueries.desktop} {
       opacity: 1;
@@ -228,6 +234,11 @@ const StyledContent = styled.div`
 `
 
 class StaticContent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.rootRef = React.createRef()
+  }
+
   componentDidMount() {
     const iframes = document.querySelectorAll('iframe')
     if (iframes) {
@@ -260,12 +271,26 @@ class StaticContent extends React.Component {
         annotation.appendChild(annotationTextWrapper)
       })
     }
+    
+    document.fonts.onloadingdone = () => {
+      const annotationMaxRightPosition = this.rootRef.current.getBoundingClientRect()
+        .right
+
+      annotations.forEach(annotation => {
+        const annotationRight = annotation.getBoundingClientRect().right
+        if (annotationRight + 400 > annotationMaxRightPosition) {
+          annotation
+            .querySelector('.annotation-tooltip')
+            .classList.add('annotation-tooltip--left')
+        }
+      })
+    }
   }
 
   render() {
     const { children } = this.props
 
-    return <StyledContent>{children}</StyledContent>
+    return <StyledContent ref={this.rootRef}>{children}</StyledContent>
   }
 }
 
