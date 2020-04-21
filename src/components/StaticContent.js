@@ -202,8 +202,6 @@ const StyledContent = styled.div`
   }
 
   .row {
-    margin-bottom: 2.5em;
-
     @media ${mediaQueries.desktop} {
       display: flex;
     }
