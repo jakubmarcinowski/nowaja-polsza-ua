@@ -13,7 +13,8 @@ const StyledContent = styled.div`
   h3,
   p,
   ul,
-  ol {
+  ol,
+  .row {
     @media ${mediaQueries.desktop} {
       max-width: 670px;
       margin: 0 auto;
@@ -65,7 +66,8 @@ const StyledContent = styled.div`
     }
   }
 
-  p {
+  p,
+  .row {
     &:not(:last-child) {
       margin-bottom: 2.5em;
     }
@@ -188,10 +190,12 @@ const StyledContent = styled.div`
     opacity: 0;
     pointer-events: none;
   }
+
   .annotation-tooltip--left {
     left: auto;
     right: 0;
   }
+
   [id^='przypis']:hover .annotation-tooltip {
     @media ${mediaQueries.desktop} {
       opacity: 1;
@@ -201,6 +205,29 @@ const StyledContent = styled.div`
   //Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
   [id$='b']:hover .annotation-tooltip {
     display: none;
+  }
+
+  .row {
+    @media ${mediaQueries.desktop} {
+      display: flex;
+    }
+  }
+
+  .column {
+    margin-bottom: 2.5em;
+
+    @media ${mediaQueries.desktop} {
+      margin-bottom: 0;
+      flex: 1;
+
+      &:not(:first-child) {
+        margin-left: 1em;
+      }
+
+      &:not(:last-child) {
+        margin-right: 1em;
+      }
+    }
   }
 `
 
@@ -242,7 +269,7 @@ class StaticContent extends React.Component {
         annotation.appendChild(annotationTextWrapper)
       })
     }
-
+    
     document.fonts.onloadingdone = () => {
       const annotationMaxRightPosition = this.rootRef.current.getBoundingClientRect()
         .right
