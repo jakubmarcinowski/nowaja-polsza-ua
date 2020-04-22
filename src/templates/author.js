@@ -1,15 +1,15 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import SEO from '../components/SEO'
+import SEO from 'components/SEO'
 import get from 'lodash/get'
 
-import Layout from '../components/Layout'
-import Wrapper from '../components/Wrapper'
-import ArticlesList from '../components/ArticlesList'
-import Author from '../components/Author'
+import Layout from 'components/Layout'
+import Wrapper from 'components/Wrapper'
+import ArticlesList from 'components/ArticlesList'
+import Author from 'components/Author'
 
 class AuthorTemplate extends React.Component {
-  render() {  
+  render() {
     const author = get(this.props, 'data.contentfulPerson')
     const authorPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const description = get(this.props, 'data.site.siteMetadata.description')

@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql, Link } from 'gatsby'
 
-import Header from './Header'
-import { theme } from '../utils/theme'
-import Navigation from './Navigation'
-import SocialMediaList from './SocialMediaList'
-import { novPolSocialMediaUrls } from '../utils/socialMedia'
-import logoWithBackground from '../../static/logo-with-background.svg'
+import Header from 'components/Header'
+import { theme } from 'utils/theme'
+import Navigation from 'components/Navigation'
+import SocialMediaList from 'components/SocialMediaList'
+import { novPolSocialMediaUrls } from 'utils/socialMedia'
+import logoWithBackground from 'static/logo-with-background.svg'
 
 const StyledTopBar = styled.div`
   display: flex;

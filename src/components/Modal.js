@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Portal from './Portal'
-import { childrenType } from '../types/children'
+import Portal from 'components/Portal'
+import { childrenType } from 'types/children'
 
 const StyledModal = styled.div`
   z-index: 999;

@@ -2,20 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import ExternalLink from './ExternalLink'
+import ExternalLink from 'components/ExternalLink'
 
-import facebookFull from '../../static/social-fb-full.svg'
-import twitterFull from '../../static/social-twitter-full.svg'
-import youtubeFull from '../../static/social-yt-full.svg'
-import telegramFull from '../../static/social-telegram-full.svg'
-import vkFull from '../../static/social-vk-full.svg'
+import facebookFull from 'static/social-fb-full.svg'
+import twitterFull from 'static/social-twitter-full.svg'
+import youtubeFull from 'static/social-yt-full.svg'
+import telegramFull from 'static/social-telegram-full.svg'
+import vkFull from 'static/social-vk-full.svg'
 
-import facebookFullGray from '../../static/social-fb-full-gray.svg'
-import twitterFullGray from '../../static/social-twitter-full-gray.svg'
-import youtubeFullGray from '../../static/social-yt-full-gray.svg'
-import telegramFullGray from '../../static/social-telegram-full-gray.svg'
-import vkFullGray from '../../static/social-vk-full-gray.svg'
-import academiaFullGray from '../../static/social-academia-full-gray.svg'
+import facebookFullGray from 'static/social-fb-full-gray.svg'
+import twitterFullGray from 'static/social-twitter-full-gray.svg'
+import youtubeFullGray from 'static/social-yt-full-gray.svg'
+import telegramFullGray from 'static/social-telegram-full-gray.svg'
+import vkFullGray from 'static/social-vk-full-gray.svg'
+import academiaFullGray from 'static/social-academia-full-gray.svg'
 
 const Item = styled.li`
   display: inline;
@@ -93,9 +93,7 @@ class SocialMediaList extends React.Component {
             <ExternalLink
               url={
                 isShareUrl
-                  ? `${twitter}${this.state.locationHref}&original_referer=${
-                      this.state.locationHref
-                    }
+                  ? `${twitter}${this.state.locationHref}&original_referer=${this.state.locationHref}
                     &text=${this.state.locationHref}
                     &via=novayapolsha`
                   : twitter

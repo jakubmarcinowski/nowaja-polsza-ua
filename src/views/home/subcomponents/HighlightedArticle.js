@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import ImgWrapper from '../../../components/ImgWrapper'
-import { articleType } from '../../../types/article'
-import { breakpoints, mediaQueries } from '../../../utils/mediaQueries'
-import Header from '../../../components/Header'
-import Paragraph from '../../../components/Paragraph'
+import ImgWrapper from 'components/ImgWrapper'
+import { articleType } from 'types/article'
+import { breakpoints, mediaQueries } from 'utils/mediaQueries'
+import Header from 'components/Header'
+import Paragraph from 'components/Paragraph'
 import * as PropTypes from 'prop-types'
-import ArticleInfoBox from '../../../components/ArticleInfoBox'
-import PhotoLabel from '../../../components/PhotoLabel'
+import ArticleInfoBox from 'components/ArticleInfoBox'
+import PhotoLabel from 'components/PhotoLabel'
 
 const HighlightedArticleStyled = styled.div`
   position: relative;
   margin: 0 0 2.5rem;
   grid-column: span 2;
   grid-row: span 2;
-  
+
   @media ${mediaQueries.large} {
     flex: 0 0 57%;
     margin: 0;
@@ -56,7 +56,7 @@ const ArticleContent = styled.div`
   }
 
   @media ${mediaQueries.desktop} {
-  bottom: 0;
+    bottom: 0;
     transform: ${({ isActive }) =>
       isActive ? 'translateY(-10rem)' : 'translateY(0)'};
   }
@@ -84,7 +84,7 @@ const StyledImgWrapper = styled(ImgWrapper)`
 `
 
 const Lead = styled.div`
-margin-top: 1rem;
+  margin-top: 1rem;
   opacity: ${props => (props.isActive ? 1 : 0)};
   transition: opacity ${({ theme }) => theme.animations.default};
 `
@@ -139,9 +139,12 @@ class HighlightedArticle extends Component {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
-          <LinkOverlay to={`/article/${slug}`} title={slug}/>
+          <LinkOverlay to={`/article/${slug}`} title={slug} />
           <ImgBox>
-            <StyledImgWrapper img={heroImageThumbnail ? heroImageThumbnail : heroImage} aspectRatio={1.44} />
+            <StyledImgWrapper
+              img={heroImageThumbnail ? heroImageThumbnail : heroImage}
+              aspectRatio={1.44}
+            />
             <PhotoLabel color={categories[0].color}>
               {categories[0].title}
             </PhotoLabel>
@@ -154,7 +157,9 @@ class HighlightedArticle extends Component {
               weight="Bold"
               lineHeight={this.state.isSmallMobile ? 'Small' : 'Bigger'}
             >
-              <Link to={`/article/${slug}`} title={slug}>{title}</Link>
+              <Link to={`/article/${slug}`} title={slug}>
+                {title}
+              </Link>
             </StyledHeader>
             <ArticleInfoBox
               authors={authors}

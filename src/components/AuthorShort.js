@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import { mediaQueries } from '../utils/mediaQueries'
-import Header from './Header'
-import Button from './Button'
-import Paragraph from './Paragraph'
-import ImgWrapper from './ImgWrapper'
+import { mediaQueries } from 'utils/mediaQueries'
+import Header from 'components/Header'
+import Button from 'components/Button'
+import Paragraph from 'components/Paragraph'
+import ImgWrapper from 'components/ImgWrapper'
 
 const AuthorImg = styled(ImgWrapper)`
   @media ${mediaQueries.tablet} {
@@ -19,7 +19,7 @@ const AuthorImg = styled(ImgWrapper)`
     max-width: 22rem;
     max-height: 22rem;
   }
-  
+
   @media print {
     page-break-before: auto;
     page-break-after: auto;
@@ -48,15 +48,15 @@ const Element = styled.div`
     max-width: 70%;
 
     ${({ few }) =>
-  few &&
-  `
+      few &&
+      `
         flex-direction: column;
         flex-wrap: wrap;
         margin: 5rem;
         max-width: 3.9rem; 
       `};
   }
-  
+
   @media print {
     page-break-before: auto;
     page-break-after: auto;
@@ -83,7 +83,7 @@ const Info = styled.div`
     padding: 3rem 3rem 3rem 1rem;
 
     ${({ few }) =>
-  few ? `padding: 3rem 3rem 5rem 3rem;` : 'flex-direction: row;'};
+      few ? `padding: 3rem 3rem 5rem 3rem;` : 'flex-direction: row;'};
   }
 `
 
@@ -93,7 +93,7 @@ const Desc = styled(Paragraph)`
 
 const AuthorShort = ({ few, author: { name, shortBio, image, slug } }) => (
   <Element few={few}>
-    {image && <AuthorImg img={image}/>}
+    {image && <AuthorImg img={image} />}
     <Info few={few}>
       {name && (
         <Header size="Bigger" color="Black">

@@ -2,12 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import Layout from '../components/Layout'
-import EventPage from '../views/events'
-import SEO from '../components/SEO'
+import Layout from 'components/Layout'
+import EventPage from 'views/events'
+import SEO from 'components/SEO'
 
 const Events = ({ data }) => {
-
   let events = null
   if (data.allContentfulEvent) {
     events = data.allContentfulEvent.edges

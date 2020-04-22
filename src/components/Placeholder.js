@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { childrenType } from '../types/children'
-import { mediaQueries } from '../utils/mediaQueries'
+import { childrenType } from 'types/children'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const StyledPlaceholder = styled.div`
   padding: 2rem;

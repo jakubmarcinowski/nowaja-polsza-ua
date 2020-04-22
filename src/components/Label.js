@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { childrenType } from '../types/children'
-import { mediaQueries } from '../utils/mediaQueries'
-import Paragraph from '../components/Paragraph'
+import { childrenType } from 'types/children'
+import { mediaQueries } from 'utils/mediaQueries'
+import Paragraph from 'components/Paragraph'
 
 const StyledLabel = styled(Paragraph)`
   display: block;
@@ -21,7 +21,9 @@ const StyledLabel = styled(Paragraph)`
 `
 
 const Label = ({ className, color, children }) => (
-  <StyledLabel className={className} color={color}>{children}</StyledLabel>
+  <StyledLabel className={className} color={color}>
+    {children}
+  </StyledLabel>
 )
 
 Label.propTypes = {

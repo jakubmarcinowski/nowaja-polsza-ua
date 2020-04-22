@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-import logo from '../../static/logo.svg'
+import logo from 'static/logo.svg'
 
 class SEO extends Component {
   state = {
@@ -21,7 +21,10 @@ class SEO extends Component {
       <Helmet>
         <html lang="ru" />
         <title>{siteTitle}</title>
-        <meta name="google-site-verification" content="VAcDR6SFVZ0YzkE5bFdsnrvRu3kUjG5h8bWKStYd92c"/>
+        <meta
+          name="google-site-verification"
+          content="VAcDR6SFVZ0YzkE5bFdsnrvRu3kUjG5h8bWKStYd92c"
+        />
         <meta name="description" content={description} />
         <meta name="image" content={image || logo} />
 

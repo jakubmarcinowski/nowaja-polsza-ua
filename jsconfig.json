@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "static": ["./static"]
+      "static": ["./../static"]
     }
   },
   "exclude": ["node_modules"]
