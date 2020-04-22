@@ -3,14 +3,14 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import styled from 'styled-components'
 
-import { GlobalStyle } from '../utils/global'
-import { theme } from '../utils/theme'
-import Container from './Container'
-import PageHeader from './PageHeader'
-import Footer from './Footer'
-import Rodo from './Rodo'
-import MobileMenu from './MobileMenu'
-import { mediaQueries } from '../utils/mediaQueries'
+import { GlobalStyle } from 'utils/global'
+import { theme } from 'utils/theme'
+import Container from 'components/Container'
+import PageHeader from 'components/PageHeader'
+import Footer from 'components/Footer'
+import Rodo from 'components/Rodo'
+import MobileMenu from 'components/MobileMenu'
+import { mediaQueries } from 'utils/mediaQueries'
 
 export const LayoutWrapper = styled.div`
   margin: 8.7rem auto 0;

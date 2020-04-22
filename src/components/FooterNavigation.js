@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { theme } from '../utils/theme'
-import AnimatedLink from './AnimatedLink'
+import { theme } from 'utils/theme'
+import AnimatedLink from 'components/AnimatedLink'
 
 const StyledNavigation = styled.ul`
   display: flex;

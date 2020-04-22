@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { mediaQueries } from '../../../utils/mediaQueries'
-import BoxWithPhoto from '../../../components/BoxWithPhoto'
-import Header from '../../../components/Header'
-import Paragraph from '../../../components/Paragraph'
-import ReadMoreButton from '../../../components/ReadMoreButton'
+import { mediaQueries } from 'utils/mediaQueries'
+import BoxWithPhoto from 'components/BoxWithPhoto'
+import Header from 'components/Header'
+import Paragraph from 'components/Paragraph'
+import ReadMoreButton from 'components/ReadMoreButton'
 import DownloadButton from './DownloadButton'
-import articles from '../archive'
+import articles from './../archive'
 
 const DownloadButtons = styled.div`
   display: flex;

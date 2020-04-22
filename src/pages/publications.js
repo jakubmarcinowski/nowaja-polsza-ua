@@ -1,10 +1,10 @@
 import React from 'react'
-import SEO from '../components/SEO'
+import SEO from 'components/SEO'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import Layout from '../components/Layout'
-import PublicationPage from '../views/publications'
+import Layout from 'components/Layout'
+import PublicationPage from 'views/publications'
 
 const Publications = ({ data }) => {
   const publications = data.allContentfulPublication.edges

@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import { mediaQueries } from '../../../utils/mediaQueries'
-import BoxWithPhoto from '../../../components/BoxWithPhoto'
-import Header from '../../../components/Header'
+import { mediaQueries } from 'utils/mediaQueries'
+import BoxWithPhoto from 'components/BoxWithPhoto'
+import Header from 'components/Header'
 import DownloadButton from './DownloadButton'
-import ReadMoreWrapper from '../../../components/ReadMoreWrapper'
+import ReadMoreWrapper from 'components/ReadMoreWrapper'
 
 const DownloadButtons = styled.div`
   display: flex;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import { mediaQueries } from '../utils/mediaQueries'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const InfoBox = styled.div`
   display: flex;

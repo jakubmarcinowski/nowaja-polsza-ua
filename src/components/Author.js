@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import ImgWrapper from './ImgWrapper'
-import Header from './Header'
-import Paragraph from './Paragraph'
-import { mediaQueries } from '../utils/mediaQueries'
-import SocialMediaList from './SocialMediaList'
+import ImgWrapper from 'components/ImgWrapper'
+import Header from 'components/Header'
+import Paragraph from 'components/Paragraph'
+import { mediaQueries } from 'utils/mediaQueries'
+import SocialMediaList from 'components/SocialMediaList'
 
 const AuthorImg = styled(ImgWrapper)`
   @media ${mediaQueries.tablet} {

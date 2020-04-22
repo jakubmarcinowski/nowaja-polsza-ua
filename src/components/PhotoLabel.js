@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { childrenType } from '../types/children'
-import Label from './Label'
+import { childrenType } from 'types/children'
+import Label from 'components/Label'
 
 const PhotoLabelStyled = styled.div`
   position: absolute;
@@ -13,9 +13,9 @@ const PhotoLabelStyled = styled.div`
 `
 
 const PhotoLabel = ({ color, children }) => (
-      <PhotoLabelStyled>
-        <Label color={color}>{children}</Label>
-      </PhotoLabelStyled>
+  <PhotoLabelStyled>
+    <Label color={color}>{children}</Label>
+  </PhotoLabelStyled>
 )
 
 PhotoLabel.propTypes = {

@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { childrenType } from '../types/children'
+import { childrenType } from 'types/children'
 
 const StyledLink = styled(Link)`
   transition: opacity ${({ theme }) => theme.animations.default};

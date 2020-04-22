@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { childrenType } from '../types/children'
+import { childrenType } from 'types/children'
 
 const StyledIconGroup = styled.div`
   display: flex;

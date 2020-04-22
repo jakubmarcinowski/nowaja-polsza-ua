@@ -3,15 +3,15 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { articleType } from '../types/article'
-import ImgWrapper from './ImgWrapper'
-import Paragraph from './Paragraph'
-import ArticleInfoBox from './ArticleInfoBox'
-import Header from './Header'
-import PhotoLabel from '../components/PhotoLabel'
-import playIcon from '../../static/icon-play.svg'
-import headphonesIcon from '../../static/icon-headphones.svg'
-import AnimatedLink from './AnimatedLink'
+import { articleType } from 'types/article'
+import ImgWrapper from 'components/ImgWrapper'
+import Paragraph from 'components/Paragraph'
+import ArticleInfoBox from 'components/ArticleInfoBox'
+import Header from 'components/Header'
+import PhotoLabel from 'components/PhotoLabel'
+import playIcon from 'static/icon-play.svg'
+import headphonesIcon from 'static/icon-headphones.svg'
+import AnimatedLink from 'components/AnimatedLink'
 
 const ImgBox = styled.div`
   position: relative;
@@ -111,11 +111,17 @@ const ArticleItem = ({
         )}
         <ThumbnailWrapper>
           <Link to={`/article/${slug}`} title={slug}>
-            <Thumbnail img={heroImageThumbnail ? heroImageThumbnail : heroImage} aspectRatio={1.76} />
+            <Thumbnail
+              img={heroImageThumbnail ? heroImageThumbnail : heroImage}
+              aspectRatio={1.76}
+            />
           </Link>
         </ThumbnailWrapper>
         {!noCategoryLabel && categories && (
-          <Link to={`/category/${categories[0].slug}`} title={categories[0].slug}>
+          <Link
+            to={`/category/${categories[0].slug}`}
+            title={categories[0].slug}
+          >
             <PhotoLabel color={categories[0].color}>
               {categories[0].title}
             </PhotoLabel>

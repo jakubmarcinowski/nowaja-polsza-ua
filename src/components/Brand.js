@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { mediaQueries } from '../utils/mediaQueries'
-import Header from './Header'
-import logo from '../../static/logo.svg'
-import logoWithBackground from '../../static/logo-with-background.svg'
+import { mediaQueries } from 'utils/mediaQueries'
+import Header from 'components/Header'
+import logo from 'static/logo.svg'
+import logoWithBackground from 'static/logo-with-background.svg'
 
 const StyledBrand = styled.div`
   display: flex;

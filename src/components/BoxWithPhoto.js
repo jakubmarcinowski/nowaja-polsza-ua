@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { mediaQueries } from '../utils/mediaQueries'
-import ImgWrapper from './ImgWrapper'
-import { childrenType } from '../types/children'
-import archiveBg from '../../static/archive.jpg'
+import { mediaQueries } from 'utils/mediaQueries'
+import ImgWrapper from 'components/ImgWrapper'
+import { childrenType } from 'types/children'
+import archiveBg from 'static/archive.jpg'
 
 const Box = styled.div`
   display: flex;

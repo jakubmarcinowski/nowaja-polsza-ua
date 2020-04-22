@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import ImgWrapper from '../../../components/ImgWrapper'
-import Header from '../../../components/Header'
-import Label from '../../../components/Label'
-import { mediaQueries } from '../../../utils/mediaQueries'
+import ImgWrapper from 'components/ImgWrapper'
+import Header from 'components/Header'
+import Label from 'components/Label'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const StyledPageHeader = styled.header`
   @media ${mediaQueries.desktop} {

@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import { mediaQueries } from '../utils/mediaQueries'
-import SocialMediaList from './SocialMediaList'
-import MobileMenuItems from './MobileMenuItems'
-import MobileMenuCategories from './MobileMenuCategories'
-import { novPolSocialMediaUrls } from '../utils/socialMedia'
-import Brand from './Brand'
+import { mediaQueries } from 'utils/mediaQueries'
+import SocialMediaList from 'components/SocialMediaList'
+import MobileMenuItems from 'components/MobileMenuItems'
+import MobileMenuCategories from 'components/MobileMenuCategories'
+import { novPolSocialMediaUrls } from 'utils/socialMedia'
+import Brand from 'components/Brand'
 
 const MenuIcon = styled.div`
   position: relative;
@@ -98,7 +98,7 @@ const MenuContent = styled.div`
 `
 
 const MenuPrintArea = styled.div`
-   @media print {
+  @media print {
     display: none;
   }
 `
@@ -159,7 +159,7 @@ class MobileMenu extends Component {
                         .headerPhoto
                     }
                   >
-                    <Brand/>
+                    <Brand />
                     <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
                       <div className="middle" />
                     </MenuIcon>

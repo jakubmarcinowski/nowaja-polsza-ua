@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import ReadMoreButton from './ReadMoreButton'
+import ReadMoreButton from 'components/ReadMoreButton'
 import styled from 'styled-components'
-import { mediaQueries } from '../utils/mediaQueries'
+import { mediaQueries } from 'utils/mediaQueries'
 import { debounce } from 'lodash'
 
 const ParagraphsWrapper = styled.div`
@@ -18,8 +18,8 @@ const ParagraphsWrapper = styled.div`
   }
 
   ${({ hasFullDescription }) =>
-  !hasFullDescription &&
-  `
+    !hasFullDescription &&
+    `
     max-height: 7.3rem;
     overflow: hidden;
 
@@ -35,11 +35,11 @@ class ReadMoreWrapper extends Component {
 
     this.description = React.createRef()
     this.toggleReadMoreButtonVisible = this.toggleReadMoreButtonVisible.bind(
-      this,
+      this
     )
     this.debouncedToggleReadMoreButtonVisible = debounce(
       this.toggleReadMoreButtonVisible,
-      300,
+      300
     )
     this.state = {
       hasFullDescription: false,
@@ -75,7 +75,7 @@ class ReadMoreWrapper extends Component {
   componentWillUnmount() {
     window.removeEventListener(
       'resize',
-      this.debouncedToggleReadMoreButtonVisible,
+      this.debouncedToggleReadMoreButtonVisible
     )
   }
 

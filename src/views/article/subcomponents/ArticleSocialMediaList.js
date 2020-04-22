@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import SocialMediaList from '../../../components/SocialMediaList'
-import { mediaQueries } from '../../../utils/mediaQueries'
-import { shareSocialMediaUrls } from '../../../utils/socialMedia'
+import SocialMediaList from 'components/SocialMediaList'
+import { mediaQueries } from 'utils/mediaQueries'
+import { shareSocialMediaUrls } from 'utils/socialMedia'
 
 const StyledArticleSocialMediaList = styled(SocialMediaList)`
   display: flex;

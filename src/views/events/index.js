@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Event from './subcomponents/Event'
-import Wrapper from '../../components/Wrapper'
+import Wrapper from 'components/Wrapper'
 
 const EventPage = ({ events }) => (
   <Wrapper size="Medium">

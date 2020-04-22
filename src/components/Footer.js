@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import FooterNavigation from './FooterNavigation'
-import Paragraph from './Paragraph'
-import ExternalLink from './ExternalLink'
-import SocialMediaList from './SocialMediaList'
-import { mediaQueries } from '../utils/mediaQueries'
-import { theme } from '../utils/theme'
-import Wrapper from './Wrapper'
-import Line from './Line'
-import cprdipExtended from '../../static/logo-cprdip-extended.png'
-import { novPolSocialMediaUrls } from '../utils/socialMedia'
-import Brand from './Brand'
+import FooterNavigation from 'components/FooterNavigation'
+import Paragraph from 'components/Paragraph'
+import ExternalLink from 'components/ExternalLink'
+import SocialMediaList from 'components/SocialMediaList'
+import { mediaQueries } from 'utils/mediaQueries'
+import { theme } from 'utils/theme'
+import Wrapper from 'components/Wrapper'
+import Line from 'components/Line'
+import cprdipExtended from 'static/logo-cprdip-extended.png'
+import { novPolSocialMediaUrls } from 'utils/socialMedia'
+import Brand from 'components/Brand'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -103,7 +103,7 @@ const Footer = () => (
           urls={novPolSocialMediaUrls}
         />
         <BrandContainer>
-          <Brand isDarkVersion/>
+          <Brand isDarkVersion />
         </BrandContainer>
         <SocialMediaListDesktop
           isBig

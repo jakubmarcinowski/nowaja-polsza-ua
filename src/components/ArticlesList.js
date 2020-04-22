@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import 'url-search-params-polyfill';
+import 'url-search-params-polyfill'
 
-import ArticleItem from '../components/ArticleItem'
-import { articleType } from '../types/article'
-import { mediaQueries } from '../utils/mediaQueries'
-import Button from '../components/Button'
+import ArticleItem from 'components/ArticleItem'
+import { articleType } from 'types/article'
+import { mediaQueries } from 'utils/mediaQueries'
+import Button from 'components/Button'
 
 const StyledList = styled.ul`
   display: flex;
@@ -22,7 +22,7 @@ const StyledList = styled.ul`
   @media ${mediaQueries.desktop} {
     margin: 5rem -2.5rem 4rem;
   }
-  
+
   @media print {
     page-break-before: auto;
     page-break-after: auto;
@@ -32,7 +32,6 @@ const StyledList = styled.ul`
 const ListItem = styled.li`
   flex: 0 0 100%;
   padding-bottom: 4rem;
- 
 
   @media ${mediaQueries.tablet} {
     flex: 0 0 calc(100% / 2);
@@ -41,18 +40,18 @@ const ListItem = styled.li`
 
   @media ${mediaQueries.desktop} {
     padding: 0 2.5rem 6.5rem;
-    
-      ${({ isOnHomepage }) => 
-  isOnHomepage && 
-  `&:nth-child(-n + 4) {
+
+    ${({ isOnHomepage }) =>
+      isOnHomepage &&
+      `&:nth-child(-n + 4) {
     display: none;
   }`}
-      }
+  }
 
   @media ${mediaQueries.large} {
     ${({ size }) => size !== 'Big' && 'flex: 0 0 calc(100% / 3);'}
     padding: 0 2.5rem 9.5rem;
-    }
+  }
 `
 const ButtonWrapper = styled.div`
   text-align: center;
@@ -116,9 +115,7 @@ class ArticlesList extends React.Component {
             ))}
           {stickedPost && stickedPost.length !== 0 && stickedPostActive && (
             <ListItem key="eventsContainer" size={size}>
-              <ArticleItem
-                article={stickedPost}
-              />
+              <ArticleItem article={stickedPost} />
             </ListItem>
           )}
           {postsAfterEventsContainer &&
@@ -130,8 +127,7 @@ class ArticlesList extends React.Component {
                   noCategoryLabel={noCategoryLabel}
                 />
               </ListItem>
-              ))
-          }
+            ))}
         </StyledList>
 
         {limit && postsNumber < posts.length && (

@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { childrenType } from '../types/children'
-import { theme } from '../utils/theme'
-import { mediaQueries } from '../utils/mediaQueries'
+import { childrenType } from 'types/children'
+import { theme } from 'utils/theme'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const Paragraph = ({
   className,

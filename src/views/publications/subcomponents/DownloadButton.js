@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ExternalLink from '../../../components/ExternalLink'
-import DownloadIcon from '../../../../static/icon-download-button.svg'
-import ButtonWithIcon from '../../../components/ButtonWithIcon'
+import ExternalLink from 'components/ExternalLink'
+import DownloadIcon from 'static/icon-download-button.svg'
+import ButtonWithIcon from 'components/ButtonWithIcon'
 
 const DownloadButton = ({ url, text }) => (
   <ExternalLink url={url} download>
