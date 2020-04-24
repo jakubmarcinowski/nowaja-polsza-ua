@@ -1,6 +1,7 @@
 /* eslint-disable */
 const Promise = require('bluebird')
 const path = require('path')
+const webpack = require('webpack')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -113,5 +114,16 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
     )
+  })
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    plugins: [
+      new webpack.NormalModuleReplacementPlugin(
+        new RegExp(path.resolve('./src/config/index.js')),
+        path.resolve(`./src/config/config-${process.env.VERSION}.js`)
+      ),
+    ],
   })
 }
