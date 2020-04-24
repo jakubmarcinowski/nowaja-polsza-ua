@@ -269,7 +269,7 @@ class StaticContent extends React.Component {
         annotation.appendChild(annotationTextWrapper)
       })
     }
-    
+
     document.fonts.onloadingdone = () => {
       const annotationMaxRightPosition = this.rootRef.current.getBoundingClientRect()
         .right
@@ -283,6 +283,10 @@ class StaticContent extends React.Component {
         }
       })
     }
+  }
+
+  componentWillUnmount() {
+    document.fonts.onloadingdone = null
   }
 
   render() {
