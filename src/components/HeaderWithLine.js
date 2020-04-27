@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Header from './Header'
-import Line from './Line'
-import { childrenType } from '../types/children'
+import Header from 'components/Header'
+import Line from 'components/Line'
+import { childrenType } from 'types/children'
 
 const HeaderWrapper = styled.div`
   max-width: 83rem;

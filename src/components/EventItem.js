@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Paragraph from './Paragraph'
-import { mediaQueries } from '../utils/mediaQueries'
-import { highlightedEventType } from '../types/highlightedEvent'
+import Paragraph from 'components/Paragraph'
+import { mediaQueries } from 'utils/mediaQueries'
+import { highlightedEventType } from 'types/highlightedEvent'
 
 const Wrapper = styled.div`
   display: flex;
@@ -64,7 +64,7 @@ const EventItem = ({ event }) => (
     <Container>
       <Date size="Bigger" lineHeight="Small">
         {event.expirationDay}
-        <br/>
+        <br />
         {event.expirationMonth}
       </Date>
       <City size="MediumSmall" lineHeight="Small">

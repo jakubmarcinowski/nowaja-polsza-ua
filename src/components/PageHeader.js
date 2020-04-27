@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import TopBar from './TopBar'
-import { theme } from '../utils/theme'
-import Categories from './Categories'
-import { mediaQueries } from '../utils/mediaQueries'
-import Wrapper from '../components/Wrapper'
+import TopBar from 'components/TopBar'
+import { theme } from 'utils/theme'
+import Categories from 'components/Categories'
+import { mediaQueries } from 'utils/mediaQueries'
+import Wrapper from 'components/Wrapper'
 
 const StyledPageHeader = styled.header`
   background: ${theme.colors.primary};
@@ -59,7 +59,7 @@ const PageHeader = ({ currentCategory }) => (
               }
             >
               <Wrapper>
-                <TopBar/>
+                <TopBar />
                 <Categories currentCategory={currentCategory} />
               </Wrapper>
             </StyledPageHeader>

@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import { articleType } from '../../../types/article'
-import ImgWrapper from '../../../components/ImgWrapper'
-import Header from '../../../components/Header'
-import PhotoLabel from '../../../components/PhotoLabel'
-import playIcon from '../../../../static/icon-play.svg'
-import headphonesIcon from '../../../../static/icon-close.svg'
-import AnimatedLink from '../../../components/AnimatedLink'
-import { mediaQueries } from '../../../utils/mediaQueries'
+import { articleType } from 'types/article'
+import ImgWrapper from 'components/ImgWrapper'
+import Header from 'components/Header'
+import PhotoLabel from 'components/PhotoLabel'
+import playIcon from 'static/icon-play.svg'
+import headphonesIcon from 'static/icon-close.svg'
+import AnimatedLink from 'components/AnimatedLink'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const NewestItemHeader = styled(Header)`
   max-height: 21.5rem;
@@ -20,12 +20,12 @@ const ImgBox = styled.div`
   max-height: 33vh;
 
   @media ${mediaQueries.phoneLandscape} {
-  max-height: none;
+    max-height: none;
   }
 
   ${({ isMultimedia, theme }) =>
-  isMultimedia &&
-  `&:after {
+    isMultimedia &&
+    `&:after {
       content: '';
       position: absolute;
       top: 0;
@@ -59,9 +59,9 @@ const ThumbnailWrapper = styled.div`
   position: relative;
   height: 100%;
   overflow: hidden;
-  
+
   &::after {
-  content: '';
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -79,8 +79,8 @@ const Thumbnail = styled(ImgWrapper)`
   :hover {
     transform: scale(1.05);
   }
-  
-   ${ThumbnailWrapper}:hover & {
+
+  ${ThumbnailWrapper}:hover & {
     transform: scale(1.05);
   }
 `
@@ -92,22 +92,15 @@ const Info = styled.div`
   bottom: 5rem;
   text-align: center;
   z-index: 10;
-  
+
   @media ${mediaQueries.desktop} {
-  bottom: 0;
-  text-align: left;
-}
+    bottom: 0;
+    text-align: left;
+  }
 `
 
 const TheNewestItem = ({
-  article: {
-    title,
-    body,
-    slug,
-    categories,
-    heroImage,
-    heroImageThumbnail,
-  },
+  article: { title, body, slug, categories, heroImage, heroImageThumbnail },
 }) => {
   const isMultimedia =
     categories &&
@@ -131,7 +124,10 @@ const TheNewestItem = ({
       )}
       <ThumbnailWrapper>
         <Link to={`/article/${slug}`} title={slug}>
-          <Thumbnail img={heroImageThumbnail ? heroImageThumbnail : heroImage} aspectRatio={1} />
+          <Thumbnail
+            img={heroImageThumbnail ? heroImageThumbnail : heroImage}
+            aspectRatio={1}
+          />
         </Link>
         <Info>
           {slug && (
@@ -143,16 +139,20 @@ const TheNewestItem = ({
               margin=".65rem"
               lineHeight="Medium"
             >
-              <AnimatedLink url={`/article/${slug}`} opacity={0.7} title={title}>
+              <AnimatedLink
+                url={`/article/${slug}`}
+                opacity={0.7}
+                title={title}
+              >
                 {title}
               </AnimatedLink>
             </NewestItemHeader>
           )}
-            </Info>
+        </Info>
       </ThumbnailWrapper>
       {categories && (
         <Link to={`/category/${categories[0].slug}`} title={slug}>
-          <PhotoLabel color={categories[0].color} >
+          <PhotoLabel color={categories[0].color}>
             {categories[0].title}
           </PhotoLabel>
         </Link>

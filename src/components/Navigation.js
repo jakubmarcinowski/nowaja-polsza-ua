@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import AnimatedLink from './AnimatedLink'
+import AnimatedLink from 'components/AnimatedLink'
 
 const StyledNavigation = styled.nav`
   .navigation {

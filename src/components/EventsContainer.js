@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 
-import Header from './Header'
-import ReadMoreButton from './ReadMoreButton'
-import EventItem from './EventItem'
-import { highlightedEventType } from '../types/highlightedEvent'
-import { mediaQueries } from '../utils/mediaQueries'
+import Header from 'components/Header'
+import ReadMoreButton from 'components/ReadMoreButton'
+import EventItem from 'components/EventItem'
+import { highlightedEventType } from 'types/highlightedEvent'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const Container = styled.div`
   display: flex;

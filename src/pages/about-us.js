@@ -2,11 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import SEO from '../components/SEO'
+import SEO from 'components/SEO'
 
-import Layout from '../components/Layout'
-import StaticContent from '../components/StaticContent'
-import Wrapper from '../components/Wrapper'
+import Layout from 'components/Layout'
+import StaticContent from 'components/StaticContent'
+import Wrapper from 'components/Wrapper'
 
 const AboutUsStyled = styled.div`
   margin-bottom: 8rem;

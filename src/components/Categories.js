@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { mediaQueries } from '../utils/mediaQueries'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const StyledCategories = styled.nav`
   display: flex;
@@ -19,9 +19,9 @@ const StyledCategories = styled.nav`
 `
 
 const StyledCategoriesUnorderedList = styled.ul`
-display:flex;
-justify-content: center;
-list-style: none;
+  display: flex;
+  justify-content: center;
+  list-style: none;
 `
 
 const Category = styled.li`
@@ -29,9 +29,9 @@ const Category = styled.li`
   transition: color ${props => props.theme.animations.default};
   letter-spacing: 0.7px;
   color: ${props =>
-  props.currentCategory
-    ? props.theme.colors.highlighted[props.currentCategory.color]
-    : props.theme.colors.white};
+    props.currentCategory
+      ? props.theme.colors.highlighted[props.currentCategory.color]
+      : props.theme.colors.white};
 
   &:last-child {
     margin-right: 0;
@@ -72,24 +72,24 @@ const Categories = ({ currentCategory }) => (
       <StyledCategories>
         <StyledCategoriesUnorderedList>
           {allContentfulCategory &&
-          allContentfulCategory.edges &&
-          allContentfulCategory.edges.map(({ node }) => {
-            if (node.slug === 'mediateka') return null
+            allContentfulCategory.edges &&
+            allContentfulCategory.edges.map(({ node }) => {
+              if (node.slug === 'mediateka') return null
 
-            return (
-              <Category
-                key={node.slug}
-                color={node.color}
-                currentCategory={
-                  currentCategory &&
-                  node.slug === currentCategory.slug &&
-                  currentCategory
-                }
-              >
-                <Link to={`category/${node.slug}`}>{node.title}</Link>
-              </Category>
-            )
-          })}
+              return (
+                <Category
+                  key={node.slug}
+                  color={node.color}
+                  currentCategory={
+                    currentCategory &&
+                    node.slug === currentCategory.slug &&
+                    currentCategory
+                  }
+                >
+                  <Link to={`category/${node.slug}`}>{node.title}</Link>
+                </Category>
+              )
+            })}
         </StyledCategoriesUnorderedList>
       </StyledCategories>
     )}

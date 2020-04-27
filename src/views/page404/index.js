@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import Wrapper from '../../components/Wrapper'
-import Text404 from '../../../static/icon-404.svg'
-import Sign404 from '../../../static/icon-404-sign.svg'
-import Paragraph from '../../components/Paragraph'
-import { mediaQueries } from '../../utils/mediaQueries'
+import Wrapper from 'components/Wrapper'
+import Text404 from 'static/icon-404.svg'
+import Sign404 from 'static/icon-404-sign.svg'
+import Paragraph from 'components/Paragraph'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const Container = styled.div`
   display: flex;

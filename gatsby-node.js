@@ -125,5 +125,11 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         path.resolve(`./src/config/config-${process.env.VERSION}.js`)
       ),
     ],
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+        static: path.resolve(__dirname, 'static'),
+      },
+    },
   })
 }

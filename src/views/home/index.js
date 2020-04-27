@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import HighlightedArticle from './subcomponents/HighlightedArticle'
-import ArticlesList from '../../components/ArticlesList'
-import Wrapper from '../../components/Wrapper'
-import { articleType } from '../../types/article'
+import ArticlesList from 'components/ArticlesList'
+import Wrapper from 'components/Wrapper'
+import { articleType } from 'types/article'
 import TheNewestList from './subcomponents/TheNewestList'
 import Hero from './subcomponents/Hero'
-import Line from '../../components/Line'
+import Line from 'components/Line'
 import ImportantInfo from './subcomponents/ImportantInfo'
 
 const HomePage = ({

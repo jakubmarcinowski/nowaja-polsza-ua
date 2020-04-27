@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { childrenType } from '../types/children'
-import { mediaQueries } from '../utils/mediaQueries'
-import { contentWidth } from '../utils/contentWidth'
+import { childrenType } from 'types/children'
+import { mediaQueries } from 'utils/mediaQueries'
+import { contentWidth } from 'utils/contentWidth'
 
 const Wrapper = ({ className, children, size, position }) => {
   return (
