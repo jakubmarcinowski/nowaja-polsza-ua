@@ -9,6 +9,7 @@ import Navigation from 'components/Navigation'
 import SocialMediaList from 'components/SocialMediaList'
 import { novPolSocialMediaUrls } from 'utils/socialMedia'
 import logoWithBackground from 'static/logo-with-background.svg'
+import { trans } from 'utils/translate'
 
 const StyledTopBar = styled.div`
   display: flex;
@@ -95,7 +96,7 @@ const TopBar = () => (
     </Container>
     <Link to="/">
       <Title color="White" weight="Bold">
-        НОВАЯ ПОЛЬША
+        {trans('BRAND')}
       </Title>
       <StaticQuery
         query={BrandQuery}

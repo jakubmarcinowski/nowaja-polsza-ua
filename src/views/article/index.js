@@ -16,6 +16,7 @@ import { mediaQueries } from 'utils/mediaQueries'
 import AuthorShort from 'components/AuthorShort'
 import ImgWrapper from 'components/ImgWrapper'
 import iconArrow from 'static/icon-arrow.svg'
+import { trans } from 'utils/translate'
 
 const StyledArticle = styled.article`
   padding: 0 0 2rem;
@@ -262,12 +263,13 @@ const ArticlePage = ({
 
         <ArticleSocialMediaListBottom />
         <div>
-          <HeaderStyled size="Biggest">Читайте также</HeaderStyled>
+          <HeaderStyled size="Biggest">{trans('READ_ALSO')}</HeaderStyled>
           <RecommendedArticles posts={recommendedAutoAndManually} />
         </div>
         <SectionWrapper>
           <HeaderStyled size="Biggest">
-            {authors && (authors.length > 1 ? 'Авторы' : 'Автор')}
+            {authors &&
+              (authors.length > 1 ? trans('AUTHORS') : trans('AUTHOR'))}
           </HeaderStyled>
           {authors &&
             (authors.length > 1 ? (

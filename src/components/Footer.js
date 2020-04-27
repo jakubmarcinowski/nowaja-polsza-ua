@@ -12,6 +12,7 @@ import Line from 'components/Line'
 import cprdipExtended from 'static/logo-cprdip-extended.png'
 import { novPolSocialMediaUrls } from 'utils/socialMedia'
 import Brand from 'components/Brand'
+import { trans } from 'utils/translate'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -112,7 +113,7 @@ const Footer = () => (
         />
         <Info>
           <Publisher>
-            <PublisherText color="Dark">Издатель:</PublisherText>
+            <PublisherText color="Dark">{trans('PUBLISHER')}:</PublisherText>
             <ExternalLink url="http://cprdip.pl/">
               <CPRDIPLogo src={cprdipExtended} alt="CPRDIP logo" />
             </ExternalLink>

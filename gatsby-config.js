@@ -23,12 +23,22 @@ if (!spaceId || !accessToken) {
   )
 }
 
+const meta = {
+  ru: {
+    title: 'Новая Польша',
+    description: 'Вся Польша в вашей ленте',
+  },
+  ua: {
+    title: 'НОВА ПОЛЬЩА',
+    description: 'TODO TG',
+  },
+}
+
 module.exports = {
   siteMetadata: {
     siteUrl: process.env.HOST || 'https://silly-morse-77d306.netlify.com/',
-    title: 'Новая Польша',
-    description: 'Вся Польша в вашей ленте',
     themeColor: '#172429',
+    ...meta[process.env.VERSION],
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [

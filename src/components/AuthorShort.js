@@ -8,6 +8,7 @@ import Header from 'components/Header'
 import Button from 'components/Button'
 import Paragraph from 'components/Paragraph'
 import ImgWrapper from 'components/ImgWrapper'
+import { trans } from 'utils/translate'
 
 const AuthorImg = styled(ImgWrapper)`
   @media ${mediaQueries.tablet} {
@@ -112,7 +113,7 @@ const AuthorShort = ({ few, author: { name, shortBio, image, slug } }) => (
     </Info>
     {slug && (
       <Link to={`/author/${slug}`}>
-        <ReadMoreBtn>Все тексты автора</ReadMoreBtn>
+        <ReadMoreBtn>{trans('ALL_AUTHOR_TEXTS')}</ReadMoreBtn>
       </Link>
     )}
   </Element>
