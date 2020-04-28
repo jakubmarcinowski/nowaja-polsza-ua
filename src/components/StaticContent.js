@@ -214,7 +214,7 @@ const StyledContent = styled.div`
 
   .column {
     margin-bottom: 2.5em;
-    white-space: prewrap;
+    white-space: pre-wrap;
 
     p:first-of-type {
       margin-top: 2.5em;
