@@ -37,3 +37,19 @@ In order to have the ability to preview the content that you put in contentful, 
 6. HOST = hostname used for sitemap and host values in robots.txt
 
 Keep in mind that in preview env you don't set CONTENTFUL_DELIVERY_TOKEN instead you set CONTENTFUL_PREVIEW_TOKEN. Use contentful [docs](https://www.contentful.com/developers/docs/references/content-preview-api/#/introduction/preview-api-authentication) for reference
+
+## Environments
+
+There are three environments hosted on Netlify on `gajos@cprdip.pl` account. It's recommended to use just one accout on Netlify, because each additional user costs 15$/month. 
+
+### `novayapolsha.pl`
+
+Production environment of russian version. Builds and deploys are triggered on each `Publish` in contentful and push/merge to `master` branch on client's repository.
+
+### `novayapolsha-ua` 
+
+Testing environment of ukrainian version.
+
+### `novayapolsha-dev`
+
+Testing environment of both versions. Build and deploys are triggered on each push/merge to `develop` branch on client's repository. Additionally `Deploy previews` option is enabled, so on every pull request to `develop` new environment, building the site as it would be if the proposed changes were merged, will be generated. Deploy Previews are published to a URL which has the prefix `deploy-preview` followed by the identifier number of the pull request or merge request. For example, a Deploy Preview for pull request #42 will deploy to `deploy-preview-42--novayapolsha-dev.netlify.app`.
