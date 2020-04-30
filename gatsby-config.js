@@ -29,7 +29,7 @@ const meta = {
     description: 'Вся Польша в вашей ленте',
   },
   ua: {
-    title: 'НОВА ПОЛЬЩА',
+    title: 'Нова Польща',
     description: 'TODO TG',
   },
 }
