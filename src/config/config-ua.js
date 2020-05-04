@@ -23,5 +23,5 @@ export const translations = {
   PAGE_NOT_FOUND:
     'Шкода, але цієї сторінки немає. Але на нашому сайті ви можете прочитати інші цікаві статті',
   LEARN_MORE: 'Дізнатися більше',
-  OUR_PAGE: 'TRZA DODAĆ',
+  OUR_PAGE: 'цікаві статті',
 }

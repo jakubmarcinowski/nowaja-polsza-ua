@@ -57,7 +57,7 @@ const Page404 = () => {
           <Image src={Sign404} alt="sign" />
         </div>
         <Text weight="Light" lineHeight="Medium">
-          {trans('PAGE_NOT_FOUND')}
+          {trans('PAGE_NOT_FOUND')}&nbsp;
           <Link to="/">
             <u>{trans('OUR_PAGE')}</u>
           </Link>
