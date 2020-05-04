@@ -7,7 +7,7 @@ export const translations = {
   ALL_AUTHOR_TEXTS: 'Все тексты автора',
   BRAND: 'НОВАЯ ПОЛЬША',
   PUBLISHER: 'Издатель',
-  ABOUT_PROJECT: 'О проекте',
+  ABOUT_PROJECT: 'Про проєкт',
   PRIVACY_POLICY: 'Политика конфиденциальности',
   ACCESSIBILITY_POLICY: 'Политика доступности',
   SHOW_LESS: 'Смотреть меньше',
