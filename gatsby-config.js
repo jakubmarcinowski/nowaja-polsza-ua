@@ -30,7 +30,7 @@ const meta = {
   },
   ua: {
     title: 'Нова Польща',
-    description: 'TODO TG',
+    description: 'Вся Польща у вашій стрічці',
   },
 }
 
