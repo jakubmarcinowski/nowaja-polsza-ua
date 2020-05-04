@@ -25,8 +25,8 @@ const Logo = styled.img`
 `
 
 const Title = styled(Header)`
+  display: table-caption;
   font-size: 1.4rem;
-  word-spacing: 100vw;
 
   @media ${mediaQueries.desktop} {
     font-size: 2rem;
