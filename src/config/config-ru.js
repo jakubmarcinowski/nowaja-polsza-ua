@@ -1,3 +1,7 @@
+import logo from 'static/logo-cprdip-extended.png'
+
+export const logoCprdipExtended = logo
+
 export const translations = {
   LOAD_MORE: 'Загрузить еще',
   ALL_AUTHOR_TEXTS: 'Все тексты автора',

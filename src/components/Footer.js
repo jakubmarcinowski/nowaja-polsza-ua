@@ -9,10 +9,10 @@ import { mediaQueries } from 'utils/mediaQueries'
 import { theme } from 'utils/theme'
 import Wrapper from 'components/Wrapper'
 import Line from 'components/Line'
-import cprdipExtended from 'static/logo-cprdip-extended.png'
 import { novPolSocialMediaUrls } from 'utils/socialMedia'
 import Brand from 'components/Brand'
 import { trans } from 'utils/translate'
+import { logoCprdipExtended } from 'config'
 
 const StyledFooter = styled.footer`
   padding: 3rem 0 4rem;
@@ -115,7 +115,7 @@ const Footer = () => (
           <Publisher>
             <PublisherText color="Dark">{trans('PUBLISHER')}:</PublisherText>
             <ExternalLink url="http://cprdip.pl/">
-              <CPRDIPLogo src={cprdipExtended} alt="CPRDIP logo" />
+              <CPRDIPLogo src={logoCprdipExtended} alt="CPRDIP logo" />
             </ExternalLink>
           </Publisher>
         </Info>
