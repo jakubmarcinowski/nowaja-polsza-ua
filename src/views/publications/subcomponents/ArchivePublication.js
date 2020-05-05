@@ -9,6 +9,7 @@ import Paragraph from 'components/Paragraph'
 import ReadMoreButton from 'components/ReadMoreButton'
 import DownloadButton from './DownloadButton'
 import articles from './../archive'
+import { trans } from 'utils/translate'
 
 const DownloadButtons = styled.div`
   display: flex;
@@ -51,7 +52,7 @@ class ArchivePublication extends React.Component {
         })}
         {listOfArticles.length > visibleTitles && (
           <ReadMoreButton onClick={this.showMoreOrLess}>
-            {isMoreVisible ? 'Смотреть меньше' : 'Смотреть больше'}
+            {isMoreVisible ? trans('SHOW_LESS') : trans('SHOW_MORE')}
           </ReadMoreButton>
         )}
       </>

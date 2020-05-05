@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { theme } from 'utils/theme'
 import AnimatedLink from 'components/AnimatedLink'
+import { trans } from 'utils/translate'
 
 const StyledNavigation = styled.ul`
   display: flex;
@@ -24,17 +25,17 @@ const FooterNavigation = () => (
   <StyledNavigation>
     <Item>
       <AnimatedLink opacity={0.7} url="/about-us">
-        О проекте
+        {trans('ABOUT_PROJECT')}
       </AnimatedLink>
     </Item>
     <Item>
       <AnimatedLink opacity={0.7} url="/privacy-policy">
-        Политика конфиденциальности
+        {trans('PRIVACY_POLICY')}
       </AnimatedLink>
     </Item>
     <Item>
       <AnimatedLink opacity={0.7} url="/wcag">
-        Политика доступности
+        {trans('ACCESSIBILITY_POLICY')}
       </AnimatedLink>
     </Item>
   </StyledNavigation>

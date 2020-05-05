@@ -7,6 +7,7 @@ import Layout from 'components/Layout'
 import Wrapper from 'components/Wrapper'
 import ArticlesList from 'components/ArticlesList'
 import Placeholder from 'components/Placeholder'
+import { trans } from 'utils/translate'
 
 class CategoryTemplate extends React.Component {
   render() {
@@ -33,7 +34,7 @@ class CategoryTemplate extends React.Component {
                   noMargin
                 />
               ) : (
-                <Placeholder>Нет статей</Placeholder>
+                <Placeholder>{trans('NO_ARTICLES')}</Placeholder>
               )}
             </Wrapper>
           </>

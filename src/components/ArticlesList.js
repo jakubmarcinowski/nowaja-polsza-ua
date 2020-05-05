@@ -7,6 +7,7 @@ import ArticleItem from 'components/ArticleItem'
 import { articleType } from 'types/article'
 import { mediaQueries } from 'utils/mediaQueries'
 import Button from 'components/Button'
+import { trans } from 'utils/translate'
 
 const StyledList = styled.ul`
   display: flex;
@@ -133,7 +134,7 @@ class ArticlesList extends React.Component {
         {limit && postsNumber < posts.length && (
           <ButtonWrapper>
             <Button onClick={this.increasePostsNumber} size="large">
-              Загрузить еще
+              {trans('LOAD_MORE')}
             </Button>
           </ButtonWrapper>
         )}

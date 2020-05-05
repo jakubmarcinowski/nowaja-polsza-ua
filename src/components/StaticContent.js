@@ -13,8 +13,7 @@ const StyledContent = styled.div`
   h3,
   p,
   ul,
-  ol,
-  .row {
+  ol {
     @media ${mediaQueries.desktop} {
       max-width: 670px;
       margin: 0 auto;
@@ -215,6 +214,11 @@ const StyledContent = styled.div`
 
   .column {
     margin-bottom: 2.5em;
+    white-space: pre-wrap;
+
+    p:first-of-type {
+      margin-top: 2.5em;
+    }
 
     @media ${mediaQueries.desktop} {
       margin-bottom: 0;
@@ -283,6 +287,10 @@ class StaticContent extends React.Component {
         }
       })
     }
+  }
+
+  componentWillUnmount() {
+    document.fonts.onloadingdone = null
   }
 
   render() {
