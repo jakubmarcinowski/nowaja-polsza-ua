@@ -1,9 +1,32 @@
-export const novPolSocialMediaUrls = {
-  facebook: 'https://www.facebook.com/novayapolsha/',
-  twitter: 'https://twitter.com/novayapolsha',
-  telegram: 'https://t.me/novayapolsha',
-  youtube: 'https://www.youtube.com/channel/UCruAz6I_CWmEis9sqWm7FrQ',
-  vk: 'https://vk.com/novayapolsha',
+import { useStaticQuery, graphql } from 'gatsby'
+
+export const novPolSocialMediaUrls = () => {
+  const data = useStaticQuery(graphql`
+    query socialMedia {
+      contentfulHomepageStaticContent {
+        facebook
+        twitter
+        telegram
+        youtube
+        vk
+      }
+    }
+  `)
+  const {
+    facebook,
+    twitter,
+    telegram,
+    youtube,
+    vk,
+  } = data.contentfulHomepageStaticContent
+
+  return {
+    facebook: `https://www.facebook.com/${facebook}/`,
+    twitter: `https://twitter.com/${twitter}`,
+    telegram: `https://t.me/${telegram}`,
+    youtube: `https://www.youtube.com/channel/${youtube}`,
+    vk: `https://vk.com/${vk}`,
+  }
 }
 
 export const shareSocialMediaUrls = {

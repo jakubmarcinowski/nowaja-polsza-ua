@@ -89,7 +89,7 @@ const TopBar = () => (
           <SocialMediaList
             isWhite
             isSemiTransparent
-            urls={novPolSocialMediaUrls}
+            urls={novPolSocialMediaUrls()}
           />
         </BoxRight>
       </Box>
