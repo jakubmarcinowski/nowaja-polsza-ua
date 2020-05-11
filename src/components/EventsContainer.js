@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 
-import Header from './Header'
-import ReadMoreButton from './ReadMoreButton'
-import EventItem from './EventItem'
-import { highlightedEventType } from '../types/highlightedEvent'
-import { mediaQueries } from '../utils/mediaQueries'
+import Header from 'components/Header'
+import ReadMoreButton from 'components/ReadMoreButton'
+import EventItem from 'components/EventItem'
+import { highlightedEventType } from 'types/highlightedEvent'
+import { mediaQueries } from 'utils/mediaQueries'
+import { trans } from 'utils/translate'
 
 const Container = styled.div`
   display: flex;
@@ -67,7 +68,7 @@ const EventsContainer = ({ events }) => (
       </EventsList>
       <ButtonContainer>
         <Link to="/events">
-          <ReadMoreButton>Узнать больше</ReadMoreButton>
+          <ReadMoreButton>{trans('LEARN_MORE')}</ReadMoreButton>
         </Link>
       </ButtonContainer>
     </InnerContainer>

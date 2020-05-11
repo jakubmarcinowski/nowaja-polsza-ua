@@ -2,15 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { mediaQueries } from '../../../utils/mediaQueries'
-import BoxWithPhoto from '../../../components/BoxWithPhoto'
-import Header from '../../../components/Header'
-import IconPin from '../../../../static/icon-pin.svg'
-import IconTicket from '../../../../static/icon-ticket.svg'
-import IconUser from '../../../../static/icon-user.svg'
-import ExternalLink from '../../../components/ExternalLink'
-import IconGroup from '../../../components/IconGroup'
-import ReadMoreWrapper from '../../../components/ReadMoreWrapper'
+import { mediaQueries } from 'utils/mediaQueries'
+import BoxWithPhoto from 'components/BoxWithPhoto'
+import Header from 'components/Header'
+import IconPin from 'static/icon-pin.svg'
+import IconTicket from 'static/icon-ticket.svg'
+import IconUser from 'static/icon-user.svg'
+import ExternalLink from 'components/ExternalLink'
+import IconGroup from 'components/IconGroup'
+import ReadMoreWrapper from 'components/ReadMoreWrapper'
+import { trans } from 'utils/translate'
 
 const Container = styled.div`
   @media ${mediaQueries.tablet} {
@@ -128,7 +129,7 @@ const Event = ({
           <ExternalLink url={link}>
             <IconGroup src={IconTicket}>
               <TicketText>
-                <u>Мероприятие в Фейсбуке</u>
+                <u>{trans('FACEBOOK_EVENT')}</u>
               </TicketText>
             </IconGroup>
           </ExternalLink>
@@ -171,7 +172,7 @@ const Event = ({
             <ExternalLink url={link}>
               <IconGroup src={IconTicket}>
                 <TicketText>
-                  <u>Мероприятие в Фейсбуке</u>
+                  <u>{trans('FACEBOOK_EVENT')}</u>
                 </TicketText>
               </IconGroup>
             </ExternalLink>

@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { childrenType } from '../types/children'
-import { mediaQueries } from '../utils/mediaQueries'
+import { childrenType } from 'types/children'
+import { mediaQueries } from 'utils/mediaQueries'
 
 //Todo Button refactor (to be like Header or Paragraph)
 

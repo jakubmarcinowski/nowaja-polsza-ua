@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Paragraph from '../../../components/Paragraph'
-import ExternalLink from '../../../components/ExternalLink'
-import { mediaQueries } from '../../../utils/mediaQueries'
+import Paragraph from 'components/Paragraph'
+import ExternalLink from 'components/ExternalLink'
+import { mediaQueries } from 'utils/mediaQueries'
+import { trans } from 'utils/translate'
 
 const ImportantInfoBoxWrapper = styled.div`
   background: ${({ theme }) => theme.colors.importantInfo};
@@ -62,13 +63,13 @@ const ImportantInfo = ({ importantInfo }) => (
       </InfoContainer>
       <div>
         {importantInfo.importantInfoStatus === 'visibleWithLink' &&
-          (importantInfo.importantInfoLinkUrl && (
+          importantInfo.importantInfoLinkUrl && (
             <ExternalLink url={importantInfo.importantInfoLinkUrl}>
               <Link color="White" weight="Light">
-                <u>узнать&nbsp;больше</u>
+                <u>{trans('LEARN_MORE')}</u>
               </Link>
             </ExternalLink>
-          ))}
+          )}
       </div>
     </ImportantInfoBox>
   </ImportantInfoBoxWrapper>

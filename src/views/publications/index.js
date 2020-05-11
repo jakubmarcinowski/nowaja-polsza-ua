@@ -4,9 +4,9 @@ import styled from 'styled-components'
 
 import Publication from './subcomponents/Publication'
 import ArchivePublication from './subcomponents/ArchivePublication'
-import Wrapper from '../../components/Wrapper'
-import Header from '../../components/Header'
-import Placeholder from '../../components/Placeholder'
+import Wrapper from 'components/Wrapper'
+import Header from 'components/Header'
+import Placeholder from 'components/Placeholder'
 
 // @todo crete styled component for page header which is center and has a line
 const Filters = styled.div`
@@ -101,8 +101,9 @@ class PublicationPage extends React.Component {
 
   renderFilters = () => {
     const { filter, areJournals } = this.state
-    const filters = areJournals ? [null, 'книги', 'журналы', 'архив'] : ['книги', 'архив']
-
+    const filters = areJournals
+      ? [null, 'книги', 'журналы', 'архив']
+      : ['книги', 'архив']
 
     return filters.map(filterName => (
       <Filter

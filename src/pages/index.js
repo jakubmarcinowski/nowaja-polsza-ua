@@ -2,9 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 
-import Layout from '../components/Layout'
-import HomePage from '../views/home'
-import SEO from '../components/SEO'
+import Layout from 'components/Layout'
+import HomePage from 'views/home'
+import SEO from 'components/SEO'
 
 const RootIndex = props => {
   const siteTitle = get(props, 'data.site.siteMetadata.title')
@@ -48,8 +48,10 @@ const RootIndex = props => {
         )
     )
 
-    if(stickedPostActive) {
-      postsWithoutDuplicates = postsWithoutDuplicates.filter( post => stickedPost.id !== post.node.id)
+    if (stickedPostActive) {
+      postsWithoutDuplicates = postsWithoutDuplicates.filter(
+        post => stickedPost.id !== post.node.id
+      )
     }
 
     allHighlightedPosts = moreHighlightedPosts.concat(postsWithoutDuplicates)
@@ -199,7 +201,7 @@ export const pageQuery = graphql`
             }
             heroImageThumbnail {
               fluid(maxWidth: 620, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+                ...GatsbyContentfulFluid
               }
             }
             leadLong {
@@ -227,7 +229,7 @@ export const pageQuery = graphql`
             }
             heroImageThumbnail {
               fluid(maxWidth: 620, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+                ...GatsbyContentfulFluid
               }
             }
             categories {

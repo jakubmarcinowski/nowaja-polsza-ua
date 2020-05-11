@@ -2,11 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import Wrapper from '../../components/Wrapper'
-import Text404 from '../../../static/icon-404.svg'
-import Sign404 from '../../../static/icon-404-sign.svg'
-import Paragraph from '../../components/Paragraph'
-import { mediaQueries } from '../../utils/mediaQueries'
+import Wrapper from 'components/Wrapper'
+import Text404 from 'static/icon-404.svg'
+import Sign404 from 'static/icon-404-sign.svg'
+import Paragraph from 'components/Paragraph'
+import { mediaQueries } from 'utils/mediaQueries'
+import { trans } from 'utils/translate'
 
 const Container = styled.div`
   display: flex;
@@ -56,10 +57,9 @@ const Page404 = () => {
           <Image src={Sign404} alt="sign" />
         </div>
         <Text weight="Light" lineHeight="Medium">
-          Очень жаль, но запрашиваемая вами страница не найдена. Ничего
-          страшного! Другие интересные статьи вы можете прочитать на{' '}
+          {trans('PAGE_NOT_FOUND')}&nbsp;
           <Link to="/">
-            <u>нашей странице</u>
+            <u>{trans('OUR_PAGE')}</u>
           </Link>
           .
         </Text>

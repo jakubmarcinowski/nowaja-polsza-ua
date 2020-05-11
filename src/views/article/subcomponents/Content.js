@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { mediaQueries } from '../../../utils/mediaQueries'
-import StaticContent from '../../../components/StaticContent'
+import { mediaQueries } from 'utils/mediaQueries'
+import StaticContent from 'components/StaticContent'
 
 const Lead = styled.div`
   line-height: 1.3;
@@ -27,8 +27,7 @@ const Content = ({ html, lead }) => (
         dangerouslySetInnerHTML={{
           __html: lead,
         }}
-      >
-      </Lead>
+      ></Lead>
     )}
     <StaticContent>
       <div

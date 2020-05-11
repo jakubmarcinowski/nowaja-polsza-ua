@@ -3,9 +3,10 @@ import { graphql, Link, StaticQuery } from 'gatsby'
 import cookie from 'react-cookies'
 import styled from 'styled-components'
 
-import Paragraph from './Paragraph'
-import closeIcon from '../../static/icon-close.svg'
-import { mediaQueries } from '../utils/mediaQueries'
+import Paragraph from 'components/Paragraph'
+import closeIcon from 'static/icon-close.svg'
+import { mediaQueries } from 'utils/mediaQueries'
+import { trans } from 'utils/translate'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -94,7 +95,7 @@ class Rodo extends Component {
               )}
             />{' '}
             <Link to="/privacy-policy">
-              <u>Политика конфиденциональности</u>
+              <u>{trans('RODO')}</u>
             </Link>
             .
           </Info>

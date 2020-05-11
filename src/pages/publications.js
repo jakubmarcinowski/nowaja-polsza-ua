@@ -1,14 +1,15 @@
 import React from 'react'
-import SEO from '../components/SEO'
+import SEO from 'components/SEO'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import Layout from '../components/Layout'
-import PublicationPage from '../views/publications'
+import Layout from 'components/Layout'
+import PublicationPage from 'views/publications'
+import { trans } from 'utils/translate'
 
 const Publications = ({ data }) => {
   const publications = data.allContentfulPublication.edges
-  const title = 'Библиотека'
+  const title = trans('LIBRARY')
   const description = data.site.siteMetadata.description
 
   return (

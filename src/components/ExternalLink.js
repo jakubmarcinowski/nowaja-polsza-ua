@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { childrenType } from '../types/children'
+import { childrenType } from 'types/children'
 
 const StyledLink = styled.a`
   transition: opacity ${({ theme }) => theme.animations.default};

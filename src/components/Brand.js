@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { mediaQueries } from '../utils/mediaQueries'
-import Header from './Header'
-import logo from '../../static/logo.svg'
-import logoWithBackground from '../../static/logo-with-background.svg'
+import { mediaQueries } from 'utils/mediaQueries'
+import Header from 'components/Header'
+import logo from 'static/logo.svg'
+import logoWithBackground from 'static/logo-with-background.svg'
+import { trans } from 'utils/translate'
 
 const StyledBrand = styled.div`
   display: flex;
@@ -24,6 +25,7 @@ const Logo = styled.img`
 `
 
 const Title = styled(Header)`
+  display: table-caption;
   font-size: 1.4rem;
 
   @media ${mediaQueries.desktop} {
@@ -51,8 +53,7 @@ const Brand = ({ isDarkVersion }) => (
     <Link to="/">
       <TitleWrapper isDarkVersion={isDarkVersion}>
         <Title color={isDarkVersion ? 'Dark' : 'White'} weight="Bold">
-          НОВАЯ <br />
-          ПОЛЬША
+          {trans('BRAND')}
         </Title>
       </TitleWrapper>
     </Link>

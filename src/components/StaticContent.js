@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { childrenType } from '../types/children'
+import { childrenType } from 'types/children'
 
-import { mediaQueries } from '../utils/mediaQueries'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const StyledContent = styled.div`
   overflow: hidden;

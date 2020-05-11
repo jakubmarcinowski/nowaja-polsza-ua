@@ -2,9 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { intersectionBy, get } from 'lodash/fp'
 
-import Layout from '../components/Layout'
-import ArticlePage from '../views/article/index'
-import SEO from '../components/SEO'
+import Layout from 'components/Layout'
+import ArticlePage from 'views/article/index'
+import SEO from 'components/SEO'
 
 const ArticleTemplate = props => {
   const post = get('data.contentfulBlogPost', props)

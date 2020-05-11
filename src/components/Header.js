@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { theme } from '../utils/theme'
-import { childrenType } from '../types/children'
-import { mediaQueries } from '../utils/mediaQueries'
+import { theme } from 'utils/theme'
+import { childrenType } from 'types/children'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const Header = ({
   className,
