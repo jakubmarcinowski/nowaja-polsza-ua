@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import parse from 'html-react-parser'
 
 import { mediaQueries } from 'utils/mediaQueries'
 import StaticContent from 'components/StaticContent'
@@ -22,20 +23,8 @@ const Lead = styled.div`
 
 const Content = ({ html, lead }) => (
   <>
-    {lead && (
-      <Lead
-        dangerouslySetInnerHTML={{
-          __html: lead,
-        }}
-      ></Lead>
-    )}
-    <StaticContent>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: html,
-        }}
-      />
-    </StaticContent>
+    {lead && <Lead>{parse(lead)}</Lead>}
+    <StaticContent>{parse(html)}</StaticContent>
   </>
 )
 

@@ -133,7 +133,7 @@ class SocialMediaList extends React.Component {
             </ExternalLink>
           </Item>
         )}
-        {vk && (
+        {vk && process.env.GATSBY_VERSION === 'ru' && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
               url={isShareUrl ? `${vk}${this.state.locationHref}` : vk}

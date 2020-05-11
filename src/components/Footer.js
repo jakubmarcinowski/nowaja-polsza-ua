@@ -101,7 +101,7 @@ const Footer = () => (
         <SocialMediaListMobile
           isBig
           isSemiTransparent
-          urls={novPolSocialMediaUrls}
+          urls={novPolSocialMediaUrls()}
         />
         <BrandContainer>
           <Brand isDarkVersion />
@@ -109,7 +109,7 @@ const Footer = () => (
         <SocialMediaListDesktop
           isBig
           isSemiTransparent
-          urls={novPolSocialMediaUrls}
+          urls={novPolSocialMediaUrls()}
         />
         <Info>
           <Publisher>
