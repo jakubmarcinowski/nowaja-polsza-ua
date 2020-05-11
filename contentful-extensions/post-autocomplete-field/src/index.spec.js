@@ -64,15 +64,6 @@ describe('App', () => {
 
   afterEach(cleanup)
 
-  // it('should read a value from field.getValue() and subscribe for external changes', () => {
-  //   sdk.field.getValue.mockImplementation(() => 'initial-value')
-  //   const { getByTestId } = renderComponent(sdk)
-
-  //   expect(sdk.field.getValue).toHaveBeenCalled()
-  //   expect(sdk.field.onValueChanged).toHaveBeenCalled()
-  //   expect(getByTestId('my-field').value).toEqual('initial-value')
-  // })
-
   it('should call starstartAutoResizer', () => {
     contentfulClient.getEntries.mockImplementation(() => Promise.reject())
     renderComponent(sdk)
@@ -161,5 +152,17 @@ describe('App', () => {
     expect(sdk.field.setValue).toHaveBeenCalledWith('first')
     fireEvent.change(input, { target: { value: '' } })
     expect(sdk.field.removeValue).toHaveBeenCalled()
+  })
+
+  it('should populate input value', async () => {
+    contentfulClient.getEntries.mockImplementation(() =>
+      Promise.resolve({ items: articles })
+    )
+    sdk.field.getValue.mockImplementationOnce(() => 'first')
+    const { queryByTestId, container } = renderComponent(sdk)
+    await (() => expect(queryByTestId('autosuggest')).not.toBeNull())
+
+    const input = container.querySelector('input')
+    expect(input.value).toEqual('First')
   })
 })

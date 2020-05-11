@@ -63,7 +63,7 @@ class App extends React.Component {
             hasLoaded: true,
             items: mappedItems,
             filteredItems: mappedItems,
-            value: valueCandidate ? value.title : '',
+            value: valueCandidate ? valueCandidate.title : '',
           })
         },
         () => {
