@@ -36,7 +36,8 @@ const meta = {
 
 module.exports = {
   siteMetadata: {
-    siteUrl: process.env.HOST || 'https://silly-morse-77d306.netlify.com/',
+    siteUrl:
+      process.env.GATSBY_SITE_URL || 'https://silly-morse-77d306.netlify.com/',
     themeColor: '#172429',
     ...meta[process.env.GATSBY_VERSION],
   },
