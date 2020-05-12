@@ -17,6 +17,7 @@ const versions = [
 const StyledVersions = styled.ul`
   display: flex;
   justify-content: center;
+  flex: 0 0 auto;
 
   li:not(:last-child) {
     margin-right: 1.5rem;

@@ -112,7 +112,8 @@ const Line = styled.div`
 `
 
 const MobileSocialMediaList = styled(SocialMediaList)`
-  margin: 2.5rem auto 0 auto;
+  margin: 2.5rem auto;
+  flex: 0 0 auto;
 `
 
 const PageHeaderQueryMobile = graphql`
