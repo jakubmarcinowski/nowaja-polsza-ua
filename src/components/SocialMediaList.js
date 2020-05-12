@@ -56,6 +56,10 @@ const Logo = styled.img`
   `}
 `
 
+const StyledList = styled.ul`
+  display: flex;
+`
+
 class SocialMediaList extends React.Component {
   state = {
     locationHref: '',
@@ -76,7 +80,7 @@ class SocialMediaList extends React.Component {
     } = this.props
 
     return (
-      <ul className={className}>
+      <StyledList className={className}>
         {facebook && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
@@ -161,7 +165,7 @@ class SocialMediaList extends React.Component {
             </ExternalLink>
           </Item>
         )}
-      </ul>
+      </StyledList>
     )
   }
 }
