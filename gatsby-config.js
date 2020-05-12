@@ -78,8 +78,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-135924819-1',
-        optimizeId: 'GTM-5CSFCP5',
+        trackingId: process.env.GATSBY_TRACKINGID,
+        optimizeId: process.env.GATSBY_OPTIMIZEID,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: process.env.GATSBY_HOTJAR,
+        sv: '6',
       },
     },
   ],
