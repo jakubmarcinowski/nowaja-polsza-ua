@@ -149,7 +149,7 @@ const StyledContent = styled.div`
     padding-top: 25px;
     height: 0;
     &:not(:last-child) {
-      margin-bottom: 3em;
+      margin-bottom: 6em;
     }
   }
   .videoWrapper iframe {
@@ -161,7 +161,7 @@ const StyledContent = styled.div`
   }
   .videoWrapperTitle {
     position: absolute;
-    bottom: -4rem;
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     display: block;

@@ -172,7 +172,7 @@ class MobileMenu extends Component {
                     </nav>
                     <MobileSocialMediaList
                       isWhite
-                      urls={novPolSocialMediaUrls}
+                      urls={novPolSocialMediaUrls()}
                     />
                   </MenuContent>
                 </MenuPrintArea>
