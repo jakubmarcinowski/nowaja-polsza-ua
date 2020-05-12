@@ -186,6 +186,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      secondLanguageSlug
     }
   }
 `

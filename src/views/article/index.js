@@ -17,6 +17,7 @@ import AuthorShort from 'components/AuthorShort'
 import ImgWrapper from 'components/ImgWrapper'
 import iconArrow from 'static/icon-arrow.svg'
 import { trans } from 'utils/translate'
+import { getArticleUrlInSecondLanguage } from 'config'
 
 const StyledArticle = styled.article`
   padding: 0 0 2rem;
@@ -190,6 +191,7 @@ const ArticlePage = ({
     leadLong,
     gallery,
     recommendedArticles,
+    secondLanguageSlug,
   },
   posts,
 }) => {
@@ -244,6 +246,8 @@ const ArticlePage = ({
       </Wrapper>
       <Wrapper size="Small" position="relative">
         <ArticleSocialMediaList />
+        {secondLanguageSlug &&
+          getArticleUrlInSecondLanguage(secondLanguageSlug)}
         <Content
           html={body && body.childMarkdownRemark.html}
           lead={leadLong && leadLong.childMarkdownRemark.html}

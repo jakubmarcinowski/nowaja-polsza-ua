@@ -2,12 +2,15 @@ import logo from 'static/logo-cprdip-extended.png'
 
 export const logoCprdipExtended = logo
 
+export const getArticleUrlInSecondLanguage = slug =>
+  `https://novayapolsha-ua.netlify.app/article/${slug}`
+
 export const translations = {
   LOAD_MORE: 'Загрузить еще',
   ALL_AUTHOR_TEXTS: 'Все тексты автора',
   BRAND: 'НОВАЯ ПОЛЬША',
   PUBLISHER: 'Издатель',
-  ABOUT_PROJECT: 'Про проєкт',
+  ABOUT_PROJECT: 'О проекте',
   PRIVACY_POLICY: 'Политика конфиденциальности',
   ACCESSIBILITY_POLICY: 'Политика доступности',
   SHOW_LESS: 'Смотреть меньше',
