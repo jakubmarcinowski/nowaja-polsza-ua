@@ -122,7 +122,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     plugins: [
       new webpack.NormalModuleReplacementPlugin(
         new RegExp(path.resolve('./src/config/index.js')),
-        path.resolve(`./src/config/config-${process.env.VERSION}.js`)
+        path.resolve(`./src/config/config-${process.env.GATSBY_VERSION}.js`)
       ),
     ],
     resolve: {
