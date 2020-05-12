@@ -15,6 +15,7 @@ const MenuIcon = styled.div`
   position: relative;
   width: 20px;
   height: 19px;
+  margin-left: 1.5rem;
 
   &::before,
   &::after,
@@ -76,6 +77,13 @@ const MenuHeader = styled.div`
     display: none;
   }
 `
+
+const MenuHeaderRight = styled.div`
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+`
+
 const MenuContent = styled.div`
   position: fixed;
   display: flex;
@@ -162,9 +170,15 @@ class MobileMenu extends Component {
                     }
                   >
                     <Brand />
-                    <MenuIcon onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
-                      <div className="middle" />
-                    </MenuIcon>
+                    <MenuHeaderRight>
+                      <LanguageVersions />
+                      <MenuIcon
+                        onClick={this.toggleMenu}
+                        isMenuOpen={isMenuOpen}
+                      >
+                        <div className="middle" />
+                      </MenuIcon>
+                    </MenuHeaderRight>
                   </MenuHeader>
                   <MenuContent isMenuOpen={isMenuOpen}>
                     <nav>
@@ -172,7 +186,6 @@ class MobileMenu extends Component {
                       <Line />
                       <MobileMenuItems />
                     </nav>
-                    <LanguageVersions />
                     <MobileSocialMediaList
                       isWhite
                       urls={novPolSocialMediaUrls()}
