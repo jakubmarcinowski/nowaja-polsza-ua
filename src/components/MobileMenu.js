@@ -9,6 +9,7 @@ import MobileMenuItems from 'components/MobileMenuItems'
 import MobileMenuCategories from 'components/MobileMenuCategories'
 import { novPolSocialMediaUrls } from 'utils/socialMedia'
 import Brand from 'components/Brand'
+import LanguageVersions from './LanguageVersions'
 
 const MenuIcon = styled.div`
   position: relative;
@@ -111,7 +112,7 @@ const Line = styled.div`
 `
 
 const MobileSocialMediaList = styled(SocialMediaList)`
-  margin: 0 auto;
+  margin: 2.5rem auto 0 auto;
 `
 
 const PageHeaderQueryMobile = graphql`
@@ -170,6 +171,7 @@ class MobileMenu extends Component {
                       <Line />
                       <MobileMenuItems />
                     </nav>
+                    <LanguageVersions />
                     <MobileSocialMediaList
                       isWhite
                       urls={novPolSocialMediaUrls()}
