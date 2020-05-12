@@ -5,8 +5,8 @@ os:
   - osx
 
 node_js:
-  - '10'
+  - '14'
 
 script:
-  - npm install
-  - npm run lint
+  - yarn install
+  - yarn run lint
