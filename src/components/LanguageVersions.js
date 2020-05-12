@@ -31,7 +31,8 @@ const StyledLink = styled(ExternalLink)`
   align-items: center;
   color: ${({ theme }) => theme.colors.black};
   background-color: ${({ theme }) => theme.colors.white};
-  opacity: ${props => (props.sameCard ? 0.8 : 0.5)};
+  font-family: ${({ theme }) => theme.fonts.secondary};
+  opacity: ${props => (props.sameCard ? 1 : 0.5)};
   border-radius: 50%;
   font-size: 1rem;
 `

@@ -22,6 +22,10 @@ const Item = styled.li`
   padding: 0 1.1rem;
   transition: opacity ${props => props.theme.animations.default};
 
+  & > a {
+    display: flex;
+  }
+
   &:first-of-type {
     padding-left: 0;
   }
