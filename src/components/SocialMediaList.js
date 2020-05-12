@@ -22,6 +22,10 @@ const Item = styled.li`
   padding: 0 1.1rem;
   transition: opacity ${props => props.theme.animations.default};
 
+  & > a {
+    display: flex;
+  }
+
   &:first-of-type {
     padding-left: 0;
   }
@@ -52,6 +56,10 @@ const Logo = styled.img`
   `}
 `
 
+const StyledList = styled.ul`
+  display: flex;
+`
+
 class SocialMediaList extends React.Component {
   state = {
     locationHref: '',
@@ -72,7 +80,7 @@ class SocialMediaList extends React.Component {
     } = this.props
 
     return (
-      <ul className={className}>
+      <StyledList className={className}>
         {facebook && (
           <Item isSemiTransparent={isSemiTransparent}>
             <ExternalLink
@@ -157,7 +165,7 @@ class SocialMediaList extends React.Component {
             </ExternalLink>
           </Item>
         )}
-      </ul>
+      </StyledList>
     )
   }
 }
