@@ -38,7 +38,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: process.env.HOST || 'https://silly-morse-77d306.netlify.com/',
     themeColor: '#172429',
-    ...meta[process.env.VERSION],
+    ...meta[process.env.GATSBY_VERSION],
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
