@@ -81,11 +81,7 @@ const SectionWrapper = styled.div`
 
 const StyledArticleLanguageButton = styled(ArticleLanguageButton)`
   display: flex;
-  margin-top: 0.5rem;
-
-  @media ${mediaQueries.tablet} {
-    margin-top: 1.5rem;
-  }
+  margin-top: 2rem;
 
   @media ${mediaQueries.desktop} {
     margin-top: 3rem;
