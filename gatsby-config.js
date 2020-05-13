@@ -36,7 +36,8 @@ const meta = {
 
 module.exports = {
   siteMetadata: {
-    siteUrl: process.env.HOST || 'https://silly-morse-77d306.netlify.com/',
+    siteUrl:
+      process.env.GATSBY_SITE_URL || 'https://silly-morse-77d306.netlify.com/',
     themeColor: '#172429',
     ...meta[process.env.GATSBY_VERSION],
   },
@@ -77,8 +78,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-135924819-1',
-        optimizeId: 'GTM-5CSFCP5',
+        trackingId: process.env.GATSBY_TRACKINGID,
+        optimizeId: process.env.GATSBY_OPTIMIZEID,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: process.env.GATSBY_HOTJAR,
+        sv: '6',
       },
     },
   ],

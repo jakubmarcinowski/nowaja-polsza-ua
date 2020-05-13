@@ -10,6 +10,7 @@ import SocialMediaList from 'components/SocialMediaList'
 import { novPolSocialMediaUrls } from 'utils/socialMedia'
 import logoWithBackground from 'static/logo-with-background.svg'
 import { trans } from 'utils/translate'
+import LanguageVersions from 'components/LanguageVersions'
 
 const StyledTopBar = styled.div`
   display: flex;
@@ -57,7 +58,13 @@ const BoxLeft = styled.span`
 `
 
 const BoxRight = styled.span`
+  display: flex;
   margin-left: auto;
+  align-items: center;
+
+  & > *:first-child {
+    margin-right: 6rem;
+  }
 `
 
 const BrandQuery = graphql`
@@ -86,6 +93,7 @@ const TopBar = () => (
       </Box>
       <Box>
         <BoxRight>
+          <LanguageVersions />
           <SocialMediaList
             isWhite
             isSemiTransparent
