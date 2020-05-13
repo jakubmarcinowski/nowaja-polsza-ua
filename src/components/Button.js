@@ -13,13 +13,13 @@ const StyledButton = styled.button`
   border: 1px solid ${props => props.theme.colors.black};
   background-color: ${props => props.theme.colors.white};
   cursor: pointer;
-  font-size: ${props => (props.size === 'large' ? '1.8rem' : '1rem')};
+  font-size: ${props => fontSizesMobile[props.size]};
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-weight: ${props => (props.size === 'large' ? 600 : 700)};
+  font-weight: ${props => fontWeights[props.size]};
 
   @media ${mediaQueries.tablet} {
-    padding: ${props => (props.size === 'large' ? '1rem 4rem' : '1rem 3rem')};
-    font-size: ${props => (props.size === 'large' ? '2rem' : '1.2rem')};
+    padding: ${props => paddingsTablet[props.size]};
+    font-size: ${props => fontSizesTablet[props.size]};
   }
 
   &:hover {
@@ -38,8 +38,38 @@ const Button = ({ className, children, onClick, size }) => (
   </StyledButton>
 )
 
+Button.sizes = {
+  Small: 'small',
+  Medium: 'medium',
+  Large: 'large',
+}
+
+const fontWeights = {
+  [Button.sizes.Small]: 600,
+  [Button.sizes.Medium]: 400,
+  [Button.sizes.Large]: 700,
+}
+
+const fontSizesMobile = {
+  [Button.sizes.Small]: '1rem',
+  [Button.sizes.Medium]: '1.2rem',
+  [Button.sizes.Large]: '1.8rem',
+}
+
+const fontSizesTablet = {
+  [Button.sizes.Small]: '1.2rem',
+  [Button.sizes.Medium]: '1.4rem',
+  [Button.sizes.Large]: '2rem',
+}
+
+const paddingsTablet = {
+  [Button.sizes.Small]: '1rem 3rem',
+  [Button.sizes.Medium]: '1.4rem 2rem',
+  [Button.sizes.Large]: '1rem 4rem',
+}
+
 Button.defaultProps = {
-  size: 'default',
+  size: Button.sizes.Small,
 }
 
 Button.propTypes = {

@@ -10,7 +10,7 @@ export const translations = {
   ALL_AUTHOR_TEXTS: 'Всі тексти автора',
   BRAND: 'НОВА ПОЛЬЩА',
   PUBLISHER: 'Видавець',
-  ABOUT_PROJECT: 'Про проект',
+  ABOUT_PROJECT: 'Про проєкт',
   PRIVACY_POLICY: 'Політика конфіденційності',
   ACCESSIBILITY_POLICY: 'Політика доступності',
   SHOW_LESS: 'Дивитися менше',
@@ -27,4 +27,5 @@ export const translations = {
     'Шкода, але цієї сторінки немає. Але на нашому сайті ви можете прочитати інші цікаві статті',
   LEARN_MORE: 'Дізнатися більше',
   OUR_PAGE: 'цікаві статті',
+  READ_IN_SECOND_LANGUAGE: 'Читати українською',
 }
