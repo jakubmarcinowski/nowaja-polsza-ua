@@ -1,9 +1,10 @@
 import logo from 'static/logo-cprdip-extended.png'
+const meta = require('./../../meta')
 
 export const logoCprdipExtended = logo
 
 export const getArticleUrlInSecondLanguage = slug =>
-  `https://novayapolsha-ua.netlify.app/article/${slug}`
+  `${meta.ua.siteUrl}article/${slug}`
 
 export const translations = {
   LOAD_MORE: 'Загрузить еще',

@@ -20,15 +20,16 @@ class App extends React.Component {
     sdk: PropTypes.object.isRequired,
   }
 
+  state = {
+    value: '',
+    error: null,
+    hasLoaded: false,
+    items: [],
+    suggestions: [],
+  }
+
   constructor(props) {
     super(props)
-    this.state = {
-      value: '',
-      error: null,
-      hasLoaded: false,
-      items: [],
-      suggestions: [],
-    }
   }
 
   getSuggestions = value => {

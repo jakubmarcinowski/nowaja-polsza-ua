@@ -1,9 +1,10 @@
 import logo from 'static/logo-cprdip-extended-pl.png'
+const meta = require('./../../meta')
 
 export const logoCprdipExtended = logo
 
 export const getArticleUrlInSecondLanguage = slug =>
-  `https://novayapolsha.pl/article/${slug}`
+  `${meta.ru.siteUrl}article/${slug}`
 
 export const translations = {
   LOAD_MORE: 'Більше текстів',
