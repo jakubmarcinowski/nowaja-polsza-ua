@@ -43,10 +43,7 @@ const LanguageVersions = () => (
   <StyledVersions>
     {versions.map(version => (
       <li key={version.url}>
-        <StyledLink
-          url={version.url}
-          sameCard={version.url === process.env.GATSBY_SITE_URL}
-        >
+        <StyledLink url={version.url} sameCard>
           {version.shortcut}
         </StyledLink>
       </li>
