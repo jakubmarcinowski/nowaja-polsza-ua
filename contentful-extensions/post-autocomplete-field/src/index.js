@@ -28,10 +28,6 @@ class App extends React.Component {
     suggestions: [],
   }
 
-  constructor(props) {
-    super(props)
-  }
-
   getSuggestions = value => {
     const inputValue = value.trim().toLowerCase()
     const inputLength = inputValue.length
