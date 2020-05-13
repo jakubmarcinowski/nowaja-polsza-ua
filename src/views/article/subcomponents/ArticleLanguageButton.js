@@ -11,6 +11,7 @@ const ArticleLanguageButton = ({ className, secondLanguageSlug }) => (
   <ExternalLink
     className={className}
     url={getArticleUrlInSecondLanguage(secondLanguageSlug)}
+    sameCard
   >
     <ButtonWithIcon
       icon={DownloadIcon}
