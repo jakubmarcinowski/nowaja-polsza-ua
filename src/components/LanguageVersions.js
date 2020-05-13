@@ -1,16 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
+const meta = require('./../../meta')
 
 import ExternalLink from 'components/ExternalLink'
 
 const versions = [
   {
     shortcut: 'РУС',
-    url: 'https://novayapolsha.pl/',
+    url: meta.ru.siteUrl,
   },
   {
     shortcut: 'УКР',
-    url: 'https://novayapolsha-ua.netlify.app/',
+    url: meta.ua.siteUrl,
   },
 ]
 

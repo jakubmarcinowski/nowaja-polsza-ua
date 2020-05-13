@@ -17,6 +17,7 @@ import AuthorShort from 'components/AuthorShort'
 import ImgWrapper from 'components/ImgWrapper'
 import iconArrow from 'static/icon-arrow.svg'
 import { trans } from 'utils/translate'
+import ArticleLanguageButton from './subcomponents/ArticleLanguageButton'
 
 const StyledArticle = styled.article`
   padding: 0 0 2rem;
@@ -52,11 +53,38 @@ const Authors = styled.div`
   }
 `
 
+const SocialMediaListWrapper = styled.div`
+  display: flex;
+  padding: 2rem 0;
+  margin: 0 auto 0.5rem;
+  align-items: center;
+  flex-direction: column;
+
+  @media ${mediaQueries.tablet} {
+    padding: 2rem 0 3rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  @media ${mediaQueries.desktop} {
+    padding: 0 0 5rem;
+    margin: 0 auto 3rem;
+  }
+`
+
 const SectionWrapper = styled.div`
   margin: 0 0 5rem 0;
 
   @media ${mediaQueries.desktop} {
     margin: 0 0 10rem;
+  }
+`
+
+const StyledArticleLanguageButton = styled(ArticleLanguageButton)`
+  display: flex;
+  margin-top: 2rem;
+
+  @media ${mediaQueries.desktop} {
+    margin-top: 3rem;
   }
 `
 
@@ -82,8 +110,14 @@ const ArrowIconPrev = styled.img`
 `
 
 const ArticleSocialMediaListBottom = styled(ArticleSocialMediaList)`
-  margin: 2rem auto 4rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+
+  @media ${mediaQueries.tablet} {
+    margin-bottom: 1rem;
+  }
 `
+
 const ImgDescription = styled.p`
   display: block;
   margin-top: 1rem;
@@ -190,6 +224,7 @@ const ArticlePage = ({
     leadLong,
     gallery,
     recommendedArticles,
+    secondLanguageSlug,
   },
   posts,
 }) => {
@@ -243,7 +278,14 @@ const ArticlePage = ({
         />
       </Wrapper>
       <Wrapper size="Small" position="relative">
-        <ArticleSocialMediaList />
+        <SocialMediaListWrapper>
+          <ArticleSocialMediaList />
+          {secondLanguageSlug && (
+            <StyledArticleLanguageButton
+              secondLanguageSlug={secondLanguageSlug}
+            />
+          )}
+        </SocialMediaListWrapper>
         <Content
           html={body && body.childMarkdownRemark.html}
           lead={leadLong && leadLong.childMarkdownRemark.html}
@@ -261,7 +303,10 @@ const ArticlePage = ({
           </Gallery>
         )}
 
-        <ArticleSocialMediaListBottom />
+        <SocialMediaListWrapper>
+          <ArticleSocialMediaListBottom />
+        </SocialMediaListWrapper>
+
         <div>
           <HeaderStyled size="Biggest">{trans('READ_ALSO')}</HeaderStyled>
           <RecommendedArticles posts={recommendedAutoAndManually} />
