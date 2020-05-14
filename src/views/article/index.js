@@ -279,7 +279,7 @@ const ArticlePage = ({
       </Wrapper>
       <Wrapper size="Small" position="relative">
         <SocialMediaListWrapper>
-          <ArticleSocialMediaList />
+          <ArticleSocialMediaList title={title}/>
           {secondLanguageSlug && (
             <StyledArticleLanguageButton
               secondLanguageSlug={secondLanguageSlug}
@@ -302,11 +302,9 @@ const ArticlePage = ({
             </SliderStyled>
           </Gallery>
         )}
-
         <SocialMediaListWrapper>
-          <ArticleSocialMediaListBottom />
+          <ArticleSocialMediaListBottom title={title}/>
         </SocialMediaListWrapper>
-
         <div>
           <HeaderStyled size="Biggest">{trans('READ_ALSO')}</HeaderStyled>
           <RecommendedArticles posts={recommendedAutoAndManually} />

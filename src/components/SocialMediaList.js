@@ -73,12 +73,12 @@ class SocialMediaList extends React.Component {
     const {
       className,
       isWhite,
+      title,
       isSemiTransparent,
       isShareUrl,
       isBig,
       urls: { facebook, twitter, telegram, youtube, vk, academia },
     } = this.props
-
     return (
       <StyledList className={className}>
         {facebook && (
@@ -102,8 +102,8 @@ class SocialMediaList extends React.Component {
               url={
                 isShareUrl
                   ? `${twitter}${this.state.locationHref}&original_referer=${this.state.locationHref}
-                    &text=${this.state.locationHref}
-                    &via=novayapolsha`
+                    &text=${title} ${this.state.locationHref}
+                    &via=через Новая Польша`
                   : twitter
               }
             >
@@ -174,6 +174,7 @@ SocialMediaList.propTypes = {
   className: PropTypes.string,
   urls: PropTypes.object,
   isWhite: PropTypes.bool,
+  title: PropTypes.string,
   isSemiTransparent: PropTypes.bool,
   isShareUrl: PropTypes.bool,
   isBig: PropTypes.bool,
