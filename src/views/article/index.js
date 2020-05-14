@@ -243,7 +243,7 @@ const ArticlePage = ({
         />
       </Wrapper>
       <Wrapper size="Small" position="relative">
-        <ArticleSocialMediaList />
+        <ArticleSocialMediaList title={title} />
         <Content
           html={body && body.childMarkdownRemark.html}
           lead={leadLong && leadLong.childMarkdownRemark.html}
@@ -261,7 +261,7 @@ const ArticlePage = ({
           </Gallery>
         )}
 
-        <ArticleSocialMediaListBottom />
+        <ArticleSocialMediaListBottom title={title} />
         <div>
           <HeaderStyled size="Biggest">{trans('READ_ALSO')}</HeaderStyled>
           <RecommendedArticles posts={recommendedAutoAndManually} />

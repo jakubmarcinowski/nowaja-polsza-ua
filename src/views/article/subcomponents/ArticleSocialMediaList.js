@@ -25,11 +25,12 @@ const StyledArticleSocialMediaList = styled(SocialMediaList)`
   }
 `
 
-const ArticleSocialMediaList = ({ className }) => (
+const ArticleSocialMediaList = ({ className, title }) => (
   <StyledArticleSocialMediaList
     isBig
     isShareUrl
     isSemiTransparent
+    title={title}
     urls={shareSocialMediaUrls}
     className={className}
   />
