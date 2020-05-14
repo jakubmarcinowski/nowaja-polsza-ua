@@ -38,6 +38,7 @@ const ArticleSocialMediaList = ({ className, title }) => (
 
 ArticleSocialMediaList.propTypes = {
   className: PropTypes.string,
+  title: PropTypes.string,
 }
 
 export default ArticleSocialMediaList

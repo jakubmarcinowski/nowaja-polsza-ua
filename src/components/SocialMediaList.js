@@ -166,6 +166,7 @@ SocialMediaList.propTypes = {
   className: PropTypes.string,
   urls: PropTypes.object,
   isWhite: PropTypes.bool,
+  title: PropTypes.string,
   isSemiTransparent: PropTypes.bool,
   isShareUrl: PropTypes.bool,
   isBig: PropTypes.bool,

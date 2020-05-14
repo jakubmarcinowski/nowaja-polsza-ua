@@ -226,6 +226,7 @@ PageHeader.propTypes = {
       src: PropTypes.string,
       srcSet: PropTypes.string,
     }),
+    title: PropTypes.string,
   }),
   heroImageCredit: PropTypes.string,
   categories: PropTypes.arrayOf(
