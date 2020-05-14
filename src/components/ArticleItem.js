@@ -97,7 +97,8 @@ const ArticleItem = ({
     body.childMarkdownRemark &&
     body.childMarkdownRemark.html &&
     body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
-
+  const img = heroImageThumbnail ? heroImageThumbnail : heroImage
+  img.title = `${title} image`
   return (
     <ArticleItemContainer>
       <ImgBox isMultimedia={isMultimedia}>
@@ -111,10 +112,7 @@ const ArticleItem = ({
         )}
         <ThumbnailWrapper>
           <Link to={`/article/${slug}`} title={slug}>
-            <Thumbnail
-              img={heroImageThumbnail ? heroImageThumbnail : heroImage}
-              aspectRatio={1.76}
-            />
+            <Thumbnail img={img} aspectRatio={1.76} />
           </Link>
         </ThumbnailWrapper>
         {!noCategoryLabel && categories && (

@@ -151,61 +151,64 @@ const PageHeader = ({
   authors,
   categories,
   authorsWithoutAccount,
-}) => (
-  <StyledPageHeader>
-    <ImgBox>
-      <ImgWrapper img={heroImage} aspectRatio={2.5} />
-      {heroImageCredit && <Credit>{heroImageCredit}</Credit>}
-    </ImgBox>
-    <Banner>
-      <InfoBox>
-        <InfoItem>
-          <Date>{publishDate}</Date>
-          {(authors || authorsWithoutAccount) && <DateDivider />}
-        </InfoItem>
-        <InfoItem>
-          {authors && (
-            <>
-              {authors.map(({ slug, name }, i, authors) => (
-                <>
-                  <AuthorLink key={slug} to={`/author/${slug}`}>
-                    {name}
-                  </AuthorLink>
-                  {!!authors[i + 1] && <>,&nbsp;</>}
-                </>
-              ))}
-            </>
-          )}
-          {authorsWithoutAccount && (
-            <>
-              {' '}
-              <TextLabel>{authorsWithoutAccount}</TextLabel>
-            </>
-          )}
-        </InfoItem>
-      </InfoBox>
-      <HeaderWrapper>
-        <StyledHeader
-          lineHeight="Biggest"
-          size="Biggest"
-          color="dark"
-          weight="Bold"
-          margin="0 0 2rem"
-        >
-          {title}
-        </StyledHeader>
-      </HeaderWrapper>
-      <CategoriesBox>
-        {categories &&
-          categories.map(category => (
-            <LabelLink to={`/category/${category.slug}`} key={category.slug}>
-              <Label color={category.color}>{category.title}</Label>
-            </LabelLink>
-          ))}
-      </CategoriesBox>
-    </Banner>
-  </StyledPageHeader>
-)
+}) => {
+  heroImage.title = heroImageCredit
+  return (
+    <StyledPageHeader>
+      <ImgBox>
+        <ImgWrapper img={heroImage} aspectRatio={2.5} />
+        {heroImageCredit && <Credit>{heroImageCredit}</Credit>}
+      </ImgBox>
+      <Banner>
+        <InfoBox>
+          <InfoItem>
+            <Date>{publishDate}</Date>
+            {(authors || authorsWithoutAccount) && <DateDivider />}
+          </InfoItem>
+          <InfoItem>
+            {authors && (
+              <>
+                {authors.map(({ slug, name }, i, authors) => (
+                  <>
+                    <AuthorLink key={slug} to={`/author/${slug}`}>
+                      {name}
+                    </AuthorLink>
+                    {!!authors[i + 1] && <>,&nbsp;</>}
+                  </>
+                ))}
+              </>
+            )}
+            {authorsWithoutAccount && (
+              <>
+                {' '}
+                <TextLabel>{authorsWithoutAccount}</TextLabel>
+              </>
+            )}
+          </InfoItem>
+        </InfoBox>
+        <HeaderWrapper>
+          <StyledHeader
+            lineHeight="Biggest"
+            size="Biggest"
+            color="dark"
+            weight="Bold"
+            margin="0 0 2rem"
+          >
+            {title}
+          </StyledHeader>
+        </HeaderWrapper>
+        <CategoriesBox>
+          {categories &&
+            categories.map(category => (
+              <LabelLink to={`/category/${category.slug}`} key={category.slug}>
+                <Label color={category.color}>{category.title}</Label>
+              </LabelLink>
+            ))}
+        </CategoriesBox>
+      </Banner>
+    </StyledPageHeader>
+  )
+}
 
 PageHeader.defaultProps = {
   title: '',
@@ -223,6 +226,7 @@ PageHeader.propTypes = {
       src: PropTypes.string,
       srcSet: PropTypes.string,
     }),
+    title: PropTypes.string,
   }),
   heroImageCredit: PropTypes.string,
   categories: PropTypes.arrayOf(
