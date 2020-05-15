@@ -43,14 +43,14 @@ class AuthorTemplate extends React.Component {
 export default AuthorTemplate
 
 export const pageQuery = graphql`
-  query AuthorByContentfulId($contentful_id: String!) {
+  query AuthorByContentfulId($id: String!, $postIds: [String!]) {
     site {
       siteMetadata {
         title
         description
       }
     }
-    contentfulPerson(contentful_id: { eq: $contentful_id }) {
+    contentfulPerson(id: { eq: $id }) {
       name
       image {
         fluid(maxWidth: 1920, resizingBehavior: SCALE) {
@@ -70,9 +70,7 @@ export const pageQuery = graphql`
       academia
     }
     allContentfulBlogPost(
-      filter: {
-        authors: { elemMatch: { contentful_id: { in: [$contentful_id] } } }
-      }
+      filter: { id: { in: $postIds } }
       sort: { fields: [publishDate], order: DESC }
     ) {
       edges {

@@ -8,6 +8,7 @@ import { articleType } from 'types/article'
 import { mediaQueries } from 'utils/mediaQueries'
 import Button from 'components/Button'
 import { trans } from 'utils/translate'
+import { Link } from 'gatsby'
 
 const StyledList = styled.ul`
   display: flex;
@@ -90,6 +91,8 @@ class ArticlesList extends React.Component {
       size,
       noMargin,
       isOnHomepage,
+      prevPagePath,
+      nextPagePath,
     } = this.props
     const { postsNumber } = this.state
     const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
@@ -131,12 +134,17 @@ class ArticlesList extends React.Component {
             ))}
         </StyledList>
 
+        {prevPagePath && <Link to={prevPagePath}>Prev</Link>}
+        {nextPagePath && <Link to={nextPagePath}>Next</Link>}
+
         {limit && postsNumber < posts.length && (
-          <ButtonWrapper>
-            <Button onClick={this.increasePostsNumber} size="large">
-              {trans('LOAD_MORE')}
-            </Button>
-          </ButtonWrapper>
+          <>
+            <ButtonWrapper>
+              <Button onClick={this.increasePostsNumber} size="large">
+                {trans('LOAD_MORE')}
+              </Button>
+            </ButtonWrapper>
+          </>
         )}
       </>
     )
@@ -153,6 +161,8 @@ ArticlesList.propTypes = {
   noMargin: PropTypes.bool,
   size: PropTypes.string,
   isOnHomepage: PropTypes.bool,
+  prevPagePath: PropTypes.string,
+  nextPagePath: PropTypes.string,
 }
 
 export default ArticlesList

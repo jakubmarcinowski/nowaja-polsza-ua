@@ -83,7 +83,6 @@ const ArticleItem = ({
     categories,
     heroImage,
     heroImageThumbnail,
-    publishDate,
     summary,
   },
   noCategoryLabel,
@@ -105,7 +104,7 @@ const ArticleItem = ({
         {isMultimedia && (
           <Link to={`/article/${slug}`}>
             <IconPlay
-              src={isSoundCloud ? headphonesIcon : playIcon}
+              src={!isSoundCloud ? headphonesIcon : playIcon}
               alt="Play icon"
             />
           </Link>
@@ -129,7 +128,6 @@ const ArticleItem = ({
       <ArticleInfoBox
         authors={authors}
         authorsWithoutAccount={authorsWithoutAccount}
-        publishDate={publishDate}
       />
       {slug && (
         <Text>

@@ -41,10 +41,7 @@ const ArticleTemplate = props => {
 export default ArticleTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByContentfulId(
-    $contentful_id: String!
-    $categories_ids: [String!]
-  ) {
+  query BlogPostById($id: String!, $categories_ids: [String!]) {
     site {
       siteMetadata {
         title
@@ -53,8 +50,8 @@ export const pageQuery = graphql`
 
     allContentfulBlogPost(
       filter: {
-        contentful_id: { ne: $contentful_id }
-        categories: { elemMatch: { contentful_id: { in: $categories_ids } } }
+        id: { ne: $id }
+        categories: { elemMatch: { id: { in: $categories_ids } } }
       }
       sort: { fields: [publishDate], order: DESC }
       limit: 2
@@ -68,11 +65,6 @@ export const pageQuery = graphql`
             }
           }
           summary
-          body {
-            childMarkdownRemark {
-              html
-            }
-          }
           slug
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
@@ -81,9 +73,9 @@ export const pageQuery = graphql`
             slug
           }
           authorsWithoutAccount
-          contentful_id
+          id
           categories {
-            contentful_id
+            id
             title
             color
             slug
@@ -97,7 +89,7 @@ export const pageQuery = graphql`
       }
     }
 
-    contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
+    contentfulBlogPost(id: { eq: $id }) {
       title
       leadLong {
         childMarkdownRemark {
@@ -112,7 +104,7 @@ export const pageQuery = graphql`
       }
       authorsWithoutAccount
       categories {
-        contentful_id
+        id
         title
         slug
         color
@@ -173,9 +165,9 @@ export const pageQuery = graphql`
           slug
         }
         authorsWithoutAccount
-        contentful_id
+        id
         categories {
-          contentful_id
+          id
           title
           color
           slug

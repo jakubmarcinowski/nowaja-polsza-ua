@@ -3,6 +3,8 @@ const Promise = require('bluebird')
 const path = require('path')
 const webpack = require('webpack')
 
+const postsPerPage = 6
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -12,14 +14,35 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allContentfulBlogPost {
+            allContentfulBlogPost(
+              sort: { fields: [publishDate], order: DESC }
+            ) {
               edges {
                 node {
-                  contentful_id
+                  id
                   slug
                   categories {
-                    contentful_id
+                    id
                   }
+                  authors {
+                    id
+                  }
+                }
+              }
+            }
+            allContentfulCategory {
+              edges {
+                node {
+                  id
+                  slug
+                }
+              }
+            }
+            allContentfulPerson {
+              edges {
+                node {
+                  id
+                  slug
                 }
               }
             }
@@ -32,84 +55,93 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const posts = result.data.allContentfulBlogPost.edges
+        const categoryPosts = result.data.allContentfulCategory.edges.reduce(
+          (prev, current) => ({
+            ...prev,
+            [current.node.id]: {
+              slug: current.node.slug,
+              posts: [],
+            },
+          }),
+          {}
+        )
+        const authorPosts = result.data.allContentfulPerson.edges.reduce(
+          (prev, current) => ({
+            ...prev,
+            [current.node.id]: {
+              slug: current.node.slug,
+              posts: [],
+            },
+          }),
+          {}
+        )
+
         posts.forEach((post, index) => {
           createPage({
             path: `/article/${post.node.slug}/`,
             component: blogPost,
             context: {
-              contentful_id: post.node.contentful_id,
+              id: post.node.id,
               categories_ids: post.node.categories
-                ? post.node.categories.map(({ contentful_id }) => contentful_id)
+                ? post.node.categories.map(({ id }) => id)
                 : [],
             },
           })
-        })
-      })
-    )
 
-    const authorTemplate = path.resolve('./src/templates/author.js')
-    resolve(
-      graphql(
-        `
-          {
-            allContentfulPerson {
-              edges {
-                node {
-                  contentful_id
-                  slug
-                }
-              }
-            }
+          post.node.categories.forEach(category => {
+            categoryPosts[category.id].posts.push(post.node.id)
+          })
+
+          if (post.node.authors) {
+            post.node.authors.forEach(author => {
+              authorPosts[author.id].posts.push(post.node.id)
+            })
           }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
-        }
+        })
 
-        const authors = result.data.allContentfulPerson.edges
-        authors.forEach((author, index) => {
-          createPage({
-            path: `/author/${author.node.slug}/`,
-            component: authorTemplate,
-            context: {
-              contentful_id: author.node.contentful_id,
-            },
+        Object.keys(categoryPosts).forEach(categoryId => {
+          const category = categoryPosts[categoryId]
+          const slugBase = `/category/${category.slug}`
+          const numPages = Math.ceil(category.posts.length / postsPerPage)
+
+          Array.from({ length: numPages }).forEach((_, i) => {
+            createPage({
+              path: i === 0 ? slugBase : `${slugBase}/${i + 1}`,
+              component: path.resolve('./src/templates/category.js'),
+              context: {
+                id: categoryId,
+                postIds: category.posts.slice(
+                  i * postsPerPage,
+                  (i + 1) * postsPerPage
+                ),
+                prevPagePath: i === 0 ? null : `${slugBase}/${i}`,
+                nextPagePath:
+                  i === numPages - 1 ? null : `${slugBase}/${i + 2}`,
+              },
+            })
           })
         })
-      })
-    )
 
-    const category = path.resolve('./src/templates/category.js')
-    resolve(
-      graphql(
-        `
-          {
-            allContentfulCategory {
-              edges {
-                node {
-                  contentful_id
-                  slug
-                }
-              }
-            }
-          }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
-        }
+        Object.keys(authorPosts).forEach(authorId => {
+          const author = authorPosts[authorId]
+          const slugBase = `/author/${author.slug}`
+          const numPages = Math.ceil(author.posts.length / postsPerPage)
 
-        const categories = result.data.allContentfulCategory.edges
-        categories.forEach(({ node: { contentful_id, slug } }, index) => {
-          createPage({
-            path: `/category/${slug}/`,
-            component: category,
-            context: {
-              contentful_id: contentful_id,
-            },
+          Array.from({ length: numPages }).forEach((_, i) => {
+            createPage({
+              path: i === 0 ? slugBase : `${slugBase}/${i + 1}`,
+              component: path.resolve('./src/templates/author.js'),
+              context: {
+                id: authorId,
+                postIds: author.posts.slice(
+                  i * postsPerPage,
+                  (i + 1) * postsPerPage
+                ),
+                prevPagePath: i === 0 ? null : `${slugBase}/${i}`,
+                nextPagePath:
+                  i === numPages - 1 ? null : `${slugBase}/${i + 2}`,
+              },
+            })
           })
         })
       })
