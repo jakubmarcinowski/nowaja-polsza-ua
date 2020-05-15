@@ -27,8 +27,11 @@ const createCategorizedPostsPages = (
     const numPages = Math.ceil(category.posts.length / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, i) => {
+      const isFirstPage = i === 0
+      const isLastPage = i === numPages - 1
+
       createPage({
-        path: i === 0 ? slugBase : `${slugBase}/${i + 1}`,
+        path: isFirstPage ? slugBase : `${slugBase}/${i + 1}`,
         component: componentPath,
         context: {
           id: categoryId,
@@ -36,8 +39,8 @@ const createCategorizedPostsPages = (
             i * postsPerPage,
             (i + 1) * postsPerPage
           ),
-          prevPagePath: i === 0 ? null : `${slugBase}/${i === 1 ? '' : i}`,
-          nextPagePath: i === numPages - 1 ? null : `${slugBase}/${i + 2}`,
+          prevPagePath: isFirstPage ? null : `${slugBase}/${i === 1 ? '' : i}`,
+          nextPagePath: isLastPage ? null : `${slugBase}/${i + 2}`,
         },
       })
     })
