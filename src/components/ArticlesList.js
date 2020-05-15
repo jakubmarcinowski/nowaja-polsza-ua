@@ -14,7 +14,6 @@ const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   margin: 2.5rem 0 0;
-  padding: 0;
   list-style: none;
 
   @media ${mediaQueries.tablet} {
@@ -56,11 +55,22 @@ const ListItem = styled.li`
   }
 `
 const ButtonWrapper = styled.div`
-  text-align: center;
+  display: flex;
   margin-bottom: 4rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+
+  @media ${mediaQueries.phoneLandscape} {
+    flex-direction: row;
+  }
 
   & > *:not(:first-child) {
-    margin-left: 4rem;
+    margin: 0 0 2rem;
+
+    @media ${mediaQueries.phoneLandscape} {
+      margin: 0 0 0 4rem;
+    }
   }
 `
 class ArticlesList extends React.Component {
