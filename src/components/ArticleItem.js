@@ -10,7 +10,6 @@ import ArticleInfoBox from 'components/ArticleInfoBox'
 import Header from 'components/Header'
 import PhotoLabel from 'components/PhotoLabel'
 import playIcon from 'static/icon-play.svg'
-import headphonesIcon from 'static/icon-headphones.svg'
 import AnimatedLink from 'components/AnimatedLink'
 
 const ImgBox = styled.div`
@@ -76,14 +75,12 @@ const Text = styled.div`
 const ArticleItem = ({
   article: {
     title,
-    body,
     slug,
     authors,
     authorsWithoutAccount,
     categories,
     heroImage,
     heroImageThumbnail,
-    publishDate,
     summary,
   },
   noCategoryLabel,
@@ -91,23 +88,15 @@ const ArticleItem = ({
   const isMultimedia =
     categories &&
     categories.filter(({ slug }) => slug === 'mediateka').length > 0
-
-  const isSoundCloud =
-    body &&
-    body.childMarkdownRemark &&
-    body.childMarkdownRemark.html &&
-    body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
   const img = heroImageThumbnail ? heroImageThumbnail : heroImage
   img.title = `${title} image`
+
   return (
     <ArticleItemContainer>
       <ImgBox isMultimedia={isMultimedia}>
         {isMultimedia && (
           <Link to={`/article/${slug}`}>
-            <IconPlay
-              src={isSoundCloud ? headphonesIcon : playIcon}
-              alt="Play icon"
-            />
+            <IconPlay src={playIcon} alt="Play icon" />
           </Link>
         )}
         <ThumbnailWrapper>
@@ -129,7 +118,6 @@ const ArticleItem = ({
       <ArticleInfoBox
         authors={authors}
         authorsWithoutAccount={authorsWithoutAccount}
-        publishDate={publishDate}
       />
       {slug && (
         <Text>

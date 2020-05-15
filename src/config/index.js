@@ -7,6 +7,7 @@ export const getArticleUrlInSecondLanguage = slug =>
   `${meta.ua.siteUrl}article/${slug}`
 
 export const translations = {
+  LOAD_PREVIOUS: 'Вернуться',
   LOAD_MORE: 'Загрузить еще',
   ALL_AUTHOR_TEXTS: 'Все тексты автора',
   BRAND: 'НОВАЯ ПОЛЬША',
