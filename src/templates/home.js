@@ -64,11 +64,6 @@ export const pageQuery = graphql`
           id
           title
           slug
-          body {
-            childMarkdownRemark {
-              html
-            }
-          }
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
             id
@@ -89,11 +84,6 @@ export const pageQuery = graphql`
           heroImageThumbnail {
             fluid(maxWidth: 620, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
-            }
-          }
-          leadLong {
-            childMarkdownRemark {
-              html
             }
           }
           summary
@@ -125,11 +115,6 @@ export const pageQuery = graphql`
               title
               slug
               color
-            }
-            leadLong {
-              childMarkdownRemark {
-                html
-              }
             }
             summary
             heroImage {

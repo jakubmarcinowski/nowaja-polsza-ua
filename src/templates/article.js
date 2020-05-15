@@ -59,11 +59,6 @@ export const pageQuery = graphql`
       edges {
         node {
           title
-          leadLong {
-            childMarkdownRemark {
-              html
-            }
-          }
           summary
           slug
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")

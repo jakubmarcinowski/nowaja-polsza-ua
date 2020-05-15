@@ -7,7 +7,6 @@ import ImgWrapper from 'components/ImgWrapper'
 import Header from 'components/Header'
 import PhotoLabel from 'components/PhotoLabel'
 import playIcon from 'static/icon-play.svg'
-import headphonesIcon from 'static/icon-close.svg'
 import AnimatedLink from 'components/AnimatedLink'
 import { mediaQueries } from 'utils/mediaQueries'
 
@@ -106,20 +105,11 @@ const TheNewestItem = ({
     categories &&
     categories.filter(({ slug }) => slug === 'mediateka').length > 0
 
-  const isSoundCloud =
-    body &&
-    body.childMarkdownRemark &&
-    body.childMarkdownRemark.html &&
-    body.childMarkdownRemark.html.includes('src="https://w.soundcloud.com')
-
   return (
     <ImgBox isMultimedia={isMultimedia}>
       {isMultimedia && (
         <Link to={`/article/${slug}`} title={slug}>
-          <IconPlay
-            src={isSoundCloud ? headphonesIcon : playIcon}
-            alt="Play icon"
-          />
+          <IconPlay src={playIcon} alt="Play icon" />
         </Link>
       )}
       <ThumbnailWrapper>
