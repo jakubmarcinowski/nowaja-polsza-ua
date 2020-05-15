@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { intersectionBy, get } from 'lodash/fp'
+import { get } from 'lodash/fp'
 
 import Layout from 'components/Layout'
 import ArticlePage from 'views/article/index'

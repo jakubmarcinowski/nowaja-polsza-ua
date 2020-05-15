@@ -99,7 +99,7 @@ const Info = styled.div`
 `
 
 const TheNewestItem = ({
-  article: { title, body, slug, categories, heroImage, heroImageThumbnail },
+  article: { title, slug, categories, heroImage, heroImageThumbnail },
 }) => {
   const isMultimedia =
     categories &&
