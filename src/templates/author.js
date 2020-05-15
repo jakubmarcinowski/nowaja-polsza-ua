@@ -16,6 +16,8 @@ class AuthorTemplate extends React.Component {
     const imageSrc = author.image
       ? `https://${author.image.fluid.src.substring(2)}`
       : ''
+    const prevPagePath = get(this.props, 'pageContext.prevPagePath')
+    const nextPagePath = get(this.props, 'pageContext.nextPagePath')
 
     return (
       <Layout>
@@ -30,7 +32,13 @@ class AuthorTemplate extends React.Component {
             <Wrapper>
               <Author author={author} />
               {authorPosts && (
-                <ArticlesList posts={authorPosts} limit={6} initialLimit={6} />
+                <ArticlesList
+                  posts={authorPosts}
+                  limit={6}
+                  initialLimit={6}
+                  prevPagePath={prevPagePath}
+                  nextPagePath={nextPagePath}
+                />
               )}
             </Wrapper>
           </>

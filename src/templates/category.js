@@ -11,12 +11,11 @@ import { trans } from 'utils/translate'
 
 class CategoryTemplate extends React.Component {
   render() {
-    const {
-      pageContext: { prevPagePath, nextPagePath },
-    } = this.props
     const category = get(this.props, 'data.contentfulCategory')
     const categoryPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const description = get(this.props, 'data.site.siteMetadata.description')
+    const prevPagePath = get(this.props, 'pageContext.prevPagePath')
+    const nextPagePath = get(this.props, 'pageContext.nextPagePath')
 
     return (
       <Layout currentCategory={category}>

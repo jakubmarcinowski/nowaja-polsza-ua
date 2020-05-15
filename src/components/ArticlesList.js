@@ -58,35 +58,17 @@ const ListItem = styled.li`
 const ButtonWrapper = styled.div`
   text-align: center;
   margin-bottom: 4rem;
+
+  & > *:not(:first-child) {
+    margin-left: 4rem;
+  }
 `
 class ArticlesList extends React.Component {
-  state = {
-    postsNumber: this.props.initialLimit,
-  }
-
-  componentDidMount() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const postsLimit = parseInt(urlParams.get('postsLimit'))
-    const { limit } = this.props
-
-    limit && postsLimit && this.setState({ postsNumber: postsLimit })
-  }
-
-  increasePostsNumber = () => {
-    const { postsNumber } = this.state
-    const { limit } = this.props
-
-    this.setState({ postsNumber: postsNumber + limit }, () => {
-      window.history.pushState('', '', `?postsLimit=${this.state.postsNumber}`)
-    })
-  }
-
   render() {
     const {
       posts,
       stickedPost,
       stickedPostActive,
-      limit,
       noCategoryLabel,
       size,
       noMargin,
@@ -94,19 +76,16 @@ class ArticlesList extends React.Component {
       prevPagePath,
       nextPagePath,
     } = this.props
-    const { postsNumber } = this.state
-    const slicedPosts = postsNumber ? posts.slice(0, postsNumber) : posts
     const eventsContainerPosition = 3
-    const postsBeforeEventsContainer = slicedPosts.slice(
+    const postsBeforeEventsContainer = posts.slice(
       0,
       eventsContainerPosition + 1
     )
-    const postsAfterEventsContainer = slicedPosts.slice(
-      eventsContainerPosition + 1
-    )
+    const postsAfterEventsContainer = posts.slice(eventsContainerPosition + 1)
+
     return (
       <>
-        <StyledList noMargin={noMargin}>
+        <StyledList noMargin={noMargin} id="articles-grid">
           {postsBeforeEventsContainer &&
             postsBeforeEventsContainer.map(({ node }) => (
               <ListItem key={node.slug} size={size} isOnHomepage={isOnHomepage}>
@@ -134,17 +113,26 @@ class ArticlesList extends React.Component {
             ))}
         </StyledList>
 
-        {prevPagePath && <Link to={prevPagePath}>Prev</Link>}
-        {nextPagePath && <Link to={nextPagePath}>Next</Link>}
-
-        {limit && postsNumber < posts.length && (
-          <>
-            <ButtonWrapper>
-              <Button onClick={this.increasePostsNumber} size="large">
-                {trans('LOAD_MORE')}
-              </Button>
-            </ButtonWrapper>
-          </>
+        {(prevPagePath || nextPagePath) && (
+          <ButtonWrapper>
+            {prevPagePath && (
+              <Link to={`${prevPagePath}#articles-grid`}>
+                <Button onClick={this.increasePostsNumber} size="large">
+                  {trans('LOAD_PREVIOUS')}
+                </Button>
+              </Link>
+            )}
+            {nextPagePath && (
+              <Link
+                to={`${nextPagePath}#articles-grid`}
+                state={{ pageChanged: true }}
+              >
+                <Button onClick={this.increasePostsNumber} size="large">
+                  {trans('LOAD_MORE')}
+                </Button>
+              </Link>
+            )}
+          </ButtonWrapper>
         )}
       </>
     )

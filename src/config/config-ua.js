@@ -3,6 +3,7 @@ import logo from 'static/logo-cprdip-extended-pl.png'
 export const logoCprdipExtended = logo
 
 export const translations = {
+  LOAD_PREVIOUS: 'jeszcze nie wyspecyfikowane',
   LOAD_MORE: 'Більше текстів',
   ALL_AUTHOR_TEXTS: 'Всі тексти автора',
   BRAND: 'НОВА ПОЛЬЩА',
