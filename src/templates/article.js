@@ -13,14 +13,6 @@ const ArticleTemplate = props => {
     ? `https://${post.heroImage.fluid.src.substring(2)}`
     : ''
 
-  const recommendedArticles = posts.filter(({ node: { categories } }) => {
-    const postIntersection = intersectionBy(
-      'contentful_id',
-      categories,
-      post.categories
-    )
-    return !!postIntersection.length
-  })
   return (
     <Layout>
       {post && (
@@ -31,7 +23,7 @@ const ArticleTemplate = props => {
             type="summary_large_image"
             image={imageSrc}
           />
-          <ArticlePage article={post} posts={recommendedArticles} />
+          <ArticlePage article={post} posts={posts} />
         </>
       )}
     </Layout>
