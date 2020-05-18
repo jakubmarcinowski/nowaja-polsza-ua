@@ -170,7 +170,7 @@ class HighlightedArticle extends Component {
             {summary && (
               <Lead isActive={isActive}>
                 <Link to={`/article/${slug}`} title={slug}>
-                  <Paragraph color="white" lineHeight="Medium">
+                  <Paragraph color="White" lineHeight="Medium">
                     {summary}
                   </Paragraph>
                 </Link>

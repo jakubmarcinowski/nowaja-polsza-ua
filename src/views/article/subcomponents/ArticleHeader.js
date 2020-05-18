@@ -190,7 +190,7 @@ const PageHeader = ({
           <StyledHeader
             lineHeight="Biggest"
             size="Biggest"
-            color="dark"
+            color="Dark"
             weight="Bold"
             margin="0 0 2rem"
           >
