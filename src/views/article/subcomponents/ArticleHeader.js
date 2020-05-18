@@ -9,9 +9,10 @@ import Label from 'components/Label'
 import { mediaQueries } from 'utils/mediaQueries'
 
 const StyledPageHeader = styled.header`
+  text-align: center;
+
   @media ${mediaQueries.desktop} {
     position: relative;
-    text-align: center;
   }
 `
 const ImgBox = styled.div`
@@ -38,10 +39,11 @@ const Banner = styled.div`
   }
 `
 const HeaderWrapper = styled.div`
+  margin: auto;
+
   @media ${mediaQueries.desktop} {
     order: 1;
     max-width: 800px;
-    margin: auto;
   }
 `
 const StyledHeader = styled(Header)`
@@ -66,10 +68,10 @@ const InfoBox = styled.div`
   flex-wrap: wrap;
   margin-bottom: 1rem;
   font-size: 1.4rem;
+  justify-content: center;
 
   @media ${mediaQueries.desktop} {
     order: 2;
-    justify-content: center;
     margin-bottom: 2rem;
     font-size: 1.6rem;
   }
@@ -110,10 +112,10 @@ const CategoriesBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+  justify-content: center;
 
   @media ${mediaQueries.desktop} {
     order: 3;
-    justify-content: center;
   }
 `
 const TextLabel = styled.label`
