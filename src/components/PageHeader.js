@@ -41,7 +41,7 @@ const StyledPageHeader = styled.header`
   }
 `
 
-const StyledPlaceholder = styled.div`
+const PageHeaderPlaceholder = styled.div`
   content: '';
   height: ${theme.grid.pageHeaderHeight};
 `
@@ -89,7 +89,7 @@ const PageHeader = ({ currentCategory }) => {
             allContentfulHomepageStaticContent.edges[0].node &&
             allContentfulHomepageStaticContent.edges[0].node.headerPhoto && (
               <>
-                {fixed && <StyledPlaceholder />}
+                {fixed && <PageHeaderPlaceholder />}
                 <StyledPageHeader
                   currentCategory={currentCategory}
                   headerPhoto={
