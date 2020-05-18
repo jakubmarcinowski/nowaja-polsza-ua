@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import { childrenType } from 'types/children'
 import { mediaQueries } from 'utils/mediaQueries'
@@ -19,7 +20,8 @@ const Indicator = styled.div`
   transition: transform ${props => props.theme.animations.default};
 
   @media ${mediaQueries.desktop} {
-    top: 0;
+    top: ${({ theme }) => theme.grid.categoriesDesktopHeight};
+    padding-top: 1px;
     height: 9px;
   }
 
@@ -34,12 +36,12 @@ const Indicator = styled.div`
   }
 `
 
-const ScrollIndicator = ({ children }) => {
+const ScrollIndicator = ({ children, offset }) => {
   const ref = useRef()
   const [scrollPercentage, setScrollPercentage] = useState(0)
   const onScroll = useCallback(() => {
-    const elHeight = ref.current.offsetHeight
-    const elTop = ref.current.getBoundingClientRect().top
+    const elHeight = ref.current.offsetHeight + offset
+    const elTop = ref.current.getBoundingClientRect().top - offset
     const percentage = (-elTop / elHeight) * 100
     setScrollPercentage(Math.min(100, Math.max(0, percentage)))
   })
@@ -58,8 +60,13 @@ const ScrollIndicator = ({ children }) => {
   )
 }
 
+ScrollIndicator.defaultProps = {
+  offset: 0,
+}
+
 ScrollIndicator.propTypes = {
   children: childrenType,
+  offset: PropTypes.number,
 }
 
 export default ScrollIndicator

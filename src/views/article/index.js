@@ -244,7 +244,7 @@ const ArticlePage = ({
         />
       </Wrapper>
       <Wrapper size="Small" position="relative">
-        <ScrollIndicator>
+        <ScrollIndicator offset={300}>
           <ArticleSocialMediaList title={title} />
           <Content
             html={body && body.childMarkdownRemark.html}
