@@ -35,4 +35,5 @@ export const articleType = PropTypes.shape({
   title: PropTypes.string,
   summary: PropTypes.string,
   galleryDescription: PropTypes.string,
+  secondLanguageSlug: PropTypes.string,
 })

@@ -1,8 +1,13 @@
 import logo from 'static/logo-cprdip-extended.png'
+const meta = require('./../../meta')
 
 export const logoCprdipExtended = logo
 
+export const getArticleUrlInSecondLanguage = slug =>
+  `${meta.ua.siteUrl}article/${slug}`
+
 export const translations = {
+  LOAD_PREVIOUS: 'Вернуться',
   LOAD_MORE: 'Загрузить еще',
   ALL_AUTHOR_TEXTS: 'Все тексты автора',
   BRAND: 'НОВАЯ ПОЛЬША',
@@ -24,4 +29,5 @@ export const translations = {
     'Очень жаль, но запрашиваемая вами страница не найдена. Ничего страшного! Другие интересные статьи вы можете прочитать на',
   LEARN_MORE: 'Узнать больше',
   OUR_PAGE: 'нашей странице',
+  READ_IN_SECOND_LANGUAGE: 'Читати українською',
 }

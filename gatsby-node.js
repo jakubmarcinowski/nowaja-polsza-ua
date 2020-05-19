@@ -3,6 +3,120 @@ const Promise = require('bluebird')
 const path = require('path')
 const webpack = require('webpack')
 
+const initCategorizePostsByNodes = nodes =>
+  nodes.reduce(
+    (prev, current) => ({
+      ...prev,
+      [current.node.id]: {
+        slug: current.node.slug,
+        posts: [],
+      },
+    }),
+    {}
+  )
+
+const createCategorizedPostsPages = (
+  categorizedPosts,
+  { getSlugBase, componentPath, createPage }
+) => {
+  const postsPerPage = 6
+
+  Object.keys(categorizedPosts).forEach(categoryId => {
+    const category = categorizedPosts[categoryId]
+    const slugBase = getSlugBase(category.slug)
+    const numPages = Math.ceil(category.posts.length / postsPerPage)
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      const isFirstPage = i === 0
+      const isLastPage = i === numPages - 1
+
+      createPage({
+        path: isFirstPage ? slugBase : `${slugBase}/${i + 1}`,
+        component: componentPath,
+        context: {
+          id: categoryId,
+          postIds: category.posts.slice(
+            i * postsPerPage,
+            (i + 1) * postsPerPage
+          ),
+          prevPagePath: isFirstPage ? null : `${slugBase}/${i === 1 ? '' : i}`,
+          nextPagePath: isLastPage ? null : `${slugBase}/${i + 2}`,
+        },
+      })
+    })
+  })
+}
+
+const getAllHighlightedPosts = (
+  posts,
+  { stickedPostActive, highlightedPostsData }
+) => {
+  const {
+    post: highlightedPost,
+    posts: highlightedPosts,
+    highlightMorePosts,
+  } = highlightedPostsData
+
+  let allHighlightedPosts = posts.filter(
+    ({ node: { id } }) => highlightedPost.id !== id
+  )
+
+  if (highlightMorePosts && highlightedPosts) {
+    const moreHighlightedPosts = highlightedPosts.map(article => {
+      return { node: article }
+    })
+
+    let postsWithoutDuplicates = allHighlightedPosts.filter(
+      post =>
+        !moreHighlightedPosts.find(
+          highlightedPost => highlightedPost.node.id === post.node.id
+        )
+    )
+
+    if (stickedPostActive) {
+      postsWithoutDuplicates = postsWithoutDuplicates.filter(
+        post => stickedPost.id !== post.node.id
+      )
+    }
+
+    allHighlightedPosts = moreHighlightedPosts.concat(postsWithoutDuplicates)
+  }
+
+  return allHighlightedPosts
+}
+
+const createHomePagePages = (
+  posts,
+  { stickedPostActive, highlightedPostsData, createPage }
+) => {
+  const allHighlightedPosts = getAllHighlightedPosts(posts, {
+    stickedPostActive,
+    highlightedPostsData,
+  })
+
+  const postsPerPage = isFirstPage =>
+    isFirstPage && stickedPostActive ? 11 : 12
+  const newestPosts = allHighlightedPosts.splice(0, 4)
+
+  for (i = 0; allHighlightedPosts.length > 0; i++) {
+    const isFirstPage = i === 0
+    const postsOnPage = allHighlightedPosts.splice(0, postsPerPage(isFirstPage))
+    const isLastPage = allHighlightedPosts.length === 0
+
+    createPage({
+      path: isFirstPage ? '/' : `/${i + 1}`,
+      component: path.resolve('./src/templates/home.js'),
+      context: {
+        highlightedPostIds: [...newestPosts, ...postsOnPage].map(
+          post => post.node.id
+        ),
+        prevPagePath: isFirstPage ? null : `/${i === 1 ? '' : i}`,
+        nextPagePath: isLastPage ? null : `/${i + 2}`,
+      },
+    })
+  }
+}
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -12,16 +126,54 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allContentfulBlogPost {
+            allContentfulBlogPost(
+              filter: { slug: { nin: ["xxx", "xxx2"] } }
+              sort: { fields: [publishDate], order: DESC }
+            ) {
               edges {
                 node {
-                  contentful_id
+                  id
                   slug
                   categories {
-                    contentful_id
+                    id
+                  }
+                  authors {
+                    id
                   }
                 }
               }
+            }
+            allContentfulCategory {
+              edges {
+                node {
+                  id
+                  slug
+                }
+              }
+            }
+            allContentfulPerson {
+              edges {
+                node {
+                  id
+                  slug
+                }
+              }
+            }
+            allContentfulHighlightedPost(filter: { slug: { ne: "xxx" } }) {
+              edges {
+                node {
+                  post {
+                    id
+                  }
+                  highlightMorePosts
+                  posts {
+                    id
+                  }
+                }
+              }
+            }
+            contentfulStickedPost {
+              active
             }
           }
         `
@@ -32,85 +184,54 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const posts = result.data.allContentfulBlogPost.edges
+        const categories = result.data.allContentfulCategory.edges
+        const authors = result.data.allContentfulPerson.edges
+        const stickedPostActive = result.data.contentfulStickedPost.active
+        let highlightedPostsData =
+          result.data.allContentfulHighlightedPost.edges[0].node
+
+        const categoryPosts = initCategorizePostsByNodes(categories)
+        const authorPosts = initCategorizePostsByNodes(authors)
+
         posts.forEach((post, index) => {
           createPage({
             path: `/article/${post.node.slug}/`,
             component: blogPost,
             context: {
-              contentful_id: post.node.contentful_id,
+              id: post.node.id,
               categories_ids: post.node.categories
-                ? post.node.categories.map(({ contentful_id }) => contentful_id)
+                ? post.node.categories.map(({ id }) => id)
                 : [],
             },
           })
-        })
-      })
-    )
 
-    const authorTemplate = path.resolve('./src/templates/author.js')
-    resolve(
-      graphql(
-        `
-          {
-            allContentfulPerson {
-              edges {
-                node {
-                  contentful_id
-                  slug
-                }
-              }
-            }
-          }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
-        }
-
-        const authors = result.data.allContentfulPerson.edges
-        authors.forEach((author, index) => {
-          createPage({
-            path: `/author/${author.node.slug}/`,
-            component: authorTemplate,
-            context: {
-              contentful_id: author.node.contentful_id,
-            },
+          post.node.categories.forEach(category => {
+            categoryPosts[category.id].posts.push(post.node.id)
           })
-        })
-      })
-    )
 
-    const category = path.resolve('./src/templates/category.js')
-    resolve(
-      graphql(
-        `
-          {
-            allContentfulCategory {
-              edges {
-                node {
-                  contentful_id
-                  slug
-                }
-              }
-            }
+          if (post.node.authors) {
+            post.node.authors.forEach(author => {
+              authorPosts[author.id].posts.push(post.node.id)
+            })
           }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
-        }
+        })
 
-        const categories = result.data.allContentfulCategory.edges
-        categories.forEach(({ node: { contentful_id, slug } }, index) => {
-          createPage({
-            path: `/category/${slug}/`,
-            component: category,
-            context: {
-              contentful_id: contentful_id,
-            },
-          })
+        createHomePagePages(posts, {
+          stickedPostActive,
+          highlightedPostsData,
+          createPage,
+        })
+
+        createCategorizedPostsPages(categoryPosts, {
+          getSlugBase: slug => `/category/${slug}`,
+          componentPath: path.resolve('./src/templates/category.js'),
+          createPage,
+        })
+
+        createCategorizedPostsPages(authorPosts, {
+          getSlugBase: slug => `/author/${slug}`,
+          componentPath: path.resolve('./src/templates/author.js'),
+          createPage,
         })
       })
     )

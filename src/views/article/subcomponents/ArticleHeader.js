@@ -9,9 +9,10 @@ import Label from 'components/Label'
 import { mediaQueries } from 'utils/mediaQueries'
 
 const StyledPageHeader = styled.header`
+  text-align: center;
+
   @media ${mediaQueries.desktop} {
     position: relative;
-    text-align: center;
   }
 `
 const ImgBox = styled.div`
@@ -38,10 +39,11 @@ const Banner = styled.div`
   }
 `
 const HeaderWrapper = styled.div`
+  margin: auto;
+
   @media ${mediaQueries.desktop} {
     order: 1;
     max-width: 800px;
-    margin: auto;
   }
 `
 const StyledHeader = styled(Header)`
@@ -66,10 +68,10 @@ const InfoBox = styled.div`
   flex-wrap: wrap;
   margin-bottom: 1rem;
   font-size: 1.4rem;
+  justify-content: center;
 
   @media ${mediaQueries.desktop} {
     order: 2;
-    justify-content: center;
     margin-bottom: 2rem;
     font-size: 1.6rem;
   }
@@ -110,10 +112,10 @@ const CategoriesBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+  justify-content: center;
 
   @media ${mediaQueries.desktop} {
     order: 3;
-    justify-content: center;
   }
 `
 const TextLabel = styled.label`
@@ -133,10 +135,12 @@ const LabelLink = styled(Link)`
 `
 
 const Credit = styled.div`
-  text-align: right;
-  margin-top: 1rem;
+  text-align: center;
+  margin: 2rem auto 0;
+  max-width: 670px;
   opacity: 0.7;
   font-size: 1.2rem;
+  line-height: 1.7;
 
   @media ${mediaQueries.desktop} {
     font-size: 1.4rem;
@@ -190,7 +194,7 @@ const PageHeader = ({
           <StyledHeader
             lineHeight="Biggest"
             size="Biggest"
-            color="dark"
+            color="Dark"
             weight="Bold"
             margin="0 0 2rem"
           >

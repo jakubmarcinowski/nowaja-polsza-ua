@@ -19,6 +19,7 @@ const Header = ({
   height,
   textAlign,
   onClick,
+  font,
 }) => (
   <HeaderStyled
     as={`h${type}`}
@@ -32,6 +33,7 @@ const Header = ({
     height={height}
     textAlign={textAlign}
     onClick={onClick}
+    font={font}
   >
     {children}
   </HeaderStyled>
@@ -42,6 +44,12 @@ Header.defaultProps = {
   color: 'Primary',
   type: 1,
   weight: 'Normal',
+  font: 'Primary',
+}
+
+Header.fonts = {
+  Primary: 'Primary',
+  Secondary: 'Secondary',
 }
 
 Header.weights = {
@@ -54,6 +62,7 @@ Header.colors = {
   Primary: 'Primary',
   Dark: 'Dark',
   White: 'White',
+  Red: 'Red',
 }
 
 Header.sizes = {
@@ -74,6 +83,11 @@ Header.lineHeight = {
   Big: 'Big',
   Medium: 'Medium',
   Small: 'Small',
+}
+
+const fontMap = {
+  [Header.fonts.Primary]: theme.fonts.primary,
+  [Header.fonts.Secondary]: theme.fonts.secondary,
 }
 
 const fontWeightMap = {
@@ -106,6 +120,7 @@ const colorMap = () => ({
   [Header.colors.Primary]: theme.colors.primary,
   [Header.colors.Dark]: theme.colors.dark,
   [Header.colors.White]: theme.colors.white,
+  [Header.colors.Red]: theme.colors.authorLink,
 })
 
 const HeaderStyled = styled.h1`
@@ -114,6 +129,7 @@ const HeaderStyled = styled.h1`
   margin: ${({ margin }) => margin};
   line-height: ${({ lineHeight }) => lineHeightMap[lineHeight]};
   color: ${({ color }) => colorMap(theme)[color] || theme.colors[color]};
+  font-family: ${({ font }) => fontMap[font]};
   font-size: ${({ size }) => fontSizeMap[size] * 0.7}rem;
   font-weight: ${({ weight }) => fontWeightMap[weight]};
   text-align: ${({ textAlign }) => textAlign};
@@ -126,9 +142,9 @@ const HeaderStyled = styled.h1`
 
 Header.propTypes = {
   type: PropTypes.number,
-  color: PropTypes.string,
-  size: PropTypes.string,
-  weight: PropTypes.string,
+  color: PropTypes.oneOf(Object.keys(Header.colors)),
+  size: PropTypes.oneOf(Object.keys(Header.sizes)),
+  weight: PropTypes.oneOf(Object.keys(Header.weights)),
   children: childrenType,
   margin: PropTypes.string,
   className: PropTypes.string,
@@ -137,6 +153,7 @@ Header.propTypes = {
   height: PropTypes.string,
   textAlign: PropTypes.string,
   onClick: PropTypes.func,
+  font: PropTypes.oneOf(Object.keys(Header.fonts)),
 }
 
 export default Header
