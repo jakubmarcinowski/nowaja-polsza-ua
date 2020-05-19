@@ -6,9 +6,11 @@ import Layout from 'components/Layout'
 import ArticlePage from 'views/article/index'
 import SEO from 'components/SEO'
 
-const ArticleTemplate = props => {
-  const post = get('data.contentfulBlogPost', props)
-  const posts = get('data.allContentfulBlogPost.edges', props)
+const ArticleTemplate = ({
+  data: { contentfulBlogPost, allContentfulBlogPost },
+}) => {
+  const post = contentfulBlogPost
+  const posts = allContentfulBlogPost.edges
   const imageSrc = post.heroImage
     ? `https://${post.heroImage.fluid.src.substring(2)}`
     : ''
