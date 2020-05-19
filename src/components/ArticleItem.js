@@ -51,6 +51,14 @@ const IconPlay = styled.img`
 
 const ArticleItemContainer = styled.div`
   position: relative;
+
+  &::before {
+    display: block;
+    content: ' ';
+    margin-top: -5rem;
+    height: 5rem;
+    visibility: hidden;
+  }
 `
 
 const ThumbnailWrapper = styled.div`
@@ -84,6 +92,7 @@ const ArticleItem = ({
     summary,
   },
   noCategoryLabel,
+  id,
 }) => {
   const isMultimedia =
     categories &&
@@ -92,7 +101,7 @@ const ArticleItem = ({
   img.title = `${title} image`
 
   return (
-    <ArticleItemContainer>
+    <ArticleItemContainer id={id}>
       <ImgBox isMultimedia={isMultimedia}>
         {isMultimedia && (
           <Link to={`/article/${slug}`}>
@@ -152,6 +161,7 @@ const ArticleItem = ({
 ArticleItem.propTypes = {
   article: articleType,
   noCategoryLabel: PropTypes.bool,
+  id: PropTypes.string,
 }
 
 export default ArticleItem
