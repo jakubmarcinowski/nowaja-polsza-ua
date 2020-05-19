@@ -95,7 +95,7 @@ class ArticlesList extends React.Component {
 
     return (
       <>
-        <StyledList noMargin={noMargin} id="articles-grid">
+        <StyledList noMargin={noMargin}>
           {postsBeforeEventsContainer &&
             postsBeforeEventsContainer.map(({ node }) => (
               <ListItem key={node.slug} size={size} isOnHomepage={isOnHomepage}>
@@ -112,12 +112,13 @@ class ArticlesList extends React.Component {
             </ListItem>
           )}
           {postsAfterEventsContainer &&
-            postsAfterEventsContainer.map(({ node }) => (
+            postsAfterEventsContainer.map(({ node }, i) => (
               <ListItem key={node.slug} size={size}>
                 <ArticleItem
                   article={node}
                   key={node.slug}
                   noCategoryLabel={noCategoryLabel}
+                  id={i === 0 && 'page-start'}
                 />
               </ListItem>
             ))}
@@ -126,7 +127,7 @@ class ArticlesList extends React.Component {
         {(prevPagePath || nextPagePath) && (
           <ButtonWrapper>
             {prevPagePath && (
-              <Link to={`${prevPagePath}#articles-grid`}>
+              <Link to={`${prevPagePath}#page-start`}>
                 <Button onClick={this.increasePostsNumber} size="large">
                   {trans('LOAD_PREVIOUS')}
                 </Button>
@@ -134,7 +135,7 @@ class ArticlesList extends React.Component {
             )}
             {nextPagePath && (
               <Link
-                to={`${nextPagePath}#articles-grid`}
+                to={`${nextPagePath}#page-start`}
                 state={{ pageChanged: true }}
               >
                 <Button onClick={this.increasePostsNumber} size="large">
