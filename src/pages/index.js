@@ -111,12 +111,12 @@ export const pageQuery = graphql`
           }
           heroImage {
             fluid(maxWidth: 768, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           heroImageThumbnail {
             fluid(maxWidth: 620, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           leadLong {
@@ -162,12 +162,12 @@ export const pageQuery = graphql`
             summary
             heroImage {
               fluid(maxWidth: 1440, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
             heroImageThumbnail {
               fluid(maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
             title
@@ -196,12 +196,12 @@ export const pageQuery = graphql`
             }
             heroImage {
               fluid(maxWidth: 768, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
             heroImageThumbnail {
               fluid(maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
             leadLong {
@@ -224,12 +224,12 @@ export const pageQuery = graphql`
             title
             heroImage {
               fluid(maxWidth: 768, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
             heroImageThumbnail {
               fluid(maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
             categories {

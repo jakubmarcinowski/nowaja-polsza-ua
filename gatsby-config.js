@@ -48,11 +48,12 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images-anywhere`,
+            resolve: `gatsby-remark-images-contentful`,
             options: {
-              sharpMethod: 'fluid',
               maxWidth: 1280,
-              quality: 50,
+              linkImagesToOriginal: false,
+              withWebp: true,
+              sizeByPixelDensity: true,
             },
           },
         ],
