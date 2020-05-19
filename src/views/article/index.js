@@ -17,6 +17,7 @@ import AuthorShort from 'components/AuthorShort'
 import ImgWrapper from 'components/ImgWrapper'
 import iconArrow from 'static/icon-arrow.svg'
 import { trans } from 'utils/translate'
+import ScrollIndicator from 'components/ScrollIndicator'
 
 const StyledArticle = styled.article`
   padding: 0 0 2rem;
@@ -243,11 +244,13 @@ const ArticlePage = ({
         />
       </Wrapper>
       <Wrapper size="Small" position="relative">
-        <ArticleSocialMediaList title={title} />
-        <Content
-          html={body && body.childMarkdownRemark.html}
-          lead={leadLong && leadLong.childMarkdownRemark.html}
-        />
+        <ScrollIndicator offset={300}>
+          <ArticleSocialMediaList title={title} />
+          <Content
+            html={body && body.childMarkdownRemark.html}
+            lead={leadLong && leadLong.childMarkdownRemark.html}
+          />
+        </ScrollIndicator>
         {gallery && (
           <Gallery>
             <SliderStyled {...settings}>
