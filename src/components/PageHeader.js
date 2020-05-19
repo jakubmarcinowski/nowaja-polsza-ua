@@ -13,6 +13,10 @@ const pageHeaderHeightWithoutCategories =
   parseInt(theme.grid.pageHeaderHeight, 10) -
   parseInt(theme.grid.categoriesDesktopHeight, 10)
 
+const headerTransitionThreshold =
+  parseInt(theme.grid.categoriesDesktopHeight) /
+  parseInt(theme.grid.pageHeaderHeight)
+
 const StyledPageHeader = styled.header`
   top: 0;
   width: 100%;
@@ -78,14 +82,10 @@ const PageHeader = ({ currentCategory }) => {
   })
   useEffect(() => {
     const observer = new IntersectionObserver(onScroll, {
-      threshold: [0, 60 / 220],
+      threshold: [0, headerTransitionThreshold],
     })
-    if (pageHeaderRef.current) {
-      observer.observe(pageHeaderRef.current)
-    }
-    if (placeholderRef.current) {
-      observer.observe(placeholderRef.current)
-    }
+    const refs = [pageHeaderRef.current, placeholderRef.current]
+    refs.filter(Boolean).forEach(ref => observer.observe(ref))
     return () => observer.disconnect()
   }, [pageHeaderRef.current, placeholderRef.current, fixed])
 
