@@ -45,14 +45,23 @@ const ScrollIndicator = ({ children, offset }) => {
       const elTop = ref.current.getBoundingClientRect().top - offset
       const progress = -elTop / elHeight
       setScrollProgress(Math.min(1, Math.max(0, progress)))
-    }, 50)
+    }, 50),
+    []
   )
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        entry.isIntersecting
+          ? document.addEventListener('scroll', onScroll)
+          : document.removeEventListener('scroll', onScroll)
+      },
+      { threshold: 0 }
+    )
     if (ref.current) {
-      document.addEventListener('scroll', onScroll)
+      observer.observe(ref.current)
     }
-    return () => document.removeEventListener('scroll', onScroll)
-  }, ref)
+    return () => observer.disconnect()
+  }, [ref.current])
 
   return (
     <div ref={ref}>
