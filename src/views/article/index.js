@@ -17,6 +17,7 @@ import AuthorShort from 'components/AuthorShort'
 import ImgWrapper from 'components/ImgWrapper'
 import iconArrow from 'static/icon-arrow.svg'
 import { trans } from 'utils/translate'
+import ScrollIndicator from 'components/ScrollIndicator'
 import ArticleLanguageButton from './subcomponents/ArticleLanguageButton'
 
 const StyledArticle = styled.article`
@@ -278,18 +279,20 @@ const ArticlePage = ({
         />
       </Wrapper>
       <Wrapper size="Small" position="relative">
-        <SocialMediaListWrapper>
-          <ArticleSocialMediaList title={title}/>
-          {secondLanguageSlug && (
-            <StyledArticleLanguageButton
-              secondLanguageSlug={secondLanguageSlug}
-            />
-          )}
-        </SocialMediaListWrapper>
-        <Content
-          html={body && body.childMarkdownRemark.html}
-          lead={leadLong && leadLong.childMarkdownRemark.html}
-        />
+        <ScrollIndicator offset={300}>
+          <SocialMediaListWrapper>
+            <ArticleSocialMediaList title={title} />
+            {secondLanguageSlug && (
+              <StyledArticleLanguageButton
+                secondLanguageSlug={secondLanguageSlug}
+              />
+            )}
+          </SocialMediaListWrapper>
+          <Content
+            html={body && body.childMarkdownRemark.html}
+            lead={leadLong && leadLong.childMarkdownRemark.html}
+          />
+        </ScrollIndicator>
         {gallery && (
           <Gallery>
             <SliderStyled {...settings}>
@@ -303,7 +306,7 @@ const ArticlePage = ({
           </Gallery>
         )}
         <SocialMediaListWrapper>
-          <ArticleSocialMediaListBottom title={title}/>
+          <ArticleSocialMediaListBottom title={title} />
         </SocialMediaListWrapper>
         <div>
           <HeaderStyled size="Biggest">{trans('READ_ALSO')}</HeaderStyled>

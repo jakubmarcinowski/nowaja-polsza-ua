@@ -99,5 +99,7 @@ export const theme = {
       desktop: '60px',
       large: '80px',
     },
+    categoriesDesktopHeight: '60px',
+    pageHeaderHeight: '220px',
   },
 }
