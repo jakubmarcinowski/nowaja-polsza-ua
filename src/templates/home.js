@@ -9,19 +9,11 @@ import SEO from 'components/SEO'
 const RootIndex = props => {
   const siteTitle = get(props, 'data.site.siteMetadata.title')
   const description = get(props, 'data.site.siteMetadata.description')
-  const posts = get(props, 'data.allContentfulBlogPost.edges')
+  const allHighlightedPosts = get(props, 'data.allContentfulBlogPost.edges')
   const importantInfo = get(props, 'data.contentfulHomepageStaticContent')
   const highlightedPost = get(
     props,
     'data.allContentfulHighlightedPost.edges[0].node.post'
-  )
-  const highlightMorePosts = get(
-    props,
-    'data.allContentfulHighlightedPost.edges[0].node.highlightMorePosts'
-  )
-  const highlightedPosts = get(
-    props,
-    'data.allContentfulHighlightedPost.edges[0].node.posts'
   )
   const stickedPost = get(
     props,
@@ -31,42 +23,25 @@ const RootIndex = props => {
     props,
     'data.allContentfulStickedPost.edges[0].node.active'
   )
-
-  let allHighlightedPosts = posts.filter(
-    ({ node: { id } }) => highlightedPost.id !== id
+  const prevPagePath = get(props, 'pageContext.prevPagePath')
+  const nextPagePath = get(props, 'pageContext.nextPagePath')
+  const postsOrder = get(props, 'pageContext.highlightedPostIds')
+  const allHighlightedPostsSorted = allHighlightedPosts.sort(
+    (a, b) => postsOrder.indexOf(a.node.id) - postsOrder.indexOf(b.node.id)
   )
-
-  if (highlightMorePosts && highlightedPosts) {
-    const moreHighlightedPosts = highlightedPosts.map(article => {
-      return { node: article }
-    })
-
-    let postsWithoutDuplicates = allHighlightedPosts.filter(
-      post =>
-        !moreHighlightedPosts.find(
-          highlightedPost => highlightedPost.node.id === post.node.id
-        )
-    )
-
-    if (stickedPostActive) {
-      postsWithoutDuplicates = postsWithoutDuplicates.filter(
-        post => stickedPost.id !== post.node.id
-      )
-    }
-
-    allHighlightedPosts = moreHighlightedPosts.concat(postsWithoutDuplicates)
-  }
 
   return (
     <Layout>
       <div>
         <SEO siteTitle={siteTitle} description={description} type="summary" />
         <HomePage
-          posts={allHighlightedPosts}
+          posts={allHighlightedPostsSorted}
           highlightedPost={highlightedPost}
           importantInfo={importantInfo}
           stickedPost={stickedPost}
           stickedPostActive={stickedPostActive}
+          prevPagePath={prevPagePath}
+          nextPagePath={nextPagePath}
         />
       </div>
     </Layout>
@@ -76,27 +51,19 @@ const RootIndex = props => {
 export default RootIndex
 
 export const pageQuery = graphql`
-  query HomeQuery {
+  query HomeQuery($highlightedPostIds: [String!]) {
     site {
       siteMetadata {
         title
         description
       }
     }
-    allContentfulBlogPost(
-      filter: { slug: { nin: ["xxx", "xxx2"] } }
-      sort: { fields: [publishDate], order: DESC }
-    ) {
+    allContentfulBlogPost(filter: { id: { in: $highlightedPostIds } }) {
       edges {
         node {
           id
           title
           slug
-          body {
-            childMarkdownRemark {
-              html
-            }
-          }
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
             id
@@ -117,11 +84,6 @@ export const pageQuery = graphql`
           heroImageThumbnail {
             fluid(maxWidth: 620, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
-            }
-          }
-          leadLong {
-            childMarkdownRemark {
-              html
             }
           }
           summary
@@ -154,11 +116,6 @@ export const pageQuery = graphql`
               slug
               color
             }
-            leadLong {
-              childMarkdownRemark {
-                html
-              }
-            }
             summary
             heroImage {
               fluid(maxWidth: 1440, resizingBehavior: SCALE) {
@@ -171,45 +128,6 @@ export const pageQuery = graphql`
               }
             }
             title
-          }
-          highlightMorePosts
-          posts {
-            id
-            title
-            slug
-            body {
-              childMarkdownRemark {
-                html
-              }
-            }
-            publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
-            authors {
-              id
-              name
-              slug
-            }
-            authorsWithoutAccount
-            categories {
-              title
-              slug
-              color
-            }
-            heroImage {
-              fluid(maxWidth: 768, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
-              }
-            }
-            heroImageThumbnail {
-              fluid(maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
-              }
-            }
-            leadLong {
-              childMarkdownRemark {
-                html
-              }
-            }
-            summary
           }
         }
       }

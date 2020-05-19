@@ -71,7 +71,6 @@ ArticleInfoBox.propTypes = {
     slug: PropTypes.string,
   }),
   authorsWithoutAccount: PropTypes.string,
-  publishDate: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
   justify: PropTypes.string,
