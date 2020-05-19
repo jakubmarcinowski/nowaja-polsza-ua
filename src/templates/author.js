@@ -61,7 +61,7 @@ export const pageQuery = graphql`
     contentfulPerson(id: { eq: $id }) {
       name
       image {
-        fluid(maxWidth: 1920, resizingBehavior: SCALE) {
+        fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
@@ -98,7 +98,7 @@ export const pageQuery = graphql`
             color
           }
           heroImage {
-            fluid(maxWidth: 1920, resizingBehavior: SCALE) {
+            fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }

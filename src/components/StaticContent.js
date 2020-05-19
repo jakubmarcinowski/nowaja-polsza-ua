@@ -19,8 +19,8 @@ const StyledContent = styled.div`
       margin: 0 auto;
     }
   }
-  .gatsby-resp-image-background-image {
-    left: 50% !important;
+  .gatsby-resp-image-image {
+    transform: none !important;
   }
   h1,
   h2,
