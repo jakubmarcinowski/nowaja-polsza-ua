@@ -14,6 +14,8 @@ class CategoryTemplate extends React.Component {
     const category = get(this.props, 'data.contentfulCategory')
     const categoryPosts = get(this.props, 'data.allContentfulBlogPost.edges')
     const description = get(this.props, 'data.site.siteMetadata.description')
+    const prevPagePath = get(this.props, 'pageContext.prevPagePath')
+    const nextPagePath = get(this.props, 'pageContext.nextPagePath')
 
     return (
       <Layout currentCategory={category}>
@@ -31,6 +33,8 @@ class CategoryTemplate extends React.Component {
                   limit={6}
                   initialLimit={6}
                   noCategoryLabel
+                  prevPagePath={prevPagePath}
+                  nextPagePath={nextPagePath}
                   noMargin
                 />
               ) : (
@@ -47,33 +51,26 @@ class CategoryTemplate extends React.Component {
 export default CategoryTemplate
 
 export const pageQuery = graphql`
-  query CategoryByContentfulId($contentful_id: String!) {
+  query CategoryByContentfulId($id: String!, $postIds: [String!]) {
     site {
       siteMetadata {
         title
         description
       }
     }
-    contentfulCategory(contentful_id: { eq: $contentful_id }) {
+    contentfulCategory(id: { eq: $id }) {
       title
       slug
       color
     }
     allContentfulBlogPost(
-      filter: {
-        categories: { elemMatch: { contentful_id: { in: [$contentful_id] } } }
-      }
+      filter: { id: { in: $postIds } }
       sort: { fields: [publishDate], order: DESC }
     ) {
       edges {
         node {
           title
           slug
-          body {
-            childMarkdownRemark {
-              html
-            }
-          }
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
             id

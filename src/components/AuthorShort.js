@@ -92,32 +92,40 @@ const Desc = styled(Paragraph)`
   margin-top: 1rem;
 `
 
-const AuthorShort = ({ few, author: { name, shortBio, image, slug } }) => (
-  <Element few={few}>
-    {image && <AuthorImg img={image} />}
-    <Info few={few}>
-      {name && (
-        <Header size="Bigger" color="Black">
-          {name}
-        </Header>
+const AuthorShort = ({ few, author: { name, shortBio, image, slug } }) => {
+  image.title = `${name} image`
+  return (
+    <Element few={few}>
+      {image && <AuthorImg img={image} />}
+      <Info few={few}>
+        {name && (
+          <Header size="Bigger" color="Red" font="Secondary" weight="Bold">
+            {name}
+          </Header>
+        )}
+        {shortBio && (
+          <Desc
+            size={'Bigger'}
+            weight="Light"
+            lineHeight="Medium"
+            color="Black"
+          >
+            <span
+              dangerouslySetInnerHTML={{
+                __html: shortBio.childMarkdownRemark.excerpt,
+              }}
+            />
+          </Desc>
+        )}
+      </Info>
+      {slug && (
+        <Link to={`/author/${slug}`}>
+          <ReadMoreBtn>{trans('ALL_AUTHOR_TEXTS')}</ReadMoreBtn>
+        </Link>
       )}
-      {shortBio && (
-        <Desc size={'Bigger'} weight="Light" lineHeight="Medium" color="Black">
-          <span
-            dangerouslySetInnerHTML={{
-              __html: shortBio.childMarkdownRemark.excerpt,
-            }}
-          />
-        </Desc>
-      )}
-    </Info>
-    {slug && (
-      <Link to={`/author/${slug}`}>
-        <ReadMoreBtn>{trans('ALL_AUTHOR_TEXTS')}</ReadMoreBtn>
-      </Link>
-    )}
-  </Element>
-)
+    </Element>
+  )
+}
 
 AuthorShort.propTypes = {
   author: PropTypes.any,

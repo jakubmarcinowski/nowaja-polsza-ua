@@ -132,7 +132,8 @@ class HighlightedArticle extends Component {
       categories,
     } = this.props.post
     const { isActive } = this.state
-
+    const img = heroImageThumbnail ? heroImageThumbnail : heroImage
+    img.title = `${title} image`
     return (
       <>
         <HighlightedArticleStyled
@@ -141,10 +142,7 @@ class HighlightedArticle extends Component {
         >
           <LinkOverlay to={`/article/${slug}`} title={slug} />
           <ImgBox>
-            <StyledImgWrapper
-              img={heroImageThumbnail ? heroImageThumbnail : heroImage}
-              aspectRatio={1.44}
-            />
+            <StyledImgWrapper img={img} aspectRatio={1.44} />
             <PhotoLabel color={categories[0].color}>
               {categories[0].title}
             </PhotoLabel>
@@ -172,7 +170,7 @@ class HighlightedArticle extends Component {
             {summary && (
               <Lead isActive={isActive}>
                 <Link to={`/article/${slug}`} title={slug}>
-                  <Paragraph color="white" lineHeight="Medium">
+                  <Paragraph color="White" lineHeight="Medium">
                     {summary}
                   </Paragraph>
                 </Link>
