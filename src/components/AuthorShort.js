@@ -99,7 +99,7 @@ const AuthorShort = ({ few, author: { name, shortBio, image, slug } }) => {
       {image && <AuthorImg img={image} />}
       <Info few={few}>
         {name && (
-          <Header size="Bigger" color="Black">
+          <Header size="Bigger" color="Red" font="Secondary" weight="Bold">
             {name}
           </Header>
         )}
