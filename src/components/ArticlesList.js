@@ -103,7 +103,7 @@ class ArticlesList extends React.Component {
                   article={node}
                   key={node.slug}
                   noCategoryLabel={noCategoryLabel}
-                  id={i === 0 && !isOnHomepage && 'page-start'}
+                  id={i === 0 && !isOnHomepage ? 'page-start' : null}
                 />
               </ListItem>
             ))}
@@ -119,7 +119,7 @@ class ArticlesList extends React.Component {
                   article={node}
                   key={node.slug}
                   noCategoryLabel={noCategoryLabel}
-                  id={i === 0 && isOnHomepage && 'page-start'}
+                  id={i === 0 && isOnHomepage ? 'page-start' : null}
                 />
               </ListItem>
             ))}
