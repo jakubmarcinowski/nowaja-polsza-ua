@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { intersectionBy, get } from 'lodash/fp'
+import { intersectionBy } from 'lodash/fp'
+import PropTypes from 'prop-types'
 
 import Layout from 'components/Layout'
 import ArticlePage from 'views/article/index'
@@ -40,6 +41,12 @@ const ArticleTemplate = ({
   )
 }
 
+ArticleTemplate.propTypes = {
+  data: PropTypes.shape({
+    contentfulBlogPost: PropTypes.any,
+    allContentfulBlogPost: PropTypes.any,
+  }),
+}
 export default ArticleTemplate
 
 export const pageQuery = graphql`
