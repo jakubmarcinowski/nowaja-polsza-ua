@@ -129,45 +129,6 @@ export const pageQuery = graphql`
             }
             title
           }
-          highlightMorePosts
-          posts {
-            id
-            title
-            slug
-            body {
-              childMarkdownRemark {
-                html
-              }
-            }
-            publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
-            authors {
-              id
-              name
-              slug
-            }
-            authorsWithoutAccount
-            categories {
-              title
-              slug
-              color
-            }
-            heroImage {
-              fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
-              }
-            }
-            heroImageThumbnail {
-              fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
-              }
-            }
-            leadLong {
-              childMarkdownRemark {
-                html
-              }
-            }
-            summary
-          }
         }
       }
     }

@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { intersectionBy } from 'lodash/fp'
 import PropTypes from 'prop-types'
 
 import Layout from 'components/Layout'
