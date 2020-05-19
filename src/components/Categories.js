@@ -86,7 +86,7 @@ const Categories = ({ currentCategory }) => (
                     currentCategory
                   }
                 >
-                  <Link to={`category/${node.slug}`}>{node.title}</Link>
+                  <Link to={`/category/${node.slug}`}>{node.title}</Link>
                 </Category>
               )
             })}

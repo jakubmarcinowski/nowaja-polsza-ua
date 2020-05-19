@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
@@ -71,13 +71,23 @@ const PageHeaderQuery = graphql`
 
 const PageHeader = ({ currentCategory }) => {
   const [fixed, setFixed] = useState(false)
+  const pageHeaderRef = useRef()
+  const placeholderRef = useRef()
   const onScroll = useCallback(() => {
     setFixed(window.scrollY > pageHeaderHeightWithoutCategories)
   })
   useEffect(() => {
-    document.addEventListener('scroll', onScroll)
-    return () => document.removeEventListener('scroll', onScroll)
-  }, [])
+    const observer = new IntersectionObserver(onScroll, {
+      threshold: [0, 60 / 220],
+    })
+    if (pageHeaderRef.current) {
+      observer.observe(pageHeaderRef.current)
+    }
+    if (placeholderRef.current) {
+      observer.observe(placeholderRef.current)
+    }
+    return () => observer.disconnect()
+  }, [pageHeaderRef.current, placeholderRef.current, fixed])
 
   return (
     <StaticQuery
@@ -89,13 +99,14 @@ const PageHeader = ({ currentCategory }) => {
             allContentfulHomepageStaticContent.edges[0].node &&
             allContentfulHomepageStaticContent.edges[0].node.headerPhoto && (
               <>
-                {fixed && <PageHeaderPlaceholder />}
+                {fixed && <PageHeaderPlaceholder ref={placeholderRef} />}
                 <StyledPageHeader
                   currentCategory={currentCategory}
                   headerPhoto={
                     allContentfulHomepageStaticContent.edges[0].node.headerPhoto
                   }
                   fixed={fixed}
+                  ref={pageHeaderRef}
                 >
                   <Wrapper>
                     <TopBar />

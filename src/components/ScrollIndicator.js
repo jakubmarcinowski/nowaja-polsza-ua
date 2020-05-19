@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { throttle } from 'lodash'
 
 import { childrenType } from 'types/children'
 import { mediaQueries } from 'utils/mediaQueries'
@@ -39,12 +40,14 @@ const Indicator = styled.div`
 const ScrollIndicator = ({ children, offset }) => {
   const ref = useRef()
   const [scrollPercentage, setScrollPercentage] = useState(0)
-  const onScroll = useCallback(() => {
-    const elHeight = ref.current.offsetHeight + offset
-    const elTop = ref.current.getBoundingClientRect().top - offset
-    const percentage = (-elTop / elHeight) * 100
-    setScrollPercentage(Math.min(100, Math.max(0, percentage)))
-  })
+  const onScroll = useCallback(
+    throttle(() => {
+      const elHeight = ref.current.offsetHeight + offset
+      const elTop = ref.current.getBoundingClientRect().top - offset
+      const percentage = (-elTop / elHeight) * 100
+      setScrollPercentage(Math.min(100, Math.max(0, percentage)))
+    }, 50)
+  )
   useEffect(() => {
     if (ref.current) {
       document.addEventListener('scroll', onScroll)

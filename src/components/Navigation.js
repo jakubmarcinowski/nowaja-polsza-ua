@@ -45,7 +45,7 @@ const Navigation = () => (
             allContentfulMenuItem.edges &&
             allContentfulMenuItem.edges.map(({ node }) => (
               <li key={node.slug} className="navigationItem">
-                <AnimatedLink url={node.slug}>{node.name}</AnimatedLink>
+                <AnimatedLink url={`/${node.slug}`}>{node.name}</AnimatedLink>
               </li>
             ))}
         </ul>
