@@ -97,12 +97,13 @@ class ArticlesList extends React.Component {
       <>
         <StyledList noMargin={noMargin}>
           {postsBeforeEventsContainer &&
-            postsBeforeEventsContainer.map(({ node }) => (
+            postsBeforeEventsContainer.map(({ node }, i) => (
               <ListItem key={node.slug} size={size} isOnHomepage={isOnHomepage}>
                 <ArticleItem
                   article={node}
                   key={node.slug}
                   noCategoryLabel={noCategoryLabel}
+                  id={i === 0 && !isOnHomepage && 'page-start'}
                 />
               </ListItem>
             ))}
@@ -118,7 +119,7 @@ class ArticlesList extends React.Component {
                   article={node}
                   key={node.slug}
                   noCategoryLabel={noCategoryLabel}
-                  id={i === 0 && 'page-start'}
+                  id={i === 0 && isOnHomepage && 'page-start'}
                 />
               </ListItem>
             ))}
