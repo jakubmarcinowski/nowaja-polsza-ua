@@ -135,10 +135,12 @@ const LabelLink = styled(Link)`
 `
 
 const Credit = styled.div`
-  text-align: right;
-  margin-top: 1rem;
+  text-align: center;
+  margin: 2rem auto 0;
+  max-width: 670px;
   opacity: 0.7;
   font-size: 1.2rem;
+  line-height: 1.7;
 
   @media ${mediaQueries.desktop} {
     font-size: 1.4rem;
