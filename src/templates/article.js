@@ -1,14 +1,16 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { get } from 'lodash/fp'
+import PropTypes from 'prop-types'
 
 import Layout from 'components/Layout'
 import ArticlePage from 'views/article/index'
 import SEO from 'components/SEO'
 
-const ArticleTemplate = props => {
-  const post = get('data.contentfulBlogPost', props)
-  const posts = get('data.allContentfulBlogPost.edges', props)
+const ArticleTemplate = ({
+  data: { contentfulBlogPost, allContentfulBlogPost },
+}) => {
+  const post = contentfulBlogPost
+  const posts = allContentfulBlogPost.edges
   const imageSrc = post.heroImage
     ? `https://${post.heroImage.fluid.src.substring(2)}`
     : ''
@@ -30,6 +32,12 @@ const ArticleTemplate = props => {
   )
 }
 
+ArticleTemplate.propTypes = {
+  data: PropTypes.shape({
+    contentfulBlogPost: PropTypes.any,
+    allContentfulBlogPost: PropTypes.any,
+  }),
+}
 export default ArticleTemplate
 
 export const pageQuery = graphql`
@@ -68,8 +76,8 @@ export const pageQuery = graphql`
             slug
           }
           heroImage {
-            fluid(maxWidth: 800, background: "rgb:000000") {
-              ...GatsbyContentfulFluid
+            fluid(quality: 30, maxWidth: 800, background: "rgb:000000") {
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
         }
@@ -98,8 +106,8 @@ export const pageQuery = graphql`
       }
       publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
       heroImage {
-        fluid(maxWidth: 1920, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        fluid(quality: 30, maxWidth: 1920, background: "rgb:000000") {
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       heroImageCredit
@@ -111,8 +119,8 @@ export const pageQuery = graphql`
       gallery {
         id
         description
-        fluid(maxWidth: 1920, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        fluid(quality: 30, maxWidth: 1920, background: "rgb:000000") {
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       authors {
@@ -126,8 +134,8 @@ export const pageQuery = graphql`
           }
         }
         image {
-          fluid(maxWidth: 480) {
-            ...GatsbyContentfulFluid
+          fluid(quality: 30, maxWidth: 480) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
@@ -160,11 +168,12 @@ export const pageQuery = graphql`
           slug
         }
         heroImage {
-          fluid(maxWidth: 800, background: "rgb:000000") {
-            ...GatsbyContentfulFluid
+          fluid(quality: 30, maxWidth: 800, background: "rgb:000000") {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
+      secondLanguageSlug
     }
   }
 `
