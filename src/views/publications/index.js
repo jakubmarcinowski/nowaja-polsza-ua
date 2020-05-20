@@ -7,6 +7,8 @@ import ArchivePublication from './subcomponents/ArchivePublication'
 import Wrapper from 'components/Wrapper'
 import Header from 'components/Header'
 import Placeholder from 'components/Placeholder'
+import PageHeading from 'components/PageHeading'
+import { trans } from 'utils/translate'
 
 // @todo crete styled component for page header which is center and has a line
 const Filters = styled.div`
@@ -170,6 +172,7 @@ class PublicationPage extends React.Component {
 
     return (
       <Wrapper size="Medium">
+        <PageHeading>{trans('LIBRARY')}</PageHeading>
         <Filters>{this.renderFilters()}</Filters>
         <DateFilters isActive={filter === 'архив'}>
           {this.renderDates()}
