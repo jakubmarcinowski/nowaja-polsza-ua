@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { throttle } from 'lodash'
+import throttle from 'lodash/throttle'
 
 import { childrenType } from 'types/children'
 import { mediaQueries } from 'utils/mediaQueries'
