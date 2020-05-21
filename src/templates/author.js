@@ -53,8 +53,8 @@ export const pageQuery = graphql`
     contentfulPerson(contentful_id: { eq: $contentful_id }) {
       name
       image {
-        fluid(maxWidth: 1920, resizingBehavior: SCALE) {
-          ...GatsbyContentfulFluid
+        fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       shortBio {
@@ -92,8 +92,8 @@ export const pageQuery = graphql`
             color
           }
           heroImage {
-            fluid(maxWidth: 1920, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+            fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           leadLong {
