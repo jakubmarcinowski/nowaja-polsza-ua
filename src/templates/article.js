@@ -68,8 +68,8 @@ export const pageQuery = graphql`
             slug
           }
           heroImage {
-            fluid(maxWidth: 800, background: "rgb:000000") {
-              ...GatsbyContentfulFluid
+            fluid(quality: 30, maxWidth: 800, background: "rgb:000000") {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }
@@ -98,8 +98,8 @@ export const pageQuery = graphql`
       }
       publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
       heroImage {
-        fluid(maxWidth: 1920, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        fluid(quality: 30, maxWidth: 1920, background: "rgb:000000") {
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       heroImageCredit
@@ -111,8 +111,8 @@ export const pageQuery = graphql`
       gallery {
         id
         description
-        fluid(maxWidth: 1920, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        fluid(quality: 30, maxWidth: 1920, background: "rgb:000000") {
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       authors {
@@ -126,8 +126,8 @@ export const pageQuery = graphql`
           }
         }
         image {
-          fluid(maxWidth: 480) {
-            ...GatsbyContentfulFluid
+          fluid(quality: 30, maxWidth: 480) {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }
@@ -160,8 +160,8 @@ export const pageQuery = graphql`
           slug
         }
         heroImage {
-          fluid(maxWidth: 800, background: "rgb:000000") {
-            ...GatsbyContentfulFluid
+          fluid(quality: 30, maxWidth: 800, background: "rgb:000000") {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }

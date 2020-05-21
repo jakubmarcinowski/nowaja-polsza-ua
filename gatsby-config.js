@@ -42,7 +42,22 @@ module.exports = {
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 670,
+              linkImagesToOriginal: false,
+              withWebp: true,
+              sizeByPixelDensity: true,
+            },
+          },
+        ],
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
@@ -67,19 +82,5 @@ module.exports = {
       },
     },
     'gatsby-plugin-sitemap',
-    {
-      resolve: `gatsby-plugin-google-tagmanager`,
-      options: {
-        id: 'GTM-53TPFK7',
-        includeInDevelopment: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-135924819-1',
-        optimizeId: 'GTM-5CSFCP5',
-      },
-    },
   ],
 }
