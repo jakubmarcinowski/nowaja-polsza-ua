@@ -64,7 +64,7 @@ const PageHeaderQuery = graphql`
         node {
           headerPhoto {
             fluid(quality: 30, maxWidth: 1440, background: "rgb:000000") {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }
