@@ -26,9 +26,7 @@ const StyledContent = styled.div`
     margin-bottom: 1.2em;
     font-weight: 700;
   }
-  .gatsby-resp-image-image {
-    transform: none !important;
-  }
+
   h1 {
     line-height: 1.3;
     font-size: 2rem;

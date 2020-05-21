@@ -87,13 +87,13 @@ export const pageQuery = graphql`
             color
           }
           heroImage {
-            fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp
+            fluid(maxWidth: 1920, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
             }
           }
           heroImageThumbnail {
-            fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp
+            fluid(maxWidth: 620, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
             }
           }
           leadLong {
