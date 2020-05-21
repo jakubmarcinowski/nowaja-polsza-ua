@@ -85,12 +85,12 @@ export const pageQuery = graphql`
           }
           heroImage {
             fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           heroImageThumbnail {
             fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           leadLong {

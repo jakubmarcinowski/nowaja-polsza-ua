@@ -71,26 +71,5 @@ module.exports = {
       },
     },
     'gatsby-plugin-sitemap',
-    {
-      resolve: `gatsby-plugin-google-tagmanager`,
-      options: {
-        id: 'GTM-53TPFK7',
-        includeInDevelopment: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.GATSBY_TRACKINGID,
-        optimizeId: process.env.GATSBY_OPTIMIZEID,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-hotjar`,
-      options: {
-        id: process.env.GATSBY_HOTJAR,
-        sv: '6',
-      },
-    },
   ],
 }

@@ -78,12 +78,12 @@ export const pageQuery = graphql`
           }
           heroImage {
             fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           heroImageThumbnail {
             fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           summary
@@ -119,12 +119,12 @@ export const pageQuery = graphql`
             summary
             heroImage {
               fluid(quality: 30, maxWidth: 1440, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             heroImageThumbnail {
               fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             title
@@ -142,12 +142,12 @@ export const pageQuery = graphql`
             title
             heroImage {
               fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             heroImageThumbnail {
               fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             categories {

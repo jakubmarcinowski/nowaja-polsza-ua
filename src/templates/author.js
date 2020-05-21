@@ -62,7 +62,7 @@ export const pageQuery = graphql`
       name
       image {
         fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
-          ...GatsbyContentfulFluid_withWebp_noBase64
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       shortBio {
@@ -99,7 +99,7 @@ export const pageQuery = graphql`
           }
           heroImage {
             fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           leadLong {
