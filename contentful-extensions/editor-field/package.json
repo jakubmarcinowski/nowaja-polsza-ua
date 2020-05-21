@@ -1,0 +1,38 @@
+{
+  "name": "editor-field",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --out-dir build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.5"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.14",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.53",
+    "classnames": "^2.2.6",
+    "components": "^0.1.0",
+    "containers": "^0.0.1",
+    "is-hotkey": "^0.1.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "slate": "^0.58.1",
+    "slate-history": "^0.58.1",
+    "slate-prop-types": "^0.5.44",
+    "slate-react": "^0.58.1"
+  },
+  "alias": {
+    "components": "./src/components",
+    "containers": "./src/containers",
+    "utils": "./src/utils"
+  }
+}
