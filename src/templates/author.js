@@ -16,6 +16,8 @@ class AuthorTemplate extends React.Component {
     const imageSrc = author.image
       ? `https://${author.image.fluid.src.substring(2)}`
       : ''
+    const prevPagePath = get(this.props, 'pageContext.prevPagePath')
+    const nextPagePath = get(this.props, 'pageContext.nextPagePath')
 
     return (
       <Layout>
@@ -30,7 +32,13 @@ class AuthorTemplate extends React.Component {
             <Wrapper>
               <Author author={author} />
               {authorPosts && (
-                <ArticlesList posts={authorPosts} limit={6} initialLimit={6} />
+                <ArticlesList
+                  posts={authorPosts}
+                  limit={6}
+                  initialLimit={6}
+                  prevPagePath={prevPagePath}
+                  nextPagePath={nextPagePath}
+                />
               )}
             </Wrapper>
           </>
@@ -43,18 +51,18 @@ class AuthorTemplate extends React.Component {
 export default AuthorTemplate
 
 export const pageQuery = graphql`
-  query AuthorByContentfulId($contentful_id: String!) {
+  query AuthorByContentfulId($id: String!, $postIds: [String!]) {
     site {
       siteMetadata {
         title
         description
       }
     }
-    contentfulPerson(contentful_id: { eq: $contentful_id }) {
+    contentfulPerson(id: { eq: $id }) {
       name
       image {
-        fluid(maxWidth: 1920, resizingBehavior: SCALE) {
-          ...GatsbyContentfulFluid
+        fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       shortBio {
@@ -70,9 +78,7 @@ export const pageQuery = graphql`
       academia
     }
     allContentfulBlogPost(
-      filter: {
-        authors: { elemMatch: { contentful_id: { in: [$contentful_id] } } }
-      }
+      filter: { id: { in: $postIds } }
       sort: { fields: [publishDate], order: DESC }
     ) {
       edges {
@@ -92,8 +98,8 @@ export const pageQuery = graphql`
             color
           }
           heroImage {
-            fluid(maxWidth: 1920, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+            fluid(quality: 30, maxWidth: 1920, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           leadLong {

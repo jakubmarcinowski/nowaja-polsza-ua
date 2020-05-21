@@ -35,7 +35,7 @@ const MobileMenu = () => (
             allContentfulMenuItem.edges &&
             allContentfulMenuItem.edges.map(({ node }) => (
               <MenuItem key={node.slug}>
-                <Link to={node.slug}>{node.name}</Link>
+                <Link to={`/${node.slug}`}>{node.name}</Link>
               </MenuItem>
             ))}
         </>
