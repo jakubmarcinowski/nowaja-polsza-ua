@@ -1,4 +1,5 @@
 import Element from './Element/Element'
+import Footnote from './Footnote/Footnote'
 import Leaf from './Leaf/Leaf'
 import Toolbar from './Toolbar/Toolbar'
 
@@ -25,6 +26,7 @@ export {
   UnderlineButton,
   UnorderedListButton,
   Element,
+  Footnote,
   Leaf,
   Toolbar,
 }

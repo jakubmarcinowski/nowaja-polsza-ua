@@ -12,6 +12,10 @@ import {
   ItalicButton,
   UnorderedListButton,
   OrderedListButton,
+  AlignLeftButton,
+  AlignRightButton,
+  AlignCenterButton,
+  HeadingButton,
 } from 'components'
 import {
   isMarkActive,
@@ -19,6 +23,8 @@ import {
   toggleMark,
   toggleBlock,
 } from 'utils/editor'
+import QuoteButton from 'components/Toolbar/buttons/QuoteButton'
+import FootnoteButton from 'components/Toolbar/buttons/FootnoteButton'
 
 const HOTKEYS = {
   'mod+b': 'bold',
@@ -31,10 +37,42 @@ const inlineButtons = [
   { value: 'bold', Component: BoldButton },
   { value: 'italic', Component: ItalicButton },
   { value: 'underline', Component: UnderlineButton },
+  { value: 'footnote', Component: FootnoteButton },
 ]
 const blockButtons = [
   { value: 'unordered-list', Component: UnorderedListButton },
   { value: 'ordered-list', Component: OrderedListButton },
+  {
+    value: 'align-left',
+    Component: AlignLeftButton,
+  },
+  {
+    value: 'align-center',
+    Component: AlignCenterButton,
+  },
+  {
+    value: 'align-right',
+    Component: AlignRightButton,
+  },
+  {
+    value: 'block-quote',
+    Component: QuoteButton,
+  },
+  {
+    value: 'heading-one',
+    Component: HeadingButton,
+    type: 1,
+  },
+  {
+    value: 'heading-two',
+    Component: HeadingButton,
+    type: 2,
+  },
+  {
+    value: 'heading-three',
+    Component: HeadingButton,
+    type: 3,
+  },
 ]
 
 const RichTextExample = () => {
@@ -84,13 +122,14 @@ const InlineButtonWrapper = ({ value, Component }) => {
   )
 }
 
-const BlockButtonWrapper = ({ value, Component }) => {
+const BlockButtonWrapper = ({ value, Component, ...props }) => {
   const editor = useSlate()
   return (
     <Component
       value={value}
       isActive={isBlockActive(editor, value)}
       onSelect={() => toggleBlock(editor, value)}
+      {...props}
     />
   )
 }

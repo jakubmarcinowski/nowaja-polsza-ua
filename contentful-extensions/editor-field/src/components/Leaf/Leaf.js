@@ -1,5 +1,6 @@
 import React from 'react'
 import Types from 'slate-prop-types'
+import { Footnote } from 'components'
 
 const Leaf = ({ attributes, children, leaf }) => {
   if (leaf.bold) {
@@ -16,6 +17,15 @@ const Leaf = ({ attributes, children, leaf }) => {
 
   if (leaf.underline) {
     children = <u>{children}</u>
+  }
+
+  if (leaf.footnote) {
+    return (
+      <>
+        {children}
+        <Footnote>[1]</Footnote>
+      </>
+    )
   }
 
   return <span {...attributes}>{children}</span>
