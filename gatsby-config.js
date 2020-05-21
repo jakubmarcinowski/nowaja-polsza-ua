@@ -1,5 +1,6 @@
 /* eslint-disable */
 require('dotenv').config()
+const meta = require('./meta')
 
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
@@ -23,27 +24,29 @@ if (!spaceId || !accessToken) {
   )
 }
 
-const meta = {
-  ru: {
-    title: 'Новая Польша',
-    description: 'Вся Польша в вашей ленте',
-  },
-  ua: {
-    title: 'Нова Польща',
-    description: 'Вся Польща у вашій стрічці',
-  },
-}
-
 module.exports = {
   siteMetadata: {
-    siteUrl:
-      process.env.GATSBY_SITE_URL || 'https://silly-morse-77d306.netlify.com/',
     themeColor: '#172429',
     ...meta[process.env.GATSBY_VERSION],
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 670,
+              linkImagesToOriginal: false,
+              withWebp: true,
+              sizeByPixelDensity: true,
+            },
+          },
+        ],
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
@@ -68,26 +71,5 @@ module.exports = {
       },
     },
     'gatsby-plugin-sitemap',
-    {
-      resolve: `gatsby-plugin-google-tagmanager`,
-      options: {
-        id: 'GTM-53TPFK7',
-        includeInDevelopment: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.GATSBY_TRACKINGID,
-        optimizeId: process.env.GATSBY_OPTIMIZEID,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-hotjar`,
-      options: {
-        id: process.env.GATSBY_HOTJAR,
-        sv: '6',
-      },
-    },
   ],
 }
