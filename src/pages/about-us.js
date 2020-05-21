@@ -10,6 +10,10 @@ import Wrapper from 'components/Wrapper'
 
 const AboutUsStyled = styled.div`
   margin-bottom: 8rem;
+
+  h1:first-child {
+    text-align: center;
+  }
 `
 
 const AboutUs = ({ data }) => {

@@ -1,26 +1,20 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { intersectionBy, get } from 'lodash/fp'
+import PropTypes from 'prop-types'
 
 import Layout from 'components/Layout'
 import ArticlePage from 'views/article/index'
 import SEO from 'components/SEO'
 
-const ArticleTemplate = props => {
-  const post = get('data.contentfulBlogPost', props)
-  const posts = get('data.allContentfulBlogPost.edges', props)
+const ArticleTemplate = ({
+  data: { contentfulBlogPost, allContentfulBlogPost },
+}) => {
+  const post = contentfulBlogPost
+  const posts = allContentfulBlogPost.edges
   const imageSrc = post.heroImage
     ? `https://${post.heroImage.fluid.src.substring(2)}`
     : ''
 
-  const recommendedArticles = posts.filter(({ node: { categories } }) => {
-    const postIntersection = intersectionBy(
-      'contentful_id',
-      categories,
-      post.categories
-    )
-    return !!postIntersection.length
-  })
   return (
     <Layout>
       {post && (
@@ -31,20 +25,23 @@ const ArticleTemplate = props => {
             type="summary_large_image"
             image={imageSrc}
           />
-          <ArticlePage article={post} posts={recommendedArticles} />
+          <ArticlePage article={post} posts={posts} />
         </>
       )}
     </Layout>
   )
 }
 
+ArticleTemplate.propTypes = {
+  data: PropTypes.shape({
+    contentfulBlogPost: PropTypes.any,
+    allContentfulBlogPost: PropTypes.any,
+  }),
+}
 export default ArticleTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByContentfulId(
-    $contentful_id: String!
-    $categories_ids: [String!]
-  ) {
+  query BlogPostById($id: String!, $categories_ids: [String!]) {
     site {
       siteMetadata {
         title
@@ -53,8 +50,8 @@ export const pageQuery = graphql`
 
     allContentfulBlogPost(
       filter: {
-        contentful_id: { ne: $contentful_id }
-        categories: { elemMatch: { contentful_id: { in: $categories_ids } } }
+        id: { ne: $id }
+        categories: { elemMatch: { id: { in: $categories_ids } } }
       }
       sort: { fields: [publishDate], order: DESC }
       limit: 2
@@ -62,17 +59,7 @@ export const pageQuery = graphql`
       edges {
         node {
           title
-          leadLong {
-            childMarkdownRemark {
-              html
-            }
-          }
           summary
-          body {
-            childMarkdownRemark {
-              html
-            }
-          }
           slug
           publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
           authors {
@@ -81,23 +68,23 @@ export const pageQuery = graphql`
             slug
           }
           authorsWithoutAccount
-          contentful_id
+          id
           categories {
-            contentful_id
+            id
             title
             color
             slug
           }
           heroImage {
-            fluid(maxWidth: 800, background: "rgb:000000") {
-              ...GatsbyContentfulFluid
+            fluid(quality: 30, maxWidth: 800, background: "rgb:000000") {
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
         }
       }
     }
 
-    contentfulBlogPost(contentful_id: { eq: $contentful_id }) {
+    contentfulBlogPost(id: { eq: $id }) {
       title
       leadLong {
         childMarkdownRemark {
@@ -112,15 +99,15 @@ export const pageQuery = graphql`
       }
       authorsWithoutAccount
       categories {
-        contentful_id
+        id
         title
         slug
         color
       }
       publishDate(formatString: "DD MMMM YYYY", locale: "ru-RU")
       heroImage {
-        fluid(maxWidth: 1920, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        fluid(quality: 30, maxWidth: 1920, background: "rgb:000000") {
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       heroImageCredit
@@ -132,8 +119,8 @@ export const pageQuery = graphql`
       gallery {
         id
         description
-        fluid(maxWidth: 1920, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        fluid(quality: 30, maxWidth: 1920, background: "rgb:000000") {
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       authors {
@@ -147,8 +134,8 @@ export const pageQuery = graphql`
           }
         }
         image {
-          fluid(maxWidth: 480) {
-            ...GatsbyContentfulFluid
+          fluid(quality: 30, maxWidth: 480) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
@@ -173,19 +160,20 @@ export const pageQuery = graphql`
           slug
         }
         authorsWithoutAccount
-        contentful_id
+        id
         categories {
-          contentful_id
+          id
           title
           color
           slug
         }
         heroImage {
-          fluid(maxWidth: 800, background: "rgb:000000") {
-            ...GatsbyContentfulFluid
+          fluid(quality: 30, maxWidth: 800, background: "rgb:000000") {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
+      secondLanguageSlug
     }
   }
 `

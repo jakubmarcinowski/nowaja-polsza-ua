@@ -14,7 +14,12 @@ const StyledLink = styled(Link)`
 `
 
 const AnimatedLink = ({ children, opacity, url }) => (
-  <StyledLink to={url} opacity={opacity} title={children}>
+  <StyledLink
+    to={url}
+    opacity={opacity}
+    title={children}
+    activeStyle={{ textDecoration: 'underline' }}
+  >
     {children}
   </StyledLink>
 )

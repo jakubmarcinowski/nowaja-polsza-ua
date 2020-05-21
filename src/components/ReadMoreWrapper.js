@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ReadMoreButton from 'components/ReadMoreButton'
 import styled from 'styled-components'
 import { mediaQueries } from 'utils/mediaQueries'
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce'
 import { trans } from 'utils/translate'
 
 const ParagraphsWrapper = styled.div`

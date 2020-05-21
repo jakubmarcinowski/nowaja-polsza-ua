@@ -16,9 +16,13 @@ const HomePage = ({
   stickedPost,
   stickedPostActive,
   importantInfo,
+  prevPagePath,
+  nextPagePath,
 }) => {
   const promotedPostsNumber = 4
   const promotedPosts = posts.slice(0, promotedPostsNumber)
+  const otherPosts = posts.slice(promotedPosts)
+
   return (
     <>
       {importantInfo &&
@@ -33,12 +37,14 @@ const HomePage = ({
         </Hero>
         <Line />
         <ArticlesList
-          posts={posts}
+          posts={otherPosts}
           limit={6}
           initialLimit={stickedPostActive ? 15 : 16}
           stickedPost={stickedPost}
           stickedPostActive={stickedPostActive}
           isOnHomepage
+          prevPagePath={prevPagePath}
+          nextPagePath={nextPagePath}
         />
       </Wrapper>
     </>
@@ -52,6 +58,8 @@ HomePage.propTypes = {
   highlightedPost: articleType,
   isNotLarge: PropTypes.bool,
   importantInfo: PropTypes.any,
+  prevPagePath: PropTypes.string,
+  nextPagePath: PropTypes.string,
 }
 
 export default HomePage

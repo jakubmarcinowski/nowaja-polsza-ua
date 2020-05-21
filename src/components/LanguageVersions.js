@@ -1,16 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
+const meta = require('./../../meta')
 
 import ExternalLink from 'components/ExternalLink'
 
 const versions = [
   {
     shortcut: 'РУС',
-    url: 'https://novayapolsha.pl/',
+    url: meta.ru.siteUrl,
+    version: 'ru',
   },
   {
     shortcut: 'УКР',
-    url: 'https://novayapolsha-ua.netlify.app/',
+    url: meta.ua.siteUrl,
+    version: 'ua',
   },
 ]
 
@@ -33,7 +36,7 @@ const StyledLink = styled(ExternalLink)`
   color: ${({ theme }) => theme.colors.black};
   background-color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.secondary};
-  opacity: ${props => (props.sameCard ? 1 : 0.5)};
+  opacity: ${props => (props.current ? 1 : 0.5)};
   border-radius: 50%;
   font-size: 1rem;
 `
@@ -44,7 +47,8 @@ const LanguageVersions = () => (
       <li key={version.url}>
         <StyledLink
           url={version.url}
-          sameCard={version.url === process.env.GATSBY_SITE_URL}
+          current={version.version === process.env.GATSBY_VERSION}
+          sameCard
         >
           {version.shortcut}
         </StyledLink>
