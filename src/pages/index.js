@@ -110,13 +110,13 @@ export const pageQuery = graphql`
             color
           }
           heroImage {
-            fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp
+            fluid(maxWidth: 768, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
             }
           }
           heroImageThumbnail {
-            fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp
+            fluid(maxWidth: 620, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
             }
           }
           leadLong {
@@ -161,13 +161,13 @@ export const pageQuery = graphql`
             }
             summary
             heroImage {
-              fluid(quality: 30, maxWidth: 1440, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp
+              fluid(maxWidth: 1440, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
               }
             }
             heroImageThumbnail {
-              fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp
+              fluid(maxWidth: 620, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
               }
             }
             title
@@ -195,13 +195,13 @@ export const pageQuery = graphql`
               color
             }
             heroImage {
-              fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp
+              fluid(maxWidth: 768, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
               }
             }
             heroImageThumbnail {
-              fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp
+              fluid(maxWidth: 620, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
               }
             }
             leadLong {
@@ -223,13 +223,13 @@ export const pageQuery = graphql`
             slug
             title
             heroImage {
-              fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp
+              fluid(maxWidth: 768, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
               }
             }
             heroImageThumbnail {
-              fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp
+              fluid(maxWidth: 620, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid
               }
             }
             categories {
