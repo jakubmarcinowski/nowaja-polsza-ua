@@ -22,6 +22,12 @@ export const toggleBlock = (editor, format) => {
 }
 
 export const toggleMark = (editor, format) => {
+  if (format === 'footnote') {
+    Transforms.insertNodes(editor, {
+      type: 'footnote',
+      children: [{ text: '[1]' }],
+    })
+  }
   const isActive = isMarkActive(editor, format)
 
   if (isActive) {

@@ -1,6 +1,7 @@
 import React from 'react'
 import Types from 'slate-prop-types'
 import { classnames } from 'utils/classnames'
+import { Footnote } from 'components'
 
 const Element = ({ attributes, children, element }) => {
   switch (element.type) {
@@ -21,6 +22,7 @@ const Element = ({ attributes, children, element }) => {
     case 'align-left':
     case 'align-center':
     case 'align-right':
+    case 'align-justify':
       return (
         <p
           {...attributes}
@@ -31,6 +33,14 @@ const Element = ({ attributes, children, element }) => {
         >
           {children}
         </p>
+      )
+    case 'footnote':
+      return <Footnote>{children}</Footnote>
+    case 'link':
+      return (
+        <a {...attributes} href={element.url}>
+          {children}
+        </a>
       )
     default:
       return <p>{children}</p>

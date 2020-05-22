@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import isHotkey from 'is-hotkey'
 import { Editable, withReact, useSlate, Slate } from 'slate-react'
-import { createEditor } from 'slate'
+import { createEditor, Transforms, Editor, Range } from 'slate'
 import { withHistory } from 'slate-history'
 import {
   Element,
@@ -16,6 +16,7 @@ import {
   AlignRightButton,
   AlignCenterButton,
   HeadingButton,
+  AlignJustifyButton,
 } from 'components'
 import {
   isMarkActive,
@@ -32,6 +33,8 @@ const HOTKEYS = {
   'mod+u': 'underline',
   'mod+`': 'code',
 }
+
+const customInlineElements = ['link', 'footnote']
 
 const inlineButtons = [
   { value: 'bold', Component: BoldButton },
@@ -53,6 +56,10 @@ const blockButtons = [
   {
     value: 'align-right',
     Component: AlignRightButton,
+  },
+  {
+    value: 'align-justify',
+    Component: AlignJustifyButton,
   },
   {
     value: 'block-quote',
@@ -79,7 +86,10 @@ const RichTextExample = () => {
   const [value, setValue] = useState(initialValue)
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
-  const editor = useMemo(() => withHistory(withReact(createEditor())), [])
+  const editor = useMemo(
+    () => withCustomElements(withHistory(withReact(createEditor()))),
+    []
+  )
 
   return (
     <Slate editor={editor} value={value} onChange={value => setValue(value)}>
@@ -109,6 +119,16 @@ const RichTextExample = () => {
       />
     </Slate>
   )
+}
+
+const withCustomElements = editor => {
+  const { isInline } = editor
+
+  editor.isInline = element => {
+    return customInlineElements.includes(element.type) || isInline(element)
+  }
+
+  return editor
 }
 
 const InlineButtonWrapper = ({ value, Component }) => {
