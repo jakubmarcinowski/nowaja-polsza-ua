@@ -51,6 +51,7 @@ export const isBlockActive = (editor, format) => {
 }
 
 export const isMarkActive = (editor, format) => {
+  if (format === 'footnote') return isBlockActive(editor, format)
   const marks = Editor.marks(editor)
   return marks ? marks[format] === true : false
 }

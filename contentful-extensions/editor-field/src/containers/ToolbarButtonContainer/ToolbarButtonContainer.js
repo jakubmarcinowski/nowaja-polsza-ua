@@ -9,6 +9,7 @@ const ToolbarButtonContainer = ({
   dialog,
   isActiveChecker,
   onToggle,
+  ...other
 }) => {
   const editor = useSlate()
   const [dialogOpen, setDialogOpen] = useState(false)
@@ -28,8 +29,9 @@ const ToolbarButtonContainer = ({
             onToggle(editor, { format: value })
           }
         }}
+        {...other}
       />
-      {dialog && (
+      {dialogOpen && (
         <DialogInput
           {...dialog}
           onConfirm={dialogValue => {
@@ -40,7 +42,7 @@ const ToolbarButtonContainer = ({
             })
             setDialogOpen(false)
           }}
-          open={dialogOpen}
+          open={true}
         />
       )}
     </>
