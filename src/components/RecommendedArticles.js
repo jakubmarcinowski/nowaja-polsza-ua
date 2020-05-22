@@ -5,7 +5,7 @@ import ArticlesList from 'components/ArticlesList'
 import { articleType } from 'types/article'
 
 const RecommendedArticles = ({ posts }) => (
-  <ArticlesList posts={posts} initialLimit={2} size="Big" />
+  <ArticlesList posts={posts.slice(0, 2)} size="Big" />
 )
 
 RecommendedArticles.propTypes = {

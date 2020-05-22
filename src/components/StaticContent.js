@@ -291,6 +291,10 @@ class StaticContent extends React.Component {
         }
       })
     }
+
+    document
+      .querySelectorAll('.gatsby-resp-image-wrapper')
+      .forEach(img => (img.parentElement.style.maxWidth = 'unset'))
   }
 
   componentWillUnmount() {
