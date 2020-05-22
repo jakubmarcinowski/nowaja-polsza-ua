@@ -56,7 +56,6 @@
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md' 'bin/*.js'",
     "build": "gatsby build",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix *.js bin/*.js",
-    "preinstall": "npm install ./gatsby-remark-images-contentful/",
     "postinstall": "node ./bin/hello.js",
     "setup": "node ./bin/setup.js",
     "cleanup-repository": "rimraf bin contentful && yarn remove contentful-import chalk inquirer rimraf",
