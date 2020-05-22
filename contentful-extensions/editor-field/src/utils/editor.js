@@ -2,6 +2,20 @@ import { Editor, Transforms } from 'slate'
 
 const LIST_TYPES = ['unordered-list', 'ordered-list']
 
+const toggleFootnote = (editor, { format, props, at }) => {
+  const match = findBlockMatch(editor, { format, at })
+  const node = {
+    type: 'footnote',
+    children: [{ text: '[1]' }],
+    ...props,
+  }
+  if (match) {
+    Transforms.setNodes(editor, node, { at: match[1] })
+  } else {
+    Transforms.insertNodes(editor, node, { at })
+  }
+}
+
 export const toggleBlock = (editor, { format }) => {
   const isActive = isBlockActive(editor, format)
   const isList = LIST_TYPES.includes(format)
@@ -23,16 +37,9 @@ export const toggleBlock = (editor, { format }) => {
 
 export const toggleMark = (editor, { format, props, at }) => {
   if (format === 'footnote') {
-    Transforms.insertNodes(
-      editor,
-      {
-        type: 'footnote',
-        children: [{ text: '[1]' }],
-        ...props,
-      },
-      { at }
-    )
+    return toggleFootnote(editor, { format, props, at })
   }
+
   const isActive = isMarkActive(editor, format)
 
   if (isActive) {
@@ -42,12 +49,17 @@ export const toggleMark = (editor, { format, props, at }) => {
   }
 }
 
-export const isBlockActive = (editor, format) => {
+export const findBlockMatch = (editor, { format, at }) => {
   const [match] = Editor.nodes(editor, {
     match: n => n.type === format,
+    at,
   })
 
-  return !!match
+  return match
+}
+
+export const isBlockActive = (editor, format) => {
+  return !!findBlockMatch(editor, { format })
 }
 
 export const isMarkActive = (editor, format) => {

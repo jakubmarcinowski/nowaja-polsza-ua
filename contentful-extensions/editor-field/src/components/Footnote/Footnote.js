@@ -5,7 +5,7 @@ import './Footnote.scss'
 const Footnote = ({ children, content }) => (
   <a className="footnote" href="https://onet.pl">
     {children}
-    <div className="footnote__description">{content}</div>
+    <span className="footnote__description">{content}</span>
   </a>
 )
 

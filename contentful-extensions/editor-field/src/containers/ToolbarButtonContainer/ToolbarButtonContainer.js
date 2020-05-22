@@ -14,7 +14,6 @@ const ToolbarButtonContainer = ({
   const editor = useSlate()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [anchorPoint, setAnchorPoint] = useState(null)
-  console.log({ value, Component })
 
   return (
     <>
@@ -42,6 +41,7 @@ const ToolbarButtonContainer = ({
             })
             setDialogOpen(false)
           }}
+          initValue={dialog.getInitValue && dialog.getInitValue(editor)}
           open={true}
         />
       )}

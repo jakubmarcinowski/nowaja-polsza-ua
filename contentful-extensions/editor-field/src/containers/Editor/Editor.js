@@ -26,6 +26,7 @@ import {
   isBlockActive,
   toggleMark,
   toggleBlock,
+  findBlockMatch,
 } from 'utils/editor'
 
 const HOTKEYS = {
@@ -44,7 +45,14 @@ const inlineButtons = [
   {
     value: 'footnote',
     Component: FootnoteButton,
-    dialog: { title: 'Przypis', label: 'Przypis' },
+    dialog: {
+      title: 'Przypis',
+      label: 'Przypis',
+      getInitValue: editor => {
+        const match = findBlockMatch(editor, { format: 'footnote' })
+        return match && match[0].content
+      },
+    },
   },
 ]
 const blockButtons = [
