@@ -77,13 +77,13 @@ export const pageQuery = graphql`
             color
           }
           heroImage {
-            fluid(maxWidth: 768, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+            fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           heroImageThumbnail {
-            fluid(maxWidth: 620, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+            fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           summary
@@ -118,13 +118,13 @@ export const pageQuery = graphql`
             }
             summary
             heroImage {
-              fluid(maxWidth: 1440, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+              fluid(quality: 30, maxWidth: 1440, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             heroImageThumbnail {
-              fluid(maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+              fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             title
@@ -141,13 +141,13 @@ export const pageQuery = graphql`
             slug
             title
             heroImage {
-              fluid(maxWidth: 768, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+              fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             heroImageThumbnail {
-              fluid(maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid
+              fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             categories {

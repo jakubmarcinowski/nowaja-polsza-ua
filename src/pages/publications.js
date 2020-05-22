@@ -51,8 +51,8 @@ export const PublicationsPageQuery = graphql`
             slug
           }
           heroImage {
-            fluid(maxWidth: 768, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+            fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           lead {
