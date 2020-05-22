@@ -29,6 +29,10 @@ const StyledContent = styled.div`
     font-weight: 700;
   }
 
+  .gatsby-resp-image-image {
+    transform: none !important;
+  }
+
   h1 {
     line-height: 1.3;
     font-size: 2rem;
@@ -289,6 +293,10 @@ class StaticContent extends React.Component {
         }
       })
     }
+
+    document
+      .querySelectorAll('.gatsby-resp-image-wrapper')
+      .forEach(img => (img.parentElement.style.maxWidth = 'unset'))
   }
 
   componentWillUnmount() {

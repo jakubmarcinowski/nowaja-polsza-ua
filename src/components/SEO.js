@@ -21,7 +21,7 @@ class SEO extends Component {
       f.parentNode.insertBefore(j, f)
     })(window, document, 'script', 'dataLayer', process.env.GATSBY_GTM)
   }
-
+  
   componentDidMount() {
     this.setState({ locationHref: window.location.href })
     this.tags()
