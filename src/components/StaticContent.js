@@ -19,7 +19,9 @@ const StyledContent = styled.div`
       margin: 0 auto;
     }
   }
-
+  .gatsby-resp-image-image {
+    transform: none !important;
+  }
   h1,
   h2,
   h3 {
