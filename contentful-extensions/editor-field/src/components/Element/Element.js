@@ -35,7 +35,7 @@ const Element = ({ attributes, children, element }) => {
         </p>
       )
     case 'footnote':
-      return <Footnote>{children}</Footnote>
+      return <Footnote content={element.content}>{children}</Footnote>
     case 'link':
       return (
         <a {...attributes} href={element.url}>

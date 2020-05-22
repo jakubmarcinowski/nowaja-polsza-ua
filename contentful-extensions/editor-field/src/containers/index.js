@@ -1,3 +1,4 @@
-import Editor from 'containers/Editor/Editor'
+import Editor from './Editor/Editor'
+import ToolbarButtonContainer from './ToolbarButtonContainer/ToolbarButtonContainer'
 
-export { Editor }
+export { Editor, ToolbarButtonContainer }

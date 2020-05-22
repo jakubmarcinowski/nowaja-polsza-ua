@@ -2,7 +2,7 @@ import { Editor, Transforms } from 'slate'
 
 const LIST_TYPES = ['unordered-list', 'ordered-list']
 
-export const toggleBlock = (editor, format) => {
+export const toggleBlock = (editor, { format }) => {
   const isActive = isBlockActive(editor, format)
   const isList = LIST_TYPES.includes(format)
 
@@ -21,12 +21,17 @@ export const toggleBlock = (editor, format) => {
   }
 }
 
-export const toggleMark = (editor, format) => {
+export const toggleMark = (editor, { format, props, at }) => {
   if (format === 'footnote') {
-    Transforms.insertNodes(editor, {
-      type: 'footnote',
-      children: [{ text: '[1]' }],
-    })
+    Transforms.insertNodes(
+      editor,
+      {
+        type: 'footnote',
+        children: [{ text: '[1]' }],
+        ...props,
+      },
+      { at }
+    )
   }
   const isActive = isMarkActive(editor, format)
 

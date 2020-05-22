@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import isHotkey from 'is-hotkey'
-import { Editable, withReact, useSlate, Slate } from 'slate-react'
-import { createEditor, Transforms, Editor, Range } from 'slate'
+import { Editable, withReact, Slate } from 'slate-react'
+import { createEditor } from 'slate'
 import { withHistory } from 'slate-history'
 import {
   Element,
@@ -17,15 +17,16 @@ import {
   AlignCenterButton,
   HeadingButton,
   AlignJustifyButton,
+  QuoteButton,
+  FootnoteButton,
 } from 'components'
+import { ToolbarButtonContainer } from 'containers'
 import {
   isMarkActive,
   isBlockActive,
   toggleMark,
   toggleBlock,
 } from 'utils/editor'
-import QuoteButton from 'components/Toolbar/buttons/QuoteButton'
-import FootnoteButton from 'components/Toolbar/buttons/FootnoteButton'
 
 const HOTKEYS = {
   'mod+b': 'bold',
@@ -40,7 +41,11 @@ const inlineButtons = [
   { value: 'bold', Component: BoldButton },
   { value: 'italic', Component: ItalicButton },
   { value: 'underline', Component: UnderlineButton },
-  { value: 'footnote', Component: FootnoteButton },
+  {
+    value: 'footnote',
+    Component: FootnoteButton,
+    dialog: { title: 'Przypis', label: 'Przypis' },
+  },
 ]
 const blockButtons = [
   { value: 'unordered-list', Component: UnorderedListButton },
@@ -95,16 +100,25 @@ const RichTextExample = () => {
     <Slate editor={editor} value={value} onChange={value => setValue(value)}>
       <Toolbar>
         {inlineButtons.map(props => (
-          <InlineButtonWrapper key={props.value} {...props} />
+          <ToolbarButtonContainer
+            key={props.value}
+            isActiveChecker={isMarkActive}
+            onToggle={toggleMark}
+            {...props}
+          />
         ))}
         {blockButtons.map(props => (
-          <BlockButtonWrapper key={props.value} {...props} />
+          <ToolbarButtonContainer
+            key={props.value}
+            isActiveChecker={isBlockActive}
+            onToggle={toggleBlock}
+            {...props}
+          />
         ))}
       </Toolbar>
       <Editable
         renderElement={renderElement}
         renderLeaf={renderLeaf}
-        placeholder="Enter some rich text…"
         spellCheck
         autoFocus
         onKeyDown={event => {
@@ -112,7 +126,7 @@ const RichTextExample = () => {
             if (isHotkey(hotkey, event)) {
               event.preventDefault()
               const mark = HOTKEYS[hotkey]
-              toggleMark(editor, mark)
+              toggleMark(editor, { format: mark })
             }
           }
         }}
@@ -129,29 +143,6 @@ const withCustomElements = editor => {
   }
 
   return editor
-}
-
-const InlineButtonWrapper = ({ value, Component }) => {
-  const editor = useSlate()
-  return (
-    <Component
-      value={value}
-      isActive={isMarkActive(editor, value)}
-      onSelect={() => toggleMark(editor, value)}
-    />
-  )
-}
-
-const BlockButtonWrapper = ({ value, Component, ...props }) => {
-  const editor = useSlate()
-  return (
-    <Component
-      value={value}
-      isActive={isBlockActive(editor, value)}
-      onSelect={() => toggleBlock(editor, value)}
-      {...props}
-    />
-  )
 }
 
 const initialValue = [
