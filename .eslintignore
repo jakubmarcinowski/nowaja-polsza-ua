@@ -1,1 +1,5 @@
 /bin
+gatsby-remark-images-contentful/
+node_modules/
+build/
+**/*.spec.js

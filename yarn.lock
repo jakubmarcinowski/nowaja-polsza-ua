@@ -6213,7 +6213,7 @@ gatsby-recipes@^0.1.6:
     ws "^7.2.5"
     xstate "^4.9.1"
 
-gatsby-remark-images-contentful@./gatsby-remark-images-contentful:
+"gatsby-remark-images-contentful@file:gatsby-remark-images-contentful":
   version "2.3.2"
   dependencies:
     "@babel/runtime" "^7.9.6"
