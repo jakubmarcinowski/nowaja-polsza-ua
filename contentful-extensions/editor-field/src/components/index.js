@@ -9,6 +9,7 @@ import AlignJustifyButton from './Toolbar/buttons/AlignJustifyButton'
 import AlignLeftButton from './Toolbar/buttons/AlignLeftButton'
 import AlignRightButton from './Toolbar/buttons/AlignRightButton'
 import BoldButton from './Toolbar/buttons/BoldButton'
+import ColumnsButton from './Toolbar/buttons/ColumnsButton'
 import FootnoteButton from './Toolbar/buttons/FootnoteButton'
 import HeadingButton from './Toolbar/buttons/HeadingButton'
 import ItalicButton from './Toolbar/buttons/ItalicButton'
@@ -23,6 +24,7 @@ export {
   AlignLeftButton,
   AlignRightButton,
   BoldButton,
+  ColumnsButton,
   FootnoteButton,
   HeadingButton,
   ItalicButton,

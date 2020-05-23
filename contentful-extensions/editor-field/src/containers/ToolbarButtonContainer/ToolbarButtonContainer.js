@@ -25,7 +25,7 @@ const ToolbarButtonContainer = ({
             setAnchorPoint(editor.selection.anchor)
             setDialogOpen(true)
           } else {
-            onToggle(editor, { format: value })
+            onToggle(editor, { format: value, ...other })
           }
         }}
         {...other}

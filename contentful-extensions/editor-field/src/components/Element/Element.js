@@ -42,6 +42,10 @@ const Element = ({ attributes, children, element }) => {
           {children}
         </a>
       )
+    case 'columns':
+      return <div className="columns">{children}</div>
+    case 'column':
+      return <div className="column">{children}</div>
     default:
       return <p>{children}</p>
   }

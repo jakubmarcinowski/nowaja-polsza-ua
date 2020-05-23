@@ -1,7 +1,5 @@
 import { Editor, Transforms } from 'slate'
 
-const LIST_TYPES = ['unordered-list', 'ordered-list']
-
 const toggleFootnote = (editor, { format, props, at }) => {
   const match = findBlockMatch(editor, { format, at })
   const node = {
@@ -16,7 +14,9 @@ const toggleFootnote = (editor, { format, props, at }) => {
   }
 }
 
-export const toggleBlock = (editor, { format }) => {
+export const LIST_TYPES = ['unordered-list', 'ordered-list']
+
+export const toggleBlock = (editor, { format, ...other }) => {
   const isActive = isBlockActive(editor, format)
   const isList = LIST_TYPES.includes(format)
 
@@ -25,9 +25,21 @@ export const toggleBlock = (editor, { format }) => {
     split: true,
   })
 
-  Transforms.setNodes(editor, {
-    type: isActive ? 'paragraph' : isList ? 'list-item' : format,
-  })
+  if (format !== 'columns') {
+    Transforms.setNodes(editor, {
+      type: isActive ? 'paragraph' : isList ? 'list-item' : format,
+      ...other,
+    })
+  } else {
+    Transforms.insertNodes(
+      editor,
+      {
+        type: format,
+        ...other,
+      },
+      { mode: 'highest' }
+    )
+  }
 
   if (!isActive && isList) {
     const block = { type: format, children: [] }
@@ -49,21 +61,64 @@ export const toggleMark = (editor, { format, props, at }) => {
   }
 }
 
-export const findBlockMatch = (editor, { format, at }) => {
+export const findBlockMatches = (editor, { formats, at }) => {
   const [match] = Editor.nodes(editor, {
-    match: n => n.type === format,
+    match: n => formats.includes(n.type),
     at,
   })
 
   return match
 }
 
-export const isBlockActive = (editor, format) => {
-  return !!findBlockMatch(editor, { format })
+export const findBlockMatch = (editor, { format, at }) => {
+  return findBlockMatches(editor, { formats: [format], at })
 }
+
+export const isBlockActive = (editor, format) =>
+  !!findBlockMatch(editor, { format })
+
+export const isBlockListActive = editor => isBlockActive(editor, 'list-item')
 
 export const isMarkActive = (editor, format) => {
   if (format === 'footnote') return isBlockActive(editor, format)
   const marks = Editor.marks(editor)
   return marks ? marks[format] === true : false
+}
+
+export const handleEnter = (event, editor) => {
+  const match = findBlockMatches(editor, {
+    formats: ['list-item', 'columns'],
+  })
+  if (event.shiftKey) {
+    event.preventDefault()
+    Editor.insertText(editor, '\n')
+  } else if (match && match[0].type === 'columns') {
+    event.preventDefault()
+    const at = [match[1][0] + 1]
+    Transforms.insertNodes(
+      editor,
+      {
+        type: 'paragraph',
+        children: [{ text: '' }],
+      },
+      { at }
+    )
+    return Transforms.select(editor, at)
+  } else if (
+    !(
+      match &&
+      match[0].type === 'list-item' &&
+      match[0].children.find(child => !!child.text)
+    )
+  ) {
+    event.preventDefault()
+    Transforms.insertNodes(
+      editor,
+      {
+        type: 'paragraph',
+        children: [{ text: '' }],
+      },
+      { mode: 'highest' }
+    )
+  }
 }

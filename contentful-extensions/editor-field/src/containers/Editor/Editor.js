@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import isHotkey from 'is-hotkey'
 import { Editable, withReact, Slate } from 'slate-react'
-import { createEditor } from 'slate'
+import { createEditor, Editor, Transforms } from 'slate'
 import { withHistory } from 'slate-history'
 import {
   Element,
@@ -19,6 +19,7 @@ import {
   AlignJustifyButton,
   QuoteButton,
   FootnoteButton,
+  ColumnsButton,
 } from 'components'
 import { ToolbarButtonContainer } from 'containers'
 import {
@@ -27,6 +28,7 @@ import {
   toggleMark,
   toggleBlock,
   findBlockMatch,
+  handleEnter,
 } from 'utils/editor'
 
 const HOTKEYS = {
@@ -81,17 +83,25 @@ const blockButtons = [
   {
     value: 'heading-one',
     Component: HeadingButton,
-    type: 1,
+    headingType: 1,
   },
   {
     value: 'heading-two',
     Component: HeadingButton,
-    type: 2,
+    headingType: 2,
   },
   {
     value: 'heading-three',
     Component: HeadingButton,
-    type: 3,
+    headingType: 3,
+  },
+  {
+    value: 'columns',
+    Component: ColumnsButton,
+    children: [
+      { type: 'column', children: [{ text: 'Pierwsza' }] },
+      { type: 'column', children: [{ text: 'Druga' }] },
+    ],
   },
 ]
 
@@ -130,6 +140,9 @@ const RichTextExample = () => {
         spellCheck
         autoFocus
         onKeyDown={event => {
+          if (event.key === 'Enter') {
+            return handleEnter(event, editor)
+          }
           for (const hotkey in HOTKEYS) {
             if (isHotkey(hotkey, event)) {
               event.preventDefault()
