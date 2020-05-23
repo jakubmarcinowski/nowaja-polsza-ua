@@ -115,44 +115,47 @@ const RichTextExample = () => {
   )
 
   return (
-    <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-      <Toolbar>
-        {inlineButtons.map(props => (
-          <ToolbarButtonContainer
-            key={props.value}
-            isActiveChecker={isMarkActive}
-            onToggle={toggleMark}
-            {...props}
-          />
-        ))}
-        {blockButtons.map(props => (
-          <ToolbarButtonContainer
-            key={props.value}
-            isActiveChecker={isBlockActive}
-            onToggle={toggleBlock}
-            {...props}
-          />
-        ))}
-      </Toolbar>
-      <Editable
-        renderElement={renderElement}
-        renderLeaf={renderLeaf}
-        spellCheck
-        autoFocus
-        onKeyDown={event => {
-          if (event.key === 'Enter') {
-            return handleEnter(event, editor)
-          }
-          for (const hotkey in HOTKEYS) {
-            if (isHotkey(hotkey, event)) {
-              event.preventDefault()
-              const mark = HOTKEYS[hotkey]
-              toggleMark(editor, { format: mark })
+    <>
+      <Slate editor={editor} value={value} onChange={value => setValue(value)}>
+        <Toolbar>
+          {inlineButtons.map(props => (
+            <ToolbarButtonContainer
+              key={props.value}
+              isActiveChecker={isMarkActive}
+              onToggle={toggleMark}
+              {...props}
+            />
+          ))}
+          {blockButtons.map(props => (
+            <ToolbarButtonContainer
+              key={props.value}
+              isActiveChecker={isBlockActive}
+              onToggle={toggleBlock}
+              {...props}
+            />
+          ))}
+        </Toolbar>
+        <Editable
+          renderElement={renderElement}
+          renderLeaf={renderLeaf}
+          spellCheck
+          autoFocus
+          onKeyDown={event => {
+            if (event.key === 'Enter') {
+              return handleEnter(event, editor)
             }
-          }
-        }}
-      />
-    </Slate>
+            for (const hotkey in HOTKEYS) {
+              if (isHotkey(hotkey, event)) {
+                event.preventDefault()
+                const mark = HOTKEYS[hotkey]
+                toggleMark(editor, { format: mark })
+              }
+            }
+          }}
+        />
+      </Slate>
+      <pre>{JSON.stringify(value, null, 2)}</pre>
+    </>
   )
 }
 

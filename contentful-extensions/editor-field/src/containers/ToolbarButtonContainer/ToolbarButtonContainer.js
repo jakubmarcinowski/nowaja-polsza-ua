@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useSlate } from 'slate-react'
+import Tooltip from '@material-ui/core/Tooltip'
 import { DialogInput } from 'components'
 
 const ToolbarButtonContainer = ({
@@ -17,19 +18,27 @@ const ToolbarButtonContainer = ({
 
   return (
     <>
-      <Component
-        value={value}
-        isActive={isActiveChecker(editor, value)}
-        onSelect={() => {
-          if (dialog) {
-            setAnchorPoint(editor.selection.anchor)
-            setDialogOpen(true)
-          } else {
-            onToggle(editor, { format: value, ...other })
-          }
-        }}
-        {...other}
-      />
+      <Tooltip
+        title={value}
+        aria-label={value}
+        placement="bottom"
+        enterTouchDelay={1500}
+        enterNextDelay={500}
+      >
+        <Component
+          value={value}
+          isActive={isActiveChecker(editor, value)}
+          onSelect={() => {
+            if (dialog) {
+              setAnchorPoint(editor.selection.anchor)
+              setDialogOpen(true)
+            } else {
+              onToggle(editor, { format: value, ...other })
+            }
+          }}
+          {...other}
+        />
+      </Tooltip>
       {dialogOpen && (
         <DialogInput
           {...dialog}
@@ -51,7 +60,7 @@ const ToolbarButtonContainer = ({
 
 ToolbarButtonContainer.propTypes = {
   value: PropTypes.string.isRequired,
-  Component: PropTypes.node.isRequired,
+  Component: PropTypes.elementType.isRequired,
   isActiveChecker: PropTypes.func.isRequired,
   onToggle: PropTypes.func.isRequired,
   dialog: PropTypes.object,

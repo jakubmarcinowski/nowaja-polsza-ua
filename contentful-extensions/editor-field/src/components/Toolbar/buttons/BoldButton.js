@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import ToggleButton from './ToolbarButton'
 import FormatBoldIcon from '@material-ui/icons/FormatBold'
 import { ToggleButtonType } from 'utils/types'
 
-const BoldButton = props => (
-  <ToggleButton aria-label="bold" {...props}>
-    <FormatBoldIcon />
-  </ToggleButton>
-)
+const BoldButton = forwardRef(function BoldButton(props, ref) {
+  return (
+    <ToggleButton aria-label="bold" {...props} ref={ref}>
+      <FormatBoldIcon />
+    </ToggleButton>
+  )
+})
 
 BoldButton.propTypes = ToggleButtonType
 

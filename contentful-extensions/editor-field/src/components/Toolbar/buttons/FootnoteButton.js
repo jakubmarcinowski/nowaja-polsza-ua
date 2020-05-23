@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import ToggleButton from './ToolbarButton'
 import { ToggleButtonType } from 'utils/types'
 
-const FootnoteButton = props => (
-  <ToggleButton aria-label="footnote" {...props}>
-    [1]
-  </ToggleButton>
-)
+const FootnoteButton = forwardRef(function FootnoteButton(props, ref) {
+  return (
+    <ToggleButton aria-label="footnote" {...props} ref={ref}>
+      [1]
+    </ToggleButton>
+  )
+})
 
 FootnoteButton.propTypes = ToggleButtonType
 

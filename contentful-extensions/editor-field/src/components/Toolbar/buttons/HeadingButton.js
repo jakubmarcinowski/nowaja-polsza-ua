@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import ToggleButton from './ToolbarButton'
 import { ToggleButtonType } from 'utils/types'
 
-const HeadingButton = ({ headingType, ...props }) => (
-  <ToggleButton aria-label={`heading ${headingType}`} {...props}>
-    H{headingType}
-  </ToggleButton>
-)
+const HeadingButton = forwardRef(function HeadingButton(
+  { headingType, ...props },
+  ref
+) {
+  return (
+    <ToggleButton aria-label={`heading ${headingType}`} {...props} ref={ref}>
+      H{headingType}
+    </ToggleButton>
+  )
+})
 
 HeadingButton.propTypes = {
   ...ToggleButtonType,
