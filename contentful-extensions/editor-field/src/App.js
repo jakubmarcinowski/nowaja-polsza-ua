@@ -54,35 +54,88 @@ const App = ({ initialValue, sdk }) => {
 }
 
 const testInitialValue = [
-  {
-    type: 'paragraph',
-    children: [
-      { text: 'This is editable ' },
-      { text: 'rich', bold: true },
-      { text: ' text, ' },
-      { text: 'much', italic: true },
-      { text: ' better than a ' },
-      { text: '<textarea>', code: true },
-      { text: '!' },
-    ],
-  },
+  { type: 'heading-one', children: [{ text: 'Война на два фронта' }] },
   {
     type: 'paragraph',
     children: [
       {
         text:
-          "Since it's rich text, you can do things like turn a selection of text ",
+          '17 сентября 1939 года Советский Союз напал на Польшу, которая на тот момент еще сражалась ',
       },
-      { text: 'bold', bold: true },
+      { text: 'нацистской Германией. ', bold: true },
       {
-        text:
-          ', or add a semantically rendered block quote in the middle of the page, like this:',
+        type: 'footnote',
+        children: [{ text: '[1]' }],
+        content:
+          'Польским военным предписывалось по возможности уходить за границу с тактической целью — перегруппировать войска в ожидании помощи западных стран.',
       },
     ],
   },
   {
     type: 'block-quote',
-    children: [{ text: 'A wise quote.' }],
+    children: [
+      {
+        text:
+          '17 сентября 1939 года верховный главнокомандующий Польши, генерал Эдвард Рыдз-Смиглы, отдал приказ не вести военных действий против СССР (за исключением ситуаций, когда красноармейцы пытаются разоружить польских солдат).',
+      },
+    ],
+  },
+  {
+    type: 'ordered-list',
+    children: [
+      {
+        type: 'list-item',
+        children: [{ text: 'First' }],
+      },
+      {
+        type: 'list-item',
+        children: [{ text: 'Second' }],
+      },
+      {
+        type: 'list-item',
+        children: [{ text: 'Third' }],
+      },
+    ],
+  },
+  {
+    type: 'unordered-list',
+    children: [
+      {
+        type: 'list-item',
+        children: [{ text: 'First' }],
+      },
+      {
+        type: 'list-item',
+        children: [{ text: 'Second' }],
+      },
+      {
+        type: 'list-item',
+        children: [{ text: 'Third' }],
+      },
+    ],
+  },
+  {
+    type: 'columns',
+    children: [
+      {
+        type: 'column',
+        children: [
+          {
+            text:
+              'Польская история рушится обвалом\nПод гром «лесоповала» вдали за Уралом.',
+          },
+        ],
+      },
+      {
+        type: 'column',
+        children: [
+          {
+            text:
+              'Kiedy o świcie w polską historię się wali\nGrzmotem «lesopowalu» drzewo za Uralem.',
+          },
+        ],
+      },
+    ],
   },
   {
     type: 'paragraph',

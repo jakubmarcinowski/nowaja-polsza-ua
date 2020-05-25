@@ -82,7 +82,7 @@ export const findBlockMatches = (editor, { formats, at }) => {
     at,
   })
 
-  return !!match
+  return match
 }
 
 export const findBlockMatch = (editor, { format, at }) => {
@@ -133,7 +133,7 @@ export const handleEnter = (event, editor) => {
         type: 'paragraph',
         children: [{ text: '' }],
       },
-      { mode: 'highest' }
+      { mode: 'lowest' }
     )
   }
 }
