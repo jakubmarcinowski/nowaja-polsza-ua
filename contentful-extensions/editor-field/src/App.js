@@ -7,8 +7,7 @@ import { init } from 'contentful-ui-extensions-sdk'
 const isContentful = !!process.env.IS_CONTENTFUL
 const onContentful = fn => isContentful && fn()
 const getValueFromSdk = sdk =>
-  sdk.parameters.invocation?.initValue ||
-  (sdk.field && this.props.sdk.field?.getValue())
+  sdk.parameters.invocation?.initValue || sdk.field?.getValue()
 
 const App = ({ sdk }) => {
   let initValue = onContentful(() => getValueFromSdk(sdk))
