@@ -15,9 +15,13 @@ const App = ({ initialValue, sdk }) => {
   const [currentValue, setCurrentValue] = useState(
     initialValue || (isContentful && getValueFromSdk(sdk)) || null
   )
+  const isFullscreen = isContentful && !!sdk.parameters.invocation
+
   const toggleFullscreen = () => {
-    const isInDialog = !!sdk.parameters.invocation
-    if (isInDialog) {
+    if (!isContentful) {
+      return
+    }
+    if (isFullscreen) {
       sdk.close(currentValue)
     } else {
       sdk.dialogs
@@ -39,8 +43,12 @@ const App = ({ initialValue, sdk }) => {
 
   return (
     <div className="container">
-      <Editor value={currentValue} valueChanged={setCurrentValue} />
-      {isContentful && <button onClick={toggleFullscreen}>Full screen</button>}
+      <Editor
+        value={currentValue}
+        valueChanged={setCurrentValue}
+        isFullscreen={isFullscreen}
+        toggleFullscreen={toggleFullscreen}
+      />
     </div>
   )
 }

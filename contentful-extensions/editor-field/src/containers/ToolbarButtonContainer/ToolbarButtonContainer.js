@@ -50,7 +50,7 @@ const ToolbarButtonContainer = ({
             })
             setDialogOpen(false)
           }}
-          initValue={dialog.getInitValue && dialog.getInitValue(editor)}
+          initValue={dialog.getInitValue ? dialog.getInitValue(editor) : ''}
           open={true}
         />
       )}
@@ -61,9 +61,13 @@ const ToolbarButtonContainer = ({
 ToolbarButtonContainer.propTypes = {
   value: PropTypes.string.isRequired,
   Component: PropTypes.elementType.isRequired,
-  isActiveChecker: PropTypes.func.isRequired,
   onToggle: PropTypes.func.isRequired,
+  isActiveChecker: PropTypes.func,
   dialog: PropTypes.object,
+}
+
+ToolbarButtonContainer.defaultProps = {
+  isActiveChecker: () => false,
 }
 
 export default ToolbarButtonContainer

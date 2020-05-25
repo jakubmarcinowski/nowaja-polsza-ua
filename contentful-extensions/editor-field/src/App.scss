@@ -106,3 +106,7 @@ h3 {
     flex: 1;
   }
 }
+
+.toolbar > button:last-child {
+  margin-left: auto;
+}

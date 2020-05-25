@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --out-dir build",
-    "cms:build": "IS_CONTENTFUL=true parcel build src/index.html --out-dir build",
+    "cms:build": "IS_CONTENTFUL=true parcel build src/index.html --out-dir build --no-source-maps",
     "cms:configure": "contentful space use && contentful space environment use",
     "cms:start": "IS_CONTENTFUL=true contentful-extension-scripts start"
   },

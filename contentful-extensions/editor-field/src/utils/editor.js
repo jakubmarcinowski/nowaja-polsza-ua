@@ -1,5 +1,17 @@
 import { Editor, Transforms } from 'slate'
 
+const updateFootnoteOrder = editor => {
+  let i = 1
+  for (const [el, elPath] of Editor.nodes(editor, { at: [] })) {
+    if (el.type === 'footnote') {
+      if (el.children[0].text !== `[${i}]`) {
+        Transforms.insertText(editor, `[${i}]`, { at: elPath })
+      }
+      i++
+    }
+  }
+}
+
 const toggleFootnote = (editor, { format, props, at }) => {
   const match = findBlockMatch(editor, { format, at })
   const node = {
@@ -12,6 +24,7 @@ const toggleFootnote = (editor, { format, props, at }) => {
   } else {
     Transforms.insertNodes(editor, node, { at })
   }
+  updateFootnoteOrder(editor)
 }
 
 export const LIST_TYPES = ['unordered-list', 'ordered-list']
@@ -69,7 +82,7 @@ export const findBlockMatches = (editor, { formats, at }) => {
     at,
   })
 
-  return match
+  return !!match
 }
 
 export const findBlockMatch = (editor, { format, at }) => {
