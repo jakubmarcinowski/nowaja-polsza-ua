@@ -58,6 +58,7 @@ const testInitialValue = [
       { text: '!' },
     ],
   },
+  { children: [{ text: 'This is editable ' }], type: 'link', url: 'ac' },
   {
     type: 'paragraph',
     children: [
@@ -75,6 +76,16 @@ const testInitialValue = [
   {
     type: 'block-quote',
     children: [{ text: 'A wise quote.' }],
+  },
+  {
+    type: 'youtube',
+    children: [{ text: 'abc' }],
+    content: 'h9ZQElA1LjQ',
+  },
+  {
+    type: 'soundcloud',
+    children: [{ text: 'test soundcloud' }],
+    content: 'user-261324975/sets/lofi',
   },
   {
     type: 'paragraph',

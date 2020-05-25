@@ -1,7 +1,7 @@
 import React from 'react'
 import Types from 'slate-prop-types'
 import { classnames } from 'utils/classnames'
-import { Footnote } from 'components'
+import { Footnote, Youtube, SoundCloud } from 'components'
 
 const Element = ({ attributes, children, element }) => {
   switch (element.type) {
@@ -36,6 +36,10 @@ const Element = ({ attributes, children, element }) => {
       )
     case 'footnote':
       return <Footnote content={element.content}>{children}</Footnote>
+    case 'youtube':
+      return <Youtube content={element.content}>{children}</Youtube>
+    case 'soundcloud':
+      return <SoundCloud content={element.content}>{children}</SoundCloud>
     case 'link':
       return (
         <a {...attributes} href={element.url}>

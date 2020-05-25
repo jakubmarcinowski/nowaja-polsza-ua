@@ -1,4 +1,4 @@
-import { Editor, Transforms } from 'slate'
+import { Editor, Range, Transforms } from 'slate'
 
 const toggleFootnote = (editor, { format, props, at }) => {
   const match = findBlockMatch(editor, { format, at })
@@ -49,9 +49,62 @@ export const toggleBlock = (editor, { format, ...other }) => {
   }
 }
 
+export const isLinkActive = editor => {
+  const [link] = Editor.nodes(editor, { match: n => n.type === 'link' })
+  return !!link
+}
+
+const insertLink = (editor, url) => {
+  if (editor.selection) {
+    wrapLink(editor, url)
+  }
+}
+
+const unwrapLink = editor => {
+  Transforms.unwrapNodes(editor, { match: n => n.type === 'link' })
+}
+
+const wrapLink = (editor, url) => {
+  const { selection } = editor
+  const isCollapsed = selection && Range.isCollapsed(selection)
+  const link = {
+    type: 'link',
+    url,
+    children: isCollapsed ? [{ text: url }] : [],
+  }
+  if (isCollapsed) {
+    Transforms.insertNodes(editor, link)
+  } else {
+    Transforms.wrapNodes(editor, link, { split: true })
+    Transforms.collapse(editor, { edge: 'end' })
+  }
+}
+
 export const toggleMark = (editor, { format, props, at }) => {
   if (format === 'footnote') {
     return toggleFootnote(editor, { format, props, at })
+  } else if (format === 'youtube') {
+    const node = {
+      type: 'youtube',
+      children: [{ text: props.content }],
+      ...props,
+    }
+    return Transforms.insertNodes(editor, node, { at })
+  } else if (format === 'soundcloud') {
+    const node = {
+      type: 'soundcloud',
+      children: [{ text: props.content }],
+      ...props,
+    }
+    return Transforms.insertNodes(editor, node, { at })
+  } else if (format === 'link') {
+    if (!isLinkActive(editor)) {
+      // Dialog odznaczał {editor.selection} przez co nie dało się zapisać tesktu z linkiem
+      const url = window.prompt('Wpisz url do linku:')
+      if (!url) return
+      return insertLink(editor, url)
+    }
+    unwrapLink(editor)
   }
 
   const isActive = isMarkActive(editor, format)

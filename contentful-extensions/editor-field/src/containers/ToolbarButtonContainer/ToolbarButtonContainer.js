@@ -15,7 +15,6 @@ const ToolbarButtonContainer = ({
   const editor = useSlate()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [anchorPoint, setAnchorPoint] = useState(null)
-
   return (
     <>
       <Tooltip
@@ -42,7 +41,7 @@ const ToolbarButtonContainer = ({
       {dialogOpen && (
         <DialogInput
           {...dialog}
-          onConfirm={dialogValue => {
+          onConfirm={(dialogValue) => {
             onToggle(editor, {
               format: value,
               at: anchorPoint,

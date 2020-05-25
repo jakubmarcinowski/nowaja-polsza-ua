@@ -10,8 +10,11 @@ import {
   HeadingButton,
   AlignJustifyButton,
   QuoteButton,
+  YoutubeButton,
+  SoundCloudButton,
   FootnoteButton,
   ColumnsButton,
+  LinkButton,
 } from 'components'
 import { findBlockMatch } from 'utils/editor'
 
@@ -19,6 +22,26 @@ export const inlineButtons = {
   BOLD: { value: 'bold', Component: BoldButton },
   ITALIC: { value: 'italic', Component: ItalicButton },
   UNDERLINE: { value: 'underline', Component: UnderlineButton },
+  LINK: {
+    value: 'link',
+    Component: LinkButton,
+  },
+  YOUTUBE: {
+    value: 'youtube',
+    Component: YoutubeButton,
+    dialog: {
+      title: 'Youtube',
+      label: 'youtube-id',
+    },
+  },
+  SOUNDCLOUD: {
+    value: 'soundcloud',
+    Component: SoundCloudButton,
+    dialog: {
+      title: 'Soundcloud',
+      label: 'soundcloud-id',
+    },
+  },
   FOOTNOTE: {
     value: 'footnote',
     Component: FootnoteButton,
