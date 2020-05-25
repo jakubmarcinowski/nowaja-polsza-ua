@@ -112,7 +112,7 @@ const EditorComponent = ({
           />
         </div>
       </Slate>
-      <pre>{JSON.stringify(value, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(value, null, 2)}</pre> */}
     </>
   )
 }
