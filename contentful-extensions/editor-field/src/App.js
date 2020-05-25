@@ -11,7 +11,7 @@ const getValueFromSdk = sdk =>
   (sdk.field && this.props.sdk.field?.getValue())
 
 const App = ({ sdk }) => {
-  let initValue = onContentful(getValueFromSdk(sdk))
+  let initValue = onContentful(() => getValueFromSdk(sdk))
   const valueChanged = useCallback(value =>
     onContentful(() => sdk.field?.setValue(JSON.stringify(value)))
   )
@@ -25,15 +25,14 @@ const App = ({ sdk }) => {
       },
     })
   })
-  useEffect(
-    onContentful(() => sdk.window.startAutoResizer()),
-    []
-  )
+  useEffect(() => {
+    onContentful(() => sdk.window.startAutoResizer())
+  }, [])
 
   return (
     <div className="container">
       <Editor
-        initValue={initValue && JSON.parse(initValue)}
+        initValue={initValue ? JSON.parse(initValue) : null}
         valueChanged={valueChanged}
       />
       {isContentful && <button onClick={openFullscreen}>Full screen</button>}
