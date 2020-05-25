@@ -1,35 +1,19 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import isHotkey from 'is-hotkey'
 import { Editable, withReact, Slate } from 'slate-react'
-import { createEditor, Editor, Transforms } from 'slate'
+import { createEditor } from 'slate'
 import { withHistory } from 'slate-history'
-import {
-  Element,
-  Leaf,
-  Toolbar,
-  BoldButton,
-  UnderlineButton,
-  ItalicButton,
-  UnorderedListButton,
-  OrderedListButton,
-  AlignLeftButton,
-  AlignRightButton,
-  AlignCenterButton,
-  HeadingButton,
-  AlignJustifyButton,
-  QuoteButton,
-  FootnoteButton,
-  ColumnsButton,
-} from 'components'
+import { Element, Leaf, Toolbar } from 'components'
 import { ToolbarButtonContainer } from 'containers'
 import {
   isMarkActive,
   isBlockActive,
   toggleMark,
   toggleBlock,
-  findBlockMatch,
   handleEnter,
 } from 'utils/editor'
+import { inlineButtons, blockButtons } from 'utils/button-types'
 
 const HOTKEYS = {
   'mod+b': 'bold',
@@ -40,85 +24,43 @@ const HOTKEYS = {
 
 const customInlineElements = ['link', 'footnote']
 
-const inlineButtons = [
-  { value: 'bold', Component: BoldButton },
-  { value: 'italic', Component: ItalicButton },
-  { value: 'underline', Component: UnderlineButton },
-  {
-    value: 'footnote',
-    Component: FootnoteButton,
-    dialog: {
-      title: 'Przypis',
-      label: 'Przypis',
-      getInitValue: editor => {
-        const match = findBlockMatch(editor, { format: 'footnote' })
-        return match && match[0].content
-      },
-    },
-  },
+const toolbarInlineButtons = [
+  inlineButtons.BOLD,
+  inlineButtons.ITALIC,
+  inlineButtons.UNDERLINE,
+  inlineButtons.FOOTNOTE,
 ]
-const blockButtons = [
-  { value: 'unordered-list', Component: UnorderedListButton },
-  { value: 'ordered-list', Component: OrderedListButton },
-  {
-    value: 'align-left',
-    Component: AlignLeftButton,
-  },
-  {
-    value: 'align-center',
-    Component: AlignCenterButton,
-  },
-  {
-    value: 'align-right',
-    Component: AlignRightButton,
-  },
-  {
-    value: 'align-justify',
-    Component: AlignJustifyButton,
-  },
-  {
-    value: 'block-quote',
-    Component: QuoteButton,
-  },
-  {
-    value: 'heading-one',
-    Component: HeadingButton,
-    headingType: 1,
-  },
-  {
-    value: 'heading-two',
-    Component: HeadingButton,
-    headingType: 2,
-  },
-  {
-    value: 'heading-three',
-    Component: HeadingButton,
-    headingType: 3,
-  },
-  {
-    value: 'columns',
-    Component: ColumnsButton,
-    children: [
-      { type: 'column', children: [{ text: 'Pierwsza' }] },
-      { type: 'column', children: [{ text: 'Druga' }] },
-    ],
-  },
+const toolbarBlockButtons = [
+  blockButtons.HEADING_ONE,
+  blockButtons.HEADING_TWO,
+  blockButtons.HEADING_THREE,
+  blockButtons.UNORDERED_LIST,
+  blockButtons.ORDERED_LIST,
+  blockButtons.ALIGN_LEFT,
+  blockButtons.ALIGN_CENTER,
+  blockButtons.ALIGN_RIGHT,
+  blockButtons.ALIGN_JUSTIFY,
+  blockButtons.BLOCKQUOTE,
+  blockButtons.COLUMNS,
 ]
 
-const RichTextExample = () => {
-  const [value, setValue] = useState(initialValue)
+const Editor = ({ valueChanged, initValue }) => {
+  const [value, setValue] = useState(initValue || initialValue)
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
   const editor = useMemo(
     () => withCustomElements(withHistory(withReact(createEditor()))),
     []
   )
+  useEffect(() => {
+    valueChanged(value)
+  }, [value])
 
   return (
     <>
       <Slate editor={editor} value={value} onChange={value => setValue(value)}>
         <Toolbar>
-          {inlineButtons.map(props => (
+          {toolbarInlineButtons.map(props => (
             <ToolbarButtonContainer
               key={props.value}
               isActiveChecker={isMarkActive}
@@ -126,7 +68,7 @@ const RichTextExample = () => {
               {...props}
             />
           ))}
-          {blockButtons.map(props => (
+          {toolbarBlockButtons.map(props => (
             <ToolbarButtonContainer
               key={props.value}
               isActiveChecker={isBlockActive}
@@ -135,26 +77,28 @@ const RichTextExample = () => {
             />
           ))}
         </Toolbar>
-        <Editable
-          renderElement={renderElement}
-          renderLeaf={renderLeaf}
-          spellCheck
-          autoFocus
-          onKeyDown={event => {
-            if (event.key === 'Enter') {
-              return handleEnter(event, editor)
-            }
-            for (const hotkey in HOTKEYS) {
-              if (isHotkey(hotkey, event)) {
-                event.preventDefault()
-                const mark = HOTKEYS[hotkey]
-                toggleMark(editor, { format: mark })
+        <div className="editable-area">
+          <Editable
+            renderElement={renderElement}
+            renderLeaf={renderLeaf}
+            spellCheck
+            autoFocus
+            onKeyDown={event => {
+              if (event.key === 'Enter') {
+                return handleEnter(event, editor)
               }
-            }
-          }}
-        />
+              for (const hotkey in HOTKEYS) {
+                if (isHotkey(hotkey, event)) {
+                  event.preventDefault()
+                  const mark = HOTKEYS[hotkey]
+                  toggleMark(editor, { format: mark })
+                }
+              }
+            }}
+          />
+        </div>
       </Slate>
-      <pre>{JSON.stringify(value, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(value, null, 2)}</pre> */}
     </>
   )
 }
@@ -206,4 +150,14 @@ const initialValue = [
   },
 ]
 
-export default RichTextExample
+Editor.propTypes = {
+  valueChanged: PropTypes.func,
+  initValue: PropTypes.object,
+}
+
+Editor.defaultProps = {
+  valueChanged: () => {},
+  initialValue: null,
+}
+
+export default Editor

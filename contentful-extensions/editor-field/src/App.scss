@@ -1,15 +1,46 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700|Open+Sans:300,400,600,700&subset=cyrillic-ext');
 
-.container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: white;
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
-  background-color: beige;
   font-family: 'Merriweather', serif;
+  margin: 0 auto;
+}
+
+:root {
+  --border-color: #c3cfd5;
+  --toolbar-color: #f7f9fa;
+}
+
+.container {
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.editable-area {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border: 1px solid var(--border-color);
+  padding: 20px 0;
+  height: 550px;
+  overflow: scroll;
+
+  & [role='textbox'] {
+    max-width: 670px;
+  }
+}
+
+[role='textbox'] {
+  margin: 60px auto 0;
 }
 
 .text--left {

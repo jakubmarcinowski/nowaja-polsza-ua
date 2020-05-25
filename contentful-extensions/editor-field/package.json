@@ -5,7 +5,10 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --out-dir build"
+    "build": "parcel build src/index.html --out-dir build",
+    "cms:build": "IS_CONTENTFUL=true parcel build src/index.html --out-dir build",
+    "cms:configure": "contentful space use && contentful space environment use",
+    "cms:start": "IS_CONTENTFUL=true contentful-extension-scripts start"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -16,12 +19,14 @@
     "sass": "^1.26.5"
   },
   "dependencies": {
+    "@contentful/contentful-extension-scripts": "^0.16.0",
     "@material-ui/core": "^4.9.14",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.53",
     "classnames": "^2.2.6",
     "components": "^0.1.0",
     "containers": "^0.0.1",
+    "contentful-ui-extensions-sdk": "^3.14.3",
     "is-hotkey": "^0.1.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
