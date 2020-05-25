@@ -16,6 +16,8 @@ const toggleFootnote = (editor, { format, props, at }) => {
 
 export const LIST_TYPES = ['unordered-list', 'ordered-list']
 
+export const EMPTY_STATE = [{ type: 'paragraph', children: [{ text: '' }] }]
+
 export const toggleBlock = (editor, { format, ...other }) => {
   const isActive = isBlockActive(editor, format)
   const isList = LIST_TYPES.includes(format)
