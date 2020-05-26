@@ -35,7 +35,13 @@ const App = ({ initialValue, sdk }) => {
     }
   }
   useEffect(() => {
-    onContentful(() => sdk.window.startAutoResizer())
+    onContentful(() => {
+      if (isFullscreen) {
+        sdk.window.updateHeight(window.screen.availHeight - 230)
+      } else {
+        sdk.window.updateHeight(550)
+      }
+    })
   }, [])
   useEffect(() => {
     onContentful(() => sdk.field?.setValue(JSON.stringify(currentValue)))

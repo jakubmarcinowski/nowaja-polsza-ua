@@ -27,7 +27,7 @@ const HOTKEYS = {
   'mod+`': 'code',
 }
 
-const customInlineElements = ['link', 'footnote', 'youtube', 'soundcloud']
+const customInlineElements = ['link', 'footnote']
 
 const toolbarInlineButtons = [
   inlineButtons.BOLD,

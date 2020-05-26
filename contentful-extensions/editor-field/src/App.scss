@@ -8,6 +8,13 @@ html {
   box-sizing: border-box;
 }
 
+html,
+body,
+#app,
+.container {
+  height: 100%;
+}
+
 *,
 *:before,
 *:after {
@@ -41,8 +48,8 @@ body {
   border-bottom-right-radius: 2px;
   border: 1px solid var(--border-color);
   padding: 20px;
-  height: 550px;
   overflow: scroll;
+  height: 100%;
 
   & [role='textbox'] {
     max-width: 992px;
@@ -190,4 +197,8 @@ ol {
 
 li {
   margin-bottom: rem(10px);
+}
+
+.MuiToggleButton-sizeSmall {
+  padding: 4px !important;
 }
