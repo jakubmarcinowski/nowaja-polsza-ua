@@ -3,6 +3,7 @@ import Element from './Element/Element'
 import Footnote from './Footnote/Footnote'
 import Youtube from './Youtube/Youtube'
 import SoundCloud from './SoundCloud/SoundCloud'
+import Images from './Images/Images'
 import Leaf from './Leaf/Leaf'
 import Toolbar from './Toolbar/Toolbar'
 
@@ -14,6 +15,7 @@ import AlignLeftButton from './Toolbar/buttons/AlignLeftButton'
 import AlignRightButton from './Toolbar/buttons/AlignRightButton'
 import BoldButton from './Toolbar/buttons/BoldButton'
 import LinkButton from './Toolbar/buttons/LinkButton'
+import ImagesButton from './Toolbar/buttons/ImagesButton'
 import ColumnsButton from './Toolbar/buttons/ColumnsButton'
 import ExitFullscreenButton from './Toolbar/buttons/ExitFullscreenButton'
 import FootnoteButton from './Toolbar/buttons/FootnoteButton'
@@ -30,6 +32,8 @@ export {
   AlignJustifyButton,
   AlignLeftButton,
   AlignRightButton,
+  Images,
+  ImagesButton,
   BoldButton,
   ColumnsButton,
   ExitFullscreenButton,

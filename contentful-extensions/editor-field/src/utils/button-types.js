@@ -6,6 +6,7 @@ import {
   OrderedListButton,
   AlignLeftButton,
   AlignRightButton,
+  ImagesButton,
   AlignCenterButton,
   HeadingButton,
   AlignJustifyButton,
@@ -57,6 +58,14 @@ export const inlineButtons = {
       },
     },
   },
+  IMAGES: {
+    value: 'images',
+    Component: ImagesButton,
+    dialog: {
+      title: 'IMG - URL',
+      label: '',
+    },
+  },
 }
 
 export const blockButtons = {
@@ -78,6 +87,7 @@ export const blockButtons = {
     value: 'align-justify',
     Component: AlignJustifyButton,
   },
+
   BLOCKQUOTE: {
     value: 'block-quote',
     Component: QuoteButton,

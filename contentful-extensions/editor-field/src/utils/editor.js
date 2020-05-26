@@ -120,6 +120,15 @@ export const toggleMark = (editor, { format, props, at }) => {
       return insertLink(editor, url)
     }
     unwrapLink(editor)
+  } else if (format === 'images') {
+    const title = window.prompt('Tytuł:')
+    const node = {
+      type: 'images',
+      children: [{ text: title }],
+      ...props,
+    }
+    console.log(node)
+    return Transforms.insertNodes(editor, node, { at })
   }
 
   const isActive = isMarkActive(editor, format)
