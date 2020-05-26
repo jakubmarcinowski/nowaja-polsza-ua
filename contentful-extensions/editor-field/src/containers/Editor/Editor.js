@@ -1,8 +1,8 @@
-import React, { useCallback, useMemo, useState, useEffect } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import isHotkey from 'is-hotkey'
 import { Editable, withReact, Slate } from 'slate-react'
-import { createEditor } from 'slate'
+import { createEditor, Editor } from 'slate'
 import { withHistory } from 'slate-history'
 import { Element, Leaf, Toolbar } from 'components'
 import { ToolbarButtonContainer } from 'containers'
@@ -14,7 +14,11 @@ import {
   handleEnter,
   EMPTY_STATE,
 } from 'utils/editor'
-import { inlineButtons, blockButtons } from 'utils/button-types'
+import {
+  inlineButtons,
+  blockButtons,
+  fullscreenButton,
+} from 'utils/button-types'
 
 const HOTKEYS = {
   'mod+b': 'bold',
@@ -48,7 +52,12 @@ const toolbarBlockButtons = [
   blockButtons.COLUMNS,
 ]
 
-const Editor = ({ valueChanged, value }) => {
+const EditorComponent = ({
+  valueChanged,
+  value,
+  isFullscreen,
+  toggleFullscreen,
+}) => {
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
   const editor = useMemo(
@@ -61,7 +70,7 @@ const Editor = ({ valueChanged, value }) => {
       <Slate
         editor={editor}
         value={value || EMPTY_STATE}
-        onChange={v => valueChanged(v)}
+        onChange={valueChanged}
       >
         <Toolbar>
           {toolbarInlineButtons.map(props => (
@@ -80,6 +89,10 @@ const Editor = ({ valueChanged, value }) => {
               {...props}
             />
           ))}
+          <ToolbarButtonContainer
+            onToggle={toggleFullscreen}
+            {...fullscreenButton(isFullscreen)}
+          />
         </Toolbar>
         <div className="editable-area">
           <Editable
@@ -117,9 +130,11 @@ const withCustomElements = editor => {
   return editor
 }
 
-Editor.propTypes = {
+EditorComponent.propTypes = {
   value: PropTypes.array.isRequired,
   valueChanged: PropTypes.func.isRequired,
+  isFullscreen: PropTypes.bool.isRequired,
+  toggleFullscreen: PropTypes.func.isRequired,
 }
 
-export default Editor
+export default EditorComponent

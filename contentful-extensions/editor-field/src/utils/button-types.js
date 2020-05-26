@@ -15,6 +15,8 @@ import {
   FootnoteButton,
   ColumnsButton,
   LinkButton,
+  FullscreenButton,
+  ExitFullscreenButton,
 } from 'components'
 import { findBlockMatch } from 'utils/editor'
 
@@ -50,7 +52,7 @@ export const inlineButtons = {
       label: 'Przypis',
       getInitValue: editor => {
         const match = findBlockMatch(editor, { format: 'footnote' })
-        return match && match[0].content
+        return match ? match[0].content : ''
       },
     },
   },
@@ -103,3 +105,8 @@ export const blockButtons = {
     ],
   },
 }
+
+export const fullscreenButton = isFullscreen => ({
+  value: isFullscreen ? 'exit-fullscreen' : 'fullscreen',
+  Component: isFullscreen ? ExitFullscreenButton : FullscreenButton,
+})
