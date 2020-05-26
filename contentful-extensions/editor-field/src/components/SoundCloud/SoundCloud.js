@@ -4,23 +4,23 @@ import '../Embed.scss'
 
 const SoundCloud = ({ children, content }) => {
   return (
-    <div class="videoWrapper" contentEditable={false}>
+    <div className="videoWrapper" contentEditable={false}>
       <iframe
         width="100%"
         height="300"
         scrolling="no"
-        frameborder="no"
+        frameBorder="no"
         allow="autoplay"
         src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/${content}`}
       ></iframe>
-      <p class="videoWrapperTitle">{children}</p>
+      <p className="videoWrapperTitle">{children}</p>
     </div>
   )
 }
 
 SoundCloud.propTypes = {
   content: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired,
 }
 
 export default SoundCloud
