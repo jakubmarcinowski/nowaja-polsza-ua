@@ -32,16 +32,17 @@ export const inlineButtons = {
     value: 'youtube',
     Component: YoutubeButton,
     dialog: {
-      title: 'Youtube',
-      label: 'youtube-id',
+      title: 'Youtube - ID',
+      label: 'np. www.youtube.com/watch?v=TvUnCBGrQ9M -> TvUnCBGrQ9M',
     },
   },
   SOUNDCLOUD: {
     value: 'soundcloud',
     Component: SoundCloudButton,
     dialog: {
-      title: 'Soundcloud',
-      label: 'soundcloud-id',
+      title: 'Soundcloud - ID',
+      label:
+        'np. soundcloud.com/kyler-smith1/sets/sleep -> kyler-smith1/sets/sleep',
     },
   },
   FOOTNOTE: {
