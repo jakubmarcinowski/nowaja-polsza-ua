@@ -8,6 +8,7 @@ class SEO extends Component {
   state = {
     locationHref: '',
   }
+
   tags = () => {
     (function(w, d, s, l, i) {
       w[l] = w[l] || []
@@ -20,6 +21,7 @@ class SEO extends Component {
       f.parentNode.insertBefore(j, f)
     })(window, document, 'script', 'dataLayer', process.env.GATSBY_GTM)
   }
+  
   componentDidMount() {
     this.setState({ locationHref: window.location.href })
     this.tags()
@@ -39,7 +41,6 @@ class SEO extends Component {
         />
         <meta name="description" content={description} />
         <meta name="image" content={image || logo} />
-
         <meta property="og:url" content={locationHref} />
         <meta property="og:type" content={type} />
         <meta property="og:title" content={siteTitle} />
