@@ -5,8 +5,6 @@
 3. Setup env vars in `.env` file.
 4. To run development server run command `yarn run dev`.
 
-As soon as [fix](https://github.com/gatsbyjs/gatsby/pull/24338) to package `gatsby-remark-images-contentful` will be merged, plugin should be removed from repository.
-
 ## Flow
 
 Add three remotes on your local machine:
