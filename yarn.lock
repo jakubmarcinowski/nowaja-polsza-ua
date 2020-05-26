@@ -6213,8 +6213,10 @@ gatsby-recipes@^0.1.6:
     ws "^7.2.5"
     xstate "^4.9.1"
 
-"gatsby-remark-images-contentful@file:gatsby-remark-images-contentful":
-  version "2.3.2"
+gatsby-remark-images-contentful@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images-contentful/-/gatsby-remark-images-contentful-2.3.3.tgz#1ed2a287041b4ba13ac838b7f402def7a17f1177"
+  integrity sha512-YFGQcDhBwQQljV9QxEe57jQDTTUFYEPAcQsOGeVDXB47iWa/tHYi21F/BBMlEHPkZmC6ose1/GF6siOG0sPSrQ==
   dependencies:
     "@babel/runtime" "^7.9.6"
     axios "^0.19.2"
