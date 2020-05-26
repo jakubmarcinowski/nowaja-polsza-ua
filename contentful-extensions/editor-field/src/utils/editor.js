@@ -127,7 +127,6 @@ export const toggleMark = (editor, { format, props, at }) => {
       children: [{ text: title }],
       ...props,
     }
-    console.log(node)
     return Transforms.insertNodes(editor, node, { at })
   }
 
