@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useSlate } from 'slate-react'
 import Tooltip from '@material-ui/core/Tooltip'
 import { DialogInput } from 'components'
+import { isLinkActive, unwrapLink } from 'utils/editor'
 
 const onSelectCustomAction = (
   buttonType,
@@ -20,6 +21,13 @@ const onSelectCustomAction = (
               props: { content: imageUrl },
             })
         )
+      } else {
+        openDialog()
+      }
+      break
+    case 'link':
+      if (isLinkActive(editor)) {
+        unwrapLink(editor)
       } else {
         openDialog()
       }
@@ -73,11 +81,11 @@ const ToolbarButtonContainer = props => {
       {dialogOpen && (
         <DialogInput
           {...dialog}
-          onConfirm={dialogValue => {
+          onConfirm={(dialogValue, selection) => {
             onToggle(editor, {
               format: value,
               at: anchorPoint,
-              props: { content: dialogValue },
+              props: { content: dialogValue, selection },
             })
             setDialogOpen(false)
           }}

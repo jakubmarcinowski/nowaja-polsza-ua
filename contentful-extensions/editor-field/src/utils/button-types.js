@@ -28,6 +28,9 @@ export const inlineButtons = {
   LINK: {
     value: 'link',
     Component: LinkButton,
+    dialog: {
+      title: 'URL'
+    },
   },
   YOUTUBE: {
     value: 'youtube',

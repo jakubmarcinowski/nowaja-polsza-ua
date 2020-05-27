@@ -27,7 +27,7 @@ const HOTKEYS = {
   'mod+`': 'code',
 }
 
-const customInlineElements = ['link', 'footnote']
+const customInlineElements = ['footnote']
 
 const toolbarInlineButtons = [
   inlineButtons.BOLD,
@@ -36,8 +36,8 @@ const toolbarInlineButtons = [
   inlineButtons.IMAGES,
   inlineButtons.YOUTUBE,
   inlineButtons.SOUNDCLOUD,
-  inlineButtons.FOOTNOTE,
   inlineButtons.LINK,
+  inlineButtons.FOOTNOTE,
 ]
 const toolbarBlockButtons = [
   blockButtons.HEADING_ONE,

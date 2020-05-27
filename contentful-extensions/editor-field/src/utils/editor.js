@@ -73,12 +73,12 @@ const insertLink = (editor, url) => {
   }
 }
 
-const unwrapLink = editor => {
+export const unwrapLink = editor => {
   Transforms.unwrapNodes(editor, { match: n => n.type === 'link' })
 }
 
 const wrapLink = (editor, url) => {
-  const { selection } = editor
+  const { selection } = editor;
   const isCollapsed = selection && Range.isCollapsed(selection)
   const link = {
     type: 'link',
@@ -86,10 +86,10 @@ const wrapLink = (editor, url) => {
     children: isCollapsed ? [{ text: url }] : [],
   }
   if (isCollapsed) {
-    Transforms.insertNodes(editor, link)
+    Transforms.insertNodes(editor, link, selection)
   } else {
-    Transforms.wrapNodes(editor, link, { split: true })
-    Transforms.collapse(editor, { edge: 'end' })
+    Transforms.wrapNodes(editor, link, { split: true, selection })
+    Transforms.collapse(editor, { edge: 'end', selection })
   }
 }
 
@@ -97,30 +97,27 @@ export const toggleMark = (editor, { format, props, at }) => {
   if (format === 'footnote') {
     return toggleFootnote(editor, { format, props, at })
   } else if (format === 'youtube') {
-    const title = window.prompt('Tytuł:')
+    // youtube
     const node = {
       type: 'youtube',
-      children: [{ text: title }],
+      children: [{ text: "Przykładowy tytuł" }],
       ...props,
     }
     return Transforms.insertNodes(editor, node, { at })
   } else if (format === 'soundcloud') {
-    const title = window.prompt('Tytuł:')
+    // soundcloud
     const node = {
       type: 'soundcloud',
-      children: [{ text: title }],
+      children: [{ text: "Przykładowy tytuł" }],
       ...props,
     }
     return Transforms.insertNodes(editor, node, { at })
   } else if (format === 'link') {
-    if (!isLinkActive(editor)) {
-      // Dialog odznaczał {editor.selection} przez co nie dało się zapisać tesktu z linkiem
-      const url = window.prompt('Wpisz url do linku:')
-      if (!url) return
-      return insertLink(editor, url)
-    }
-    unwrapLink(editor)
+    // link
+    editor.selection = props.selection;
+    return insertLink(editor, props.content)
   } else if (format === 'images') {
+    // images
     const node = {
       type: 'images',
       children: [{ text: 'Lorem ipsum' }],
