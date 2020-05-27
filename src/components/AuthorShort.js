@@ -11,14 +11,16 @@ import ImgWrapper from 'components/ImgWrapper'
 import { trans } from 'utils/translate'
 
 const AuthorImg = styled(ImgWrapper)`
+  position: absolute !important;
+
+  min-width: 13rem;
+  min-height: 13rem;
+  max-width: 13rem;
+  max-height: 13rem;
+
   @media ${mediaQueries.tablet} {
-    position: absolute;
-    top: -2rem;
-    left: -2rem;
-    min-width: 22rem;
-    min-height: 22rem;
-    max-width: 22rem;
-    max-height: 22rem;
+    top: -1rem;
+    left: -9rem;
   }
 
   @media print {
@@ -34,7 +36,6 @@ const Element = styled.div`
   flex-direction: column;
   min-width: 100%;
   margin: 2rem auto;
-  background: ${({ theme }) => theme.colors.listItemBackground};
 
   ${({ few }) => few && `margin: 2rem;`};
 
@@ -46,7 +47,7 @@ const Element = styled.div`
   @media ${mediaQueries.tablet} {
     flex-direction: row;
     margin: 5rem auto;
-    max-width: 70%;
+    max-width: 65%;
 
     ${({ few }) =>
       few &&
@@ -54,7 +55,6 @@ const Element = styled.div`
         flex-direction: column;
         flex-wrap: wrap;
         margin: 5rem;
-        max-width: 3.9rem; 
       `};
   }
 
@@ -66,30 +66,52 @@ const Element = styled.div`
 `
 
 const ReadMoreBtn = styled(Button)`
-  position: absolute;
-  bottom: 0;
-  right: 50%;
-  transform: translate(50%, 50%);
+  margin: 2.5rem 0 auto;
 
   @media ${mediaQueries.tablet} {
-    right: 2rem;
+    position: absolute;
+    bottom: 0;
+    right: 3rem;
     transform: translate(0, 50%);
   }
 `
 
 const Info = styled.div`
-  padding: 3rem 3rem 5rem 3rem;
+  display: flex;
+  position: relative;
+  padding-bottom: 3.5rem;
+  flex-direction: column;
+  align-items: center;
+  background: ${({ theme }) => theme.colors.listItemBackground};
+  margin-top: 10rem;
+  margin-left: 3rem;
 
   @media ${mediaQueries.tablet} {
-    padding: 3rem 3rem 3rem 1rem;
+    display: block;
+    padding: 0 3rem 5rem 7rem;
+    margin-top: 0;
 
     ${({ few }) =>
-      few ? `padding: 3rem 3rem 5rem 3rem;` : 'flex-direction: row;'};
+      few ? `padding: 0 3rem 6rem 7rem;` : 'flex-direction: row;'};
   }
 `
 
 const Desc = styled(Paragraph)`
-  margin-top: 1rem;
+  display: none;
+
+  @media ${mediaQueries.tablet} {
+    display: block;
+    margin-top: 1rem;
+  }
+`
+
+const StyledName = styled(Header)`
+  margin-top: 3em;
+  font-size: 2rem;
+
+  @media ${mediaQueries.tablet} {
+    margin: 1.7em 0;
+  }
 `
 
 const AuthorShort = ({ few, author: { name, shortBio, image, slug } }) => {
@@ -99,17 +121,12 @@ const AuthorShort = ({ few, author: { name, shortBio, image, slug } }) => {
       {image && <AuthorImg img={image} />}
       <Info few={few}>
         {name && (
-          <Header size="Bigger" color="Red" font="Secondary" weight="Bold">
+          <StyledName color="Red" weight="Bold">
             {name}
-          </Header>
+          </StyledName>
         )}
         {shortBio && (
-          <Desc
-            size={'Bigger'}
-            weight="Light"
-            lineHeight="Medium"
-            color="Black"
-          >
+          <Desc size={'Big'} weight="Light" lineHeight="Medium" color="Black">
             <span
               dangerouslySetInnerHTML={{
                 __html: shortBio.childMarkdownRemark.excerpt,
@@ -117,12 +134,12 @@ const AuthorShort = ({ few, author: { name, shortBio, image, slug } }) => {
             />
           </Desc>
         )}
+        {slug && (
+          <Link to={`/author/${slug}`}>
+            <ReadMoreBtn>{trans('ALL_AUTHOR_TEXTS')}</ReadMoreBtn>
+          </Link>
+        )}
       </Info>
-      {slug && (
-        <Link to={`/author/${slug}`}>
-          <ReadMoreBtn>{trans('ALL_AUTHOR_TEXTS')}</ReadMoreBtn>
-        </Link>
-      )}
     </Element>
   )
 }

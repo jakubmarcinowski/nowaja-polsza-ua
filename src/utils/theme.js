@@ -88,16 +88,17 @@ export const theme = {
     secondary: `'Open Sans', sans-serif`,
   },
   grid: {
-    width: {
-      big: `${contentWidth.big}px`,
-      medium: `${contentWidth.medium}px`,
-      small: `${contentWidth.small}px`,
-    },
     paddings: {
       mobile: '20px',
       tablet: '40px',
       desktop: '60px',
       large: '80px',
+    },
+    width: {
+      big: `${contentWidth.big}px`,
+      medium: `${contentWidth.medium}px`,
+      small: `${contentWidth.small}px`,
+      little: `${contentWidth.small - 160}px`,
     },
     categoriesDesktopHeight: '60px',
     pageHeaderHeight: '220px',

@@ -43,22 +43,22 @@ const HeaderWrapper = styled.div`
 
   @media ${mediaQueries.desktop} {
     order: 1;
-    max-width: 800px;
   }
 `
 const StyledHeader = styled(Header)`
-  margin-bottom: 0.5em;
-  line-height: 1.2;
+  margin: 2rem 0 4rem;
+  line-height: 1;
+  font-size: 3rem;
 
   @media ${mediaQueries.tablet} {
+    margin-top: 0;
     margin-bottom: 2rem;
-    line-height: 1.4;
+    font-size: 4rem;
   }
 
   @media ${mediaQueries.desktop} {
     margin-bottom: 3rem;
-    line-height: 1.6;
-    font-size: 3.6rem;
+    font-size: 5.6rem;
   }
 `
 
@@ -69,9 +69,9 @@ const InfoBox = styled.div`
   margin-bottom: 1rem;
   font-size: 1.4rem;
   justify-content: center;
+  order: 2;
 
   @media ${mediaQueries.desktop} {
-    order: 2;
     margin-bottom: 2rem;
     font-size: 1.6rem;
   }
@@ -113,10 +113,7 @@ const CategoriesBox = styled.div`
   flex-wrap: wrap;
   margin-bottom: 1rem;
   justify-content: center;
-
-  @media ${mediaQueries.desktop} {
-    order: 3;
-  }
+  order: 3;
 `
 const TextLabel = styled.label`
   @media ${mediaQueries.desktop} {
@@ -193,7 +190,6 @@ const PageHeader = ({
         <HeaderWrapper>
           <StyledHeader
             lineHeight="Biggest"
-            size="Biggest"
             color="Dark"
             weight="Bold"
             margin="0 0 2rem"
