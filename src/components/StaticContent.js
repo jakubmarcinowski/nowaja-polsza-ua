@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { childrenType } from 'types/children'
 
@@ -8,9 +9,6 @@ const StyledContent = styled.div`
   overflow: hidden;
   line-height: 1.7;
 
-  h1,
-  h2,
-  h3,
   p,
   ul,
   ol {
@@ -23,8 +21,15 @@ const StyledContent = styled.div`
   h1,
   h2,
   h3 {
-    margin-bottom: 1.2em;
-    font-weight: 700;
+    margin-bottom: 1.5em;
+
+    &:first-child {
+      margin-top: 1.5em;
+    }
+
+    &:not(:first-child) {
+      margin-top: 3em;
+    }
   }
 
   .gatsby-resp-image-image {
@@ -34,13 +39,14 @@ const StyledContent = styled.div`
   h1 {
     line-height: 1.3;
     font-size: 2rem;
+    text-transform: uppercase;
 
     @media ${mediaQueries.tablet} {
-      font-size: 2.3rem;
+      font-size: 2.6rem;
     }
 
     @media ${mediaQueries.desktop} {
-      font-size: 2.6rem;
+      font-size: 3rem;
     }
   }
 
@@ -69,6 +75,66 @@ const StyledContent = styled.div`
     }
   }
 
+  h1,
+  h2,
+  h3,
+  p img,
+  blockquote {
+    margin-left: auto;
+    margin-right: auto;
+
+    @media ${mediaQueries.desktop} {
+      max-width: 870px;
+    }
+
+    @media ${mediaQueries.large} {
+      max-width: ${({ theme }) => theme.grid.width.little};
+    }
+  }
+
+  blockquote {
+    position: relative;
+    padding: 2em 2.5em;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 117px;
+      height: 2px;
+      top: 0.5em;
+      left: 0;
+      background-color: ${({ theme, color }) =>
+        theme.colors.highlighted[color] || theme.colors[color]};
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 117px;
+      top: 0;
+      left: 0.5em;
+      background-color: ${({ theme, color }) =>
+        theme.colors.highlighted[color] || theme.colors[color]};
+    }
+
+    p {
+      max-width: unset;
+      font-weight: 700;
+      line-height: 1.33;
+      margin-bottom: 1.2em;
+      font-size: 1.8rem;
+
+      @media ${mediaQueries.tablet} {
+        font-size: 2.1rem;
+      }
+
+      @media ${mediaQueries.desktop} {
+        font-size: 2.4rem;
+      }
+    }
+  }
+
   p,
   .row {
     &:not(:last-child) {
@@ -90,15 +156,6 @@ const StyledContent = styled.div`
       left: 50%;
       transform: translateX(-50%);
       max-width: 100%;
-
-      @media ${mediaQueries.desktop} {
-        max-width: 870px;
-      }
-
-      @media ${mediaQueries.large} {
-        max-width: ${({ theme }) =>
-          `calc(${theme.grid.width.small} - ${theme.grid.paddings.large} *2)`};
-      }
     }
 
     strong {
@@ -107,10 +164,11 @@ const StyledContent = styled.div`
 
     .tag {
       display: block;
-      margin-top: 1rem;
+      margin: 2rem auto 0;
       text-align: center;
       opacity: 0.7;
       font-size: 1.2rem;
+      max-width: 800px;
 
       @media ${mediaQueries.desktop} {
         font-size: 1.4rem;
@@ -302,14 +360,19 @@ class StaticContent extends React.Component {
   }
 
   render() {
-    const { children } = this.props
+    const { children, themeColor } = this.props
 
-    return <StyledContent ref={this.rootRef}>{children}</StyledContent>
+    return (
+      <StyledContent ref={this.rootRef} color={themeColor}>
+        {children}
+      </StyledContent>
+    )
   }
 }
 
 StaticContent.propTypes = {
   children: childrenType,
+  themeColor: PropTypes.string,
 }
 
 export default StaticContent

@@ -60,7 +60,10 @@ const ScrollIndicator = ({ children, offset }) => {
     if (ref.current) {
       observer.observe(ref.current)
     }
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      document.removeEventListener('scroll', onScroll)
+    }
   }, [ref.current])
 
   return (
