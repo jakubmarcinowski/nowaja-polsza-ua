@@ -26,7 +26,9 @@ const App = ({ initialValue, sdk }) => {
   }
 
   useEffect(() => {
-    contentfulUtils.onContentful(() => contentfulUtils.updateEditorHeight(sdk))
+    contentfulUtils.onContentful(() =>
+      contentfulUtils.updateEditorHeight(sdk, isFullscreen)
+    )
   }, [])
 
   useEffect(() => {

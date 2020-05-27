@@ -60,6 +60,7 @@ const ToolbarButtonContainer = props => {
               setAnchorPoint(editor.selection.anchor)
               onSelectCustomAction(value, {
                 ...props,
+                editor,
                 openDialog: () => setDialogOpen(true),
               })
             } else {
