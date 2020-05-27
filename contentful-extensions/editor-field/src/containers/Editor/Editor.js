@@ -64,6 +64,7 @@ const EditorComponent = ({
   value,
   isFullscreen,
   toggleFullscreen,
+  pickImage,
 }) => {
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
@@ -85,6 +86,7 @@ const EditorComponent = ({
               key={props.value}
               isActiveChecker={isMarkActive}
               onToggle={toggleMark}
+              pickImage={pickImage}
               {...props}
             />
           ))}
@@ -142,6 +144,7 @@ EditorComponent.propTypes = {
   valueChanged: PropTypes.func.isRequired,
   isFullscreen: PropTypes.bool.isRequired,
   toggleFullscreen: PropTypes.func.isRequired,
+  pickImage: PropTypes.func,
 }
 
 export default EditorComponent

@@ -121,10 +121,9 @@ export const toggleMark = (editor, { format, props, at }) => {
     }
     unwrapLink(editor)
   } else if (format === 'images') {
-    const title = window.prompt('Tytuł:')
     const node = {
       type: 'images',
-      children: [{ text: title }],
+      children: [{ text: 'Lorem ipsum' }],
       ...props,
     }
     return Transforms.insertNodes(editor, node, { at })

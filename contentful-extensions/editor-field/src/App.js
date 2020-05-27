@@ -1,50 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import ReactDOM from 'react-dom'
 import './App.scss'
 import { Editor } from 'containers'
 import { init } from 'contentful-ui-extensions-sdk'
+import * as contentfulUtils from 'utils/contentful'
 
-const isContentful = !!process.env.IS_CONTENTFUL
-const onContentful = fn => isContentful && fn()
-const getValueFromSdk = sdk =>
-  sdk.parameters.invocation?.initValue ||
-  (sdk.field?.getValue() && JSON.parse(sdk.field.getValue())) ||
+const calculateInitValue = (candidate, sdk) =>
+  candidate ||
+  (contentfulUtils.isContentful && contentfulUtils.getValueFromSdk(sdk)) ||
   null
 
 const App = ({ initialValue, sdk }) => {
   const [currentValue, setCurrentValue] = useState(
-    initialValue || (isContentful && getValueFromSdk(sdk)) || null
+    calculateInitValue(initialValue, sdk)
   )
-  const isFullscreen = isContentful && !!sdk.parameters.invocation
+  const isFullscreen = contentfulUtils.isFullscreen(sdk)
+  const pickImage = useCallback(() => contentfulUtils.pickImage(sdk), [])
 
-  const toggleFullscreen = () => {
-    if (!isContentful) {
-      return
-    }
-    if (isFullscreen) {
-      sdk.close(currentValue)
-    } else {
-      sdk.dialogs
-        .openExtension({
-          width: 'fullWidth',
-          parameters: {
-            initValue: currentValue,
-          },
-        })
-        .then(setCurrentValue)
-    }
-  }
-  useEffect(() => {
-    onContentful(() => {
-      if (isFullscreen) {
-        sdk.window.updateHeight(window.screen.availHeight - 230)
-      } else {
-        sdk.window.updateHeight(550)
-      }
+  const toggleFullscreenMode = () => {
+    contentfulUtils.toggleFullscreen(sdk, {
+      isFullscreen,
+      value: currentValue,
+      setValue: setCurrentValue,
     })
-  }, [])
+  }
+
   useEffect(() => {
-    onContentful(() => sdk.field?.setValue(JSON.stringify(currentValue)))
+    contentfulUtils.onContentful(() => contentfulUtils.updateEditorHeight(sdk))
+  }, [])
+
+  useEffect(() => {
+    contentfulUtils.onContentful(() =>
+      contentfulUtils.saveValue(sdk, currentValue)
+    )
   }, [currentValue])
 
   return (
@@ -53,7 +41,8 @@ const App = ({ initialValue, sdk }) => {
         value={currentValue}
         valueChanged={setCurrentValue}
         isFullscreen={isFullscreen}
-        toggleFullscreen={toggleFullscreen}
+        toggleFullscreen={toggleFullscreenMode}
+        pickImage={contentfulUtils.isContentful ? pickImage : null}
       />
     </div>
   )

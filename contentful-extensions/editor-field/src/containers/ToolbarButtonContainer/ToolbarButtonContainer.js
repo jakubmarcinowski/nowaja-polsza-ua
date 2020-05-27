@@ -4,14 +4,42 @@ import { useSlate } from 'slate-react'
 import Tooltip from '@material-ui/core/Tooltip'
 import { DialogInput } from 'components'
 
-const ToolbarButtonContainer = ({
-  value,
-  Component,
-  dialog,
-  isActiveChecker,
-  onToggle,
-  ...other
-}) => {
+const onSelectCustomAction = (
+  buttonType,
+  { editor, onToggle, pickImage, openDialog, value, dialog }
+) => {
+  switch (buttonType) {
+    case 'images':
+      if (pickImage) {
+        return pickImage().then(
+          imageUrl =>
+            imageUrl &&
+            onToggle(editor, {
+              format: value,
+              at: editor.selection.anchor,
+              props: { content: imageUrl },
+            })
+        )
+      } else {
+        openDialog()
+      }
+      break
+    default:
+      if (dialog) {
+        openDialog()
+      }
+  }
+}
+
+const ToolbarButtonContainer = props => {
+  const {
+    value,
+    Component,
+    dialog,
+    isActiveChecker,
+    onToggle,
+    ...other
+  } = props
   const editor = useSlate()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [anchorPoint, setAnchorPoint] = useState(null)
@@ -30,7 +58,10 @@ const ToolbarButtonContainer = ({
           onSelect={() => {
             if (dialog) {
               setAnchorPoint(editor.selection.anchor)
-              setDialogOpen(true)
+              onSelectCustomAction(value, {
+                ...props,
+                openDialog: () => setDialogOpen(true),
+              })
             } else {
               onToggle(editor, { format: value, ...other })
             }
@@ -41,7 +72,7 @@ const ToolbarButtonContainer = ({
       {dialogOpen && (
         <DialogInput
           {...dialog}
-          onConfirm={(dialogValue) => {
+          onConfirm={dialogValue => {
             onToggle(editor, {
               format: value,
               at: anchorPoint,
@@ -62,6 +93,7 @@ ToolbarButtonContainer.propTypes = {
   Component: PropTypes.elementType.isRequired,
   onToggle: PropTypes.func.isRequired,
   isActiveChecker: PropTypes.func,
+  pickImage: PropTypes.func,
   dialog: PropTypes.object,
 }
 
