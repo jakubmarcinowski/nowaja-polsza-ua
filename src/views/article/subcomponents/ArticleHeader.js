@@ -51,13 +51,12 @@ const StyledHeader = styled(Header)`
   font-size: 3rem;
 
   @media ${mediaQueries.tablet} {
-    margin-top: 0;
-    margin-bottom: 2rem;
+    margin: 5rem 0 3rem;
     font-size: 4rem;
   }
 
   @media ${mediaQueries.desktop} {
-    margin-bottom: 3rem;
+    margin: 8rem 0 4rem;
     font-size: 5.6rem;
   }
 `
