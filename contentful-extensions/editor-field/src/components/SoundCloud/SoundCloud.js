@@ -4,7 +4,7 @@ import '../Embed.scss'
 
 const SoundCloud = ({ children, content }) => {
   return (
-    <div className="videoWrapper" contentEditable={false}>
+    <div className="videoWrapper">
       <iframe
         width="100%"
         height="300"

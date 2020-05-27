@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Images = ({ attributes, children, content }) => {
   return (
     <div className="imgWrapper" {...attributes}>
-      <img contentEditable={false} src={content} />
+      <img src={content} />
       <span className="tag">{children}</span>
     </div>
   )

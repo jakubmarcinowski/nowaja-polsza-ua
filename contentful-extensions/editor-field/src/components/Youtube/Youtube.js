@@ -4,7 +4,7 @@ import '../Embed.scss'
 
 const Youtube = ({ children, content }) => {
   return (
-    <div className="videoWrapper" contentEditable={false}>
+    <div className="videoWrapper">
       <iframe
         width="560"
         height="315"
