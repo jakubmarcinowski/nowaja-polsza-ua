@@ -57,7 +57,7 @@ const testInitialValue = [
         text:
           '17 сентября 1939 года Советский Союз напал на Польшу, которая на тот момент еще сражалась ',
       },
-      { text: 'нацистской Германией. ', bold: true },
+      { text: 'нацистской Германией.  ', bold: true },
       {
         type: 'footnote',
         children: [{ text: '[1]' }],
@@ -166,7 +166,7 @@ const testInitialValue = [
   },
 ]
 
-if (contentfulUtils.isContentful()) {
+if (contentfulUtils.isContentful) {
   init(sdk => {
     ReactDOM.render(<App sdk={sdk} />, document.getElementById('app'))
   })

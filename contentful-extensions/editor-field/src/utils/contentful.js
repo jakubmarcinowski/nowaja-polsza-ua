@@ -34,7 +34,7 @@ export const pickImage = sdk =>
       imgData ? `https://${Object.values(imgData.fields.file)[0].url}` : null
     )
 
-export const updateEditorHeight = sdk => {
+export const updateEditorHeight = (sdk, isFullscreen) => {
   if (isFullscreen) {
     sdk.window.updateHeight(window.screen.availHeight - 230)
   } else {
