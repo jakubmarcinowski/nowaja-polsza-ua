@@ -1,7 +1,7 @@
 import React from 'react'
 import Types from 'slate-prop-types'
 import { classnames } from 'utils/classnames'
-import { Footnote, Youtube, SoundCloud } from 'components'
+import { Footnote, Youtube, SoundCloud, Images } from 'components'
 
 const Element = ({ attributes, children, element }) => {
   switch (element.type) {
@@ -46,6 +46,8 @@ const Element = ({ attributes, children, element }) => {
           {children}
         </a>
       )
+    case 'images':
+      return <Images content={element.content}>{children}</Images>
     case 'columns':
       return <div className="columns">{children}</div>
     case 'column':

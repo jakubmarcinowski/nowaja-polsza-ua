@@ -97,16 +97,18 @@ export const toggleMark = (editor, { format, props, at }) => {
   if (format === 'footnote') {
     return toggleFootnote(editor, { format, props, at })
   } else if (format === 'youtube') {
+    const title = window.prompt('Tytuł:')
     const node = {
       type: 'youtube',
-      children: [{ text: props.content }],
+      children: [{ text: title }],
       ...props,
     }
     return Transforms.insertNodes(editor, node, { at })
   } else if (format === 'soundcloud') {
+    const title = window.prompt('Tytuł:')
     const node = {
       type: 'soundcloud',
-      children: [{ text: props.content }],
+      children: [{ text: title }],
       ...props,
     }
     return Transforms.insertNodes(editor, node, { at })
@@ -118,6 +120,14 @@ export const toggleMark = (editor, { format, props, at }) => {
       return insertLink(editor, url)
     }
     unwrapLink(editor)
+  } else if (format === 'images') {
+    const title = window.prompt('Tytuł:')
+    const node = {
+      type: 'images',
+      children: [{ text: title }],
+      ...props,
+    }
+    return Transforms.insertNodes(editor, node, { at })
   }
 
   const isActive = isMarkActive(editor, format)

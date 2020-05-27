@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import isHotkey from 'is-hotkey'
 import { Editable, withReact, Slate } from 'slate-react'
-import { createEditor, Editor } from 'slate'
+import { createEditor } from 'slate'
 import { withHistory } from 'slate-history'
 import { Element, Leaf, Toolbar } from 'components'
 import { ToolbarButtonContainer } from 'containers'
@@ -27,12 +27,19 @@ const HOTKEYS = {
   'mod+`': 'code',
 }
 
-const customInlineElements = ['link', 'footnote']
+const customInlineElements = [
+  'link',
+  'footnote',
+  'youtube',
+  'soundcloud',
+  'images',
+]
 
 const toolbarInlineButtons = [
   inlineButtons.BOLD,
   inlineButtons.ITALIC,
   inlineButtons.UNDERLINE,
+  inlineButtons.IMAGES,
   inlineButtons.YOUTUBE,
   inlineButtons.SOUNDCLOUD,
   inlineButtons.FOOTNOTE,

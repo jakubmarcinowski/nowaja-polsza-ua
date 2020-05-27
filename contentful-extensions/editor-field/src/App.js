@@ -77,7 +77,14 @@ const testInitialValue = [
       },
     ],
   },
-  { children: [{ text: 'This is editable ' }], type: 'link', url: 'ac' },
+  {
+    children: [
+      { text: 'Между Краковом, Римом и Москвой. Русская идея в новой Польше' },
+    ],
+    type: 'link',
+    url:
+      'https://assets.ctfassets.net/8uskgiwtlhdi/4ogRSdm6fBVhprKAe7ctLX/ad95fe1d6de8186be2848fe05938048c/_______________________________________________.pdf',
+  },
   {
     type: 'block-quote',
     children: [
@@ -86,6 +93,16 @@ const testInitialValue = [
           '17 сентября 1939 года верховный главнокомандующий Польши, генерал Эдвард Рыдз-Смиглы, отдал приказ не вести военных действий против СССР (за исключением ситуаций, когда красноармейцы пытаются разоружить польских солдат).',
       },
     ],
+  },
+  {
+    type: 'images',
+    children: [
+      {
+        text: 'Test GIF',
+      },
+    ],
+    content:
+      'https://pro2-bar-s3-cdn-cf6.myportfolio.com/c387f1e20da1b75ea57cae47d919119c/76241638-6cbc-471a-bb70-f4787367d98c_rw_1200.gif',
   },
   {
     type: 'ordered-list',
@@ -146,12 +163,12 @@ const testInitialValue = [
   },
   {
     type: 'youtube',
-    children: [{ text: 'abc' }],
+    children: [{ text: 'Testowy tytuł youtube' }],
     content: 'h9ZQElA1LjQ',
   },
   {
     type: 'soundcloud',
-    children: [{ text: 'test soundcloud' }],
+    children: [{ text: 'Testowy tytuł soundcloud' }],
     content: 'user-261324975/sets/lofi',
   },
   {
