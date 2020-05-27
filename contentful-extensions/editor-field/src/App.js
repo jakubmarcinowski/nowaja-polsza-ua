@@ -166,7 +166,7 @@ const testInitialValue = [
   },
 ]
 
-if (isContentful) {
+if (contentfulUtils.isContentful()) {
   init(sdk => {
     ReactDOM.render(<App sdk={sdk} />, document.getElementById('app'))
   })
