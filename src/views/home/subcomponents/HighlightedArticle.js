@@ -149,7 +149,7 @@ class HighlightedArticle extends Component {
           </ImgBox>
           <ArticleContent isActive={isActive}>
             <StyledHeader
-              color="white"
+              color="White"
               type={2}
               margin="0 0 1.8rem"
               weight="Bold"

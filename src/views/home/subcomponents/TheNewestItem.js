@@ -125,7 +125,7 @@ const TheNewestItem = ({
               weight="Normal"
               type={2}
               size="MediumBig"
-              color="white"
+              color="White"
               margin=".65rem"
               lineHeight="Medium"
             >
