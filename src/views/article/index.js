@@ -269,10 +269,6 @@ const ArticlePage = ({
 
         <ArticleSocialMediaListBottom title={title} />
         <SectionWrapper>
-          {/* <HeaderStyled size="Biggest">
-            {authors &&
-              (authors.length > 1 ? trans('AUTHORS') : trans('AUTHOR'))}
-          </HeaderStyled> */}
           {authors &&
             (authors.length > 1 ? (
               <Authors>
