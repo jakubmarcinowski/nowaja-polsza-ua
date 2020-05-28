@@ -43,8 +43,9 @@ const HeaderStyled = styled(Header)`
 
 const Authors = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: -2rem;
   padding: 2rem;
 
@@ -230,6 +231,7 @@ const ArticlePage = ({
   posts,
 }) => {
   let recommendedAutoAndManually = posts
+  const themeColor = categories[0].color
 
   if (recommendedArticles) {
     const manuallyRecommended = recommendedArticles.map(article => {
@@ -278,7 +280,7 @@ const ArticlePage = ({
           categories={categories}
         />
       </Wrapper>
-      <Wrapper size="Small" position="relative">
+      <Wrapper position="relative">
         <ScrollIndicator offset={300}>
           <SocialMediaListWrapper>
             <ArticleSocialMediaList title={title} />
@@ -291,6 +293,7 @@ const ArticlePage = ({
           <Content
             html={body && body.childMarkdownRemark.html}
             lead={leadLong && leadLong.childMarkdownRemark.html}
+            themeColor={themeColor}
           />
         </ScrollIndicator>
         {gallery && (
@@ -308,15 +311,7 @@ const ArticlePage = ({
         <SocialMediaListWrapper>
           <ArticleSocialMediaListBottom title={title} />
         </SocialMediaListWrapper>
-        <div>
-          <HeaderStyled size="Biggest">{trans('READ_ALSO')}</HeaderStyled>
-          <RecommendedArticles posts={recommendedAutoAndManually} />
-        </div>
         <SectionWrapper>
-          <HeaderStyled size="Biggest">
-            {authors &&
-              (authors.length > 1 ? trans('AUTHORS') : trans('AUTHOR'))}
-          </HeaderStyled>
           {authors &&
             (authors.length > 1 ? (
               <Authors>
@@ -328,6 +323,10 @@ const ArticlePage = ({
               <AuthorShort author={authors[0]} />
             ))}
         </SectionWrapper>
+        <div>
+          <HeaderStyled size="Biggest">{trans('READ_ALSO')}</HeaderStyled>
+          <RecommendedArticles posts={recommendedAutoAndManually} />
+        </div>
       </Wrapper>
     </StyledArticle>
   )
