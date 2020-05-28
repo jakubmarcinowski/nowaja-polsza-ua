@@ -78,6 +78,9 @@ export const unwrapLink = editor => {
 }
 
 const wrapLink = (editor, url) => {
+  if (isLinkActive(editor)) {
+    unwrapLink(editor)
+  }
   const { selection } = editor;
   const isCollapsed = selection && Range.isCollapsed(selection)
   const link = {
@@ -86,10 +89,10 @@ const wrapLink = (editor, url) => {
     children: isCollapsed ? [{ text: url }] : [],
   }
   if (isCollapsed) {
-    Transforms.insertNodes(editor, link, selection)
+    Transforms.insertNodes(editor, link)
   } else {
-    Transforms.wrapNodes(editor, link, { split: true, selection })
-    Transforms.collapse(editor, { edge: 'end', selection })
+    Transforms.wrapNodes(editor, link, { split: true })
+    Transforms.collapse(editor, { edge: 'end' })
   }
 }
 
