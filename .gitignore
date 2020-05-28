@@ -61,6 +61,8 @@ typings/
 
 # build folder
 public
+build/
+dist/
 
 # gatsby cache folder
 .cache

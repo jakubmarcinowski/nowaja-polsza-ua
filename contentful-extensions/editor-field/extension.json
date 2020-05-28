@@ -1,0 +1,6 @@
+{
+  "id": "editor-field",
+  "name": "Editor Field",
+  "srcdoc": "./build/index.html",
+  "fieldTypes": ["Text"]
+}
