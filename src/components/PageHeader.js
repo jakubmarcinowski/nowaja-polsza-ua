@@ -8,6 +8,7 @@ import { theme } from 'utils/theme'
 import Categories from 'components/Categories'
 import { mediaQueries } from 'utils/mediaQueries'
 import Wrapper from 'components/Wrapper'
+import { isIntersectionObserverSupported } from 'utils/browsers'
 
 const pageHeaderHeightWithoutCategories =
   parseInt(theme.grid.pageHeaderHeight, 10) -
@@ -81,12 +82,17 @@ const PageHeader = ({ currentCategory }) => {
     setFixed(window.scrollY > pageHeaderHeightWithoutCategories)
   })
   useEffect(() => {
-    const observer = new IntersectionObserver(onScroll, {
-      threshold: [0, headerTransitionThreshold],
-    })
-    const refs = [pageHeaderRef.current, placeholderRef.current]
-    refs.filter(Boolean).forEach(ref => observer.observe(ref))
-    return () => observer.disconnect()
+    if (isIntersectionObserverSupported()) {
+      const observer = new IntersectionObserver(onScroll, {
+        threshold: [0, headerTransitionThreshold],
+      })
+      const refs = [pageHeaderRef.current, placeholderRef.current]
+      refs.filter(Boolean).forEach(ref => observer.observe(ref))
+      return () => observer.disconnect()
+    } else {
+      document.addEventListener('scroll', onScroll)
+      return () => document.removeEventListener('scroll', onScroll)
+    }
   }, [pageHeaderRef.current, placeholderRef.current, fixed])
 
   return (

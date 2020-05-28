@@ -5,6 +5,7 @@ import throttle from 'lodash/throttle'
 
 import { childrenType } from 'types/children'
 import { mediaQueries } from 'utils/mediaQueries'
+import { isIntersectionObserverSupported } from 'utils/browsers'
 
 const Indicator = styled.div`
   --progress: 0;
@@ -49,20 +50,25 @@ const ScrollIndicator = ({ children, offset }) => {
     []
   )
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        entry.isIntersecting
-          ? document.addEventListener('scroll', onScroll)
-          : document.removeEventListener('scroll', onScroll)
-      },
-      { threshold: 0 }
-    )
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-    return () => {
-      observer.disconnect()
-      document.removeEventListener('scroll', onScroll)
+    if (isIntersectionObserverSupported()) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          entry.isIntersecting
+            ? document.addEventListener('scroll', onScroll)
+            : document.removeEventListener('scroll', onScroll)
+        },
+        { threshold: 0 }
+      )
+      if (ref.current) {
+        observer.observe(ref.current)
+      }
+      return () => {
+        observer.disconnect()
+        document.removeEventListener('scroll', onScroll)
+      }
+    } else {
+      document.addEventListener('scroll', onScroll)
+      return () => document.removeEventListener('scroll', onScroll)
     }
   }, [ref.current])
 
