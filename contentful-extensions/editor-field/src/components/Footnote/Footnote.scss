@@ -1,0 +1,22 @@
+.footnote {
+  position: relative;
+  color: #820204;
+
+  &:hover &__description {
+    display: flex;
+  }
+
+  &__description {
+    display: none;
+    position: absolute;
+    bottom: 27px;
+    left: 0;
+    background-color: white;
+    width: 340px;
+    font-size: 13px;
+    padding: 15px;
+    border: 1px solid;
+    pointer-events: none;
+    z-index: 6;
+  }
+}
