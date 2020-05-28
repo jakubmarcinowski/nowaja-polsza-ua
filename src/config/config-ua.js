@@ -2,6 +2,11 @@ import logo from 'static/logo-cprdip-extended-pl.png'
 
 export const logoCprdipExtended = logo
 
+export const theme = {
+  logoTitleFontSize: '2.3rem',
+  logoSubtitleFontSize: '1.5rem',
+}
+
 export const translations = {
   LOAD_PREVIOUS: 'Повернутися',
   LOAD_MORE: 'Більше текстів',

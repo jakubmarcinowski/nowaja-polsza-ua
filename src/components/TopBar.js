@@ -31,12 +31,12 @@ const Logo = styled.img`
 
 const Title = styled(Header)`
   margin-bottom: 0.5rem;
-  font-size: 2.2rem;
+  font-size: ${({ theme }) => theme.logoTitleFontSize};
 `
 
 const Subtitle = styled(Header)`
   font-family: ${theme.fonts.secondary};
-  font-size: 1.6rem;
+  font-size: ${({ theme }) => theme.logoSubtitleFontSize};
   letter-spacing: 0.5px;
 `
 
