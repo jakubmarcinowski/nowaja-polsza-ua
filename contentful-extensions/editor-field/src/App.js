@@ -59,6 +59,11 @@ const testInitialValue = [
         text:
           '17 сентября 1939 года Советский Союз напал на Польшу, которая на тот момент еще сражалась ',
       },
+      {
+        type: 'link',
+        url: 'https://en.wikipedia.org/wiki/Hypertext',
+        children: [{ text: 'hyperlinks' }],
+      },
       { text: 'нацистской Германией.  ', bold: true },
       {
         type: 'footnote',
