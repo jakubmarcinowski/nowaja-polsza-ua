@@ -1,4 +1,5 @@
 import { contentWidth } from './contentWidth'
+import { theme as themeConfig } from 'config'
 
 export const theme = {
   colors: {
@@ -103,4 +104,5 @@ export const theme = {
     categoriesDesktopHeight: '60px',
     pageHeaderHeight: '220px',
   },
+  ...themeConfig,
 }

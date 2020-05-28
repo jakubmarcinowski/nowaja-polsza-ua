@@ -3,6 +3,11 @@ const meta = require('./../../meta')
 
 export const logoCprdipExtended = logo
 
+export const theme = {
+  logoTitleFontSize: '2.2rem',
+  logoSubtitleFontSize: '1.6rem',
+}
+
 export const getArticleUrlInSecondLanguage = slug =>
   `${meta.ua.siteUrl}article/${slug}`
 
