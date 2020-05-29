@@ -2,6 +2,7 @@ import DialogInput from './DialogInput/DialogInput'
 import Element from './Element/Element'
 import Footnote from './Footnote/Footnote'
 import Youtube from './Youtube/Youtube'
+import Slider from './Slider/Slider'
 import SoundCloud from './SoundCloud/SoundCloud'
 import Images from './Images/Images'
 import Leaf from './Leaf/Leaf'
@@ -52,6 +53,7 @@ export {
   Youtube,
   YoutubeButton,
   SoundCloud,
+  Slider,
   SoundCloudButton,
   Leaf,
   Toolbar,

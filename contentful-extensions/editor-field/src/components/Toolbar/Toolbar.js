@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { classnames } from 'utils/classnames'
 import './Toolbar.scss'
 
-const Toolbar = ({ className, fixed, ...props }) => (
-  <div
-    {...props}
-    className={classnames(className, 'toolbar', { 'toolbar--fixed': fixed })}
-  />
-)
+const Toolbar = forwardRef(function Toolbar(
+  { className, fixed, ...props },
+  ref
+) {
+  return (
+    <div
+      {...props}
+      className={classnames(className, 'toolbar', { 'toolbar--fixed': fixed })}
+      ref={ref}
+    />
+  )
+})
 
 Toolbar.propTypes = {
   className: PropTypes.string,

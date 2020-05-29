@@ -1,0 +1,13 @@
+.inline-toolbar {
+  display: flex;
+  justify-content: center;
+  padding: 3px;
+  position: absolute;
+  z-index: 6;
+  top: -10000px;
+  left: -10000px;
+  margin-top: -6px;
+  opacity: 0;
+  transition: opacity 0.75s;
+  width: auto !important;
+}

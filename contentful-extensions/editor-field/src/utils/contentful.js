@@ -1,3 +1,41 @@
+export const buildImageFluid = ({ url, width, height, maxWidth = 992 }) => {
+  const aspectRatio = width / height
+  const presentationWidth = Math.min(maxWidth, width)
+  const presentationHeight = Math.round(presentationWidth * (height / width))
+  const sizes = `(max-width: ${presentationWidth}px) 100vw, ${presentationWidth}px`
+
+  const images = []
+
+  images.push(width / 4)
+  images.push(width / 2)
+  images.push(width)
+  images.push(width * 1.5)
+  images.push(width * 2)
+  images.push(width * 3)
+
+  const filteredSizes = images.filter(size => size < width)
+
+  filteredSizes.push(width)
+
+  const srcSet = filteredSizes
+    .map(size => `${url}?w=${Math.round(size)} ${Math.round(size)}w`)
+    .join(`,\n`)
+
+  const webpSrcSet = filteredSizes
+    .map(size => `${url}?fm=webp&w=${Math.round(size)} ${Math.round(size)}w`)
+    .join(`,\n`)
+
+  return {
+    aspectRatio,
+    srcSet,
+    webpSrcSet,
+    src: url,
+    sizes,
+    presentationWidth,
+    presentationHeight,
+  }
+}
+
 export const isContentful = !!process.env.IS_CONTENTFUL
 
 export const onContentful = fn => isContentful && fn()
@@ -28,11 +66,15 @@ export const toggleFullscreen = (sdk, { isFullscreen, value, setValue }) => {
 }
 
 export const pickImage = sdk =>
-  sdk.dialogs
-    .selectSingleAsset()
-    .then(imgData =>
-      imgData ? `https://${Object.values(imgData.fields.file)[0].url}` : null
-    )
+  sdk.dialogs.selectSingleAsset().then(imgData => {
+    if (imgData) {
+      const file = Object.values(imgData.fields.file)[0]
+      const { width, height } = file.details.image
+
+      return { url: `https:${file.url}`, width, height }
+    }
+    return null
+  })
 
 export const updateEditorHeight = (sdk, isFullscreen) => {
   if (isFullscreen) {

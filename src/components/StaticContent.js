@@ -41,7 +41,6 @@ const StyledContent = styled.div`
   h1 {
     line-height: 1.3;
     font-size: 2rem;
-    text-transform: uppercase;
 
     @media ${mediaQueries.tablet} {
       font-size: 2.6rem;

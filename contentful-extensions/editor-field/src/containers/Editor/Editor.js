@@ -5,7 +5,7 @@ import { Editable, withReact, Slate } from 'slate-react'
 import { createEditor } from 'slate'
 import { withHistory } from 'slate-history'
 import { Element, Leaf, Toolbar } from 'components'
-import { ToolbarButtonContainer } from 'containers'
+import { ToolbarButtonContainer, InlineToolbar } from 'containers'
 import {
   isMarkActive,
   isBlockActive,
@@ -27,7 +27,7 @@ const HOTKEYS = {
   'mod+`': 'code',
 }
 
-const customInlineElements = ['footnote']
+const customInlineElements = ['footnote', 'link']
 
 const toolbarInlineButtons = [
   inlineButtons.BOLD,
@@ -59,6 +59,7 @@ const EditorComponent = ({
   isFullscreen,
   toggleFullscreen,
   pickImage,
+  buildImageFluid,
 }) => {
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
@@ -81,6 +82,7 @@ const EditorComponent = ({
               isActiveChecker={isMarkActive}
               onToggle={toggleMark}
               pickImage={pickImage}
+              buildImageFluid={buildImageFluid}
               {...props}
             />
           ))}
@@ -97,6 +99,7 @@ const EditorComponent = ({
             {...fullscreenButton(isFullscreen)}
           />
         </Toolbar>
+        <InlineToolbar buildImageFluid={buildImageFluid} />
         <div className="editable-area">
           <Editable
             renderElement={renderElement}
@@ -138,6 +141,7 @@ EditorComponent.propTypes = {
   valueChanged: PropTypes.func.isRequired,
   isFullscreen: PropTypes.bool.isRequired,
   toggleFullscreen: PropTypes.func.isRequired,
+  buildImageFluid: PropTypes.func.isRequired,
   pickImage: PropTypes.func,
 }
 
