@@ -147,8 +147,8 @@ export const blockButtons = {
     value: 'columns',
     Component: ColumnsButton,
     children: [
-      { type: 'column', children: [{ text: 'Pierwsza' }] },
-      { type: 'column', children: [{ text: 'Druga' }] },
+      { type: 'column', children: [{ text: 'Pierwsza kolumna' }] },
+      { type: 'column', children: [{ text: 'Druga kolumna' }] },
     ],
     tooltip: 'Podział na dwie kolumny',
   },

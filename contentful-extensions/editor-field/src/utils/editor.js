@@ -120,7 +120,7 @@ export const toggleMark = (editor, { format, props, at }) => {
     // images
     const node = {
       type: 'images',
-      children: [{ text: 'Lorem ipsum' }],
+      children: [{ text: 'Przykładowy tytuł' }],
       ...props,
     }
     return Transforms.insertNodes(editor, node, { at })
