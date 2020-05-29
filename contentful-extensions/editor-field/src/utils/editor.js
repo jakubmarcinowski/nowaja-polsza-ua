@@ -189,13 +189,16 @@ export const handleEnter = (event, editor) => {
     )
   ) {
     event.preventDefault()
+    Transforms.unwrapNodes(editor, {
+      split: true,
+    })
     Transforms.insertNodes(
       editor,
       {
         type: 'paragraph',
         children: [{ text: '' }],
       },
-      { mode: 'lowest' }
+      { mode: 'highest' }
     )
   }
 }
