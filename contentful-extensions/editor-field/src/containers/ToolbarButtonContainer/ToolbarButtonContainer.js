@@ -7,20 +7,21 @@ import { isLinkActive, unwrapLink } from 'utils/editor'
 
 const onSelectCustomAction = (
   buttonType,
-  { editor, onToggle, pickImage, openDialog, value, dialog }
+  { editor, onToggle, pickImage, openDialog, value, dialog, buildImageFluid }
 ) => {
   switch (buttonType) {
     case 'images':
       if (pickImage) {
-        return pickImage().then(
-          imageUrl =>
-            imageUrl &&
+        return pickImage().then(image => {
+          if (image) {
+            const fluid = buildImageFluid(image)
             onToggle(editor, {
               format: value,
               at: editor.selection.anchor,
-              props: { content: imageUrl },
+              props: { ...image, fluid },
             })
-        )
+          }
+        })
       } else {
         openDialog()
       }
@@ -46,6 +47,9 @@ const ToolbarButtonContainer = props => {
     dialog,
     isActiveChecker,
     onToggle,
+    tooltip,
+    pickImage,
+    buildImageFluid,
     ...other
   } = props
   const editor = useSlate()
@@ -54,8 +58,8 @@ const ToolbarButtonContainer = props => {
   return (
     <>
       <Tooltip
-        title={value}
-        aria-label={value}
+        title={tooltip || value}
+        aria-label={tooltip || value}
         placement="bottom"
         enterTouchDelay={1500}
         enterNextDelay={500}
@@ -72,7 +76,12 @@ const ToolbarButtonContainer = props => {
                 openDialog: () => setDialogOpen(true),
               })
             } else {
-              onToggle(editor, { format: value, ...other })
+              onToggle(editor, {
+                format: value,
+                pickImage,
+                buildImageFluid,
+                ...other,
+              })
             }
           }}
           {...other}
@@ -101,8 +110,10 @@ ToolbarButtonContainer.propTypes = {
   value: PropTypes.string.isRequired,
   Component: PropTypes.elementType.isRequired,
   onToggle: PropTypes.func.isRequired,
+  tooltip: PropTypes.string,
   isActiveChecker: PropTypes.func,
   pickImage: PropTypes.func,
+  buildImageFluid: PropTypes.func,
   dialog: PropTypes.object,
 }
 

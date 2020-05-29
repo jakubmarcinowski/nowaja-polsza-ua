@@ -45,6 +45,11 @@ const App = ({ initialValue, sdk }) => {
         isFullscreen={isFullscreen}
         toggleFullscreen={toggleFullscreenMode}
         pickImage={contentfulUtils.isContentful ? pickImage : null}
+        buildImageFluid={
+          contentfulUtils.isContentful
+            ? contentfulUtils.buildImageFluid
+            : () => null
+        }
       />
     </div>
   )
@@ -89,16 +94,6 @@ const testInitialValue = [
           '17 сентября 1939 года верховный главнокомандующий Польши, генерал Эдвард Рыдз-Смиглы, отдал приказ не вести военных действий против СССР (за исключением ситуаций, когда красноармейцы пытаются разоружить польских солдат).',
       },
     ],
-  },
-  {
-    type: 'images',
-    children: [
-      {
-        text: 'Test GIF',
-      },
-    ],
-    content:
-      'https://pro2-bar-s3-cdn-cf6.myportfolio.com/c387f1e20da1b75ea57cae47d919119c/76241638-6cbc-471a-bb70-f4787367d98c_rw_1200.gif',
   },
   {
     type: 'ordered-list',

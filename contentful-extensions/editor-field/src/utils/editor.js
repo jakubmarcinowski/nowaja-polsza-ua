@@ -81,7 +81,7 @@ const wrapLink = (editor, url) => {
   if (isLinkActive(editor)) {
     unwrapLink(editor)
   }
-  const { selection } = editor;
+  const { selection } = editor
   const isCollapsed = selection && Range.isCollapsed(selection)
   const link = {
     type: 'link',
@@ -103,7 +103,7 @@ export const toggleMark = (editor, { format, props, at }) => {
     // youtube
     const node = {
       type: 'youtube',
-      children: [{ text: "Przykładowy tytuł" }],
+      children: [{ text: 'Przykładowy tytuł' }],
       ...props,
     }
     return Transforms.insertNodes(editor, node, { at })
@@ -111,19 +111,19 @@ export const toggleMark = (editor, { format, props, at }) => {
     // soundcloud
     const node = {
       type: 'soundcloud',
-      children: [{ text: "Przykładowy tytuł" }],
+      children: [{ text: 'Przykładowy tytuł' }],
       ...props,
     }
     return Transforms.insertNodes(editor, node, { at })
   } else if (format === 'link') {
     // link
-    editor.selection = props.selection;
+    editor.selection = props.selection
     return insertLink(editor, props.content)
   } else if (format === 'images') {
     // images
     const node = {
       type: 'images',
-      children: [{ text: 'Lorem ipsum' }],
+      children: [{ text: 'Przykładowy tytuł' }],
       ...props,
     }
     return Transforms.insertNodes(editor, node, { at })
