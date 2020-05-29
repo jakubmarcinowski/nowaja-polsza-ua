@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { childrenType } from 'types/children'
 
 import { mediaQueries } from 'utils/mediaQueries'
+import MobilePopup from 'components/MobilePopup'
 
 const StyledContent = styled.div`
   overflow: hidden;
@@ -297,6 +298,11 @@ const StyledContent = styled.div`
 `
 
 class StaticContent extends React.Component {
+  state = {
+    annotationPopupOpen: false,
+    annotationPopupContent: '',
+  }
+
   constructor(props) {
     super(props)
     this.rootRef = React.createRef()
@@ -328,6 +334,13 @@ class StaticContent extends React.Component {
         const annotationHrefText = foundAnnotationHref
           ? foundAnnotationHref.innerText
           : ''
+        annotation.addEventListener('click', event => {
+          event.preventDefault()
+          this.setState({
+            annotationPopupContent: annotationHrefText,
+            annotationPopupOpen: true,
+          })
+        })
         const annotationTextWrapper = document.createElement('div')
         annotationTextWrapper.className = 'annotation-tooltip'
         annotationTextWrapper.innerText = annotationHrefText
@@ -358,13 +371,24 @@ class StaticContent extends React.Component {
     document.fonts.onloadingdone = null
   }
 
+  onAnnotationPopupClose = () => this.setState({ annotationPopupOpen: false })
+
   render() {
     const { children, themeColor } = this.props
+    const { annotationPopupOpen, annotationPopupContent } = this.state
 
     return (
-      <StyledContent ref={this.rootRef} color={themeColor}>
-        {children}
-      </StyledContent>
+      <>
+        <StyledContent ref={this.rootRef} color={themeColor}>
+          {children}
+        </StyledContent>
+        <MobilePopup
+          open={annotationPopupOpen}
+          onClose={this.onAnnotationPopupClose}
+        >
+          {annotationPopupContent}
+        </MobilePopup>
+      </>
     )
   }
 }
