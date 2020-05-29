@@ -47,7 +47,7 @@ const Element = ({ attributes, children, element }) => {
         </a>
       )
     case 'images':
-      return <Images content={element.content}>{children}</Images>
+      return <Images {...element}>{children}</Images>
     case 'columns':
       return <div className="columns">{children}</div>
     case 'column':
