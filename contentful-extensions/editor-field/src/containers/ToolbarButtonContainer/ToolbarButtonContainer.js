@@ -46,6 +46,7 @@ const ToolbarButtonContainer = props => {
     dialog,
     isActiveChecker,
     onToggle,
+    tooltip,
     ...other
   } = props
   const editor = useSlate()
@@ -54,8 +55,8 @@ const ToolbarButtonContainer = props => {
   return (
     <>
       <Tooltip
-        title={value}
-        aria-label={value}
+        title={tooltip || value}
+        aria-label={tooltip || value}
         placement="bottom"
         enterTouchDelay={1500}
         enterNextDelay={500}
@@ -101,6 +102,7 @@ ToolbarButtonContainer.propTypes = {
   value: PropTypes.string.isRequired,
   Component: PropTypes.elementType.isRequired,
   onToggle: PropTypes.func.isRequired,
+  tooltip: PropTypes.string,
   isActiveChecker: PropTypes.func,
   pickImage: PropTypes.func,
   dialog: PropTypes.object,

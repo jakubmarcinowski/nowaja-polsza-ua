@@ -89,7 +89,8 @@ const testInitialValue = [
     type: 'images',
     children: [
       {
-        text: 'Test GIF',
+        text:
+          'Совместный парад вермахта и Красной армии в Бресте, 22 сентября 1939 год. Источник: Федеральный архив Германии / Wikimedia Deutschland',
       },
     ],
     content:

@@ -22,15 +22,28 @@ import {
 import { findBlockMatch } from 'utils/editor'
 
 export const inlineButtons = {
-  BOLD: { value: 'bold', Component: BoldButton },
-  ITALIC: { value: 'italic', Component: ItalicButton },
-  UNDERLINE: { value: 'underline', Component: UnderlineButton },
+  BOLD: {
+    value: 'bold',
+    Component: BoldButton,
+    tooltip: 'Pogrubienie [Ctrl + B]',
+  },
+  ITALIC: {
+    value: 'italic',
+    Component: ItalicButton,
+    tooltip: 'Kursywa [Ctrl + U]',
+  },
+  UNDERLINE: {
+    value: 'underline',
+    Component: UnderlineButton,
+    tooltip: 'Podkreślenie [Ctrl + U]',
+  },
   LINK: {
     value: 'link',
     Component: LinkButton,
     dialog: {
-      title: 'URL'
+      title: 'URL',
     },
+    tooltip: 'Wstaw link',
   },
   YOUTUBE: {
     value: 'youtube',
@@ -39,6 +52,7 @@ export const inlineButtons = {
       title: 'Youtube - ID',
       label: 'np. www.youtube.com/watch?v=TvUnCBGrQ9M -> TvUnCBGrQ9M',
     },
+    tooltip: 'Wstaw Youtube',
   },
   SOUNDCLOUD: {
     value: 'soundcloud',
@@ -48,18 +62,20 @@ export const inlineButtons = {
       label:
         'np. soundcloud.com/kyler-smith1/sets/sleep -> kyler-smith1/sets/sleep',
     },
+    tooltip: 'Wstaw Soundcloud',
   },
   FOOTNOTE: {
     value: 'footnote',
     Component: FootnoteButton,
     dialog: {
       title: 'Przypis',
-      label: 'Przypis',
+      label: 'Wstaw przypis',
       getInitValue: editor => {
         const match = findBlockMatch(editor, { format: 'footnote' })
         return match ? match[0].content : ''
       },
     },
+    tooltip: 'Przypis',
   },
   IMAGES: {
     value: 'images',
@@ -68,47 +84,64 @@ export const inlineButtons = {
       title: 'IMG - URL',
       label: '',
     },
+    tooltip: 'Wstaw zdjęcie',
   },
 }
 
 export const blockButtons = {
-  UNORDERED_LIST: { value: 'unordered-list', Component: UnorderedListButton },
-  ORDERED_LIST: { value: 'ordered-list', Component: OrderedListButton },
+  UNORDERED_LIST: {
+    value: 'unordered-list',
+    Component: UnorderedListButton,
+    tooltip: 'Nienumerowana lista',
+  },
+  ORDERED_LIST: {
+    value: 'ordered-list',
+    Component: OrderedListButton,
+    tooltip: 'Numerowana lista',
+  },
   ALIGN_LEFT: {
     value: 'align-left',
     Component: AlignLeftButton,
+    tooltip: 'Wyrównaj do lewej',
   },
   ALIGN_CENTER: {
     value: 'align-center',
     Component: AlignCenterButton,
+    tooltip: 'Wyrównaj do środka',
   },
   ALIGN_RIGHT: {
     value: 'align-right',
     Component: AlignRightButton,
+    tooltip: 'Wyrównaj do prawej',
   },
   ALIGN_JUSTIFY: {
     value: 'align-justify',
     Component: AlignJustifyButton,
+    tooltip: 'Wyjustuj',
   },
 
   BLOCKQUOTE: {
     value: 'block-quote',
     Component: QuoteButton,
+    tooltip: 'Wstaw cytat',
   },
   HEADING_ONE: {
     value: 'heading-one',
     Component: HeadingButton,
     headingType: 1,
+    tooltip: 'Nagłówek 1',
   },
   HEADING_TWO: {
     value: 'heading-two',
     Component: HeadingButton,
     headingType: 2,
+    tooltip: 'Nagłówek 2',
   },
   HEADING_THREE: {
     value: 'heading-three',
     Component: HeadingButton,
     headingType: 3,
+    tooltip: 'Nagłówek 3',
   },
   COLUMNS: {
     value: 'columns',
@@ -117,6 +150,7 @@ export const blockButtons = {
       { type: 'column', children: [{ text: 'Pierwsza' }] },
       { type: 'column', children: [{ text: 'Druga' }] },
     ],
+    tooltip: 'Podział na dwie kolumny',
   },
 }
 

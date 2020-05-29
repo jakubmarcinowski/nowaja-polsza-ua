@@ -5,7 +5,7 @@ import { Editable, withReact, Slate } from 'slate-react'
 import { createEditor } from 'slate'
 import { withHistory } from 'slate-history'
 import { Element, Leaf, Toolbar } from 'components'
-import { ToolbarButtonContainer } from 'containers'
+import { ToolbarButtonContainer, InlineToolbar } from 'containers'
 import {
   isMarkActive,
   isBlockActive,
@@ -97,6 +97,7 @@ const EditorComponent = ({
             {...fullscreenButton(isFullscreen)}
           />
         </Toolbar>
+        <InlineToolbar />
         <div className="editable-area">
           <Editable
             renderElement={renderElement}

@@ -1,0 +1,15 @@
+.slider {
+  display: flex;
+  align-items: center;
+
+  &__label {
+    font-size: 12px;
+    padding: 0 20px;
+    white-space: nowrap;
+  }
+
+  &__input {
+    width: 150px !important;
+    margin-right: 10px;
+  }
+}

@@ -42,26 +42,14 @@ a {
   text-decoration: underline;
 }
 
-.tag {
-  display: block;
-  margin-top: 1rem;
-  text-align: center;
-  opacity: 0.7;
-  font-size: 14px;
-}
-
-.imgWrapper {
-  & img {
-    max-width: 992px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  width: 100%;
-}
 .container {
   margin: 0 auto;
   background-color: white;
   border-radius: 2px;
+
+  & [role='textbox'] {
+    max-width: 992px;
+  }
 }
 
 .editable-area {
@@ -71,10 +59,18 @@ a {
   padding: 20px;
   overflow: scroll;
   height: 100%;
+}
 
-  & [role='textbox'] {
-    max-width: 992px;
-  }
+p,
+h1,
+h2,
+h3,
+blockquote,
+.columns,
+.videoWrapper {
+  max-width: 992px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 [role='textbox'] {
@@ -180,7 +176,6 @@ blockquote {
 
 blockquote {
   position: relative;
-  margin: 0;
   padding: 25px 35px 0;
   font-size: rem(24px);
   font-weight: 700;
