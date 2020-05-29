@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import { useSlate } from 'slate-react'
 import { Editor, Range, Transforms } from 'slate'
 import { Toolbar, Slider } from 'components'
@@ -13,7 +14,7 @@ const inlineToolbarButtons = [
   inlineButtons.UNDERLINE,
 ]
 
-const InlineToolbar = () => {
+const InlineToolbar = ({ buildImageFluid }) => {
   const ref = useRef()
   const editor = useSlate()
   const { selection } = editor
@@ -54,15 +55,28 @@ const InlineToolbar = () => {
   if (imageElement) {
     const isFloatActive = !!imageElement[0].float
     const imgMaxWidth = imageElement[0].maxWidth
+    const { width, height, url } = imageElement[0]
+    const at = imageElement[1]
+
     return (
       <Toolbar ref={ref} className={'inline-toolbar'}>
         <ToolbarButtonContainer
           isActiveChecker={() => isFloatActive}
           onToggle={() => {
+            const fluid = buildImageFluid({
+              width,
+              height,
+              maxWidth: isFloatActive ? null : 500,
+              url,
+            })
             Transforms.setNodes(
               editor,
-              { float: isFloatActive ? undefined : 'left', maxWidth: null },
-              { at: imageElement[1] }
+              {
+                float: isFloatActive ? undefined : 'left',
+                maxWidth: null,
+                fluid,
+              },
+              { at }
             )
           }}
           {...blockButtons.ALIGN_LEFT}
@@ -73,10 +87,16 @@ const InlineToolbar = () => {
             label="Maksymalna szerokość"
             onChange={(event, value) => {
               event.preventDefault()
+              const fluid = buildImageFluid({
+                width,
+                height,
+                maxWidth: value,
+                url,
+              })
               Transforms.setNodes(
                 editor,
-                { float: undefined, maxWidth: value },
-                { at: imageElement[1] }
+                { float: undefined, maxWidth: value, fluid },
+                { at }
               )
             }}
             min={300}
@@ -102,6 +122,10 @@ const InlineToolbar = () => {
       ))}
     </Toolbar>
   )
+}
+
+InlineToolbar.propTypes = {
+  buildImageFluid: PropTypes.func.isRequired,
 }
 
 export default InlineToolbar

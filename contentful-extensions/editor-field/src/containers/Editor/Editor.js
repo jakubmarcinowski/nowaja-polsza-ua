@@ -59,6 +59,7 @@ const EditorComponent = ({
   isFullscreen,
   toggleFullscreen,
   pickImage,
+  buildImageFluid,
 }) => {
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
@@ -81,6 +82,7 @@ const EditorComponent = ({
               isActiveChecker={isMarkActive}
               onToggle={toggleMark}
               pickImage={pickImage}
+              buildImageFluid={buildImageFluid}
               {...props}
             />
           ))}
@@ -97,7 +99,7 @@ const EditorComponent = ({
             {...fullscreenButton(isFullscreen)}
           />
         </Toolbar>
-        <InlineToolbar />
+        <InlineToolbar buildImageFluid={buildImageFluid} />
         <div className="editable-area">
           <Editable
             renderElement={renderElement}
@@ -139,6 +141,7 @@ EditorComponent.propTypes = {
   valueChanged: PropTypes.func.isRequired,
   isFullscreen: PropTypes.bool.isRequired,
   toggleFullscreen: PropTypes.func.isRequired,
+  buildImageFluid: PropTypes.func.isRequired,
   pickImage: PropTypes.func,
 }
 
