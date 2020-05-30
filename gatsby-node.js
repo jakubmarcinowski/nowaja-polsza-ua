@@ -49,7 +49,7 @@ const createCategorizedPostsPages = (
 
 const getAllHighlightedPosts = (
   posts,
-  { stickedPostActive, highlightedPostsData }
+  { stickedPost, highlightedPostsData }
 ) => {
   const {
     post: highlightedPost,
@@ -73,9 +73,9 @@ const getAllHighlightedPosts = (
         )
     )
 
-    if (stickedPostActive) {
-      postsWithoutDuplicates = postsWithoutDuplicates.filter(
-        post => stickedPost.id !== post.node.id
+    if (stickedPost.active) {
+      postsWithoutDuplicates = [{ node: { id: stickedPost.id } }].concat(
+        postsWithoutDuplicates.filter(post => stickedPost.id !== post.node.id)
       )
     }
 
@@ -87,20 +87,18 @@ const getAllHighlightedPosts = (
 
 const createHomePagePages = (
   posts,
-  { stickedPostActive, highlightedPostsData, createPage }
+  { stickedPost, highlightedPostsData, createPage }
 ) => {
   const allHighlightedPosts = getAllHighlightedPosts(posts, {
-    stickedPostActive,
+    stickedPost,
     highlightedPostsData,
   })
-
-  const postsPerPage = isFirstPage =>
-    isFirstPage && stickedPostActive ? 11 : 12
+  const postsPerPage = 12
   const newestPosts = allHighlightedPosts.splice(0, 4)
 
   for (i = 0; allHighlightedPosts.length > 0; i++) {
     const isFirstPage = i === 0
-    const postsOnPage = allHighlightedPosts.splice(0, postsPerPage(isFirstPage))
+    const postsOnPage = allHighlightedPosts.splice(0, postsPerPage)
     const isLastPage = allHighlightedPosts.length === 0
 
     createPage({
@@ -174,6 +172,9 @@ exports.createPages = ({ graphql, actions }) => {
             }
             contentfulStickedPost {
               active
+              stickedPost {
+                id
+              }
             }
           }
         `
@@ -186,7 +187,10 @@ exports.createPages = ({ graphql, actions }) => {
         const posts = result.data.allContentfulBlogPost.edges
         const categories = result.data.allContentfulCategory.edges
         const authors = result.data.allContentfulPerson.edges
-        const stickedPostActive = result.data.contentfulStickedPost.active
+        const stickedPost = {
+          active: result.data.contentfulStickedPost.active,
+          id: result.data.contentfulStickedPost.stickedPost.id,
+        }
         let highlightedPostsData =
           result.data.allContentfulHighlightedPost.edges[0].node
 
@@ -217,7 +221,7 @@ exports.createPages = ({ graphql, actions }) => {
         })
 
         createHomePagePages(posts, {
-          stickedPostActive,
+          stickedPost,
           highlightedPostsData,
           createPage,
         })

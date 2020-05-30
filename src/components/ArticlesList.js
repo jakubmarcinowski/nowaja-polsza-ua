@@ -73,12 +73,19 @@ const ButtonWrapper = styled.div`
     }
   }
 `
+
+const getListItemId = (index, isOnHomepage) => {
+  if (isOnHomepage) {
+    // first four posts on home page are highlighted posts which are on every page
+    return index === 4 ? 'page-start' : null
+  }
+  return index === 0 ? 'page-start' : null
+}
+
 class ArticlesList extends React.Component {
   render() {
     const {
       posts,
-      stickedPost,
-      stickedPostActive,
       noCategoryLabel,
       size,
       noMargin,
@@ -86,40 +93,18 @@ class ArticlesList extends React.Component {
       prevPagePath,
       nextPagePath,
     } = this.props
-    const eventsContainerPosition = 3
-    const postsBeforeEventsContainer = posts.slice(
-      0,
-      eventsContainerPosition + 1
-    )
-    const postsAfterEventsContainer = posts.slice(eventsContainerPosition + 1)
 
     return (
       <>
         <StyledList noMargin={noMargin}>
-          {postsBeforeEventsContainer &&
-            postsBeforeEventsContainer.map(({ node }, i) => (
+          {posts &&
+            posts.map(({ node }, i) => (
               <ListItem key={node.slug} size={size} isOnHomepage={isOnHomepage}>
                 <ArticleItem
                   article={node}
                   key={node.slug}
                   noCategoryLabel={noCategoryLabel}
-                  id={i === 0 && !isOnHomepage ? 'page-start' : null}
-                />
-              </ListItem>
-            ))}
-          {stickedPost && stickedPost.length !== 0 && stickedPostActive && (
-            <ListItem key="eventsContainer" size={size}>
-              <ArticleItem article={stickedPost} />
-            </ListItem>
-          )}
-          {postsAfterEventsContainer &&
-            postsAfterEventsContainer.map(({ node }, i) => (
-              <ListItem key={node.slug} size={size}>
-                <ArticleItem
-                  article={node}
-                  key={node.slug}
-                  noCategoryLabel={noCategoryLabel}
-                  id={i === 0 && isOnHomepage ? 'page-start' : null}
+                  id={getListItemId(i, isOnHomepage)}
                 />
               </ListItem>
             ))}
