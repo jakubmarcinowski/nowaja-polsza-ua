@@ -34,8 +34,6 @@ class AuthorTemplate extends React.Component {
               {authorPosts && (
                 <ArticlesList
                   posts={authorPosts}
-                  limit={6}
-                  initialLimit={6}
                   prevPagePath={prevPagePath}
                   nextPagePath={nextPagePath}
                 />
