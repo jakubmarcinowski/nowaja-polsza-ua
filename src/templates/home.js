@@ -15,14 +15,6 @@ const RootIndex = props => {
     props,
     'data.allContentfulHighlightedPost.edges[0].node.post'
   )
-  const stickedPost = get(
-    props,
-    'data.allContentfulStickedPost.edges[0].node.stickedPost'
-  )
-  const stickedPostActive = get(
-    props,
-    'data.allContentfulStickedPost.edges[0].node.active'
-  )
   const prevPagePath = get(props, 'pageContext.prevPagePath')
   const nextPagePath = get(props, 'pageContext.nextPagePath')
   const postsOrder = get(props, 'pageContext.highlightedPostIds')
@@ -38,8 +30,6 @@ const RootIndex = props => {
           posts={allHighlightedPostsSorted}
           highlightedPost={highlightedPost}
           importantInfo={importantInfo}
-          stickedPost={stickedPost}
-          stickedPostActive={stickedPostActive}
           prevPagePath={prevPagePath}
           nextPagePath={nextPagePath}
         />
@@ -128,38 +118,6 @@ export const pageQuery = graphql`
               }
             }
             title
-          }
-        }
-      }
-    }
-    allContentfulStickedPost {
-      edges {
-        node {
-          active
-          stickedPost {
-            id
-            slug
-            title
-            heroImage {
-              fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp
-              }
-            }
-            heroImageThumbnail {
-              fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
-                ...GatsbyContentfulFluid_withWebp
-              }
-            }
-            categories {
-              title
-              slug
-              color
-            }
-            summary
-            authors {
-              name
-              slug
-            }
           }
         }
       }

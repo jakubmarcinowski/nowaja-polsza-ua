@@ -13,8 +13,6 @@ import ImportantInfo from './subcomponents/ImportantInfo'
 const HomePage = ({
   posts,
   highlightedPost,
-  stickedPost,
-  stickedPostActive,
   importantInfo,
   prevPagePath,
   nextPagePath,
@@ -39,9 +37,6 @@ const HomePage = ({
         <ArticlesList
           posts={otherPosts}
           limit={6}
-          initialLimit={stickedPostActive ? 15 : 16}
-          stickedPost={stickedPost}
-          stickedPostActive={stickedPostActive}
           isOnHomepage
           prevPagePath={prevPagePath}
           nextPagePath={nextPagePath}
@@ -53,8 +48,6 @@ const HomePage = ({
 
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(articleType),
-  stickedPost: PropTypes.object,
-  stickedPostActive: PropTypes.bool,
   highlightedPost: articleType,
   isNotLarge: PropTypes.bool,
   importantInfo: PropTypes.any,
