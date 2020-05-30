@@ -36,7 +36,6 @@ const HomePage = ({
         <Line />
         <ArticlesList
           posts={otherPosts}
-          limit={6}
           isOnHomepage
           prevPagePath={prevPagePath}
           nextPagePath={nextPagePath}

@@ -140,8 +140,6 @@ ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(articleType).isRequired,
   stickedPost: PropTypes.object,
   stickedPostActive: PropTypes.bool,
-  limit: PropTypes.number,
-  initialLimit: PropTypes.number,
   noCategoryLabel: PropTypes.bool,
   noMargin: PropTypes.bool,
   size: PropTypes.string,
