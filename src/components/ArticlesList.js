@@ -138,8 +138,6 @@ class ArticlesList extends React.Component {
 
 ArticlesList.propTypes = {
   posts: PropTypes.arrayOf(articleType).isRequired,
-  stickedPost: PropTypes.object,
-  stickedPostActive: PropTypes.bool,
   noCategoryLabel: PropTypes.bool,
   noMargin: PropTypes.bool,
   size: PropTypes.string,
