@@ -80,7 +80,7 @@ class PublicationPage extends React.Component {
 
     return articlesInYear.map(({ issue, title }) => (
       <ArchivePublication
-        key={issue}
+        key={`${issue}/${dateFilter}`}
         year={dateFilter}
         issue={issue}
         url={`/pdf/${dateFilter}/${issue}/`}
