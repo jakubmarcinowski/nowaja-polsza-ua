@@ -29,7 +29,7 @@ const Banner = styled.div`
   @media ${mediaQueries.desktop} {
     bottom: -31rem;
     width: 870px;
-    padding: 3rem;
+    padding: 2rem;
     background: ${({ theme }) => theme.colors.white};
   }
 
@@ -47,16 +47,16 @@ const HeaderWrapper = styled.div`
 `
 const StyledHeader = styled(Header)`
   margin: 2rem 0 4rem;
-  line-height: 1;
+  line-height: 1.2;
   font-size: 3rem;
 
   @media ${mediaQueries.tablet} {
-    margin: 5rem 0 3rem;
+    margin: 5rem 0 4rem;
     font-size: 4rem;
   }
 
   @media ${mediaQueries.desktop} {
-    margin: 8rem 0 4rem;
+    margin: 8rem 0 5rem;
     font-size: 5.6rem;
   }
 `
@@ -67,11 +67,12 @@ const InfoBox = styled.div`
   flex-wrap: wrap;
   margin-bottom: 1rem;
   font-size: 1.4rem;
+  line-height: 1.4;
   justify-content: center;
   order: 2;
 
   @media ${mediaQueries.desktop} {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-size: 1.6rem;
   }
 `
@@ -110,7 +111,6 @@ const AuthorLink = styled(Link)`
 const CategoriesBox = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
   justify-content: center;
   order: 3;
 `

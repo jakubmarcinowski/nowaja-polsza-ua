@@ -11,17 +11,17 @@ const StyledArticleSocialMediaList = styled(SocialMediaList)`
   align-items: center;
   justify-content: space-between;
   max-width: 200px;
-  margin: 0 auto 0.5rem;
+  margin: 0 auto 2rem;
   padding: 2rem 0;
 
   @media ${mediaQueries.tablet} {
     padding: 2rem 0 3rem;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 4rem;
   }
 
   @media ${mediaQueries.desktop} {
     padding: 0 0 5rem;
-    margin: 0 auto 3rem;
+    margin: 0 auto 6rem;
   }
 `
 
