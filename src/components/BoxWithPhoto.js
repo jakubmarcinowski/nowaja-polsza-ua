@@ -44,9 +44,9 @@ const Image = styled(ImgWrapper)`
     top: -1.5rem;
     left: -1.5rem;
     min-width: 17rem;
-    min-height: 22rem;
+    min-height: 24.2rem;
     max-width: 17rem;
-    max-height: 22rem;
+    max-height: 24.2rem;
   }
 `
 

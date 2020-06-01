@@ -12,3 +12,6 @@ https://www.novayapolsha.org/* https://www.novayapolsha.pl/:splat 301!
 
 # Optional: Redirect default Netlify subdomain to primary domain
 https://silly-morse-77d306.netlify.com/* https://www.novayapolsha.pl/:splat 301!
+
+# Archive articles hosted on Google Drive
+/1999/1/ https://drive.google.com/u/0/uc?id=12OeFx4lxo61IKOVwLtUsFXaEoKZMvwPF&export=download 200

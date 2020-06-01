@@ -9,6 +9,8 @@ import Header from 'components/Header'
 import Placeholder from 'components/Placeholder'
 import PageHeading from 'components/PageHeading'
 import { trans } from 'utils/translate'
+import articlesArchive from './new-archive'
+import { findCover } from 'utils/archive-articles'
 
 // @todo crete styled component for page header which is center and has a line
 const Filters = styled.div`
@@ -74,18 +76,16 @@ class PublicationPage extends React.Component {
 
   renderArchiveArticles = () => {
     const { dateFilter } = this.state
+    const articlesInYear = articlesArchive[dateFilter]
 
-    const startMonth = 1
-    const endMonth = 12
-    const months = []
-    for (let i = startMonth; i <= endMonth; i++) {
-      months.push(i)
-    }
-
-    months.splice(7, 1)
-
-    return months.map(month => (
-      <ArchivePublication key={month} year={dateFilter} month={month} />
+    return articlesInYear.map(({ issue }) => (
+      <ArchivePublication
+        key={issue}
+        year={dateFilter}
+        issue={issue}
+        url={`/pdf/${dateFilter}/${issue}/`}
+        cover={findCover(this.props.covers, { issue, year: dateFilter })}
+      />
     ))
   }
 

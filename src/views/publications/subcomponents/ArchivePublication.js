@@ -26,96 +26,115 @@ const Desc = styled(Paragraph)`
   margin-top: 2em;
 `
 
-class ArchivePublication extends React.Component {
-  state = {
-    isMoreVisible: false,
-  }
-
-  showMoreOrLess = () => {
-    this.setState({ isMoreVisible: !this.state.isMoreVisible })
-  }
-
-  renderTitles = listOfArticles => {
-    const { isMoreVisible } = this.state
-    const visibleTitles = 2
-
-    return (
-      <>
-        {listOfArticles.map((article, i) => {
-          if (isMoreVisible) {
-            return <h1 key={i}>{article.title}</h1>
-          } else {
-            if (i < visibleTitles) {
-              return <h1 key={i}>{article.title}</h1>
-            }
-          }
-        })}
-        {listOfArticles.length > visibleTitles && (
-          <ReadMoreButton onClick={this.showMoreOrLess}>
-            {isMoreVisible ? trans('SHOW_LESS') : trans('SHOW_MORE')}
-          </ReadMoreButton>
-        )}
-      </>
-    )
-  }
-
-  render() {
-    const { month, year } = this.props
-    const twoDigitsMonth = ('0' + month).slice(-2)
-    const convertToRoman = num => {
-      const decimalValue = [10, 9, 5, 4, 1]
-      const romanNumeral = ['X', 'IX', 'V', 'IV', 'I']
-
-      let romanized = ''
-      for (let i = 0; i < decimalValue.length; i++) {
-        while (decimalValue[i] <= num) {
-          romanized += romanNumeral[i]
-          num -= decimalValue[i]
-        }
-      }
-      return romanized
-    }
-
-    let romanizedMonth = convertToRoman(month)
-    if (romanizedMonth === 'VII') {
-      romanizedMonth = 'VII-VIII'
-    }
-
-    const listOfArticles = articles.filter(
-      article =>
-        article.issue.year === year.toString() &&
-        (article.issue.number === month.toString() ||
-          (month === 7 && article.issue.number === '7-8'))
-    )
-
-    if (listOfArticles.length === 0) {
-      return null
-    }
-
-    const pdfUrl = `/pdf/${year}/${twoDigitsMonth}.pdf`
-
-    return (
-      <BoxWithPhoto archive={true} month={romanizedMonth} year={year}>
-        <Header
-          size="Big"
-          margin="0 0 0.8em"
-          color="Black"
-          weight="Bold"
-          type={3}
-        >
-          Новая Польша {twoDigitsMonth}
-          {month === 7 && '-08'}/{year}
-        </Header>
-        <DownloadButtons>
-          {<DownloadButton url={pdfUrl} text="PDF" />}
-        </DownloadButtons>
-        <Desc color={'Black'} size={'Big'} weight={'Light'} lineHeight={'Big'}>
-          {this.renderTitles(listOfArticles)}
-        </Desc>
-      </BoxWithPhoto>
-    )
-  }
+const ArchivePublication = ({ cover, url }) => {
+  return (
+    <BoxWithPhoto image={cover}>
+      <Header
+        size="Big"
+        margin="0 0 0.8em"
+        color="Black"
+        weight="Bold"
+        type={3}
+      >
+        Новая Польша
+      </Header>
+      <DownloadButtons>
+        <DownloadButton url={url} text="PDF" />
+      </DownloadButtons>
+    </BoxWithPhoto>
+  )
 }
+
+// class ArchivePublication extends React.Component {
+//   state = {
+//     isMoreVisible: false,
+//   }
+
+//   showMoreOrLess = () => {
+//     this.setState({ isMoreVisible: !this.state.isMoreVisible })
+//   }
+
+//   renderTitles = listOfArticles => {
+//     const { isMoreVisible } = this.state
+//     const visibleTitles = 2
+
+//     return (
+//       <>
+//         {listOfArticles.map((article, i) => {
+//           if (isMoreVisible) {
+//             return <h1 key={i}>{article.title}</h1>
+//           } else {
+//             if (i < visibleTitles) {
+//               return <h1 key={i}>{article.title}</h1>
+//             }
+//           }
+//         })}
+//         {listOfArticles.length > visibleTitles && (
+//           <ReadMoreButton onClick={this.showMoreOrLess}>
+//             {isMoreVisible ? trans('SHOW_LESS') : trans('SHOW_MORE')}
+//           </ReadMoreButton>
+//         )}
+//       </>
+//     )
+//   }
+
+//   render() {
+//     const { month, year } = this.props
+//     const twoDigitsMonth = ('0' + month).slice(-2)
+//     const convertToRoman = num => {
+//       const decimalValue = [10, 9, 5, 4, 1]
+//       const romanNumeral = ['X', 'IX', 'V', 'IV', 'I']
+
+//       let romanized = ''
+//       for (let i = 0; i < decimalValue.length; i++) {
+//         while (decimalValue[i] <= num) {
+//           romanized += romanNumeral[i]
+//           num -= decimalValue[i]
+//         }
+//       }
+//       return romanized
+//     }
+
+//     let romanizedMonth = convertToRoman(month)
+//     if (romanizedMonth === 'VII') {
+//       romanizedMonth = 'VII-VIII'
+//     }
+
+//     const listOfArticles = articles.filter(
+//       article =>
+//         article.issue.year === year.toString() &&
+//         (article.issue.number === month.toString() ||
+//           (month === 7 && article.issue.number === '7-8'))
+//     )
+
+//     if (listOfArticles.length === 0) {
+//       return null
+//     }
+
+//     const pdfUrl = `/pdf/${year}/${twoDigitsMonth}.pdf`
+
+//     return (
+//       <BoxWithPhoto archive={true} month={romanizedMonth} year={year}>
+//         <Header
+//           size="Big"
+//           margin="0 0 0.8em"
+//           color="Black"
+//           weight="Bold"
+//           type={3}
+//         >
+//           Новая Польша {twoDigitsMonth}
+//           {month === 7 && '-08'}/{year}
+//         </Header>
+//         <DownloadButtons>
+//           {<DownloadButton url={pdfUrl} text="PDF" />}
+//         </DownloadButtons>
+//         <Desc color={'Black'} size={'Big'} weight={'Light'} lineHeight={'Big'}>
+//           {this.renderTitles(listOfArticles)}
+//         </Desc>
+//       </BoxWithPhoto>
+//     )
+//   }
+// }
 
 ArchivePublication.propTypes = {
   month: PropTypes.any,
