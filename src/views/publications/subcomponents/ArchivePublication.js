@@ -48,8 +48,11 @@ const ArchivePublication = ({ cover, url, issue, year, title }) => {
 }
 
 ArchivePublication.propTypes = {
-  month: PropTypes.any,
-  year: PropTypes.any,
+  url: PropTypes.string.isRequired,
+  issue: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  cover: PropTypes.shape({ fluid: PropTypes.object.isRequired }).isRequired,
+  title: PropTypes.string,
 }
 
 export default ArchivePublication

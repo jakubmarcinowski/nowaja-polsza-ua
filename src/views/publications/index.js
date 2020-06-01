@@ -9,8 +9,10 @@ import Header from 'components/Header'
 import Placeholder from 'components/Placeholder'
 import PageHeading from 'components/PageHeading'
 import { trans } from 'utils/translate'
-import articlesArchive from './new-archive'
-import { findCover } from 'utils/archive-articles'
+import articlesArchive from './archive'
+
+const findCover = (covers, { issue, year }) =>
+  covers.find(cover => cover.relativePath.startsWith(`${year}/${issue}.`))
 
 // @todo crete styled component for page header which is center and has a line
 const Filters = styled.div`
@@ -76,6 +78,8 @@ class PublicationPage extends React.Component {
 
   renderArchiveArticles = () => {
     const { dateFilter } = this.state
+    const { covers } = this.props
+    console.log(articlesArchive)
     const articlesInYear = articlesArchive[dateFilter]
 
     return articlesInYear.map(({ issue, title }) => (
@@ -85,7 +89,7 @@ class PublicationPage extends React.Component {
         issue={issue}
         url={`/pdf/${dateFilter}/${issue}/`}
         title={title}
-        cover={findCover(this.props.covers, { issue, year: dateFilter })}
+        cover={findCover(covers, { issue, year: dateFilter })}
       />
     ))
   }
@@ -187,6 +191,12 @@ class PublicationPage extends React.Component {
 }
 
 PublicationPage.propTypes = {
+  covers: PropTypes.arrayOf(
+    PropTypes.shape({
+      relativePath: PropTypes.string.isRequired,
+      fluid: PropTypes.object.isRequired,
+    })
+  ).isRequired,
   publications: PropTypes.any,
   title: PropTypes.string,
 }
