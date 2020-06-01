@@ -1,42 +1,42 @@
 {
   "1999": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     }
   ],
   "2000": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -50,28 +50,28 @@
   ],
   "2001": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -81,32 +81,40 @@
     },
     {
       "issue": "12"
+    },
+    {
+      "issue": "13",
+      "title": "Новая Польша. Спецвыпуск на грузинском"
+    },
+    {
+      "issue": "14",
+      "title": "Новая Польша. Спеціальний український номер"
     }
   ],
   "2002": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -120,28 +128,28 @@
   ],
   "2003": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -155,28 +163,28 @@
   ],
   "2004": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -186,32 +194,36 @@
     },
     {
       "issue": "12"
+    },
+    {
+      "issue": "13",
+      "title": "Новая Польша. Wydanie specjalne 1999-2004"
     }
   ],
   "2005": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -221,32 +233,36 @@
     },
     {
       "issue": "12"
+    },
+    {
+      "issue": "13",
+      "title": "Новая Польша. Спеціальний український номер"
     }
   ],
   "2006": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -260,28 +276,28 @@
   ],
   "2007": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -295,28 +311,28 @@
   ],
   "2008": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -330,28 +346,28 @@
   ],
   "2009": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -365,28 +381,28 @@
   ],
   "2010": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -400,28 +416,28 @@
   ],
   "2011": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -431,32 +447,36 @@
     },
     {
       "issue": "12"
+    },
+    {
+      "issue": "13",
+      "title": "Новая Польша. Wydanie specjalne 2005-2011"
     }
   ],
   "2012": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -470,28 +490,28 @@
   ],
   "2013": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -505,28 +525,28 @@
   ],
   "2014": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -536,32 +556,36 @@
     },
     {
       "issue": "12"
+    },
+    {
+      "issue": "13",
+      "title": "Новая Польша. Спеціальний український номер"
     }
   ],
   "2015": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -575,28 +599,28 @@
   ],
   "2016": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -610,28 +634,28 @@
   ],
   "2017": [
     {
-      "issue": "1"
+      "issue": "01"
     },
     {
-      "issue": "2"
+      "issue": "02"
     },
     {
-      "issue": "3"
+      "issue": "03"
     },
     {
-      "issue": "4"
+      "issue": "04"
     },
     {
-      "issue": "5"
+      "issue": "05"
     },
     {
-      "issue": "6"
+      "issue": "06"
     },
     {
-      "issue": "7-8"
+      "issue": "07-08"
     },
     {
-      "issue": "9"
+      "issue": "09"
     },
     {
       "issue": "10"
@@ -645,7 +669,7 @@
   ],
   "2018": [
     {
-      "issue": "1"
+      "issue": "01"
     }
   ]
 }

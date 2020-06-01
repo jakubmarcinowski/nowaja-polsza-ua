@@ -78,12 +78,13 @@ class PublicationPage extends React.Component {
     const { dateFilter } = this.state
     const articlesInYear = articlesArchive[dateFilter]
 
-    return articlesInYear.map(({ issue }) => (
+    return articlesInYear.map(({ issue, title }) => (
       <ArchivePublication
         key={issue}
         year={dateFilter}
         issue={issue}
         url={`/pdf/${dateFilter}/${issue}/`}
+        title={title}
         cover={findCover(this.props.covers, { issue, year: dateFilter })}
       />
     ))
