@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -26,11 +26,33 @@ const Desc = styled(Paragraph)`
   margin-top: 2em;
 `
 
-const ArchivePublication = ({ cover, url, issue, year, title }) => {
+const romanicMonths = {
+  '01': 'I',
+  '02': 'II',
+  '03': 'III',
+  '04': 'IV',
+  '05': 'V',
+  '06': 'VI',
+  '07-08': 'VII-VIII',
+  '09': 'IX',
+  '10': 'X',
+  '11': 'XI',
+  '12': 'XII',
+}
+
+const initVisibleTitles = 2
+
+const ArchivePublication = ({ cover, url, issue, year, title, toc }) => {
+  const [isMoreVisible, setIsMoreVisible] = useState(false)
   const heading = title || `Новая Польша ${issue}/${year}`
 
   return (
-    <BoxWithPhoto image={cover}>
+    <BoxWithPhoto
+      image={cover}
+      archive={!cover}
+      month={romanicMonths[issue]}
+      year={year}
+    >
       <Header
         size="Big"
         margin="0 0 0.8em"
@@ -43,6 +65,24 @@ const ArchivePublication = ({ cover, url, issue, year, title }) => {
       <DownloadButtons>
         <DownloadButton url={url} text="PDF" />
       </DownloadButtons>
+      {toc && (
+        <Desc color={'Black'} size={'Big'} weight={'Light'} lineHeight={'Big'}>
+          {toc.map((tocElement, i) => {
+            if (isMoreVisible) {
+              return <h2 key={i}>{tocElement}</h2>
+            } else {
+              if (i < initVisibleTitles) {
+                return <h2 key={i}>{tocElement}</h2>
+              }
+            }
+          })}
+          {toc.length > initVisibleTitles && (
+            <ReadMoreButton onClick={() => setIsMoreVisible(!isMoreVisible)}>
+              {isMoreVisible ? trans('SHOW_LESS') : trans('SHOW_MORE')}
+            </ReadMoreButton>
+          )}
+        </Desc>
+      )}
     </BoxWithPhoto>
   )
 }
@@ -53,6 +93,7 @@ ArchivePublication.propTypes = {
   year: PropTypes.string.isRequired,
   cover: PropTypes.shape({ fluid: PropTypes.object.isRequired }).isRequired,
   title: PropTypes.string,
+  toc: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default ArchivePublication

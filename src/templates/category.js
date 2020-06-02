@@ -30,8 +30,6 @@ class CategoryTemplate extends React.Component {
               {categoryPosts ? (
                 <ArticlesList
                   posts={categoryPosts}
-                  limit={6}
-                  initialLimit={6}
                   noCategoryLabel
                   prevPagePath={prevPagePath}
                   nextPagePath={nextPagePath}
