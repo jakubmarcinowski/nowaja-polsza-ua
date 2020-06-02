@@ -1,4 +1,3 @@
-import React from 'react'
 import escapeHtml from 'escape-html'
 import { Text } from 'slate'
 import { Images } from '../components/Images'

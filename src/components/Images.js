@@ -1,13 +1,6 @@
 import classnames from 'classnames'
 
-export const Images = ({
-  children,
-  fluid,
-  url,
-  aspectRatio,
-  float,
-  maxWidth,
-}) => {
+export const Images = ({ children, fluid, url, float, maxWidth }) => {
   const isFloatActive = float === 'left'
   return `<div
   class="${classnames('img-wrapper', {
