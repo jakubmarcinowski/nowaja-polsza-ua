@@ -1,0 +1,6 @@
+{
+  "id": "post-autocomplete-field",
+  "name": "Post Autocomplete Field",
+  "srcdoc": "./build/index.html",
+  "fieldTypes": ["Text", "Symbol"]
+}

@@ -12,3 +12,234 @@ https://www.novayapolsha.org/* https://www.novayapolsha.pl/:splat 301!
 
 # Optional: Redirect default Netlify subdomain to primary domain
 https://silly-morse-77d306.netlify.com/* https://www.novayapolsha.pl/:splat 301!
+
+
+# Archive articles hosted on Google Drive
+/pdf/1999/01/ https://novaya-pdfs.netlify.app/001.pdf 200
+/pdf/1999/02/ https://novaya-pdfs.netlify.app/002.pdf 200
+/pdf/1999/03/ https://novaya-pdfs.netlify.app/003.pdf 200
+/pdf/1999/04/ https://novaya-pdfs.netlify.app/004.pdf 200
+
+/pdf/2000/01/ https://novaya-pdfs.netlify.app/005.pdf 200
+/pdf/2000/02/ https://novaya-pdfs.netlify.app/006.pdf 200
+/pdf/2000/03/ https://novaya-pdfs.netlify.app/007.pdf 200
+/pdf/2000/04/ https://novaya-pdfs.netlify.app/008.pdf 200
+/pdf/2000/05/ https://novaya-pdfs.netlify.app/009.pdf 200
+/pdf/2000/06/ https://novaya-pdfs.netlify.app/010.pdf 200
+/pdf/2000/07-08/ https://novaya-pdfs.netlify.app/011.pdf 200
+/pdf/2000/09/ https://novaya-pdfs.netlify.app/012.pdf 200
+/pdf/2000/10/ https://novaya-pdfs.netlify.app/013.pdf 200
+/pdf/2000/11/ https://novaya-pdfs.netlify.app/014.pdf 200
+/pdf/2000/12/ https://novaya-pdfs.netlify.app/015.pdf 200
+
+/pdf/2001/01/ https://novaya-pdfs.netlify.app/016.pdf 200
+/pdf/2001/02/ https://novaya-pdfs.netlify.app/017.pdf 200
+/pdf/2001/03/ https://novaya-pdfs.netlify.app/018.pdf 200
+/pdf/2001/04/ https://novaya-pdfs.netlify.app/019.pdf 200
+/pdf/2001/05/ https://novaya-pdfs.netlify.app/020.pdf 200
+/pdf/2001/06/ https://novaya-pdfs.netlify.app/021.pdf 200
+/pdf/2001/07-08/ https://novaya-pdfs.netlify.app/022.pdf 200
+/pdf/2001/09/ https://novaya-pdfs.netlify.app/023.pdf 200
+/pdf/2001/10/ https://novaya-pdfs.netlify.app/024.pdf 200
+/pdf/2001/11/ https://novaya-pdfs.netlify.app/025.pdf 200
+/pdf/2001/12/ https://novaya-pdfs.netlify.app/026.pdf 200
+/pdf/2001/13/ https://novaya-pdfs.netlify.app/205%20(wyd.%20spec.).pdf 200
+/pdf/2001/14/ https://novaya-pdfs.netlify.app/206%20(wyd.%20spec.).pdf 200
+
+/pdf/2002/01/ https://novaya-pdfs.netlify.app/027.pdf 200
+/pdf/2002/02/ https://novaya-pdfs.netlify.app/028.pdf 200
+/pdf/2002/03/ https://novaya-pdfs.netlify.app/029.pdf 200
+/pdf/2002/04/ https://novaya-pdfs.netlify.app/030.pdf 200
+/pdf/2002/05/ https://novaya-pdfs.netlify.app/031.pdf 200
+/pdf/2002/06/ https://novaya-pdfs.netlify.app/032.pdf 200
+/pdf/2002/07-08/ https://novaya-pdfs.netlify.app/033.pdf 200
+/pdf/2002/09/ https://novaya-pdfs.netlify.app/034.pdf 200
+/pdf/2002/10/ https://novaya-pdfs.netlify.app/035.pdf 200
+/pdf/2002/11/ https://novaya-pdfs.netlify.app/036.pdf 200
+/pdf/2002/12/ https://novaya-pdfs.netlify.app/037.pdf 200
+
+/pdf/2003/01/ https://novaya-pdfs.netlify.app/038.pdf 200
+/pdf/2003/02/ https://novaya-pdfs.netlify.app/039.pdf 200
+/pdf/2003/03/ https://novaya-pdfs.netlify.app/040.pdf 200
+/pdf/2003/04/ https://novaya-pdfs.netlify.app/041.pdf 200
+/pdf/2003/05/ https://novaya-pdfs.netlify.app/042.pdf 200
+/pdf/2003/06/ https://novaya-pdfs.netlify.app/043.pdf 200
+/pdf/2003/07-08/ https://novaya-pdfs.netlify.app/044.pdf 200
+/pdf/2003/09/ https://novaya-pdfs.netlify.app/045.pdf 200
+/pdf/2003/10/ https://novaya-pdfs.netlify.app/046.pdf 200
+/pdf/2003/11/ https://novaya-pdfs.netlify.app/047.pdf 200
+/pdf/2003/12/ https://novaya-pdfs.netlify.app/048.pdf 200
+
+/pdf/2004/01/ https://novaya-pdfs.netlify.app/049.pdf 200
+/pdf/2004/02/ https://novaya-pdfs.netlify.app/050.pdf 200
+/pdf/2004/03/ https://novaya-pdfs.netlify.app/051.pdf 200
+/pdf/2004/04/ https://novaya-pdfs.netlify.app/052.pdf 200
+/pdf/2004/05/ https://novaya-pdfs.netlify.app/053.pdf 200
+/pdf/2004/06/ https://novaya-pdfs.netlify.app/054.pdf 200
+/pdf/2004/07-08/ https://novaya-pdfs.netlify.app/055.pdf 200
+/pdf/2004/09/ https://novaya-pdfs.netlify.app/056.pdf 200
+/pdf/2004/10/ https://novaya-pdfs.netlify.app/057.pdf 200
+/pdf/2004/11/ https://novaya-pdfs.netlify.app/058.pdf 200
+/pdf/2004/12/ https://novaya-pdfs.netlify.app/059.pdf 200
+/pdf/2004/13/ https://novaya-pdfs.netlify.app/204%20(wyd.%20spec.).pdf 200
+
+/pdf/2005/01/ https://novaya-pdfs.netlify.app/060.pdf 200
+/pdf/2005/02/ https://novaya-pdfs.netlify.app/061.pdf 200
+/pdf/2005/03/ https://novaya-pdfs.netlify.app/062.pdf 200
+/pdf/2005/04/ https://novaya-pdfs.netlify.app/063.pdf 200
+/pdf/2005/05/ https://novaya-pdfs.netlify.app/064.pdf 200
+/pdf/2005/06/ https://novaya-pdfs.netlify.app/065.pdf 200
+/pdf/2005/07-08/ https://novaya-pdfs.netlify.app/066.pdf 200
+/pdf/2005/09/ https://novaya-pdfs.netlify.app/067.pdf 200
+/pdf/2005/10/ https://novaya-pdfs.netlify.app/068.pdf 200
+/pdf/2005/11/ https://novaya-pdfs.netlify.app/069.pdf 200
+/pdf/2005/12/ https://novaya-pdfs.netlify.app/070.pdf 200
+/pdf/2005/13/ https://novaya-pdfs.netlify.app/207%20(wyd.%20spec.).pdf 200
+
+/pdf/2006/01/ https://novaya-pdfs.netlify.app/071.pdf 200
+/pdf/2006/02/ https://novaya-pdfs.netlify.app/072.pdf 200
+/pdf/2006/03/ https://novaya-pdfs.netlify.app/073.pdf 200
+/pdf/2006/04/ https://novaya-pdfs.netlify.app/074.pdf 200
+/pdf/2006/05/ https://novaya-pdfs.netlify.app/075.pdf 200
+/pdf/2006/06/ https://novaya-pdfs.netlify.app/076.pdf 200
+/pdf/2006/07-08/ https://novaya-pdfs.netlify.app/077.pdf 200
+/pdf/2006/09/ https://novaya-pdfs.netlify.app/078.pdf 200
+/pdf/2006/10/ https://novaya-pdfs.netlify.app/079.pdf 200
+/pdf/2006/11/ https://novaya-pdfs.netlify.app/080.pdf 200
+/pdf/2006/12/ https://novaya-pdfs.netlify.app/081.pdf 200
+
+/pdf/2007/01/ https://novaya-pdfs.netlify.app/082.pdf 200
+/pdf/2007/02/ https://novaya-pdfs.netlify.app/083.pdf 200
+/pdf/2007/03/ https://novaya-pdfs.netlify.app/084.pdf 200
+/pdf/2007/04/ https://novaya-pdfs.netlify.app/085.pdf 200
+/pdf/2007/05/ https://novaya-pdfs.netlify.app/086.pdf 200
+/pdf/2007/06/ https://novaya-pdfs.netlify.app/087.pdf 200
+/pdf/2007/07-08/ https://novaya-pdfs.netlify.app/088.pdf 200
+/pdf/2007/09/ https://novaya-pdfs.netlify.app/089.pdf 200
+/pdf/2007/10/ https://novaya-pdfs.netlify.app/090.pdf 200
+/pdf/2007/11/ https://novaya-pdfs.netlify.app/091.pdf 200
+/pdf/2007/12/ https://novaya-pdfs.netlify.app/092.pdf 200
+
+/pdf/2008/01/ https://novaya-pdfs.netlify.app/093.pdf 200
+/pdf/2008/02/ https://novaya-pdfs.netlify.app/094.pdf 200
+/pdf/2008/03/ https://novaya-pdfs.netlify.app/095.pdf 200
+/pdf/2008/04/ https://novaya-pdfs.netlify.app/096.pdf 200
+/pdf/2008/05/ https://novaya-pdfs.netlify.app/097.pdf 200
+/pdf/2008/06/ https://novaya-pdfs.netlify.app/098.pdf 200
+/pdf/2008/07-08/ https://novaya-pdfs.netlify.app/099.pdf 200
+/pdf/2008/09/ https://novaya-pdfs.netlify.app/100.pdf 200
+/pdf/2008/10/ https://novaya-pdfs.netlify.app/101.pdf 200
+/pdf/2008/11/ https://novaya-pdfs.netlify.app/102.pdf 200
+/pdf/2008/12/ https://novaya-pdfs.netlify.app/103.pdf 200
+
+/pdf/2009/01/ https://novaya-pdfs.netlify.app/104.pdf 200
+/pdf/2009/02/ https://novaya-pdfs.netlify.app/105.pdf 200
+/pdf/2009/03/ https://novaya-pdfs.netlify.app/106.pdf 200
+/pdf/2009/04/ https://novaya-pdfs.netlify.app/107.pdf 200
+/pdf/2009/05/ https://novaya-pdfs.netlify.app/108.pdf 200
+/pdf/2009/06/ https://novaya-pdfs.netlify.app/109.pdf 200
+/pdf/2009/07-08/ https://novaya-pdfs.netlify.app/110.pdf 200
+/pdf/2009/09/ https://novaya-pdfs.netlify.app/111.pdf 200
+/pdf/2009/10/ https://novaya-pdfs.netlify.app/112.pdf 200
+/pdf/2009/11/ https://novaya-pdfs.netlify.app/113.pdf 200
+/pdf/2009/12/ https://novaya-pdfs.netlify.app/114.pdf 200
+
+/pdf/2010/01/ https://novaya-pdfs.netlify.app/115.pdf 200
+/pdf/2010/02/ https://novaya-pdfs.netlify.app/116.pdf 200
+/pdf/2010/03/ https://novaya-pdfs.netlify.app/117.pdf 200
+/pdf/2010/04/ https://novaya-pdfs.netlify.app/118.pdf 200
+/pdf/2010/05/ https://novaya-pdfs.netlify.app/119.pdf 200
+/pdf/2010/06/ https://novaya-pdfs.netlify.app/120.pdf 200
+/pdf/2010/07-08/ https://novaya-pdfs.netlify.app/121.pdf 200
+/pdf/2010/09/ https://novaya-pdfs.netlify.app/122.pdf 200
+/pdf/2010/10/ https://novaya-pdfs.netlify.app/123.pdf 200
+/pdf/2010/11/ https://novaya-pdfs.netlify.app/124.pdf 200
+/pdf/2010/12/ https://novaya-pdfs.netlify.app/125.pdf 200
+
+/pdf/2011/01/ https://novaya-pdfs.netlify.app/126.pdf 200
+/pdf/2011/02/ https://novaya-pdfs.netlify.app/127.pdf 200
+/pdf/2011/03/ https://novaya-pdfs.netlify.app/128.pdf 200
+/pdf/2011/04/ https://novaya-pdfs.netlify.app/129.pdf 200
+/pdf/2011/05/ https://novaya-pdfs.netlify.app/130.pdf 200
+/pdf/2011/06/ https://novaya-pdfs.netlify.app/131.pdf 200
+/pdf/2011/07-08/ https://novaya-pdfs.netlify.app/132.pdf 200
+/pdf/2011/09/ https://novaya-pdfs.netlify.app/133.pdf 200
+/pdf/2011/10/ https://novaya-pdfs.netlify.app/134.pdf 200
+/pdf/2011/11/ https://novaya-pdfs.netlify.app/135.pdf 200
+/pdf/2011/12/ https://novaya-pdfs.netlify.app/136.pdf 200
+/pdf/2011/13/ https://novaya-pdfs.netlify.app/208%20(wyd.%20spec.).pdf 200
+
+/pdf/2012/01/ https://novaya-pdfs.netlify.app/137.pdf 200
+/pdf/2012/02/ https://novaya-pdfs.netlify.app/138.pdf 200
+/pdf/2012/03/ https://novaya-pdfs.netlify.app/139.pdf 200
+/pdf/2012/04/ https://novaya-pdfs.netlify.app/140.pdf 200
+/pdf/2012/05/ https://novaya-pdfs.netlify.app/141.pdf 200
+/pdf/2012/06/ https://novaya-pdfs.netlify.app/142.pdf 200
+/pdf/2012/07-08/ https://novaya-pdfs.netlify.app/143.pdf 200
+/pdf/2012/09/ https://novaya-pdfs.netlify.app/144.pdf 200
+/pdf/2012/10/ https://novaya-pdfs.netlify.app/145.pdf 200
+/pdf/2012/11/ https://novaya-pdfs.netlify.app/146.pdf 200
+/pdf/2012/12/ https://novaya-pdfs.netlify.app/147.pdf 200
+
+/pdf/2013/01/ https://novaya-pdfs.netlify.app/148.pdf 200
+/pdf/2013/02/ https://novaya-pdfs.netlify.app/149.pdf 200
+/pdf/2013/03/ https://novaya-pdfs.netlify.app/150.pdf 200
+/pdf/2013/04/ https://novaya-pdfs.netlify.app/151.pdf 200
+/pdf/2013/05/ https://novaya-pdfs.netlify.app/152.pdf 200
+/pdf/2013/06/ https://novaya-pdfs.netlify.app/153.pdf 200
+/pdf/2013/07-08/ https://novaya-pdfs.netlify.app/154.pdf 200
+/pdf/2013/09/ https://novaya-pdfs.netlify.app/155.pdf 200
+/pdf/2013/10/ https://novaya-pdfs.netlify.app/156.pdf 200
+/pdf/2013/11/ https://novaya-pdfs.netlify.app/157.pdf 200
+/pdf/2013/12/ https://novaya-pdfs.netlify.app/158.pdf 200
+
+/pdf/2014/01/ https://novaya-pdfs.netlify.app/159.pdf 200
+/pdf/2014/02/ https://novaya-pdfs.netlify.app/160.pdf 200
+/pdf/2014/03/ https://novaya-pdfs.netlify.app/161.pdf 200
+/pdf/2014/04/ https://novaya-pdfs.netlify.app/162.pdf 200
+/pdf/2014/05/ https://novaya-pdfs.netlify.app/163.pdf 200
+/pdf/2014/06/ https://novaya-pdfs.netlify.app/164.pdf 200
+/pdf/2014/07-08/ https://novaya-pdfs.netlify.app/165.pdf 200
+/pdf/2014/09/ https://novaya-pdfs.netlify.app/166.pdf 200
+/pdf/2014/10/ https://novaya-pdfs.netlify.app/167.pdf 200
+/pdf/2014/11/ https://novaya-pdfs.netlify.app/168.pdf 200
+/pdf/2014/12/ https://novaya-pdfs.netlify.app/169.pdf 200
+/pdf/2014/13/ https://novaya-pdfs.netlify.app/209%20(wyd.%20spec.).pdf 200
+
+/pdf/2015/01/ https://novaya-pdfs.netlify.app/170.pdf 200
+/pdf/2015/02/ https://novaya-pdfs.netlify.app/171.pdf 200
+/pdf/2015/03/ https://novaya-pdfs.netlify.app/172.pdf 200
+/pdf/2015/04/ https://novaya-pdfs.netlify.app/173.pdf 200
+/pdf/2015/05/ https://novaya-pdfs.netlify.app/174.pdf 200
+/pdf/2015/06/ https://novaya-pdfs.netlify.app/175.pdf 200
+/pdf/2015/07-08/ https://novaya-pdfs.netlify.app/176.pdf 200
+/pdf/2015/09/ https://novaya-pdfs.netlify.app/177.pdf 200
+/pdf/2015/10/ https://novaya-pdfs.netlify.app/178.pdf 200
+/pdf/2015/11/ https://novaya-pdfs.netlify.app/179.pdf 200
+/pdf/2015/12/ https://novaya-pdfs.netlify.app/180.pdf 200
+
+/pdf/2016/01/ https://novaya-pdfs.netlify.app/181.pdf 200
+/pdf/2016/02/ https://novaya-pdfs.netlify.app/182.pdf 200
+/pdf/2016/03/ https://novaya-pdfs.netlify.app/183.pdf 200
+/pdf/2016/04/ https://novaya-pdfs.netlify.app/184.pdf 200
+/pdf/2016/05/ https://novaya-pdfs.netlify.app/185.pdf 200
+/pdf/2016/06/ https://novaya-pdfs.netlify.app/186.pdf 200
+/pdf/2016/07-08/ https://novaya-pdfs.netlify.app/187.pdf 200
+/pdf/2016/09/ https://novaya-pdfs.netlify.app/188.pdf 200
+/pdf/2016/10/ https://novaya-pdfs.netlify.app/189.pdf 200
+/pdf/2016/11/ https://novaya-pdfs.netlify.app/190.pdf 200
+/pdf/2016/12/ https://novaya-pdfs.netlify.app/191.pdf 200
+
+/pdf/2017/01/ https://novaya-pdfs.netlify.app/192.pdf 200
+/pdf/2017/02/ https://novaya-pdfs.netlify.app/193.pdf 200
+/pdf/2017/03/ https://novaya-pdfs.netlify.app/194.pdf 200
+/pdf/2017/04/ https://novaya-pdfs.netlify.app/195.pdf 200
+/pdf/2017/05/ https://novaya-pdfs.netlify.app/196.pdf 200
+/pdf/2017/06/ https://novaya-pdfs.netlify.app/197.pdf 200
+/pdf/2017/07-08/ https://novaya-pdfs.netlify.app/198.pdf 200
+/pdf/2017/09/ https://novaya-pdfs.netlify.app/199.pdf 200
+/pdf/2017/10/ https://novaya-pdfs.netlify.app/200.pdf 200
+/pdf/2017/11/ https://novaya-pdfs.netlify.app/201.pdf 200
+/pdf/2017/12/ https://novaya-pdfs.netlify.app/202.pdf 200
+
+/pdf/2018/01/ https://novaya-pdfs.netlify.app/203.pdf 200

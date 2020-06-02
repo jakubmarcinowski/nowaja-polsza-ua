@@ -1,5 +1,6 @@
 /* eslint-disable */
 require('dotenv').config()
+const meta = require('./meta')
 
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
@@ -23,20 +24,8 @@ if (!spaceId || !accessToken) {
   )
 }
 
-const meta = {
-  ru: {
-    title: 'Новая Польша',
-    description: 'Вся Польша в вашей ленте',
-  },
-  ua: {
-    title: 'Нова Польща',
-    description: 'Вся Польща у вашій стрічці',
-  },
-}
-
 module.exports = {
   siteMetadata: {
-    siteUrl: process.env.HOST || 'https://silly-morse-77d306.netlify.com/',
     themeColor: '#172429',
     ...meta[process.env.GATSBY_VERSION],
   },
@@ -82,5 +71,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-sitemap',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `covers`,
+        path: `${__dirname}/assets/covers`,
+      },
+    },
   ],
 }

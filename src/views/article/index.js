@@ -19,6 +19,7 @@ import iconArrow from 'static/icon-arrow.svg'
 import { trans } from 'utils/translate'
 import { serializeSlate } from 'utils/serialize'
 import ScrollIndicator from 'components/ScrollIndicator'
+import ArticleLanguageButton from './subcomponents/ArticleLanguageButton'
 
 const StyledArticle = styled.article`
   padding: 0 0 2rem;
@@ -55,11 +56,38 @@ const Authors = styled.div`
   }
 `
 
+const SocialMediaListWrapper = styled.div`
+  display: flex;
+  padding: 2rem 0;
+  margin: 0 auto 0.5rem;
+  align-items: center;
+  flex-direction: column;
+
+  @media ${mediaQueries.tablet} {
+    padding: 2rem 0 3rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  @media ${mediaQueries.desktop} {
+    padding: 0 0 5rem;
+    margin: 0 auto 3rem;
+  }
+`
+
 const SectionWrapper = styled.div`
   margin: 0 0 5rem 0;
 
   @media ${mediaQueries.desktop} {
     margin: 0 0 10rem;
+  }
+`
+
+const StyledArticleLanguageButton = styled(ArticleLanguageButton)`
+  display: flex;
+  margin-top: 4rem;
+
+  @media ${mediaQueries.desktop} {
+    margin-top: 5rem;
   }
 `
 
@@ -85,8 +113,14 @@ const ArrowIconPrev = styled.img`
 `
 
 const ArticleSocialMediaListBottom = styled(ArticleSocialMediaList)`
-  margin: 2rem auto 4rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+
+  @media ${mediaQueries.tablet} {
+    margin-bottom: 1rem;
+  }
 `
+
 const ImgDescription = styled.p`
   display: block;
   margin-top: 1rem;
@@ -194,6 +228,7 @@ const ArticlePage = ({
     leadLong,
     gallery,
     recommendedArticles,
+    secondLanguageSlug,
   },
   posts,
 }) => {
@@ -252,7 +287,14 @@ const ArticlePage = ({
       </Wrapper>
       <Wrapper position="relative">
         <ScrollIndicator offset={300}>
-          <ArticleSocialMediaList title={title} />
+          <SocialMediaListWrapper>
+            <ArticleSocialMediaList title={title} />
+            {secondLanguageSlug && (
+              <StyledArticleLanguageButton
+                secondLanguageSlug={secondLanguageSlug}
+              />
+            )}
+          </SocialMediaListWrapper>
           <Content
             html={html}
             lead={leadLong && leadLong.childMarkdownRemark.html}
@@ -271,8 +313,9 @@ const ArticlePage = ({
             </SliderStyled>
           </Gallery>
         )}
-
-        <ArticleSocialMediaListBottom title={title} />
+        <SocialMediaListWrapper>
+          <ArticleSocialMediaListBottom title={title} />
+        </SocialMediaListWrapper>
         <SectionWrapper>
           {authors &&
             (authors.length > 1 ? (
