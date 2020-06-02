@@ -6,8 +6,8 @@ import { childrenType } from 'types/children'
 import { mediaQueries } from 'utils/mediaQueries'
 
 const StyledContent = styled.div`
-  overflow: hidden;
   line-height: 1.7;
+  overflow-wrap: break-word;
 
   p,
   ul,
@@ -91,6 +91,15 @@ const StyledContent = styled.div`
     }
   }
 
+  .columns {
+    display: flex;
+    width: 100%;
+
+    .column {
+      flex: 1;
+    }
+  }
+
   blockquote {
     position: relative;
     padding: 2em 2.5em;
@@ -134,7 +143,52 @@ const StyledContent = styled.div`
     }
   }
 
+  .img-wrapper {
+    position: relative;
+  }
+  .img-wrapper--centered {
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 20px;
+  }
+
+  .img-wrapper img {
+    display: block;
+    max-width: 992px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-wrapper .img--left {
+    float: left;
+    width: 330px;
+    margin: 0 50px 30px 100px;
+  }
+
+  .img-wrapper .tag {
+    display: block;
+    margin: 1rem auto 0;
+    text-align: center;
+    opacity: 0.7;
+    font-size: 14px;
+    max-width: 992px;
+  }
+
+  .img-wrapper .tag--left {
+    position: absolute;
+    left: -150px;
+    top: 0;
+    width: 200px;
+    margin-top: 0;
+    text-align: right;
+    font-size: 12px;
+  }
+
   p,
+  .columns,
   .row {
     &:not(:last-child) {
       margin-bottom: 2.5em;
@@ -204,6 +258,22 @@ const StyledContent = styled.div`
     }
   }
 
+  .text--left {
+    text-align: left;
+  }
+
+  .text--right {
+    text-align: right;
+  }
+
+  .text--center {
+    text-align: center;
+  }
+
+  .text--justify {
+    text-align: justify;
+  }
+
   .videoWrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
@@ -260,6 +330,28 @@ const StyledContent = styled.div`
     @media ${mediaQueries.desktop} {
       opacity: 1;
     }
+  }
+
+  .footnote {
+    position: relative;
+    color: #820204;
+  }
+  .footnote:hover .footnote__description {
+    display: flex;
+  }
+
+  .footnote__description {
+    display: none;
+    position: absolute;
+    bottom: 27px;
+    left: 0;
+    background-color: white;
+    width: 340px;
+    font-size: 13px;
+    padding: 15px;
+    border: 1px solid;
+    pointer-events: none;
+    z-index: 6;
   }
 
   //Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
