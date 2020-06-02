@@ -145,27 +145,34 @@ const StyledContent = styled.div`
 
   .img-wrapper {
     position: relative;
+    margin-bottom: 2.5rem;
   }
+
   .img-wrapper--centered {
     width: 100vw;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    margin-bottom: 20px;
   }
 
   .img-wrapper img {
     display: block;
-    max-width: 992px;
     margin-left: auto;
     margin-right: auto;
+    max-width: 100%;
+
+    @media ${mediaQueries.desktop} {
+      max-width: 992px;
+    }
   }
 
   .img-wrapper .img--left {
-    float: left;
-    width: 330px;
-    margin: 0 50px 30px 100px;
+    @media ${mediaQueries.desktop} {
+      float: left;
+      width: 33rem;
+      margin: 0 5rem 3rem 25rem;
+    }
   }
 
   .img-wrapper .tag {
@@ -173,18 +180,23 @@ const StyledContent = styled.div`
     margin: 1rem auto 0;
     text-align: center;
     opacity: 0.7;
-    font-size: 14px;
-    max-width: 992px;
+    font-size: 1.4rem;
+
+    @media ${mediaQueries.desktop} {
+      max-width: 992px;
+    }
   }
 
   .img-wrapper .tag--left {
-    position: absolute;
-    left: -150px;
-    top: 0;
-    width: 200px;
-    margin-top: 0;
-    text-align: right;
-    font-size: 12px;
+    @media ${mediaQueries.desktop} {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20rem;
+      margin-top: 0;
+      text-align: right;
+      font-size: 1.2rem;
+    }
   }
 
   p,
