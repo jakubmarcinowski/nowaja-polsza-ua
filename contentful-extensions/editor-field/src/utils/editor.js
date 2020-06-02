@@ -1,5 +1,25 @@
 import { Editor, Range, Transforms } from 'slate'
 
+const statementDefaultChildren = props => [
+  {
+    type: 'statement-author',
+    image: { ...props },
+    children: [
+      {
+        text: 'Imię nazwisko',
+      },
+    ],
+  },
+  {
+    type: 'statement-paragraph',
+    children: [
+      {
+        text: 'Paragraf',
+      },
+    ],
+  },
+]
+
 const updateFootnoteOrder = editor => {
   let i = 1
   for (const [el, elPath] of Editor.nodes(editor, { at: [] })) {
@@ -27,6 +47,8 @@ const toggleFootnote = (editor, { format, props, at }) => {
   updateFootnoteOrder(editor)
 }
 
+const newBlockTypes = ['columns', 'statement']
+
 export const LIST_TYPES = ['unordered-list', 'ordered-list']
 
 export const EMPTY_STATE = [{ type: 'paragraph', children: [{ text: '' }] }]
@@ -40,7 +62,7 @@ export const toggleBlock = (editor, { format, ...other }) => {
     split: true,
   })
 
-  if (format !== 'columns') {
+  if (!newBlockTypes.includes(format)) {
     Transforms.setNodes(editor, {
       type: isActive ? 'paragraph' : isList ? 'list-item' : format,
       ...other,
@@ -51,6 +73,7 @@ export const toggleBlock = (editor, { format, ...other }) => {
       {
         type: format,
         ...other,
+        children: format === 'statement' ? statementDefaultChildren(other) : [],
       },
       { mode: 'highest' }
     )
@@ -164,12 +187,15 @@ export const isMarkActive = (editor, format) => {
 
 export const handleEnter = (event, editor) => {
   const match = findBlockMatches(editor, {
-    formats: ['list-item', 'columns'],
+    formats: ['list-item', 'columns', 'statement-paragraph'],
   })
   if (event.shiftKey) {
     event.preventDefault()
     Editor.insertText(editor, '\n')
-  } else if (match && match[0].type === 'columns') {
+  } else if (
+    match &&
+    ['columns', 'statement-paragraph'].includes(match[0].type)
+  ) {
     event.preventDefault()
     const at = [match[1][0] + 1]
     Transforms.insertNodes(

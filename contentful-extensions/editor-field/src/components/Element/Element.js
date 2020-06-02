@@ -1,7 +1,13 @@
 import React from 'react'
 import Types from 'slate-prop-types'
 import { classnames } from 'utils/classnames'
-import { Footnote, Youtube, SoundCloud, Images } from 'components'
+import {
+  Footnote,
+  Youtube,
+  SoundCloud,
+  StatementAuthor,
+  Images,
+} from 'components'
 
 const Element = ({ attributes, children, element }) => {
   switch (element.type) {
@@ -40,6 +46,12 @@ const Element = ({ attributes, children, element }) => {
       return <Youtube content={element.content}>{children}</Youtube>
     case 'soundcloud':
       return <SoundCloud content={element.content}>{children}</SoundCloud>
+    case 'statement':
+      return <div className="statement">{children}</div>
+    case 'statement-author':
+      return <StatementAuthor {...element}>{children}</StatementAuthor>
+    case 'statement-paragraph':
+      return <p className="statement__paragraph">{children}</p>
     case 'link':
       return (
         <a {...attributes} href={element.url}>

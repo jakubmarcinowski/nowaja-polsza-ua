@@ -51,6 +51,7 @@ const toolbarBlockButtons = [
   blockButtons.ALIGN_JUSTIFY,
   blockButtons.BLOCKQUOTE,
   blockButtons.COLUMNS,
+  blockButtons.STATEMENT,
 ]
 
 const EditorComponent = ({

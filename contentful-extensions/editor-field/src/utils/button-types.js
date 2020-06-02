@@ -18,8 +18,9 @@ import {
   LinkButton,
   FullscreenButton,
   ExitFullscreenButton,
+  StatementButton,
 } from 'components'
-import { findBlockMatch } from 'utils/editor'
+import { findBlockMatch, toggleStatement } from 'utils/editor'
 
 export const inlineButtons = {
   BOLD: {
@@ -83,6 +84,7 @@ export const inlineButtons = {
     dialog: {
       title: 'IMG - URL',
       label: '',
+      mapData: dialogValue => ({ url: dialogValue }),
     },
     tooltip: 'Wstaw zdjęcie',
   },
@@ -151,6 +153,17 @@ export const blockButtons = {
       { type: 'column', children: [{ text: 'Druga kolumna' }] },
     ],
     tooltip: 'Podział na dwie kolumny',
+  },
+  STATEMENT: {
+    value: 'statement',
+    Component: StatementButton,
+    dialog: {
+      title: 'IMG - URL',
+      label: '',
+      mapData: dialogValue => ({ url: dialogValue }),
+    },
+    tooltip: 'Wstaw wypowiedź',
+    isActiveChecker: () => false,
   },
 }
 
