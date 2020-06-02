@@ -160,7 +160,7 @@ export const blockButtons = {
     dialog: {
       title: 'IMG - URL',
       label: '',
-      mapData: dialogValue => ({ url: dialogValue }),
+      mapData: dialogValue => ({ props: { url: dialogValue } }),
     },
     tooltip: 'Wstaw wypowiedź',
     isActiveChecker: () => false,
@@ -170,4 +170,5 @@ export const blockButtons = {
 export const fullscreenButton = isFullscreen => ({
   value: isFullscreen ? 'exit-fullscreen' : 'fullscreen',
   Component: isFullscreen ? ExitFullscreenButton : FullscreenButton,
+  tooltip: isFullscreen ? 'Wyłącz pełny ekran' : 'Pełny ekran',
 })

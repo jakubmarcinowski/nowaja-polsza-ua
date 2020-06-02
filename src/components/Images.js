@@ -27,3 +27,7 @@ export const Images = ({
   </span>
 </div>`
 }
+
+export const StatementImage = ({ fluid }) => {
+  return `<img class="statement-image" sizes="${fluid.sizes}" srcset="${fluid.webpSrcSet}">`
+}

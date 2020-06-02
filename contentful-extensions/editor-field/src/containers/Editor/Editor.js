@@ -92,6 +92,8 @@ const EditorComponent = ({
               key={props.value}
               isActiveChecker={isBlockActive}
               onToggle={toggleBlock}
+              pickImage={pickImage}
+              buildImageFluid={buildImageFluid}
               {...props}
             />
           ))}

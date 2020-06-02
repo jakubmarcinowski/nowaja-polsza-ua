@@ -1,9 +1,9 @@
 import { Editor, Range, Transforms } from 'slate'
 
-const statementDefaultChildren = props => [
+const statementDefaultChildren = ({ props }) => [
   {
     type: 'statement-author',
-    image: { ...props },
+    image: props,
     children: [
       {
         text: 'Imię nazwisko',
