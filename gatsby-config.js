@@ -71,5 +71,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-sitemap',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `covers`,
+        path: `${__dirname}/assets/covers`,
+      },
+    },
   ],
 }

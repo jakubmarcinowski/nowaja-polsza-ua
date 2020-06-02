@@ -25,10 +25,6 @@ const StyledContent = styled.div`
   h3 {
     margin-bottom: 1.5em;
 
-    &:first-child {
-      margin-top: 1.5em;
-    }
-
     &:not(:first-child) {
       margin-top: 3em;
     }
