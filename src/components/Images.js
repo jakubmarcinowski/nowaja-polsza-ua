@@ -22,5 +22,5 @@ export const Images = ({ children, fluid, url, float, maxWidth }) => {
 }
 
 export const StatementImage = ({ fluid }) => {
-  return `<img class="statement-image" sizes="${fluid.sizes}" srcset="${fluid.webpSrcSet}">`
+  return `<img class="statement-image" sizes="${fluid.sizes}" srcset="${fluid.srcSet}">`
 }
