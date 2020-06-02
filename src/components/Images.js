@@ -10,7 +10,7 @@ export const Images = ({ children, fluid, url, float, maxWidth }) => {
 >
   <img
     sizes="${fluid.sizes}"
-    srcset="${fluid.webpSrcSet}"
+    srcset="${fluid.srcSet}"
     class="${classnames({ ['img--left']: isFloatActive })}"
     style="maxWidth: ${maxWidth}px;"
     src=${url}
