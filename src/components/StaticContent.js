@@ -430,7 +430,7 @@ class StaticContent extends React.Component {
     if (annotations) {
       annotations.forEach(annotation => {
         let annotationText = null
-        if (!isDotFootnote(annotation)) {
+        if (isDotFootnote(annotation)) {
           annotationText = annotation.querySelector('.annotation-tooltip')
             .innerText
         } else {
