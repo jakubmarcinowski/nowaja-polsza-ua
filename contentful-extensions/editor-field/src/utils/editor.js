@@ -72,8 +72,8 @@ export const toggleBlock = (editor, { format, ...other }) => {
       editor,
       {
         type: format,
-        ...other,
         children: format === 'statement' ? statementDefaultChildren(other) : [],
+        ...other,
       },
       { mode: 'highest' }
     )
@@ -215,9 +215,7 @@ export const handleEnter = (event, editor) => {
     )
   ) {
     event.preventDefault()
-    Transforms.unwrapNodes(editor, {
-      split: true,
-    })
+
     Transforms.insertNodes(
       editor,
       {

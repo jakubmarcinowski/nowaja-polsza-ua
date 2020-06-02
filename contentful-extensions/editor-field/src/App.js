@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import './App.scss'
@@ -16,7 +16,7 @@ const App = ({ initialValue, sdk }) => {
     calculateInitValue(initialValue, sdk)
   )
   const isFullscreen = contentfulUtils.isFullscreen(sdk)
-  const pickImage = useCallback(() => contentfulUtils.pickImage(sdk), [])
+  const pickImage = () => contentfulUtils.pickImage(sdk)
 
   const toggleFullscreenMode = () => {
     contentfulUtils.toggleFullscreen(sdk, {
