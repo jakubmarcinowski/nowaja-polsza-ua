@@ -164,7 +164,7 @@ const StyledContent = styled.div`
     max-width: 100%;
 
     @media ${mediaQueries.desktop} {
-      max-width: 992px;
+      max-width: ${({ theme }) => theme.grid.width.little};
     }
   }
 
@@ -184,7 +184,7 @@ const StyledContent = styled.div`
     font-size: 1.4rem;
 
     @media ${mediaQueries.desktop} {
-      max-width: 992px;
+      max-width: ${({ theme }) => theme.grid.width.little};
     }
   }
 
@@ -339,32 +339,28 @@ const StyledContent = styled.div`
     right: 0;
   }
 
-  [id^='przypis']:hover .annotation-tooltip {
-    @media ${mediaQueries.desktop} {
-      opacity: 1;
+  [id^='przypis']:hover,
+  .footnote:hover {
+    .annotation-tooltip {
+      @media ${mediaQueries.desktop} {
+        opacity: 1;
+      }
     }
   }
 
   .footnote {
     position: relative;
-    color: #820204;
-  }
-  .footnote:hover .footnote__description {
-    display: flex;
-  }
+    text-decoration: none;
+    margin-right: 0.5rem;
 
-  .footnote__description {
-    display: none;
-    position: absolute;
-    bottom: 27px;
-    left: 0;
-    background-color: white;
-    width: 340px;
-    font-size: 13px;
-    padding: 15px;
-    border: 1px solid;
-    pointer-events: none;
-    z-index: 6;
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      background-color: currentColor;
+    }
   }
 
   //Hide all annotations tooltips at article bottom ex. #przypis1b, #przypis2b
@@ -401,6 +397,8 @@ const StyledContent = styled.div`
   }
 `
 
+const isDotFootnote = element => element.classList.contains('footnote')
+
 class StaticContent extends React.Component {
   state = {
     annotationPopupOpen: false,
@@ -430,25 +428,33 @@ class StaticContent extends React.Component {
       })
     }
 
-    const annotations = document.querySelectorAll("[id^='przypis']")
+    const annotations = document.querySelectorAll("[id^='przypis'], a.footnote")
     if (annotations) {
       annotations.forEach(annotation => {
-        const annotationHref = annotation.getAttribute('href').substr(1)
-        const foundAnnotationHref = document.getElementById(annotationHref)
-        const annotationHrefText = foundAnnotationHref
-          ? foundAnnotationHref.innerText
-          : ''
+        let annotationText = null
+        if (!isDotFootnote(annotation)) {
+          annotationText = annotation.querySelector('.annotation-tooltip')
+            .innerText
+        } else {
+          const annotationHref = annotation.getAttribute('href').substr(1)
+          const foundAnnotationHref = document.getElementById(annotationHref)
+          const annotationHrefText = foundAnnotationHref
+            ? foundAnnotationHref.innerText
+            : ''
+          annotationText = annotationHrefText
+          const annotationTextWrapper = document.createElement('div')
+          annotationTextWrapper.className = 'annotation-tooltip'
+          annotationTextWrapper.innerText = annotationHrefText
+          annotation.appendChild(annotationTextWrapper)
+        }
+
         annotation.addEventListener('click', event => {
           event.preventDefault()
           this.setState({
-            annotationPopupContent: annotationHrefText,
+            annotationPopupContent: annotationText,
             annotationPopupOpen: true,
           })
         })
-        const annotationTextWrapper = document.createElement('div')
-        annotationTextWrapper.className = 'annotation-tooltip'
-        annotationTextWrapper.innerText = annotationHrefText
-        annotation.appendChild(annotationTextWrapper)
       })
     }
 

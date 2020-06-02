@@ -81,8 +81,7 @@ const serialize = node => {
       ></iframe>`
     case 'footnote':
       return `<a class="footnote" href="#">
-          ${children}
-          <span class="footnote__description">${node.content}</span>
+          <span class="annotation-tooltip">${node.content}</span>
         </a>`
     case 'images':
       return Images(node)
