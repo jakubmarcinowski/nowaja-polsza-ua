@@ -17,6 +17,7 @@ import AuthorShort from 'components/AuthorShort'
 import ImgWrapper from 'components/ImgWrapper'
 import iconArrow from 'static/icon-arrow.svg'
 import { trans } from 'utils/translate'
+import { serializeSlate } from 'utils/serialize'
 import ScrollIndicator from 'components/ScrollIndicator'
 import ArticleLanguageButton from './subcomponents/ArticleLanguageButton'
 
@@ -220,6 +221,7 @@ const ArticlePage = ({
     heroImageCredit,
     publishDate,
     body,
+    nowyEdytor,
     authorsWithoutAccount,
     authors,
     categories,
@@ -231,6 +233,9 @@ const ArticlePage = ({
   posts,
 }) => {
   let recommendedAutoAndManually = posts
+  const html = body
+    ? body.childMarkdownRemark.html
+    : serializeSlate(nowyEdytor.childMarkdownRemark.rawMarkdownBody)
   const themeColor = categories[0].color
 
   if (recommendedArticles) {
@@ -291,7 +296,7 @@ const ArticlePage = ({
             )}
           </SocialMediaListWrapper>
           <Content
-            html={body && body.childMarkdownRemark.html}
+            html={html}
             lead={leadLong && leadLong.childMarkdownRemark.html}
             themeColor={themeColor}
           />

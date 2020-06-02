@@ -4,10 +4,11 @@ import styled from 'styled-components'
 import { childrenType } from 'types/children'
 
 import { mediaQueries } from 'utils/mediaQueries'
+import MobilePopup from 'components/MobilePopup'
 
 const StyledContent = styled.div`
-  overflow: hidden;
   line-height: 1.7;
+  overflow-wrap: break-word;
 
   p,
   ul,
@@ -89,6 +90,15 @@ const StyledContent = styled.div`
     }
   }
 
+  .columns {
+    display: flex;
+    width: 100%;
+
+    .column {
+      flex: 1;
+    }
+  }
+
   blockquote {
     position: relative;
     padding: 2em 2.5em;
@@ -132,7 +142,64 @@ const StyledContent = styled.div`
     }
   }
 
+  .img-wrapper {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .img-wrapper--centered {
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  .img-wrapper img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+
+    @media ${mediaQueries.desktop} {
+      max-width: ${({ theme }) => theme.grid.width.little};
+    }
+  }
+
+  .img-wrapper .img--left {
+    @media ${mediaQueries.desktop} {
+      float: left;
+      width: 33rem;
+      margin: 0 5rem 3rem 25rem;
+    }
+  }
+
+  .img-wrapper .tag {
+    display: block;
+    margin: 1rem auto 0;
+    text-align: center;
+    opacity: 0.7;
+    font-size: 1.4rem;
+
+    @media ${mediaQueries.desktop} {
+      max-width: ${({ theme }) => theme.grid.width.little};
+    }
+  }
+
+  .img-wrapper .tag--left {
+    @media ${mediaQueries.desktop} {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20rem;
+      margin-top: 0;
+      text-align: right;
+      font-size: 1.2rem;
+    }
+  }
+
   p,
+  .columns,
   .row {
     &:not(:last-child) {
       margin-bottom: 2.5em;
@@ -202,6 +269,22 @@ const StyledContent = styled.div`
     }
   }
 
+  .text--left {
+    text-align: left;
+  }
+
+  .text--right {
+    text-align: right;
+  }
+
+  .text--center {
+    text-align: center;
+  }
+
+  .text--justify {
+    text-align: justify;
+  }
+
   .videoWrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
@@ -254,9 +337,27 @@ const StyledContent = styled.div`
     right: 0;
   }
 
-  [id^='przypis']:hover .annotation-tooltip {
-    @media ${mediaQueries.desktop} {
-      opacity: 1;
+  [id^='przypis']:hover,
+  .footnote:hover {
+    .annotation-tooltip {
+      @media ${mediaQueries.desktop} {
+        opacity: 1;
+      }
+    }
+  }
+
+  .footnote {
+    position: relative;
+    text-decoration: none;
+    margin-right: 0.5rem;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      background-color: currentColor;
     }
   }
 
@@ -294,7 +395,14 @@ const StyledContent = styled.div`
   }
 `
 
+const isDotFootnote = element => element.classList.contains('footnote')
+
 class StaticContent extends React.Component {
+  state = {
+    annotationPopupOpen: false,
+    annotationPopupContent: '',
+  }
+
   constructor(props) {
     super(props)
     this.rootRef = React.createRef()
@@ -318,18 +426,33 @@ class StaticContent extends React.Component {
       })
     }
 
-    const annotations = document.querySelectorAll("[id^='przypis']")
+    const annotations = document.querySelectorAll("[id^='przypis'], a.footnote")
     if (annotations) {
       annotations.forEach(annotation => {
-        const annotationHref = annotation.getAttribute('href').substr(1)
-        const foundAnnotationHref = document.getElementById(annotationHref)
-        const annotationHrefText = foundAnnotationHref
-          ? foundAnnotationHref.innerText
-          : ''
-        const annotationTextWrapper = document.createElement('div')
-        annotationTextWrapper.className = 'annotation-tooltip'
-        annotationTextWrapper.innerText = annotationHrefText
-        annotation.appendChild(annotationTextWrapper)
+        let annotationText = null
+        if (isDotFootnote(annotation)) {
+          annotationText = annotation.querySelector('.annotation-tooltip')
+            .innerText
+        } else {
+          const annotationHref = annotation.getAttribute('href').substr(1)
+          const foundAnnotationHref = document.getElementById(annotationHref)
+          const annotationHrefText = foundAnnotationHref
+            ? foundAnnotationHref.innerText
+            : ''
+          annotationText = annotationHrefText
+          const annotationTextWrapper = document.createElement('div')
+          annotationTextWrapper.className = 'annotation-tooltip'
+          annotationTextWrapper.innerText = annotationHrefText
+          annotation.appendChild(annotationTextWrapper)
+        }
+
+        annotation.addEventListener('click', event => {
+          event.preventDefault()
+          this.setState({
+            annotationPopupContent: annotationText,
+            annotationPopupOpen: true,
+          })
+        })
       })
     }
 
@@ -356,13 +479,24 @@ class StaticContent extends React.Component {
     document.fonts.onloadingdone = null
   }
 
+  onAnnotationPopupClose = () => this.setState({ annotationPopupOpen: false })
+
   render() {
     const { children, themeColor } = this.props
+    const { annotationPopupOpen, annotationPopupContent } = this.state
 
     return (
-      <StyledContent ref={this.rootRef} color={themeColor}>
-        {children}
-      </StyledContent>
+      <>
+        <StyledContent ref={this.rootRef} color={themeColor}>
+          {children}
+        </StyledContent>
+        <MobilePopup
+          open={annotationPopupOpen}
+          onClose={this.onAnnotationPopupClose}
+        >
+          {annotationPopupContent}
+        </MobilePopup>
+      </>
     )
   }
 }

@@ -116,6 +116,11 @@ export const pageQuery = graphql`
           html
         }
       }
+      nowyEdytor {
+        childMarkdownRemark {
+          rawMarkdownBody
+        }
+      }
       gallery {
         id
         description
