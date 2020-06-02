@@ -11,9 +11,13 @@ const onSelectCustomAction = (
 ) => {
   switch (buttonType) {
     case 'images':
+    case 'statement':
       if (pickImage) {
         return pickImage().then(image => {
           if (image) {
+            if (buttonType === 'statement') {
+              image.maxWidth = 120
+            }
             const fluid = buildImageFluid(image)
             onToggle(editor, {
               format: value,
@@ -91,10 +95,14 @@ const ToolbarButtonContainer = props => {
         <DialogInput
           {...dialog}
           onConfirm={(dialogValue, selection) => {
+            let dialogData = { content: dialogValue }
+            if (dialog.mapData) {
+              dialogData = dialog.mapData(dialogValue)
+            }
             onToggle(editor, {
               format: value,
               at: anchorPoint,
-              props: { content: dialogValue, selection },
+              props: { ...dialogData, selection },
             })
             setDialogOpen(false)
           }}
@@ -114,6 +122,7 @@ ToolbarButtonContainer.propTypes = {
   isActiveChecker: PropTypes.func,
   pickImage: PropTypes.func,
   buildImageFluid: PropTypes.func,
+  mapDialogData: PropTypes.func,
   dialog: PropTypes.object,
 }
 

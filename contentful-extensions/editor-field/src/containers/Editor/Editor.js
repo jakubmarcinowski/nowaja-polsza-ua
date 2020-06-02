@@ -51,6 +51,7 @@ const toolbarBlockButtons = [
   blockButtons.ALIGN_JUSTIFY,
   blockButtons.BLOCKQUOTE,
   blockButtons.COLUMNS,
+  blockButtons.STATEMENT,
 ]
 
 const EditorComponent = ({
@@ -91,6 +92,8 @@ const EditorComponent = ({
               key={props.value}
               isActiveChecker={isBlockActive}
               onToggle={toggleBlock}
+              pickImage={pickImage}
+              buildImageFluid={buildImageFluid}
               {...props}
             />
           ))}

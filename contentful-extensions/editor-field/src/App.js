@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
+import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import './App.scss'
 import { Editor } from 'containers'
@@ -53,6 +54,11 @@ const App = ({ initialValue, sdk }) => {
       />
     </div>
   )
+}
+
+App.propTypes = {
+  sdk: PropTypes.any,
+  initialValue: PropTypes.array,
 }
 
 const testInitialValue = [
@@ -163,8 +169,30 @@ const testInitialValue = [
     content: 'user-261324975/sets/lofi',
   },
   {
-    type: 'paragraph',
-    children: [{ text: 'Try it out for yourself!' }],
+    type: 'statement',
+    children: [
+      {
+        type: 'statement-author',
+        image: {
+          url:
+            'https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4-300x300.png',
+        },
+        children: [
+          {
+            text: 'Ян Блонский',
+          },
+        ],
+      },
+      {
+        type: 'statement-paragraph',
+        children: [
+          {
+            text:
+              'Среди стихотворений Чеслава Милоша есть одно, занимающее особое место в творчестве поэта, — «Кампо ди Фьори». Особое, потому что это первый отклик польской литературы на Катастрофу и на восстание в Варшавском гетто. Восстание заставило людей осознать, что цель немцев — тотальное истребление евреев. Еще и тем необыкновенно это стихотворение, что это вообще один из немногих откликов польской литературы на те страшные события. Оно основано на контрасте между каруселью, на которой люди веселились у стены гетто, и немецкой осадой повстанцев, боями, идущими за стеной. Построенное на этом контрасте стихотворение говорит также об одиночестве всех погибающих, возвращается к Джордано Бруно, сожженному на костре. Могли бы мы узнать, какое конкретно событие побудило поэта написать «Кампо ди Фьори»?',
+          },
+        ],
+      },
+    ],
   },
 ]
 
