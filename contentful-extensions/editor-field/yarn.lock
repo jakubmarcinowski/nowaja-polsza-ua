@@ -817,6 +817,13 @@
     "@babel/plugin-transform-react-jsx-self" "^7.9.0"
     "@babel/plugin-transform-react-jsx-source" "^7.9.0"
 
+"@babel/runtime@^7.10.2":
+  version "7.10.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.2.tgz#d103f21f2602497d38348a32e008637d506db839"
+  integrity sha512-6sF3uQw2ivImfVIl62RZ7MXhO2tap69WeWK57vAaimT6AZbE4FbqjdEJIN1UqoD6wI6B+1n9UiagafH1sxjOtg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
   version "7.9.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
@@ -1485,11 +1492,6 @@ alphanum-sort@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
-
-amdefine@>=0.1.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
-  integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
 ansi-escapes@^1.0.0, ansi-escapes@^1.1.0:
   version "1.4.0"
@@ -2582,14 +2584,6 @@ constants-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
   integrity sha1-wguW2MYXdIqvHBYCF2DNJ/y4y3U=
 
-containers@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/containers/-/containers-0.0.1.tgz#4bcc21e74f1287e46b16e32ed79471a6a42b91a7"
-  integrity sha1-S8wh508Sh+RrFuMu15RxpqQrkac=
-  dependencies:
-    amdefine ">=0.1.0"
-    lodash "~2.4.1"
-
 contentful-batch-libs@^9.0.1:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/contentful-batch-libs/-/contentful-batch-libs-9.0.1.tgz#508321f736c7af822cb56943776b3b11b95c77d3"
@@ -2601,10 +2595,10 @@ contentful-batch-libs@^9.0.1:
     lodash "^4.0.1"
     moment "^2.18.1"
 
-contentful-cli@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/contentful-cli/-/contentful-cli-1.4.1.tgz#bb7883e12ad44a4bb2ea31e88d0ba34b32ccd889"
-  integrity sha512-Iza5gAAGjyyNFLBpekvmpmMpP26DvAmDUGhTzDGlB1hprrWfJO76Q83IpNvtWJBEBwpgJY61vL5ke+aO57TZtA==
+contentful-cli@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/contentful-cli/-/contentful-cli-1.4.3.tgz#633a5023857a93f47a6ec63d17dd868f823a6697"
+  integrity sha512-lD1UPqP8dr/KbF/6QBHwiu1BGuZQIgEx2mUHyQFueEVCJ0wkDgoRiRRwF2BHAajFebvRgUA+9hvsKahQT5W9QA==
   dependencies:
     ast-types "^0.13.3"
     bfj "^6.1.1"
@@ -2615,7 +2609,7 @@ contentful-cli@^1.4.1:
     cli-table3 "^0.6.0"
     command-exists "^1.2.7"
     contentful-export "^7.8.16"
-    contentful-import "^7.7.0"
+    contentful-import "^7.8.0"
     contentful-management "^5.12.0"
     contentful-migration "^v1.0.13"
     emojic "^1.1.11"
@@ -2666,10 +2660,10 @@ contentful-export@^7.8.16:
     request "^2.87.0"
     yargs "^15.3.1"
 
-contentful-import@^7.7.0:
-  version "7.7.18"
-  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-7.7.18.tgz#828a4efc297db5301cecd05b1ba1e5adb75d9ac2"
-  integrity sha512-FlJCXQqJhZtCtpF2DmcigtosYCFwnr8bn80TbxMLh/pFbPhOKnElsKA0KpnvlAsZmKb2wcI61wRz/AJ+FRy24Q==
+contentful-import@^7.8.0:
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-7.8.0.tgz#1fd5be001fe51199049e61141d6484e1e76771e0"
+  integrity sha512-c/7B5a5O+poWp/JOSkQewS+GJgCybjPYHb6wjdXyTjuax9FmS8nfRx1wDq2EoriV6mY3GWuP0VsCvsAToXAESQ==
   dependencies:
     bluebird "^3.5.1"
     cli-table3 "^0.5.1"
@@ -5744,11 +5738,6 @@ lodash@^4.0.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.1
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
-
-lodash@~2.4.1:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
-  integrity sha1-+t2DS5aDBz2hebPq5tnA0VBT9z4=
 
 log-symbols@^1.0.2:
   version "1.0.2"
