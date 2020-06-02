@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
+import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import './App.scss'
 import { Editor } from 'containers'
@@ -53,6 +54,11 @@ const App = ({ initialValue, sdk }) => {
       />
     </div>
   )
+}
+
+App.propTypes = {
+  sdk: PropTypes.any,
+  initialValue: PropTypes.array,
 }
 
 const testInitialValue = [

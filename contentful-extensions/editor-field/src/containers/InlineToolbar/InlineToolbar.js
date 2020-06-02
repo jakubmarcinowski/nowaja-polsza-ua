@@ -112,12 +112,12 @@ const InlineToolbar = ({ buildImageFluid }) => {
 
   return (
     <Toolbar ref={ref} className={'inline-toolbar'}>
-      {inlineToolbarButtons.map(props => (
+      {inlineToolbarButtons.map(button => (
         <ToolbarButtonContainer
-          key={props.value}
+          key={button.value}
           isActiveChecker={isMarkActive}
           onToggle={toggleMark}
-          {...props}
+          {...button}
         />
       ))}
     </Toolbar>

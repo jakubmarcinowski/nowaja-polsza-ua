@@ -20,7 +20,7 @@ import {
   ExitFullscreenButton,
   StatementButton,
 } from 'components'
-import { findBlockMatch, toggleStatement } from 'utils/editor'
+import { findBlockMatch } from 'utils/editor'
 
 export const inlineButtons = {
   BOLD: {

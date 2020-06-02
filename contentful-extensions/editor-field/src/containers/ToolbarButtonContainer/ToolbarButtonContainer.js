@@ -54,7 +54,6 @@ const ToolbarButtonContainer = props => {
     tooltip,
     pickImage,
     buildImageFluid,
-    mapDialogData,
     ...other
   } = props
   const editor = useSlate()
