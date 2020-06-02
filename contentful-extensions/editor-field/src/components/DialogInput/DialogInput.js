@@ -12,7 +12,7 @@ const DialogInput = ({ onConfirm, open, title, initValue, label }) => {
   const editor = useSlate()
   const [value, setValue] = useState(initValue)
   const onChange = useCallback(event => setValue(event.target.value))
-  const [selection, setSelection] = useState(editor.selection)
+  const [selection] = useState(editor.selection)
   return (
     <Dialog open={open} aria-labelledby="form-dialog-title" fullWidth>
       <DialogTitle id="form-dialog-title">{title}</DialogTitle>

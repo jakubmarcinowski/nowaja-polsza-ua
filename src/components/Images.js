@@ -20,3 +20,7 @@ export const Images = ({ children, fluid, url, float, maxWidth }) => {
   </span>
 </div>`
 }
+
+export const StatementImage = ({ fluid }) => {
+  return `<img class="statement-image" sizes="${fluid.sizes}" srcset="${fluid.srcSet}">`
+}

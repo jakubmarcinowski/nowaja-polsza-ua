@@ -18,6 +18,7 @@ import {
   LinkButton,
   FullscreenButton,
   ExitFullscreenButton,
+  StatementButton,
 } from 'components'
 import { findBlockMatch } from 'utils/editor'
 
@@ -83,6 +84,7 @@ export const inlineButtons = {
     dialog: {
       title: 'IMG - URL',
       label: '',
+      mapData: dialogValue => ({ url: dialogValue }),
     },
     tooltip: 'Wstaw zdjęcie',
   },
@@ -152,9 +154,21 @@ export const blockButtons = {
     ],
     tooltip: 'Podział na dwie kolumny',
   },
+  STATEMENT: {
+    value: 'statement',
+    Component: StatementButton,
+    dialog: {
+      title: 'IMG - URL',
+      label: '',
+      mapData: dialogValue => ({ props: { url: dialogValue } }),
+    },
+    tooltip: 'Wstaw wypowiedź',
+    isActiveChecker: () => false,
+  },
 }
 
 export const fullscreenButton = isFullscreen => ({
   value: isFullscreen ? 'exit-fullscreen' : 'fullscreen',
   Component: isFullscreen ? ExitFullscreenButton : FullscreenButton,
+  tooltip: isFullscreen ? 'Wyłącz pełny ekran' : 'Pełny ekran',
 })

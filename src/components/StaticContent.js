@@ -5,6 +5,7 @@ import { childrenType } from 'types/children'
 
 import { mediaQueries } from 'utils/mediaQueries'
 import MobilePopup from 'components/MobilePopup'
+import { theme } from 'utils/theme'
 
 const StyledContent = styled.div`
   line-height: 1.7;
@@ -110,8 +111,7 @@ const StyledContent = styled.div`
       height: 2px;
       top: 0.5em;
       left: 0;
-      background-color: ${({ theme, color }) =>
-        theme.colors.highlighted[color] || theme.colors[color]};
+      background-color: ${({ color }) => color};
     }
 
     &::after {
@@ -121,8 +121,7 @@ const StyledContent = styled.div`
       height: 117px;
       top: 0;
       left: 0.5em;
-      background-color: ${({ theme, color }) =>
-        theme.colors.highlighted[color] || theme.colors[color]};
+      background-color: ${({ color }) => color};
     }
 
     p {
@@ -144,7 +143,7 @@ const StyledContent = styled.div`
 
   .img-wrapper {
     position: relative;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.5em;
   }
 
   .img-wrapper--centered {
@@ -176,7 +175,7 @@ const StyledContent = styled.div`
 
   .img-wrapper .tag {
     display: block;
-    margin: 1rem auto 0;
+    margin: 2rem auto 0;
     text-align: center;
     opacity: 0.7;
     font-size: 1.4rem;
@@ -393,6 +392,66 @@ const StyledContent = styled.div`
       }
     }
   }
+
+  .statement {
+    display: flex;
+    align-items: flex-start;
+    margin: 2.5em 0;
+    flex-direction: column;
+
+    @media ${mediaQueries.tablet} {
+      flex-direction: row;
+    }
+
+    .statement-author {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .statement-icon {
+      margin-left: 5px;
+
+      @media ${mediaQueries.tablet} {
+        transform: rotate(-90deg);
+        margin-left: -5px;
+      }
+    }
+
+    .statement-image {
+      width: 6.4rem;
+      height: 6.4rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .statement-name {
+      padding-left: 1.5rem;
+      text-align: right;
+      font-size: 1.4rem;
+
+      @media ${mediaQueries.tablet} {
+        max-width: 10rem;
+      }
+    }
+
+    .statement-name-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: ${({ color }) => color};
+
+      @media ${mediaQueries.tablet} {
+        flex-direction: row;
+      }
+    }
+
+    .statement-paragraph {
+      @media ${mediaQueries.tablet} {
+        margin: 0 0 0 5rem;
+      }
+    }
+  }
 `
 
 const isDotFootnote = element => element.classList.contains('footnote')
@@ -487,7 +546,12 @@ class StaticContent extends React.Component {
 
     return (
       <>
-        <StyledContent ref={this.rootRef} color={themeColor}>
+        <StyledContent
+          ref={this.rootRef}
+          color={
+            theme.colors.highlighted[themeColor] || theme.colors[themeColor]
+          }
+        >
           {children}
         </StyledContent>
         <MobilePopup
