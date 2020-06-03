@@ -75,15 +75,17 @@ const ToolbarButtonContainer = props => {
             if (dialog) {
               setAnchorPoint(editor.selection.anchor)
               onSelectCustomAction(value, {
-                ...props,
                 editor,
                 openDialog: () => setDialogOpen(true),
+                pickImage,
+                buildImageFluid,
+                onToggle,
+                dialog,
+                value,
               })
             } else {
               onToggle(editor, {
                 format: value,
-                pickImage,
-                buildImageFluid,
                 ...other,
               })
             }
@@ -107,7 +109,8 @@ const ToolbarButtonContainer = props => {
             setDialogOpen(false)
           }}
           initValue={dialog.getInitValue ? dialog.getInitValue(editor) : ''}
-          open={true}
+          open={dialogOpen}
+          onClose={() => setDialogOpen(false)}
         />
       )}
     </>

@@ -8,13 +8,18 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import TextField from '@material-ui/core/TextField'
 import { useSlate } from 'slate-react'
 
-const DialogInput = ({ onConfirm, open, title, initValue, label }) => {
+const DialogInput = ({ onConfirm, open, title, initValue, label, onClose }) => {
   const editor = useSlate()
   const [value, setValue] = useState(initValue)
   const onChange = useCallback(event => setValue(event.target.value))
   const [selection] = useState(editor.selection)
   return (
-    <Dialog open={open} aria-labelledby="form-dialog-title" fullWidth>
+    <Dialog
+      open={open}
+      aria-labelledby="form-dialog-title"
+      onClose={onClose}
+      fullWidth
+    >
       <DialogTitle id="form-dialog-title">{title}</DialogTitle>
       <DialogContent>
         <TextField
@@ -41,6 +46,7 @@ DialogInput.propTypes = {
   onConfirm: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
   initValue: PropTypes.string,
   label: PropTypes.string,
 }

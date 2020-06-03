@@ -52,6 +52,7 @@ export const toggleFullscreen = (sdk, { isFullscreen, value, setValue }) => {
     return
   }
   if (isFullscreen) {
+    console.log({ value })
     sdk.close(value)
   } else {
     sdk.dialogs

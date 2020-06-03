@@ -405,14 +405,20 @@ const StyledContent = styled.div`
       display: flex;
       align-items: center;
       margin-bottom: 2rem;
+
+      @media ${mediaQueries.tablet} {
+        justify-content: flex-end;
+        width: 25rem;
+      }
     }
 
     .statement-icon {
-      margin-left: 5px;
+      margin-left: 10px;
 
       @media ${mediaQueries.tablet} {
-        transform: rotate(-90deg);
         margin-left: -5px;
+        width: 100%;
+        transform: rotate(-90deg);
       }
     }
 
@@ -426,11 +432,7 @@ const StyledContent = styled.div`
     .statement-name {
       padding-left: 1.5rem;
       text-align: right;
-      font-size: 1.4rem;
-
-      @media ${mediaQueries.tablet} {
-        max-width: 10rem;
-      }
+      font-size: 1.3rem;
     }
 
     .statement-name-wrapper {
