@@ -103,6 +103,18 @@ const StyledContent = styled.div`
   blockquote {
     position: relative;
     padding: 2em 2.5em;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.33;
+    margin-bottom: 1.2em;
+
+    @media ${mediaQueries.tablet} {
+      font-size: 2.1rem;
+    }
+
+    @media ${mediaQueries.desktop} {
+      font-size: 2.4rem;
+    }
 
     &::before {
       content: '';
@@ -126,18 +138,6 @@ const StyledContent = styled.div`
 
     p {
       max-width: unset;
-      font-weight: 700;
-      line-height: 1.33;
-      margin-bottom: 1.2em;
-      font-size: 1.8rem;
-
-      @media ${mediaQueries.tablet} {
-        font-size: 2.1rem;
-      }
-
-      @media ${mediaQueries.desktop} {
-        font-size: 2.4rem;
-      }
     }
   }
 
@@ -348,7 +348,8 @@ const StyledContent = styled.div`
   .footnote {
     position: relative;
     text-decoration: none;
-    margin-right: 0.5rem;
+    margin-right: 3px;
+    color: ${({ theme }) => theme.colors.authorLink};
 
     &:after {
       content: '';
@@ -419,8 +420,8 @@ const StyledContent = styled.div`
 
       @media ${mediaQueries.tablet} {
         margin-left: -5px;
-        width: 100%;
         transform: rotate(-90deg);
+        flex-shrink: 0;
       }
     }
 

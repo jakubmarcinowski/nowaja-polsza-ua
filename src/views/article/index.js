@@ -221,7 +221,7 @@ const ArticlePage = ({
     heroImageCredit,
     publishDate,
     body,
-    nowyEdytor,
+    bodyCustomEditor,
     authorsWithoutAccount,
     authors,
     categories,
@@ -235,7 +235,7 @@ const ArticlePage = ({
   let recommendedAutoAndManually = posts
   const html = body
     ? body.childMarkdownRemark.html
-    : serializeSlate(nowyEdytor.childMarkdownRemark.rawMarkdownBody)
+    : serializeSlate(bodyCustomEditor.json)
   const themeColor = categories[0].color
 
   if (recommendedArticles) {
