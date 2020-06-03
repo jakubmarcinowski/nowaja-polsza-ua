@@ -1,6 +1,6 @@
 {
   "id": "editor-field",
-  "name": "Editor Field",
+  "name": "Editor Field JSON",
   "srcdoc": "./build/index.html",
-  "fieldTypes": ["Text"]
+  "fieldTypes": ["Object"]
 }

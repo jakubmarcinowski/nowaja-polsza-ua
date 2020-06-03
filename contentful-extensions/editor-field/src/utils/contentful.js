@@ -21,16 +21,15 @@ export const buildImageFluid = ({ url, width, height, maxWidth = 992 }) => {
     .map(size => `${url}?w=${Math.round(size)} ${Math.round(size)}w`)
     .join(`,\n`)
 
-  const webpSrcSet = filteredSizes
-    .map(size => `${url}?fm=webp&w=${Math.round(size)} ${Math.round(size)}w`)
-    .join(`,\n`)
+  // const webpSrcSet = filteredSizes
+  //   .map(size => `${url}?fm=webp&w=${Math.round(size)} ${Math.round(size)}w`)
+  //   .join(`,\n`)
 
   return {
     aspectRatio,
-    srcSet,
-    webpSrcSet,
     src: url,
     sizes,
+    srcSet,
     presentationWidth,
     presentationHeight,
   }
@@ -42,7 +41,7 @@ export const onContentful = fn => isContentful && fn()
 
 export const getValueFromSdk = sdk =>
   sdk.parameters.invocation?.initValue ||
-  (sdk.field?.getValue() && JSON.parse(sdk.field.getValue())) ||
+  (sdk.field?.getValue()?.json && JSON.parse(sdk.field?.getValue()?.json)) ||
   null
 
 export const isFullscreen = sdk => isContentful && !!sdk.parameters.invocation
@@ -85,5 +84,6 @@ export const updateEditorHeight = (sdk, isFullscreen) => {
   }
 }
 
-export const saveValue = (sdk, value) =>
-  sdk.field?.setValue(JSON.stringify(value))
+export const saveValue = (sdk, value) => {
+  sdk.field?.setValue({ json: JSON.stringify(value) })
+}
