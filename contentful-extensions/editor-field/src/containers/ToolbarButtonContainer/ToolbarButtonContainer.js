@@ -109,7 +109,8 @@ const ToolbarButtonContainer = props => {
             setDialogOpen(false)
           }}
           initValue={dialog.getInitValue ? dialog.getInitValue(editor) : ''}
-          open={true}
+          open={dialogOpen}
+          onClose={() => setDialogOpen(false)}
         />
       )}
     </>
