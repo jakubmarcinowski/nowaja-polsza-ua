@@ -24,7 +24,10 @@ const createCategorizedPostsPages = (
   Object.keys(categorizedPosts).forEach(categoryId => {
     const category = categorizedPosts[categoryId]
     const slugBase = getSlugBase(category.slug)
-    const numPages = Math.ceil(category.posts.length / postsPerPage)
+    const numPages = Math.max(
+      1,
+      Math.ceil(category.posts.length / postsPerPage)
+    )
 
     Array.from({ length: numPages }).forEach((_, i) => {
       const isFirstPage = i === 0
