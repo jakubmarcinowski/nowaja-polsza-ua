@@ -6,12 +6,12 @@
   &__author {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     width: 250px;
   }
 
   &__icon {
     transform: rotate(-90deg);
+    flex-shrink: 0;
   }
 
   &__image {
