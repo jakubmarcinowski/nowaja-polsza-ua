@@ -85,14 +85,6 @@ const testInitialValue = [
     ],
   },
   {
-    children: [
-      { text: 'Между Краковом, Римом и Москвой. Русская идея в новой Польше' },
-    ],
-    type: 'link',
-    url:
-      'https://assets.ctfassets.net/8uskgiwtlhdi/4ogRSdm6fBVhprKAe7ctLX/ad95fe1d6de8186be2848fe05938048c/_______________________________________________.pdf',
-  },
-  {
     type: 'block-quote',
     children: [
       {
