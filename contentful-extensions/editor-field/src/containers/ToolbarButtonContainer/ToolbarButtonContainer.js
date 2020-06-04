@@ -16,7 +16,7 @@ const onSelectCustomAction = (
         return pickImage().then(image => {
           if (image) {
             if (buttonType === 'statement') {
-              image.maxWidth = 120
+              image.maxWidth = 64
             }
             const fluid = buildImageFluid(image)
             onToggle(editor, {

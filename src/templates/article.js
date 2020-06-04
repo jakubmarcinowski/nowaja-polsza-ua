@@ -171,7 +171,7 @@ export const pageQuery = graphql`
           slug
         }
         heroImage {
-          fluid(quality: 30, maxWidth: 800, background: "rgb:000000") {
+          fluid(quality: 30, maxWidth: 680, background: "rgb:000000") {
             ...GatsbyContentfulFluid_withWebp
           }
         }
