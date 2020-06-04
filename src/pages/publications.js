@@ -43,7 +43,7 @@ export const PublicationsPageQuery = graphql`
         node {
           relativePath
           childImageSharp {
-            fluid(quality: 30, maxWidth: 680) {
+            fluid(quality: 30, maxWidth: 500) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
