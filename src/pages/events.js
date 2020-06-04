@@ -51,7 +51,7 @@ export const EventsPageQuery = graphql`
           address
           city
           heroImage {
-            fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
+            fluid(quality: 30, maxWidth: 680, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_withWebp
             }
           }
