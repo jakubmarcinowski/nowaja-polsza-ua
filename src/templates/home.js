@@ -72,7 +72,7 @@ export const pageQuery = graphql`
             }
           }
           heroImageThumbnail {
-            fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
+            fluid(quality: 30, maxWidth: 680, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_withWebp
             }
           }
@@ -108,12 +108,12 @@ export const pageQuery = graphql`
             }
             summary
             heroImage {
-              fluid(quality: 30, maxWidth: 1440, resizingBehavior: SCALE) {
+              fluid(quality: 30, maxWidth: 680, resizingBehavior: SCALE) {
                 ...GatsbyContentfulFluid_withWebp
               }
             }
             heroImageThumbnail {
-              fluid(quality: 30, maxWidth: 620, resizingBehavior: SCALE) {
+              fluid(quality: 30, maxWidth: 680, resizingBehavior: SCALE) {
                 ...GatsbyContentfulFluid_withWebp
               }
             }

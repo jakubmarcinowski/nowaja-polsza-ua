@@ -43,7 +43,7 @@ export const PublicationsPageQuery = graphql`
         node {
           relativePath
           childImageSharp {
-            fluid(quality: 30, maxWidth: 500) {
+            fluid(quality: 30, maxWidth: 680) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -73,7 +73,7 @@ export const PublicationsPageQuery = graphql`
             slug
           }
           heroImage {
-            fluid(quality: 30, maxWidth: 768, resizingBehavior: SCALE) {
+            fluid(quality: 30, maxWidth: 680, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_withWebp
             }
           }
